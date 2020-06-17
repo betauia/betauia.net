@@ -2,6 +2,18 @@ body {
 	font-family: "Courier New", Courier, monospace;
 }
 
+a {
+	color: inherit;
+}
+
+a:hover {
+	color: inherit;
+}
+
+a svg {
+	margin-right: 0.5em;
+}
+
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	font-family: Arial, Helvetica, sans-serif;
 }
