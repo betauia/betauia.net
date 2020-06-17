@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "beta-landing",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Landing page for betauia",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
