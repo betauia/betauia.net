@@ -17,3 +17,9 @@ a svg {
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.navbar-dark .navbar-nav a {
+	font-size: 1.5em;
+	color: rgba(255,255,255,0.8);
+	margin: 0 1em;
+}
