@@ -21,8 +21,8 @@ export default function Home() {
 					<br></br>
 					<h5>
 						<ul className="listings">
-							<li>This is the BETA website, as you can see it's quite work in progress.</li>
-							<li>BETA is the student organization, for the Computer Engineering and Cybersecurity Students at <a href="https://uia.no">UiA Grimstad</a>.</li>
+							<li>This is the BETA website, as you can see it's still a work in progress.</li>
+							<li>BETA is the student organization for the Computer Engineering and Cybersecurity Students at <a href="https://uia.no">UiA Grimstad</a>.</li>
 						</ul>
 					</h5>
 				</Container>

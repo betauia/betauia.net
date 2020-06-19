@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import { Link } from 'gatsby';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faSnapchat, faFacebook, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faSnapchat, faFacebook, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export default function Layout({ children }) {
 	return (<>
@@ -32,10 +32,11 @@ export default function Layout({ children }) {
 				</Row>
 				<br />
 				<Row>
-					<Col><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} /> Instagram</a></Col>
-					<Col><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} /> Snapchat</a></Col>
-					<Col><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} /> Facebook</a></Col>
-					<Col><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} /> Discord</a></Col>
+					<Col><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} className="footer-icon" />Instagram</a></Col>
+					<Col><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} className="footer-icon" />Snapchat</a></Col>
+					<Col><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} className="footer-icon" />Facebook</a></Col>
+					<Col><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} className="footer-icon" />Discord</a></Col>
+					<Col><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} className="footer-icon" />Github</a></Col>
 				</Row>
 			</Container>
 		</Container>

@@ -53,3 +53,7 @@ a:hover {
 
 /* TODO: make all the cards have the same size */
 .pick_a_card {}
+
+.footer-icon {
+	margin-right: 0.5em
+}
