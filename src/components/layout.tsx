@@ -11,12 +11,14 @@ import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faSnapchat, faFacebook, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import betaLogo from '../../assets/beta-logo.png'
+
 export default function Layout({ children }) {
 	return (<>
 		<Navbar variant="dark" style={{ backgroundColor: "#0085ff" }}>
 			<Navbar.Brand>
 				<Link to="/">
-					<Image className="beta-logo" src="/beta.jpg" height="38" />
+					<Image className="beta-logo" src={betaLogo} height="38" />
 				</Link>
 			</Navbar.Brand>
 			<Nav>

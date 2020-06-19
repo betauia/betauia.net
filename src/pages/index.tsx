@@ -1,12 +1,11 @@
 import React from "react"
-import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Layout from '../components/layout';
+
+import betaSecLogo from '../../assets/betasec-logo.png'
 
 // TODO: Create logos for the other parts
 // TODO: Fix text-header so it don't look so "strange"
@@ -30,24 +29,16 @@ export default function Home() {
 			<Container>
 				<Row>
 					<Col>
-						<Card>
-							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
-						</Card>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
 					</Col>
 					<Col>
-						<Card>
-							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
-						</Card>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
 					</Col>
 					<Col>
-						<Card>
-							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
-						</Card>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
 					</Col>
 					<Col>
-						<Card>
-							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
-						</Card>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
 					</Col>
 				</Row>
 			</Container>
