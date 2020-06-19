@@ -16,7 +16,7 @@ export default function Layout({ children }) {
 		<Navbar variant="dark" style={{ backgroundColor: "#0085ff" }}>
 			<Navbar.Brand>
 				<Link to="/">
-					<Image className="beta-logo" src="/logo_test.jpg" height="38" />
+					<Image className="beta-logo" src="/beta.jpg" height="38" />
 				</Link>
 			</Navbar.Brand>
 			<Nav>

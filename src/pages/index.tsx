@@ -8,7 +8,9 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Layout from '../components/layout';
 
-// TODO: Scale down beta logo image
+// TODO: Create logos for the other parts
+// TODO: Fix text-header so it don't look so "strange"
+// TODO: finish up css
 
 export default function Home() {
 	return <div>
@@ -21,11 +23,6 @@ export default function Home() {
 						<ul className="listings">
 							<li>This is the BETA website, as you can see it's quite work in progress.</li>
 							<li>BETA is the student organization, for the Computer Engineering and Cybersecurity Students at <a href="https://uia.no">UiA Grimstad</a>.</li>
-							<ul className="listings">
-								<li> Alpha </li>
-								<li> Beta </li>
-								<li> Gamma? </li>
-							</ul>
 						</ul>
 					</h5>
 				</Container>
@@ -34,43 +31,27 @@ export default function Home() {
 				<Row>
 					<Col>
 						<Card>
-							<Card.Body>
-								<Card.Title>EventKom</Card.Title>
-								<Card.Text>Here is info</Card.Text>
-								<Card.Link><Button variant="link">Read more</Button></Card.Link>
-							</Card.Body>
+							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
 						</Card>
 					</Col>
 					<Col>
 						<Card>
-							<Card.Body>
-								<Card.Title>BedKom</Card.Title>
-								<Card.Text>Here is info. Here is some more info. This is mostly to check out if the thingies do the thingy whith line endings.</Card.Text>
-								<Card.Link><Button variant="link">Read more</Button></Card.Link>
-							</Card.Body>
+							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
 						</Card>
 					</Col>
 					<Col>
 						<Card>
-							<Card.Body>
-								<Card.Title>BetaDev</Card.Title>
-								<Card.Text>Here is info</Card.Text>
-								<Card.Link><Button variant="link">Read more</Button></Card.Link>
-							</Card.Body>
+							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
 						</Card>
 					</Col>
 					<Col>
 						<Card>
-							<Card.Body>
-								<Card.Title>BetaSec</Card.Title>
-								<Card.Text>Here is info</Card.Text>
-								<Card.Link><Button variant="link">Read more</Button></Card.Link>
-							</Card.Body>
+							<a href="https://wiki.betauia.net/betasec"><img src="/betasec.png" height="42" ></img></a>
 						</Card>
 					</Col>
 				</Row>
 			</Container>
 			<br />
 		</Layout>
-	</div>
+	</div >
 }
