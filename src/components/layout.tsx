@@ -35,11 +35,11 @@ export default function Layout({ children }) {
 				</Row>
 				<br />
 				<Row>
-					<Col><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} className="footer-icon" />Instagram</a></Col>
-					<Col><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} className="footer-icon" />Snapchat</a></Col>
-					<Col><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} className="footer-icon" />Facebook</a></Col>
-					<Col><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} className="footer-icon" />Discord</a></Col>
-					<Col><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} className="footer-icon" />Github</a></Col>
+					<Col><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} height="16" className="footer-icon" />Instagram</a></Col>
+					<Col><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} height="16" className="footer-icon" />Snapchat</a></Col>
+					<Col><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} height="16" className="footer-icon" />Facebook</a></Col>
+					<Col><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} height="16" className="footer-icon" />Discord</a></Col>
+					<Col><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} height="16" className="footer-icon" />Github</a></Col>
 				</Row>
 			</Container>
 		</Container>
