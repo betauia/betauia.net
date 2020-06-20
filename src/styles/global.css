@@ -1,4 +1,4 @@
-{
+html {
 	font-family: Ubuntu Mono;
 	font-size: 16px;
 }
@@ -62,4 +62,8 @@ a:hover {
 	margin-top: 3em;
 	margin-bottom: 3em;
 	text-align: center;
+}
+
+.styret h1 {
+	margin: 1em 0
 }
