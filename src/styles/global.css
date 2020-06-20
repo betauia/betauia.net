@@ -52,8 +52,14 @@ a:hover {
 }
 
 /* TODO: make all the cards have the same size */
-.pick_a_card {}
+/* .pick_a_card {} */
 
 .footer-icon {
 	margin-right: 0.5em
+}
+
+.styret {
+	margin-top: 3em;
+	margin-bottom: 3em;
+	text-align: center;
 }

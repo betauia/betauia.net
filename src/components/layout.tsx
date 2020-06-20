@@ -23,7 +23,8 @@ export default function Layout({ children }) {
 			</Navbar.Brand>
 			<Nav>
 				<Link to="/">Home</Link>
-				<a href="https://wiki.betauia.net/beta">About</a>
+				<Link to="/about">About</Link>
+				<a href="https://wiki.betauia.net/beta">Wiki</a>
 			</Nav>
 		</Navbar>
 		{children}

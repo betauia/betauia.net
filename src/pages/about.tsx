@@ -2,18 +2,47 @@ import React from 'react';
 import Layout from '../components/layout';
 import Container from 'react-bootstrap/Container';
 
+import Logo from '../../assets/beta-logo.png';
+import StyretCard, {StyretInfo} from '../components/styretcard';
+
+const info: StyretInfo[] = [
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+	{
+		Img: Logo,
+		Name: "Even Eilertsen",
+		Body: "Here is info about Even Eilertsen"
+	},
+]
+
 export default function About() {
 	return <>
 	<Layout>
-		<Container>
-			<h1>BETA</h1>
-			<p>
-				Beta information, history what we do and stuff.
-			</p>
-			<h2>Styret</h2>
-			<p>
-				Pictures and names of current leadership.
-			</p>
+		<Container className="styret">
+			<StyretCard info={info} />
 		</Container>
 	</Layout>
 	</>
