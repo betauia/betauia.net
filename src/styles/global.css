@@ -7,8 +7,6 @@ a {
 	color: inherit;
 }
 
-h1 {}
-
 a:hover {
 	color: inherit;
 }
@@ -51,8 +49,8 @@ a:hover {
 	padding: "2em"
 }
 
-/* TODO: make all the cards have the same size */
-/* .pick_a_card {} */
+/* TODO: make all the cards have the same size
+.pick_a_card {} */
 
 .footer-icon {
 	margin-right: 0.5em

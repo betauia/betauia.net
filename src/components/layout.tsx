@@ -24,7 +24,7 @@ export default function Layout({ children }) {
 			<Nav>
 				<Link to="/">Home</Link>
 				<Link to="/about">About</Link>
-				<a href="https://wiki.betauia.net/beta">Wiki</a>
+				<a href="https://wiki.betauia.net/beta" target="_blank">Wiki</a>
 			</Nav>
 		</Navbar>
 		{children}
