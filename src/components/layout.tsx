@@ -30,16 +30,34 @@ export default function Layout({ children }) {
 		{children}
 		<Container className="footer" fluid >
 			<Container className="footer-breathing">
-				<Row>
-					<Col className="contact_aliens">Contact us on:</Col>
-				</Row>
 				<br />
 				<Row>
-					<Col><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} height="16" className="footer-icon" />Instagram</a></Col>
-					<Col><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} height="16" className="footer-icon" />Snapchat</a></Col>
-					<Col><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} height="16" className="footer-icon" />Facebook</a></Col>
-					<Col><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} height="16" className="footer-icon" />Discord</a></Col>
-					<Col><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} height="16" className="footer-icon" />Github</a></Col>
+					<Col>
+					<div className="info-group">
+						<Row><h4>Org. Name</h4></Row>
+						<Row>BETA ENGINEERING & TECHNOLOGY ASSOCIATION</Row>
+					</div>
+					<div className="info-group">
+						<Row><h4>Org. Nr</h4></Row>
+						<Row>913 777 417</Row>
+					</div>
+					<div className="info-group">
+						<Row><h4>Address</h4></Row>
+						<Row>Bluebox, BETA Jon Lilletuns vei 9, 4879 Grimstad</Row>
+					</div>
+					<div className="info-group">
+						<Row><h4>Email</h4></Row>
+						<Row>post@betauia.no</Row>
+					</div>
+					</Col>
+					<Col>
+					<Row className="contact_aliens">Socials</Row>
+					<Row><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} height="16" className="footer-icon" />Instagram</a></Row>
+					<Row><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} height="16" className="footer-icon" />Snapchat</a></Row>
+					<Row><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} height="16" className="footer-icon" />Facebook</a></Row>
+					<Row><a href="https://discord.com/invite/UQCPkZD"><FontAwesomeIcon icon={faDiscord} height="16" className="footer-icon" />Discord</a></Row>
+					<Row><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} height="16" className="footer-icon" />Github</a></Row>
+					</Col>
 				</Row>
 			</Container>
 		</Container>

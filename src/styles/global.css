@@ -1,5 +1,5 @@
-html {
-	font-family: Ubuntu Mono;
+body {
+	font-family: "Ubuntu Mono";
 	font-size: 16px;
 }
 
@@ -19,7 +19,7 @@ a:hover {
 
 .listings {
 	list-style-type: none;
-	text-align: left;
+	text-align: inherit;
 }
 
 .listings li {
@@ -36,7 +36,6 @@ a:hover {
 }
 
 .contact_aliens {
-	text-align: center;
 	font-size: 18px;
 }
 
@@ -63,5 +62,17 @@ a:hover {
 }
 
 .styret h1 {
-	margin: 1em 0
+	margin: 1em 0;
+}
+
+.wiki-image {
+	width: 100%;
+}
+
+.info-group {
+	margin-bottom: 1.5em;
+}
+
+.frontpage-jumbo {
+	text-align: center;
 }

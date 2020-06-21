@@ -14,31 +14,36 @@ import betaSecLogo from '../../assets/betasec-logo.png'
 export default function Home() {
 	return <div>
 		<Layout>
-			<Jumbotron>
+			<Jumbotron  className="frontpage-jumbo">
 				<Container>
-					<h1><strong>B</strong>ETA <strong>E</strong>ngineering and <strong>T</strong>echnology <strong>A</strong>ssociation</h1>
-					<br></br>
-					<h5>
-						<ul className="listings">
-							<li>This is the BETA website, as you can see it's still a work in progress.</li>
-							<li>BETA is the student organization for the Computer Engineering and Cybersecurity Students at <a href="https://uia.no">UiA Grimstad</a>.</li>
-						</ul>
-					</h5>
+					<Row>
+						<Col>
+							<h1>BETA Engineering and Technology Association</h1>
+						</Col>
+						<Col xs={8}>
+							<br></br>
+							<h5>
+								<ul className="listings">
+									<li>BETA is the student organization for the Computer Engineering and Cybersecurity Students at <a href="https://uia.no">UiA Grimstad</a>.</li>
+								</ul>
+							</h5>
+						</Col>
+					</Row>
 				</Container>
 			</Jumbotron>
 			<Container>
 				<Row>
 					<Col>
-						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} className="wiki-image" ></img></a>
 					</Col>
 					<Col>
-						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} className="wiki-image" ></img></a>
 					</Col>
 					<Col>
-						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} className="wiki-image" ></img></a>
 					</Col>
 					<Col>
-						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} height="42" ></img></a>
+						<a href="https://wiki.betauia.net/betasec"><img src={betaSecLogo} className="wiki-image" ></img></a>
 					</Col>
 				</Row>
 			</Container>

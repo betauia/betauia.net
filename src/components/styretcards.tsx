@@ -18,11 +18,12 @@ interface StyretCardsProps {
 export default function StyretCards(props: StyretCardsProps) {
 	const mapped: JSX.Element[] = props.info.map((value: Info) => {
 		return <Col>
-				<Image src={value.Img} height="150" roundedCircle />
+				<Image src={value.Img} width="150" roundedCircle />
 				<h3>{value.Name}</h3>
 				<h5>{value.Position}</h5>
-				<strong>Email: <a href={"mailto:"+value.Email}>{value.Email}</a></strong>
 				<p>
+				<strong>Email: <a href={"mailto:"+value.Email}>{value.Email}</a></strong>
+				<br />
 					{value.Body}
 				</p>
 		</Col>
