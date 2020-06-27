@@ -1,5 +1,9 @@
+@font-face {
+	font-family: 'CascadiaCode', 'Monospace';
+	src: url('/assets/CascadiaCode.ttf');
+}
+
 body {
-	font-family: "Ubuntu Mono", monospace;
 	font-size: 16px;
 }
 
@@ -7,8 +11,14 @@ a {
 	color: inherit;
 }
 
+.blue {
+	color: #0085ff;
+}
+
+/* Gives of a color glow when hovering an a-tag */
 a:hover {
-	color: inherit;
+	color: #0085ff;
+	text-decoration: none;
 }
 
 .navbar-dark .navbar-nav a {
@@ -26,8 +36,14 @@ a:hover {
 	padding-bottom: 1em;
 }
 
-.listings ul {
-	list-style-type: lower-greek;
+ol {
+	position: relative;
+	list-style: none;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
 }
 
 .beta_logo {

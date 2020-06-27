@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import { Link } from 'gatsby';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faSnapchat, faFacebook, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faSnapchat, faFacebook, faDiscord, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import betaLogo from '../../assets/beta-logo.png'
 
@@ -33,31 +33,38 @@ export default function Layout({ children }) {
 				<br />
 				<Row>
 					<Col>
-					<div className="info-group">
-						<Row><h4>Org. Name</h4></Row>
-						<Row>BETA ENGINEERING & TECHNOLOGY ASSOCIATION</Row>
-					</div>
-					<div className="info-group">
-						<Row><h4>Org. Nr</h4></Row>
-						<Row>913 777 417</Row>
-					</div>
-					<div className="info-group">
-						<Row><h4>Address</h4></Row>
-						<Row>Bluebox, BETA Jon Lilletuns vei 9, 4879 Grimstad</Row>
-					</div>
-					<div className="info-group">
-						<Row><h4>Email</h4></Row>
-						<Row>post@betauia.no</Row>
-					</div>
+						<div className="info-group">
+							<Row><h4>Organization Name</h4></Row>
+							<Row>BETA ENGINEERING & TECHNOLOGY ASSOCIATION</Row>
+						</div>
+						<div className="info-group">
+							<Row><h4>Organization Number</h4></Row>
+							<Row>913 777 417</Row>
+						</div>
+						<div className="info-group">
+							<Row><h4>Address</h4></Row>
+							<Row>Bluebox, BETA Jon Lilletuns vei 9, 4879 Grimstad</Row>
+						</div>
+						<div className="info-group">
+							<Row><h4>Email</h4></Row>
+							<Row>post@betauia.no</Row>
+						</div>
 					</Col>
 					<Col>
-					<Row className="contact_aliens">Socials</Row>
-					<Row><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} height="16" className="footer-icon" />Instagram</a></Row>
-					<Row><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} height="16" className="footer-icon" />Snapchat</a></Row>
-					<Row><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} height="16" className="footer-icon" />Facebook</a></Row>
-					<Row><a href="https://discord.gg/U3N4q25"><FontAwesomeIcon icon={faDiscord} height="16" className="footer-icon" />Discord</a></Row>
-					<Row><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} height="16" className="footer-icon" />Github</a></Row>
+						<Row className="contact_aliens">Socials</Row>
+						<Row><a href="https://www.instagram.com/betauia/"><FontAwesomeIcon icon={faInstagram} height="16" className="footer-icon" />Instagram</a></Row>
+						<Row><a href="https://www.snapchat.com/add/betauia"><FontAwesomeIcon icon={faSnapchat} height="16" className="footer-icon" />Snapchat</a></Row>
+						<Row><a href="https://www.facebook.com/beta.linjeforening"><FontAwesomeIcon icon={faFacebook} height="16" className="footer-icon" />Facebook</a></Row>
+						<Row><a href="https://discord.gg/U3N4q25"><FontAwesomeIcon icon={faDiscord} height="16" className="footer-icon" />Discord</a></Row>
+						<Row><a href="https://github.com/beta-engineering-technology-association/"><FontAwesomeIcon icon={faGithub} height="16" className="footer-icon" />Github</a></Row>
+						<Row><a href="https://www.linkedin.com/company/beta-engineering-technology-association"><FontAwesomeIcon icon={faLinkedin} height="16" className="footer-icon" />LinkedIn</a></Row>
 					</Col>
+				</Row>
+				<Row>
+					<ol>
+						<li>Beta Engineering &amp; Technology Association.</li>
+						<li>Copyright &copy; 2008 - 2020 &nbsp;</li>
+					</ol>
 				</Row>
 			</Container>
 		</Container>
