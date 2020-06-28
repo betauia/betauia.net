@@ -92,3 +92,7 @@ ol {
 .frontpage-jumbo {
 	text-align: center;
 }
+
+.copyright-notice .row {
+	justify-content: center;
+}

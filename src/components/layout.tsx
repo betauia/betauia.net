@@ -61,10 +61,14 @@ export default function Layout({ children }) {
 					</Col>
 				</Row>
 				<Row>
-					<ol>
-						<li>Beta Engineering &amp; Technology Association.</li>
-						<li>Copyright &copy; 2008 - 2020 &nbsp;</li>
-					</ol>
+					<Col className="copyright-notice">
+						<Row>
+							Beta Engineering &amp; Technology Association.
+						</Row>
+						<Row>
+							Copyright &copy; 2008 - 2020 &nbsp;
+						</Row>
+					</Col>
 				</Row>
 			</Container>
 		</Container>
