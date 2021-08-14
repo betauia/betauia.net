@@ -11,12 +11,13 @@ input.svelte-1twofwp,textarea.svelte-1twofwp{width:100%;max-width:100%}textarea.
 				'content info'}}.head.svelte-1djtnjj{text-align:center;grid-area:head}.content.svelte-1djtnjj{grid-area:content}.info.svelte-1djtnjj{grid-area:info}ul.svelte-1djtnjj{list-style:none;padding:0px}li.svelte-1djtnjj{display:flex;justify-content:space-between}button.svelte-1djtnjj{width:100%}.red.svelte-1djtnjj{background-color:maroon}
 .container.svelte-17u7xl1{display:grid;grid-template-columns:2fr 1fr;grid-gap:20px;grid-template-areas:'head head'
 			'content info'}.head.svelte-17u7xl1{grid-area:head}.content.svelte-17u7xl1{grid-area:content}.info.svelte-17u7xl1{grid-area:info}ul.svelte-17u7xl1{list-style:none;padding:0px}li.svelte-17u7xl1{display:flex;justify-content:space-between}button.svelte-17u7xl1{width:100%}
-@media screen and (max-width: 1280px){main.svelte-14220co{margin:20px}.container.svelte-14220co{display:grid;grid-template-columns:1fr;grid-gap:20px;grid-template-areas:'header'
-				'partner'
-				'bedpres'
-				'nytt'
-				'facebook'}}@media screen and (min-width: 1280px){.container.svelte-14220co{display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;grid-template-areas:'header header'
-				'bedpres partner'
-				'nytt facebook '}}.header.svelte-14220co{grid-area:header}.bedpres.svelte-14220co{grid-area:bedpres}.partner.svelte-14220co{grid-area:partner}.facebook.svelte-14220co{grid-area:facebook}.nytt.svelte-14220co{grid-area:nytt}ul.svelte-14220co{list-style:none;padding:0px}li.svelte-14220co{display:flex;justify-content:space-between}.dist.svelte-14220co{margin:5px;padding:0}.full.svelte-14220co{width:100%}.gray.svelte-14220co{color:#555;padding-left:5px}.news.svelte-14220co{margin-bottom:30px}.cont.svelte-14220co{display:grid;grid-template-columns:1fr 1fr;grid-gap:40px}img.svelte-14220co{width:100%}
+@media screen and (max-width: 1280px){main.svelte-193w7xy{margin:20px}.container.svelte-193w7xy{display:grid;grid-template-columns:1fr;grid-gap:20px;grid-template-areas:"header"
+				"partner"
+				"bedpres"
+				"nytt"
+				"social"}}@media screen and (min-width: 1280px){.container.svelte-193w7xy{display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;grid-template-areas:"header header"
+				"bedkom eventkom"
+				"betadev betasec"
+				"nytt social "}}.header.svelte-193w7xy{grid-area:header}.full.svelte-193w7xy{width:100%}img.svelte-193w7xy{width:100%}
 
 /*# sourceMappingURL=bundle.css.map */
