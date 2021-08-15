@@ -1,6 +1,6 @@
 @media screen and (max-width: 1280px){.head.svelte-dcx24d{margin:20px;max-width:1100px;align-items:center}a.svelte-dcx24d{text-align:center;display:block;margin:15px 0;font-weight:normal}.logo.svelte-dcx24d{width:100%}}@media screen and (min-width: 1280px){.head.svelte-dcx24d{display:flex;margin:50px auto 30px auto;max-width:1100px;align-items:center}a.svelte-dcx24d{font-size:20px;margin:0 15px;font-weight:normal}}.logo.svelte-dcx24d{flex-grow:1}.active.svelte-dcx24d{color:#333;font-weight:bold}
 #map.svelte-1egwg89{height:520px}
-.container.svelte-eujq1m{display:grid;grid-gap:20px;grid-template-areas:'sidebar content';grid-template-columns:1fr 3fr}.sidebar.svelte-eujq1m{grid-area:sidebar;padding:15px}.content.svelte-eujq1m{grid-area:content}ul.svelte-eujq1m{list-style:none;padding-left:0;margin-top:0}li.svelte-eujq1m{padding:10px}li.selected.svelte-eujq1m{background-color:#eee}.card.svelte-eujq1m{min-height:600px}
+.container.svelte-n4q7bm{display:grid;grid-gap:20px;grid-template-areas:"sidebar content";grid-template-columns:1fr 3fr}.sidebar.svelte-n4q7bm{grid-area:sidebar;padding:15px}.content.svelte-n4q7bm{grid-area:content}ul.svelte-n4q7bm{list-style:none;padding-left:0;margin-top:0}li.svelte-n4q7bm{padding:10px}li.selected.svelte-n4q7bm{background-color:#eee}.card.svelte-n4q7bm{min-height:600px}
 input.svelte-1twofwp,textarea.svelte-1twofwp{width:100%;max-width:100%}textarea.svelte-1twofwp{height:100px;resize:vertical}.third.svelte-1twofwp{width:49%;display:inline-table}.tab-bar.svelte-1twofwp{margin:30px auto;display:-webkit-box;display:-ms-flexbox;display:flex;list-style-type:none;-webkit-padding-start:0;box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)}.tab.svelte-1twofwp{width:150px;padding:20px 0;background:white;color:#607d8b;overflow:hidden;text-align:center;flex-grow:1;cursor:pointer;position:relative}.indicator.svelte-1twofwp{width:500px;height:3px;background:#2196f3;position:absolute;margin-top:58px;margin-left:0;transition:margin 0.5s ease}
 @media screen and (max-width: 1280px){.hide-small.svelte-1gv7me9{display:none}.container.svelte-1gv7me9{margin:20px}}table.svelte-1gv7me9{width:100%;text-align:left}tr.svelte-1gv7me9{height:52px;border:solid #ccc;border-width:1px 0}td.svelte-1gv7me9,th.svelte-1gv7me9{padding:8px}tr.svelte-1gv7me9:first-child{border-top:none}tr.svelte-1gv7me9:last-child{border-bottom:none}tr.svelte-1gv7me9:not(:first-child):hover{background-color:#fafafa}table.svelte-1gv7me9{border-collapse:collapse;border-spacing:0px}a.svelte-1gv7me9{font-weight:100}
 .container.svelte-17u7xl1{display:grid;grid-template-columns:2fr 1fr;grid-gap:20px;grid-template-areas:'head head'
@@ -11,13 +11,14 @@ input.svelte-1twofwp,textarea.svelte-1twofwp{width:100%;max-width:100%}textarea.
 				'content info'}}.head.svelte-1djtnjj{text-align:center;grid-area:head}.content.svelte-1djtnjj{grid-area:content}.info.svelte-1djtnjj{grid-area:info}ul.svelte-1djtnjj{list-style:none;padding:0px}li.svelte-1djtnjj{display:flex;justify-content:space-between}button.svelte-1djtnjj{width:100%}.red.svelte-1djtnjj{background-color:maroon}
 .container.svelte-17u7xl1{display:grid;grid-template-columns:2fr 1fr;grid-gap:20px;grid-template-areas:'head head'
 			'content info'}.head.svelte-17u7xl1{grid-area:head}.content.svelte-17u7xl1{grid-area:content}.info.svelte-17u7xl1{grid-area:info}ul.svelte-17u7xl1{list-style:none;padding:0px}li.svelte-17u7xl1{display:flex;justify-content:space-between}button.svelte-17u7xl1{width:100%}
-@media screen and (max-width: 1280px){main.svelte-193w7xy{margin:20px}.container.svelte-193w7xy{display:grid;grid-template-columns:1fr;grid-gap:20px;grid-template-areas:"header"
-				"partner"
+@media screen and (max-width: 1280px){main.svelte-nuvpup{margin:20px}.container.svelte-nuvpup{display:grid;grid-template-columns:1fr;grid-gap:20px;grid-template-areas:"velkommen"
+				"apply"
+				"header"
 				"bedpres"
 				"nytt"
-				"social"}}@media screen and (min-width: 1280px){.container.svelte-193w7xy{display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;grid-template-areas:"header header"
-				"bedkom eventkom"
-				"betadev betasec"
-				"nytt social "}}.header.svelte-193w7xy{grid-area:header}.full.svelte-193w7xy{width:100%}img.svelte-193w7xy{width:100%}
+				"facebook"}}@media screen and (min-width: 1280px){.container.svelte-nuvpup{display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;grid-template-areas:"velkommen velkommen"
+				"blank facebook"
+				"header header"
+				"bedpres bedpres"}}.velkommen.svelte-nuvpup{grid-area:velkommen;background-color:#26c5f3}.header.svelte-nuvpup{grid-area:header}.bedpres.svelte-nuvpup{grid-area:bedpres}.facebook.svelte-nuvpup{grid-area:facebook}ul.svelte-nuvpup{list-style:none;padding:0px}li.svelte-nuvpup{display:flex;justify-content:space-between}.full.svelte-nuvpup{width:100%}.cont.svelte-nuvpup{display:grid;grid-template-columns:1fr 1fr;grid-gap:40px}
 
 /*# sourceMappingURL=bundle.css.map */
