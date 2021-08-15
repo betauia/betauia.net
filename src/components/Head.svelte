@@ -1,8 +1,17 @@
 <script>
-	import {active} from 'tinro';
+	import { active } from "tinro";
 
-	const logo = '/logo.png';
+	const logo = "/logo.png";
 </script>
+
+<nav class="head">
+	<e class="active" />
+	<a class="logo" href="/"><img height="48" alt="logo" src={logo} /></a>
+	<a class="link" use:active href="/events">ARRANGEMENTER</a>
+	<a class="link" use:active href="/jobs">STILLINGSANNONSER</a>
+	<a class="link" use:active href="/bedrift">FOR BEDRIFTER</a>
+	<a class="link" use:active href="/about">OM BETA</a>
+</nav>
 
 <style>
 	@media screen and (max-width: 1280px) {
@@ -44,12 +53,3 @@
 		font-weight: bold;
 	}
 </style>
-
-<nav class="head">
-	<e class="active" />
-	<a class="logo" href="/"><img height="48" alt="logo" src={logo} /></a>
-	<a class="link" use:active href="/events">ARRANGEMENTER</a>
-	<a class="link" use:active href="/jobs">STILLINGSANNONSER</a>
-	<a class="link" use:active href="/bedrift">FOR BEDRIFTER</a>
-	<a class="link" use:active href="/about">OM BETA</a>
-</nav>
