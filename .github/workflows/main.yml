@@ -2,7 +2,7 @@ name: gh-pages-deploy
 
 on:
   push:
-    branches: [ svelte-redesign ]
+    branches: [ new_front ]
     
 jobs:
   build:
