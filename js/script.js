@@ -1,17 +1,50 @@
-document.getElementById("btn1").addEventListener("click", function() {
-  document.getElementById("modal").style.display = "block";
-});
+var modal1 = document.getElementById("myModal1");
+var btn1 = document.getElementById("myBtn1");
+var closeBtn1 = document.getElementById("myModal1").getElementsByClassName("close")[0];
 
-document.getElementById("btn2").addEventListener("click", function() {
-  document.getElementById("modal").style.display = "block";
-});
+var modal2 = document.getElementById("myModal2");
+var btn2 = document.getElementById("myBtn2");
+var closeBtn2 = document.getElementById("myModal2").getElementsByClassName("close")[0];
 
-document.getElementsByClassName("close")[0].addEventListener("click", function() {
-  document.getElementById("modal").style.display = "none";
-});
+var modal3 = document.getElementById("myModal3");
+var btn3 = document.getElementById("myBtn3");
+var closeBtn3 = document.getElementById("myModal3").getElementsByClassName("close")[0];
 
-window.addEventListener("click", function(event) {
-  if (event.target == document.getElementById("modal")) {
-    document.getElementById("modal").style.display = "none";
+// Open Modal 1
+btn1.onclick = function() {
+  modal1.style.display = "block";
+};
+
+// Close Modal 1
+closeBtn1.onclick = function() {
+  modal1.style.display = "none";
+};
+
+// Open Modal 2
+btn2.onclick = function() {
+  modal2.style.display = "block";
+};
+
+// Close Modal 2
+closeBtn2.onclick = function() {
+  modal2.style.display = "none";
+};
+
+// Open Modal 3
+btn3.onclick = function() {
+  modal3.style.display = "block";
+};
+
+// Close Modal 3
+closeBtn3.onclick = function() {
+  modal3.style.display = "none";
+};
+
+// Close modals when clicked outside of the modals
+window.onclick = function(event) {
+  if (event.target == modal1 || event.target == modal2 || event.target == modal3) {
+    modal1.style.display = "none";
+    modal2.style.display = "none";
+    modal3.style.display = "none";
   }
-});
+};

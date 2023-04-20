@@ -1,3 +1,12 @@
+.btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+}
+
 .is-beta-blue {
     color: #0085ff;
 }
@@ -6,16 +15,11 @@
     color: #C8102E;
 }
 
-a,p {
+a,button {
 	transition: 0.5s;
 }
 
-a:hover {
-    color: #F2F3F5;
-}
-
-
-p:hover {
+a, button:hover {
     color: #F2F3F5;
 }
 
@@ -74,6 +78,7 @@ p:hover {
 .modal-btn {
   margin-top: 10px;
 }
+
 body {
     background-color: #0d0d0d;
     top: 0;
