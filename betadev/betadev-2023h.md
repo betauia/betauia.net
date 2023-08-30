@@ -18,9 +18,9 @@ Game Jam er en øvelse i å jobbe under press, samarbeide og å være kreativ.
 # game jam 1
 Hvis du vil være med på Game Jam 1 kan du melde deg på [her](https://forms.office.com/e/Eze1w2mi2P), enten som gruppe eller alene. Du trenger kun å møte opp fysisk på slutten, da vi skal kåre spillet ditt.
 
-Tema dropper [her](tema.html) kl 12:00 7. september, og vi kommer også til å ha fysisk møte kl XX:XX i rom X. Her kan du få informasjon, og finne andre hvis du trenger en gruppe.
+Tema dropper [her](tema.html) kl 12:00 7. september, og vi kommer også til å ha fysisk møte kl 18:15 i rom ???. Her kan du få informasjon, og finne andre hvis du trenger en gruppe.
 
-Vi har fysisk kåring 15. september kl XX:XX i rom X. Deltagerene vil prøve spillene, og vi vil ha avstemning. Gruppen eller personen som lager det beste spillet, **VINNER 2500kr**!
+Vi har fysisk kåring 15. september kl XX:XX i rom ???. Deltagerene vil prøve spillene, og vi vil ha avstemning. Gruppen eller personen som lager det beste spillet, **VINNER 2500kr**!
 
 Du kan lage spillet nesten hvordan du vil. Lag et brettspill hvis du vil det! Men det vanlige er dataspill, enten fra bunn av eller ved hjelp av en *game engine*. Redskaper og game engines verdt å sjekke ut:
 - [pygame](https://www.pygame.org/)
@@ -44,7 +44,7 @@ Du kan lage spillet nesten hvordan du vil. Lag et brettspill hvis du vil det! Me
 ...
 
 ## kode-prosjekt
-Vi jobber med å forbedre denne nettsiden. Hvis du vil være med, kan du komme på møte hver onsdag kl 16:15 i rom X. 
+Vi jobber med å forbedre denne nettsiden. Hvis du vil være med, kan du komme på møte hver onsdag kl 16:15 i rom ???. 
 
 # kontakt oss
 Ønsker du å være med på noen av prosjektene våre, eller lurer på noe, finner du oss her:
