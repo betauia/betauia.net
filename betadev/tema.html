@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>game jam 1: tema</title>
+</head>
+<body>
+	<a href="betadev-2023h.html">tilbake</a>
+  <div id="lol" style="text-align: center; margin-top: 15vh;"></div>
+	<script>
+			const countdownDate = new Date("2023-09-07T12:00:00").getTime();
+
+			const updateCountdown = () => {
+			    const now = new Date().getTime();
+			    const distance = countdownDate - now;
+
+			    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			    document.getElementById("lol").innerHTML = `game jam 1 tema dropper om ${days} dager, ${hours} timer, ${minutes} minutter og ${seconds} sekunder`;
+			};
+			setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
