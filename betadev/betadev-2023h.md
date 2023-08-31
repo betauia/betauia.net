@@ -20,7 +20,7 @@ Hvis du vil være med på Game Jam 1 kan du melde deg på [her](https://forms.of
 
 Tema dropper [her](tema.html) kl 12:00 7. september, og vi kommer også til å ha fysisk møte kl 18:15 i rom A2-021. Her kan du få informasjon, og finne andre hvis du trenger en gruppe.
 
-Vi har fysisk kåring 15. september. Deltakerne vil prøve spillene, og vi vil ha avstemning. Gruppen eller personen som lager det beste spillet, **VINNER 2500kr**!
+Vi har fysisk kåring 15. september. Deltakerne vil prøve spillene, og vi vil ha avstemning. Gruppen eller personen som lager det beste spillet, **VINNER 1000kr**!
 
 ## krav
 Du kan lage spillet nesten hvordan du vil. Lag et brettspill hvis du vil det! Men det vanlige er dataspill, enten fra bunn av eller ved hjelp av en *game engine*. Redskaper og game engines verdt å sjekke ut:
