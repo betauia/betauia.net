@@ -112,3 +112,9 @@ li:before
   position: absolute;
   margin-left: -15px;
 }
+
+
+.custom-markdown strong {
+  color: #ffffff;
+  margin-right: 5px;
+}

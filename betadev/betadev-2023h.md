@@ -5,9 +5,9 @@
 Her finner du informasjon om interessegruppen BetaDev for høsten 2023. Vi arrangerer ting som har med utvikling og programmering å gjøre.
 
 Ting å følge med på høsten 2023:
-- **game jam 1**: 7. september, start
-- **game jam 2**: 20. oktober, start
-- møte for interesserte: hver onsdag kl 16:15
+- **Game jam 1**: 7. september, start
+- **Game jam 2**: 20. oktober, start
+- møte for interesserte: hver **onsdag kl 16:15**
     - kode-prosjekt
 
 ## hva er game jam
