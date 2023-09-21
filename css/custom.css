@@ -95,3 +95,20 @@ hr.divider {
     margin-bottom: 0em;
     border-width: 2px;
 }
+
+ul {
+  list-style-type: none; 
+  color: #ffffff;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 0.5em; /* Spacing between list items */
+}
+
+li:before
+{
+  content: '\2013';
+  position: absolute;
+  margin-left: -15px;
+}
