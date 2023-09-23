@@ -96,17 +96,20 @@ hr.divider {
     border-width: 2px;
 }
 
-ul {
+
+/* Markdown custom CSS */
+
+.custom-markdown ul {
   list-style-type: none; 
   color: #ffffff;
   padding-left: 20px;
 }
 
-li {
+.custom-markdown li {
   margin-bottom: 0.5em; /* Spacing between list items */
 }
 
-li:before
+.custom-markdown li:before
 {
   content: '\2013';
   position: absolute;
@@ -118,3 +121,10 @@ li:before
   color: #ffffff;
   margin-right: 5px;
 }
+
+.custom-markdown a {
+  text-decoration: underline;
+  font-weight: 500;
+  color: #0085ff;
+}
+
