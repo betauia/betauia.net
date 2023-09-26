@@ -16,4 +16,4 @@ Skriv planer for backend her!
 ## Info
 
 ### Plan for DB
-[db](./drafts/db.png)
+![db](./drafts/db.png)
