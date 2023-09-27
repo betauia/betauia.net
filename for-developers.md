@@ -73,3 +73,6 @@ Du vil få:
 - en drop down menu der du kan velge hvilken side du skal redigere, eller feed.
 - en text box eller editor med den gamle siden du kan redigere
 - en knapp med `send` eller `discard`
+
+# tips
+- lokal server: `python -m http.server`, eller vscode live server
