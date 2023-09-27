@@ -40,3 +40,6 @@ Dette er en del av betadevsiden, der du kan se bidrag til tidligere Game Jams. H
 
 # admin-functions
 Dette er for styret i Beta, så de enkelt kan logge inn på nettsiden og oppdatere sin [tab](#tabs) ved å redigere et markdown dokument. På denne måten slipper de å involvere oss developers hver gang.
+
+# tips
+- lokal server: `python -m http.server`, eller vscode live server
