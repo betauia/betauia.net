@@ -52,15 +52,15 @@ window.onclick = function(event) {
 // Tab function
 function openSub(event, sub)
 {
-    var x, i, tablinks;
-    x = document.getElementsByClassName("Tab");
-    for (i = 0; i < x.length; i++)
+    var class_enum, i, tablinks;
+    class_enum = document.getElementsByClassName("Tab");
+    for (i = 0; i < class_enum.length; i++)
     {
-        x[i].style.display = "none";
+        class_enum[i].style.display = "none";
     }
     tablinks = document.getElementsByClassName("tablink");
 
-    for (i = 0; i < x.length; i++)
+    for (i = 0; i < class_enum.length; i++)
     {
         tablinks[i].className = tablinks[i].className.replace(" w3-grey", "");
     }

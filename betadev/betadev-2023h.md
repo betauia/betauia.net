@@ -1,7 +1,5 @@
-*tilbake til [betauia.net](../index.html)*
-
 # Hva er BetaDev?
-BetaDev er en undergruppe i Beta, som fokuserer på utvikling av prosjekter, spill og 
+BetaDev er en interessegruppe under linjeforeningen Beta. Vi fokuserer på utvikling av prosjekter, spill og å lære av hverandre. Dette oppnår vi blant annet ved å arrangere game jam! Side for tidligere spill [her](https://betauia.net/betadev/betadev-2023h.html)
 
 
 ---
@@ -22,7 +20,7 @@ Game Jam er en øvelse i å jobbe under press, samarbeide og å være kreativ.
 # Game jam 1
 Hvis du vil være med på Game Jam 1 kan du melde deg på [her](https://forms.office.com/e/Eze1w2mi2P), enten som gruppe eller alene. Du trenger kun å møte opp fysisk på slutten, da vi skal kåre spillet ditt.
 
-Tema dropper [her](tema.html) kl 12:00 7. september, og vi kommer også til å ha fysisk møte kl 18:15 i rom A2-021. Her kan du få informasjon, hjelp til å starte, og finne andre hvis du trenger noen å jobbe med.
+Tema dropper [her](./betadev/tema.html) kl 12:00 7. september, og vi kommer også til å ha fysisk møte kl 18:15 i rom A2-021. Her kan du få informasjon, hjelp til å starte, og finne andre hvis du trenger noen å jobbe med.
 
 Vi har fysisk kåring **fredag 15. september** på rom A2-021. Deltakerne får prøve andres spill, og vise fram sitt eget. På slutten har vi avstemning, og en premie på **1000 kr**!
 

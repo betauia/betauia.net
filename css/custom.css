@@ -128,3 +128,24 @@ hr.divider {
   color: #0085ff;
 }
 
+.contact {
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+.contact {
+  margin-top: 20px;
+}
+
+.contact p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.contact i {
+  margin-right: 10px;
+  font-size: 24px;
+}

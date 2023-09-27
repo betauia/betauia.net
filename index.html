@@ -13,7 +13,9 @@
 
 </head>
 
+
 <body>
+    <!-- Lage login-page for de som skal endre på markdown -->
     <section class="hero w3-black">
         <div class="hero-body">
             <div class="container">
@@ -26,7 +28,7 @@
                             <button class="w3-bar-item w3-button tablink w3-grey" onclick="openSub(event,'Beta')">Beta</button>
                             <button class="w3-bar-item w3-button tablink" onclick="openSub(event,'BetaDev')">BetaDev</button>
                             <button class="w3-bar-item w3-button tablink" onclick="openSub(event,'BetaSec')">BetaSec</button>
-                            <button class="w3-bar-item w3-button tablink" onclick="openSub(event,'Bedrifter')">For Bedrifter</button>
+                            <button class="w3-bar-item w3-button tablink" onclick="openSub(event,'Bedrifter')">BedKom</button>
                         </div>
                         <div id="Beta" class="Tab">
                             <h1 class="is-beta-white">Beta</h1>
@@ -39,6 +41,15 @@
                             
                             <div  id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"  style='margin: auto;width:100%;' >
                                 <!-- Markdown content will be rendered here -->
+                            </div>
+                            <div class="contact">
+                                <h2 class="is-beta-white">Kontakt oss:</h2>
+                                <p><i class="fas fa-star"></i>Ask Sødal</p>
+                                <p><i class="fas fa-envelope"></i> Mail: asks@uia.no</p>
+                                <p><i class="fas fa-briefcase"></i> Mail: betadev@betauia.net</p>
+                                <p><i class="fas fa-comments"></i><a href="https://discord.gg/v8b6ZrQ">Discord</a></p>
+
+                                
                             </div>
                             
                         </div>
@@ -133,7 +144,8 @@
             })
             .catch(error => {
                 console.error('Error fetching Markdown content:', error);
-        });   
+        });
+        
     </script>
 
 </body>
