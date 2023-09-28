@@ -96,9 +96,16 @@ hr.divider {
     border-width: 2px;
 }
 
+.tabs .custom-link {
+  color: white; /* Change the text color to white */
+}
+
+.tabs .custom-link:hover {
+  color: #0085ff; /* Change the text color on hover */
+}
+
 
 /* Markdown custom CSS */
-
 .custom-markdown ul {
   list-style-type: none; 
   color: #ffffff;
@@ -126,26 +133,4 @@ hr.divider {
   text-decoration: underline;
   font-weight: 500;
   color: #0085ff;
-}
-
-.contact {
-  background-color: black;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-
-.contact {
-  margin-top: 20px;
-}
-
-.contact p {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-.contact i {
-  margin-right: 10px;
-  font-size: 24px;
 }

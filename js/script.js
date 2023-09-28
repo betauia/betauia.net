@@ -50,20 +50,52 @@ window.onclick = function(event) {
 };
 
 // Tab function
-function openSub(event, sub)
-{
-    var class_enum, i, tablinks;
-    class_enum = document.getElementsByClassName("Tab");
-    for (i = 0; i < class_enum.length; i++)
-    {
-        class_enum[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("content-tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("is-active"); // Remove "is-active" from all tabs
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.classList.add("is-active"); // Add "is-active" to the clicked tab
 
-    for (i = 0; i < class_enum.length; i++)
-    {
-        tablinks[i].className = tablinks[i].className.replace(" w3-grey", "");
-    }
-    document.getElementById(sub).style.display = "block";
-    event.currentTarget.className += " w3-grey"
+  // Store the active tab in localStorage
+  localStorage.setItem("activeTab", tabName);
 }
+
+function setActiveTabOnLoad() {
+  var activeTab = localStorage.getItem("activeTab");
+  var contentTabs = document.getElementsByClassName("content-tab");
+
+  // Hide all content tabs initially
+  for (var i = 0; i < contentTabs.length; i++) {
+    contentTabs[i].style.display = "none";
+  }
+
+  if (activeTab) {
+    // Remove "is-active" from all tabs
+    var tablinks = document.getElementsByClassName("tab");
+    for (var i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("is-active");
+    }
+
+    // Set the active tab from localStorage as "is-active"
+    document.getElementById(activeTab).style.display = "block";
+    document.querySelector(`[onclick*="${activeTab}"]`).classList.add("is-active");
+  }
+}
+
+// Call the function to set the active tab when the page loads
+window.addEventListener("load", setActiveTabOnLoad);
+
+
+// Call the function to set the active tab when the page loads
+window.addEventListener("load", setActiveTabOnLoad);
+
+
+// Call the function to set the active tab when the page loads
+window.addEventListener("load", setActiveTabOnLoad);
