@@ -91,11 +91,3 @@ function setActiveTabOnLoad() {
 
 // Call the function to set the active tab when the page loads
 window.addEventListener("load", setActiveTabOnLoad);
-
-
-// Call the function to set the active tab when the page loads
-window.addEventListener("load", setActiveTabOnLoad);
-
-
-// Call the function to set the active tab when the page loads
-window.addEventListener("load", setActiveTabOnLoad);

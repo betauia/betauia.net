@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="./css/bulma.css" />
+    <link rel="stylesheet" href="./css/custom.css">
     <title>Beta-login</title>
 </head>
 
 <body>
     <!-- Koble til flask server -->
 
-    <section class="hero is-primary is-fullheight">
+    <!-- <section class="hero is-primary is-fullheight">
         <div class="hero-body">
             <div class="container">
                 <div class="columns is-centered">
@@ -42,7 +43,7 @@
                                 </label>
                             </div>
                             <div class="field">
-                                <button class="button is-success">
+                                <button class="button is-success" onclick="">
                                     Login
                                 </button>
                             </div>
@@ -51,8 +52,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
+    <div id="flask-elements" style="display: none;"></div>
+
+
+    <div id="markdown-editor">
+        <!-- Markdown editor components here -->
+    </div>
+
+
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>
