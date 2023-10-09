@@ -54,6 +54,8 @@ If you want to participate in Game Jam 2, you can sign up [here](https://forms.o
 
 The theme will be revealed on Friday, October 13, at 18:15. Here, you can get information, help to start, and find others if you need someone to work with.
 
+On the 20th of October we're having a *workshop*; where we gather, look at what you did, and continue working on our games.
+
 We have a physical judging on **Friday, October 27**, along with BetaLAN. Participants get to try each other's games and showcase their own. At the end, we have a vote and a prize of **1000 NOK**!
 
 ## coding project
