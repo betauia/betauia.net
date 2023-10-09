@@ -1,12 +1,15 @@
 *tilbake til [betauia.net](../index.html)*
 
 ---
+
+for the english version, click [here](betadev-2023h-english.html)
+
 # BetaDev høsten 2023
 Her finner du informasjon om interessegruppen BetaDev for høsten 2023. Vi arrangerer ting som har med utvikling og programmering å gjøre.
 
 Ting å følge med på høsten 2023:
 - ~~**game jam 1**: 7. september, start~~
-- **game jam 2**: 13. oktober, start
+- **game jam 2**: 13. oktober, start, rom `A2-021`
 - **game jam 2**: 20. oktober, workshop
 - **game jam 2**: 27. oktober, kåring og LAN
 - møte for interesserte: hver onsdag kl 16:15
@@ -38,9 +41,7 @@ Her er redskaper verdt å sjekke ut for de som lager dataspill:
     - full game engine, gratis
     - bruker hovedsaklig C++ for scripting
 
-# game jam 1
-
-> game jam 1 har allerede vært
+# game jam 1 *(har allerede vært)*
 
 Hvis du vil være med på Game Jam 1 kan du melde deg på [her](https://forms.office.com/e/Eze1w2mi2P), enten som gruppe eller alene. Du trenger kun å møte opp fysisk på slutten, da vi skal kåre spillet ditt.
 
