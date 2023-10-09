@@ -63,6 +63,8 @@ Hvis du vil være med på Game Jam 2 kan du melde deg på [her](https://forms.of
 
 Tema dropper fredag 13. oktober, kl 18:15. Her kan du få informasjon, hjelp til å starte, og finne andre hvis du trenger noen å jobbe med.
 
+Den 20. oktober har vi *workshop*; det betyr at vi samles, tar en liten statusoppdatering, og jobber videre på spillene.
+
 Vi har fysisk kåring **fredag 27. oktober** sammen med BetaLAN. Deltakerne får prøve andres spill, og vise fram sitt eget. På slutten har vi avstemning, og en premie på **1000 kr**!
 
 ## kode-prosjekt
