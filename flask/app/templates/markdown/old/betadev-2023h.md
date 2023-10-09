@@ -61,7 +61,7 @@ Vi har fysisk kåring **fredag 15. september** på rom A2-021. Deltakerne får p
 # game jam 2
 Hvis du vil være med på Game Jam 2 kan du melde deg på [her](https://forms.office.com/e/8J70KKnmjL), enten som gruppe eller alene. Du trenger kun å møte opp fysisk på slutten, da vi skal kåre spillet ditt.
 
-Tema dropper fredag 13. oktober, kl 18:15. Her kan du få informasjon, hjelp til å starte, og finne andre hvis du trenger noen å jobbe med.
+Tema dropper [her](tema2.html) fredag 13. oktober, kl 18:15. Her kan du få informasjon, hjelp til å starte, og finne andre hvis du trenger noen å jobbe med.
 
 Den 20. oktober har vi *workshop*; det betyr at vi samles, tar en liten statusoppdatering, og jobber videre på spillene.
 

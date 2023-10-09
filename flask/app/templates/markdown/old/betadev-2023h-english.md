@@ -52,7 +52,7 @@ We have a physical judging on **Friday, September 15** in room A2-021. Participa
 # game jam 2
 If you want to participate in Game Jam 2, you can sign up [here](https://forms.office.com/e/8J70KKnmjL), either as a group or individually. You only need to be present physically at the end, as we will judge your game.
 
-The theme will be revealed on Friday, October 13, at 18:15. Here, you can get information, help to start, and find others if you need someone to work with.
+The theme will be revealed [here](tema2.html) on Friday, October 13, at 18:15. Here, you can get information, help to start, and find others if you need someone to work with.
 
 On the 20th of October we're having a *workshop*; where we gather, look at what you did, and continue working on our games.
 
