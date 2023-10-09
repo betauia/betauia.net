@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>BetaDev høsten 2023</title>
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+	<div id="markdown-content" style='margin: auto;width:90%;'>
+		<!-- Markdown content will be rendered here -->
+	</div>
+	<script>
+		// Fetch the Markdown content from the file
+		fetch('betadev-2023h-english.md')
+			.then(response => response.text())
+			.then(markdownContent => {
+				const htmlContent = marked.parse(markdownContent);
+				document.getElementById('markdown-content').innerHTML = htmlContent;
+			})
+			.catch(error => {
+				console.error('Error fetching Markdown content:', error);
+			});   
+	</script>
+</body>
+
+</html>
