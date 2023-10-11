@@ -10,16 +10,21 @@
 </head>
 
 <body>
-    <!-- Koble til flask server -->
 
-    <!-- <section class="hero is-primary is-fullheight">
+    <!-- Login page frontend -->
+    <div class="betauia-link">
+        <a href="./index.html">BetaUiA</a>
+    </div>
+
+    <section class="hero is-primary is-fullheight">
         <div class="hero-body">
             <div class="container">
+                <img id="login-img" src="./img/Beta_blue_1.png" alt="beta-logo">
                 <div class="columns is-centered">
                     <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-                        <form action="" class="box">
+                        <form action="" method="POST" class="box">
                             <div class="field">
-                                <label for="" class="label">E-post</label>
+                                <label for="" class="label">E-mail</label>
                                 <div class="control has-icons-left">
                                     <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
                                     <span class="icon is-small is-left">
@@ -28,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="field">
-                                <label for="" class="label">Passord</label>
+                                <label for="" class="label">Password</label>
                                 <div class="control has-icons-left">
                                     <input type="password" placeholder="*******" class="input" required>
                                     <span class="icon is-small is-left">
@@ -43,7 +48,7 @@
                                 </label>
                             </div>
                             <div class="field">
-                                <button class="button is-success" onclick="">
+                                <button class="button is-success">
                                     Login
                                 </button>
                             </div>
@@ -52,7 +57,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <div id="flask-elements" style="display: none;"></div>
 

@@ -131,6 +131,29 @@ hr.divider {
 }
 
 /* Login-page */
+.hero-body {
+  background-color: black;
+}
+
+#login-img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 50%;
+  display: block;
+}
+
+.button:hover {
+  background-color: yellow;
+}
+
+@media (max-width:768px) {
+  #login-img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5vh;
+  }
+}
 
 
 /* Markdown custom CSS */
