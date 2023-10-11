@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    #inputBox {
+      width: 45%;
+      height: 300px;
+    }
+
+    #output {
+      width: 45%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="inputBox" placeholder="Enter Markdown text..." oninput="updateOutput()"></textarea>
+  <div id="output"></div>
+
+  <script>
+    function updateOutput() {
+      const inputText = document.getElementById('inputBox').value;
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = marked(inputText);
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.0/marked.min.js"></script>
+</body>
+
+</html>
