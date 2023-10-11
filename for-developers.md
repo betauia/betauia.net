@@ -19,7 +19,13 @@ Dette er det første brukeren ser. Vi skal informere brukere som:
 - ser etter arrangementer som kommer
 - vil kontakte oss
 
-Denne kommer til å formes litt underveis, så det er vanskelig å beskrive den klart.
+Litt sånn layout:
+```
+(logo)
+| Om Beta | BetaDev | Bedkom | ...
+(tab innhold) + feed
+(kontakt oss)
+```
 
 # feed
 Denne har innhold som oppdateres automatisk, og tar innlegg fra *ting-som-skjer* i Discord.
