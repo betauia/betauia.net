@@ -91,3 +91,17 @@ function setActiveTabOnLoad() {
 
 // Call the function to set the active tab when the page loads
 window.addEventListener("load", setActiveTabOnLoad);
+
+
+function handleLogin() {
+  // Checking if the user entered anything as username and password
+  // TODO: this check need server-side validation
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+  if (username && password) {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("editor").style.display = "block";
+  } else {
+    alert("Please enter a username and password.");
+  }
+}

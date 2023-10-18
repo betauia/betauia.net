@@ -4,42 +4,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Markdown Previewer</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 20px;
-    }
-
-    #inputBox {
-      width: 45%;
-      height: 300px;
-    }
-
-    #output {
-      width: 45%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-    }
-  </style>
+  <title>Admin Markdown Editor</title>
+  <link rel="stylesheet" href="./css/bulma.css">
+  <link rel="stylesheet" href="./css/admin.css">
 </head>
 
 <body>
-  <textarea id="inputBox" placeholder="Enter Markdown text..." oninput="updateOutput()"></textarea>
-  <div id="output"></div>
+  <div class="betauia-link"><a href="./index.html">BetaUiA</a></div>
+
+  <!-- === Login Form start === -->
+  <div id="loginForm" class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title">Login</h1>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" type="text" id="username" placeholder="Username">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" id="password" placeholder="Password">
+          </div>
+        </div>
+
+        <button class="button is-primary" onclick="handleLogin()">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- === Login Form end === -->
+
+
+  <!-- === Markdown editor start === -->
+  <div id="editor" class="container" style="display: none;">
+    <!-- Dropdown for selecting text -->
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Select Section</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item">Beta</a>
+          <a href="#" class="dropdown-item">BetaDev</a>
+          <a href="#" class="dropdown-item">BetaSec</a>
+          <a href="#" class="dropdown-item">For Bedrifter</a>
+        </div>
+      </div>
+    </div>
+    <!-- Editor Area -->
+    <div class="columns">
+      <!-- Markdown Input -->
+      <div class="column is-half">
+        <textarea class="textarea" rows="10" id="inputBox" placeholder="Enter Markdown text..."
+          oninput="updateOutput()"></textarea>
+      </div>
+
+      <!-- Markdown Output -->
+      <div class="column is-half">
+        <h1 class="is-beta-white">Output:</h1>
+        <div id="output" class="content"></div>
+      </div>
+    </div>
+  </div>
+  <!-- === Markdown editor end === -->
+
 
   <script>
+
     function updateOutput() {
       const inputText = document.getElementById('inputBox').value;
       const outputDiv = document.getElementById('output');
       outputDiv.innerHTML = marked(inputText);
     }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Reference to the dropdown items and the markdown input textarea
+      const dropdownItems = document.querySelectorAll(".dropdown-content a");
+      const inputBox = document.getElementById("inputBox");
+
+      // Maps dropdown to markdown files
+      const markdownFileMapping = {
+        "Beta": "./md/beta-2023h.md",
+        "BetaDev": "./md/betadev-2023h.md",
+        // TODO: add more mappings for other sections
+      };
+
+      // click listeners to each dropdown item
+      dropdownItems.forEach(item => {
+        item.addEventListener("click", function (event) {
+          event.preventDefault();
+          const sectionName = event.target.innerText;
+          fetchMarkdownContent(sectionName);
+        });
+      });
+
+      function fetchMarkdownContent(sectionName) {
+        const filePath = markdownFileMapping[sectionName];
+        if (!filePath) {
+          console.error(`No markdown file path found for section: ${sectionName}`);
+          return;
+        }
+
+        // Fetch the markdown content from the file
+        fetch(filePath)
+          .then((response) => response.text())
+          .then((markdownContent) => {
+            inputBox.value = markdownContent;
+            updateOutput(); // Update md output
+          })
+          .catch((error) => {
+            console.error("Error fetching Markdown content:", error);
+          });
+      }
+    });
+
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.0/marked.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

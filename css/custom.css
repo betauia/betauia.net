@@ -92,7 +92,7 @@ body {
 }
 
 hr.divider {
-  color: #000000;
+  color: #0d0d0d;
   margin-top: 0em;
   margin-bottom: 0em;
   border-width: 2px;
@@ -116,23 +116,27 @@ hr.divider {
   margin-top: 5rem;
 }
 
+.navbar {
+  background-color: black;
+}
+
 @media (max-width: 768px) {
   .tabs ul {
     flex-direction: column;
-    overflow-x: hidden;
     /* Hide horizontal scrollbar */
+    overflow-x: hidden;
+
   }
 
   .tabs li.tab {
-    width: 100%;
     /* Make tabs full width when stacked */
+    width: 100%;
   }
-
 }
 
-/* Login-page */
+/* ===== Login-page start ===== */
 .hero-body {
-  background-color: black;
+  background-color: #000;
 }
 
 #login-img {
@@ -143,10 +147,6 @@ hr.divider {
   display: block;
 }
 
-.button:hover {
-  background-color: yellow;
-}
-
 @media (max-width:768px) {
   #login-img {
     width: 100%;
@@ -155,25 +155,40 @@ hr.divider {
   }
 }
 
+/* ===== Login-page end ===== */
 
-/* Markdown custom CSS */
+
+/* ===== Markdown custom start ===== */
 .custom-markdown ul {
   list-style-type: none;
   color: #ffffff;
   padding-left: 20px;
+  /* Required for absolute positioning within li:before */
+  position: relative;
+
 }
 
 .custom-markdown li {
-  margin-bottom: 0.5em;
   /* Spacing between list items */
+  margin-bottom: 0.5em;
+  /* Required for positioning the pseudo element li:before */
+  position: relative;
+
 }
 
 .custom-markdown li:before {
-  content: '\2013';
+  /* Default bullet point */
+  content: '•';
   position: absolute;
-  margin-left: -15px;
+  left: -1.0em;
 }
 
+.custom-markdown li ul li:before {
+  /* Open circle for nested list items */
+  content: '◦';
+  position: absolute;
+  left: -0.75em;
+}
 
 .custom-markdown strong {
   color: #ffffff;
@@ -185,3 +200,5 @@ hr.divider {
   font-weight: 500;
   color: #0085ff;
 }
+
+/* ===== Markdown custom end */
