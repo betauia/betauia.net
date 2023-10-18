@@ -8,34 +8,36 @@
 }
 
 .is-beta-blue {
-    color: #0085ff;
+  color: #0085ff;
 }
 
 .is-uia-red {
-    color: #C8102E;
+  color: #C8102E;
 }
 
-a,button {
-	transition: 0.5s;
+a,
+button {
+  transition: 0.5s;
 }
 
-a, button:hover {
-    color: #F2F3F5;
+a,
+button:hover {
+  color: #F2F3F5;
 }
 
 .is-beta-black {
-    color: #131E29;
+  color: #131E29;
 }
 
 .is-beta-white {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .icon-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .modal {
@@ -47,7 +49,7 @@ a, button:hover {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modal-content {
@@ -80,18 +82,123 @@ a, button:hover {
 }
 
 body {
-    background-color: #0d0d0d;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    overflow-y: scroll;
+  background-color: #0d0d0d;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  overflow-y: scroll;
 }
 
 hr.divider {
-    color: #000000;
-    margin-top: 0em;
-    margin-bottom: 0em;
-    border-width: 2px;
+  color: #0d0d0d;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  border-width: 2px;
 }
+
+.tabs .custom-link {
+  color: white;
+
+}
+
+.tabs .custom-link:hover {
+  color: #0085ff;
+}
+
+.tabs ul {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-direction: row;
+  overflow-y: hidden;
+  margin-top: 5rem;
+}
+
+.navbar {
+  background-color: black;
+}
+
+@media (max-width: 768px) {
+  .tabs ul {
+    flex-direction: column;
+    /* Hide horizontal scrollbar */
+    overflow-x: hidden;
+
+  }
+
+  .tabs li.tab {
+    /* Make tabs full width when stacked */
+    width: 100%;
+  }
+}
+
+/* ===== Login-page start ===== */
+.hero-body {
+  background-color: #000;
+}
+
+#login-img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 50%;
+  display: block;
+}
+
+@media (max-width:768px) {
+  #login-img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5vh;
+  }
+}
+
+/* ===== Login-page end ===== */
+
+
+/* ===== Markdown custom start ===== */
+.custom-markdown ul {
+  list-style-type: none;
+  color: #ffffff;
+  padding-left: 20px;
+  /* Required for absolute positioning within li:before */
+  position: relative;
+
+}
+
+.custom-markdown li {
+  /* Spacing between list items */
+  margin-bottom: 0.5em;
+  /* Required for positioning the pseudo element li:before */
+  position: relative;
+
+}
+
+.custom-markdown li:before {
+  /* Default bullet point */
+  content: '•';
+  position: absolute;
+  left: -1.0em;
+}
+
+.custom-markdown li ul li:before {
+  /* Open circle for nested list items */
+  content: '◦';
+  position: absolute;
+  left: -0.75em;
+}
+
+.custom-markdown strong {
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.custom-markdown a {
+  text-decoration: underline;
+  font-weight: 500;
+  color: #0085ff;
+}
+
+/* ===== Markdown custom end */
