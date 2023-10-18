@@ -9,9 +9,9 @@ Here you will find information about the BetaDev interest group for Autumn 2023.
 
 Things to look out for in Autumn 2023:
 - ~~**game jam 1**: September 7, start~~
-- **game jam 2**: October 13, start, room `A2-021`
-- **game jam 2**: October 20, workshop
-- **game jam 2**: October 27, judging and LAN
+- ~~**game jam 2**: October 13, start, room `A2-021`~~
+- **game jam 2**: October 20, workshop, room `A2-021`
+- **game jam 2**: October 27, judging and LAN, *Bluebox*
 - meeting for interested individuals: every Wednesday at 16:15
     - coding projects
 
@@ -56,7 +56,7 @@ The theme will be revealed [here](tema2.html) on Friday, October 13, at 18:15. H
 
 On the 20th of October we're having a *workshop*; where we gather, look at what you did, and continue working on our games.
 
-We have a physical judging on **Friday, October 27**, along with BetaLAN. Participants get to try each other's games and showcase their own. At the end, we have a vote and a prize of **1000 NOK**!
+We have a physical judging on **Friday, October 27**, along with BetaLAN. Participants get to try each other's games and showcase their own. At the end, we have a vote and a prize of **1000 NOK**! You don't need tickets if you're just participating in the Game Jam. but that means you have to be out by 00:00. and cannot join the LAN.
 
 ## coding project
 We are working on improving this website. If you want to participate, you can come to the meeting every Wednesday at 16:15. All developers have the `@DevDev` tag on Discord.
