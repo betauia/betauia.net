@@ -9,9 +9,9 @@ Her finner du informasjon om interessegruppen BetaDev for høsten 2023. Vi arran
 
 Ting å følge med på høsten 2023:
 - ~~**game jam 1**: 7. september, start~~
-- **game jam 2**: 13. oktober, start, rom `A2-021`
-- **game jam 2**: 20. oktober, workshop
-- **game jam 2**: 27. oktober, kåring og LAN
+- ~~**game jam 2**: 13. oktober, start, rom `A2-021`~~
+- **game jam 2**: 20. oktober, workshop, rom `A2-021`
+- **game jam 2**: 27. oktober, kåring og LAN, *Bluebox*
 - møte for interesserte: hver onsdag kl 16:15
     - kode-prosjekt
 
@@ -56,7 +56,7 @@ Tema dropper [her](tema2.html) fredag 13. oktober, kl 18:15. Her kan du få info
 
 Den 20. oktober har vi *workshop*; det betyr at vi samles, tar en liten statusoppdatering, og jobber videre på spillene.
 
-Vi har fysisk kåring **fredag 27. oktober** sammen med BetaLAN. Deltakerne får prøve andres spill, og vise fram sitt eget. På slutten har vi avstemning, og en premie på **1000 kr**!
+Vi har fysisk kåring **fredag 27. oktober** sammen med BetaLAN. Deltakerne får prøve andres spill, og vise fram sitt eget. På slutten har vi avstemning, og en premie på **1000 kr**! Du trenger ikke billett hvis du bare skal være med på Game Jam, men da må du være ute innen 00:00, og kan ikke delta i LAN.
 
 ## kode-prosjekt
 Vi jobber med å forbedre denne nettsiden. Hvis du vil være med, kan du komme på møte hver onsdag kl 16:15. Alle som utvikler har `@DevDev`-taggen på Discord.
