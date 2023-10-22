@@ -8,10 +8,16 @@ body {
 
 #inputBox {
     height: 300px;
+    margin-top: 3vh;
 }
 
 #output {
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+}
+
+#saveButton {
+    margin-top: 1rem;
+    /* Adds some space between the button and the textarea */
 }

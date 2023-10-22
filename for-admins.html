@@ -13,7 +13,7 @@
   <div class="betauia-link"><a href="./index.html">BetaUiA</a></div>
 
   <!-- === Login Form start === -->
-  <div id="loginForm" class="container">
+  <!-- <div id="loginForm" class="container">
     <div class="columns is-centered">
       <div class="column is-half">
         <h1 class="title">Login</h1>
@@ -34,7 +34,7 @@
         <button class="button is-primary" onclick="handleLogin()">Login</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- === Login Form end === -->
 
@@ -48,7 +48,7 @@
   
   -->
   <!-- === Markdown editor start === -->
-  <div id="editor" class="container" style="display: none;">
+  <div id="editor" class="container">
     <!-- Dropdown for selecting text -->
     <div class="dropdown is-hoverable">
       <div class="dropdown-trigger">
@@ -69,11 +69,12 @@
       </div>
     </div>
     <!-- Editor Area -->
-    <div class="columns">
+    <div class="columns equal-heights">
       <!-- Markdown Input -->
       <div class="column is-half">
         <textarea class="textarea" rows="10" id="inputBox" placeholder="Enter Markdown text..."
           oninput="updateOutput()"></textarea>
+        <button class="button is-primary" id="saveButton" onclick="saveEdits()">Save</button>
       </div>
 
       <!-- Markdown Output -->
@@ -86,57 +87,7 @@
   <!-- === Markdown editor end === -->
 
 
-  <script>
-
-    function updateOutput() {
-      const inputText = document.getElementById('inputBox').value;
-      const outputDiv = document.getElementById('output');
-      outputDiv.innerHTML = marked(inputText);
-    }
-
-
-    document.addEventListener("DOMContentLoaded", function () {
-      // Reference to the dropdown items and the markdown input textarea
-      const dropdownItems = document.querySelectorAll(".dropdown-content a");
-      const inputBox = document.getElementById("inputBox");
-
-      // Maps dropdown to markdown files
-      const markdownFileMapping = {
-        "Beta": "./md/beta-2023h.md",
-        "BetaDev": "./md/betadev-2023h.md",
-        // TODO: add more mappings for other sections
-      };
-
-      // click listeners to each dropdown item
-      dropdownItems.forEach(item => {
-        item.addEventListener("click", function (event) {
-          event.preventDefault();
-          const sectionName = event.target.innerText;
-          fetchMarkdownContent(sectionName);
-        });
-      });
-
-      function fetchMarkdownContent(sectionName) {
-        const filePath = markdownFileMapping[sectionName];
-        if (!filePath) {
-          console.error(`No markdown file path found for section: ${sectionName}`);
-          return;
-        }
-
-        // Fetch the markdown content from the file
-        fetch(filePath)
-          .then((response) => response.text())
-          .then((markdownContent) => {
-            inputBox.value = markdownContent;
-            updateOutput(); // Update md output
-          })
-          .catch((error) => {
-            console.error("Error fetching Markdown content:", error);
-          });
-      }
-    });
-
-  </script>
+  <script src="./js/admin.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.0/marked.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
