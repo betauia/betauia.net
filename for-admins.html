@@ -68,13 +68,14 @@
         </div>
       </div>
     </div>
+    <div><button class="button is-link" onclick="removeItem()" style="display:flexbox;">Remove</button></div>
     <!-- Editor Area -->
     <div class="columns equal-heights">
       <!-- Markdown Input -->
       <div class="column is-half">
         <textarea class="textarea" rows="10" id="inputBox" placeholder="Enter Markdown text..."
           oninput="updateOutput()"></textarea>
-        <button class="button is-primary" id="saveButton" onclick="saveEdits()">Save</button>
+        <button class="button is-primary" id="saveButton" onclick="saveMarkdownContent()">Save</button>
       </div>
 
       <!-- Markdown Output -->
@@ -86,66 +87,7 @@
   </div>
   <!-- === Markdown editor end === -->
 
-  <script>
-
-
-
-    let currentSection = getElementById("dropdown-Section").section; // Selected section
-
-    async function saveMarkdownContent() {
-      const markdownContent = document.getElementById('inputBox').value;
-
-      if (!currentSection) {
-        alert('Select a section before saving!');
-        return;
-      }
-
-      const saveUrl = `/api/saveMarkdown/${currentSection}`; // spør backend om riktig path
-
-      try {
-        const rawResponse = await fetch(saveUrl, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ content: markdownContent })
-        });
-
-        const data = await rawResponse.json();
-
-        if (data.success) {
-          alert('Changes saved successfully!');
-        } else {
-          alert('Error occurred. Try again later or contact admin');
-        }
-      } catch (error) {
-        console.log('Error saving changes.', error);
-        alert('Error.');
-      }
-    }
-
-    // Binding the function to a button click event:
-    document.getElementById('saveButton').addEventListener('click', saveMarkdownContent);
-
-
-    // Modify the existing event listener in your code to update the currentSection variable
-    dropdownItems.forEach(item => {
-      item.addEventListener("click", function (event) {
-        event.preventDefault();
-        currentSection = event.target.innerText; // update the current section
-        fetchMarkdownContent(currentSection);
-      });
-    });
-
-
-
-
-  </script>
-
-
   <script src="./js/admin.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.0/marked.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
 </body>
