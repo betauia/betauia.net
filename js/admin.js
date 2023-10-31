@@ -1,7 +1,16 @@
 function updateOutput() {
+    // Updates markdown output
     const inputText = document.getElementById('inputBox').value;
     const outputDiv = document.getElementById('output');
     outputDiv.innerHTML = marked(inputText);
+}
+
+function clearSection() {
+    // Clears Section selection and input 
+    document.getElementById('inputBox').value = '';
+    document.getElementById('sectionTitle').innerText = 'Select Section';
+    currentSection = null;
+    updateOutput();
 }
 
 function handleLogin() {
@@ -42,8 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const saveUrl = `post/save/${currentSection}`; // TODO: spør backend om riktig path
-
+        const saveUrl = `post/save`; // TODO: spør backend om riktig path
+        const currentDateAndTime = new Date();
+        const currentDate = currentDateAndTime.toISOString().split('T')[0];
+        const currentTime = currentDateAndTime.toISOString().split('T')[1];
 
         try {
             const rawResponse = await fetch(saveUrl, {
@@ -54,17 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify({
 
-                    content: markdownContent,
-                    section: currentSection
+                    body: markdownContent,
+                    section: currentSection,
+                    date: currentDate,
+                    time: currentTime
                 })
             });
 
             const data = await rawResponse.json();
 
             if (data.success) {
-                alert('Changes saved successfully!');
+                alert('Changes saved successfully');
             } else {
-                alert('Error occurred. Try again later or contact admin');
+                alert('Error occurred');
             }
         } catch (error) {
             console.log('Error saving changes.', error);
@@ -93,6 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".dropdown-trigger .button span").textContent = event.target.innerText;
         });
     });
+
+
 
 
     function fetchMarkdownContent(sectionName) {

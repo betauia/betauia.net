@@ -49,26 +49,33 @@
   -->
   <!-- === Markdown editor start === -->
   <div id="editor" class="container">
-    <!-- Dropdown for selecting text -->
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Select Section</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content" id="dropdown-Section">
-          <a href="#" class="dropdown-item" data-section="beta">Beta</a>
-          <a href="#" class="dropdown-item" data-section="betadev">BetaDev</a>
-          <a href="#" class="dropdown-item" data-section="betasec">BetaSec</a>
-          <a href="#" class="dropdown-item" data-section="bedrifter">For Bedrifter</a>
+    <!-- Dropdown and Clear Link Container -->
+    <div class="field has-addons" style="justify-content: flex-start;">
+      <!-- Dropdown for selecting text -->
+      <div class="dropdown is-hoverable">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span id="sectionTitle">Select Section</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content" id="dropdown-Section">
+            <a href="#" class="dropdown-item" data-section="beta">Beta</a>
+            <a href="#" class="dropdown-item" data-section="betadev">BetaDev</a>
+            <a href="#" class="dropdown-item" data-section="betasec">BetaSec</a>
+            <a href="#" class="dropdown-item" data-section="bedrifter">For Bedrifter</a>
+          </div>
         </div>
       </div>
+      <!-- Clear Link -->
+      <div class="control">
+        <a class="is-link is-small clear-link" onclick="clearSection()">Clear</a>
+      </div>
     </div>
-    <div><button class="button is-link" onclick="removeItem()" style="display:flexbox;">Remove</button></div>
+
     <!-- Editor Area -->
     <div class="columns equal-heights">
       <!-- Markdown Input -->
@@ -85,6 +92,7 @@
       </div>
     </div>
   </div>
+
   <!-- === Markdown editor end === -->
 
   <script src="./js/admin.js"></script>

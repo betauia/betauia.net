@@ -1,23 +1,27 @@
 body {
-    padding: 20px;
+    padding: 1.25em;
 }
 
 .container {
-    margin-top: 20px;
+    margin-top: 1.25em;
+}
+
+.clear-link {
+    margin-left: 2em;
 }
 
 #inputBox {
-    height: 300px;
+    height: 18.75em;
     margin-top: 3vh;
 }
 
 #output {
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 0.625em;
+    border: 0.0625em solid #ccc;
     background-color: #f9f9f9;
 }
 
 #saveButton {
-    margin-top: 1rem;
+    margin-top: 1em;
     /* Adds some space between the button and the textarea */
 }
