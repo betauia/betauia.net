@@ -11,4 +11,5 @@ else
   . .venv/bin/activate
 fi
 
+flask --app flaskr init-db
 flask --app flaskr run
