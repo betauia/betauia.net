@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Markdown Editor</title>
+  <title>Beta Markdown Editor</title>
   <link rel="stylesheet" href="./css/bulma.css">
   <link rel="stylesheet" href="./css/admin.css">
 </head>
@@ -37,16 +37,6 @@
   </div> -->
 
   <!-- === Login Form end === -->
-
-  <!-- TODO: Fikse lagring -->
-  <!-- 
-    * Hva jeg skal sende inn: 
-    * Tittel
-    * From
-    * 
-    * POST  
-  
-  -->
   <!-- === Markdown editor start === -->
   <div id="editor" class="container">
     <!-- Dropdown and Clear Link Container -->
@@ -72,9 +62,12 @@
       </div>
       <!-- Clear Link -->
       <div class="control">
-        <a class="is-link is-small clear-link" onclick="clearSection()">Clear</a>
+        <p class="control">
+          <a class="button is-white is-small is-link clear-link" onclick="clearSection()">Clear</a>
+        </p>
       </div>
     </div>
+
 
     <!-- Editor Area -->
     <div class="columns equal-heights">
@@ -82,7 +75,7 @@
       <div class="column is-half">
         <textarea class="textarea" rows="10" id="inputBox" placeholder="Enter Markdown text..."
           oninput="updateOutput()"></textarea>
-        <button class="button is-primary" id="saveButton" onclick="saveMarkdownContent()">Save</button>
+        <button class="button is-primary" id="saveButton">Save</button>
       </div>
 
       <!-- Markdown Output -->

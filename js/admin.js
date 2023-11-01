@@ -53,8 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const saveUrl = `post/save`; // TODO: spør backend om riktig path
         const currentDateAndTime = new Date();
+
+        // Adjust for CEST time
+        const offset = currentDateAndTime.getTimezoneOffset() / 60;
+        const CESTOffset = 2; // CEST is UTC+2
+        currentDateAndTime.setHours(currentDateAndTime.getHours() + offset + CESTOffset);
+
         const currentDate = currentDateAndTime.toISOString().split('T')[0];
-        const currentTime = currentDateAndTime.toISOString().split('T')[1];
+        const currentTime = currentDateAndTime.toISOString().split('T')[1].split('.')[0]; // Removes milliseconds
+
+        console.log('Date: ', currentDate, '\nTime: ', currentTime);
+
 
         try {
             const rawResponse = await fetch(saveUrl, {

@@ -1,3 +1,8 @@
+html,
+body {
+    height: 100%;
+}
+
 body {
     padding: 1.25em;
 }
@@ -7,7 +12,22 @@ body {
 }
 
 .clear-link {
-    margin-left: 2em;
+    background: none;
+    border: none;
+    color: #3273dc;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.25;
+    margin-left: 0.5em;
+    padding: 0.5em 0.75em;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.clear-link:hover {
+    text-decoration: underline;
+    /* Underline on hover for better visibility */
 }
 
 #inputBox {
@@ -23,5 +43,4 @@ body {
 
 #saveButton {
     margin-top: 1em;
-    /* Adds some space between the button and the textarea */
 }

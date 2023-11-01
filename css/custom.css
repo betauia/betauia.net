@@ -91,13 +91,6 @@ body {
   overflow-y: scroll;
 }
 
-hr.divider {
-  color: #0d0d0d;
-  margin-top: 0em;
-  margin-bottom: 0em;
-  border-width: 2px;
-}
-
 .tabs .custom-link {
   color: white;
 
@@ -118,6 +111,7 @@ hr.divider {
 
 .navbar {
   background-color: black;
+
 }
 
 @media (max-width: 768px) {
