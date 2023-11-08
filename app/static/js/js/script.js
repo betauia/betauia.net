@@ -119,6 +119,38 @@ function fetchAndDisplayMarkdown(tabName) {
     });
 }
 
+// When switched to server:
+
+// function fetchAndDisplayMarkdown(tabName) {
+//   const converter = new showdown.Converter();
+//   const markdownFileMapping = {
+//     "Beta": "beta-2023h",
+//     "BetaDev": "betadev-2023h"
+//   };
+//   const markdownFilename = markdownFileMapping[tabName];
+//   if (!markdownFilename) {
+//     console.error(`No markdown filename found for tab: ${tabName}`);
+//     return;
+//   }
+
+//   // Update the fetch URL to point to your Flask server's route
+//   fetch(`/posts/save/${markdownFilename}`)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       // Use the 'content' field from the JSON response
+//       const htmlContent = converter.makeHtml(data.content);
+//       document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching Markdown content:", error);
+//     });
+// }
+
 document.addEventListener("DOMContentLoaded", function () {
   setActiveTabOnLoad();
 
