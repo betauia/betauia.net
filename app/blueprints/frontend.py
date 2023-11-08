@@ -12,4 +12,7 @@ def index():
 def admin():
     return render_template("for-admins.html")
 
+@frontend_blueprint.route("/comedycentral")
+def comedy():
+    return render_template("comedycentral.html")
 
