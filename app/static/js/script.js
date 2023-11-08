@@ -96,60 +96,40 @@ function setActiveTabOnLoad() {
 }
 
 
-// Convert Markdown to HTML using Showdown
 function fetchAndDisplayMarkdown(tabName) {
   const converter = new showdown.Converter();
   const markdownFileMapping = {
+<<<<<<< HEAD:app/static/js/script.js
     "Beta": "/static/md/beta-2023h.md",
     "BetaDev": "/static/md/betadev-2023h.md"
+=======
+    "Beta": "beta-2023h",
+    "BetaDev": "betadev-2023h"
+>>>>>>> 4861cd6e333b62b50ea1741b28eaebbb8a0accf9:app/static/js/js/script.js
   };
-  const filePath = markdownFileMapping[tabName];
-  if (!filePath) {
-    console.error(`No markdown file path found for tab: ${tabName}`);
+  const markdownFilename = markdownFileMapping[tabName];
+  if (!markdownFilename) {
+    console.error(`No markdown filename found for tab: ${tabName}`);
     return;
   }
-  fetch(filePath)
-    .then((response) => response.text())
-    .then((markdownContent) => {
-      const htmlContent = converter.makeHtml(markdownContent);
+
+  // Update the fetch URL to point to your Flask server's route
+  fetch(`/posts/save/${markdownFilename}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Use the 'content' field from the JSON response
+      const htmlContent = converter.makeHtml(data.content);
       document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
     })
     .catch((error) => {
       console.error("Error fetching Markdown content:", error);
     });
 }
-
-// When switched to server:
-
-// function fetchAndDisplayMarkdown(tabName) {
-//   const converter = new showdown.Converter();
-//   const markdownFileMapping = {
-//     "Beta": "beta-2023h",
-//     "BetaDev": "betadev-2023h"
-//   };
-//   const markdownFilename = markdownFileMapping[tabName];
-//   if (!markdownFilename) {
-//     console.error(`No markdown filename found for tab: ${tabName}`);
-//     return;
-//   }
-
-//   // Update the fetch URL to point to your Flask server's route
-//   fetch(`/posts/save/${markdownFilename}`)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       // Use the 'content' field from the JSON response
-//       const htmlContent = converter.makeHtml(data.content);
-//       document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching Markdown content:", error);
-//     });
-// }
 
 document.addEventListener("DOMContentLoaded", function () {
   setActiveTabOnLoad();
