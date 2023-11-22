@@ -39,6 +39,9 @@ def create_app(test_config=None):
     from .blueprints.frontend import frontend_blueprint
     app.register_blueprint(frontend_blueprint)
 
+    from .blueprints.dev import dev_blueprint
+    app.register_blueprint(dev_blueprint)
+
     from . import auth
     app.register_blueprint(auth.bp)
 

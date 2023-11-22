@@ -99,13 +99,10 @@ function setActiveTabOnLoad() {
 function fetchAndDisplayMarkdown(tabName) {
   const converter = new showdown.Converter();
   const markdownFileMapping = {
-<<<<<<< HEAD:app/static/js/script.js
-    "Beta": "/static/md/beta-2023h.md",
-    "BetaDev": "/static/md/betadev-2023h.md"
-=======
-    "Beta": "beta-2023h",
-    "BetaDev": "betadev-2023h"
->>>>>>> 4861cd6e333b62b50ea1741b28eaebbb8a0accf9:app/static/js/js/script.js
+    "Beta": "Beta regular boring snooze zzzz",
+    "BetaDev": "BetaDev stuff yes happy",
+    "BetaSec": "BetaSec mr hacky bois",
+    "BedKom": "BetaKom we need more pizza plz"
   };
   const markdownFilename = markdownFileMapping[tabName];
   if (!markdownFilename) {
@@ -114,21 +111,26 @@ function fetchAndDisplayMarkdown(tabName) {
   }
 
   // Update the fetch URL to point to your Flask server's route
-  fetch(`/posts/save/${markdownFilename}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Use the 'content' field from the JSON response
-      const htmlContent = converter.makeHtml(data.content);
-      document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-    })
-    .catch((error) => {
-      console.error("Error fetching Markdown content:", error);
-    });
+
+  // TODO: remove this shit boi
+    const htmlContent = converter.makeHtml(markdownFilename);
+    document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  
+  // fetch(`/posts/save/${markdownFilename}`)
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     // Use the 'content' field from the JSON response
+  //     const htmlContent = converter.makeHtml(data.content);
+  //     document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching Markdown content:", error);
+  //   });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
