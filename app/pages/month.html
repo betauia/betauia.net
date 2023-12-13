@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <title>Games for {{ info.month }} {{ info.year }} - {{ info.theme }}</title>
+</head>
+<body>
+  <h1>Games for {{ info.month }} {{ info.year }} - {{ info.theme }}</h1>
+  <ul>
+    {% for game in games %}
+      <li><a href="{{ game }}/">{{ game }}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+
