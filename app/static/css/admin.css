@@ -1,0 +1,46 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 1.25em;
+}
+
+.container {
+    margin-top: 1.25em;
+}
+
+.clear-link {
+    background: none;
+    border: none;
+    color: #3273dc;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.25;
+    margin-left: 0.5em;
+    padding: 0.5em 0.75em;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+.clear-link:hover {
+    text-decoration: underline;
+    /* Underline on hover for better visibility */
+}
+
+#inputBox {
+    height: 18.75em;
+    margin-top: 3vh;
+}
+
+#output {
+    padding: 0.625em;
+    border: 0.0625em solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#saveButton {
+    margin-top: 1em;
+}

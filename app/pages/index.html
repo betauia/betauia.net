@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BETA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <a href="./for-admins.html" class="admin-link button is-white is-inverted">
+                    <span class="icon">
+                        <i class="fas fa-user-shield"></i> <!-- Admin icon -->
+                    </span>
+                    <span>Admin Login</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-1"></div>
+                    <div class="column is-10">
+                        <img src="./img/Beta_blue_1.png" alt="beta-logo" />
+
+                        <div class="hero-foot">
+                            <nav class="tabs is-boxed is-fullwidth is-large">
+                                <div class="container">
+                                    <ul>
+                                        <li class="tab is-active" onclick="openTab(event,'Beta')">
+                                            <a class="custom-link" data-tab="Beta">Beta</a>
+                                        </li>
+                                        <li class="tab" onclick="openTab(event,'BetaDev')">
+                                            <a class="custom-link" data-tab="BetaDev">BetaDev</a>
+                                        </li>
+                                        <li class="tab" onclick="openTab(event,'BetaSec')">
+                                            <a class="custom-link" data-tab="BetaSec">BetaSec</a>
+                                        </li>
+                                        <li class="tab" onclick="openTab(event,'BedKom')">
+                                            <a class="custom-link" data-tab="BedKom">BedKom</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+
+
+                        <div id="Beta" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+                        <div id="BetaDev" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+                        <div id="BetaSec" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+                        <div id="BedKom" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+
+                        <hr class="divider" />
+                        <br />
+                        <div class="level row">
+                            <div class="level-item">
+                                <a class="is-beta-blue"
+                                    href="https://calendar.google.com/calendar/embed?src=dGZvdmt1ZmExZzRiZmxmZzJvbzhqNDc5OGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">
+                                    <i class="fa fa-calendar fa-8x mx-1"></i>
+                                    <span class=""></span>
+                                    <!--  tag for å sette label -->
+                                </a>
+                            </div>
+                            <div class="level-item icon-center">
+                                <a class="is-beta-blue" href="https://www.instagram.com/betauia/">
+                                    <i class="fa-brands fa-instagram fa-9x mx-1"></i>
+                                    <span class=""></span>
+                                    <!--  tag for å sette label -->
+                                </a>
+                            </div>
+                            <div class="level-item">
+                                <a class="is-beta-blue" href="https://discord.gg/v8b6ZrQ">
+                                    <i class="fa-brands fa-discord fa-10x mx-1"></i>
+                                    <span class=""></span>
+                                    <!--  tag for å sette label -->
+                                </a>
+                            </div>
+                            <div class="level-item">
+                                <a class="is-beta-blue" href="https://github.com/betauia/">
+                                    <i class="fa-brands fa-github fa-9x mx-1"></i>
+                                    <span class=""></span>
+                                    <!--  tag for å sette label -->
+                                </a>
+                            </div>
+                            <div class="level-item">
+                                <a class="is-beta-blue" href="https://www.facebook.com/beta.linjeforening/">
+                                    <i class="fa-brands fa-facebook fa-9x mx-1"></i>
+                                    <span class=""></span>
+                                    <!--  tag for å sette label -->
+                                </a>
+                            </div>
+                        </div>
+                        <br />
+                        <hr class="divider" />
+                        <br />
+                        <nav class="level">
+                            <div class="is-size-3 is-beta-blue level-item has-text-centered">
+                                <button class="btn is-size-3 is-beta-blue" id="myBtn1">
+                                    For Studenter
+                                </button>
+                                <div id="myModal1" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <h1>For Studenter</h1>
+                                        <p>...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <button class="btn is-size-3 is-beta-blue has-text-weight-bold" id="myBtn2">
+                                    Engasjer Deg!
+                                </button>
+                                <div id="myModal2" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p class="is-size-1 has-text-weight-bold">Engasjer Deg!</p>
+                                        <p>
+                                            bli med i betasec, vi klarer å utvikle nettsider og hacke
+                                            de
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <button class="btn is-size-3 is-beta-blue" id="myBtn3">
+                                    For Bedrifter
+                                </button>
+                                <div id="myModal3" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <h1>For Bedrifter</h1>
+                                        <p>...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+</body>
+
+</html>

@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BETA</title>
-    <link rel="stylesheet" href="./css/bulma.css" />
-    <link rel="stylesheet" href="./css/custom.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -17,7 +17,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-end">
             <div class="navbar-item">
-                <a href="./for-admins.html" class="admin-link button is-white is-inverted">
+                <a href="/auth/login" class="admin-link button is-white is-inverted">
                     <span class="icon">
                         <i class="fas fa-user-shield"></i> <!-- Admin icon -->
                     </span>
@@ -33,7 +33,7 @@
                 <div class="columns">
                     <div class="column is-1"></div>
                     <div class="column is-10">
-                        <img src="./img/Beta_blue_1.png" alt="beta-logo" />
+                        <img src="{{ url_for('static', filename='img/Beta_blue_1.png') }}" alt="beta-logo" />
 
                         <div class="hero-foot">
                             <nav class="tabs is-boxed is-fullwidth is-large">
@@ -60,9 +60,25 @@
                         <div id="Beta" class="content-tab" style="display: none;">
                             <div id="markdown-content"
                                 class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                                style="margin: auto; width: 100%; "></div>
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
                         </div>
                         <div id="BetaDev" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+                        <div id="BetaSec" class="content-tab" style="display: none;">
+                            <div id="markdown-content"
+                                class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                                style="margin: auto; width: 100%; ">
+                                <!-- Markdown content will be rendered here -->
+                            </div>
+                        </div>
+                        <div id="BedKom" class="content-tab" style="display: none;">
                             <div id="markdown-content"
                                 class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                                 style="margin: auto; width: 100%; ">
@@ -160,51 +176,8 @@
     </section>
 
 
-
-    <script src="./js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
-    <script>
-        // Convert Markdown to HTML using Showdown
-        document.addEventListener("DOMContentLoaded", function () {
-            // Convert Markdown to HTML using Showdown
-            const converter = new showdown.Converter();
-
-            // Define a mapping of tab names to markdown file paths
-            const markdownFileMapping = {
-                "Beta": "./md/beta-2023h.md",
-                "BetaDev": "./md/betadev-2023h.md"
-            };
-
-            // Listen for clicks on tab buttons
-            const tabButtons = document.querySelectorAll("[data-tab]");
-            tabButtons.forEach(button => {
-                button.addEventListener("click", function (e) {
-                    const tabName = e.target.getAttribute("data-tab");
-                    fetchAndDisplayMarkdown(tabName);
-                });
-            });
-
-            function fetchAndDisplayMarkdown(tabName) {
-                const filePath = markdownFileMapping[tabName];
-                if (!filePath) {
-                    console.error(`No markdown file path found for tab: ${tabName}`);
-                    return;
-                }
-
-                // Fetch the markdown content from the file
-                fetch(filePath)
-                    .then((response) => response.text())
-                    .then((markdownContent) => {
-                        const htmlContent = converter.makeHtml(markdownContent);
-                        document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-                    })
-                    .catch((error) => {
-                        console.error("Error fetching Markdown content:", error);
-                    });
-            }
-        });
-
-    </script>
 </body>
 
 </html>

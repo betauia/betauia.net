@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beta Markdown Editor</title>
+  <link rel="stylesheet" href="./css/bulma.css">
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+
+<body>
+  <div class="betauia-link"><a href="./index.html">BetaUiA</a></div>
+
+  <!-- === Login Form start === -->
+  <!-- <div id="loginForm" class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title">Login</h1>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" type="text" id="username" placeholder="Username">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" id="password" placeholder="Password">
+          </div>
+        </div>
+
+        <button class="button is-primary" onclick="handleLogin()">Login</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- === Login Form end === -->
+  <!-- === Markdown editor start === -->
+
+  <div id="editor" class="container">
+    <!-- Dropdown and Clear Link Container -->
+    <div class="field has-addons" style="justify-content: flex-start;">
+      <!-- Dropdown for selecting text -->
+      <div class="dropdown is-hoverable">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span id="sectionTitle">Select Section</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content" id="dropdown-Section">
+            <a href="#" class="dropdown-item" data-section="beta">Beta</a>
+            <a href="#" class="dropdown-item" data-section="betadev">BetaDev</a>
+            <a href="#" class="dropdown-item" data-section="betasec">BetaSec</a>
+            <a href="#" class="dropdown-item" data-section="bedrifter">For Bedrifter</a>
+          </div>
+        </div>
+      </div>
+      <!-- Clear Link -->
+      <div class="control">
+        <p class="control">
+          <a class="button is-white is-small is-link clear-link" id="clearSection">Clear</a>
+        </p>
+      </div>
+    </div>
+
+
+    <!-- Editor Area -->
+    <div class="columns equal-heights">
+      <!-- Markdown Input -->
+      <div class="column is-half">
+        <textarea class="textarea" rows="10" id="inputBox" placeholder="Enter Markdown text..."
+          oninput="updateOutput()"></textarea>
+        <button class="button is-primary" id="saveButton">Save</button>
+      </div>
+
+      <!-- Markdown Output -->
+      <div class="column is-half">
+        <h1 class="is-beta-white">Output:</h1>
+        <div id="output" class="content"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Snackbar -->
+  <div id="snackbar" class="snackbar">
+    <button class="del delete"></button>
+    <p></p>
+  </div>
+
+
+  <!-- === Markdown editor end === -->
+
+  <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.0/marked.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+</body>
+
+</html>

@@ -11,37 +11,37 @@ var btn3 = document.getElementById("myBtn3");
 var closeBtn3 = document.getElementById("myModal3").getElementsByClassName("close")[0];
 
 // Open Modal 1
-btn1.onclick = function() {
+btn1.onclick = function () {
   modal1.style.display = "block";
 };
 
 // Close Modal 1
-closeBtn1.onclick = function() {
+closeBtn1.onclick = function () {
   modal1.style.display = "none";
 };
 
 // Open Modal 2
-btn2.onclick = function() {
+btn2.onclick = function () {
   modal2.style.display = "block";
 };
 
 // Close Modal 2
-closeBtn2.onclick = function() {
+closeBtn2.onclick = function () {
   modal2.style.display = "none";
 };
 
 // Open Modal 3
-btn3.onclick = function() {
+btn3.onclick = function () {
   modal3.style.display = "block";
 };
 
 // Close Modal 3
-closeBtn3.onclick = function() {
+closeBtn3.onclick = function () {
   modal3.style.display = "none";
 };
 
 // Close modals when clicked outside of the modals
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal1 || event.target == modal2 || event.target == modal3) {
     modal1.style.display = "none";
     modal2.style.display = "none";
@@ -86,22 +86,63 @@ function setActiveTabOnLoad() {
     // Set the active tab from localStorage as "is-active"
     document.getElementById(activeTab).style.display = "block";
     document.querySelector(`[onclick*="${activeTab}"]`).classList.add("is-active");
-  }
-}
 
-// Call the function to set the active tab when the page loads
-window.addEventListener("load", setActiveTabOnLoad);
-
-
-function handleLogin() {
-  // Checking if the user entered anything as username and password
-  // TODO: this check need server-side validation
-  let username = document.getElementById("username").value;
-  let password = document.getElementById("password").value;
-  if (username && password) {
-    document.getElementById("loginForm").style.display = "none";
-    document.getElementById("editor").style.display = "block";
+    // Render the markdown content for the active tab
+    fetchAndDisplayMarkdown(activeTab);
   } else {
-    alert("Please enter a username and password.");
+    // If no tab is set in localStorage, set a default tab as active and render its content
+    fetchAndDisplayMarkdown("Beta");
   }
 }
+
+
+function fetchAndDisplayMarkdown(tabName) {
+  const converter = new showdown.Converter();
+  const markdownFileMapping = {
+    "Beta": "Beta regular boring snooze zzzz",
+    "BetaDev": "BetaDev stuff yes happy",
+    "BetaSec": "BetaSec mr hacky bois",
+    "BedKom": "BetaKom we need more pizza plz"
+  };
+  const markdownFilename = markdownFileMapping[tabName];
+  if (!markdownFilename) {
+    console.error(`No markdown filename found for tab: ${tabName}`);
+    return;
+  }
+
+  // Update the fetch URL to point to your Flask server's route
+
+  // TODO: remove this shit boi
+    const htmlContent = converter.makeHtml(markdownFilename);
+    document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  
+  // fetch(`/posts/save/${markdownFilename}`)
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     // Use the 'content' field from the JSON response
+  //     const htmlContent = converter.makeHtml(data.content);
+  //     document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching Markdown content:", error);
+  //   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  setActiveTabOnLoad();
+
+  const tabButtons = document.querySelectorAll("[data-tab]");
+  tabButtons.forEach(button => {
+    button.addEventListener("click", function (e) {
+      const tabName = e.target.getAttribute("data-tab");
+      openTab(e, tabName);
+      fetchAndDisplayMarkdown(tabName);
+    });
+  });
+});
+
