@@ -96,27 +96,41 @@ function setActiveTabOnLoad() {
 }
 
 
-// Convert Markdown to HTML using Showdown
 function fetchAndDisplayMarkdown(tabName) {
   const converter = new showdown.Converter();
   const markdownFileMapping = {
-    "Beta": "./md/beta-2023h.md",
-    "BetaDev": "./md/betadev-2023h.md"
+    "Beta": "Beta regular boring snooze zzzz",
+    "BetaDev": "BetaDev stuff yes happy",
+    "BetaSec": "BetaSec mr hacky bois",
+    "BedKom": "BetaKom we need more pizza plz"
   };
-  const filePath = markdownFileMapping[tabName];
-  if (!filePath) {
-    console.error(`No markdown file path found for tab: ${tabName}`);
+  const markdownFilename = markdownFileMapping[tabName];
+  if (!markdownFilename) {
+    console.error(`No markdown filename found for tab: ${tabName}`);
     return;
   }
-  fetch(filePath)
-    .then((response) => response.text())
-    .then((markdownContent) => {
-      const htmlContent = converter.makeHtml(markdownContent);
-      document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-    })
-    .catch((error) => {
-      console.error("Error fetching Markdown content:", error);
-    });
+
+  // Update the fetch URL to point to your Flask server's route
+
+  // TODO: remove this shit boi
+    const htmlContent = converter.makeHtml(markdownFilename);
+    document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  
+  // fetch(`/posts/save/${markdownFilename}`)
+  //   .then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     return response.json();
+  //   })
+  //   .then((data) => {
+  //     // Use the 'content' field from the JSON response
+  //     const htmlContent = converter.makeHtml(data.content);
+  //     document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching Markdown content:", error);
+  //   });
 }
 
 document.addEventListener("DOMContentLoaded", function () {

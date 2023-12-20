@@ -5,14 +5,6 @@ function updateOutput() {
     outputDiv.innerHTML = marked(inputText);
 }
 
-function clearSection() {
-    // Clears Section selection and input 
-    document.getElementById('inputBox').value = '';
-    document.getElementById('sectionTitle').innerText = 'Select Section';
-    currentSection = null;
-    updateOutput();
-}
-
 function handleLogin() {
     // Checking if the user entered anything as username and password (not secure)
     // TODO: check need server-side validation
@@ -32,24 +24,60 @@ document.addEventListener("DOMContentLoaded", function () {
     // Reference to the dropdown items and the markdown input textarea
     const dropdownItems = document.querySelectorAll(".dropdown-content a");
     const inputBox = document.getElementById("inputBox");
+    let saveTimeoutId = null;
+    let currentSection = null; // Selected section
 
     // Maps dropdown to markdown files
-    // TODO: needs to be replaced by server side mapping
     const markdownFileMapping = {
-        "Beta": "./md/beta-2023h.md",
-        "BetaDev": "./md/betadev-2023h.md",
+        "Beta": "/static/md/beta-2023h.md",
+        "BetaDev": "/static/md/betadev-2023h.md",
         // TODO: add more mappings for other sections
     };
 
-    let currentSection = null; // Selected section
+    function clearSection() {
+        // Clears Section selection and input 
+        document.getElementById('inputBox').value = '';
+        document.getElementById('sectionTitle').innerText = 'Select Section';
+        currentSection = null;
+        updateOutput();
+    }
+    document.getElementById("clearSection").addEventListener("click", clearSection);
+
+    function showSnackbar(message) {
+        const snackbar = document.getElementById("snackbar");
+        snackbar.innerHTML = `<p>${message}</p>`;
+        snackbar.className = "snackbar show";
+
+        // Automatically hide the snackbar after 3 seconds
+        clearTimeout(saveTimeoutId);
+        saveTimeoutId = setTimeout(() => {
+            snackbar.className = snackbar.className.replace("show", "");
+        }, 3000);
+    }
+
+    function showSavingSnackbar() {
+        const snackbar = document.getElementById("snackbar");
+        clearTimeout(saveTimeoutId); // Clear any existing timeout
+        if (!currentSection) {
+            // No section selected, show snackbar and do nothing else
+            showSnackbar("Choose a section before saving!");
+        } else {
+            // Section selected, proceed with showing "Saving..." and setting up the save process if confirmed
+            if (confirm("Are you sure you want to save?")) {
+
+                snackbar.innerHTML = `<p>Saving...</p>`;
+                snackbar.className = "snackbar show";
+                saveTimeoutId = setTimeout(() => {
+                    saveMarkdownContent();
+                }, 3000);
+            }
+        }
+    }
+
 
     async function saveMarkdownContent() {
         const markdownContent = document.getElementById('inputBox').value;
 
-        if (!currentSection) {
-            alert('Select a section before saving!');
-            return;
-        }
 
         const saveUrl = `post/save`; // TODO: spør backend om riktig path
         const currentDateAndTime = new Date();
@@ -73,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-
                     body: markdownContent,
                     section: currentSection,
                     date: currentDate,
@@ -82,21 +109,20 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await rawResponse.json();
-
             if (data.success) {
-                alert('Changes saved successfully');
+                showSnackbar('Save successful.');
             } else {
-                alert('Error occurred');
+                showSnackbar('Save failed. Please try again.');
             }
         } catch (error) {
-            console.log('Error saving changes.', error);
-            alert('Error.');
+            console.error('Error saving changes.', error);
+            showSnackbar('Error occurred during saving.');
         }
     }
 
 
-    // Binding the function to a button click event:
-    document.getElementById('saveButton').addEventListener('click', saveMarkdownContent);
+    // Click event for showSavingSnackbar
+    document.getElementById('saveButton').addEventListener('click', showSavingSnackbar);
 
     // click listeners to each dropdown item
     dropdownItems.forEach(item => {

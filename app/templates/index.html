@@ -17,7 +17,7 @@
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-end">
             <div class="navbar-item">
-                <a href="./for-admins.html" class="admin-link button is-white is-inverted">
+                <a href="/auth/login" class="admin-link button is-white is-inverted">
                     <span class="icon">
                         <i class="fas fa-user-shield"></i> <!-- Admin icon -->
                     </span>
@@ -33,7 +33,7 @@
                 <div class="columns">
                     <div class="column is-1"></div>
                     <div class="column is-10">
-                        <img src="./img/Beta_blue_1.png" alt="beta-logo" />
+                        <img src="{{ url_for('static', filename='img/Beta_blue_1.png') }}" alt="beta-logo" />
 
                         <div class="hero-foot">
                             <nav class="tabs is-boxed is-fullwidth is-large">
@@ -176,8 +176,7 @@
     </section>
 
 
-
-    <script src="./js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 </body>
 

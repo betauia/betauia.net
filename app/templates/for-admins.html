@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beta Markdown Editor</title>
-  <link rel="stylesheet" href="./css/bulma.css">
-  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
 </head>
 
 <body>
-  <div class="betauia-link"><a href="./index.html">BetaUiA</a></div>
+  <div class="betauia-link"><a href="/">BetaUiA</a></div>
 
   <!-- === Login Form start === -->
   <!-- <div id="loginForm" class="container">
@@ -38,7 +38,6 @@
 
   <!-- === Login Form end === -->
   <!-- === Markdown editor start === -->
-
   <div id="editor" class="container">
     <!-- Dropdown and Clear Link Container -->
     <div class="field has-addons" style="justify-content: flex-start;">
@@ -64,7 +63,7 @@
       <!-- Clear Link -->
       <div class="control">
         <p class="control">
-          <a class="button is-white is-small is-link clear-link" id="clearSection">Clear</a>
+          <a class="button is-white is-small is-link clear-link" onclick="clearSection()">Clear</a>
         </p>
       </div>
     </div>
@@ -86,12 +85,6 @@
       </div>
     </div>
   </div>
-  <!-- Snackbar -->
-  <div id="snackbar" class="snackbar">
-    <button class="del delete"></button>
-    <p></p>
-  </div>
-
 
   <!-- === Markdown editor end === -->
 
