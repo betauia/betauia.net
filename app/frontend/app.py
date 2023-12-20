@@ -1,4 +1,5 @@
 from flask import Flask, render_template, send_from_directory
+import re
 import os
 
 app = Flask(__name__)
@@ -10,17 +11,32 @@ GAME_JAM_ENTRIES_DIR = os.path.join(BASE_DIR, '..', 'game-jam-entries')
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
 
-# Helper function to split the directory name into month, theme, and year
-def split_name(directory_name):
-    parts = directory_name.split('-')
-    if len(parts) < 3:
-        raise ValueError(f"Directory name '{directory_name}' does not match expected 'month-theme-year' format")
-    return {
-        'month': parts[0],
-        'theme': '-'.join(parts[1:-1]),  # Join all parts except the first and last as theme
-        'year': parts[-1],
-        'dir_name': directory_name
+def split_name(s):
+    month_map = {
+        "jan": "January",
+        "feb": "February",
+        "mar": "March",
+        "apr": "April",
+        "mai": "May",
+        "jun": "June",
+        "jul": "July",
+        "aug": "August",
+        "sep": "September",
+        "okt": "October",
+        "nov": "November",
+        "des": "December"
     }
+
+    pattern = r"([a-z]{3})(\d{2})-(.*)"
+    match = re.match(pattern, s)
+
+    if match:
+        month_abbr, year, name = match.groups()
+        month = month_map.get(month_abbr, "Unknown")
+        year = "20" + year  # Assuming the year is in the 2000s
+        return {"month": month, "year": year, "name": name}
+    else:
+        return {"month": "Unknown", "year": "Unknown", "name": "Unknown"}
 
 @app.route('/')
 def index():
