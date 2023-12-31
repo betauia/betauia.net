@@ -1,11 +1,30 @@
 from flask import Blueprint, render_template, send_from_directory
+import os
+import markdown
 
 frontend_blueprint = Blueprint("frontend", __name__)
+
+markdown_directory = os.path.join(os.path.dirname(__file__), "..", "content")
+
+def convert_markdown_to_html(content):
+    return markdown.markdown(content)
+
+def get_md_path(file_name):
+    if not file_name.endswith('.md'):
+        file_name += '.md'
+    return os.path.join(markdown_directory, file_name)
+
+def read_markdown(file_name):
+    file_path = get_md_path(file_name)
+    with open(file_path, "r") as file:
+        return convert_markdown_to_html(file.read())
 
 
 @frontend_blueprint.route("/")
 def index():
-    return render_template("index.html")
+    content = read_markdown("beta")
+    return render_template('index2.html', content=content)
+    # return render_template("index2.html")
 
 
 @frontend_blueprint.route("/admin")

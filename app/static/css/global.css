@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#page-content {
+    min-height: 100vh;
+}
+
+header {
+    height: 4rem;
+    margin-inline: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .logo {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 80%;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    padding-inline: 2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
