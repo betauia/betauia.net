@@ -23,3 +23,7 @@ def game_jam_entries():
 @frontend_blueprint.route("/game-jam-entries/okt23-maks-uflaks/peak-of-gim/<path:filename>")
 def okt23_maks_uflaks_peak_of_gim(filename):
     return send_from_directory("./game-jam-entries/okt23-maks-uflaks/peak-of-gim/", filename)
+
+@frontend_blueprint.route("/game-jam-entries/okt23-maks-uflaks/crime-download/<path:filename>")
+def okt23_maks_uflaks_crime_download(filename):
+    return send_from_directory("./game-jam-entries/okt23-maks-uflaks/crime-download/", filename)
