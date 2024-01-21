@@ -15,17 +15,29 @@
 
 <body>
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-end">
+    <!-- Admin Login -->
+    <div class="navbar-start">
       <div class="navbar-item">
         <a href="/auth/login" class="admin-link button is-white is-inverted">
           <span class="icon">
             <i class="fas fa-user-shield"></i> <!-- Admin icon -->
           </span>
-          <span>Admin Login</span>
+          <span class="admin">Admin Login</span>
         </a>
       </div>
     </div>
+    <!-- Mode Toggle -->
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <button id="modeToggle" class="button is-white is-inverted">
+          <span class="icon">
+            <i class="fas fa-sun"></i> <!-- Icon for light mode -->
+          </span>
+        </button>
+      </div>
+    </div>
   </nav>
+
 
   <section class="hero">
     <div class="hero-body">
@@ -33,8 +45,7 @@
         <div class="columns">
           <div class="column is-1"></div>
           <div class="column is-10">
-            <img src="{{ url_for('static', filename='img/Beta_blue_1.png') }}" alt="beta-logo" />
-
+            <img id="" src="{{ url_for('static', filename='img/Beta_blue_1.png') }}" alt="beta-logo" />
             <div class="hero-foot">
               <nav class="tabs is-boxed is-fullwidth is-large">
                 <div class="container">

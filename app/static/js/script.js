@@ -91,12 +91,13 @@ function setActiveTabOnLoad() {
     fetchAndDisplayMarkdown(activeTab);
   } else {
     // If no tab is set in localStorage, set a default tab as active and render its content
+    openTab("Beta");
     fetchAndDisplayMarkdown("Beta");
   }
 }
 
 
-function fetchAndDisplayMarkdown(tabName) {
+async function fetchAndDisplayMarkdown(tabName) {
   const converter = new showdown.Converter();
   const markdownFileMapping = {
     "Beta": "Beta regular boring snooze zzzz",
@@ -104,6 +105,7 @@ function fetchAndDisplayMarkdown(tabName) {
     "BetaSec": "BetaSec mr hacky bois",
     "BedKom": "BetaKom we need more pizza plz"
   };
+
   const markdownFilename = markdownFileMapping[tabName];
   if (!markdownFilename) {
     console.error(`No markdown filename found for tab: ${tabName}`);
@@ -111,29 +113,15 @@ function fetchAndDisplayMarkdown(tabName) {
   }
 
   // Update the fetch URL to point to your Flask server's route
-
   // TODO: remove this shit boi
     const htmlContent = converter.makeHtml(markdownFilename);
     document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-  
-  // fetch(`/posts/save/${markdownFilename}`)
-  //   .then((response) => {
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! status: ${response.status}`);
-  //     }
-  //     return response.json();
-  //   })
-  //   .then((data) => {
-  //     // Use the 'content' field from the JSON response
-  //     const htmlContent = converter.makeHtml(data.content);
-  //     document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching Markdown content:", error);
-  //   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+/* Light/Dark mode */
+
+document.addEventListener('DOMContentLoaded', () => {
+
   setActiveTabOnLoad();
 
   const tabButtons = document.querySelectorAll("[data-tab]");
@@ -146,3 +134,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+const modeToggle = document.getElementById('modeToggle');
+const userPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+let theme = localStorage.getItem('theme');
+
+// Set initial theme based on user preference or saved theme
+if (theme === 'light' || (theme === null && userPrefersLight)) {
+  document.body.classList.add('light-mode');
+  modeToggle.innerHTML = '<span class="icon"><i class="fas fa-moon"></i></span>';
+} else {
+  modeToggle.innerHTML = '<span class="icon"><i class="fas fa-sun"></i></span>';
+}
+
+modeToggle.addEventListener('click', function () {
+  document.body.classList.toggle('light-mode');
+  let newTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+  localStorage.setItem('theme', newTheme);
+  this.innerHTML = newTheme === 'light' ?
+    '<span class="icon"><i class="fas fa-moon"></i></span>' :
+    '<span class="icon"><i class="fas fa-sun"></i></span>';
+});

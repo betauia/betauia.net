@@ -145,22 +145,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    function fetchMarkdownContent(sectionName) {
+    async function fetchMarkdownContent(sectionName) {
         const filePath = markdownFileMapping[sectionName];
         if (!filePath) {
             console.error(`No markdown file path found for section: ${sectionName}`);
             return;
         }
 
-        // Fetch the markdown content from the file
-        fetch(filePath)
-            .then((response) => response.text())
-            .then((markdownContent) => {
-                inputBox.value = markdownContent;
-                updateOutput(); // Update md output
-            })
-            .catch((error) => {
-                console.error("Error fetching Markdown content:", error);
-            });
+        try {
+            const response = await fetch(filePath);
+            const markdownContent = await response.json(); // or .text()
+            inputBox.value = markdownContent;
+            updateOutput(); // Update md output
+        } catch (error) {
+            console.error("Error fetching Markdown content:", error);
+        }
     }
 });
