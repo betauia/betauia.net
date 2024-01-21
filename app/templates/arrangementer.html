@@ -1,7 +1,8 @@
 {% extends "components/base.html" %}
 
-{% block title %}For Bedrifter | BETA{% endblock %}
+{% block title %}Arrangementer | BETA{% endblock %}
 
 {% block content %}
 <div>{{ content|safe }}</div>
+{% include "components/calendar.html" %}
 {% endblock %}

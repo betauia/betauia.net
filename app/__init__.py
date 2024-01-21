@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+import logging
+from logging.handlers import RotatingFileHandler
 
 def create_app(test_config=None):
     # create and configure the app
@@ -23,6 +25,13 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    # Configure logging
+    app.logger.setLevel(logging.INFO)
+    handler = RotatingFileHandler('log/app.log', maxBytes=2048, backupCount=3)
+    formatter = logging.Formatter('%(asctime)s [%(levelname)s] - %(message)s')
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
 
     app.debug = True
 

@@ -11,7 +11,9 @@
 <body>
   {% include "components/header.html" %}
   <div id="content">
-    {% block content %}{% endblock %}
+    <div id="content-container">
+      {% block content %}{% endblock %}
+    </div>
   </div>
   {% include "components/footer.html" %}
 </body>
