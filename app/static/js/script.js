@@ -103,6 +103,7 @@ async function fetchAndDisplayMarkdown(tabName) {
     "Beta": "Beta regular boring snooze zzzz",
     "BetaDev": "BetaDev stuff yes happy",
     "BetaSec": "BetaSec mr hacky bois",
+    "BetaLan": "BetaLan we play game",
     "BedKom": "BetaKom we need more pizza plz"
   };
 
@@ -114,8 +115,8 @@ async function fetchAndDisplayMarkdown(tabName) {
 
   // Update the fetch URL to point to your Flask server's route
   // TODO: remove this shit boi
-    const htmlContent = converter.makeHtml(markdownFilename);
-    document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
+  const htmlContent = converter.makeHtml(markdownFilename);
+  document.getElementById(tabName).querySelector(".custom-markdown").innerHTML = htmlContent;
 }
 
 /* Light/Dark mode */

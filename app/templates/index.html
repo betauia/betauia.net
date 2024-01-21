@@ -7,6 +7,7 @@
   <title>BETA</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -59,8 +60,11 @@
                     <li class="tab" onclick="openTab(event,'BetaSec')">
                       <a class="custom-link" data-tab="BetaSec">BetaSec</a>
                     </li>
+                    <li class="tab" onclick="openTab(event,'BetaLan')">
+                      <a class="custom-link" data-tab="BetaLan">BetaLan</a>
+                    </li>
                     <li class="tab" onclick="openTab(event,'BedKom')">
-                      <a class="custom-link" data-tab="BedKom">BedKom</a>
+                      <a class="custom-link" data-tab="BedKom">For Bedrifter</a>
                     </li>
                   </ul>
                 </div>
@@ -84,6 +88,12 @@
               </div>
             </div>
             <div id="BetaSec" class="content-tab" style="display: none;">
+              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                style="margin: auto; width: 100%; ">
+                <!-- Markdown content will be rendered here -->
+              </div>
+            </div>
+            <div id="BetaLan" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
                 <!-- Markdown content will be rendered here -->
