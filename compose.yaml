@@ -1,0 +1,18 @@
+services:
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - 80:80
+    depends_on: 
+      - app
+
+  app:
+    build:
+      context: app
+      target: builder
+    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
+    environment:
+      - FLASK_SERVER_PORT=9091
+    volumes:
+      - ./app:/src
