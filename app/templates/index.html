@@ -19,15 +19,22 @@
   <header class="navigation-header">
     <nav>
       <div class="logo-container">
-        <a href="./index">Logo</a>
+        <a href="/index">Logo</a>
       </div>
       <div class="navigation-items" id="navigation-items">
-        <a href="">Games</a>
-        <a href="">Admin Login</a>
+        <a href="/game-jam-entries"><i class="fa-solid fa-star"></i> Games</a>
+        <a href="/auth/login.html"><i class="fas fa-user-shield"></i> Admin Login</a>
       </div>
       <div class="hamburger">
         <span id="openHam">&#9776;</span>
         <span id="closeHam">&#x2716;</span>
+      </div>
+      <div class="navbar-item">
+        <button id="modeToggle" class="button is-white is-inverted">
+          <span class="icon">
+            <i class="fas fa-sun"></i> <!-- Icon for light mode -->
+          </span>
+        </button>
       </div>
     </nav>
   </header>
@@ -75,9 +82,6 @@
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
                 <!-- Markdown content for BetaDev-tab will be rendered here -->
-              </div>
-              <div style="padding-top: 20px;">
-                <a href="/game-jam-entries" class="button is-primary">Try Games</a>
               </div>
             </div>
             <div id="BetaSec" class="content-tab" style="display: none;">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400|Inconsolata:400');
+
 :root {
   /* COLORS */
   /* primary */
@@ -98,9 +100,23 @@ h5 {
   letter-spacing: var(--letterSpacing);
 }
 
+p {
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
 small,
 .text-small {
   font-size: var(--smallText);
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .btn {
@@ -169,6 +185,13 @@ button:hover {
   width: 50%;
 }
 
+@media screen and (max-width: 768px) {
+  .level {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .close {
   color: #aaa;
   float: right;
@@ -204,6 +227,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 nav {
@@ -231,7 +255,7 @@ nav {
 /* Nav links */
 
 .navigation-items>a {
-  color: var(--accent-color-blue);
+  color: var(--accent-color-light);
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
@@ -242,6 +266,8 @@ nav {
   color: var(--neutral-color-dark);
 }
 
+
+/* Don't show hamburger on desktop */
 .hamburger {
   display: none;
   font-size: 20px;
@@ -250,14 +276,11 @@ nav {
 }
 
 
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
   .hamburger {
     display: flex;
     cursor: pointer;
-  }
-
-  .hamburger #closeham {
-    display: none;
+    z-index: 2;
   }
 
   .navigation-items {
@@ -266,14 +289,14 @@ nav {
     position: absolute;
     right: 0;
     top: 58px;
-    background-color: var(--primary-bg-color);
+    background-color: var(--secondary-bg-color);
     width: 100%;
     height: calc(100vh - 58px);
     padding-top: 60px;
     gap: 10vh;
     transition: var(--transition);
+    z-index: 2;
   }
-
 }
 
 
@@ -418,7 +441,7 @@ nav {
 
 /* Mode Toggle Button */
 #modeToggle {
-  background-color: var(--neutral-color-dark);
+  background-color: #2a2a2c;
   color: var(--primary-btn-color);
   transition: background-color 0.3s, color 0.3s;
   margin-right: 1rem;
@@ -455,6 +478,31 @@ body.light-mode em,
 body.light-mode strong,
 body.light-mode .custom-link {
   color: var(--light-mode-text);
+}
+
+
+
+/* Navbar light mode */
+.light-mode .navigation-header {
+  background-color: var(--light-mode-secondary-bg);
+}
+
+.light-mode .navigation-items>a {
+  color: var(--light-mode-text);
+}
+
+.light-mode .navigation-items>a:hover {
+  color: var(--neutral-color-light);
+}
+
+.light-mode .hamburger {
+  color: var(--neutral-color-dark);
+}
+
+@media screen and (max-width: 768px) {
+  .light-mode .navigation-items {
+    background-color: var(--accent-color-light);
+  }
 }
 
 body.light-mode {

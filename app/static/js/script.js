@@ -1,14 +1,18 @@
-var modal1 = document.getElementById("myModal1");
-var btn1 = document.getElementById("myBtn1");
-var closeBtn1 = document.getElementById("myModal1").getElementsByClassName("close")[0];
+const modal1 = document.getElementById("myModal1");
+const btn1 = document.getElementById("myBtn1");
+const closeBtn1 = document.getElementById("myModal1").getElementsByClassName("close")[0];
 
-var modal2 = document.getElementById("myModal2");
-var btn2 = document.getElementById("myBtn2");
-var closeBtn2 = document.getElementById("myModal2").getElementsByClassName("close")[0];
+const modal2 = document.getElementById("myModal2");
+const btn2 = document.getElementById("myBtn2");
+const closeBtn2 = document.getElementById("myModal2").getElementsByClassName("close")[0];
 
-var modal3 = document.getElementById("myModal3");
-var btn3 = document.getElementById("myBtn3");
-var closeBtn3 = document.getElementById("myModal3").getElementsByClassName("close")[0];
+const modal3 = document.getElementById("myModal3");
+const btn3 = document.getElementById("myBtn3");
+const closeBtn3 = document.getElementById("myModal3").getElementsByClassName("close")[0];
+
+const openHamDOM = document.querySelector('#openHam');
+const closeHamDOM = document.querySelector('#closeHam');
+const navigationItemsDOM = document.querySelector('#navigation-items');
 
 // Open Modal 1
 btn1.onclick = function () {
@@ -154,4 +158,32 @@ modeToggle.addEventListener('click', function () {
   this.innerHTML = newTheme === 'light' ?
     '<span class="icon"><i class="fas fa-moon"></i></span>' :
     '<span class="icon"><i class="fas fa-sun"></i></span>';
+});
+
+let isMenuOpen = false;
+
+const hamburgerEvent = (nav, close, open) => {
+  navigationItemsDOM.style.display = nav;
+  closeHamDOM.style.display = close;
+  openHamDOM.style.display = open;
+  isMenuOpen = nav === 'flex';
+}
+
+openHamDOM.addEventListener('click', () => hamburgerEvent('flex', 'block', 'none'));
+closeHamDOM.addEventListener('click', () => hamburgerEvent('none', 'none', 'block'));
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    hamburgerEvent("flex", "none", "block");
+  }
+  else if (window.innerWidth < 768) {
+    hamburgerEvent("none", "none", "block");
+  }
+})
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (screen.width < 768) {
+    hamburgerEvent('none', 'none', 'block');
+  }
 });
