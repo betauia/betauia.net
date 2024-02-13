@@ -20,6 +20,8 @@ services:
       - ./app:/src
     depends_on:
       - postgres
+    env_file:
+      - .env
 
   postgres:
     image: postgres:13-alpine
@@ -31,6 +33,8 @@ services:
       - ./postgres-data/postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    env_file:
+      - .env
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
