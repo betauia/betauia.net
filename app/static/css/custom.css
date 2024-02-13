@@ -1,11 +1,106 @@
+:root {
+  /* COLORS */
+  /* primary */
+  /* Primary colors */
+  --primary-bg-color: #0d0d0d;
+  /* Background color */
+  --primary-btn-color: #fff;
+  /* Button text color */
+  --primary-modal-bg-color: rgba(0, 0, 0, 0.8);
+  /* Modal background color */
+
+  /* Secondary colors */
+  --secondary-bg-color: #000;
+  /* Secondary background color */
+  --secondary-text-color: #ffffff;
+  /* Secondary text color */
+
+  /* Accent colors */
+  --accent-color-blue: #0085ff;
+  /* Blue color for links and highlights */
+  --accent-color-red: #C8102E;
+  /* Red color for specific UI elements */
+  --accent-color-light: #F2F3F5;
+  /* Light color for hover states */
+  --accent-color-dark: #131E29;
+  /* Dark color for backgrounds and tabs */
+
+  /* Neutral colors */
+  --neutral-color-light: #aaa;
+  /* Light neutral color for close button */
+  --neutral-color-dark: #333333;
+  /* Dark neutral color for mode toggle button */
+  --neutral-color-black: black;
+  /* Neutral black */
+  --neutral-color-white: white;
+  /* Neutral white */
+
+  /* Light mode colors */
+  --light-mode-bg: #ffffff;
+  /* Light mode background color */
+  --light-mode-text: #000000;
+  /* Light mode text color */
+  --light-mode-secondary-bg: #f2f2f2;
+  /* Light mode secondary background */
+  --light-mode-border: #d1d1d1;
+  /* Light mode border color */
+
+  /* Misc */
+  --link-hover-bg-light-mode: #f0f0f0;
+  /* Light mode link hover background */
+  --active-tab-bg-light-mode: #E8E8E8;
+  /* Active tab background in light mode */
+  --navbar-bg-light-mode: #f0f0f0;
+  /* Navbar background in light mode */
+  --modal-content-bg-light-mode: #f2f2f2;
+  /* Modal content background in light mode */
+
+  /* typography */
+  --headingFont: 'Inconsolata', monospace;
+  --bodyFont: 'Montserrat', sans-serif;
+  --smallText: 0.7em;
+
+  /* misc */
+  --backgroundColor: var(--grey-50);
+  --textColor: var(--grey-1000);
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.3s ease-in-out all;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+}
+
+
 body {
-  background-color: #0d0d0d;
+  background-color: var(--primary-bg-color);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
   overflow-y: scroll;
+  font-family: var(--bodyFont);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  margin-bottom: 1.38rem;
+  font-family: var(--headingFont);
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+
+small,
+.text-small {
+  font-size: var(--smallText);
 }
 
 .btn {
@@ -13,16 +108,18 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-  color: #fff;
+  color: var(--primary-btn-color);
+  padding: 0.375rem 0.75 rem;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .is-beta-blue {
-  color: #0085ff;
+  color: var(--accent-color-blue);
 }
 
 .is-uia-red {
-  color: #C8102E;
+  color: var(--accent-color-red);
 }
 
 a,
@@ -32,15 +129,15 @@ button {
 
 a,
 button:hover {
-  color: #F2F3F5;
+  color: var(--accent-color-light);
 }
 
 .is-beta-black {
-  color: #131E29;
+  color: var(--accent-color-dark);
 }
 
 .is-beta-white {
-  color: #ffffff;
+  color: var(--secondary-bg-color);
 }
 
 .icon-center {
@@ -59,12 +156,12 @@ button:hover {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--primary-modal-bg-color);
 }
 
 .modal-content {
-  background-color: #000;
-  color: #ffffff;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
   margin: 15% auto;
   padding: 20px;
   border: none;
@@ -91,50 +188,120 @@ button:hover {
   margin-top: 10px;
 }
 
+/* ====================== */
 /* ==== navbar start ==== */
+/* ====================== */
 
-.navbar {
+*,
+body {
+  box-sizing: border-box;
+}
+
+.navigation-header {
+  background-color: var(--primary-bg-color);
+  padding: 0 15px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  background-color: black;
-  opacity: 0.75;
 }
 
-.navbar-item {
-  opacity: 1;
+
+/* Logo */
+.logo-container>a {
+  color: var(--accent-color-blue);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 26px;
 }
 
-.navbar-start,
-.navbar-end {
+.navigation-items {
   display: flex;
-  align-items: center;
-  flex: 1 1 auto;
+  gap: 40px;
 }
 
-.navbar-end {
-  justify-content: flex-end;
+/* Nav links */
+
+.navigation-items>a {
+  color: var(--accent-color-blue);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: var(--transition);
 }
 
-/* ==== navbar end ==== */
-/* ==== tabs start ==== */
+.navigation-items>a:hover {
+  color: var(--neutral-color-dark);
+}
+
+.hamburger {
+  display: none;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--neutral-color-light);
+}
+
+
+@media screen and (max-width: 768) {
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .hamburger #closeham {
+    display: none;
+  }
+
+  .navigation-items {
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 58px;
+    background-color: var(--primary-bg-color);
+    width: 100%;
+    height: calc(100vh - 58px);
+    padding-top: 60px;
+    gap: 10vh;
+    transition: var(--transition);
+  }
+
+}
+
+
+/* ==================== */
+/* ==== Navbar end ==== */
+/* ==================== */
+
+
+
+/* ==================== */
+/* ==== Tabs start ==== */
+/* ==================== */
 .tabs {
   width: 100%;
 }
 
 .tabs .custom-link {
-  color: white;
+  color: var(--neutral-color-white);
 }
 
 .tabs .custom-link:hover {
-  color: #0085ff;
+  color: var(--accent-color-blue);
 }
 
 /* Style for the active tab */
 .tabs li.is-active .custom-link {
-  background-color: #131E29 !important;
-  color: #0085ff;
+  background-color: var(--accent-color-dark) !important;
+  color: var(--accent-color-blue);
 }
 
 .tabs ul {
@@ -176,12 +343,17 @@ button:hover {
   }
 }
 
-/* ==== tabs end ==== */
+/* ================== */
+/* ==== Tabs end ==== */
+/* ================== */
 
+
+/* ================================= */
 /* ===== Markdown custom start ===== */
+/* ================================= */
 
 .content-tab {
-  background-color: #131E29;
+  background-color: var(--accent-color-dark);
   margin: auto;
   width: 100%;
   padding: 1em;
@@ -190,9 +362,12 @@ button:hover {
   transition: background-color 0.3s;
 }
 
+.custom-markdown {
+  color: var(--secondary-text-color);
+}
+
 .custom-markdown ul {
   list-style-type: none;
-  color: #ffffff;
   padding-left: 20px;
   /* Required for absolute positioning within li:before */
   position: relative;
@@ -222,32 +397,37 @@ button:hover {
 }
 
 .custom-markdown strong {
-  color: #ffffff;
   margin-right: 5px;
 }
 
 .custom-markdown a {
   text-decoration: underline;
   font-weight: 500;
-  color: #0085ff;
+  color: var(--accent-color-blue);
 }
 
+/* =============================== */
 /* ===== Markdown custom end ===== */
+/* =============================== */
 
+
+
+/* ======================================== */
 /* ===== Dark/light mode toggle start ===== */
+/* ======================================== */
 
-/* Mode Toggle Button*/
+/* Mode Toggle Button */
 #modeToggle {
-  background-color: #333333;
-  color: #FFFFFF;
+  background-color: var(--neutral-color-dark);
+  color: var(--primary-btn-color);
   transition: background-color 0.3s, color 0.3s;
   margin-right: 1rem;
   /* Adjust right margin for spacing */
 }
 
 #modeToggle:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--neutral-color-white);
+  color: var(--neutral-color-black);
 }
 
 @media screen and (max-width: 768px) {
@@ -274,66 +454,66 @@ body.light-mode li,
 body.light-mode em,
 body.light-mode strong,
 body.light-mode .custom-link {
-  color: #000000;
+  color: var(--light-mode-text);
 }
 
 body.light-mode {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--light-mode-bg);
 }
 
 body.light-mode hr {
-  border-color: #000000;
+  border-color: var(--light-mode-border);
 }
 
 /* Style for the active tab */
 body.light-mode .tabs li.is-active .custom-link {
-  background-color: #E8E8E8 !important;
-  color: #0085ff;
+  background-color: var(--active-tab-bg-light-mode) !important;
+  color: var(--accent-color-blue);
 }
 
 body.light-mode .custom-link:hover {
-  background-color: #f0f0f0;
+  background-color: var(--link-hover-bg-light-mode);
 }
 
 body.light-mode .navbar {
-  background-color: #f0f0f0;
+  background-color: var(--navbar-bg-light-mode);
 }
 
 body.light-mode .navbar .navbar-item .admin-link {
-  background-color: #E8E8E8;
+  background-color: var(--active-tab-bg-light-mode);
   color: #000;
   transition: background-color 0.3s, color 0.3s;
 }
 
 body.light-mode .content-tab {
-  background-color: #f2f2f2;
+  background-color: var(--light-mode-secondary-bg);
 }
 
 /* Light Mode - Mode Toggle Button */
 body.light-mode #modeToggle {
-  background-color: #E8E8E8;
-  color: #333333;
-  border: 1px solid #d1d1d1;
+  background-color: var(--active-tab-bg-light-mode);
+  color: var(--neutral-color-black);
+  border: 1px solid var(--light-mode-border);
 }
 
 body.light-mode #modeToggle:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--light-mode-text);
+  color: var(--light-mode-bg);
 }
 
 
 body.light-mode .custom-markdown a {
-  color: red;
+  color: var(--accent-color-red);
 }
 
 body.light-mode .modal-content {
-  background-color: #f2f2f2;
-  color: black;
+  background-color: var(--modal-content-bg-light-mode);
 }
 
 body.light-mode button:hover {
-  color: #000;
+  color: var(--neutral-color-dark);
 }
 
+/* ====================================== */
 /* ===== Dark/light mode toggle end ===== */
+/* ====================================== */

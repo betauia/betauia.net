@@ -7,37 +7,30 @@
   <title>BETA</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
-  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/Beta_blue_b.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <!-- Admin Login -->
-    <div class="navbar-start">
-      <div class="navbar-item">
-        <a href="/auth/login" class="admin-link button is-white is-inverted">
-          <span class="icon">
-            <i class="fas fa-user-shield"></i> <!-- Admin icon -->
-          </span>
-          <span class="admin">Admin Login</span>
-        </a>
+
+  <header class="navigation-header">
+    <nav>
+      <div class="logo-container">
+        <a href="./index">Logo</a>
       </div>
-    </div>
-    <!-- Mode Toggle -->
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <button id="modeToggle" class="button is-white is-inverted">
-          <span class="icon">
-            <i class="fas fa-sun"></i> <!-- Icon for light mode -->
-          </span>
-        </button>
+      <div class="navigation-items" id="navigation-items">
+        <a href="">Games</a>
+        <a href="">Admin Login</a>
       </div>
-    </div>
-  </nav>
+      <div class="hamburger">
+        <span id="openHam">&#9776;</span>
+        <span id="closeHam">&#x2716;</span>
+      </div>
+    </nav>
+  </header>
 
 
   <section class="hero">
@@ -75,13 +68,13 @@
             <div id="Beta" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
-                <!-- Markdown content will be rendered here -->
+                <!-- Markdown content for Beta will be rendered here -->
               </div>
             </div>
             <div id="BetaDev" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
-                <!-- Markdown content will be rendered here -->
+                <!-- Markdown content for BetaDev-tab will be rendered here -->
               </div>
               <div style="padding-top: 20px;">
                 <a href="/game-jam-entries" class="button is-primary">Try Games</a>
@@ -90,19 +83,19 @@
             <div id="BetaSec" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
-                <!-- Markdown content will be rendered here -->
+                <!-- Markdown content for BetaSec-tab will be rendered here -->
               </div>
             </div>
             <div id="BetaLan" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
-                <!-- Markdown content will be rendered here -->
+                <!-- Markdown content for BetaLan-tab will be rendered here -->
               </div>
             </div>
             <div id="BedKom" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
-                <!-- Markdown content will be rendered here -->
+                <!-- Markdown content for "For bedrifter"-tab will be rendered here -->
               </div>
             </div>
 
