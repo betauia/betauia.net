@@ -1,11 +1,16 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello, world!"
+@app.get("/ping")
+def ping():
+    return "pong"
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=os.environ.get("FLASK_SERVER_PORT", 9090), debug=True)
+
+from db.utils.create_tables import init_db
+init_db()
+
+from routes import blueprints
+for bp in blueprints:
+    app.register_blueprint(bp)

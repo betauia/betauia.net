@@ -4,3 +4,4 @@ __pycache__
 /instance
 app.log
 app.log.*
+postgres-data

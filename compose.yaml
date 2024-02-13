@@ -14,5 +14,28 @@ services:
     stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
     environment:
       - FLASK_SERVER_PORT=9091
+      - PYTHONUNBUFFERED=0
+      - PYTHONPATH=/src
     volumes:
       - ./app:/src
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./postgres-data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+
+volumes:
+  postgres_data:
