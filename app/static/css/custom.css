@@ -77,7 +77,7 @@
   /* Dark neutral color for mode toggle button */
   --neutral-color-black: black;
   /* Neutral black */
-  --neutral-color-white: white;
+  --white: #fff;
   /* Neutral white */
 
   /* Light mode colors */
@@ -276,7 +276,7 @@ button:hover {
 }
 
 .navigation-header {
-  background-color: var(--grey-1100);
+  background-color: var(--color-surface-mixed-100);
   box-shadow: var(--shadow-3);
   padding: 0 15px;
   height: 60px;
@@ -492,6 +492,14 @@ nav {
   color: var(--accent-color-blue);
 }
 
+@media screen and (max-width: 768px) {
+
+  .navbar-start,
+  .navbar-end {
+    flex: 0 0 auto;
+  }
+}
+
 /* =============================== */
 /* ===== Markdown custom end ===== */
 /* =============================== */
@@ -512,22 +520,14 @@ nav {
 }
 
 #modeToggle:hover {
-  background-color: var(--neutral-color-white);
+  background-color: var(--light-mode-backgroundColor);
   color: var(--neutral-color-black);
-}
-
-@media screen and (max-width: 768px) {
-
-  .navbar-start,
-  .navbar-end {
-    flex: 0 0 auto;
-  }
 }
 
 /* Light Mode - General Styles */
 
 .light-mode {
-  background-color: var(--light-mode-backgroundColor);
+  background-color: var(--light-mode-backgroundColor) !important;
 }
 
 body.light-mode,
@@ -548,6 +548,9 @@ body.light-mode .custom-link {
 }
 
 
+.light-mode .btn:hover {
+  color: var(--white);
+}
 
 /* Navbar light mode */
 .light-mode .navigation-header {
@@ -582,22 +585,16 @@ body.light-mode hr {
 
 /* Style for the active tab */
 body.light-mode .tabs li.is-active .custom-link {
-  background-color: var(--active-tab-bg-light-mode) !important;
+  background-color: var(--grey-200) !important;
   color: var(--accent-color-blue);
 }
 
 body.light-mode .custom-link:hover {
-  background-color: var(--active-tab-bg-light-mode);
-}
-
-body.light-mode .navbar .navbar-item .admin-link {
-  background-color: var(--active-tab-bg-light-mode);
-  color: #000;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--grey-100);
 }
 
 body.light-mode .content-tab {
-  background-color: var(--light-mode-secondary-bg);
+  background-color: var(--grey-200);
 }
 
 /* Light Mode - Mode Toggle Button */
@@ -618,11 +615,11 @@ body.light-mode .custom-markdown a {
 }
 
 body.light-mode .modal-content {
-  background-color: var(--modal-content-bg-light-mode);
+  background-color: var(--grey-200);
 }
 
-body.light-mode button:hover {
-  color: var(--neutral-color-dark);
+body.light-mode .btn:hover {
+  color: var(--primary-200);
 }
 
 /* ====================================== */
