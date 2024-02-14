@@ -7,8 +7,8 @@ main_bp = Blueprint("main", __name__)
 @main_bp.route("/")
 def index():
     content = read_markdown("beta")
-    return render_template("index2.html", content=content)
-    # return render_template("index.html")
+    # return render_template("index2.html", content=content)
+    return render_template("index.html")
 
 @main_bp.route("/for-bedrifter")
 def for_bedrifter():
