@@ -52,6 +52,19 @@
   --grey-1000: #333538;
   --grey-1100: #14151613;
 
+  /* Blue grey */
+
+  --blue-grey-50: #F0F4F8;
+  --blue-grey-100: #D9E2EC;
+  --blue-grey-200: #BCCCDC;
+  --blue-grey-300: #9FB3C8;
+  --blue-grey-400: #829AB1;
+  --blue-grey-500: #627D98;
+  --blue-grey-600: #486581;
+  --blue-grey-700: #334E68;
+  --blue-grey-800: #243B53;
+  --blue-grey-900: #102A34;
+
   /* Dark mode */
   --color-surface-mixed-100: #191c26;
   --color-surface-mixed-200: #2e313a;
@@ -70,19 +83,11 @@
   --accent-color-dark: #131E29;
   /* Dark color for backgrounds and tabs */
 
-  /* Neutral colors */
-  --neutral-color-light: #aaa;
-  /* Light neutral color for close button */
-  --neutral-color-dark: #333333;
-  /* Dark neutral color for mode toggle button */
-  --neutral-color-black: black;
   /* Neutral black */
   --white: #fff;
   /* Neutral white */
 
   /* Light mode colors */
-  --light-mode-bg: #ffffff;
-  /* Light mode background color */
   --light-mode-text: #000000;
   /* Light mode text color */
   --light-mode-secondary-bg: #f2f2f2;
@@ -90,15 +95,6 @@
   --light-mode-border: var(--grey-200);
   /* Light mode border color */
 
-  /* Misc */
-  --link-hover-bg-light-mode: #f0f0f0;
-  /* Light mode link hover background */
-  --active-tab-bg-light-mode: #E8E8E8;
-  /* Active tab background in light mode */
-  --navbar-bg-light-mode: #f0f0f0;
-  /* Navbar background in light mode */
-  --modal-content-bg-light-mode: #f2f2f2;
-  /* Modal content background in light mode */
 
   /* typography */
   --headingFont: 'Inconsolata', monospace;
@@ -173,6 +169,31 @@ a {
   text-decoration: none;
 }
 
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 10vw;
+  height: auto;
+  max-width: 238px;
+  min-width: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 20vw;
+    max-width: 150px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .logo {
+    width: auto;
+    max-width: 200px;
+  }
+}
+
 .btn {
   background-color: transparent;
   border: none;
@@ -198,7 +219,7 @@ button {
 
 a,
 button:hover {
-  color: var(--grey-800);
+  color: var(--blue-grey-400);
 }
 
 .is-beta-black {
@@ -248,7 +269,7 @@ button:hover {
 }
 
 .close {
-  color: var(--grey-600);
+  color: var(--color-surface-mixed-500);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -257,7 +278,7 @@ button:hover {
 
 .close:hover,
 .close:focus {
-  color: var(--grey-1000);
+  color: var(--color-surface-mixed-100);
   text-decoration: none;
   cursor: pointer;
 }
@@ -278,7 +299,7 @@ button:hover {
 .navigation-header {
   background-color: var(--color-surface-mixed-100);
   box-shadow: var(--shadow-3);
-  padding: 0 15px;
+  padding: 0 2vw;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -289,15 +310,40 @@ button:hover {
 nav {
   width: 100%;
   max-width: 1200px;
+  padding: 0 1vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 }
+
+.navigation-items i {
+  font-size: calc(1rem + 0.5vw);
+  margin-right: 1vh;
+}
+
+@media screen and (min-width: 1400px) {
+
+  .navigation-header {
+    padding: 0 4vw;
+    height: 80px;
+  }
+
+  nav {
+    padding: 0 2vw;
+  }
+
+  .navigation-items i {
+    font-size: 1.5rem;
+    /* or whatever maximum size you deem appropriate */
+  }
+}
+
 
 
 /* Logo */
 .logo-container>a {
-  color: var(--primary-800);
+  color: var(--primary-700);
   text-decoration: none;
   font-weight: 700;
   font-size: 26px;
@@ -319,7 +365,7 @@ nav {
 }
 
 .navigation-items>a:hover {
-  color: var(--grey-900);
+  color: var(--color-surface-mixed-300);
 }
 
 
@@ -328,7 +374,7 @@ nav {
   display: none;
   font-size: 20px;
   font-weight: 800;
-  color: var(--neutral-color-light);
+  color: var(--grey-0);
 }
 
 
@@ -350,7 +396,6 @@ nav {
     height: calc(100vh - 58px);
     padding-top: 60px;
     gap: 10vh;
-    transition: var(--transition);
     z-index: 2;
   }
 
@@ -512,22 +557,24 @@ nav {
 
 /* Mode Toggle Button */
 #modeToggle {
-  background-color: #2a2a2c;
-  color: var(--primary-btn-color);
+  background-color: var(--color-surface-mixed-200);
+  border: 1px solid var(--grey-1100);
+  border-radius: 15%;
+  color: var(--grey-0);
   transition: background-color 0.3s, color 0.3s;
   margin-right: 1rem;
   /* Adjust right margin for spacing */
 }
 
 #modeToggle:hover {
-  background-color: var(--light-mode-backgroundColor);
+  background-color: var(--grey-200);
   color: var(--neutral-color-black);
 }
 
 /* Light Mode - General Styles */
 
 .light-mode {
-  background-color: var(--light-mode-backgroundColor) !important;
+  background-color: var(--light-mode-backgroundColor);
 }
 
 body.light-mode,
@@ -548,10 +595,6 @@ body.light-mode .custom-link {
 }
 
 
-.light-mode .btn:hover {
-  color: var(--white);
-}
-
 /* Navbar light mode */
 .light-mode .navigation-header {
   background-color: var(--grey-100);
@@ -562,7 +605,7 @@ body.light-mode .custom-link {
 }
 
 .light-mode .navigation-items>a:hover {
-  color: var(--neutral-color-light);
+  color: var(--primary-700);
 }
 
 .light-mode .hamburger {
@@ -599,14 +642,15 @@ body.light-mode .content-tab {
 
 /* Light Mode - Mode Toggle Button */
 body.light-mode #modeToggle {
-  background-color: var(--active-tab-bg-light-mode);
-  color: var(--neutral-color-black);
+  background-color: var(--grey-300);
+  border: 1px solid var(--grey-100);
+  color: var(--blue-grey-900);
   border: 1px solid var(--light-mode-border);
 }
 
 body.light-mode #modeToggle:hover {
-  background-color: var(--light-mode-text);
-  color: var(--light-mode-bg);
+  background-color: var(--color-surface-mixed-200);
+  color: var(--white);
 }
 
 
