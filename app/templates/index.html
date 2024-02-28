@@ -70,7 +70,13 @@
               </nav>
             </div>
 
+            <!-- New markdown container -->
+            <section class="markdown-container">
 
+            </section>
+
+
+            <!-- Old markdown -->
             <div id="Beta" class="content-tab" style="display: none;">
               <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
                 style="margin: auto; width: 100%; ">
@@ -192,7 +198,13 @@
   </section>
 
 
+
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <!-- Axios REST API -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+    integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Showdown md converter API -->
   <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 </body>
 
