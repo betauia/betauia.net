@@ -3,6 +3,9 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+app.debug = True
+app.use_reloader = True
+
 @app.get("/ping")
 def ping():
     return "pong"

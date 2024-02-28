@@ -3,7 +3,15 @@
 {% block title %}TITTEL{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
+
+<div class="construction">
+    <img src="{{ url_for('static', filename='img/construction.png') }}" alt="under-construction, https://commons.wikimedia.org/wiki/File:Under_construction_blue.svg" />
+    <h1>Under konstruksjon</h1>
+    <p>Har du lyst til å lære eller hjelpe? Vi har åpent møte hver onsdag, så bare kom for en prat!</p>
+    <a href="https://discord.gg/v8b6ZrQ"><button>Kontakt BetaDev</button></a>
+</div>
+
+<!-- <h1>Welcome to the Home Page</h1>
 <div>{{ content|safe }}</div>
-<h2>Write stuff that matters!</h2>
+<h2>Write stuff that matters!</h2> -->
 {% endblock %}
