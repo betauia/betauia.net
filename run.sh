@@ -1,7 +1,7 @@
 #!/bin/sh
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-cd "$SCRIPT_DIR"
+cd "$SCRIPT_DIR"/app
 
 if [ ! -d "./.venv" ]; then
   python3 -m venv .venv
@@ -12,5 +12,5 @@ else
   . .venv/bin/activate
 fi
 
-# flask --app app init-db
-flask --app app run
+# flask --app . init-db
+flask --app . run
