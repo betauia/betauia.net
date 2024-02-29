@@ -7,3 +7,6 @@
 [submodule "app/game-jam-entries/okt23-maks-uflaks/max-misadventures"]
 	path = app/game-jam-entries/okt23-maks-uflaks/max-misadventures
 	url = git@betauia.net:game-jam-entries/okt23-maks-uflaks/max-misadventures.git
+[submodule "app/game-jam-entries/okt23-maks-uflaks/klaus-the-klutz"]
+	path = app/game-jam-entries/okt23-maks-uflaks/klaus-the-klutz
+	url = git@betauia.net:game-jam-entries/okt23-maks-uflaks/klaus-the-klutz.git
