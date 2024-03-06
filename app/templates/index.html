@@ -14,9 +14,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body>
-
-  <header class="navigation-header">
+<!-- <header class="navigation-header">
     <nav>
       <div class="logo-container">
         <a href="/"><img src="{{ url_for('static', filename='img/smallbeta.png') }}" class="logo" alt="Beta logo"></a>
@@ -32,181 +30,218 @@
       <div class="navbar-item">
         <button id="modeToggle" class="button is-white is-inverted">
           <span class="icon">
-            <i class="fas fa-sun"></i> <!-- Icon for light mode -->
+            <i class="fas fa-sun"></i>
           </span>
         </button>
       </div>
     </nav>
-  </header>
+  </header> -->
 
+<header>
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="/" class="navbar-item">
+        <img src="{{url_for('static', filename='img/smallbeta.png')}}" width="120" height="30" alt="Beta logo">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-1"></div>
-          <div class="column is-10">
-            <div class="hero-foot">
-              <nav class="tabs is-boxed is-fullwidth is-large">
-                <div class="container">
-                  <ul>
-                    <li class="tab is-active" onclick="openTab(event,'Beta')">
-                      <a class="custom-link" data-tab="Beta">Beta</a>
-                    </li>
-                    <li class="tab" onclick="openTab(event,'BetaDev')">
-                      <a class="custom-link" data-tab="BetaDev">BetaDev</a>
-                    </li>
-                    <li class="tab" onclick="openTab(event,'BetaSec')">
-                      <a class="custom-link" data-tab="BetaSec">BetaSec</a>
-                    </li>
-                    <li class="tab" onclick="openTab(event,'BetaLan')">
-                      <a class="custom-link" data-tab="BetaLan">BetaLan</a>
-                    </li>
-                    <li class="tab" onclick="openTab(event,'BedKom')">
-                      <a class="custom-link" data-tab="BedKom">For Bedrifter</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-            </div>
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="#" class="navbar-item is-tab">
+          Hjem
+        </a>
 
-            <!-- New markdown container -->
-            <section class="markdown-container">
-              <!-- Update tab names to more describing names -->
+        <a href="#" class="navbar-item is-tab">
+          Arrangementer
+        </a>
 
-            </section>
-
-
-            <!-- Old markdown -->
-            <div id="Beta" class="content-tab" style="display: none;">
-              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                style="margin: auto; width: 100%; ">
-                <!-- Markdown content for Beta will be rendered here -->
-              </div>
-            </div>
-            <div id="BetaDev" class="content-tab" style="display: none;">
-              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                style="margin: auto; width: 100%; ">
-                <!-- Markdown content for BetaDev-tab will be rendered here -->
-              </div>
-            </div>
-            <div id="BetaSec" class="content-tab" style="display: none;">
-              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                style="margin: auto; width: 100%; ">
-                <!-- Markdown content for BetaSec-tab will be rendered here -->
-              </div>
-            </div>
-            <div id="BetaLan" class="content-tab" style="display: none;">
-              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                style="margin: auto; width: 100%; ">
-                <!-- Markdown content for BetaLan-tab will be rendered here -->
-              </div>
-            </div>
-            <div id="BedKom" class="content-tab" style="display: none;">
-              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-                style="margin: auto; width: 100%; ">
-                <!-- Markdown content for "For bedrifter"-tab will be rendered here -->
-              </div>
-            </div>
-
-            <hr class="divider" />
-            <br />
-            <div class="level row">
-              <div class="level-item">
-                <a class="is-beta-blue"
-                  href="https://calendar.google.com/calendar/embed?src=dGZvdmt1ZmExZzRiZmxmZzJvbzhqNDc5OGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">
-                  <i class="fa fa-calendar fa-8x mx-1"></i>
-                  <span class=""></span>
-                  <!--  tag for å sette label -->
-                </a>
-              </div>
-              <div class="level-item icon-center">
-                <a class="is-beta-blue" href="https://www.instagram.com/betauia/">
-                  <i class="fa-brands fa-instagram fa-9x mx-1"></i>
-                  <span class=""></span>
-                  <!--  tag for å sette label -->
-                </a>
-              </div>
-              <div class="level-item">
-                <a class="is-beta-blue" href="https://discord.gg/v8b6ZrQ">
-                  <i class="fa-brands fa-discord fa-10x mx-1"></i>
-                  <span class=""></span>
-                  <!--  tag for å sette label -->
-                </a>
-              </div>
-              <div class="level-item">
-                <a class="is-beta-blue" href="https://github.com/betauia/">
-                  <i class="fa-brands fa-github fa-9x mx-1"></i>
-                  <span class=""></span>
-                  <!--  tag for å sette label -->
-                </a>
-              </div>
-              <div class="level-item">
-                <a class="is-beta-blue" href="https://www.facebook.com/beta.linjeforening/">
-                  <i class="fa-brands fa-facebook fa-9x mx-1"></i>
-                  <span class=""></span>
-                  <!--  tag for å sette label -->
-                </a>
-              </div>
-            </div>
-            <br />
-            <hr class="divider" />
-            <br />
-            <nav class="level">
-              <div class="is-size-3 is-beta-blue level-item has-text-centered">
-                <button class="btn is-size-3 is-beta-blue" id="myBtn1">
-                  For Studenter
-                </button>
-                <div id="myModal1" class="modal">
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h1>For Studenter</h1>
-                    <p>...</p>
-                  </div>
-                </div>
-              </div>
-              <div class="level-item has-text-centered">
-                <button class="btn is-size-3 is-beta-blue has-text-weight-bold" id="myBtn2">
-                  Engasjer Deg!
-                </button>
-                <div id="myModal2" class="modal">
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p class="is-size-1 has-text-weight-bold">Engasjer Deg!</p>
-                    <p>
-                      bli med i betasec, vi klarer å utvikle nettsider og hacke
-                      de
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="level-item has-text-centered">
-                <button class="btn is-size-3 is-beta-blue" id="myBtn3">
-                  For Bedrifter
-                </button>
-                <div id="myModal3" class="modal">
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h1>For Bedrifter</h1>
-                    <p>...</p>
-                  </div>
-                </div>
-              </div>
-            </nav>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a href="#" class="navbar-link">Interessegrupper</a>
+          <div class="navbar-dropdown">
+            <a href="#" class="navbar-item">Utvikling</a>
+            <a href="#" class="navbar-item">Sikkerhet</a>
+            <a href="#" class="navbar-item">Bedriftskontakt</a>
           </div>
         </div>
       </div>
-  </section>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <div class="buttons">
+            <a id="modeToggle" class="bd-tw-button button">
+              <span class="icon">
+                <i class="fas fa-sun"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="section is-medium">
+  <div class="has-text-centered ">
+
+    <h1 class="title is-1 is-beta-blue header-title" style="font-size: 10rem">Beta</h1>
+    <h2 class="subtitle is-2 is-beta-blue header-title">Linjeforeningen for Dataingeniør & KI</h2>
+  </div>
+  <div class="content has-text-centered has-text-weight-light header-text">
+    <p class="has-text-weight-medium">Beta er linjeforeningen for studentene på <a class="is-link"
+        href="#">Dataingeniør</a> og <a class="is-link" href="#">Kunstig
+        intelligens</a> ved Universitetet i Agder.</p>
+    <p class="has-text-weight-medium">Vi arrangerer faglige og sosiale arrangementer for studenter.</p>
+
+  </div>
+</section>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-1"></div>
+        <div class="column is-10">
+          <div class="hero-foot">
+            <nav class="tabs is-boxed is-fullwidth is-large">
+              <div class="container">
+                <ul>
+                  <li class="tab is-active" onclick="openTab(event,'Beta')">
+                    <a class="custom-link" data-tab="Beta">For Studenter</a>
+                  </li>
+                  <li class="tab" onclick="openTab(event,'BedKom')">
+                    <a class="custom-link" data-tab="BedKom">For Bedrifter</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+
+          <!-- New markdown container -->
+          <section class="markdown-container">
+            <!-- Update tab names to more describing names -->
+
+          </section>
+
+
+          <!-- Old markdown -->
+          <div id="Beta" class="content-tab box" style="display: none;">
+            <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+              style="margin: auto; width: 100%; ">
+              <!-- Markdown content for Beta will be rendered here -->
+            </div>
+          </div>
+          <div id="BedKom" class="content-tab box" style="display: none;">
+            <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+              style="margin: auto; width: 100%; ">
+              <!-- Markdown content for "For bedrifter"-tab will be rendered here -->
+            </div>
+          </div>
+
+          <hr class="divider" />
+          <br />
+          <div class="level row">
+            <div class="level-item">
+              <a class="is-beta-blue"
+                href="https://calendar.google.com/calendar/embed?src=dGZvdmt1ZmExZzRiZmxmZzJvbzhqNDc5OGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">
+                <i class="fa fa-calendar fa-8x mx-1"></i>
+                <span class=""></span>
+                <!--  tag for å sette label -->
+              </a>
+            </div>
+            <div class="level-item icon-center">
+              <a class="is-beta-blue" href="https://www.instagram.com/betauia/">
+                <i class="fa-brands fa-instagram fa-9x mx-1"></i>
+                <span class=""></span>
+                <!--  tag for å sette label -->
+              </a>
+            </div>
+            <div class="level-item">
+              <a class="is-beta-blue" href="https://discord.gg/v8b6ZrQ">
+                <i class="fa-brands fa-discord fa-10x mx-1"></i>
+                <span class=""></span>
+                <!--  tag for å sette label -->
+              </a>
+            </div>
+            <div class="level-item">
+              <a class="is-beta-blue" href="https://github.com/betauia/">
+                <i class="fa-brands fa-github fa-9x mx-1"></i>
+                <span class=""></span>
+                <!--  tag for å sette label -->
+              </a>
+            </div>
+            <div class="level-item">
+              <a class="is-beta-blue" href="https://www.facebook.com/beta.linjeforening/">
+                <i class="fa-brands fa-facebook fa-9x mx-1"></i>
+                <span class=""></span>
+                <!--  tag for å sette label -->
+              </a>
+            </div>
+          </div>
+          <br />
+          <hr class="divider" />
+          <br />
+          <nav class="level">
+            <div class="is-size-3 is-beta-blue level-item has-text-centered">
+              <button class="btn is-size-3 is-beta-blue" id="myBtn1">
+                For Studenter
+              </button>
+              <div id="myModal1" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h1>For Studenter</h1>
+                  <p>...</p>
+                </div>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <button class="btn is-size-3 is-beta-blue has-text-weight-bold" id="myBtn2">
+                Engasjer Deg!
+              </button>
+              <div id="myModal2" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p class="is-size-1 has-text-weight-bold">Engasjer Deg!</p>
+                  <p>
+                    bli med i betasec, vi klarer å utvikle nettsider og hacke
+                    de
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <button class="btn is-size-3 is-beta-blue" id="myBtn3">
+                For Bedrifter
+              </button>
+              <div id="myModal3" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h1>For Bedrifter</h1>
+                  <p>...</p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+</section>
 
 
 
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <!-- Axios REST API -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
-    integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- Showdown md converter API -->
-  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- Axios REST API -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+  integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Showdown md converter API -->
+<script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 </body>
 
 </html>

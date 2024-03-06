@@ -16,6 +16,8 @@ const closeBtn3 = document
   .getElementById("myModal3")
   .getElementsByClassName("close")[0];
 
+const navbarDOM = document.querySelector(".navbar")
+
 const markdownContainerDOM = document.querySelector(".markdown-container");
 
 const openHamDOM = document.querySelector("#openHam");
@@ -64,6 +66,22 @@ window.onclick = function (event) {
     modal3.style.display = "none";
   }
 };
+
+
+
+
+/* Hide navbar items on smaller devices */
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.navbar-burger');
+  const menu = document.querySelector('.navbar-menu');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('is-active');
+    menu.classList.toggle('is-active');
+  });
+});
+
+
 
 // Tab function
 async function openTab(evt, tabName) {
@@ -166,8 +184,9 @@ const fetchAndDisplayMarkdown = async (tabName) => {
 
 document.addEventListener("load", setActiveTabOnLoad());
 
+/********************/
 /* Light/Dark mode */
-
+/******************/
 const modeToggle = document.getElementById("modeToggle");
 const userPrefersLight =
   window.matchMedia &&
@@ -180,6 +199,7 @@ const check_theme = () => {
     document.body.classList.add("light-mode");
     modeToggle.innerHTML =
       '<span class="icon"><i class="fas fa-moon"></i></span>';
+    navbarDOM.classList.replace("is-black", 'is-light');
   } else {
     modeToggle.innerHTML = '<span class="icon"><i class="fas fa-sun"></i></span>';
   }
@@ -187,17 +207,24 @@ const check_theme = () => {
 
 document.addEventListener("load", check_theme());
 
-
+/* Click event for dark/light-mode */
 modeToggle.addEventListener("click", function () {
   document.body.classList.toggle("light-mode");
-  let newTheme = document.body.classList.contains("light-mode")
-    ? "light"
-    : "dark";
+
+  // Toggle between 'is-black' and 'is-light' based on the presence of 'light-mode' class
+  if (document.body.classList.contains("light-mode")) {
+    navbarDOM.classList.replace('is-black', 'is-light');
+  } else {
+    navbarDOM.classList.replace('is-light', 'is-black');
+  }
+
+  // Update theme in localStorage and button icon
+  let newTheme = document.body.classList.contains("light-mode") ? "light" : "dark";
   localStorage.setItem("theme", newTheme);
-  this.innerHTML =
-    newTheme === "light"
-      ? '<span class="icon"><i class="fas fa-moon"></i></span>'
-      : '<span class="icon"><i class="fas fa-sun"></i></span>';
+
+  this.innerHTML = newTheme === "light"
+    ? '<span class="icon"><i class="fas fa-moon"></i></span>'
+    : '<span class="icon"><i class="fas fa-sun"></i></span>';
 });
 
 let isMenuOpen = false;

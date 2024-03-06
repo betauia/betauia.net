@@ -97,7 +97,7 @@
 
 
   /* typography */
-  --headingFont: 'Inconsolata', monospace;
+  --headingFont: 'Lato', sans-serif;
   --bodyFont: 'Montserrat', sans-serif;
   --smallText: 0.7em;
 
@@ -152,7 +152,6 @@ h5 {
 
 p {
   margin-bottom: 1.5rem;
-  max-width: 40em;
 }
 
 small,
@@ -202,6 +201,10 @@ a {
   padding: 0.375rem 0.75 rem;
   font-size: 18px;
   text-transform: capitalize;
+}
+
+.header-text {
+  color: var(--white);
 }
 
 .is-beta-blue {
@@ -291,7 +294,7 @@ button:hover {
 /* ==== navbar start ==== */
 /* ====================== */
 
-.navigation-items i {
+/* .navigation-items i {
   font-size: 1rem;
   margin-right: 1vh;
 }
@@ -305,9 +308,9 @@ button:hover {
   justify-content: center;
   align-items: center;
   z-index: 2;
-}
+} */
 
-nav {
+/* nav {
   width: 100%;
   max-width: 1200px;
   padding: 0 1vw;
@@ -320,9 +323,9 @@ nav {
 .navigation-items i {
   font-size: calc(1rem + 0.5vw);
   margin-right: 1vh;
-}
+} */
 
-@media screen and (min-width: 1400px) {
+/* @media screen and (min-width: 1400px) {
 
   .navigation-header {
     padding: 0 4vw;
@@ -336,56 +339,27 @@ nav {
   .navigation-items i {
     font-size: 1.5rem;
     /* or whatever maximum size you deem appropriate */
-  }
-}
-
-
-
-/* Logo */
-.logo-container>a {
-  color: var(--primary-700);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 26px;
-}
-
-.navigation-items {
-  display: flex;
-  gap: 40px;
-}
-
-/* Nav links */
-
-.navigation-items>a {
-  color: var(--grey-0);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  transition: var(--transition);
-}
-
-.navigation-items>a:hover {
-  color: var(--color-surface-mixed-300);
-}
+/*}*/
+/*}*/
 
 
 /* Don't show hamburger on desktop */
-.hamburger {
+/* .hamburger {
   display: none;
   font-size: 20px;
   font-weight: 800;
   color: var(--grey-0);
-}
+} */
 
 
-@media screen and (max-width: 768px) {
-  .hamburger {
+/* @media screen and (max-width: 768px) {
+  .navbar-hamburger {
     display: flex;
     cursor: pointer;
     z-index: 2;
   }
 
-  .navigation-items {
+  .navbar-start {
     flex-direction: column;
     align-items: center;
     position: absolute;
@@ -399,12 +373,30 @@ nav {
     z-index: 2;
   }
 
-  .navigation-items a {
+  .navbar-start a {
     font-size: 25px;
     font-weight: 200;
   }
+} */
+
+.navbar-start {
+  margin-left: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .navbar-start,
+  .navbar-end {
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
 
 /* ==================== */
 /* ==== Navbar end ==== */
@@ -537,14 +529,6 @@ nav {
   color: var(--accent-color-blue);
 }
 
-@media screen and (max-width: 768px) {
-
-  .navbar-start,
-  .navbar-end {
-    flex: 0 0 auto;
-  }
-}
-
 /* =============================== */
 /* ===== Markdown custom end ===== */
 /* =============================== */
@@ -567,8 +551,8 @@ nav {
 }
 
 #modeToggle:hover {
-  background-color: var(--grey-200);
-  color: var(--neutral-color-black);
+  background-color: var(--blue-grey-300);
+  color: var(--color-surface-mixed-100);
 }
 
 /* Light Mode - General Styles */
@@ -594,6 +578,10 @@ body.light-mode .custom-link {
   color: var(--light-mode-text);
 }
 
+body.light-mode .header-title h1,
+body.light-mode .header-title h2 {
+  color: var(--primary-800);
+}
 
 /* Navbar light mode */
 .light-mode .navigation-header {
@@ -624,6 +612,10 @@ body.light-mode .custom-link {
 
 body.light-mode hr {
   background-color: var(--color-surface-mixed-500);
+}
+
+body.light-mode .header-text {
+  color: var(--grey-1100);
 }
 
 /* Style for the active tab */
