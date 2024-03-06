@@ -67,15 +67,14 @@ window.onclick = function (event) {
 
 // Tab function
 async function openTab(evt, tabName) {
-
   const contentTabs = document.querySelectorAll(".content-tab");
-  contentTabs.forEach(tab => {
+  contentTabs.forEach((tab) => {
     tab.style.display = "none";
   });
 
   // Deactivate all tabs
   const tablinks = document.querySelectorAll(".tab");
-  tablinks.forEach(tab => {
+  tablinks.forEach((tab) => {
     tab.classList.remove("is-active");
   });
 
@@ -92,7 +91,6 @@ async function openTab(evt, tabName) {
 }
 
 function setActiveTabOnLoad() {
-
   const activeTab = localStorage.getItem("activeTab") || "tab";
   const tabButton = document.querySelector(`.tab[onclick*="{${activeTab}"]`);
 
@@ -100,10 +98,12 @@ function setActiveTabOnLoad() {
     // Simulate a tab click event
     openTab({ currentTarget: tabButton }, activeTab);
   } else {
-    const defaultTabButton = document.querySelector('.tab');
+    const defaultTabButton = document.querySelector(".tab");
     if (defaultTabButton) {
-      // Extracts tabname from onclick attribute
-      const defaultTabName = defaultTabButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+      // Extracts tabname from onclick attribute with RegEx
+      const defaultTabName = defaultTabButton
+        .getAttribute("onclick")
+        .match(/'([^']+)'/)[1];
       openTab({ currentTarget: defaultTabButton }, defaultTabName);
     }
   }
@@ -119,21 +119,25 @@ const fetchAndDisplayMarkdown = async (tabName) => {
       data: { posts },
     } = await axios.get(`/post/all?branch=${cap_tabName}`);
 
+    // Edge case - no posts
     if (posts.length < 1) {
-      markdownContainerDOM.innerHTML = '<h5 class="empty-list">No posts yet</h5>';
+      markdownContainerDOM.innerHTML =
+        '<h5 class="empty-list">No posts yet</h5>';
       return;
     }
 
-    const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Sort posts by date to get the latest post
+    const sortedPosts = posts.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
     const latestPostID = sortedPosts[0].id;
 
+    // GET request to the latest post
     const {
       data: { post },
     } = await axios.get(`/api/post/${latestPostID}`);
 
     const { title, body, time, date } = post;
-
-
 
     // Get content by branch which is also tabname
     const totalHTML = `
@@ -152,19 +156,17 @@ const fetchAndDisplayMarkdown = async (tabName) => {
       </div>
       `;
 
-    markdownContainerDOM.innerHTML = tabName;
-
+    markdownContainerDOM.innerHTML = totalHTML;
   } catch (error) {
     console.error(error);
-    document.getElementById(tabName).innerHTML = "<h5>There was an error:(</h5>";
+    document.getElementById(tabName).innerHTML =
+      "<h5>There was an error:(</h5>";
   }
 };
 
-setActiveTabOnLoad();
+document.addEventListener("load", setActiveTabOnLoad());
 
 /* Light/Dark mode */
-
-
 
 const modeToggle = document.getElementById("modeToggle");
 const userPrefersLight =
@@ -173,13 +175,18 @@ const userPrefersLight =
 let theme = localStorage.getItem("theme");
 
 // Set initial theme based on user preference or saved theme
-if (theme === "light" || (theme === null && userPrefersLight)) {
-  document.body.classList.add("light-mode");
-  modeToggle.innerHTML =
-    '<span class="icon"><i class="fas fa-moon"></i></span>';
-} else {
-  modeToggle.innerHTML = '<span class="icon"><i class="fas fa-sun"></i></span>';
+const check_theme = () => {
+  if (theme === "light" || (theme === null && userPrefersLight)) {
+    document.body.classList.add("light-mode");
+    modeToggle.innerHTML =
+      '<span class="icon"><i class="fas fa-moon"></i></span>';
+  } else {
+    modeToggle.innerHTML = '<span class="icon"><i class="fas fa-sun"></i></span>';
+  }
 }
+
+document.addEventListener("load", check_theme());
+
 
 modeToggle.addEventListener("click", function () {
   document.body.classList.toggle("light-mode");

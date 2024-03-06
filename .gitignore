@@ -5,3 +5,4 @@ __pycache__
 /postgres-data
 app.log
 app.log.*
+todos.md
