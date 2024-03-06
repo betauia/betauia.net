@@ -40,9 +40,6 @@
 <header>
   <nav class="navbar is-black" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="/" class="navbar-item">
-        <img src="{{url_for('static', filename='img/smallbeta.png')}}" width="120" height="30" alt="Beta logo">
-      </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -63,7 +60,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a href="#" class="navbar-link">Interessegrupper</a>
           <div class="navbar-dropdown">
-            <a href="#" class="navbar-item">Utvikling</a>
+            <a href="/game-jam-entries" class="navbar-item">Utvikling</a>
             <a href="#" class="navbar-item">Sikkerhet</a>
             <a href="#" class="navbar-item">Bedriftskontakt</a>
           </div>
@@ -87,10 +84,10 @@
   </nav>
 </header>
 
-<section class="section is-medium">
+<section class="section is-large">
   <div class="has-text-centered ">
 
-    <h1 class="title is-1 is-beta-blue header-title" style="font-size: 10rem">Beta</h1>
+    <img src="{{url_for('static', filename='img/smallbeta.png')}}" class="is-96x96" alt="">
     <h2 class="subtitle is-2 is-beta-blue header-title">Linjeforeningen for Dataingeniør & KI</h2>
   </div>
   <div class="content has-text-centered has-text-weight-light header-text">
