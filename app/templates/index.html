@@ -8,34 +8,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
   <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}" />
-  <link rel="apple-touch-icon" sizes="180x180" href="img/Beta_blue_b.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='img/Beta_blue_1.png')}}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
-<!-- <header class="navigation-header">
-    <nav>
-      <div class="logo-container">
-        <a href="/"><img src="{{ url_for('static', filename='img/smallbeta.png') }}" class="logo" alt="Beta logo"></a>
-      </div>
-      <div class="navigation-items" id="navigation-items">
-        <a href="/game-jam-entries"><i class="fa-solid fa-star"></i> Games</a>
-        <a href="/auth/login"><i class="fas fa-user-shield"></i> Admin Login</a>
-      </div>
-      <div class="hamburger">
-        <span id="openHam">&#9776;</span>
-        <span id="closeHam">&#x2716;</span>
-      </div>
-      <div class="navbar-item">
-        <button id="modeToggle" class="button is-white is-inverted">
-          <span class="icon">
-            <i class="fas fa-sun"></i>
-          </span>
-        </button>
-      </div>
-    </nav>
-  </header> -->
 
 <header>
   <nav class="navbar is-black" role="navigation" aria-label="main navigation">
@@ -66,18 +43,14 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <div class="buttons">
-            <a id="modeToggle" class="bd-tw-button button">
-              <span class="icon">
-                <i class="fas fa-sun"></i>
-              </span>
-            </a>
-          </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a id="modeToggle" class="bd-tw-button button">
+            <span class="icon">
+              <i class="fas fa-sun"></i>
+            </span>
+          </a>
         </div>
       </div>
     </div>
@@ -87,12 +60,13 @@
 <section class="section is-large">
   <div class="has-text-centered ">
 
-    <img src="{{url_for('static', filename='img/smallbeta.png')}}" class="is-96x96" alt="">
+    <img src="{{url_for('static', filename='img/smallbeta.png')}}" class="is-96x96 logo" alt="">
     <h2 class="subtitle is-2 is-beta-blue header-title">Linjeforeningen for Dataingeniør & KI</h2>
   </div>
   <div class="content has-text-centered has-text-weight-light header-text">
     <p class="has-text-weight-medium">Beta er linjeforeningen for studentene på <a class="is-link"
-        href="#">Dataingeniør</a> og <a class="is-link" href="#">Kunstig
+        href="https://www.uia.no/studier/data-ingenioerfag" target="_blank">Dataingeniør</a> og <a class="is-link"
+        href="https://www.uia.no/studier/kunstig-intelligens-sivilingenioer" target="_blank">Kunstig
         intelligens</a> ved Universitetet i Agder.</p>
     <p class="has-text-weight-medium">Vi arrangerer faglige og sosiale arrangementer for studenter.</p>
 
@@ -120,26 +94,21 @@
             </nav>
           </div>
 
-          <!-- New markdown container -->
-          <section class="markdown-container">
-            <!-- Update tab names to more describing names -->
-
-          </section>
-
-
-          <!-- Old markdown -->
-          <div id="Beta" class="content-tab box" style="display: none;">
-            <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-              style="margin: auto; width: 100%; ">
-              <!-- Markdown content for Beta will be rendered here -->
+          <div class="markdown-container">
+            <div id="Beta" class="content-tab box" style="display: none;">
+              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                style="margin: auto; width: 100%; ">
+                <!-- Markdown content for Beta will be rendered here -->
+              </div>
+            </div>
+            <div id="BedKom" class="content-tab box" style="display: none;">
+              <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
+                style="margin: auto; width: 100%; ">
+                <!-- Markdown content for "For bedrifter"-tab will be rendered here -->
+              </div>
             </div>
           </div>
-          <div id="BedKom" class="content-tab box" style="display: none;">
-            <div id="markdown-content" class="subtitle is-5 is-beta-white subtitle-text italic custom-markdown"
-              style="margin: auto; width: 100%; ">
-              <!-- Markdown content for "For bedrifter"-tab will be rendered here -->
-            </div>
-          </div>
+
 
           <hr class="divider" />
           <br />
@@ -231,12 +200,13 @@
 </section>
 
 
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 <!-- Axios REST API -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
   integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 <!-- Showdown md converter API -->
 <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 </body>
