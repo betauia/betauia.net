@@ -334,6 +334,11 @@ button:hover {
 /* ==== Tabs end ==== */
 /* ================== */
 
+/* Shadowing for navbar */
+.navbar {
+  box-shadow: var(--shadow-2);
+}
+
 
 /* ================================= */
 /* ===== Markdown custom start ===== */

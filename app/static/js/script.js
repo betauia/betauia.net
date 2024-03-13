@@ -222,3 +222,30 @@ modeToggle.addEventListener("click", function () {
     ? '<span class="icon"><i class="fas fa-moon"></i></span>'
     : '<span class="icon"><i class="fas fa-sun"></i></span>';
 });
+
+/* Dropdown collapse on mobile */
+
+const collapseDropdown = () => {
+  const burger = document.querySelectorAll('.navbar-burger');
+  const $navbarBurgers = Array.prototype.slice.call(burger, 0);
+
+  if ($navbarBurgers.length > 0) {
+    $el.addEventListener('click', () => {
+      // Retrieves value from data-target attribute
+      var target = $el.dataset.target;
+      var $target = document.getElementById(target);
+
+      // Toggle class
+      $el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', collapseDropdown);
+
+document.querySelectorAll('.navbar-link').forEach((navbarLink) => {
+  navbarLink.addEventListener('click', () => {
+    navbarLink.nextElementSibling.classList.toggle('is-hidden-mobile');
+  })
+})
