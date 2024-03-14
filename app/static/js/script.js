@@ -67,9 +67,6 @@ window.onclick = function (event) {
   }
 };
 
-
-
-
 /* Hide navbar items on smaller devices */
 document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.navbar-burger');
@@ -83,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Tab function
+// Open tab function
 async function openTab(evt, tabName) {
   const contentTabs = document.querySelectorAll(".content-tab");
   contentTabs.forEach((tab) => {
@@ -132,7 +129,6 @@ const fetchAndDisplayMarkdown = async (tabName) => {
   try {
     // Capitalizes tabname and sets other characters to lowercase
     const cap_tabName = tabName[0] + tabName.slice(1).toLowerCase();
-    const converter = new showdown.Converter();
     const {
       data: { posts },
     } = await axios.get(`/post/all?branch=${cap_tabName}`);
@@ -153,7 +149,7 @@ const fetchAndDisplayMarkdown = async (tabName) => {
     // GET request to the latest post
     const {
       data: { post },
-    } = await axios.get(`/api/post/${latestPostID}`);
+    } = await axios.get(`/post/${latestPostID}`);
 
     const { title, body, time, date } = post;
 
@@ -166,7 +162,7 @@ const fetchAndDisplayMarkdown = async (tabName) => {
                 <!-- Title -->
                 <h2>${title}</h2>
                 <!-- Body --> 
-                ${converter.makeHTML(body)}
+                ${body}
 
                 <!-- Time -->
                 <h5>Created: ${date} ${time}</h5>
@@ -227,32 +223,29 @@ modeToggle.addEventListener("click", function () {
     : '<span class="icon"><i class="fas fa-sun"></i></span>';
 });
 
-let isMenuOpen = false;
+/* Dropdown collapse on mobile */
 
-const hamburgerEvent = (nav, close, open) => {
-  navigationItemsDOM.style.display = nav;
-  closeHamDOM.style.display = close;
-  openHamDOM.style.display = open;
-  isMenuOpen = nav === "flex";
-};
+const collapseDropdown = () => {
+  const burger = document.querySelectorAll('.navbar-burger');
+  const $navbarBurgers = Array.prototype.slice.call(burger, 0);
 
-openHamDOM.addEventListener("click", () =>
-  hamburgerEvent("flex", "block", "none")
-);
-closeHamDOM.addEventListener("click", () =>
-  hamburgerEvent("none", "none", "block")
-);
+  if ($navbarBurgers.length > 0) {
+    $el.addEventListener('click', () => {
+      // Retrieves value from data-target attribute
+      var target = $el.dataset.target;
+      var $target = document.getElementById(target);
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    hamburgerEvent("flex", "none", "block");
-  } else if (window.innerWidth < 768) {
-    hamburgerEvent("none", "none", "block");
+      // Toggle class
+      $el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
   }
-});
+}
 
-window.addEventListener("DOMContentLoaded", () => {
-  if (screen.width < 768) {
-    hamburgerEvent("none", "none", "block");
-  }
-});
+document.addEventListener('DOMContentLoaded', collapseDropdown);
+
+document.querySelectorAll('.navbar-link').forEach((navbarLink) => {
+  navbarLink.addEventListener('click', () => {
+    navbarLink.nextElementSibling.classList.toggle('is-hidden-mobile');
+  })
+})

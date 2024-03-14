@@ -169,28 +169,7 @@ a {
 }
 
 .logo {
-  display: inline-block;
-  vertical-align: top;
-  width: 10vw;
-  height: auto;
-  max-width: 238px;
-  min-width: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-@media screen and (max-width: 768px) {
-  .logo {
-    width: 20vw;
-    max-width: 150px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .logo {
-    width: auto;
-    max-width: 200px;
-  }
+  margin-bottom: 3vh;
 }
 
 .btn {
@@ -290,120 +269,6 @@ button:hover {
   margin-top: 10px;
 }
 
-/* ====================== */
-/* ==== navbar start ==== */
-/* ====================== */
-
-/* .navigation-items i {
-  font-size: 1rem;
-  margin-right: 1vh;
-}
-
-.navigation-header {
-  background-color: var(--color-surface-mixed-100);
-  box-shadow: var(--shadow-3);
-  padding: 0 2vw;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-} */
-
-/* nav {
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 1vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.navigation-items i {
-  font-size: calc(1rem + 0.5vw);
-  margin-right: 1vh;
-} */
-
-/* @media screen and (min-width: 1400px) {
-
-  .navigation-header {
-    padding: 0 4vw;
-    height: 80px;
-  }
-
-  nav {
-    padding: 0 2vw;
-  }
-
-  .navigation-items i {
-    font-size: 1.5rem;
-    /* or whatever maximum size you deem appropriate */
-/*}*/
-/*}*/
-
-
-/* Don't show hamburger on desktop */
-/* .hamburger {
-  display: none;
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--grey-0);
-} */
-
-
-/* @media screen and (max-width: 768px) {
-  .navbar-hamburger {
-    display: flex;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-  .navbar-start {
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    right: 0;
-    top: 58px;
-    background-color: var(--background-color);
-    width: 100%;
-    height: calc(100vh - 58px);
-    padding-top: 60px;
-    gap: 10vh;
-    z-index: 2;
-  }
-
-  .navbar-start a {
-    font-size: 25px;
-    font-weight: 200;
-  }
-} */
-
-.navbar-start {
-  margin-left: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-  .navbar-menu {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-  }
-
-  .navbar-start,
-  .navbar-end {
-    align-items: center;
-    flex-grow: 0;
-    flex-shrink: 0;
-  }
-}
-
-/* ==================== */
-/* ==== Navbar end ==== */
-/* ==================== */
-
-
-
 /* ==================== */
 /* ==== Tabs start ==== */
 /* ==================== */
@@ -469,6 +334,11 @@ button:hover {
 /* ==== Tabs end ==== */
 /* ================== */
 
+/* Shadowing for navbar */
+.navbar {
+  box-shadow: var(--shadow-2);
+}
+
 
 /* ================================= */
 /* ===== Markdown custom start ===== */
@@ -481,7 +351,7 @@ button:hover {
   padding: 1em;
   box-sizing: border-box;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: var(--transition);
   box-shadow: var(--shadow-2);
 }
 
@@ -539,15 +409,19 @@ button:hover {
 /* ===== Dark/light mode toggle start ===== */
 /* ======================================== */
 
+/* Navbar */
+body.light-mode .navbar {
+  background-color: var(--grey-200);
+}
+
 /* Mode Toggle Button */
 #modeToggle {
   background-color: var(--color-surface-mixed-200);
   border: 1px solid var(--grey-1100);
-  border-radius: 15%;
+  border-radius: 20%;
   color: var(--grey-0);
-  transition: background-color 0.3s, color 0.3s;
+  transition: var(--transition);
   margin-right: 1rem;
-  /* Adjust right margin for spacing */
 }
 
 #modeToggle:hover {
@@ -584,30 +458,10 @@ body.light-mode .header-title h2 {
 }
 
 /* Navbar light mode */
-.light-mode .navigation-header {
-  background-color: var(--grey-100);
-}
 
-.light-mode .navigation-items>a {
-  color: var(--light-mode-text);
-}
-
-.light-mode .navigation-items>a:hover {
-  color: var(--primary-700);
-}
-
-.light-mode .hamburger {
-  color: var(--neutral-color-dark);
-}
 
 .light-mode ul {
   background-color: var(--light-mode-backgroundColor);
-}
-
-@media screen and (max-width: 768px) {
-  .light-mode .navigation-items {
-    background-color: var(--accent-color-light);
-  }
 }
 
 body.light-mode hr {
@@ -653,6 +507,8 @@ body.light-mode .custom-markdown a {
 body.light-mode .modal-content {
   background-color: var(--grey-200);
 }
+
+
 
 body.light-mode .btn:hover {
   color: var(--primary-200);
