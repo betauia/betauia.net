@@ -1,8 +1,6 @@
 # syntax=docker/dockerfile:1.4
 FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
-ENV FLASK_APP=server.py
-
 WORKDIR /src
 COPY requirements.txt /src
 RUN --mount=type=cache,target=/root/.cache/pip \
@@ -10,12 +8,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY . .
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=9091"]
+
+CMD ["python3", "server.py"]
 
 FROM builder as dev-envs
 
 RUN <<EOF
-RUN apk update
+apk update
 apk add git
 EOF
 
@@ -27,4 +26,4 @@ EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
 
-CMD ["flask", "run", "--host=0.0.0.0", "--port=9091"]
+CMD ["python3", "server.py"]

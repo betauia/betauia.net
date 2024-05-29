@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from routes.utils import read_markdown
+from .utils import read_markdown
 
 main_bp = Blueprint("main", __name__)
 
