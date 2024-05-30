@@ -1,5 +1,4 @@
 from flask import Flask
-import os
 
 
 def create_app():
@@ -18,5 +17,8 @@ def create_app():
 
     from app.routes.core import core_bp
     app.register_blueprint(core_bp)
+
+    from app.routes.dev import dev_bp
+    app.register_blueprint(dev_bp, url_prefix="/dev")
 
     return app

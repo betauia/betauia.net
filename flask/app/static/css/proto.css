@@ -1,26 +1,27 @@
+/* ----- */
+/* Utils */
+/* ----- */
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem;
+  margin-inline: auto;
 }
 
-.container.full {
-  height: 100svh;
-}
+  .container.full {
+    height: 100svh;
+  }
 
-.container.half {
-  height: 50svh;
-}
+  .container.half {
+    height: 50svh;
+  }
 
-p {
-  padding-bottom: 1rem;
-}
-
-li {
-  padding-bottom: 0.25rem;
-}
+  .container:first-child {
+    padding-top: 5rem;
+  }
 
 .btn {
   background-color: #0085ff;
@@ -30,42 +31,61 @@ li {
   color: #ffffff;
 }
 
-.container:first-child {
-  padding-top: 5rem;
+/* Smaller changes */
+
+ul {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
 }
+
+li {
+  padding-bottom: 0.25rem;
+}
+
+p {
+  padding-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  padding-bottom: 0.5rem;
+}
+
+/* ------------------ */
+/* Special containers */
+/* ------------------ */
 
 .container.title {
   align-items: center;
   text-align: center;
 }
 
-.container.title h1 {
-  margin-bottom: 1rem;
-}
+  .container.title h1 {
+    margin-bottom: 1rem;
+  }
 
-.container.title p {
-  font-size: 1.25rem;
-  padding: 0.75rem 0;
-  margin: 0.75rem 0;
-  border-bottom: 2px solid black;
-}
+  .container.title p {
+    font-size: 1.25rem;
+    padding: 0.75rem 0;
+    margin: 0.75rem 0;
+    border-bottom: 2px solid black;
+  }
 
-.container.title .box {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 0.25rem;
-  width: clamp(300px, 50%, 500px);;
-  margin: 0.75rem 0;
-}
+  .container.title .box {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.25rem;
+    width: clamp(300px, 50%, 500px);;
+    margin: 0.75rem 0;
+  }
 
-.container.title .box a {
-  width: 50%;
-}
+  .container.title .box a {
+    width: 50%;
+  }
 
 
-.container.title img {
-  width: clamp(300px, 50%, 500px);;
-}
+  .container.title img {
+    width: clamp(300px, 50%, 500px);;
+  }
 
 .wip {
   position: absolute;
@@ -73,3 +93,166 @@ li {
   opacity: 0.6;
   bottom: 0;
 }
+
+
+
+
+/* ------ */
+/* HEADER */
+/* ------ */
+
+
+header {
+  height: 4rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px -2px gray;
+}
+
+  header .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  header .logo {
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+  header .logo img {
+    height: 80%;
+  }
+
+  header .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  header .menu a {
+    padding-inline: 2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #0085ff;
+  }
+
+  header .menu-btn {
+    display: none;
+    height: 80%;
+    margin: auto 0;
+    background: none;
+    color: #0085ff;
+    font-size: 1.5rem;
+  }
+
+  /* For shifting to menu button when under 960px */
+  @media screen and (max-width: 960px) {
+    header .content {
+      padding: 0 0.75rem 0 1.5rem;
+    }
+
+    header .menu {
+      position: absolute;
+      top: 4rem;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: #0085ff;
+      box-shadow: 0px 2px 8px -2px gray;
+    }
+
+    header .menu a {
+      width: 100%;
+      display: grid;
+      color: #ffffff;
+    }
+
+    header .menu.active {
+      display: flex;
+    }
+
+    header .menu-btn {
+      display: block;
+    }
+  }
+
+/* ------ */
+/* Footer */
+/* ------ */
+
+footer {
+  padding: 4rem 2rem;
+  background-color: #0085ff;
+  color: #fff;
+}
+
+  footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  footer .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  footer .content div {
+    text-align: center;
+  }
+
+  footer .content .contact {
+    text-align: left;
+  }
+
+  footer .content .contact .socials {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.75rem;
+    padding-top: 0.5rem;
+  }
+
+  footer .content .resources {
+    text-align: right;
+  }
+
+  footer .content div img {
+    width: 10rem;
+  }
+
+  /* Collapse into a column when small enough */
+  @media screen and (max-width: 600px) {
+    footer .content {
+      flex-direction: column;
+    }
+
+    footer .content div {
+      width: 100%;
+    }
+
+    footer .content .contact {
+      text-align: center;
+    }
+
+    footer .content .contact .socials {
+      justify-content: center;
+    }
+
+    footer .content .resources {
+      text-align: center;
+    }
+  }

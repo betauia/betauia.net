@@ -16,5 +16,3 @@ def wip():
 def for_bedrifter():
     content = read_markdown("beta")
     return render_template("blank.html", title="Om oss", content=content)
-
-

@@ -8,77 +8,76 @@ header {
   box-shadow: 0px 2px 8px -2px gray;
 }
 
-header .content {
-  height: 100%;
-  margin: 0 2rem 0 4rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-header .logo {
-  width: 20%;
-  display: flex;
-  align-items: center;
-}
-
-header .logo img {
-  height: 80%;
-}
-
-header .menu {
-  display: flex;
-  align-items: center;
-}
-
-header .menu a {
-  padding-inline: 2rem;
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #0085ff;
-}
-
-header .menu-btn {
-  display: none;
-  height: 80%;
-  margin: auto 0;
-  background: none;
-  color: #0085ff;
-  font-size: 1.5rem;
-}
-
-@media screen and (max-width: 960px) {
-  header .menu {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: #0085ff;
-    box-shadow: 0px 2px 8px -2px gray;
-  }
-
-  header .menu a {
-    width: 100%;
-    display: grid;
-    text-align: center;
-  }
-
-  header .menu a {
-    color: #ffffff;
-  }
-
-  header .menu.active {
+  header .content {
+    height: 100%;
     display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  header .logo {
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+  header .logo img {
+    height: 80%;
+  }
+
+  header .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  header .menu a {
+    padding-inline: 2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #0085ff;
   }
 
   header .menu-btn {
-    top: 0;
-    display: block;
+    display: none;
+    height: 80%;
+    margin: auto 0;
+    background: none;
+    color: #0085ff;
+    font-size: 1.5rem;
   }
-  header .content {
-    margin: 0 0.5rem 0 1rem;
+
+  @media screen and (max-width: 960px) {
+    header .content {
+      padding: 0 0.75rem 0 1.5rem;
+    }
+
+    header .menu {
+      position: absolute;
+      top: 4rem;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: #0085ff;
+      box-shadow: 0px 2px 8px -2px gray;
+    }
+
+    header .menu a {
+      width: 100%;
+      display: grid;
+      color: #ffffff;
+    }
+
+    header .menu.active {
+      display: flex;
+    }
+
+    header .menu-btn {
+      display: block;
+    }
   }
-}
