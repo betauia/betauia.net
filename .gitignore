@@ -5,4 +5,4 @@ __pycache__
 app.log
 app.log.*
 postgres-data
-.env
+.env.prod

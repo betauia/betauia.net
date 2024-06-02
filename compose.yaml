@@ -19,10 +19,9 @@ services:
       - PYTHONPATH=/src
     env_file:
       - .env
-      - path: .env.prod
-        required: false
     volumes:
       - ./flask:/src
+
     # depends_on:
     #   - postgres
 
