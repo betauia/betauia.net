@@ -1,3 +1,7 @@
+body {
+  line-height: 1.6;
+}
+
 /* ----- */
 /* Utils */
 /* ----- */
@@ -7,20 +11,20 @@
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  padding: 1rem;
+  padding: 0 1rem;
   margin-inline: auto;
 }
 
-  .container.full {
+  .container--full {
     height: 100svh;
   }
 
-  .container.half {
+  .container--half {
     height: 50svh;
   }
 
   .container:first-child {
-    padding-top: 5rem;
+    padding-top: 4rem;
   }
 
 .btn {
@@ -33,58 +37,118 @@
 
 /* Smaller changes */
 
-ul {
+
+.container__content ul,
+.container__content ol {
   padding-left: 1rem;
-  padding-bottom: 1rem;
+  margin: 0.5rem 0;
 }
 
-li {
-  padding-bottom: 0.25rem;
+.container__content li {
+  margin: 0.5rem 0;
 }
 
-p {
-  padding-bottom: 1rem;
+.container__content h1,
+.container__content h2,
+.container__content h3,
+.container__content h4,
+.container__content h5,
+.container__content h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-h1, h2, h3, h4, h5 {
-  padding-bottom: 0.5rem;
+.container__content h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.3rem;
+}
+
+.container__content h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.3rem;
+}
+
+.container__content h3 {
+  font-size: 1.75rem;
+}
+
+.container__content h4 {
+  font-size: 1.5rem;
+}
+
+.container__content h5 {
+  font-size: 1.25rem;
+}
+
+.container__content h6 {
+  font-size: 1rem;
+}
+
+.container__content p {
+  margin: 0.5rem 0;
+}
+.container__content code {
+  border-radius: 3px;
+  background-color: #d8ecff;
+  padding: 0.1rem 0.2rem;
+}
+
+.container__content .content__btn {
+  background-color: #0085ff;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+}
+
+.container__content a {
+  color: #0085ff;
+  text-decoration: none;
+}
+
+.container__content a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 /* ------------------ */
 /* Special containers */
 /* ------------------ */
 
-.container.title {
+.container__content {
+  display: flex;
+  flex-direction: column;  
+}
+
+.container__content--centered {
+  justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-  .container.title h1 {
-    margin-bottom: 1rem;
-  }
+.container--vertical-center {
+  align-items: center;
+  /* text-align: center; */
+}
 
-  .container.title p {
-    font-size: 1.25rem;
-    padding: 0.75rem 0;
-    margin: 0.75rem 0;
-    border-bottom: 2px solid black;
-  }
-
-  .container.title .box {
+  .content__btn-menu {
     display: flex;
     justify-content: space-evenly;
     gap: 0.25rem;
-    width: clamp(300px, 50%, 500px);;
+    width: clamp(300px, 50%, 500px);
     margin: 0.75rem 0;
   }
 
-  .container.title .box a {
+  .btn-menu__btn {
     width: 50%;
   }
 
 
-  .container.title img {
-    width: clamp(300px, 50%, 500px);;
+  .content__logo {
+    width: clamp(300px, 50%, 500px);
   }
 
 .wip {
@@ -144,6 +208,7 @@ header {
     text-align: center;
     text-decoration: none;
     color: #0085ff;
+    font-weight: normal;
   }
 
   header .menu-btn {
@@ -232,6 +297,11 @@ footer {
 
   footer .content div img {
     width: 10rem;
+  }
+
+  footer .content a {
+    color: inherit;
+    font-weight: normal;
   }
 
   /* Collapse into a column when small enough */

@@ -5,14 +5,14 @@ Dette er BETADEV sin utvikler-wiki for nettside prosjektet. Denne er laget for �
 Her finner du:
 
 - **Prosjektoversikter**: Hva vi jobber med nå og planene fremover.
-- **Verktøy/teknologier**: Hva vi bruker og hvordan vi bruker det.
-- **Beste praksis/konvensjoner**: Hvordan vi skriver og vedlikeholder kode.
-- **Planer/roadmaps**: Hvor vi er på vei og langsiktige mål.
+- **Verktøy/tech**: Hva vi bruker og hvordan vi bruker det.
+- **Beste praksis**: Hvordan vi skriver og vedlikeholder kode.
+- **Planer**: Hvor vi er på vei og langsiktige mål.
 - **Onboarding**: Hjelp for nye utviklere som har lyst til å engasjere seg.
-- **Kommunikasjon/kontakt**: Hvem du kan kontakte og hvordan vi jobber og møter.
-- **FAQ/feilsøking**: Svar på vanlige spørsmål og løsninger på vanlige problemer.
+- **Kommunikasjon**: Hvem du kan kontakte og hvordan vi jobber og møter.
+- **FAQ**: Svar på vanlige spørsmål og løsninger på vanlige problemer.
 
-## Verktøy/teknologier
+## Verktøy/tech
 
 - **Verktøy**
     - **Git**: Versjonskontrollsystem, repository finnes på [GitHub](https://github.com/askeladd123/betadev-developed-development.net).
@@ -20,11 +20,23 @@ Her finner du:
 - **Teknologier**
     - **Flask**: Python webapp, brukes fullstack.
     - **NGINX**: Revers proxy-server.
-## Beste praksis/konvensjoner
+## Beste praksis
 
-Under konstruksjon
+- **Kodekonvensjoner**
+    - **CSS**: Bruk [BEM-metodikken](https://getbem.com/), tab ut elementer og modifiers.
+- **Git**
+    - **Branching-strategi**: Bruk [Git Flow](https://leanpub.com/git-flow/read) strukturen.
+    - **Branch-navn**: Navngi på følgende måter:
+        - Feature-branch: `feature/<feature-navn>`
+        - Release-branch: `release/<versjonsnummer>`
+        - Hotfix-branch: `hotfix/<beskrivelse>`
+    - **Commit-meldinger**: Lag informative, konsise meldinger som gjør det lett å spore tilbake.
+- **GitHub**
+    - **Pull requests**: Test og fullfør koden før den submittes.
+    - **Issues og Projects**: Bruk disse for å organisere og planlegge.
 
-## Planer/roadmaps
+
+## Planer
 
 Under konstruksjon
 
@@ -32,7 +44,7 @@ Under konstruksjon
 
 Under konstruksjon
 
-## Kommunikasjon/kontakt
+## Kontakt
 
 ### Møter
 
@@ -41,10 +53,10 @@ BETADEV har ukentlige møter gjennom hele semesteret. Møtet er hver onsdag kl. 
 ### Kontaktpersoner
 
 - Ask Sødal (leder)
-    - Mail: betadev@betauia.net/asks@uia.no
+    - Mail: betadev@betauia.net
     - Discord: [kjell_tore](https://discordapp.com/users/321235877567266818)
 
-## FAQ/feilsøking
+## FAQ
 
 Under konstruksjon
 
