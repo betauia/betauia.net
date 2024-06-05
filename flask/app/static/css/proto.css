@@ -121,6 +121,8 @@ body {
 .container__content {
   display: flex;
   flex-direction: column;  
+  width: 100%;
+  padding-bottom: 2rem;
 }
 
 .container__content--centered {
