@@ -1,6 +1,6 @@
 # Dev wiki
 
-Dette er BETADEV sin utvikler-wiki for nettside prosjektet. Denne er laget for å samle så mye relevant info om prosjektet som mulig, på ett tilgjengelig sted. Dette gjøres for å forbedre samarbeid og kommunikasjon innen teamet og gjøre det lettere å introdusere nye!
+Dette er BetaDEV sin utvikler-wiki for nettside prosjektet. Denne er laget for å samle så mye relevant info om prosjektet som mulig, på ett tilgjengelig sted. Dette gjøres for å forbedre samarbeid og kommunikasjon innen teamet og gjøre det lettere å introdusere nye!
 
 Her finner du:
 
@@ -48,12 +48,12 @@ Under konstruksjon
 
 ### Møter
 
-BETADEV har ukentlige møter gjennom hele semesteret. Møtet er hver onsdag kl. 16:15 og blir annonsert på BETA sin discord.
+BetaDEV har ukentlige møter gjennom hele semesteret. Møtet er hver onsdag kl. 16:15 og blir annonsert på BETA sin discord.
 
 ### Kontaktpersoner
 
 - Ask Sødal (leder)
-    - Mail: betadev@betauia.net
+    - Mail: [betadev@betauia.net](mail:to betadev@betauia.no)
     - Discord: [kjell_tore](https://discordapp.com/users/321235877567266818)
 
 ## FAQ

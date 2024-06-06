@@ -3,7 +3,7 @@ import markdown as md
 
 
 def read_markdown(file_name):
-    markdown_directory = os.path.join(os.path.dirname(__file__), "..", "static", "content")
+    markdown_directory = os.path.join(os.path.dirname(__file__), "..", "templates", "markdown")
 
     if not file_name.endswith('.md'):
         file_name += '.md'
