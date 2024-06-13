@@ -2,16 +2,6 @@
 
 Dette er BetaDEV sin utvikler-wiki for nettside prosjektet. Denne er laget for å samle så mye relevant info om prosjektet som mulig, på ett tilgjengelig sted. Dette gjøres for å forbedre samarbeid og kommunikasjon innen teamet og gjøre det lettere å introdusere nye!
 
-Her finner du:
-
-- **Prosjektoversikter**: Hva vi jobber med nå og planene fremover.
-- **Verktøy/tech**: Hva vi bruker og hvordan vi bruker det.
-- **Beste praksis**: Hvordan vi skriver og vedlikeholder kode.
-- **Planer**: Hvor vi er på vei og langsiktige mål.
-- **Onboarding**: Hjelp for nye utviklere som har lyst til å engasjere seg.
-- **Kommunikasjon**: Hvem du kan kontakte og hvordan vi jobber og møter.
-- **FAQ**: Svar på vanlige spørsmål og løsninger på vanlige problemer.
-
 ## Verktøy/tech
 
 - **Verktøy**
@@ -35,15 +25,6 @@ Her finner du:
     - **Pull requests**: Test og fullfør koden før den submittes.
     - **Issues og Projects**: Bruk disse for å organisere og planlegge.
 
-
-## Planer
-
-Under konstruksjon
-
-## Onboarding
-
-Under konstruksjon
-
 ## Kontakt
 
 ### Møter
@@ -55,10 +36,6 @@ BetaDEV har ukentlige møter gjennom hele semesteret. Møtet er hver onsdag kl. 
 - Ask Sødal (leder)
     - Mail: [betadev@betauia.net](mail:to betadev@betauia.no)
     - Discord: [kjell_tore](https://discordapp.com/users/321235877567266818)
-
-## FAQ
-
-Under konstruksjon
 
 <!-- ## Ting å gjøre -->
 <!---->
