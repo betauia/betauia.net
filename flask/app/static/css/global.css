@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+body {
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+main {
+  min-height: 100svh;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.construction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.construction h1 {
+  border-bottom: 2px solid black;
+  margin-bottom: 1rem;
+}
+
+.construction img {
+  height: 16rem;
+}
+
+
+button {
+  background-color: #0085ff;
+  color: #fff;
+  font-size: 1.25rem;
+  border-radius: 8px;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
+/* ----- */
+/* Utils */
+/* ----- */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-inline: auto;
+}
+
+  .container--full {
+    height: 100svh;
+  }
+
+  .container--half {
+    height: 50svh;
+  }
+
+  .container:first-child {
+    padding-top: 4rem;
+  }
+
+.btn {
+  background-color: #0085ff;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+/* Smaller changes */
+
+
+.container__content ul,
+.container__content ol {
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+.container__content li {
+  margin: 0.5rem 0;
+}
+
+.container__content h1,
+.container__content h2,
+.container__content h3,
+.container__content h4,
+.container__content h5,
+.container__content h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.container__content h1 {
+  font-size: 2.5rem;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.3rem;
+}
+
+.container__content h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.3rem;
+}
+
+.container__content h3 {
+  font-size: 1.75rem;
+}
+
+.container__content h4 {
+  font-size: 1.5rem;
+}
+
+.container__content h5 {
+  font-size: 1.25rem;
+}
+
+.container__content h6 {
+  font-size: 1rem;
+}
+
+.container__content p {
+  margin: 0.5rem 0;
+}
+.container__content code {
+  border-radius: 3px;
+  background-color: #d8ecff;
+  padding: 0.1rem 0.2rem;
+}
+
+.container__content .content__btn {
+  background-color: #0085ff;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+}
+
+.container__content a {
+  color: #0085ff;
+  text-decoration: none;
+}
+
+.container__content a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ------------------ */
+/* Special containers */
+/* ------------------ */
+
+.container__content {
+  display: flex;
+  flex-direction: column;  
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.container__content--centered {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container--vertical-center {
+  align-items: center;
+  /* text-align: center; */
+}
+
+  .content__btn-menu {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.25rem;
+    width: clamp(300px, 50%, 500px);
+    margin: 0.75rem 0;
+  }
+
+  .btn-menu__btn {
+    width: 50%;
+  }
+
+
+  .content__logo {
+    width: clamp(300px, 50%, 500px);
+  }
+
+.wip {
+  position: absolute;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+  bottom: 0;
+}
+
+
+
+
+/* ------ */
+/* HEADER */
+/* ------ */
+
+
+header {
+  height: 4rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 8px -2px gray;
+}
+
+  header .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  header .logo {
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+  header .logo img {
+    height: 80%;
+  }
+
+  header .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  header .menu a {
+    padding-inline: 2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #0085ff;
+    font-weight: normal;
+  }
+
+  header .menu-btn {
+    display: none;
+    height: 80%;
+    margin: auto 0;
+    background: none;
+    color: #0085ff;
+    font-size: 1.5rem;
+  }
+
+  /* For shifting to menu button when under 960px */
+  @media screen and (max-width: 960px) {
+    header .content {
+      padding: 0 0.75rem 0 1.5rem;
+    }
+
+    header .menu {
+      position: absolute;
+      top: 4rem;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: #0085ff;
+      box-shadow: 0px 2px 8px -2px gray;
+    }
+
+    header .menu a {
+      width: 100%;
+      display: grid;
+      color: #ffffff;
+    }
+
+    header .menu.active {
+      display: flex;
+    }
+
+    header .menu-btn {
+      display: block;
+    }
+  }
+
+/* ------ */
+/* Footer */
+/* ------ */
+
+footer {
+  padding: 4rem 2rem;
+  background-color: #0085ff;
+  color: #fff;
+}
+
+  footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  footer .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  footer .content div {
+    text-align: center;
+  }
+
+  footer .content .contact {
+    text-align: left;
+  }
+
+  footer .content .contact .socials {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.75rem;
+    padding-top: 0.5rem;
+  }
+
+  footer .content .resources {
+    text-align: right;
+  }
+
+  footer .content div img {
+    width: 10rem;
+  }
+
+  footer .content a {
+    color: inherit;
+    font-weight: normal;
+  }
+
+  /* Collapse into a column when small enough */
+  @media screen and (max-width: 600px) {
+    footer .content {
+      flex-direction: column;
+    }
+
+    footer .content div {
+      width: 100%;
+    }
+
+    footer .content .contact {
+      text-align: center;
+    }
+
+    footer .content .contact .socials {
+      justify-content: center;
+    }
+
+    footer .content .resources {
+      text-align: center;
+    }
+  }

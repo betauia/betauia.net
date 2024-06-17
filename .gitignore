@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__
+/instance
+/postgres-data
+app.log
+app.log.*
+postgres-data
+.env.prod
