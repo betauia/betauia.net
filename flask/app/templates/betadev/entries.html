@@ -1,0 +1,130 @@
+{% extends "components/base.html" %}
+
+{% block title %}{{title}} | BETA{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="container__content">
+    
+
+  <h1>Game Jam Selection</h1>
+
+  <input type="text" class="content__searchbar" id="game-search" onkeyup="filterTable()" placeholder="Search for games..">
+
+  <table id="game-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Theme</th>
+        <th>Votes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/betadev/gamejam/okt23-maks-uflaks/peak-of-gim/index.html">Peak of Gim</a></td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td><a href="/betadev/gamejam/okt23-maks-uflaks/crime-download/index.html">Crime Download</a></td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td><a href="/betadev/gamejam/okt23-maks-uflaks/klaus-the-klutz/index.html">Klaus the Klutz</a></td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Monkey Sort Defense</td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>Max Misadventures</td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Shamaania</td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Miss Fortune</td>
+        <td>2023-10-27</td>
+        <td>Maks uflaks</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Astroholic</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Neil Bullstrong</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Moon Clicker</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Sirkelspill</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Sondre Rocket Game</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>Simon Rocket Game</td>
+        <td>2023-09-15</td>
+        <td>Måne</td>
+        <td>?</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const filterTable = () => {
+      const input = document.getElementById("game-search");
+      const table = document.getElementById("game-table");
+      const tr = table.getElementsByTagName("tr");
+
+      const filter = input.value.toUpperCase();
+
+      for (let i = 0; i < tr.length; i++) {
+        const td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          const txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+
+</div>
+</div>
+{% endblock %}
+

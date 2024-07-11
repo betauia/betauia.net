@@ -13,6 +13,9 @@ def create_app():
     from app.routes.betadev import betadev_bp
     app.register_blueprint(betadev_bp, url_prefix="/betadev")
 
+    from app.routes.betadev.gamejam import gamejam_bp
+    app.register_blueprint(gamejam_bp, url_prefix="/betadev/gamejam")
+
     from app.routes.comedycentral import cc_bp
     app.register_blueprint(cc_bp, url_prefix="/comedycentral")
 

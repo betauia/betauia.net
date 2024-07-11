@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from .utils import read_markdown
+from app.routes.utils import read_markdown
 
 betadev_bp = Blueprint("betadev", __name__)
 
@@ -13,3 +13,7 @@ def betadev():
 def wiki():
     content = read_markdown("betadev/wiki")
     return render_template("blank.html", title="Dev wiki", content=content)
+
+@betadev_bp.route("/gamejam/entries")
+def game_jam_entries():
+    return render_template("betadev/entries.html", title="Game Jam Entries")
