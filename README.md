@@ -17,17 +17,13 @@
 ### Steps
 1. Clone the repository:
 ```bash
-git clone https://github.com/askeladd123/betadev-developed-development.net
+git clone git@github.com:betauia/betauia.net.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd betadev-developed-development
+cd betauia.net
 ```
-3. Switch to the dockerizing branch:
-```bash
-git checkout dockerizing
-```
-4. Build and start the Docker containers:
+3. Build and start the Docker containers:
 ```bash
 docker compose up --build
 ```
