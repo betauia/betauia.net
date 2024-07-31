@@ -1,0 +1,37 @@
+---
+import Layout from "@layouts/Main.astro";
+import Prose from "@components/Prose.astro";
+import RouteTree from "@components/ui/RouteTree.astro";
+
+const {frontmatter} = Astro.props;
+
+const root = "/om";
+const routes = [
+  {
+    name: "Generelt",
+    route: "/",
+    files: [
+      { name: "Om BETA", route: "beta" },
+      { name: "Ny student", route: "nystudent" },
+    ]
+  }
+];
+
+const isCurrentRoute = (path: string) => {
+  return Astro.url.pathname === path;
+};
+
+---
+
+<Layout title={frontmatter.title}>
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 flex">
+    <div class="w-1/4">
+      <RouteTree routes={routes} root={root} />
+    </div>
+    <div class="w-3/4">
+    <Prose>
+      <slot />
+    </Prose>
+    </div>
+  </div>
+</Layout>

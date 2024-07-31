@@ -1,13 +1,11 @@
 ---
-import { Image } from "astro:assets";
-
-import Layout from "../layouts/Layout.astro";
-import Calendar from "../components/Calendar.astro";
+import Layout from "../layouts/Main.astro";
+import Button from "@components/ui/Button.astro";
 ---
 
 <Layout title="Home">
   <div class="w-full my-auto text-gray-900 dark:text-white">
-    <div class="my-auto container mx-auto px-4 max-w-4xl px-2 sm:px-6 lg:px-8 flex">
+    <div class="my-auto container mx-auto px-4 max-w-4xl sm:px-6 lg:px-8 flex">
       
       <div class="mx-auto px-2 sm:px-6 lg:px-8 text-center">
           <div class="flex justify-center">
@@ -15,8 +13,8 @@ import Calendar from "../components/Calendar.astro";
           </div>
           <p class="text-lg mt-4 ">BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT eller kunstig intelligens tilhørende UiA Grimstad.</p>
           <div class="mt-6 mb-2">
-            <a href="https://discord.gg/U87D3kPdJ3" target="_blank" class="transition bg-brand hover:bg-blue-700 text-white border border-brand hover:border-blue-700 font-bold py-2 px-4 rounded">Discord</a>
-            <a href="#" class="transition bg-transparent hover:bg-brand border border-brand hover:text-white font-bold py-2 px-4 rounded">Om oss</a>
+            <Button text="Discord" href="https://discord.gg/U87D3kPdJ3" target="_blank"/>
+            <Button text="Om oss" href="/om/beta" type="secondary" />
           </div>
         </div>
       </div>

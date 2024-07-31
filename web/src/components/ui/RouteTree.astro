@@ -1,0 +1,36 @@
+---
+export interface Props {
+  routes: Routes[];
+  root: string;
+}
+
+interface File {
+    name: string;
+    route: string;
+}
+
+interface Routes {
+    name: string;
+    route: string;
+    files: File[];
+}
+
+const { routes, root } = Astro.props as Props;
+
+const isCurrentRoute = (path: string) => {
+  return Astro.url.pathname === path;
+};
+---
+
+<ul class="text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 mr-4">
+    {routes.map((route) => (
+        <li>{route.name}</li>
+        <ul>
+            {route.files.map((file) => (
+                <li class={`pl-4 ${isCurrentRoute(root + route.route + file.route) ? "bg-gray-200 dark:bg-gray-700" : ""}`}>
+                    <a class="hover:opacity-75" href={root + route.route + file.route}>{file.name}</a>
+                </li>
+            ))}
+        </ul>
+    ))}
+</ul>
