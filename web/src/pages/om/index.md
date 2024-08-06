@@ -1,9 +1,7 @@
 ---
 layout: src/layouts/OmLayout.astro
-title: Om
+title: Om BETA
 ---
-
-# Om BETA
 
 ![local image](/imgs/Beta_blue_1.png)
 

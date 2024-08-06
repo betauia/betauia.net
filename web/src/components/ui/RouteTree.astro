@@ -22,15 +22,15 @@ const isCurrentRoute = (path: string) => {
 };
 ---
 
-<ul class="text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 mr-4">
-    {routes.map((route) => (
-        <li>{route.name}</li>
-        <ul>
-            {route.files.map((file) => (
-                <li class={`pl-4 ${isCurrentRoute(root + route.route + file.route) ? "bg-gray-200 dark:bg-gray-700" : ""}`}>
-                    <a class="hover:opacity-75" href={root + route.route + file.route}>{file.name}</a>
-                </li>
-            ))}
-        </ul>
-    ))}
+<ul class="text-gray-900 dark:text-white">
+  {routes.map((route) => (
+    <li class="pl-2 py-2 text-lg">{route.name}</li>
+    <ul>
+      {route.files.map((file) => (
+        <li class={`transition mx-2 my-2 rounded ${isCurrentRoute(root + route.route + file.route) ? "text-white bg-brand" : "hover:bg-brand hover:bg-opacity-25"}`}>
+          <a href={root + route.route + file.route}><div class="pl-4 py-1">{file.name}</div></a>
+        </li>
+      ))}
+    </ul>
+  ))}
 </ul>

@@ -3,8 +3,6 @@ layout: src/layouts/OmLayout.astro
 title: Test
 ---
 
-# Dette er en test
-
 Her kan man skrive litt hva man vil og det formateres fint fra markdown til html.
 
 ## Layout

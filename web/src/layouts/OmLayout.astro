@@ -9,12 +9,20 @@ const root = "/om";
 const routes = [
   {
     name: "Generelt",
-    route: "/",
+    route: "",
     files: [
-      { name: "Om BETA", route: "beta" },
-      { name: "Ny student", route: "nystudent" },
+      { name: "Om BETA", route: "" },
+      { name: "Ny student", route: "/nystudent" },
     ]
-  }
+  },
+  {
+    name: "BetaDEV",
+    route: "/betadev",
+    files: [
+      { name: "Om BetaDEV", route: "" },
+      { name: "Gamejam", route: "/gamejam" },
+    ]
+  },
 ];
 
 const isCurrentRoute = (path: string) => {
@@ -24,12 +32,13 @@ const isCurrentRoute = (path: string) => {
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 flex">
-    <div class="w-1/4">
+  <div class="mx-auto w-full max-w-7xl px-0 sm:px-6 flex">
+    <div class="rounded-none sm:rounded w-1/4 bg-gray-100 dark:bg-gray-800">
       <RouteTree routes={routes} root={root} />
     </div>
-    <div class="w-3/4">
+    <div class="w-3/4 px-4 py-4">
     <Prose>
+      <h1>{frontmatter.title}</h1>
       <slot />
     </Prose>
     </div>
