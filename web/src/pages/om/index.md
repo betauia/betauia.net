@@ -7,7 +7,7 @@ title: Om BETA
 
 ## Hvem er vi?
 
-BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT eller kunstig intelligens på UiA Grimstad. Linjeforeningen drives av studentene på disse studiene, og du er automatisk medlem som student på et av dem.
+BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT og kunstig intelligens på UiA Grimstad. Linjeforeningen drives av studentene på disse studiene, og du er automatisk medlem som student på et av dem.
 
 ## Hva driver vi med?
 

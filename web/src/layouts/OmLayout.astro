@@ -3,6 +3,8 @@ import Layout from "@layouts/Main.astro";
 import Prose from "@components/Prose.astro";
 import RouteTree from "@components/ui/RouteTree.astro";
 
+import ArrowRightIcon from "@components/icons/ArrowRight.astro";
+
 const {frontmatter} = Astro.props;
 
 const root = "/om";
@@ -16,11 +18,20 @@ const routes = [
     ]
   },
   {
-    name: "BetaDEV",
-    route: "/betadev",
+    name: "Interessegrupper",
+    route: "/interessegrupper",
     files: [
-      { name: "Om BetaDEV", route: "" },
-      { name: "Gamejam", route: "/gamejam" },
+      { name: "BetaDEV", route: "/betadev" },
+      { name: "BetaSEC", route: "/betasec" },
+    ]
+  },
+  {
+    name: "Komiteer",
+    route: "/komiteer",
+    files: [
+      { name: "Bedkom", route: "/bedkom" },
+      { name: "BetaLAN", route: "/betalan" },
+      { name: "Eventkom", route: "/eventkom" },
     ]
   },
 ];
@@ -32,15 +43,34 @@ const isCurrentRoute = (path: string) => {
 ---
 
 <Layout title={frontmatter.title}>
-  <div class="mx-auto w-full max-w-7xl px-0 sm:px-6 flex">
-    <div class="rounded-none sm:rounded w-1/4 bg-gray-100 dark:bg-gray-800">
+  <div class="relative mx-auto w-full max-w-7xl px-0 sm:px-6 flex">
+    <div id="tree-menu" class="sm:block hidden absolute top-0 h-full w-full rounded-none sm:rounded w-1/4 bg-gray-100 dark:bg-gray-800">
       <RouteTree routes={routes} root={root} />
     </div>
-    <div class="w-3/4 px-4 py-4">
-    <Prose>
-      <h1>{frontmatter.title}</h1>
-      <slot />
-    </Prose>
+    <span id="tree-close" class="sm:hidden px-4 absolute sm:static top-0 right-0 text-white"><ArrowRightIcon /></span>
+    <div class="px-4 py-4">
+      <Prose>
+        <h1><span id="tree-open" class="sm:hidden">hei</span> {frontmatter.title}</h1>
+        <slot />
+      </Prose>
     </div>
   </div>
 </Layout>
+
+<script>
+  let treeOpenBtn = document.getElementById("tree-open");
+  let treeCloseBtn = document.getElementById("tree-close");
+  let treeMenu = document.getElementById("tree-menu");
+
+  // Check if darktheme was enabled or system preferes it
+  if (treeOpenBtn && treeCloseBtn && treeMenu) {
+    treeOpenBtn.addEventListener("click", () => {
+      treeMenu.classList.toggle("hidden");
+    });
+    treeCloseBtn.addEventListener("click", () => {
+      treeMenu.classList.toggle("hidden");
+    });
+  }
+</script>
+
+
