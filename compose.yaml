@@ -6,31 +6,31 @@ services:
       - 80:80
     depends_on: 
       - web
+      - app
 
   web:
     build: web
-    restart: no
+    restart: always
     volumes:
       - ./web:/app
       - astro_node_modules:/app/node_modules
     ports:
       - 4321:4321
 
+  app:
+    build:
+      context: flask
+      target: builder
+    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
+    restart: always
+    environment:
+      - FLASK_SERVER_PORT=9091
+      - PYTHONUNBUFFERED=0
+      - PYTHONPATH=/src
+    volumes:
+      - ./flask:/src
+
+
 volumes:
   astro_node_modules:
-
-  #app:
-  #  build:
-  #    context: flask
-  #    target: builder
-  #  stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
-  #  restart: always
-  #  environment:
-  #    - FLASK_SERVER_PORT=9091
-  #    - PYTHONUNBUFFERED=0
-  #    - PYTHONPATH=/src
-  #  env_file:
-  #    - .env
-  #  volumes:
-  #    - ./flask:/src
 

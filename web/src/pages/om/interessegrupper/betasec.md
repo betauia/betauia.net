@@ -1,5 +1,5 @@
 ---
-layout: src/layouts/OmLayout.astro
+layout: src/layouts/Markdown.astro
 title: BetaSEC
 ---
 
