@@ -1,6 +1,8 @@
 services:
   proxy:
-    build: proxy
+    build: 
+      context: proxy
+      dockerfile: Dockerfile
     restart: always
     ports:
       - 80:80
@@ -9,18 +11,22 @@ services:
       - app
 
   web:
-    build: web
+    build: 
+      context: web
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - ./web:/app
       - astro_node_modules:/app/node_modules
     ports:
       - 4321:4321
+    depends_on:
+      - app
 
   app:
     build:
       context: flask
-      target: builder
+      dockerfile: Dockerfile
     stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
     restart: always
     environment:
@@ -33,4 +39,3 @@ services:
 
 volumes:
   astro_node_modules:
-

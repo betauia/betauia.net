@@ -1,0 +1,25 @@
+services:
+  proxy:
+    build:
+      dockerfile: Dockerfile.prod
+    volumes:
+      - astro_build:/usr/share/nginx/html
+
+  web:
+    build:
+      dockerfile: Dockerfile.prod
+    volumes:
+      - astro_build:/app
+
+  app:
+    build:
+      dockerfile: Dockerfile.prod
+    environment:
+      - FLASK_SERVER_PORT=9091
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/src
+    volumes:
+
+volumes:
+  astro_node_modules:
+  astro_build:

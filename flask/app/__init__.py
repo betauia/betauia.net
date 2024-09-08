@@ -9,6 +9,6 @@ def create_app():
 
     @app.route("/ping", methods=["GET"])
     def ping():
-        return "PONG!", 200
+        return "pong!", 200
 
     return app

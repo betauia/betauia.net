@@ -13,7 +13,7 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
   <!-- Set the dark class before html gets loaded, circumvents white flash on refresh -->
-    <script strategy="beforeInteractive">
+    <script>
       if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         document.documentElement.classList.add("dark");
       }
