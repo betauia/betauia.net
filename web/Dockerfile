@@ -12,6 +12,4 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4321
-
 ENTRYPOINT ["astro", "dev", "--host", "0.0.0.0"]
