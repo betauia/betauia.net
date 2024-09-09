@@ -2,6 +2,8 @@ services:
   proxy:
     build:
       dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
     volumes:
       - astro_build:/usr/share/nginx/html
 
