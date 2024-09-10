@@ -9,7 +9,6 @@ services:
       - astro_build:/usr/share/nginx/html
       - ./certbot/www/:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
-    entrypoint: "/bin/sh -c 'nginx && while true; do nginx -s reload; sleep 12h; done'"
 
   certbot:
     image: certbot/certbot
@@ -18,7 +17,6 @@ services:
       - ./certbot/conf/:/etc/letsencrypt/:rw
     depends_on:
       - proxy
-    entrypoint: "/bin/sh -c 'while true; do certbot renew; sleep 12h; done'"
 
   web:
     build:
