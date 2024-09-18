@@ -17,17 +17,13 @@
 ### Steps
 1. Clone the repository:
 ```bash
-git clone https://github.com/askeladd123/betadev-developed-development.net
+git clone https://github.com/betauia/betauia.net
 ```
 2. Navigate to the project directory:
 ```bash
-cd betadev-developed-development
+cd betauia.net
 ```
-3. Switch to the dockerizing branch:
-```bash
-git checkout dockerizing
-```
-4. Build and start the Docker containers:
+3. Build and start the Docker containers:
 ```bash
 docker compose up --build
 ```
@@ -42,7 +38,7 @@ docker compose up
 ```
 - Start the production application:
 ```bash
-docker compose -f compose.yaml -f compose-prod.yaml up
+docker compose -f compose.yaml -f compose-prod.yaml up -d
 ```
 
 - Access the application at [localhost](http://localhost/)
@@ -59,9 +55,14 @@ docker compose down
 ```bash
 docker compose ps
 ```
-- To rebuild containers:
+- To build containers:
 ```bash
-docker compose up --build
+docker compose build
 ```
 
-<!-- > NOTE: if you want to clone the games from *game jams*, use `git clone --recurse-submodules <repo name>` -->
+## Gamejams
+
+If you want to clone the games from *game jams*, use:
+```sh
+git clone --recurse-submodules <repo name>
+```
