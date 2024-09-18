@@ -1,3 +1,0 @@
-services:
-  app:
-    command: gunicorn -b 0.0.0.0:9091 server:app
