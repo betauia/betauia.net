@@ -32,3 +32,5 @@ Set up SSL certificate (one time):
 ```sh
 docker compose -f compose.yaml -f production.yaml run --rm certbot -v certonly --webroot --webroot-path /var/www/certbot/ -d betauia.net
 ```
+
+Can be renewed with the `renew.sh` script.
