@@ -1,0 +1,42 @@
+---
+import Layout from "@layouts/Main.astro";
+import UsefulLinks from "@components/ui/UsefulLinks.astro";
+
+const studentLinks = [
+  {
+    title: "UiA student",
+    links: [
+      { href: "https://uia.instructure.com/", text: "Canvas" },
+      { href: "https://tools.uia.no/", text: "tools.uia.no" },
+    ],
+  },
+  {
+    title: "Realfag",
+    links: [
+      { href: "https://www.wolframalpha.com", text: "Wolfram Alpha" },
+      { href: "https://www.khanacademy.org", text: "Khan Academy" },
+    ],
+  },
+  {
+    title: "Skriving",
+    links: [
+      { href: "https://www.grammarly.com", text: "Grammarly" },
+      { href: "https://www.overleaf.com", text: "Overleaf" },
+    ],
+  },
+  {
+    title: "Studentfordeler",
+    links: [
+      {
+        href: "https://education.github.com/pack",
+        text: "Github Student Developer Pack",
+      },
+      { href: "#", text: "Noe mer..." },
+    ],
+  },
+];
+---
+
+<Layout title="Nyttige lenker">
+  <UsefulLinks categories={studentLinks} />
+</Layout>
