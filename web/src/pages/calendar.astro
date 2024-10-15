@@ -1,0 +1,12 @@
+---
+import Layout from "@layouts/Main.astro";
+---
+
+<Layout title="Kalender">
+  <iframe id="open-web-calendar" 
+    style="background:url('https://raw.githubusercontent.com/niccokunzmann/open-web-calendar/master/static/img/loaders/circular-loader.gif') center center no-repeat;"
+    src="https://open-web-calendar.hosted.quelltext.eu/calendar.html?css=.CALENDAR-INDEX-0%2C%20.CALENDAR-INDEX-0%20.dhx_body%2C%20.CALENDAR-INDEX-0%20.dhx_title%20%20%7B%20background-color%3A%20%230085ff%3B%20%7D%20%0A&amp;prefer_browser_language=true&amp;style-event-status-cancelled=true&amp;style-event-status-tentative=true&amp;tabs=month&amp;tabs=week&amp;tabs=day&amp;tabs=agenda&amp;target=_blank&amp;timezone=Europe%2FOslo&amp;title=Beta%20UiA%20Kalender&amp;url=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fical%2Ftfovkufa1g4bflfg2oo8j4798k%2540group.calendar.google.com%2Fpublic%2Fbasic.ics"
+    sandbox="allow-scripts allow-same-origin allow-popups"
+    allowTransparency="true" scrolling="no" 
+    frameborder="0" height="600px" width="100%"></iframe>
+</Layout>
