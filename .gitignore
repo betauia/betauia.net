@@ -5,9 +5,6 @@
 # Astro
 .astro/
 
-# Certbot
-certbot/
-
 # JetBrains
 .idea/
 

@@ -2,9 +2,6 @@
 # General ignores
 #
 
-# Astro
-.astro/
-
 # Docker
 Dockerfile
 compose.yaml
