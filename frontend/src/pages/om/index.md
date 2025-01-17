@@ -8,6 +8,7 @@ title: Om BETA
 BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT og kunstig intelligens på UiA Grimstad. Linjeforeningen drives av studentene på disse studiene, og du er automatisk medlem som student på et av dem.
 
 Dokumenter: [vedtekter](/Vedtekter.pdf)
+
 E-postadresse: [post@betauia.net](mailto:post@betauia.net)
 
 [Hvordan verv finnes i BETA?](/om/verv)
