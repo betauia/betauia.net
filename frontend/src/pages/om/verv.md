@@ -5,12 +5,12 @@ title: Om verv
 
 ## Hvor skummelt er det å engasjere seg?
 
-Ikke i det hele tatt! Som nytt styremedlem har du en 4 uker sammen med de gamle styremedlemmene og får god erfaring med alle rutiner og oppgaver. Det stilles ingen krav til tidligere erfaring, selv om det kan hjelpe, annet en at du er engasjert for studentmiljøet. Her er det rom til feil og å forske på nye løsninger til problemer som skulle oppstå. Det er også utrolig lærerikt, morro, og verdifult å ha med seg på CV-en. Engasjer deg!!
+Ikke i det hele tatt! Som nytt styremedlem har du en 4 ukers periode sammen med de gamle styremedlemmene og du får god erfaring med alle rutiner og oppgaver. Det stilles ingen krav til tidligere erfaring, selv om det kan hjelpe, annet en at du er engasjert for studentmiljøet. Her er det rom til feil og å forske på nye løsninger til problemer som skulle oppstå. Det er også utrolig lærerikt, morro, og verdifult å ha med seg på CV-en. Engasjer deg!!
 
 ## Hva kan du stille som?
 
 I BETA har vi et hovedstyre bestående av 9 medlemmer som du kan og bør engasjere deg som:
-- **Leder**: Info kommer...
+- **Leder**: er BETA sitt annsikt utad mot fakultetet, bedrifter, og andre foreninger. Lederend sørger for å samle styret, passe på at linjeforeningen drives på en god måte og at alle komiteer og interessegrupper sammarbeider mot samme mål.
 - **Nestleder**: er lederens stedsfortreder og har ansvar for referering av styremøter og linjeforeningens internstruktur. Nestelederen er lederens sparringspartner og ellers en relativt fri rolle til å delta i de fleste andre komiteer og interessegrupper for å hjelpe.
 - **Økonomi-ansvarlig**: har ansvar BETA sin økonomi. Dette inkluderer å føre regnskap, sette opp budsjett og sørge for at vi får betalt for bedriftspresentasjoner. Rollen innebærer også sammarbeid med komiteene for å sikre økonomisk støtte til arrangementer og prosjekter.
 - **PR-ansvarlig**: har ansvar for BETA sin profil på ulike sosiale medier; Instagram, facebook, discord, og tiktok. Rollen er fri, som i å ha muligheten til å være kreativ og finne på morsomme videoer, plakater, postere, osv. Det handler også om å få frem arrangementer, eventer, og aktiviteter som skjer gjennom BETA.
