@@ -27,9 +27,12 @@ For at linjeforeningen og studenter på campus trives trenger vi nye og gamle in
 - Økonomi
     - Regnskap
     - Budsjett
-- Vedtektsendringer
-    - [Fjorårets vedtekter](/Vedtekter.pdf)
-- Valg av styre
-    - [Verv som kan stilles til](/om/verv)
-- Innkomne saker
-    - [Send inn forslag](https://forms.office.com/e/7f26pjvktU)
+- Vedtektsendringe ([fjorårets vedtekter](/Vedtekter.pdf))
+    - **Interessegrupper/BetaLAN sitt leder valg**: Til nå har BetaDEV/SEC valgt leder internt, og det foreslås å velge disse også på generalforsamlingen som andre komiteer. Da slipper man at interessegruppene blir borte ved lite aktivitet, sitter ikke fast i vennegjeng som uteksamineres og interessegruppen mister alle medlemmer, og gir stemmeinflytelse fra alle Beta medlemmer.
+- Innkomne saker ([send inn forslag](https://forms.office.com/e/7f26pjvktU))
+    - **Æresmedlem knyttet til linjeforeningen**: Hedre og skryte av innsatsen til personer knyttet til linjeforeningen på et eller annet hvis.
+    - **Extra: Beta medlemmer diskuterer sammen og deler med forsamlingen**
+- Intro til styreverv
+- Pizza pause og diskusjon
+- Valg av styre ([verv som kan stilles til](/om/verv))
+- Avsluttning
