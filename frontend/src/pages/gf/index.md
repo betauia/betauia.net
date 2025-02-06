@@ -13,14 +13,14 @@ For å vite hvor mye pizza vi trenger, ønsker vi at medlemmer skal melde seg op
 
 For å vite hva studenter mener og ønsker, er det helt nødvendig at medlemmer sender inn aktuelle saker, både stort og smått. Alle innslag vil bli lagt frem anonymt til diskusjon på generalforsamlingen. [Send inn aktuelle saker og ønsker her](https://forms.office.com/e/7f26pjvktU)!
 
-Lineoreningens vedtekter kan finnes 
+[Lineforeningens vedtekter finnes her](/Vedtekter.pdf)!
 
 ## Gjør CV-en din unik! Bli med i styret!
 For at linjeforeningen og studenter på campus trives trenger vi nye og gamle inspirerte sjeler til å engasjere seg. I Beta finnes det flere [ulike verv](/om/verv) hvor du kan bestemme alt fra økonomi helt til å arrangere verdens råeste LAN-party. I tillegg kan et verv bidra til at dine interesser kan gi en helt unik CV og forsprang i arbeidsmarkedet.
 
 **Studentene trenger DEG! Still til [ulike verv](/om/verv) på generalforsamlingen!**
 
-## Agenda (mer kommer)
+## Agenda
 
 - Åpning av møtet
 - Årsberetning
@@ -28,7 +28,7 @@ For at linjeforeningen og studenter på campus trives trenger vi nye og gamle in
     - Regnskap
     - Budsjett
 - Vedtektsendringe ([fjorårets vedtekter](/Vedtekter.pdf))
-    - **Interessegrupper/BetaLAN sitt leder valg**: Til nå har BetaDEV/SEC valgt leder internt, og det foreslås å velge disse også på generalforsamlingen som andre komiteer. Da slipper man at interessegruppene blir borte ved lite aktivitet, sitter ikke fast i vennegjeng som uteksamineres og interessegruppen mister alle medlemmer, og gir stemmeinflytelse fra alle Beta medlemmer.
+    - **Interessegrupper/BetaLAN sitt ledervalg**: Til nå har BetaDEV/SEC valgt leder internt, og det foreslås å velge disse også på generalforsamlingen som andre komiteer. Da slipper man at interessegruppene blir borte ved lite aktivitet, sitter ikke fast i vennegjeng som uteksamineres og interessegruppen mister alle medlemmer, og gir stemmeinflytelse fra alle Beta medlemmer.
 - Innkomne saker ([send inn forslag](https://forms.office.com/e/7f26pjvktU))
     - **Æresmedlem knyttet til linjeforeningen**: Hedre og skryte av innsatsen til personer knyttet til linjeforeningen på et eller annet hvis.
     - **Extra: Beta medlemmer diskuterer sammen og deler med forsamlingen**
