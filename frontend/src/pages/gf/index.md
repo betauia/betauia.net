@@ -27,13 +27,16 @@ For at linjeforeningen og studenter på campus trives trenger vi nye og gamle in
 - Økonomi
     - Regnskap
     - Budsjett
-- Vedtektsendringe ([fjorårets vedtekter](/Vedtekter.pdf))
+- Vedtektsendringer ([fjorårets vedtekter](/Vedtekter.pdf))
     - **Interessegrupper/BetaLAN sitt ledervalg**: Til nå har BetaDev/Sec valgt leder internt, og det foreslås å velge disse også på generalforsamlingen som andre komiteer. Da slipper man at interessegruppene blir borte ved lite aktivitet, sitter ikke fast i vennegjeng som uteksamineres og interessegruppen mister alle medlemmer, og gir stemmeinflytelse fra alle Beta medlemmer.
     - **Kåring av æresmedlem**: For å vise at Beta er takknemmelige for at personer utenfor linjeforeningen engasjerer seg, kan man gi ut en pris en gang i året for ikke-medlemmer som har betydd noe for Beta.
     - **PR komite**: For å engasjere flere til å både delta og arrangere seg i linjeforeninga kan PR-rollen bli utvidet til en komite hvor flere kan hjelpe med å fremme linjeforeningen.
-    - **(Forslag) Generalforsamling på høsten**: For å kapre flere engasjerte studenter, må det skje tidligere før andre foreninger tar de.
-    - **(Forslag) Egen AI-interessegruppe**: En egen interessegruppe for å jobbe med AI-relaterte prosjekter.
+    - **Generalforsamling på høsten**: For å kapre flere engasjerte studenter, må det skje tidligere før andre foreninger tar de.
+    - **Egen AI-interessegruppe**: En egen interessegruppe for å jobbe med AI-relaterte prosjekter.
 - Innkomne saker ([send inn forslag](https://forms.office.com/e/7f26pjvktU))
+    - **Prisjustering for bedpresser**: Bedkom skrur opp prisen for bedpress, med bakgrunn på at dette ikke er gjort på lenge.
+    - **Promotering/definere BetaDev prosjekter**: Lage tydelige oppgaver og beskrivelser av prosjekter for å lett kunne delta og jobbe på møtene.
+    - **Kode-kvelder**: Ha flere kvelder hvor man kan hygge seg og kode alle mulige saker, både studierelevant og egne prosjekter, hvor man kan sammarbeide, dele og få hjelp.
     - **Kodekonkurranser**: BetaDev kunne både arrangert og deltat i kodekonkurranser.
     - **(Extra) Beta medlemmer diskuterer sammen og deler med forsamlingen**
 - Intro til styreverv
