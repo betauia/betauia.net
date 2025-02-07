@@ -29,6 +29,7 @@ For at linjeforeningen og studenter på campus trives trenger vi nye og gamle in
     - Budsjett
 - Vedtektsendringer ([fjorårets vedtekter](/Vedtekter.pdf))
     - **Interessegrupper/BetaLAN sitt ledervalg**: Til nå har BetaDev/Sec valgt leder internt, og det foreslås å velge disse også på generalforsamlingen som andre komiteer. Da slipper man at interessegruppene blir borte ved lite aktivitet, sitter ikke fast i vennegjeng som uteksamineres og interessegruppen mister alle medlemmer, og gir stemmeinflytelse fra alle Beta medlemmer.
+    - **Leder kan utvelges for innaktive interessegrupper**: Om en interessegruppe blir innaktiv og leder ikke har mulighet til å oppfylle vervet vil styret kunne gjennvelge en ny leder for interessegruppen.
     - **Kåring av æresmedlem**: For å vise at Beta er takknemmelige for at personer utenfor linjeforeningen engasjerer seg, kan man gi ut en pris en gang i året for ikke-medlemmer som har betydd noe for Beta.
     - **PR komite**: For å engasjere flere til å både delta og arrangere seg i linjeforeninga kan PR-rollen bli utvidet til en komite hvor flere kan hjelpe med å fremme linjeforeningen.
     - **Generalforsamling på høsten**: For å kapre flere engasjerte studenter, må det skje tidligere før andre foreninger tar de.
