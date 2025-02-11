@@ -1,0 +1,15 @@
+---
+import Layout from "./Main.astro";
+import Prose from "../components/MarkdownProse.astro";
+
+const {frontmatter} = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <div class="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-8 pt-6">
+    <Prose>
+      <h1 class="mb-0">{frontmatter.title}</h1>
+      <slot />
+    </Prose>
+  </div>
+</Layout>

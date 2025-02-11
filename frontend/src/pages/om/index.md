@@ -1,0 +1,42 @@
+---
+layout: src/layouts/Markdown.astro
+title: Om BETA
+---
+
+## Hvem er vi?
+
+BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT og kunstig intelligens på UiA Grimstad. Linjeforeningen drives av studentene på disse studiene, og du er automatisk medlem som student på et av dem.
+
+E-postadresse: [post@betauia.net](mailto:post@betauia.net)
+
+## Hva driver vi med?
+
+BETA jobber med å styrke studentmiljøet både faglig og sosialt gjennom forskjellige interessegrupper og komiteer. Her er en oversikt over hva linjeforeningen driver med:
+
+### Interessegrupper
+
+#### BetaDEV
+
+BetaDEV er for de som er interesserte i programvareutvikling, kodeprosjekter og teknologier. Her kan du delta i utviklingsprosjekter, delta på hackathons og lære om de nyeste og kuleste teknologiene innen utvikling.
+
+#### BetaSEC
+
+BetaSEC fokuserer på cybersikkerhet og sikkerhetsrelaterte emner. Interessegruppen arrangerer workshops, foredrag og praktiske øvelser for å øke bevisstheten om cybersikkerhet og forbedre ferdighetene innen dette området.
+
+### Komitéer
+
+#### BetaLAN
+
+BetaLAN er dedikert til gaming og LAN-events. Komiteen organiserer store og små gaming-arrangementer hvor deltakere og crew kan konkurrere mot andre, knytte nye vennskap og ha det moro med spill og konkurranser.
+
+#### Eventkom
+
+Eventkom står for planlegging og gjennomføring av ulike arrangementer og sosiale samlinger. Komiteen arrangerer flere eventer i semesteret og det er medlemmene som får lov til å bestemme hva som skjer.
+
+#### Bedkom
+
+Bedkom jobber med bedriftsrelaterte aktiviteter som bedriftsbesøk, bedriftspresentasjoner og nettverksbygging med potensielle arbeidsgivere. Dette gir medlemmer en innsikt i arbeidslivet og mulighetene til å bygge forbindelser med bedriftsmiljøet.
+
+## Hvorfor driver vi med dette?
+
+I BETA er vårt hovedmål å styrke fellesskapet blant studentene våres ved UiA Grimstad og å gi dem muligheter til å både utvikle faglige egenskaper og ha det morro i studietiden.

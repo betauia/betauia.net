@@ -27,10 +27,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 ## SSL Certificate
 
-Set up SSL certificate (one time):
-
 ```sh
-docker compose -f compose.yaml -f production.yaml run --rm certbot -v certonly --webroot --webroot-path /var/www/certbot/ -d betauia.net
+sudo apt-get certbot
+sudo certbot --nginx -d betauia.net
 ```
-
-Can be renewed with the `renew.sh` script.

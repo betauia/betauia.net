@@ -23,7 +23,11 @@ git clone https://github.com/betauia/betauia.net
 ```bash
 cd betauia.net
 ```
-3. Build and start the Docker containers:
+3. Copy environment variables and edit them as needed:
+```
+cp .env.example .env
+```
+4. Build and start the Docker containers:
 ```bash
 docker compose up --build
 ```
@@ -32,16 +36,12 @@ docker compose up --build
 
 ### Running the application
 
-- Start the development application:
+- Start the application:
 ```bash
-docker compose up
-```
-- Start the production application:
-```bash
-docker compose -f compose.yaml -f compose-prod.yaml up -d
+docker compose up  # Use -d to run detatched
 ```
 
-- Access the application at [localhost](http://localhost/)
+Access the application at port `3000` (frontend) and `8000` (backend). If `ENV` is set to `production`, the astro project will be built to `frontend/dist/` and can be hosted via Nginx.
 
 ### Stopping the application
 
@@ -51,6 +51,7 @@ docker compose down
 ```
 
 ## Additional Docker Commands
+
 - To view running containers:
 ```bash
 docker compose ps
