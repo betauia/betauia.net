@@ -6,7 +6,25 @@
 
 **Purpose**: BetaDEV is trying to improve the old website.
 
-## Installation
+## Table of Contents
+
+- [Overview](#overview)
+- [Installation and running a fullstack server with docker](#installation-and-running-a-fullstack-server-with-docker)
+  - [Prerequisites](#prerequisites)
+  - [Steps](#steps)
+- [Usage](#usage)
+  - [Running the application](#running-the-application)
+  - [Stopping the application](#stopping-the-application)
+- [Additional Docker Commands](#additional-docker-commands)
+- [Frontend Development and Design](#frontend-development-and-design)
+- [Gamejams](#gamejams)
+
+---
+
+## Installation and running a fullstack server with docker
+These are the steps you need to do to run a fullstack development server on your local machine 🧙‍♂️!
+
+For local frontend development without the bells and whistles of the backend you can follow the steps in the [Frontend Development and Design](#frontend-development-and-design) section. 🖌️🎨
 
 ### Prerequisites
 
@@ -16,54 +34,72 @@
 
 ### Steps
 1. Clone the repository:
-```bash
-git clone https://github.com/betauia/betauia.net
-```
+    ```bash
+    git clone https://github.com/betauia/betauia.net
+    ```
 2. Navigate to the project directory:
-```bash
-cd betauia.net
-```
+    ```bash
+    cd betauia.net
+    ```
 3. Copy environment variables and edit them as needed:
-```
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 4. Build and start the Docker containers:
-```bash
-docker compose up --build
-```
+    ```bash
+    docker compose up --build
+    ```
 
 ## Usage
 
 ### Running the application
 
 - Start the application:
-```bash
-docker compose up  # Use -d to run detatched
-```
+    ```bash
+    docker compose up  # Use -d to run detached
+    ```
 
-Access the application at port `3000` (frontend) and `8000` (backend). If `ENV` is set to `production`, the astro project will be built to `frontend/dist/` and can be hosted via Nginx.
+Access the application at port `3000` (frontend) and `8000` (backend). If `ENV` is set to `production`, the Astro project will be built to `frontend/dist/` and can be hosted via Nginx.
 
 ### Stopping the application
 
-- Stop the application
-```bash
-docker compose down
-```
+- Stop the application:
+    ```bash
+    docker compose down
+    ```
 
 ## Additional Docker Commands
 
 - To view running containers:
-```bash
-docker compose ps
-```
+    ```bash
+    docker compose ps
+    ```
 - To build containers:
-```bash
-docker compose build
-```
+    ```bash
+    docker compose build
+    ```
 
-## Gamejams
+## Frontend Development and Design
+For local frontend development without the backend, follow these steps:
+
+1. Navigate to the [frontend](http://_vscodecontentref_/1) directory:
+    ```sh
+    cd frontend
+    ```
+2. Install the dependencies:
+    ```sh
+    npm install
+    ```
+3. Start the Astro development server:
+    ```sh
+    npm run dev
+    ```
+
+Your log will display what port you should localhost into 🖥️. This will start the Astro development server and watch for changes, so you don't need to rebuild each time. 🚀
+
+## Gamejams 🎮
 
 If you want to clone the games from *game jams*, use:
-```sh
-git clone --recurse-submodules <repo name>
-```
+    ```sh
+    git clone --recurse-submodules <repo name>
+    ```
