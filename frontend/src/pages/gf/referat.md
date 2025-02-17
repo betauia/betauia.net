@@ -8,6 +8,8 @@ title: GF 2025 Referat
 **Rom**: C2 042 <br />
 **Deltakere**: 64
 
+Her finner du [vedtektene](/Vedtekter.pdf)!
+
 - Åpning av møtet
   - Jakob åpner møte 16:41
 - Protokoll
