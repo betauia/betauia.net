@@ -61,6 +61,11 @@ docker compose ps
 docker compose build
 ```
 
+- To remove volumes:
+```bash
+docker compose down -v
+```
+
 ## Gamejams
 
 If you want to clone the games from *game jams*, use:
