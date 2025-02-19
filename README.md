@@ -66,6 +66,11 @@ docker compose build
 docker compose down -v
 ```
 
+- To access the shell of the container (N.B.! intended be used for troubleshooting, e.g. check if something is installed correctly after `compose up`)
+```bash
+docker exec -it <container_name_or_id> sh
+```
+
 ## Gamejams
 
 If you want to clone the games from *game jams*, use:
