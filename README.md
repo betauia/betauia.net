@@ -72,3 +72,12 @@ If you want to clone the games from *game jams*, use:
 ```sh
 git clone --recurse-submodules <repo name>
 ```
+
+## Troubleshooting
+> **Q: I got an error where the docker container can't find a module, and I did not add any modules**
+
+A: This is probably because you built the images before and therefore some residual images for the container is still present. To resolve this run:
+```bash
+docker compose down -v
+```
+This ensures all images are removed ensuring you can start the server from scratch starting from [installation step 4](#steps) after a node.js package update
