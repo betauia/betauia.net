@@ -16,15 +16,13 @@
   - [Running the application](#running-the-application)
   - [Stopping the application](#stopping-the-application)
 - [Additional Docker Commands](#additional-docker-commands)
-- [Frontend Development and Design](#frontend-development-and-design)
 - [Gamejams](#gamejams)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
 ## Installation and running a fullstack server with docker
 These are the steps you need to do to run a fullstack development server on your local machine 🧙‍♂️!
-
-For local frontend development without the bells and whistles of the backend you can follow the steps in the [Frontend Development and Design](#frontend-development-and-design) section. 🖌️🎨
 
 ### Prerequisites
 
@@ -109,3 +107,12 @@ If you want to clone the games from *game jams*, use:
 git clone --recurse-submodules <repo name>
 ``` 
 -->
+
+## Troubleshooting
+*this section is for troubleshooting steps that might be relevant*
+
+### Problem with development server
+Sometimes a flush of the volumes fixes most of the problems one might encounter in the project. Simply run this command in the terminal:
+```bash
+docker compose down -v
+```
