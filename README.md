@@ -76,9 +76,19 @@ docker compose ps
 ```bash
 docker compose build
 ```
+
+- To remove volumes:
+```bash
+docker compose down -v
+```
+
+- To access the shell of the container (N.B.! intended be used for troubleshooting, e.g. check if something is installed correctly after `compose up`)
+```bash
+docker exec -it <container_name_or_id> sh
+```
 <!--
 Currently not working, remove quotes when working
-## Gamejams 🎮
+## Gamejams
 
 If you want to clone the games from *game jams*, use:
 ```sh
@@ -94,3 +104,12 @@ Sometimes a flush of the volumes fixes most of the problems one might encounter 
 ```bash
 docker compose down -v
 ```
+
+## Troubleshooting
+> **Q: I got an error where the docker container can't find a module, and I did not add any modules**
+
+A: This is probably because you built the images before and therefore some residual images for the container is still present. To resolve this run:
+```bash
+docker compose down -v
+```
+This ensures all images are removed ensuring you can start the server from scratch starting from [installation step 4](#steps) after a node.js package update

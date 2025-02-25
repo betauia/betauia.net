@@ -20,6 +20,7 @@ services:
     environment:
       - PUBLIC_BACKEND_URL=${BACKEND_URL}
       - ENV=${ENV}
+      - CHOKIDAR_USEPOLLING=true
     depends_on:
       - prechecks
       - backend

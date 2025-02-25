@@ -3,6 +3,10 @@ layout: src/layouts/Markdown.astro
 title: Generalforsamling 2025
 ---
 
+**Generalforsamlingen for 2025 er ferdig!**
+
+Her finner du [referatet](/gf/referat)!
+
 ## Hva skjer på generalforsamlingen?
 Generalforsamlingen er linjeforeningens øverste beslutningsorgan og arrangeres for medlemmer hvert vårsemester. Her bestemmes hvem som skal sitte i styret, aktuelle saker for studentene våres, retningen for linjeforeningen det kommende året, og alle medlemmer har mulighet til å påvirke. I tillegg blir det **pizza og brus på alle deltakere**, så her er det ingen grunn til å lure seg unna!
 
