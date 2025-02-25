@@ -76,28 +76,6 @@ docker compose ps
 ```bash
 docker compose build
 ```
-
-## Frontend Development and Design
-> **NOTE!** 
-> This is only a temporary solution as the docker setup does not support "hot-reload"/"live-preview" of the changes to the frontend design or content changes. Resulting in you having to recompose with a 10-second wait time for changes on the frontend.
-
-For local frontend development without the backend, follow these steps:
-
-1. Navigate to the `/frontend` directory:
-```sh
-cd frontend
-```
-2. Install the dependencies:
-```sh
-npm install
-```
-3. Start the Astro development server:
-```sh
-npm run dev
-```
-
-Your log will display what port you should localhost into 🖥️. This will start the Astro development server and watch for changes, so you don't need to rebuild each time. 🚀
-
 <!--
 Currently not working, remove quotes when working
 ## Gamejams 🎮
