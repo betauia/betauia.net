@@ -6,7 +6,23 @@
 
 **Purpose**: BetaDEV is trying to improve the old website.
 
-## Installation
+## Table of Contents
+
+- [Overview](#overview)
+- [Installation and running a fullstack server with docker](#installation-and-running-a-fullstack-server-with-docker)
+  - [Prerequisites](#prerequisites)
+  - [Steps](#steps)
+- [Usage](#usage)
+  - [Running the application](#running-the-application)
+  - [Stopping the application](#stopping-the-application)
+- [Additional Docker Commands](#additional-docker-commands)
+- [Gamejams](#gamejams)
+- [Troubleshooting](#troubleshooting)
+
+---
+
+## Installation and running a fullstack server with docker
+These are the steps you need to do to run a fullstack development server on your local machine 🧙‍♂️!
 
 ### Prerequisites
 
@@ -24,7 +40,7 @@ git clone https://github.com/betauia/betauia.net
 cd betauia.net
 ```
 3. Copy environment variables and edit them as needed:
-```
+```bash
 cp .env.example .env
 ```
 4. Build and start the Docker containers:
@@ -38,14 +54,14 @@ docker compose up --build
 
 - Start the application:
 ```bash
-docker compose up  # Use -d to run detatched
+docker compose up  # Use -d to run detached
 ```
 
-Access the application at port `3000` (frontend) and `8000` (backend). If `ENV` is set to `production`, the astro project will be built to `frontend/dist/` and can be hosted via Nginx.
+Access the application at port `3000` (frontend) and `8000` (backend). If `ENV` is set to `production`, the Astro project will be built to `frontend/dist/` and can be hosted via Nginx.
 
 ### Stopping the application
 
-- Stop the application
+- Stop the application:
 ```bash
 docker compose down
 ```
@@ -70,12 +86,23 @@ docker compose down -v
 ```bash
 docker exec -it <container_name_or_id> sh
 ```
-
+<!--
+Currently not working, remove quotes when working
 ## Gamejams
 
 If you want to clone the games from *game jams*, use:
 ```sh
 git clone --recurse-submodules <repo name>
+``` 
+-->
+
+## Troubleshooting
+*this section is for troubleshooting steps that might be relevant*
+
+### Problem with development server
+Sometimes a flush of the volumes fixes most of the problems one might encounter in the project. Simply run this command in the terminal:
+```bash
+docker compose down -v
 ```
 
 ## Troubleshooting
