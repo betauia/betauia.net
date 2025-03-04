@@ -2,25 +2,7 @@ Her ligger planen for nettsiden.
 
 Vi har et [google docs](https://docs.google.com/document/d/1CjgAVb8YmcYH2ZEyVPL0cWT0qKIYIVwKiQafgooqHuo) dokument for bugs, features og utkast til *wiki-en* vi vil lage. Her er et utdrag fra nå, *13-12-23*:
 > ## Ting å gjøre
-> - [ ] feature: login system
-> - [ ] feature: markdown system 
-> - [ ] feature: integrere markdown editor
-> - [ ] feature: spill til game jam
-> - [ ] feature: lage game jam entries side
-> - [ ] feature: lage wiki side
-> - [ ] feature: knapp som fører til wiki
-> - [ ] feature: fiske automatisk deployment
-> - [ ] feature: dark og light mode
-> - [ ] feature: server log, hvis den krasjer
-> - [ ] cleanup: lukke unødvendige porter som 8000 og 5000
-> - [ ] cleanup: lage betalan tab
-> - [ ] cleanup: merge dark mode
-> - [ ] cleanup: skrive om javascript
-> - [ ] cleanup: merge main
-> - [ ] cleanup: fikse tab skrift: databasefil
-> - [ ] bug: fikse https
-> - [ ] bug: fikse tabs
-> - [ ] bug: www.betauia.net funker ikke
+Se Issues
 
 ### struktur
 - [hovedside](#hovedside)
