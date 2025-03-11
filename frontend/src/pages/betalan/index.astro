@@ -1,0 +1,122 @@
+---
+import Layout from "@layouts/Main.astro";
+import LinkerButton from "@components/ui/linker-button.astro";
+---
+
+<Layout title="BetaLAN">
+    <div id="top-logo-group">
+      <div id="top-logo">
+        <img src="/public/imgs/BetaLAN-Indy.png" alt="BetaLAN Indy" />
+      </div>
+      <div id="date-logo">
+        <img src="/public/imgs/BetaLAN-Date-Indy.png" alt="BetaLAN Date" />
+      </div>
+    </div>
+
+    <div id="content" class="container text-center">
+      <h1 class="large-heading">Welcome to the Jungle!</h1>
+      <p>
+        For this semesters BetaLAN we are going to transform Bluebox into a humid jungle! 
+        Expolore the ancient mysteries that lie within the temple of BetaLAN <br> <br>
+      </p>
+    </div>
+
+    <div id="ticket-button" class="mt-6">
+      <LinkerButton href="https://tikkio.com/tickets/51463-betalan-v25" text="Get Tickets Now!" target="_blank" color="#11FF11" />
+    </div>
+
+  </Layout>
+
+<style>
+    body {
+        font-family: 'Press Start 2P', cursive;
+        background-image: url('https://cdnb.artstation.com/p/assets/images/images/065/667/485/large/jack-marston-flat-01.jpg?1690923456');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        backdrop-filter: blur(1px);
+        z-index: 1;
+    }
+    
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5));
+        z-index: -1;
+    }
+
+    body::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3); /* Darken the image */
+        z-index: -2;
+    }
+
+    #top-logo-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        max-width: 900px; /* Reduced the max-width */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+    }
+    #date-logo {
+        margin-top: -4rem;
+        width: 70%;
+    }
+    #content {
+        background-color: #191a1a;
+        background-image: linear-gradient(
+            180deg,
+            transparent 24%,
+            rgba(0, 115, 19, 0.3) 25%,
+            rgba(0, 115, 19, 0.3) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(0, 115, 19, 0.3) 75%,
+            rgba(0, 115, 19, 0.3) 76%,
+            transparent 77%,
+            transparent
+          ),
+          linear-gradient(
+            45deg,
+            transparent 24%,
+            rgba(0, 115, 19, 0.3) 25%,
+            rgba(0, 115, 19, 0.3) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(0, 115, 19, 0.3) 75%,
+            rgba(0, 115, 19, 0.3) 76%,
+            transparent 77%,
+            transparent
+          );
+        background-size: 55px 55px;
+        padding: 2rem;
+        border: 2px solid #00DD00;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00DD00;
+        color: #18EA28;
+        margin: 0 auto;
+        max-width: 900px;
+    }
+    .large-heading {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<!-- Gamer Font 🕹️ -->
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
