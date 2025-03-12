@@ -186,4 +186,29 @@ const pulseColor = hexToRgba(color, 0.5);
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
   }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .btn-content {
+      font-size: 24px;
+      padding: 5px 20px;
+    }
+
+    .icon-arrow {
+      width: 16px;
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn-content {
+      font-size: 18px;
+      padding: 5px 15px;
+    }
+
+    .icon-arrow {
+      width: 12px;
+      margin-left: 5px;
+    }
+  }
 </style>

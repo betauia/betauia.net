@@ -24,7 +24,7 @@ import LinkerButton from "@components/ui/linker-button.astro";
   <div id="content" class="container text-center">
     <h1 class="large-heading">Welcome to the Jungle!</h1>
     <p>
-      For this semesters BetaLAN we are going to transform Bluebox into a humid
+      For this semesters BetaLAN we are transforming Bluebox into a gaming temple ruin within humid
       jungle! Expolore the ancient mysteries that lie within the temple of
       BetaLAN <br />
       <br />
@@ -34,18 +34,25 @@ import LinkerButton from "@components/ui/linker-button.astro";
       <br />
       <strong>When:</strong> 25-27th April at Bluebox <br />
     </p>
-    <div id="info-navigation-buttons"
-      class="container mt-8 flex justify-center mx-auto">
+    <div
+      id="info-navigation-buttons"
+      class="container mt-8 flex flex-wrap justify-center mx-auto"
+    >
       <button
-        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 hover:bg-green-600 hover:text-white transition duration-300">
+        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+      >
         <a href="/betalan/about" target="_self" class="no-underline">About</a>
       </button>
       <button
-        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 hover:bg-green-600 hover:text-white transition duration-300">
-        <a href="/betalan/program" target="_self" class="no-underline">Program</a>
+        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+      >
+        <a href="/betalan/program" target="_self" class="no-underline"
+          >Program</a
+        >
       </button>
       <button
-        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 hover:bg-green-600 hover:text-white transition duration-300">
+        class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+      >
         <a href="/betalan/rules" target="_self" class="no-underline">Rules</a>
       </button>
     </div>
@@ -81,17 +88,14 @@ import LinkerButton from "@components/ui/linker-button.astro";
     <script
       async
       src="https://cdn.strawpoll.com/dist/widgets.js"
-      charset="utf-8"
-    ></script>
+      charset="utf-8"></script>
   </div>
 
   <div
     id="crew-info"
-    class="container text-center mt-32 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4"
-    style="width: 900px;"
-  >
+    class="container text-center mt-32 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4 max-w-full sm:max-w-lg">
     <h2 class="text-2xl mb-4">Crew Information</h2>
-    <p class="text-base">
+    <p class="sm:text-xs md:text-xs lg:text-sm">
       The best way to experience BetaLAN is becoming a part of the crew. The
       crew is responsible for planning and organizing the LAN-party, and as a
       crew member you get free admission and some extra food after rigging down <br
@@ -104,7 +108,7 @@ import LinkerButton from "@components/ui/linker-button.astro";
       <button
         class="bg-slate-600 hover:bg-slate-700 hover:border-slate-700 text-white font-bold py-2 px-4 rounded my-4"
       >
-        <a href="/betalan/crew">Crew Information</a>
+        <a href="/betalan/crew-info">Crew Information</a>
       </button>
     </div>
   </div>
@@ -194,6 +198,64 @@ import LinkerButton from "@components/ui/linker-button.astro";
   .large-heading {
     font-size: 2rem;
     margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .large-heading {
+      font-size: 1.5rem;
+    }
+
+    #content {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    #crew-info {
+      width: 100%;
+      padding: 1rem;
+    }
+
+    #top-logo-group {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #date-logo {
+      margin-top: -2rem;
+      width: 90%;
+    }
+    #crew-info p {
+      font-size: 0.875rem; /* 14px */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .large-heading {
+      font-size: 1.2rem;
+    }
+
+    #content {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    #crew-info {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    #top-logo-group {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #date-logo {
+      margin-top: -1rem;
+      width: 100%;
+    }
+    #crew-info p {
+      font-size: 0.75rem; /* 12px */
+    }
   }
 </style>
 
