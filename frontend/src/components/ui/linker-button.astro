@@ -17,10 +17,9 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-const colorRgba = hexToRgba(color, 0.5);
+const colorRgba = hexToRgba(color, 0.7);
 const colorOutline = color;
 const colorShadow = hexToRgba(color, 0.8);
-
 ---
 
 <div class="btn-conteiner" style={`--color-background: ${colorRgba}; --color-outline: ${colorOutline}; --color-shadow: ${colorShadow};`}>
