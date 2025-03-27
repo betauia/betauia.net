@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Main.astro";
+import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+---
+
+<Layout title="BetaLAN Seatmap">
+    <BetaLANLayout backgroundImage="/betalan/jungle-background.jpg">
+        <section class="bg-slate-800 bg-opacity-90 p-6 rounded-lg m-6 max-w-4xl mx-auto text-yellow-100">
+            <h1 class="text-3xl text-center mb-1">BetaLAN Seatmap</h1>
+            <div>
+                <img src="/betalan/seatmap_bluebox_V25.png" alt="seatmap for betalan" class="my-2"/>
+            </div>
+            <div>
+                <p class="text-center italic text-xs">The seatmap will be updated periodically!</p>
+            </div>
+        </section>
+    </BetaLANLayout>
+</Layout>
