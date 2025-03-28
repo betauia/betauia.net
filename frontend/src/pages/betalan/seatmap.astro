@@ -5,13 +5,45 @@ import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
 
 <Layout title="BetaLAN Seatmap">
     <BetaLANLayout backgroundImage="/betalan/jungle-background.jpg">
-        <section class="bg-slate-800 bg-opacity-90 p-6 rounded-lg m-6 max-w-4xl mx-auto text-yellow-100">
-            <h1 class="text-3xl text-center mb-1">BetaLAN Seatmap</h1>
+        <section class="bg-slate-800 bg-opacity-90 pb-2 rounded-lg m-6 max-w-4xl mx-auto text-yellow-100">
+            <div class="flex justify-center mx-auto max-w-lg">
+                <img
+                  src="/imgs/BetaLAN-Indy.png"
+                  alt="BetaLAN Indy"
+                  class="drop-shadow-2xl"
+                />
+              </div>
+            <h1 class="text-3xl text-center mb-1">Seatmap</h1>
             <div>
-                <img src="/betalan/seatmap_bluebox_V25.png" alt="seatmap for betalan" class="my-2"/>
+                <img src="https://blodroed.com/images/seatmap_bluebox_V25.png" alt="seatmap for betalan" class="my-2"/>
             </div>
             <div>
                 <p class="text-center italic text-xs">The seatmap will be updated periodically!</p>
+            </div>
+            <div class="mx-2 md:mx-12 mt-4">
+                <p class="text-balanced text-xs md:text-sm mt-2">
+                    Seats marked in <span class="bg-blue-500 p-0.5 rounded text-slate-800">Blue</span> indicate the crew area, while <span class="bg-red-500 p-0.5 rounded text-slate-800">Red</span> seats are already booked. Booking is handled on a first-come, first-served basis, so it's recommended to act quickly if you're booking for a group and want to sit together. At the LAN-party your we will put notes on your seats so you can easily find them once you arrive. <br /> <br />
+                    Booking closes on the first day of the LAN party. After that, any unbooked seats will be available for free selection.
+                </p>
+            </div>
+
+            <div class="mt-6">
+                <h2 class="text-xl text-center mb-2">How to Book Seats</h2>
+                <p class="text-pretty text-xs md:text-sm mx-2 md:mx-12 mb-4">
+                    Seats can be booked by having purchased tickets in advance, and then sending an email to <a href="mailto:booking@betauia.net" class="text-yellow-300 underline">booking@betauia.net</a>.
+                </p>
+                
+                <p class="mt-2 mx-2 md:mx-12">Please use the following format:</p>
+                <pre class="bg-slate-700 text-yellow-100 pt-4 px-4 rounded-lg mt-2 text-sm mx-2 md:mx-12">
+Subject: BetaLAN V25 Seat booking
+
+Ticketholder email: 
+mail@mail.com
+
+Seats we want to book:
+(Name, Seatnumber)
+Ola, 12
+                </pre>
             </div>
         </section>
     </BetaLANLayout>
