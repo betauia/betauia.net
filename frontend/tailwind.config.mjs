@@ -7,6 +7,9 @@ export default {
       colors: {
         "brand": "#0085ff"
       },
+      textColor: {
+        brand: "#0085ff",
+      },
       typography: ({ theme }) => ({
         markdown: {
           css: {
