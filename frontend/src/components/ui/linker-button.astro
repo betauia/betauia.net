@@ -63,8 +63,7 @@ const pulseColor = hexToRgba(color, 0.5);
 
 <style>
   .btn-container {
-    display: flex;
-    justify-content: center;
+    @apply flex justify-center items-center;
     --color-text: #191a1a;
     --color-background: rgba(0, 133, 255, 0.5);
     --color-outline: #0085ff;
@@ -73,12 +72,9 @@ const pulseColor = hexToRgba(color, 0.5);
   }
 
   .btn-content {
-    display: flex;
-    align-items: center;
+    @apply flex items-center no-underline font-semibold;
     padding: 5px 30px;
-    text-decoration: none;
     font-family: "Poppins", sans-serif;
-    font-weight: 600;
     font-size: 30px;
     color: var(--color-text);
     background: var(--color-background);
