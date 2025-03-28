@@ -24,7 +24,7 @@ const colorShadow = hexToRgba(color, 0.8);
 const pulseColor = hexToRgba(color, 0.5);
 ---
 
-<div class={`btn-conteiner ${pulsing ? 'pulsing' : ''}`} style={`--color-background: ${colorRgba}; --color-outline: ${colorOutline}; --color-shadow: ${colorShadow}; --pulse-color: ${pulseColor};`}>
+<div class={`btn-container ${pulsing ? 'pulsing' : ''}`} style={`--color-background: ${colorRgba}; --color-outline: ${colorOutline}; --color-shadow: ${colorShadow}; --pulse-color: ${pulseColor};`}>
   <a class="btn-content" href={href} target={target}>
     <span class="btn-title">{text}</span>
     <span class="icon-arrow">
@@ -62,7 +62,7 @@ const pulseColor = hexToRgba(color, 0.5);
 </div>
 
 <style>
-  .btn-conteiner {
+  .btn-container {
     display: flex;
     justify-content: center;
     --color-text: #191a1a;
