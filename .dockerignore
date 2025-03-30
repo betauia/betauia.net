@@ -14,8 +14,9 @@ compose.yaml
 .git
 .gitignore
 
-# JetBrains
+# Editors
 .idea/
+.vscode/
 
 #
 # Node
@@ -34,3 +35,17 @@ node_modules/
 
 # Build output
 dist/
+
+#
+# Python
+#
+
+# Binaries
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Venvs
+venv/
+.venv/

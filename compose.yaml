@@ -35,10 +35,10 @@ services:
       - PYTHONUNBUFFERED=0
       - PYTHONPATH=/src
       - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PASS=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_HOST=db
-      - FLASK_ENV=${ENV}
+      - ENV=${ENV}
       - FRONTEND_URL=${FRONTEND_URL}
     ports:
       - 8000:8000
@@ -49,9 +49,24 @@ services:
     depends_on:
       - prechecks
 
+  db:
+    image: postgres:17
+    container_name: db
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend_network
+    depends_on:
+      - prechecks
+
 
 volumes:
   astro_node_modules:
+  postgres-data:
 
 networks:
   backend_network:
