@@ -3,6 +3,12 @@ from app.models import ArneFact
 from .extensions import db
 
 def clean_all_data():
+    """
+    Drops and re-creates all tables.
+
+    Resets the entire database by dropping and re-creating every table for development or testing only.
+    """
+
     print("Dropping all tables...")
     db.drop_all()
 
@@ -13,6 +19,17 @@ def clean_all_data():
 
 
 def insert_dummy_data():
+    """
+    Inserts dummy data into tables.
+
+    This data is meant for development and testing, and should not be in production.
+
+    Process:
+        1. Checks if there is any data in table.
+        2. If the table is empty, it populates it.
+        3. If not, it skips inserting to the table.
+    """
+    
     print("Inserting dummy data into the tables...")
 
     if ArneFact.query.count() == 0:

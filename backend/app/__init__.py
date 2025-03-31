@@ -6,6 +6,13 @@ from app.utils.extensions import db, migrate
 
 
 def create_app():
+    """
+    Initializes the Flask instance, sets up necessary configurations, links the app with with different extensions, and registers routes.
+    
+    Returns:
+        app (Flask): The fully configured Flask instance
+    """
+
     app = Flask(__name__)
 
     app.config["SQLALCHEMY_DATABASE_URI"] = Config.DB_URI
