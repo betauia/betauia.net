@@ -46,6 +46,10 @@
     text-decoration: underline;
 }
 
+.link-center {
+    text-align: center;
+}
+
 .link:hover {
     color: #2563eb;
     text-decoration: none;
