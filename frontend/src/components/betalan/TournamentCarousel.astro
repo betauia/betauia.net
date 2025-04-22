@@ -68,6 +68,7 @@ const { tournaments } = Astro.props;
     let slidesToShow = 1;
     let startX, moveX, initialPosition = 0;
     let isDragging = false;
+    let autoplayInterval;
     
     // Calculate total number of slides
     const slides = document.querySelectorAll('.carousel-slide');
@@ -97,6 +98,9 @@ const { tournaments } = Astro.props;
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === Math.min(currentIndex, getPageCount() - 1));
       });
+      
+      // Reset autoplay timer when manually changing slides
+      resetAutoplay();
     };
     
     // Update indicator dots to match the number of pages
@@ -172,9 +176,6 @@ const { tournaments } = Astro.props;
       goToSlide(currentIndex + 1);
     });
     
-    // Auto-advance slides every 5 seconds, but only on non-touch devices
-    let autoplayInterval;
-    
     // Detect if device supports touch
     const isTouchDevice = () => {
       return ('ontouchstart' in window) || 
@@ -184,6 +185,7 @@ const { tournaments } = Astro.props;
     const startAutoplay = () => {
       // Only start autoplay if not a touch device
       if (!isTouchDevice()) {
+        pauseAutoplay(); // Clear any existing interval first
         autoplayInterval = setInterval(() => {
           const nextIndex = (currentIndex + 1) % (slideCount - slidesToShow + 1);
           goToSlide(nextIndex);
@@ -198,6 +200,14 @@ const { tournaments } = Astro.props;
     const resumeAutoplay = () => {
       // Only resume autoplay if not a touch device
       if (!isTouchDevice()) {
+        startAutoplay();
+      }
+    };
+    
+    const resetAutoplay = () => {
+      // Reset the autoplay timer when user interacts with carousel
+      if (!isTouchDevice()) {
+        pauseAutoplay();
         startAutoplay();
       }
     };
