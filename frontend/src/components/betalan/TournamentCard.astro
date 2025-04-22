@@ -12,16 +12,18 @@ interface Props {
 const { title, imagePath, altText, description, linkPath } = Astro.props;
 ---
 
-<div class="tournament-card">
-  <div class="tournament-img-container">
-    <img src={imagePath} alt={altText} class="tournament-img" />
-  </div>
-  <div class="tournament-content">
-    <h3 class="tournament-title">{title}</h3>
-    <p class="tournament-desc">{description}</p>
-    <a href={linkPath} class="tournament-link">View Details</a>
-  </div>
-</div>
+<a href={linkPath} class="tournament-card-link">
+    <div class="tournament-card">
+      <div class="tournament-img-container">
+        <img src={imagePath} alt={altText} class="tournament-img" />
+      </div>
+      <div class="tournament-content">
+        <h3 class="tournament-title">{title}</h3>
+        <p class="tournament-desc">{description}</p>
+        <span class="tournament-link">View Details</span>
+      </div>
+    </div>
+</a>
 
 <style>
   .tournament-card {
