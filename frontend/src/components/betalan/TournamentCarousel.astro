@@ -66,9 +66,9 @@ const { tournaments } = Astro.props;
     
     let currentIndex = 0;
     let slidesToShow = 1;
-    let startX, moveX, initialPosition = 0;
+    let startX: number, moveX: number, initialPosition = 0;
     let isDragging = false;
-    let autoplayInterval;
+    let autoplayInterval: ReturnType<typeof setInterval> | null = null;
     
     // Calculate total number of slides
     const slides = document.querySelectorAll('.carousel-slide');
@@ -86,7 +86,7 @@ const { tournaments } = Astro.props;
     };
     
     // Move to a specific slide
-    const goToSlide = (index) => {
+    const goToSlide = (index: number) => {
       // Ensure index is within bounds
       currentIndex = Math.max(0, Math.min(index, slideCount - slidesToShow));
       
@@ -150,7 +150,7 @@ const { tournaments } = Astro.props;
       e.preventDefault();
     });
     
-    track.addEventListener('touchend', (e) => {
+    track.addEventListener('touchend', () => {
       if (!isDragging) return;
       isDragging = false;
       const diff = startX - moveX;
@@ -194,7 +194,10 @@ const { tournaments } = Astro.props;
     };
     
     const pauseAutoplay = () => {
-      clearInterval(autoplayInterval);
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
     };
     
     const resumeAutoplay = () => {
@@ -215,15 +218,18 @@ const { tournaments } = Astro.props;
     // Start autoplay initially (only on non-touch devices)
     startAutoplay();
     
-    carouselContainer.addEventListener('mouseenter', pauseAutoplay);
-    carouselContainer.addEventListener('mouseleave', resumeAutoplay);
-    
-    // For touch devices, we don't need these event listeners
-    if (isTouchDevice()) {
-      // But we still need to handle touch events for swiping
-      carouselContainer.addEventListener('touchstart', () => {
-        // No need to manage autoplay on touch devices
-      });
+    // Add event listeners only if carouselContainer exists
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', pauseAutoplay);
+      carouselContainer.addEventListener('mouseleave', resumeAutoplay);
+      
+      // For touch devices, we don't need these event listeners
+      if (isTouchDevice()) {
+        // But we still need to handle touch events for swiping
+        carouselContainer.addEventListener('touchstart', () => {
+          // No need to manage autoplay on touch devices
+        });
+      }
     }
     
     // Initialize the carousel
@@ -244,10 +250,10 @@ const { tournaments } = Astro.props;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    overflow: visible; /* Changed from hidden to fix cutoff on zoom */
+    overflow: visible;
     display: flex;
     align-items: center;
-    padding: 10px 0; /* Added padding to prevent cutoff */
+    padding: 10px 0;
   }
 
   .carousel-track-container {
@@ -259,7 +265,7 @@ const { tournaments } = Astro.props;
   .carousel-track {
     display: flex;
     transition: transform 0.5s ease;
-    padding: 10px 0; /* Added padding to prevent cutoff during transformations */
+    padding: 10px 0;
   }
 
   .carousel-slide {
@@ -364,7 +370,7 @@ const { tournaments } = Astro.props;
     
     .carousel-btn span {
       font-size: 1.2rem;
-      margin-top: -1px; /* Fine-tune vertical alignment for smaller buttons */
+      margin-top: -1px;
     }
   }
 
