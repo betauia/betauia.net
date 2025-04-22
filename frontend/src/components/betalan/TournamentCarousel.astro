@@ -1,0 +1,380 @@
+---
+// Tournament carousel component for displaying multiple tournament cards in a sliding format
+import TournamentCard from "./TournamentCard.astro";
+
+// Each tournament entry needs these properties
+interface TournamentEntry {
+  title: string;
+  imagePath: string;
+  altText: string;
+  description: string;
+  linkPath: string;
+}
+
+interface Props {
+  tournaments: TournamentEntry[];
+}
+
+const { tournaments } = Astro.props;
+---
+
+<div class="carousel-container">
+  <div class="carousel-btn-container left desktop-only">
+    <button id="prev-btn" class="carousel-btn" aria-label="Previous tournament">
+      <span>❮</span>
+    </button>
+  </div>
+
+  <div class="carousel-track-container">
+    <div id="carousel-track" class="carousel-track">
+      {
+        tournaments.map((tournament) => (
+          <div class="carousel-slide">
+            <TournamentCard
+              title={tournament.title}
+              imagePath={tournament.imagePath}
+              altText={tournament.altText}
+              description={tournament.description}
+              linkPath={tournament.linkPath}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="carousel-btn-container right desktop-only">
+    <button id="next-btn" class="carousel-btn" aria-label="Next tournament">
+      <span>❯</span>
+    </button>
+  </div>
+</div>
+
+<div class="carousel-indicators" id="carousel-indicators">
+  <!-- Indicators will be generated dynamically by JavaScript -->
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carousel-track');
+    const prevButton = document.getElementById('prev-btn');
+    const nextButton = document.getElementById('next-btn');
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    const carouselContainer = document.querySelector('.carousel-container');
+    
+    if (!track || !prevButton || !nextButton || !indicatorsContainer) return;
+    
+    let currentIndex = 0;
+    let slidesToShow = 1;
+    let startX, moveX, initialPosition = 0;
+    let isDragging = false;
+    
+    // Calculate total number of slides
+    const slides = document.querySelectorAll('.carousel-slide');
+    const slideCount = slides.length;
+    
+    // Get the width of a single slide
+    const getSlideWidth = () => {
+      const trackWidth = track.offsetWidth;
+      return trackWidth / slidesToShow;
+    };
+    
+    // Calculate the number of pages based on visible slides
+    const getPageCount = () => {
+      return Math.max(1, Math.ceil((slideCount - slidesToShow + 1) / 1));
+    };
+    
+    // Move to a specific slide
+    const goToSlide = (index) => {
+      // Ensure index is within bounds
+      currentIndex = Math.max(0, Math.min(index, slideCount - slidesToShow));
+      
+      // Update the transform to move the track
+      track.style.transform = `translateX(-${currentIndex * getSlideWidth()}px)`;
+      
+      // Update active dot
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === Math.min(currentIndex, getPageCount() - 1));
+      });
+    };
+    
+    // Update indicator dots to match the number of pages
+    const updateIndicators = () => {
+      const pageCount = getPageCount();
+      
+      // Clear existing indicators
+      indicatorsContainer.innerHTML = '';
+      
+      // Create new indicators based on current page count
+      for (let i = 0; i < pageCount; i++) {
+        const dot = document.createElement('span');
+        dot.className = `dot ${i === Math.min(currentIndex, pageCount - 1) ? 'active' : ''}`;
+        dot.dataset.index = String(i);
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+        });
+        indicatorsContainer.appendChild(dot);
+      }
+    };
+    
+    // Determine how many slides to show based on window width
+    const updateSlidesToShow = () => {
+      if (window.innerWidth >= 1024) {
+        slidesToShow = 3;
+      } else if (window.innerWidth >= 640) {
+        slidesToShow = 2;
+      } else {
+        slidesToShow = 1;
+      }
+      updateIndicators();
+    };
+    
+    // Touch events for mobile swiping
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      initialPosition = currentIndex * getSlideWidth();
+      isDragging = true;
+    });
+    
+    track.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      moveX = e.touches[0].clientX;
+      const diff = startX - moveX;
+      track.style.transform = `translateX(-${initialPosition + diff}px)`;
+      // Prevent scrolling the page while swiping
+      e.preventDefault();
+    });
+    
+    track.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = startX - moveX;
+      if (Math.abs(diff) > 50) { // Minimum swipe distance
+        if (diff > 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      } else {
+        // Return to current slide if swipe wasn't decisive
+        goToSlide(currentIndex);
+      }
+    });
+    
+    // Previous slide button
+    prevButton.addEventListener('click', () => {
+      goToSlide(currentIndex - 1);
+    });
+    
+    // Next slide button
+    nextButton.addEventListener('click', () => {
+      goToSlide(currentIndex + 1);
+    });
+    
+    // Auto-advance slides every 5 seconds, but only on non-touch devices
+    let autoplayInterval;
+    
+    // Detect if device supports touch
+    const isTouchDevice = () => {
+      return ('ontouchstart' in window) || 
+        (navigator.maxTouchPoints > 0);
+    };
+    
+    const startAutoplay = () => {
+      // Only start autoplay if not a touch device
+      if (!isTouchDevice()) {
+        autoplayInterval = setInterval(() => {
+          const nextIndex = (currentIndex + 1) % (slideCount - slidesToShow + 1);
+          goToSlide(nextIndex);
+        }, 5000);
+      }
+    };
+    
+    const pauseAutoplay = () => {
+      clearInterval(autoplayInterval);
+    };
+    
+    const resumeAutoplay = () => {
+      // Only resume autoplay if not a touch device
+      if (!isTouchDevice()) {
+        startAutoplay();
+      }
+    };
+    
+    // Start autoplay initially (only on non-touch devices)
+    startAutoplay();
+    
+    carouselContainer.addEventListener('mouseenter', pauseAutoplay);
+    carouselContainer.addEventListener('mouseleave', resumeAutoplay);
+    
+    // For touch devices, we don't need these event listeners
+    if (isTouchDevice()) {
+      // But we still need to handle touch events for swiping
+      carouselContainer.addEventListener('touchstart', () => {
+        // No need to manage autoplay on touch devices
+      });
+    }
+    
+    // Initialize the carousel
+    updateSlidesToShow();
+    goToSlide(0);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      updateSlidesToShow();
+      goToSlide(Math.min(currentIndex, getPageCount() - 1));
+    });
+  });
+</script>
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: visible; /* Changed from hidden to fix cutoff on zoom */
+    display: flex;
+    align-items: center;
+    padding: 10px 0; /* Added padding to prevent cutoff */
+  }
+
+  .carousel-track-container {
+    width: 90%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    padding: 10px 0; /* Added padding to prevent cutoff during transformations */
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  @media (min-width: 640px) {
+    .carousel-slide {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .carousel-slide {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+    }
+  }
+
+  .carousel-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5%;
+    z-index: 10;
+  }
+
+  .carousel-btn-container.left {
+    justify-content: flex-start;
+  }
+
+  .carousel-btn-container.right {
+    justify-content: flex-end;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-only {
+      display: flex;
+    }
+  }
+
+  .carousel-btn {
+    background: rgba(0, 170, 0, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-btn:hover {
+    background: rgba(0, 200, 0, 1);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+  }
+
+  .carousel-btn span {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  /* Specific positioning for left button */
+  #prev-btn span {
+    top: 45%;
+    left: 45%;
+  }
+
+  /* Specific positioning for right button */
+  #next-btn span {
+    top: 45%;
+    left: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+    }
+    
+    .carousel-btn span {
+      font-size: 1.2rem;
+      margin-top: -1px; /* Fine-tune vertical alignment for smaller buttons */
+    }
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 119, 0, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .dot.active {
+    background: #00aa00;
+  }
+</style>

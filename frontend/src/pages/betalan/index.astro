@@ -1,6 +1,46 @@
 ---
 import Layout from "@layouts/Main.astro";
 import LinkerButton from "@components/ui/linker-button.astro";
+import TournamentCarousel from "@components/betalan/TournamentCarousel.astro";
+
+// Tournament data
+const tournaments = [
+  {
+    title: "Agder's Best Gamer",
+    imagePath: "/betalan/tournaments/ABG2025Premier.png",
+    altText: "ABG Tournament",
+    description: "Join the premiere gaming tournament featuring intense competition and amazing prizes!",
+    linkPath: "/betalan/tournaments/ABG"
+  },
+  {
+    title: "Setup Competition",
+    imagePath: "/betalan/tournaments/setup-competition.png",
+    altText: "Setup Competition",
+    description: "Show off your gaming setup! Compete for the best-looking or most creative gaming station.",
+    linkPath: "/betalan/tournaments/setup-competition"
+  },
+  {
+    title: "Tekken 7",
+    imagePath: "/betalan/tournaments/Tekken7-Background.jpg",
+    altText: "Tekken 7 Tournament",
+    description: "Do you have what it takes to rule the Iron Fist? Show your might in our Tekken 7 tournament!",
+    linkPath: "/betalan/tournaments/tekken7"
+  },
+  {
+    title: "Rocket League",
+    imagePath: "/betalan/tournaments/rocket-league-img.jpg",
+    altText: "Rocket League Tournament",
+    description: "Rev your engines and get ready to launch, flip, and spin in our 2v2 Rocket League competition!",
+    linkPath: "/betalan/tournaments/rocket-league"
+  },
+  {
+    title: "Just Dance",
+    imagePath: "/betalan/tournaments/just-dance.png",
+    altText: "Just Dance Competition",
+    description: "Show off your dance moves! Whether you're a dancing pro or just in it for fun, everyone is welcome.",
+    linkPath: "/betalan/tournaments/just-dance"
+  }
+];
 ---
 
 <Layout title="BetaLAN">
@@ -73,6 +113,13 @@ import LinkerButton from "@components/ui/linker-button.astro";
         </button>
       </a>
       </div>
+    </div>
+
+    <div id="Tournament-Overview" class="container mx-auto my-8 rounded-md bg-slate-900 bg-opacity-90 p-4 text-white max-w-[900px]">
+      <h2 class="text-center text-2xl text-green-400 mb-6">Tournaments</h2>
+      <p class="text-center text-white mb-6">Check out our exciting tournaments and competitions!</p>
+      
+      <TournamentCarousel tournaments={tournaments} />
     </div>
 
     <div
