@@ -1,8 +1,77 @@
 ---
 import Layout from "@layouts/Main.astro";
-import Construction from "@components/ui/Construction.astro";
+import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+import DiscordLogo from "@components/icons/social/Discord.astro";
 ---
 
 <Layout title="Crew Info">
-  <Construction />
+  <BetaLANLayout backgroundImage="/betalan/mayan-templewall.jpeg">
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 bg-slate-900/80 rounded-lg text-white my-4 sm:my-8">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center text-yellow-400">Join the BetaLAN Crew!</h1>
+      
+      <div class="space-y-4 sm:space-y-6">
+        <section>
+          <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-green-400">The Backbone of BetaLAN</h2>
+          <p class="text-sm sm:text-base md:text-lg">
+            The crew is what keeps BetaLAN alive and running! As a crew member, you become part of the team that transforms an ordinary weekend into an epic gaming experience. Behind every successful LAN party stands a dedicated crew working together to create unforgettable moments.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-green-400">What You Can Do</h2>
+          <div class="grid md:grid-cols-2 gap-3 sm:gap-4">
+            <div class="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+              <h3 class="text-lg sm:text-xl font-bold text-yellow-300 mb-1 sm:mb-2">Tournament Management</h3>
+              <p class="text-xs sm:text-sm">Organize and run gaming tournaments, from setting up brackets to announcing winners and handing out prizes.</p>
+            </div>
+            <div class="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+              <h3 class="text-lg sm:text-xl font-bold text-yellow-300 mb-1 sm:mb-2">Technical Setup</h3>
+              <p class="text-xs sm:text-sm">Help set up and maintain the network infrastructure that powers dozens of gaming stations simultaneously.</p>
+            </div>
+            <div class="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+              <h3 class="text-lg sm:text-xl font-bold text-yellow-300 mb-1 sm:mb-2">Social Media</h3>
+              <p class="text-xs sm:text-sm">Capture the excitement through photos and videos, and share the LAN experience with the world.</p>
+            </div>
+            <div class="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+              <h3 class="text-lg sm:text-xl font-bold text-yellow-300 mb-1 sm:mb-2">Event Coordination</h3>
+              <p class="text-xs sm:text-sm">Help with everything from registration to keeping the schedule on track and ensuring attendees have a great time.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-green-400">Why Join the Crew?</h2>
+          <ul class="list-disc pl-4 sm:pl-6 space-y-1 sm:space-y-2 text-xs sm:text-sm">
+            <li><span class="font-bold text-yellow-300">Free Admission:</span> Work shifts during the event and get free entry to the LAN party.</li>
+            <li><span class="font-bold text-yellow-300">Behind the Scenes:</span> Experience the LAN from a unique perspective and see how it all comes together.</li>
+            <li><span class="font-bold text-yellow-300">Learn New Skills:</span> Gain experience in event planning, technical setup, and teamwork.</li>
+            <li><span class="font-bold text-yellow-300">Crew Culture:</span> Become part of a tight-knit community that makes the LAN happen—and has a blast doing it!</li>
+            <li><span class="font-bold text-yellow-300">More Than Just Gaming:</span> Often, being crew is even more fun than being a regular participant—you'll make stronger connections and have more memorable experiences.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-green-400">The Crew Experience</h2>
+          <p class="text-xs sm:text-sm md:text-base mb-2 sm:mb-4">
+            Ask any veteran crew member and they'll tell you—there's nothing quite like the rush of being behind the scenes at BetaLAN. From the setup day excitement to the satisfaction of seeing happy gamers enjoying the fruits of your work, the crew experience is unique and rewarding.
+          </p>
+          <p class="text-xs sm:text-sm md:text-base">
+            You'll build lasting friendships, create inside jokes, share late-night pizza, and be part of the special moments that make each BetaLAN unique. Many crew members return event after event because the crew culture is just that amazing!
+          </p>
+        </section>
+        
+        <div class="bg-blue-900/60 p-4 sm:p-6 rounded-lg mt-6 sm:mt-8 flex flex-col items-center justify-between">
+          <div class="text-center mb-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Ready to join the team?</h2>
+            <p class="text-sm sm:text-base">Reach out to us and be part of making the next BetaLAN amazing!</p>
+          </div>
+          <a href="https://discord.gg/spp4jZwMXh" class="flex flex-col items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-lg transition-colors w-full sm:w-auto max-w-xs">
+            <DiscordLogo class="w-12 h-12 mb-2" />
+            <span class="text-center text-sm sm:text-base font-medium">Join our Discord</span>
+            <span class="text-center text-xs text-indigo-200 mt-1">Contact the BetaLAN Leader for more info</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </BetaLANLayout>
 </Layout>
