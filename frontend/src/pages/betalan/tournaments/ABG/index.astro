@@ -6,7 +6,7 @@ import "../tournaments.css";
 
 <MainLayout title="Agder's Best Gamer">
   <Tournament>
-    <h1 class="title">Agders Best Gamer</h1>
+    <h1 class="title">Agder's Best Gamer</h1>
     <img
       src="/betalan/tournaments/ABG2025Premier.png"
       alt="Prizes for ABG 2025"
@@ -15,55 +15,57 @@ import "../tournaments.css";
     <h2 class="section-title">What is Agder's Best Gamer?</h2>
 
     <p class="paragraph">
-      Agder's Best Gamer is a yearly competition organised by BETALan to determine the best gamer in Agder. 
-      The competition consists of a series hand picked games from mutltiplle different genres looking to 
-      test the competitors in a wide range of gaming skills. Weather you are a professional gamer or casual 
-      player, it does not matter. If you think you got the skills to claim the gamer crown of Agder, then get
-      ready to show the world who the real Legend27 is.
+      Agder's Best Gamer is a yearly competition organised by BetaLAN to determine the best gamer in Agder. 
+      The competition consists of a series of hand-picked games from multiple different genres, looking to 
+      test the competitors in a wide range of gaming skills. Whether you are a professional gamer or casual 
+      player, it does not matter. If you think you have the skills to claim the gamer crown of Agder, then get
+      ready to show the world who the real Legend is.
     </p>
 
     <h2 class="section-title">Prizes</h2>
 
-    <img
-      src="/betalan/tournaments/ABG2025Premier.png"
-      alt="Prizes for ABG 2025"
-      class="responsive-img"
-    />
-
-    <ul class="link-center">
-      <li class="list-item">
-        <strong>1st place</strong> – LIST PIRZES
-      </li>
-      <li class="list-item">
-        <strong>2nd place</strong> - LIST PRIZES
-      </li>
-      <li class="list-item">
-        <strong>3rd place</strong> - LIST PRIZES
-      </li>
-    </ul>
+    <div class="flex flex-wrap justify-center gap-4 my-6">
+      <div class="prize-item">
+        <span class="text-xl md:text-2xl mr-2">🥇</span>
+        <span class="font-bold text-amber-400">1st Place:</span>
+        <span class="text-gray-200">Streaming deck, X-Gamer Tropical Tub w/bottle, Gavial mousepad</span>
+      </div>
+      
+      <div class="prize-item">
+        <span class="text-xl md:text-2xl mr-2">🥈</span>
+        <span class="font-bold text-gray-300">2nd Place:</span>
+        <span class="text-gray-200">X-Gamer Tropical tub, Crash Bandicoot</span>
+      </div>
+      
+      <div class="prize-item">
+        <span class="text-xl md:text-2xl mr-2">🥉</span>
+        <span class="font-bold text-amber-700">3rd Place:</span>
+        <span class="text-gray-200">Jurassic Funko Dinosaur Indominous Rex</span>
+      </div>
+    </div>
 
     <h2 class="section-title">Criteria for competing</h2>
 
-    <p class="paragraph">In order to compete there are some basic criteria that you must meet</p>
+    <p class="paragraph">In order to compete there are some basic criteria that you must meet:</p>
 
     <ul class="list">
       <li class="list-item">
-        <strong>1</strong> – You have to own minecraft
+        <strong>1</strong> – You have to own Minecraft
       </li><li class="list-item">
         <strong>2</strong> – Look at number 1
       </li>
     </ul>
 
-    <p class="paragraph"> you can also borrow a friend's account if you don't have one yourself</p>
+    <p class="paragraph">You can also borrow a friend's account if you don't have one yourself.</p>
 
     <h2 class="section-title">Scoring</h2>
 
     <p class="paragraph">
-      For each game, there will be a scoring system. Generally, if the game has a built in scoring system of some 
-      kind, that will be the one that will be considered. A contestants ranking in each individual game will be used to determine the
-      amount of points the contestant gets on the overall leaderboards. To add more stakes to the games, for each game that passes, 
-      a multiplier gets added to each players final score, starting from 1x and increasing by 0.5 each time. As such the later 
-      rounds will be more important in determaning the winners.
+      For each game, there will be a scoring system. Generally, if the game has a built-in scoring system of some 
+      kind, that will be the one that will be considered. A contestant's ranking in each individual game will be used to determine the
+      amount of points the contestant gets on the overall leaderboard. To add more stakes to the games, for each game that passes, 
+      a multiplier gets added to each player's final score, starting from 1x and increasing by 0.5 each time. As such, the later 
+      rounds will be more important in determining the winners.
     </p>
 
     <h2 class="section-title">Sign up</h2>
@@ -76,9 +78,22 @@ import "../tournaments.css";
     <p class="paragraph">
       To enter, simply fill in your information using our <a href="" class="link"
         >competition form</a
-      >. The sign ups ends one hour before the competition starts. (Specific time will be published soon)
+      >. The sign-ups end one hour before the competition starts. (Specific time will be published soon)
     </p>
 
     <p class="paragraph mt-12">📢 Winners will be announced on BetaLAN Gameshow 23:00 the same day!</p>
   </Tournament>
 </MainLayout>
+
+<style>
+  .prize-item {
+    @apply bg-slate-800/70 rounded p-3 text-center flex flex-col md:flex-row items-center w-full max-w-xs md:max-w-md;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .prize-item {
+      @apply mb-3;
+    }
+  }
+</style>
