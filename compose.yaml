@@ -1,12 +1,4 @@
 services:
-  prechecks:
-    build:
-      context: ./prechecks
-    volumes:
-      - ./.env:/app/.env
-      - ./.env.example:/app/.env.example
-    restart: no
-      
   frontend:
     build: 
       context: ./frontend
@@ -14,7 +6,7 @@ services:
     restart: on-failure
     volumes:
       - ./frontend:/app
-      - astro_node_modules:/app/node_modules
+      - /app/node_modules
     ports:
       - 3000:3000
     environment:
@@ -22,7 +14,6 @@ services:
       - ENV=${ENV}
       - CHOKIDAR_USEPOLLING=true
     depends_on:
-      - prechecks
       - backend
 
   backend:
@@ -46,12 +37,6 @@ services:
       - backend_network
     volumes:
       - ./backend:/src
-    depends_on:
-      - prechecks
-
-
-volumes:
-  astro_node_modules:
 
 networks:
   backend_network:
