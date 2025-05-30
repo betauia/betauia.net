@@ -2,6 +2,7 @@
 const routes = [
   { name: "Om oss", path: "/om" },
   { name: "Generalforsamling", path: "/gf" },
+  { name: "BetaLAN", path: "/betalan" }
   //{ name: "Interessegrupper", path: "/grupper" },
   //{ name: "Arrangementer", path: "/arrangementer" },
   //{ name: "Ny student", path: "/ny-student" },
@@ -13,7 +14,7 @@ const isCurrentRoute = (path: string) => {
 };
 ---
 
-<nav class="bg-white dark:bg-gray-900 absolute w-full shadow-lg">
+<nav class="bg-white dark:bg-gray-900 absolute w-full shadow-lg z-50">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg: px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">

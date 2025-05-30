@@ -1,0 +1,51 @@
+---
+const { backgroundImage } = Astro.props;
+---
+
+<div class="betalan-layout gamer-font" style={`background-image: url('${backgroundImage}')`}>
+  <slot />
+</div>
+
+<style>
+  .betalan-layout {
+    @apply bg-cover bg-center bg-fixed min-h-screen;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .gamer-font {
+    font-family: "Press Start 2P", cursive;
+  }
+
+  .betalan-layout::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5));
+    z-index: -1;
+  }
+
+  .betalan-layout::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -2;
+  }
+</style>
+
+<!-- Gamer Font 🕹️ -->
+<head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+</head>
