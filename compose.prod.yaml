@@ -1,8 +1,9 @@
 services:
   frontend:
     build: 
-      context: ./frontend
-      dockerfile: Dockerfile
       target: production
-    restart: on-failure
-    ports:
+    ports: []
+
+  backend:
+    build:
+      target: production
