@@ -3,6 +3,7 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
+      target: development
     restart: on-failure
     volumes:
       - ./frontend:/app
@@ -11,7 +12,6 @@ services:
       - 3000:3000
     environment:
       - PUBLIC_BACKEND_URL=${BACKEND_URL}
-      - ENV=${ENV}
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - backend
@@ -20,7 +20,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
+    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully
     restart: always
     environment:
       - PYTHONUNBUFFERED=0
@@ -29,7 +29,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_HOST=db
-      - FLASK_ENV=${ENV}
+      - FLASK_ENV=development
       - FRONTEND_URL=${FRONTEND_URL}
     ports:
       - 8000:8000
