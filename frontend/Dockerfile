@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-alpine AS base
 
 WORKDIR /app
 
@@ -10,4 +10,10 @@ RUN npm install
 
 COPY . .
 
-ENTRYPOINT ["node", "scripts/start.js"]
+FROM base AS development
+ENV NODE_ENV=development
+CMD ["npm", "run", "dev"]
+
+FROM base AS production
+ENV NODE_ENV=production
+CMD ["npm", "run", "build"]
