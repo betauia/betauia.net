@@ -1,5 +1,4 @@
 # Project Documentation
-
 This folder contains detailed guides, references and information for the different parts of the website.
 
 ---
@@ -8,7 +7,7 @@ This folder contains detailed guides, references and information for the differe
 
 ### Guides
 Differnet guides under `/docs/guides/` that includes instuctions for how to set up developer environment, how to contribute, develop, and more:
-- [Environment](guides/environment)
+- [Quick Start](guides/quickstart.md)
 - [Contribution](guides/contribution.md)
 - [Development](guides/development.md)
 - [Deployment](guides/deployment.md)
