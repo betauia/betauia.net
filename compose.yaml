@@ -20,23 +20,21 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      target: development
     stop_signal: SIGINT  # flask requires SIGINT to stop gracefully
-    restart: always
+    restart: on-failure
     environment:
-      - PYTHONUNBUFFERED=0
-      - PYTHONPATH=/src
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_HOST=db
-      - FLASK_ENV=development
       - FRONTEND_URL=${FRONTEND_URL}
     ports:
       - 8000:8000
     networks:
       - backend_network
     volumes:
-      - ./backend:/src
+      - ./backend:/app
 
 networks:
   backend_network:

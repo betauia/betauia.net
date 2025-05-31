@@ -11,9 +11,11 @@ RUN npm install
 COPY . .
 
 FROM base AS development
+
 ENV NODE_ENV=development
 CMD ["npm", "run", "dev"]
 
 FROM base AS production
+
 ENV NODE_ENV=production
 CMD ["npm", "run", "build"]
