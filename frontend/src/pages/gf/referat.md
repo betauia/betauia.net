@@ -1,5 +1,5 @@
 ---
-layout: src/layouts/Markdown.astro
+layout: src/layouts/MarkdownLayout.astro
 title: GF 2025 Referat
 ---
 

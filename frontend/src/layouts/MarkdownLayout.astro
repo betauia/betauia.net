@@ -1,8 +1,8 @@
 ---
-import Layout from "./Main.astro";
-import Prose from "../components/MarkdownProse.astro";
+import Layout from "./MainLayout.astro";
+import Prose from "../components/proses/MarkdownProse.astro";
 
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
