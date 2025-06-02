@@ -1,21 +1,23 @@
-FROM node:24-alpine AS base
+# TODO: make a real multi-stage build where it is possible to copy over `node_modules/` to host.
+
+FROM node:24-alpine AS development
 
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
-
 COPY package*.json ./
-
-RUN npm install
 
 COPY . .
 
-FROM base AS development
-
 ENV NODE_ENV=development
-CMD ["npm", "run", "dev"]
+CMD sh -c "npm install && npm run dev"
 
-FROM base AS production
+FROM node:24-alpine AS production
+
+WORKDIR /app
+
+COPY package*.json ./
+
+COPY . .
 
 ENV NODE_ENV=production
-CMD ["npm", "run", "build"]
+CMD sh -c "npm install && npm run build"

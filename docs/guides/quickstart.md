@@ -51,16 +51,22 @@ To create a branch, use this command and change the branch name:
 git checkout -b prefix/short-descriptive-name
 ```
 
+## Setup Editor
+
+To make it easy, you should use [VSCode](https://code.visualstudio.com/). We have made some settings that the entire team should use so things are done in the same ways and standards.
+
+After installing, open the folder in VSCode and install all the recommended list under extensions. They can also be found in `.vscode/extensions.json`.
+
 ## Code, Commit, Push
 
 Be sure when you make changes, that you solve only one thing per commit. Then stage them to Git and commit it with an emoji:
 
 ```bash
-git add .  # or `git add file-to-add`
+git add my-edited-file  # Or multiple
 git commit -m "✨ Add new feature"
 ```
 
-Check [Gitmoji](https://gitmoji.dev/) for what emojies to use.
+Check [Gitmoji](https://gitmoji.dev/) for what emojies to use and remember to not add the `.vscode/` folder.
 
 Then, the commits can be pushed using:
 
