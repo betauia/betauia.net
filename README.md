@@ -10,7 +10,7 @@ These technologies are chosen for new developers to easily understand and work w
 - **Tailwind CSS**: utility-first CSS framework
 - **Flask**: lightweight Python backend
 
-Curious? Check out the [documentation] for how they work.
+Curious? Check out the [documentations](docs/) for how they work.
 
 ## Getting started
 Check out how to setup and run the project locally in the [quick start guide](docs/guides/quickstart.md).
