@@ -8,6 +8,7 @@
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "astro-build.astro-vscode",
+    "unifiedjs.vscode-mdx",
     "bradlc.vscode-tailwindcss",
     "heybourn.headwind",
     "ms-python.python",
