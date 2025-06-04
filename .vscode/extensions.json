@@ -10,9 +10,8 @@
     "astro-build.astro-vscode",
     "unifiedjs.vscode-mdx",
     "bradlc.vscode-tailwindcss",
-    "heybourn.headwind",
     "ms-python.python",
     "ms-python.vscode-pylance",
-    "redhat.vscode-yaml",
+    "redhat.vscode-yaml"
   ]
 }

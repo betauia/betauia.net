@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <!-- 
@@ -12,29 +13,8 @@ From: https://docs.astro.build/en/recipes/tailwind-rendered-markdown/
 Documentation: https://github.com/tailwindlabs/tailwindcss-typography
 
 -->
-
-<div class="
-  prose
-  prose-markdown
-  dark:prose-invert
-  max-w-none
-
-  prose-headings:font-bold
-  prose-headings:w-full
-  prose-h1:text-3xl
-  prose-h1:border-gray-500
-  prose-h1:border-b
-  prose-h1:pb-6
-  prose-h2:mt-6
-  prose-h2:text-3xl
-  prose-h3:text-2xl
-  prose-h4:text-xl
-  prose-h5:text-lg
-
-  prose-a:transition
-  hover:prose-a:opacity-75
-
-  prose-img:max-h-48
-">
+<div
+  class="prose prose-markdown max-w-none dark:prose-invert prose-headings:w-full prose-headings:font-bold prose-h1:border-b prose-h1:border-gray-500 prose-h1:pb-6 prose-h1:text-3xl prose-h2:mt-6 prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-h5:text-lg prose-a:transition hover:prose-a:opacity-75 prose-img:max-h-48"
+>
   <slot />
 </div>
