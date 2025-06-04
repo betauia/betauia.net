@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-	main > *:first-child {
-		@apply pt-24;
-	}
-
-
+  main > *:first-child {
+    @apply pt-24;
+  }
 }

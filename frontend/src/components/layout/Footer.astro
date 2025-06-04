@@ -3,21 +3,20 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer class="mt-auto dark:bg-gray-900">
-  <div class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24">
-
+  <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
     <!-- 1x3 grid on mobile, 3x1 on landscape -->
-    <div class="grid grid-cols-1 gap-16 sm:gap-8 sm:grid-cols-3 md:grid-cols-3 lg:col-span-3">
-
-
-
+    <div class="grid grid-cols-1 gap-16 sm:grid-cols-3 sm:gap-8 md:grid-cols-3 lg:col-span-3">
       <!-- Contacts list, middle on vertical, right on horizontal -->
       <div class="text-center">
         <p class="text-lg font-medium text-gray-900 dark:text-white">Kontakt oss</p>
         <ul class="mt-8 space-y-4 text-sm">
           <li class="flex justify-center">
             <span class="sr-only">Email</span>
-            <a class="inline-flex items-center gap-1.5 transition text-gray-800 dark:text-gray-100 hover:opacity-75" href="mailto:post@betauia.net">
-                <Icon name="fa-solid:address-card" />
+            <a
+              class="inline-flex items-center gap-1.5 text-gray-800 transition hover:opacity-75 dark:text-gray-100"
+              href="mailto:post@betauia.net"
+            >
+              <Icon name="fa-solid:address-card" />
               <span class="flex-1">post@betauia.net</span>
             </a>
           </li>
@@ -30,7 +29,9 @@ import { Icon } from "astro-icon/components";
           </li>
 
           <li class="flex justify-center">
-            <div class="inline-flex items-center gap-1.5 transition text-gray-800 dark:text-gray-100">
+            <div
+              class="inline-flex items-center gap-1.5 text-gray-800 transition dark:text-gray-100"
+            >
               <Icon name="fa-solid:map-marker-alt" />
               <span class="flex-1 break-all">Jon Lilletuns vei 9, 4879 Grimstad</span>
             </div>
@@ -38,65 +39,102 @@ import { Icon } from "astro-icon/components";
         </ul>
 
         <!-- Social links -->
-        <ul class="flex justify-center gap-6 pt-4 mt-4 md:gap-8">
+        <ul class="mt-4 flex justify-center gap-6 pt-4 md:gap-8">
           <li>
-            <a href="https://www.facebook.com/beta.linjeforening/" target="_blank" class="text-gray-900 transition dark:text-white hover:opacity-75">
+            <a
+              href="https://www.facebook.com/beta.linjeforening/"
+              target="_blank"
+              class="text-gray-900 transition hover:opacity-75 dark:text-white"
+            >
               <span class="sr-only">Facebook</span>
               <Icon name="fa-brands:facebook" class="text-xl" />
             </a>
           </li>
 
           <li>
-            <a href="https://www.instagram.com/betauia/" target="_blank" class="text-gray-900 transition dark:text-white hover:opacity-75">
+            <a
+              href="https://www.instagram.com/betauia/"
+              target="_blank"
+              class="text-gray-900 transition hover:opacity-75 dark:text-white"
+            >
               <span class="sr-only">Instagram</span>
               <Icon name="fa-brands:instagram" class="text-xl" />
             </a>
           </li>
 
           <li>
-            <a href="https://github.com/betauia" target="_blank" class="text-gray-900 transition dark:text-white hover:opacity-75">
+            <a
+              href="https://github.com/betauia"
+              target="_blank"
+              class="text-gray-900 transition hover:opacity-75 dark:text-white"
+            >
               <span class="sr-only">GitHub</span>
               <Icon name="fa-brands:github" class="text-xl" />
             </a>
           </li>
 
           <li>
-            <a href="https://discord.gg/3xBPkDsaXy" target="_blank" class="text-gray-900 transition dark:text-white hover:opacity-75">
+            <a
+              href="https://discord.gg/3xBPkDsaXy"
+              target="_blank"
+              class="text-gray-900 transition hover:opacity-75 dark:text-white"
+            >
               <span class="sr-only">Discord</span>
               <Icon name="fa-brands:discord" class="text-xl" />
-            </a> 
+            </a>
           </li>
         </ul>
       </div>
 
-
-
       <div class="flex flex-col items-center text-center">
         <p class="text-lg font-medium text-gray-900 dark:text-white">Ressurser</p>
         <ul class="mt-8 space-y-4 text-sm">
-          <li><a class="text-gray-800 transition dark:text-gray-100 hover:opacity-75" target="_blank" href="https://github.com/betauia/betauia.net">GitHub repo</a></li>
-          <li><a class="text-gray-800 transition dark:text-gray-100 hover:opacity-75" href="/om">Om BETA</a></li>
-          <li><a class="text-gray-800 transition dark:text-gray-100 hover:opacity-75" href="/Vedtekter.pdf">Vedtekter</a></li>
-          <li><a class="text-gray-800 transition dark:text-gray-100 hover:opacity-75" href="/commedycentral">Commedy central</a></li>
+          <li>
+            <a
+              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
+              target="_blank"
+              href="https://github.com/betauia/betauia.net">GitHub repo</a
+            >
+          </li>
+          <li>
+            <a class="text-gray-800 transition hover:opacity-75 dark:text-gray-100" href="/om"
+              >Om BETA</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
+              href="/Vedtekter.pdf">Vedtekter</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
+              href="/commedycentral">Commedy central</a
+            >
+          </li>
         </ul>
       </div>
 
-
       <!-- Main sponsor -->
       <div class="flex flex-col justify-center text-center">
-        <div class="flex justify-center text-teal-600 ">
-          <img class="w-auto h-16" src="/imgs/Beta_blue_1.png" alt="Sponsor logo" />
+        <div class="flex justify-center text-teal-600">
+          <img class="h-16 w-auto" src="/imgs/Beta_blue_1.png" alt="Sponsor logo" />
         </div>
-        <p class="mt-4 text-lg font-medium text-gray-900 dark:text-white">Ønsker din bedrift logo her?</p>
-        <a class="text-brand hover:opacity-75" href="mailto:bedrift@betauia.net">Send oss en mail!</a>
+        <p class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
+          Ønsker din bedrift logo her?
+        </p>
+        <a class="text-brand hover:opacity-75" href="mailto:bedrift@betauia.net"
+          >Send oss en mail!</a
+        >
       </div>
-
-
     </div>
   </div>
 
-  <div class="pt-6 pb-6 mt-12 border-t border-gray-200 dark:border-gray-700">
-    <div class="flex flex-col justify-between max-w-screen-xl gap-4 px-4 mx-auto text-center sm:flex-row sm:px-6 lg:px-8">
+  <div class="mt-12 border-t border-gray-200 pb-6 pt-6 dark:border-gray-700">
+    <div
+      class="mx-auto flex max-w-screen-xl flex-col justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 lg:px-8"
+    >
       <p class="text-sm text-gray-500">© 2025 BETA Engineering & Technology Association</p>
       <p class="text-sm text-gray-500">Feil på siden? Kontakt oss!</p>
     </div>

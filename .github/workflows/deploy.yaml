@@ -24,6 +24,8 @@ jobs:
 
             git pull origin master || { echo "Git pull failed"; exit 1; }
 
-            docker compose -f compose.yaml -f compose.prod.yaml down || { echo "Docker compose down failed"; exit 1; }
+            docker compose -f compose.yaml -f compose.prod.yaml pull || { echo "Docker compose pull failed"; exit 1; }
 
-            docker compose -f compose.yaml -f compose.prod.yaml up --build -d || { echo "Docker compose up failed"; exit 1; }
+            docker compose -f compose.yaml -f compose.prod.yaml build || { echo "Docker compose build failed"; exit 1; }
+
+            docker compose -f compose.yaml -f compose.prod.yaml up -d || { echo "Docker compose up failed"; exit 1; }
