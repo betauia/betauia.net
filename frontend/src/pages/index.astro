@@ -1,22 +1,24 @@
 ---
-import MainLayout from "@layouts/MainLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import FullContainer from "@components/containers/FullContainer.astro";
 import Button from "@components/ui/Button.astro";
 ---
 
-<MainLayout title="Home">
-  <div class="w-full my-auto text-gray-900 dark:text-white">
-    <div class="my-auto container mx-auto px-4 max-w-4xl sm:px-6 lg:px-8 flex">
-      
-      <div class="mx-auto px-2 sm:px-6 lg:px-8 text-center">
+<PageLayout title="Home">
+  <FullContainer>
+    <div class="flex justify-center h-full">
+      <div class="container flex max-w-4xl px-4 mx-auto my-auto sm:px-6 lg:px-8">
+        <div class="px-2 mx-auto text-center sm:px-6 lg:px-8">
           <div class="flex justify-center">
-            <img class="h-24 w-auto" src="imgs/Beta_blue_1.png" alt="BETA logo" />
+            <img class="w-auto h-24" src="imgs/Beta_blue_1.png" alt="BETA logo" />
           </div>
-          <p class="text-lg mt-4 ">BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT eller kunstig intelligens tilhørende UiA Grimstad.</p>
+          <p class="mt-4 text-lg ">BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT eller kunstig intelligens tilhørende UiA Grimstad.</p>
           <div class="mt-6 mb-2">
             <Button text="Discord" href="https://discord.gg/3xBPkDsaXy" target="_blank"/>
             <Button text="Om oss" href="/om" type="secondary" />
           </div>
         </div>
       </div>
-  </div>
-</MainLayout>
+    </div>
+  </FullContainer>
+</PageLayout>

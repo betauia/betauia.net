@@ -1,6 +1,8 @@
 ---
-import Navbar from "../components/layout/Navbar.astro";
+import Header from "@components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
+
+import "../styles/global.css"
 
 interface Props {
 	title: string;
@@ -12,7 +14,6 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-  <!-- Set the dark class before html gets loaded, circumvents white flash on refresh -->
     <script>
       if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         document.documentElement.classList.add("dark");
@@ -25,12 +26,11 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | BETA</title>
 	</head>
-  <body class="bg-white dark:bg-gray-900">
-    <Navbar />
-    <main class="min-h-svh pt-16 flex flex-col">
+  <body class="text-gray-900 bg-white dark:bg-gray-900 dark:text-white">
+    <Header />
+    <main class="min-h-svh">
 		  <slot />
     </main>
     <Footer />
 	</body>
 </html>
-
