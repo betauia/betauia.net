@@ -1,11 +1,9 @@
 from flask import Flask
 
-
 def create_app():
-    app = Flask(__name__)
+  app = Flask(__name__)
 
-    @app.route("/ping", methods=["GET"])
-    def ping():
-        return "pong!", 200
+  from app.routes import main as main_blueprint
+  app.register_blueprint(main_blueprint)
 
-    return app
+  return app

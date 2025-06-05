@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
       target: development
@@ -20,7 +20,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
       target: development
-    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully
+    stop_signal: SIGINT # flask requires SIGINT to stop gracefully
     restart: on-failure
     environment:
       - FRONTEND_URL=${FRONTEND_URL}
