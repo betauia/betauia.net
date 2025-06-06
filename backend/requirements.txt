@@ -1,2 +1,6 @@
 flask
 gunicorn
+icalendar
+recurring_ical_events
+datetime
+requests
