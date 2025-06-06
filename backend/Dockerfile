@@ -7,7 +7,6 @@ COPY requirements.txt /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN pip3 install --upgrade pip3
 RUN pip3 install -r requirements.txt
 
 COPY . .
