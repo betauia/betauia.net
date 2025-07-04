@@ -1,7 +1,5 @@
 FROM python:3.13-alpine AS base
 
-RUN apk add --no-cache bash openssh-client
-
 WORKDIR /app
 
 COPY requirements.txt /app
@@ -14,6 +12,8 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 FROM base AS development
+
+RUN apk add --no-cache bash openssh-client git
 
 ENV FLASK_ENV=development
 CMD ["python3", "server.py"]

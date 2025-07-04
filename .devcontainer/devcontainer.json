@@ -1,16 +1,17 @@
 {
-  "name": "Existing Docker Compose (Extend)",
+  "name": "BetaWEB Container",
+
   "dockerComposeFile": ["../compose.yaml", "docker-compose.yml"],
   "service": "backend",
+  "runServices": [],
+  "shutdownAction": "stopCompose",
+
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest"
-    }
-  },
+
   "mounts": [
     "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"
   ],
+
   "customizations": {
     "vscode": {
       "settings": {
