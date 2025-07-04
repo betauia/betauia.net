@@ -1,5 +1,7 @@
 FROM python:3.13-alpine AS base
 
+RUN apk add --no-cache bash openssh-client
+
 WORKDIR /app
 
 COPY requirements.txt /app
