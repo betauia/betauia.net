@@ -1,17 +1,3 @@
 {
-  "recommendations": [
-    "eamodio.gitlens",
-    "seatonjiang.gitmoji-vscode",
-    "ms-vscode-remote.remote-wsl",
-    "ms-vscode-remote.remote-ssh",
-    "ms-azuretools.vscode-docker",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "astro-build.astro-vscode",
-    "unifiedjs.vscode-mdx",
-    "bradlc.vscode-tailwindcss",
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "redhat.vscode-yaml"
-  ]
+  "recommendations": ["ms-vscode-remote.remote-containers"]
 }
