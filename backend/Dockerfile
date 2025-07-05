@@ -13,8 +13,6 @@ COPY . .
 
 FROM base AS development
 
-RUN apk add --no-cache bash openssh-client git
-
 ENV FLASK_ENV=development
 CMD ["python3", "server.py"]
 

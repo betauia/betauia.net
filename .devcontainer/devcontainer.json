@@ -1,12 +1,12 @@
 {
   "name": "BetaWEB Container",
 
-  "dockerComposeFile": ["../compose.yaml", "docker-compose.yml"],
-  "service": "backend",
+  "dockerComposeFile": ["../compose.yaml", "compose.dev.yaml"],
+  "service": "workspace",
   "runServices": [],
   "shutdownAction": "stopCompose",
-
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "root",
+  "workspaceFolder": "/workspaces",
 
   "mounts": [
     "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"
@@ -28,6 +28,9 @@
         "prettier.documentSelectors": ["**/*.astro"],
         "[astro]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[python]": {
+          "editor.tabSize": 4
         }
       },
       "extensions": [
@@ -43,7 +46,7 @@
         "bradlc.vscode-tailwindcss",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
       ]
     }
   }
