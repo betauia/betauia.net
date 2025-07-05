@@ -11,7 +11,7 @@ Astro is a web framework for building fast, content-focused websites. It is stat
 ```
 /
 ├── public/             # Static assets
-├── src/                
+├── src/
 |   ├── pages/          # Route-based pages
 |   ├── components/     # UI components
 |   ├── layouts/        # Page layouts
@@ -21,21 +21,22 @@ Astro is a web framework for building fast, content-focused websites. It is stat
 └── tsconfig.json/      # TypeScript configs
 ```
 
-There are also other files for example to  to configure TailwindCSS. Anyhow, the most important folder is `/src/` where the changes for the actual content is placed.
+There are also other files for example to to configure TailwindCSS. Anyhow, the most important folder is `/src/` where the changes for the actual content is placed.
 
-### Pages 
+### Pages
 
 #### File types
 
 - **Astro (.astro)**: Astro pages are exactly the same as regular HTML, but with a component script where you can import modules and data to use in the document. Check out how they work in the [Astro documentation](https://docs.astro.build/en/basics/astro-pages/#astro-pages).
 - **Markdown (.md)**: Markdown is a simple way to write formatted text to the website. Check out this [cheat sheet](https://www.markdownguide.org/cheat-sheet/) for the syntax.
-- **MDX (.mdx)**: In short, MDX is Markdown with inline JavaScript (JSX). This makes content really extensible and is prefered over regular Markdown. Read the [official documentation](https://mdxjs.com/) for how it is used. 
+- **MDX (.mdx)**: In short, MDX is Markdown with inline JavaScript (JSX). This makes content really extensible and is prefered over regular Markdown. Read the [official documentation](https://mdxjs.com/) for how it is used.
 
 #### Routing
 
 Routing is simply done by the folder structure in `pages/`. For the routes, the file types are removed and `index` files are placed at the folder.
 
 Examples:
+
 - `pages/betadev/index.astro` is routed to `/betadev/`
 - `pages/comedycentral/memes/kubernuts.mdx` is routed to `/comedycentral/memes/kubernuts`
 

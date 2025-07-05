@@ -7,6 +7,7 @@ Do you want to help make our website? You got any suggestions or good ideas? Wel
 ## What can I do?
 
 There are two main ways to help out:
+
 - The Issue Tracker
 - Writing code
 
@@ -23,6 +24,7 @@ If you want to contribute on something, found a bug or a new feature, please men
 ### Branch Naming
 
 Branches is needed to be named as `[tag]/[name]`. The name and tag should clearly describe the purpose of the branch. Some of the most common tags are:
+
 - `feature`: For implementing new features.
 - `fix`: For implementing fixes on earlier work.
 - `docs`: For writing documentation.
@@ -30,6 +32,7 @@ Branches is needed to be named as `[tag]/[name]`. The name and tag should clearl
 - `security`: For providing security updates.
 
 The branches should be named descriptive and with kebab-case (hyphen and lowercase). Here are some examples:
+
 - `feature/register-user`
 - `docs/contribution-guide`
 - `fix/talking-cows`
@@ -39,8 +42,9 @@ The branches should be named descriptive and with kebab-case (hyphen and lowerca
 All commits should be prefixed with one [Gitmoji](https://gitmoji.dev/). This makes all commits descriptive, easy to read, and forces each commit to focus on only one specific thing.
 
 If you need to change a commit message, you can do that by:
+
 - Use `git rebase`
-	- For example, if you want to change the name of the 4th latest commit, do `git rebase HEAD~4`.
-	- This opens your default editor where you have to edit from `pick` to `reword`, save, then quit. 
-	- That opens a new editor where you can rewrite the commit message.
+  - For example, if you want to change the name of the 4th latest commit, do `git rebase HEAD~4`.
+  - This opens your default editor where you have to edit from `pick` to `reword`, save, then quit.
+  - That opens a new editor where you can rewrite the commit message.
 - After saving that, overwrite the git history with `git push --force`.
