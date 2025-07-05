@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, jsonify
 
-main = Blueprint("main", __name__)
+main_bp = Blueprint("main", __name__)
 
-@main.route("/ping")
+
+@main_bp.route("/ping")
 def ping():
-  return jsonify({"message": "pong"})
+    return jsonify({"message": "pong"})

@@ -1,11 +1,13 @@
 from flask import Flask
 
+from app.routes.calendar import calendar_bp
+from app.routes.main import main_bp
+
+
 def create_app():
     app = Flask(__name__)
 
-    from app.routes import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    app.register_blueprint(main_bp)
+    app.register_blueprint(calendar_bp)
 
-    from app.routes import calendarBlueprint
-    app.register_blueprint(calendarBlueprint)
     return app
