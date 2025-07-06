@@ -9,7 +9,8 @@ Astro is a web framework for building fast, content-focused websites. It is stat
 ## Structure
 
 ```
-/
+/frontend/
+|
 ├── public/             # Static assets
 ├── src/
 |   ├── pages/          # Route-based pages
@@ -25,7 +26,7 @@ There are also other files for example to to configure TailwindCSS. Anyhow, the 
 
 ### Pages
 
-#### File types
+#### File Types
 
 - **Astro (.astro)**: Astro pages are exactly the same as regular HTML, but with a component script where you can import modules and data to use in the document. Check out how they work in the [Astro documentation](https://docs.astro.build/en/basics/astro-pages/#astro-pages).
 - **Markdown (.md)**: Markdown is a simple way to write formatted text to the website. Check out this [cheat sheet](https://www.markdownguide.org/cheat-sheet/) for the syntax.
@@ -81,9 +82,9 @@ title: Comedy Central
 Put the content here!
 ```
 
-## Environment variables
+## Environment Variables
 
-The Environment variables that Astro is allowed to use is defined in `env.d.ts` file. They are not often used and you should never put anything sensitive there since it is public. All the variables need to be define as `PUBLIC_<variablename>` if you need to add one.
+The environment variables that Astro is allowed to use is defined in the `env.d.ts` file. They are not often used and you should never put anything sensitive there since it is public. All the variables need to be define as `PUBLIC_<variablename>` if you need to add one.
 
 This is how you can use them after they are defined:
 
