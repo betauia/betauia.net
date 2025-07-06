@@ -5,6 +5,7 @@
   "service": "workspace",
   "runServices": [],
   "shutdownAction": "stopCompose",
+  "initializeCommand": "rm -rf ./frontend/node_modules",
   "remoteUser": "root",
   "workspaceFolder": "/workspaces",
 

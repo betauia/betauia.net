@@ -5,4 +5,3 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - .:/workspaces:cached
-    
