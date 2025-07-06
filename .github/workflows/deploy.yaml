@@ -22,9 +22,9 @@ jobs:
           script: |
             cd /home/mgr/services/betauia.net
 
-            git pull origin master || { echo "Git pull failed"; exit 1; }
+            rm -rf frontend/node_modules || { echo "Failed removing old dependencies"; exit 1; }
 
-            docker compose -f compose.yaml -f compose.prod.yaml pull || { echo "Docker compose pull failed"; exit 1; }
+            git pull origin master || { echo "Git pull failed"; exit 1; }
 
             docker compose -f compose.yaml -f compose.prod.yaml build || { echo "Docker compose build failed"; exit 1; }
 
