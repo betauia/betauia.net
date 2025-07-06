@@ -22,8 +22,9 @@ jobs:
           script: |
             cd /home/mgr/services/betauia.net
 
+            git config --global user.email "ci@githubactions.com"
+            git config --global user.name "GitHub Actions"
             git pull origin master || { echo "Git pull failed"; exit 1; }
 
             docker compose -f compose.yaml -f compose.prod.yaml build || { echo "Docker compose build failed"; exit 1; }
-
             docker compose -f compose.yaml -f compose.prod.yaml up -d || { echo "Docker compose up failed"; exit 1; }
