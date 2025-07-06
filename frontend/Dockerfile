@@ -1,10 +1,8 @@
-# TODO: make a real multi-stage build where it is possible to copy over `node_modules/` to host.
-
 FROM node:24-alpine AS development
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json .
 
 COPY . .
 
