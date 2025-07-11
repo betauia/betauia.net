@@ -1,6 +1,5 @@
 ---
 import PageLayout from "./PageLayout.astro";
-import Prose from "../components/proses/MarkdownProse.astro";
 import Container from "@components/containers/Container.astro";
 
 const { frontmatter } = Astro.props;
@@ -8,9 +7,9 @@ const { frontmatter } = Astro.props;
 
 <PageLayout title={frontmatter.title}>
   <Container>
-    <Prose>
+    <div class="md-content">
       <h1 class="mb-0">{frontmatter.title}</h1>
       <slot />
-    </Prose>
+    </div>
   </Container>
 </PageLayout>

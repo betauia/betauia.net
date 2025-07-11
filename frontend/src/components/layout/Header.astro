@@ -11,7 +11,7 @@ const isCurrentRoute = (path: string) => {
 ---
 
 <nav class="absolute left-0 top-0 w-full bg-white shadow-lg dark:bg-gray-900">
-  <div class="mx-auto max-w-7xl px-4">
+  <div class="mx-auto px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
         <!-- Mobile menu button -->
@@ -58,7 +58,9 @@ const isCurrentRoute = (path: string) => {
 
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <a href="/"><img class="h-auto w-24" src="/imgs/Beta_blue_1.png" alt="BETA logo" /></a>
+          <a href="/"
+            ><img class="mx-2 h-auto w-24" src="/imgs/Beta_blue_1.png" alt="BETA logo" /></a
+          >
         </div>
 
         <!-- Landscape menu -->
@@ -69,7 +71,7 @@ const isCurrentRoute = (path: string) => {
               routes.map(route => (
                 <a
                   href={route.path}
-                  class={`rounded-md px-3 py-2 text-sm transition ${isCurrentRoute(route.path) ? "opacity-75 hover:opacity-100" : "hover:opacity-75"}`}
+                  class={`px-3 py-2 text-sm transition hover:text-brand ${isCurrentRoute(route.path) ? "font-bold opacity-75" : ""}`}
                 >
                   {route.name}
                 </a>
@@ -103,7 +105,7 @@ const isCurrentRoute = (path: string) => {
           routes.map(route => (
             <a
               href={route.path}
-              class={`block rounded-md px-3 py-2 text-sm transition hover:text-gray-600 dark:hover:text-brand ${isCurrentRoute(route.path) ? "text-gray-600 dark:text-gray-400" : ""}`}
+              class={`block rounded-md px-3 py-2 text-sm transition hover:text-brand ${isCurrentRoute(route.path) ? "font-bold opacity-75" : ""}`}
             >
               {route.name}
             </a>
