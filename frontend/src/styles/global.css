@@ -4,7 +4,7 @@
 
 @layer base {
   main > *:first-child {
-    @apply pt-16;
+    @apply pt-24;
   }
 
   /* --------------------------- */
@@ -13,7 +13,7 @@
 
   /* Headers */
   .md-content h1 {
-    @apply mb-4 mt-8 border-b-2 border-gray-900 border-opacity-25 pb-2 text-4xl font-bold dark:border-white dark:border-opacity-25;
+    @apply mb-4 border-b-2 border-gray-900 border-opacity-25 pb-2 text-4xl font-bold dark:border-white dark:border-opacity-25;
   }
   .md-content h2 {
     @apply mb-3 mt-6 text-3xl font-semibold;
@@ -166,6 +166,24 @@
   .md-content hr {
     @apply my-8 h-[2px] border-none bg-gray-900 opacity-25 dark:bg-white;
   }
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
 }
 
 .sr-only {
