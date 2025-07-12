@@ -1,0 +1,92 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import FullContainer from "@components/containers/FullContainer.astro";
+import Container from "@components/containers/Container.astro";
+import BetaLogo from "@components/logos/Beta.svg";
+import Card from "@components/ui/Card.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<PageLayout title="Home">
+  <Container>
+    <div class="flex justify-center">
+      <h1 class="sr-only">Om Beta</h1>
+      <BetaLogo class="h-28 text-brand" />
+    </div>
+    <p class="my-4 text-center text-xl font-bold text-gray-600 dark:text-gray-400">
+      Linjeforening ved UiA Grimstad
+    </p>
+    <hr class="my-8 border-b-2 border-t-0 border-gray-600 dark:border-gray-400" />
+
+    <h2 class="mb-3 text-4xl font-bold">Hvem er vi?</h2>
+    <p class="mb-6">
+      BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT og kunstig
+      intelligens på UiA Grimstad. Linjeforeningen drives av studentene på disse studiene, og du er
+      automatisk medlem som student på et av dem.
+    </p>
+
+    <h2 class="mb-3 text-4xl font-bold">Hva driver vi med?</h2>
+    <p class="mb-6">
+      Beta jobber med å styrke studentmiljøet, både faglig og sosialt, gjennom ulike arrangementer.
+      Dette bidrar til å danne et sterkt nettverk blant studentene våres og det gir muligheter til å
+      engasjere seg før, under, og etter studietiden.
+    </p>
+    <p class="mb-6">
+      I linjeforeningen finnes det flere ulike interessegrupper og komitéer som alle studenter har
+      mulighet å være en del av. Disse gruppene arrangerer uilke eventer som tekniske kurs, Capture
+      The Flag, Game Jam, LAN, bedriftspresentasjoner, Go-kart, brettspillkvelder, fester og alt det
+      studentene våre foreslår!
+    </p>
+    <div class="mt-16">
+      <a href="https://discord.gg/3xBPkDsaXy" target="_blank" class="">
+        <div class="flex justify-center gap-8 rounded-2xl bg-brand px-4 py-6 text-white">
+          <div class="flex items-center justify-center">
+            <Icon name="fa-brands:discord" class="h-16 w-16" />
+          </div>
+          <div class="">
+            <h2 class="mb-2 flex items-center gap-4 border-b-2 pb-2 text-3xl font-bold">
+              Join Discord!<span><Icon name="fa:external-link" class="w-6" /></span>
+            </h2>
+
+            <p>Det er våres hovedkanal hvor alle oppdateringer og nyheter legges ut!</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </Container>
+
+  <Container>
+    <h2 class="mb-4 border-b-2 border-gray-300 pb-2 text-3xl font-semibold text-white">
+      Interessegrupper
+    </h2>
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
+      <Card
+        title="Betadev"
+        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        image="/imgs/groups/betadev.jpg"
+      /><Card
+        title="Betalan"
+        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        image="/imgs/groups/betadev.jpg"
+      /><Card
+        title="Betasec"
+        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        image="/imgs/groups/betadev.jpg"
+      />
+    </div>
+    <h2 class="mb-4 mt-12 border-b-2 border-gray-300 pb-2 text-3xl font-semibold text-white">
+      Komitéer
+    </h2>
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-0">
+      <Card
+        title="Bedkom"
+        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        image="/imgs/groups/betadev.jpg"
+      /><Card
+        title="Eventkom"
+        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        image="/imgs/groups/betadev.jpg"
+      />
+    </div>
+  </Container>
+</PageLayout>
