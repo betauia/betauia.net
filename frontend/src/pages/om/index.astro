@@ -1,10 +1,15 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import FullContainer from "@components/containers/FullContainer.astro";
 import Container from "@components/containers/Container.astro";
-import BetaLogo from "@components/logos/Beta.svg";
+import BetaLogo from "@assets/logos/Beta.svg";
 import Card from "@components/ui/Card.astro";
 import { Icon } from "astro-icon/components";
+
+import BetadevImage from "@assets/groups/betadev.jpg";
+import BetalanImage from "@assets/groups/betalan.jpg";
+import BetasecImage from "@assets/groups/betasec.jpg";
+import BedkomImage from "@assets/groups/bedkom.jpg";
+import EventkomImage from "@assets/groups/eventkom.jpg";
 ---
 
 <PageLayout title="Home">
@@ -78,11 +83,13 @@ import { Icon } from "astro-icon/components";
       <Card
         title="Betadev"
         description="Interessegruppen for studenter som vil lære software utvikling gjennom prosjekter, workshops og å løse ekte problemer."
-        image="/imgs/groups/betadev.jpg"
+        image={BetadevImage}
+        alt="Betadev"
       /><Card
         title="Betasec"
         description="Interessegruppen for cybersikkerhet hvor det arrangeres CTF-er, workshops og prosjekter som gir praktisk erfaring."
-        image="/imgs/groups/betasec.jpg"
+        image={BetasecImage}
+        alt="Betadev"
       />
     </div>
     <h2 class="mb-4 mt-12 border-b-2 border-gray-300 pb-2 text-3xl font-semibold text-white">
@@ -92,15 +99,18 @@ import { Icon } from "astro-icon/components";
       <Card
         title="Bedkom"
         description="Bedrift komitéen jobber med å kontakte ulike bedrifter og arrangere blant annet bedriftpresentasjoner."
-        image="/imgs/groups/bedkom.jpg"
+        image={BedkomImage}
+        alt="Betadev"
       /><Card
         title="Eventkom"
         description="Event komitéen har ansvar for gjennomføre og koordinere sosiale og faglige arrangementer."
-        image="/imgs/groups/eventkom.jpg"
+        image={EventkomImage}
+        alt="Betadev"
       /><Card
         title="Betalan"
         description="Betalan sin oppgave er å arangere og planlegge UiA sitt feteste LAN en gang i semesteret."
-        image="/imgs/groups/betalan.jpg"
+        image={BetalanImage}
+        alt="Betadev"
       />
     </div>
   </Container>
