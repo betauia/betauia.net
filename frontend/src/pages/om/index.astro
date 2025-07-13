@@ -25,7 +25,7 @@ import { Icon } from "astro-icon/components";
       automatisk medlem som student på et av dem.
     </p>
 
-    <h2 class="mb-3 text-4xl font-bold">Hva driver vi med?</h2>
+    <h2 class="mb-3 text-4xl font-bold">Hva tilbyr vi?</h2>
     <p class="mb-6">
       Beta jobber med å styrke studentmiljøet, både faglig og sosialt, gjennom ulike arrangementer.
       Dette bidrar til å danne et sterkt nettverk blant studentene våres og det gir muligheter til å
@@ -33,13 +33,28 @@ import { Icon } from "astro-icon/components";
     </p>
     <p class="mb-6">
       I linjeforeningen finnes det flere ulike interessegrupper og komitéer som alle studenter har
-      mulighet å være en del av. Disse gruppene arrangerer uilke eventer som tekniske kurs, Capture
-      The Flag, Game Jam, LAN, bedriftspresentasjoner, Go-kart, brettspillkvelder, fester og alt det
-      studentene våre foreslår!
+      mulighet å være en del av. Disse gruppene tilbyr ulike arrangementer og tilbud som:
     </p>
+    <ul class="ml-6 list-[square] space-y-2 marker:text-brand">
+      <li class="pl-1">
+        <b>Sosiale arrangementer</b> som paintball, gokart, Pils & Prog, og alt annet studentene foreslår.
+      </li>
+      <li class="pl-1">
+        <b>Faglige arrangementer</b> som workshops, fagkvelder, hackathons, prosjektarbeid med mer.
+      </li>
+      <li class="pl-1">
+        <b>Interessegrupper</b> innen utvikling og sikkerhet hvor man får praktisk erfaring med temaene.
+      </li>
+      <li class="pl-1">
+        <b>Bedriftspresentasjoner</b> hvor du møter spennende bedrifter og får gratis mat og bonger.
+      </li>
+      <li class="pl-1"><b>Semesterets råeste LAN</b> med konkurranser, spill, mat og hygge.</li>
+    </ul>
     <div class="mt-16">
       <a href="https://discord.gg/3xBPkDsaXy" target="_blank" class="">
-        <div class="flex justify-center gap-8 rounded-2xl bg-brand px-4 py-6 text-white">
+        <div
+          class="flex justify-center gap-8 rounded-2xl bg-brand px-8 py-6 text-white shadow-md transition hover:shadow-xl"
+        >
           <div class="flex items-center justify-center">
             <Icon name="fa-brands:discord" class="h-16 w-16" />
           </div>
@@ -59,33 +74,33 @@ import { Icon } from "astro-icon/components";
     <h2 class="mb-4 border-b-2 border-gray-300 pb-2 text-3xl font-semibold text-white">
       Interessegrupper
     </h2>
-    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-0">
       <Card
         title="Betadev"
-        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
-        image="/imgs/groups/betadev.jpg"
-      /><Card
-        title="Betalan"
-        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
+        description="Interessegruppen for studenter som vil lære software utvikling gjennom prosjekter, workshops og å løse ekte problemer."
         image="/imgs/groups/betadev.jpg"
       /><Card
         title="Betasec"
-        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
-        image="/imgs/groups/betadev.jpg"
+        description="Interessegruppen for cybersikkerhet hvor det arrangeres CTF-er, workshops og prosjekter som gir praktisk erfaring."
+        image="/imgs/groups/betasec.jpg"
       />
     </div>
     <h2 class="mb-4 mt-12 border-b-2 border-gray-300 pb-2 text-3xl font-semibold text-white">
       Komitéer
     </h2>
-    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-0">
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
       <Card
         title="Bedkom"
-        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
-        image="/imgs/groups/betadev.jpg"
+        description="Bedrift komitéen jobber med å kontakte ulike bedrifter og arrangere blant annet bedriftpresentasjoner."
+        image="/imgs/groups/bedkom.jpg"
       /><Card
         title="Eventkom"
-        description="Dette er en veldig fin test av våres fine card komponent som skal funke veldig bra!"
-        image="/imgs/groups/betadev.jpg"
+        description="Event komitéen har ansvar for gjennomføre og koordinere sosiale og faglige arrangementer."
+        image="/imgs/groups/eventkom.jpg"
+      /><Card
+        title="Betalan"
+        description="Betalan sin oppgave er å arangere og planlegge UiA sitt feteste LAN en gang i semesteret."
+        image="/imgs/groups/betalan.jpg"
       />
     </div>
   </Container>
