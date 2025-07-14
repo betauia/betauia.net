@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  img: ImageMetadata;
+}
+
+const { title, description, img } = Astro.props;
+
+const socialImageURL = new URL(img.src, Astro.url)
+---
+
+<title>{title} | BETA</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={Astro.url} />
+<!-- Open Graph -->
+<meta property="og:site_name" content="BETA" />
+<meta property="og:title" content={`${title} | BETA`} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:image:url" content={socialImageURL} />
+<meta property="og:image:secure_url" content={socialImageURL} />
+<!-- Twitter (x) -->
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:domain" content={import.meta.env.SITE} />
