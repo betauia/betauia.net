@@ -1,14 +1,23 @@
 ---
 import Header from "@components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
+import SEO from "@components/Seo.astro";
 
 import "../styles/global.css";
 
+import DefaultSocialImage from "@assets/SocialPreview.png";
+
 interface Props {
   title: string;
+  description?: string;
+  image?: ImageMetadata;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "BETA er linjeforeningen for IKT ved UiA Grimstad.",
+  image = DefaultSocialImage,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -24,11 +33,10 @@ const { title } = Astro.props;
       }
     </script>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | BETA</title>
+    <SEO title={title} description={description} img={image} />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" />
   </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
