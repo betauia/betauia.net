@@ -13,4 +13,5 @@ export default defineConfig({
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
   },
+  site: "https://betauia.net",
 });
