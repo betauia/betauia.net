@@ -2,6 +2,7 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import FullContainer from "@components/containers/FullContainer.astro";
 import Button from "@components/ui/Button.astro";
+import BetaLogo from "@assets/logos/Beta.svg";
 ---
 
 <PageLayout title="Home">
@@ -9,11 +10,12 @@ import Button from "@components/ui/Button.astro";
     <div class="flex h-full items-center justify-center">
       <div class="px-4 text-center sm:px-6 lg:px-8">
         <div class="flex justify-center">
-          <img class="h-24 w-auto" src="imgs/Beta_blue_1.png" alt="BETA logo" />
+          <BetaLogo class="h-24 text-brand" />
+          <!-- <img class="h-24 w-auto" src="imgs/Beta_blue_1.png" alt="BETA logo" /> -->
         </div>
         <p class="mt-4 text-lg">
-          BETA er linjeforeningen for studenter ved cybersikkerhet, dataingeniør, IKT eller kunstig
-          intelligens tilhørende UiA Grimstad.
+          BETA er linjeforeningen for studenter innen cybersikkerhet, dataingeniør, IKT eller
+          kunstig intelligens ved UiA Grimstad.
         </p>
         <div class="mb-2 mt-6">
           <Button text="Discord" href="https://discord.gg/3xBPkDsaXy" target="_blank" />

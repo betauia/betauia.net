@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import BetaLogo from "@assets/logos/Beta.svg";
+
 const routes = [
   { name: "Om oss", path: "/om" },
   { name: "Generalforsamling", path: "/gf" },
@@ -28,39 +30,15 @@ const isCurrentRoute = (path: string) => {
           <!-- Menu open: "hidden", Menu closed: "block" -->
 
           <!-- Icon when menu is closed -->
-          <svg
-            class="block h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-          </svg>
-
-          <!-- Icon when menu is open -->
-          <svg
-            class="hidden h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
+          <Icon name="fa-solid:bars" class="h-5 w-5 opacity-75" />
         </button>
       </div>
 
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <a href="/"
-            ><img class="mx-2 h-auto w-24" src="/imgs/Beta_blue_1.png" alt="BETA logo" /></a
-          >
+          <a href="/">
+            <BetaLogo class="mx-2 w-24 text-brand" />
+          </a>
         </div>
 
         <!-- Landscape menu -->
