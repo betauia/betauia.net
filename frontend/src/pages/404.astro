@@ -1,0 +1,19 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="404 - Page Not Found">
+  <link rel="stylesheet" href="/src/styles/404.css" />
+
+  <section class="notfound-section">
+    <img src="https://http.cat/404" alt="Funny 404 Image" class="notfound-image" />
+
+    <h1>Oops! Page not found</h1>
+
+    <div class="notfound-buttons">
+      <a href="/" class="btn">Go to BETA Homepage</a>
+      <button onclick="history.back()" class="btn secondary">← Go Back</button>
+      <a href="/contact" class="btn secondary">Contact Us</a>
+    </div>
+  </section>
+</PageLayout>
