@@ -1,0 +1,25 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  items: FaqItem[];
+}
+
+const { title, items } = Astro.props as Props;
+---
+
+<h2>{title}</h2>
+<dl class="">
+  {
+    items.map(item => (
+      <>
+        <dt>{item.question}</dt>
+        <dd>{item.answer}</dd>
+      </>
+    ))
+  }
+</dl>
