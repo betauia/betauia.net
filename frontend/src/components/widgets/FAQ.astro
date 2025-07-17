@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface FaqItem {
   question: string;
   answer: string;
@@ -12,14 +14,48 @@ interface Props {
 const { title, items } = Astro.props as Props;
 ---
 
-<h2>{title}</h2>
-<dl class="">
+<h2 class="my-4 text-3xl font-bold">{title}</h2>
+<dl>
   {
-    items.map(item => (
-      <>
-        <dt>{item.question}</dt>
-        <dd>{item.answer}</dd>
-      </>
+    items.map((item, index) => (
+      <div class="border-t border-gray-600 px-4 last:border-b dark:border-gray-400">
+        <dt class="my-2 text-lg font-bold">
+          <button class="flex w-full items-center justify-between">
+            <div>{item.question}</div>
+            <div>
+              <Icon
+                class="text-brand transition-transform duration-300"
+                name="fa-solid:angle-down"
+              />
+            </div>
+          </button>
+        </dt>
+        <dd class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+          {item.answer}
+        </dd>
+      </div>
     ))
   }
 </dl>
+
+<script>
+  const buttons = document.querySelectorAll("button");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const dt = button.parentElement;
+      const dd = dt?.nextElementSibling as HTMLElement;
+      const icon = button.querySelector("svg");
+
+      if (!dd || !icon) return;
+
+      dd.classList.toggle("max-h-0");
+      dd.classList.toggle("opacity-0");
+      dd.classList.toggle("max-h-96");
+      dd.classList.toggle("opacity-100");
+      dd.classList.toggle("mb-4");
+
+      icon.classList.toggle("-rotate-180");
+    });
+  });
+</script>
