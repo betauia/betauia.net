@@ -3,7 +3,7 @@ import FullContainer from "@components/containers/FullContainer.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import SortList from "@components/ui/SortList.astro";
 
-const pdfImports = import.meta.glob<{ default: string }>("/src/pdfs/*.pdf", {
+const pdfImports = import.meta.glob<{ default: string }>("@assets/pdfs/*.pdf", {
   eager: true,
 });
 
