@@ -310,4 +310,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-frontend/src/pdfs
+frontend/src/assets/pdfs
