@@ -1,0 +1,100 @@
+---
+interface Pdf {
+  name: string | undefined;
+  href: string | undefined;
+  year: string | undefined;
+  semester: string | undefined;
+  examNumber: string | undefined;
+  score: string | undefined;
+  subject: string | undefined;
+}
+
+export interface Props {
+  files: Pdf[];
+}
+
+const { files } = Astro.props as Props;
+---
+
+<div class="rounded border-4 border-brand font-bold">
+  <table class="w-full table-fixed" id="examTable">
+    <tr style="background-color:#0085ff">
+      <th class="border-e border-black">File</th>
+      <th onclick="sortTable(0)" class="border-e border-black" style="cursor: pointer">Year</th>
+      <th class="border-e border-black" style="cursor: pointer">Exam Number</th>
+      <th class="border-e border-black" style="cursor: pointer">Exam score (%)</th>
+      <th class="border-e border-black" style="cursor: pointer">Semester</th>
+      <th style="cursor: pointer">Subject</th>
+    </tr>
+    {
+      files.map((file: Pdf) => {
+        return (
+          <tr class="odd:bg-blue-300 even:bg-blue-400">
+            <td class="border-e border-black px-4 text-center">
+              <div class="">
+                <a href={file.href} download>
+                  {file.name}
+                </a>
+              </div>
+            </td>
+            <td class="border-e border-black text-center">
+              <div>{file.year}</div>
+            </td>
+            <td class="border-e border-black text-center">
+              <div>{file.examNumber}</div>
+            </td>
+            <td class="border-e border-black text-center">
+              <div>{file.score}/100</div>
+            </td>
+            <td class="border-e border-black text-center">
+              <div>{file.semester}</div>
+            </td>
+            <td class="text-center">
+              <div>{file.subject}</div>
+            </td>
+          </tr>
+        );
+      })
+    }
+  </table>
+</div>
+
+<script>
+  // @ts-ignore
+  window.sortTable = function (columnIndex: number) {
+    const table = document.getElementById("examTable") as HTMLTableElement;
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.rows);
+    if (rows.length == 0) return;
+    switch (columnIndex) {
+      case 0: {
+        let sorted = false;
+        while (!sorted) {
+          let switched = false;
+          for (let i = 1; rows.length > i; i++) {
+            let cellsA = rows[i - 1].cells[columnIndex].textContent?.trim() || "";
+            let cellsB = rows[i].cells[columnIndex].textContent?.trim() || "";
+
+            if (cellsA > cellsB) {
+              let temp = rows[i];
+              rows[i] = rows[i - 1];
+              rows[i - 1] = temp;
+              switched = true;
+            }
+            if (switched == false) sorted = true;
+          }
+        }
+        rows.reverse().forEach(row => tbody.appendChild(row));
+        break;
+      }
+      case 1: {
+      }
+      case 2: {
+      }
+      case 3: {
+      }
+      case 4: {
+      }
+    }
+  };
+</script>
