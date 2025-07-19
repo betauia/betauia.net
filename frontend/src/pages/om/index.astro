@@ -10,6 +10,7 @@ import BetalanImage from "@assets/groups/betalan.jpg";
 import BetasecImage from "@assets/groups/betasec.jpg";
 import BedkomImage from "@assets/groups/bedkom.jpg";
 import EventkomImage from "@assets/groups/eventkom.jpg";
+import Discord from "@components/widgets/Discord.astro";
 ---
 
 <PageLayout title="Home">
@@ -56,22 +57,7 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
       <li class="pl-1"><b>Semesterets råeste LAN</b> med konkurranser, spill, mat og hygge.</li>
     </ul>
     <div class="mt-16">
-      <a href="https://discord.gg/3xBPkDsaXy" target="_blank" class="">
-        <div
-          class="flex justify-center gap-8 rounded-2xl bg-brand px-8 py-6 text-white shadow-md transition hover:shadow-xl"
-        >
-          <div class="flex items-center justify-center">
-            <Icon name="fa-brands:discord" class="h-16 w-16" />
-          </div>
-          <div class="">
-            <h2 class="mb-2 flex items-center gap-4 border-b-2 pb-2 text-3xl font-bold">
-              Join Discord!<span><Icon name="fa:external-link" class="w-6" /></span>
-            </h2>
-
-            <p>Det er vår hovedkanal hvor alle oppdateringer og nyheter legges ut!</p>
-          </div>
-        </div>
-      </a>
+      <Discord />
     </div>
   </Container>
 
