@@ -15,14 +15,13 @@ const pdfFiles = Object.entries(pdfImports).map(([path, mod]) => {
   // examNumber -> 1...?
   // score -> 0...100
   // subject -> M1/M2/DM1/DM2/ST...
-  const [year, semester, examNumber, score, subject, ...rest] =
+  const [year, examNumber, score, subject, ...rest] =
     fileName?.replace(".pdf", "").split("-") || [];
 
   return {
     name: fileName,
     href: mod.default,
     year: year,
-    semester: semester,
     examNumber: examNumber,
     score: score,
     subject: subject,
