@@ -3,7 +3,6 @@ interface Pdf {
   name: string | undefined;
   href: string | undefined;
   year: string | undefined;
-  semester: string | undefined;
   examNumber: string | undefined;
   score: string | undefined;
   subject: string | undefined;
@@ -16,28 +15,37 @@ export interface Props {
 const { files } = Astro.props as Props;
 ---
 
-<div class="rounded border-4 border-brand font-bold">
+<div class="rounded border-2 border-brand text-black dark:text-white">
   <table class="w-full table-fixed" id="examTable">
     <tr style="background-color:#0085ff">
-      <th class="border-e border-black">File</th>
-      <th onclick="sortTable(0)" class="border-e border-black" style="cursor: pointer">Year</th>
-      <th onclick="sortTable(1)" class="border-e border-black" style="cursor: pointer"
-        >Exam Number</th
+      <th class="select-none border-e border-black text-white">File</th>
+      <th
+        onclick="sortTable(1)"
+        class="select-none border-e border-black font-bold text-white"
+        style="cursor: pointer">Year</th
       >
-      <th onclick="sortTable(2)" class="border-e border-black" style="cursor: pointer"
-        >Exam score (%)</th
+      <th
+        onclick="sortTable(2)"
+        class="select-none border-e border-black font-bold text-white"
+        style="cursor: pointer">Exam Number</th
       >
-      <th onclick="sortTable(3)" class="border-e border-black" style="cursor: pointer">Semester</th>
-      <th onclick="sortTable(4)" style="cursor: pointer">Subject</th>
+      <th
+        onclick="sortTable(3)"
+        class="select-none border-e border-black font-bold text-white"
+        style="cursor: pointer">Exam score (%)</th
+      >
+      <th onclick="sortTable(4)" class="select-none font-bold text-white" style="cursor: pointer"
+        >Subject</th
+      >
     </tr>
     {
       files.map((file: Pdf) => {
         return (
-          <tr class="odd:bg-blue-300 even:bg-blue-400">
+          <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-400 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-950">
             <td class="border-e border-black px-4 text-center">
               <div class="">
                 <a href={file.href} download>
-                  {file.name}
+                  Download PDF
                 </a>
               </div>
             </td>
@@ -48,10 +56,7 @@ const { files } = Astro.props as Props;
               <div>{file.examNumber}</div>
             </td>
             <td class="border-e border-black text-center">
-              <div>{file.score}/100</div>
-            </td>
-            <td class="border-e border-black text-center">
-              <div>{file.semester}</div>
+              <div>{file.score}</div>
             </td>
             <td class="text-center">
               <div>{file.subject}</div>
@@ -64,132 +69,38 @@ const { files } = Astro.props as Props;
 </div>
 
 <script>
-  const sortedColumns = {
-    0: "",
-    1: "",
-    2: "",
-    3: "",
-    4: "",
+  const sortedColumns: Record<number, string | string | null> = {
+    1: null,
+    2: null,
+    3: null,
+    4: null,
   };
   // @ts-ignore
   window.sortTable = function (columnIndex: number) {
     const table = document.getElementById("examTable") as HTMLTableElement;
     const tbody = table.tBodies[0];
     const rows = Array.from(tbody.rows).slice(1);
-    if (rows.length == 0) return;
-    switch (columnIndex) {
-      case 0: {
-        let sorted = false;
-        while (!sorted) {
-          let switched = false;
-          for (let i = 1; rows.length > i; i++) {
-            let cellsA = rows[i - 1].cells[columnIndex].textContent?.trim() || "";
-            let cellsB = rows[i].cells[columnIndex].textContent?.trim() || "";
-
-            if (cellsA > cellsB) {
-              let temp = rows[i];
-              rows[i] = rows[i - 1];
-              rows[i - 1] = temp;
-              switched = true;
-            }
-            if (switched == false) sorted = true;
-          }
-        }
-        if (sortedColumns[0] == "" || sortedColumns[0] == "ascending") {
-          rows.reverse().forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "descending";
-        } else {
-          rows.forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "ascending";
-        }
-        console.log("SORTING BY YEAR");
-        break;
-      }
-      case 1: {
-        let sorted = false;
-        while (!sorted) {
-          let switched = false;
-          for (let i = 1; rows.length > i; i++) {
-            let cellsA = rows[i - 1].cells[columnIndex].textContent?.trim() || "";
-            let cellsB = rows[i].cells[columnIndex].textContent?.trim() || "";
-
-            if (cellsA > cellsB) {
-              let temp = rows[i];
-              rows[i] = rows[i - 1];
-              rows[i - 1] = temp;
-              switched = true;
-            }
-            if (switched == false) sorted = true;
-          }
-        }
-        if (sortedColumns[0] == "" || sortedColumns[0] == "ascending") {
-          rows.reverse().forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "descending";
-        } else {
-          rows.forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "ascending";
-        }
-        console.log("SORTING BY EXAM NUMBER");
-        break;
-      }
-      case 2: {
-        let sorted = false;
-        while (!sorted) {
-          let switched = false;
-          for (let i = 1; rows.length > i; i++) {
-            let cellsA = rows[i - 1].cells[columnIndex].textContent?.trim() || "";
-            let cellsB = rows[i].cells[columnIndex].textContent?.trim() || "";
-
-            if (cellsA > cellsB) {
-              let temp = rows[i];
-              rows[i] = rows[i - 1];
-              rows[i - 1] = temp;
-              switched = true;
-            }
-            if (switched == false) sorted = true;
-          }
-        }
-        if (sortedColumns[0] == "" || sortedColumns[0] == "ascending") {
-          rows.reverse().forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "descending";
-        } else {
-          rows.forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "ascending";
-        }
-        console.log("SORTING BY SCORE");
-        break;
-      }
-      case 3: {
-        let sorted = false;
-        while (!sorted) {
-          let switched = false;
-          for (let i = 1; rows.length > i; i++) {
-            let cellA = rows[i - 1].cells[columnIndex].textContent?.trim() || "";
-            let cellB = rows[i].cells[columnIndex].textContent?.trim() || "";
-
-            if (cellA == "H" && cellB == "V") {
-              let temp = rows[i];
-              rows[i] = rows[i - 1];
-              rows[i - 1] = temp;
-              switched = true;
-            }
-            if (switched == false) sorted = true;
-          }
-        }
-        if (sortedColumns[0] == "" || sortedColumns[0] == "ascending") {
-          rows.reverse().forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "descending";
-        } else {
-          rows.forEach(row => tbody.appendChild(row));
-          sortedColumns[0] = "ascending";
-        }
-        console.log("SORTING BY SEMESTER");
-        break;
-      }
-      case 4: {
-        console.log("SORTING BY SUBJECT");
-        break;
-      }
+    if (rows.length == 0) {
+      alert("Table is empty");
+      return;
     }
+    const currentDirection: string | null = sortedColumns[columnIndex];
+    const newDirection: string = currentDirection === "desc" ? "asc" : "desc";
+    sortedColumns[columnIndex] = newDirection;
+
+    let sortedRows = rows.sort((a: HTMLTableRowElement, b: HTMLTableRowElement) => {
+      const cellA: string = a.cells[columnIndex].innerText.trim();
+      const cellB: string = b.cells[columnIndex].innerText.trim();
+
+      const cellNumA: number = parseFloat(cellA);
+      const cellNumB: number = parseFloat(cellB);
+
+      if (!isNaN(cellNumA) && !isNaN(cellNumB)) {
+        return newDirection === "asc" ? cellNumA - cellNumB : cellNumB - cellNumA;
+      } else {
+        return newDirection === "asc" ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+      }
+    });
+    sortedRows.forEach(row => tbody.appendChild(row));
   };
 </script>
