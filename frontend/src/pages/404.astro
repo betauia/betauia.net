@@ -3,7 +3,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import FullContainer from "@components/containers/FullContainer.astro";
 import Button from "@components/ui/Button.astro";
 import { Image } from "astro:assets";
-import notfoundImage from "@assets/404.jpg";
+import notfoundImage from "@assets/logos/404.png";
 ---
 
 <PageLayout title="404 - Not Found">
@@ -11,23 +11,11 @@ import notfoundImage from "@assets/404.jpg";
     <section
       class="flex min-h-screen flex-col items-center justify-center space-y-6 px-4 py-16 text-center"
     >
-      <Image src={notfoundImage} alt="Funny 404 Cat" class="h-auto w-96 rounded-xl shadow-lg" />
+      <Image src={notfoundImage} alt="Funny 404 Cat" class="h-auto w-150 rounded-xl shadow-lg -translate-y-[10px]" />
 
       <div class="flex flex-wrap justify-center gap-4">
         <Button text="Go to Homepage" href="/" />
         <Button text="Go Back" href="javascript:history.back()" type="secondary" />
-      </div>
-
-      <div
-        class="flex flex-col gap-2 text-gray-800 dark:text-gray-100 sm:inline-flex sm:flex-row sm:items-center"
-      >
-        <p>
-          Email: <a href="mailto:post@betauia.net" class="underline">post@betauia.net</a>
-        </p>
-        <span class="hidden sm:inline">|</span>
-        <p>
-          Org.nr: <span class="underline">913 777 417</span>
-        </p>
       </div>
     </section>
   </FullContainer>
