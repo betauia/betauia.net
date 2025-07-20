@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from "astro";
+import FullContainer from "@components/containers/FullContainer.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import SortList from "@components/ui/SortList.astro";
+
+export const getStaticPaths = (() => {
+  return [
+    { params: { subject: "MA178" } },
+    { params: { subject: "MA179" } },
+    { params: { subject: "MA180" } },
+    { params: { subject: "MA224" } },
+  ];
+}) satisfies GetStaticPaths;
+
+const { subject } = Astro.params;
+
+const pdfImports = import.meta.glob<{ default: string }>("@assets/pdfs/*/*.pdf", {
+  eager: true,
+});
+
+const pdfFiles = Object.entries(pdfImports)
+  .filter(([path]) => path.includes(`/${subject}/`))
+  .map(([path, mod]) => {
+    const fileName: string | undefined = path.split("/").pop();
+    // Ensure that pdf file names follow -> year-semester-score-subject.pdf format
+    // year -> yyyy
+    // semester -> V/H
+    // examNumber -> 1...?
+    // score -> 0...100
+    const [year, examNumber, score, ...rest] = fileName?.replace(".pdf", "").split("-") || [];
+
+    return {
+      name: fileName,
+      href: mod.default,
+      year: year,
+      examNumber: examNumber,
+      score: score,
+      subject: subject,
+    };
+  });
+---
+
+<PageLayout title="Exams">
+  <FullContainer>
+    <div class="text-center font-bold">
+      <h1 class="text-2xl">Available PDFs for {subject}</h1>
+    </div>
+    <SortList files={pdfFiles} />
+  </FullContainer>
+</PageLayout>

@@ -29,13 +29,8 @@ const { files } = Astro.props as Props;
         class="select-none border-e border-black font-bold text-white"
         style="cursor: pointer">Exam Number</th
       >
-      <th
-        onclick="sortTable(3)"
-        class="select-none border-e border-black font-bold text-white"
-        style="cursor: pointer">Exam score (%)</th
-      >
-      <th onclick="sortTable(4)" class="select-none font-bold text-white" style="cursor: pointer"
-        >Subject</th
+      <th onclick="sortTable(3)" class="select-none font-bold text-white" style="cursor: pointer"
+        >Exam score (%)</th
       >
     </tr>
     {
@@ -55,11 +50,8 @@ const { files } = Astro.props as Props;
             <td class="border-e border-black text-center">
               <div>{file.examNumber}</div>
             </td>
-            <td class="border-e border-black text-center">
-              <div>{file.score}</div>
-            </td>
             <td class="text-center">
-              <div>{file.subject}</div>
+              <div>{file.score}</div>
             </td>
           </tr>
         );
