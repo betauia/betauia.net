@@ -1,11 +1,43 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/containers/Container.astro";
-import Faq from "@components/widgets/FAQ.astro";
+import Faq from "@components/widgets/Faq.astro";
+import { Icon } from "astro-icon/components";
+
+import Discord from "@components/widgets/Discord.astro";
+import Timeline from "@components/widgets/Timeline.astro";
 ---
 
 <PageLayout title="Ny Student">
   <Container>
+    <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
+      Velkommen til UiA og Grimstad!
+    </h1>
+
+    <p class="mb-6"></p>
+
+    <div class="mb-4">
+      <Timeline
+        title="Fadderuka 2025"
+        items={[
+          {
+            title: "Event 1",
+            description: "Info comming!",
+            when: "11. Aug",
+          },
+          {
+            title: "Event 2",
+            description: "Info comming!",
+            when: "12. Aug",
+          },
+        ]}
+      />
+    </div>
+
+    <Discord class="mt-4" />
+  </Container>
+  <Container>
+    <h2 class="mb-4 text-3xl font-bold">Ofte stilte spørsmål</h2>
     <Faq
       title="Beta"
       items={[
@@ -21,5 +53,7 @@ import Faq from "@components/widgets/FAQ.astro";
         },
       ]}
     />
+    <Faq title="Studiene" items={[]} />
+    <Faq title="Studentlivet" items={[]} />
   </Container>
 </PageLayout>
