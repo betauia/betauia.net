@@ -16,8 +16,8 @@ export interface Props {
 const { files } = Astro.props as Props;
 ---
 
-<div class="rounded border-2 border-brand text-black dark:text-white">
-  <table class="w-full table-fixed" id="examTable">
+<div class="overflow-auto rounded border-2 border-brand text-black dark:text-white">
+  <table class="w-full table-auto" id="examTable">
     <tr style="background-color:#0085ff">
       <th
         onclick="sortTable(0)"
@@ -44,9 +44,9 @@ const { files } = Astro.props as Props;
       files.map((file: Pdf) => {
         return (
           <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-700">
-            <td class="flex items-center justify-center px-4 text-center">
+            <td class="max-w-[200px w-0 px-4 text-center align-middle">
               <a href={file.href} download>
-                <div class="my-2 flex w-[200px] cursor-pointer flex-row items-center justify-start gap-2 rounded border-2 border-brand bg-brand px-4 py-1 text-white transition hover:border-blue-600 hover:bg-blue-600">
+                <div class="my-2 flex w-full max-w-full cursor-pointer flex-row items-center gap-2 overflow-hidden rounded border-2 border-brand bg-brand px-3 py-1 text-white transition hover:border-blue-600 hover:bg-blue-600">
                   <Icon name="fa-solid:file-download" />
                   <div class="flex-1 overflow-hidden">{file.nickname?.replaceAll("_", " ")}</div>
                 </div>
