@@ -30,10 +30,11 @@ const pdfFiles = Object.entries(pdfImports)
     const fileName: string | undefined = path.split("/").pop();
     // Ensure that pdf file names follow -> year-semester-score-subject.pdf format
     // year -> yyyy
-    // semester -> V/H
     // examNumber -> 1...?
     // score -> 0...100
-    const [year, examNumber, score, ...rest] = fileName?.replace(".pdf", "").split("-") || [];
+    //nickname -> nickname_with_underscores_for_spaces
+    const [year, examNumber, score, nickname, ...rest] =
+      fileName?.replace(".pdf", "").split("-") || [];
 
     return {
       name: fileName,
@@ -41,7 +42,7 @@ const pdfFiles = Object.entries(pdfImports)
       year: year,
       examNumber: examNumber,
       score: score,
-      subject: subject,
+      nickname: nickname,
     };
   });
 ---

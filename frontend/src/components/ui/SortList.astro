@@ -6,7 +6,7 @@ interface Pdf {
   year: string | undefined;
   examNumber: string | undefined;
   score: string | undefined;
-  subject: string | undefined;
+  nickname: string | undefined;
 }
 
 export interface Props {
@@ -16,10 +16,14 @@ export interface Props {
 const { files } = Astro.props as Props;
 ---
 
-<div class="rounded border-x-2 border-b-2 border-brand text-black dark:text-white">
+<div class="rounded border-2 border-brand text-black dark:text-white">
   <table class="w-full table-fixed" id="examTable">
     <tr style="background-color:#0085ff">
-      <th class="select-none text-center align-middle text-white">Fil</th>
+      <th
+        onclick="sortTable(0)"
+        style="cursor: pointer"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600">Fil</th
+      >
       <th
         onclick="sortTable(1)"
         class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
@@ -39,12 +43,12 @@ const { files } = Astro.props as Props;
     {
       files.map((file: Pdf) => {
         return (
-          <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-400 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-950">
+          <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-700">
             <td class="flex items-center justify-center px-4 text-center">
               <a href={file.href} download>
-                <div class="my-2 flex w-fit cursor-pointer flex-row items-center justify-center gap-2 rounded border-2 border-brand bg-brand px-2 py-1 transition hover:border-blue-600 hover:bg-blue-600">
+                <div class="my-2 flex w-[200px] cursor-pointer flex-row items-center justify-start gap-2 rounded border-2 border-brand bg-brand px-4 py-1 text-white transition hover:border-blue-600 hover:bg-blue-600">
                   <Icon name="fa-solid:file-download" />
-                  Last ned
+                  <div class="flex-1 overflow-hidden">{file.nickname?.replaceAll("_", " ")}</div>
                 </div>
               </a>
             </td>
