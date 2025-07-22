@@ -310,4 +310,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-frontend/src/assets/pdfs
+# Exams
+frontend/src/content/exams/*
+!frontend/src/content/exams/README.md
