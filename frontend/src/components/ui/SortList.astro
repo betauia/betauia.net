@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 interface Pdf {
   name: string | undefined;
   href: string | undefined;
@@ -15,43 +16,46 @@ export interface Props {
 const { files } = Astro.props as Props;
 ---
 
-<div class="rounded border-2 border-brand text-black dark:text-white">
+<div class="rounded border-x-2 border-b-2 border-brand text-black dark:text-white">
   <table class="w-full table-fixed" id="examTable">
     <tr style="background-color:#0085ff">
-      <th class="select-none border-e border-black text-white">File</th>
+      <th class="select-none text-center align-middle text-white">Fil</th>
       <th
         onclick="sortTable(1)"
-        class="select-none border-e border-black font-bold text-white"
-        style="cursor: pointer">Year</th
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">Score</th
       >
       <th
         onclick="sortTable(2)"
-        class="select-none border-e border-black font-bold text-white"
-        style="cursor: pointer">Exam Number</th
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">Del</th
       >
-      <th onclick="sortTable(3)" class="select-none font-bold text-white" style="cursor: pointer"
-        >Exam score (%)</th
+      <th
+        onclick="sortTable(3)"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">År</th
       >
     </tr>
     {
       files.map((file: Pdf) => {
         return (
           <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-400 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-950">
-            <td class="border-e border-black px-4 text-center">
-              <div class="">
-                <a href={file.href} download>
-                  Download PDF
-                </a>
-              </div>
+            <td class="flex items-center justify-center px-4 text-center">
+              <a href={file.href} download>
+                <div class="my-2 flex w-fit cursor-pointer flex-row items-center justify-center gap-2 rounded border-2 border-brand bg-brand px-2 py-1 transition hover:border-blue-600 hover:bg-blue-600">
+                  <Icon name="fa-solid:file-download" />
+                  Last ned
+                </div>
+              </a>
             </td>
-            <td class="border-e border-black text-center">
-              <div>{file.year}</div>
+            <td class="text-center">
+              <div>{file.score}%</div>
             </td>
-            <td class="border-e border-black text-center">
+            <td class="text-center">
               <div>{file.examNumber}</div>
             </td>
             <td class="text-center">
-              <div>{file.score}</div>
+              <div>{file.year}</div>
             </td>
           </tr>
         );
@@ -65,7 +69,6 @@ const { files } = Astro.props as Props;
     1: null,
     2: null,
     3: null,
-    4: null,
   };
   // @ts-ignore
   window.sortTable = function (columnIndex: number) {
