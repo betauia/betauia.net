@@ -4,18 +4,23 @@ import Container from "@components/containers/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import SortList from "@components/ui/SortList.astro";
 
+import fs from "fs";
+import path from "path";
+
 export const getStaticPaths = (() => {
-  return [
-    { params: { subject: "MA178" } },
-    { params: { subject: "MA179" } },
-    { params: { subject: "MA180" } },
-    { params: { subject: "MA224" } },
-  ];
+  const subjectsDir = path.resolve("src/content/exams");
+  const folders = fs
+    .readdirSync(subjectsDir)
+    .filter(name => fs.statSync(path.join(subjectsDir, name)).isDirectory());
+
+  return folders.map(subject => ({
+    params: { subject },
+  }));
 }) satisfies GetStaticPaths;
 
 const { subject } = Astro.params;
 
-const pdfImports = import.meta.glob<{ default: string }>("@assets/pdfs/*/*.pdf", {
+const pdfImports = import.meta.glob<{ default: string }>("@content/exams/*/*.pdf", {
   eager: true,
 });
 
