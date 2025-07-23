@@ -1,19 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
-interface Pdf {
-  name: string | undefined;
-  href: string | undefined;
-  year: string | undefined;
-  examNumber: string | undefined;
-  score: string | undefined;
-  nickname: string | undefined;
-}
+import type { SortListProps } from "@lib/types/props";
+import type { Pdf } from "@lib/types/models";
 
-export interface Props {
-  files: Pdf[];
-}
-
-const { files } = Astro.props as Props;
+const { files } = Astro.props as SortListProps;
 ---
 
 <div class="overflow-auto rounded border-2 border-brand text-black dark:text-white">

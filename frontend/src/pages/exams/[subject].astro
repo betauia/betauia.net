@@ -3,20 +3,21 @@ import type { GetStaticPaths } from "astro";
 import Container from "@components/containers/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import SortList from "@components/ui/SortList.astro";
+import type { Pdf } from "@lib/types/models";
 
-import fs from "fs";
 import path from "path";
 
-export const getStaticPaths = (() => {
-  const subjectsDir = path.resolve("src/content/exams");
-  const folders = fs
-    .readdirSync(subjectsDir)
-    .filter(name => fs.statSync(path.join(subjectsDir, name)).isDirectory());
+export const getStaticPaths: GetStaticPaths = () => {
+  const subjectFolders = import.meta.glob("@content/exams/*/*.pdf", { eager: true });
+
+  const folders = [
+    ...new Set(Object.keys(subjectFolders).map(file => path.basename(path.dirname(file)))),
+  ];
 
   return folders.map(subject => ({
     params: { subject },
   }));
-}) satisfies GetStaticPaths;
+};
 
 const { subject } = Astro.params;
 
@@ -24,27 +25,24 @@ const pdfImports = import.meta.glob<{ default: string }>("@content/exams/*/*.pdf
   eager: true,
 });
 
-const pdfFiles = Object.entries(pdfImports)
-  .filter(([path]) => path.includes(`/${subject}/`))
-  .map(([path, mod]) => {
-    const fileName: string | undefined = path.split("/").pop();
-    // Ensure that pdf file names follow -> year-semester-score-subject.pdf format
-    // year -> yyyy
-    // examNumber -> 1...?
-    // score -> 0...100
-    //nickname -> nickname_with_underscores_for_spaces
-    const [year, examNumber, score, nickname, ...rest] =
-      fileName?.replace(".pdf", "").split("-") || [];
+const pdfFiles: Pdf[] = Object.entries(pdfImports)
+  .filter(([filePath]) => filePath.includes(`/${subject}/`))
+  .map(([filePath, mod]) => {
+    const fileName = path.basename(filePath);
+    if (!fileName.includes("-")) return null;
+
+    const [year, examNumber, score, nickname] = fileName.replace(".pdf", "").split("-");
 
     return {
       name: fileName,
       href: mod.default,
-      year: year,
-      examNumber: examNumber,
-      score: score,
-      nickname: nickname,
+      year,
+      examNumber,
+      score,
+      nickname,
     };
-  });
+  })
+  .filter(Boolean) as Pdf[];
 ---
 
 <PageLayout title="Exams">
