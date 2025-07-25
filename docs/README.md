@@ -20,6 +20,7 @@ The frontend docs are under `/docs/frontend/`:
 
 - [Astro](frontend/astro.md)
 - [~~Tailwind CSS~~](frontend/tailwind.md) (PLANNED)
+- [Exams](frontend/exams.md)
 
 ### Backend
 
