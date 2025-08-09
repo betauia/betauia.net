@@ -1,0 +1,104 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface TimelineItem {
+  title: string;
+  description: string;
+  where: string;
+  when: string;
+  link: string;
+}
+
+interface Props {
+  title: string;
+  items: TimelineItem[];
+}
+
+const { title, items } = Astro.props as Props;
+---
+
+<h3 class="mb-6 text-2xl font-bold md:text-center">{title}</h3>
+<div>
+  {
+    items.map((item, index) => (
+      <div class="flex min-h-16 justify-evenly">
+        {/* Left */}
+        <div class="hidden flex-1 md:block">
+          {index % 2 !== 0 && (
+            <>
+              <a
+                href={item.link}
+                class="flex items-center justify-end pr-4 text-white transition hover:opacity-75"
+              >
+                <div class="flex h-[2rem] items-center whitespace-nowrap rounded-l-lg bg-gray-600 px-2 text-sm font-bold">
+                  {item.when}
+                </div>
+                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-2 pr-1 text-lg font-bold">
+                  {item.title}
+                </h4>
+                <div class="h-0 w-0 border-b-[1rem] border-l-[1rem] border-t-[1rem] border-b-transparent border-l-brand border-t-transparent" />
+              </a>
+              <div class="my-2 mr-8 text-right">
+                <p class="opacity-80">{item.where}</p>
+                <p class="mt-2">{item.description}</p>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Line */}
+        <div class="flex flex-col items-center justify-evenly">
+          <div class="mt-2 h-4 w-4 rounded-full bg-brand" />
+          <div class="mt-2 flex-1 border-2 border-gray-600" />
+        </div>
+
+        {/* Right */}
+        <div class="flex-1">
+          {index % 2 === 0 && (
+            <div class="hidden md:block">
+              <a
+                href={item.link}
+                class="flex items-center pl-4 text-white transition hover:opacity-75"
+              >
+                <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-brand border-t-transparent" />
+                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-1 pr-2 text-lg font-bold">
+                  {item.title}
+                </h4>
+                <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
+                  {item.when}
+                </div>
+              </a>
+              <div class="my-2 ml-8">
+                <p class="opacity-80">{item.where}</p>
+                <p class="mt-2">{item.description}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Small screen */}
+          <div class="block md:hidden">
+            <a
+              href={item.link}
+              class="flex items-center pl-4 text-white transition hover:opacity-75"
+            >
+              <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-brand border-t-transparent" />
+              <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-1 pr-2 text-lg font-bold">
+                {item.title}
+              </h4>
+              <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
+                {item.when}
+              </div>
+            </a>
+            <div class="my-2 mb-8 ml-8">
+              <p class="opacity-80">{item.where}</p>
+              <p class="mt-2">{item.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+  <div class="flex justify-start md:justify-center">
+    <Icon class="text-2xl text-brand" name="fa-solid:caret-down" />
+  </div>
+</div>
