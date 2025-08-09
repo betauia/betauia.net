@@ -1,0 +1,60 @@
+---
+import Container from "@components/containers/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+
+import fs from "fs";
+import path from "path";
+
+const subjectsDir = path.resolve("src/content/exams");
+const folders = fs
+  .readdirSync(subjectsDir)
+  .filter(name => fs.statSync(path.join(subjectsDir, name)).isDirectory())
+  .map(name => {
+    const dirPath = path.join(subjectsDir, name);
+    const fileCount = fs
+      .readdirSync(dirPath)
+      .filter(file => fs.statSync(path.join(dirPath, file)).isFile()).length;
+
+    return { name, fileCount };
+  });
+---
+
+<PageLayout title="Exams">
+  <Container>
+    <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
+      Eksamensoppgaver
+    </h1>
+    <p class="mb-4">
+      Her finner du en oversikt over eksamener og deleksamener i ulike fag. Velg en emnekode under
+      for å se en liste over tilgjengelige eksamener.
+    </p>
+    <p class="mb-6">
+      Vi jobber med å lage en løsning for innsending av nye eksamener slik at listen holdes
+      oppdatert. Inntil videre kan du både dele videre og sjekke ut flere øvingsoppgaver på <a
+        class="text-brand underline hover:opacity-75"
+        href="https://discord.gg/t2aDvnUaFy">mattediscorden</a
+      >.
+    </p>
+
+    <h2 class="mb-4 text-3xl font-bold">Emneoversikt</h2>
+    <ul class="grid grid-cols-2 gap-8 md:grid-cols-3">
+      {
+        folders.map(folder => (
+          <li class="aspect-square">
+            <a
+              href={`/exams/${folder.name}`}
+              class="flex h-full w-full flex-col items-center justify-center rounded-lg bg-brand text-white hover:bg-opacity-75 hover:shadow-md"
+            >
+              <span class="text-4xl font-bold">{folder.name}</span>
+              <span class="mt-2">
+                {folder.fileCount} eksamen{folder.fileCount > 1 ? "er" : ""}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</PageLayout>
+
+<!-- @apply mb-4 border-b-2 border-gray-900 border-opacity-25 pb-2 text-4xl font-bold dark:border-white dark:border-opacity-25; -->
