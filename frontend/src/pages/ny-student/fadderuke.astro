@@ -1,0 +1,213 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/containers/Container.astro";
+
+import Discord from "@components/widgets/Discord.astro";
+import Timeline from "@components/widgets/Timeline.astro";
+---
+
+<PageLayout title="Ny Student">
+  <Container>
+    <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
+      Fadderuka 2025
+    </h1>
+
+    <p class="mb-6">
+      Her er en tidslinje over noen av de kuleste arrangementene som skjer i Grimstad. Følg med på <a
+        href="https://sia.no/arrangementer/"
+        class="text-brand underline hover:opacity-75">SiA sin kalender og app</a
+      > for en offisiell og oppdatert liste over arrangementer, eller trykk på lenkene under.
+    </p>
+
+    <p class="mb-6 font-bold">
+      Vi gleder oss til studiestart og til å møte deg! Lykke til med fadderuka!
+    </p>
+
+    <h2 class="mb-10 mt-10 text-3xl font-bold">Tidslinje for fadderuken</h2>
+
+    <div class="mb-6">
+      <Timeline
+        title="Mandag 11. aug"
+        items={[
+          {
+            title: "SiA-gata",
+            description:
+              "Bli kjent med studentlivet i Agder og alle tjenestene til SiA! Beta og flere andre studentaktiviteter står i teltet utenfor, så ta turen og prat med oss! Det blir mulig å delta på konkurranser hvor du blant annet kan vinne gavekort på studenthuset Bluebox og Airpods!",
+            where: "Plenen utenfor Bluebox",
+            when: "10:00-15:00",
+            link: "https://sia.no/arrangementer/sia-gata-1/",
+          },
+          {
+            title: "Seremoni",
+            description: "Offisiell åpningsseremoni for UiA Grimstad like innenfor hovedinngangen.",
+            where: "Atrium",
+            when: "12:00-12:45",
+            link: "https://sia.no/arrangementer/aapningsseremoni-i-grimstad/",
+          },
+          {
+            title: "Rebusløp",
+            description:
+              "Bli med på et sosialt rebusløp der du eller laget ditt utforsker Grimstad, og besøker ulike poster med linjeforeninger/studentaktiviteter. En perfekt mulighet til å bli kjent med både omgivelsene og alt studentlivet har å by på!",
+            where: "Utenfor Bluebox",
+            when: "16:00-18:00",
+            link: "https://sia.no/arrangementer/rebusloep/",
+          },
+          {
+            title: "Konsert",
+            description:
+              "Bluebox starter studieåret med et smell og inviterer til full fest! Dørene åpner 20:00 (OBS: Førstemann til mølla prinsipp) hvor DJ KAAS spiller fra 21:00 og Kris Winther spiller fra 22.30.",
+            where: "Bluebox",
+            when: "20:00-00:00",
+            link: "https://sia.no/arrangementer/kris-winther-paa-bluebox/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Tirsdag 12. aug"
+        items={[
+          {
+            title: "Kos på Groos",
+            description:
+              "Grillpølser, brus, bading, sommerleker og vannlek på Groos med Fjell og Fjære. Det stilles med vanlige pølser, kyllingpølser, veganske alternativer og glutenfrie brød. Ta med badetøy og håndkle.",
+            where: "Groos badestrand",
+            when: "10:00-15:00",
+            link: "https://sia.no/arrangementer/sia-gata-1/",
+          },
+          {
+            title: "Konsert",
+            description:
+              "Bluebox fortsetter festen! Dørene åpner 20:00 (OBS: Førstemann til mølla prinsipp) hvor DJ KAAS spiller fra 21:00, Problembarna spiller fra 22.30 og DJ KAAS fortsetter ut natta.",
+            where: "Bluebox",
+            when: "20:00-00:00",
+            link: "https://sia.no/arrangementer/konsert-paa-bluebox/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Onsdag 13. aug"
+        items={[
+          {
+            title: "Vorspiel før Pubræset",
+            description:
+              "Kom i stemning før kvelden braker løs og bli kjent med studenter fra ulike instutisjoner og ulike fagfelt. Det vil bli spilt god musikk, forhåpentligvis er været fantastisk og Bluebox sørger for at alle finner noe de vil ha i glasset",
+            where: "Bluebox",
+            when: "13:00-17:00",
+            link: "https://sia.no/arrangementer/fagskolen-vors-for-alle/",
+          },
+          {
+            title: "Pubræset",
+            description:
+              "Øl, Viser og Dram (ØVD) står for årets største happening, et prestisjetungt lagbasert ræs gjennom Grimstads mange utesteder. Her blir dere tildelt lag-t-skjorte og første post er innenfor dørene. Etter at lagbildet er tatt bærer det videre ned mot byen!",
+            where: "Bluebox",
+            when: "17:00-23:00",
+            link: "https://sia.no/arrangementer/pubraes/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Torsdag 14. aug"
+        items={[
+          {
+            title: "Grilling",
+            description:
+              "Align Racing inviterer til gratis grillmat, fremvisning og kjøring av konkurranse racing bil og visning av kontor og garasje lokaler.",
+            where: "Mechatronics Innovation Lab Parking lot",
+            when: "15:00-18:30",
+            link: "https://sia.no/arrangementer/grilling-med-align-racing/",
+          },
+          {
+            title: "Torsdagsquiz",
+            description:
+              "Hver torsdag arrangerer GSS quiz på Bluebox i sammarbeid med foreningslivet, denne gangen med LO. Det blir fort trangt på plasser, så husk å kjøp billett tidlig!",
+            where: "Bluebox",
+            when: "19:00-23:00",
+            link: "https://sia.no/arrangementer/torsdagsquiz-med-fadderstyret/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Fredag 15. aug"
+        items={[
+          {
+            title: "Spillkveld",
+            description:
+              "GAME og Beta arrangerer spillkveld med turneringer i ulike spill, casual gaming på PC, konsoll, arkadespill, brettspill og mer. Det blir servert snacks, brus og premier!",
+            where: "Rundt Esports-labben, A3 120",
+            when: "17:30-22:00",
+            link: "https://sia.no/arrangementer/spillkveld-med-game-og-beta/",
+          },
+          {
+            title: "Neon Party",
+            description:
+              "En kveld fylt med glowsticks, neonmaling, musikk og energi! Det blir en fest med god stemning og en unik mulighet til å henge med studenter på en annerledes måte.",
+            where: "Bluebox",
+            when: "21:00-00:00",
+            link: "https://sia.no/arrangementer/neon-party/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Lørdag 16. aug"
+        items={[
+          {
+            title: "Color run",
+            description:
+              "Bli med på årets mest fargerike løp! Color Run handler ikke om tid, men om å ha det gøy med farger, musikk og latter hele veien. Perfekt for deg som vil røre litt på deg, bli dekket i fargepulver og henge med andre studenter i god stemning!",
+            where: "Utenfor Bluebox",
+            when: "17:30-22:00",
+            link: "https://sia.no/arrangementer/color-run/",
+          },
+          {
+            title: "Stipendkveld og Beerpong",
+            description:
+              "GSS inviterer til en avslappet kveld med mye å finne på, og en god mulighet til å se hva Bluebox faktisk har å tilby! Sammen med GAME arrangerer vi en beer pong-turnering, og det blir også karaoke, brettspill og andre morsomme aktiviteter, her er det noe for alle.",
+            where: "Bluebox",
+            when: "20:00-00:00",
+            link: "https://sia.no/arrangementer/stipendkveld-m-beer-pong-turnering/",
+          },
+        ]}
+      />
+    </div>
+
+    <div class="mb-6">
+      <Timeline
+        title="Søndag 17. aug"
+        items={[
+          {
+            title: "Seiltur med Solrik",
+            description:
+              "Grimstad kommune nye studenter med på en uforglemmelig seiltur med Solrik! Turen varer i tre timer og byr på frisk sjøluft, vakre skjærgårdsopplevelser og muligheten til å bli kjent med både byen og medstudenter på en helt unik måte. Her er det førstemann til mølla!",
+            where: "Torskeholmen, Storgaten 2A",
+            when: "14:00-17:00",
+            link: "https://sia.no/arrangementer/seiltur-med-solrik/",
+          },
+          {
+            title: "Byvandring",
+            description:
+              "Etter seilturen for man bli bedre kjent med dikterbyen Grimstad – hjemstedet til både Henrik Ibsen og Knut Hamsun – og oppdag skjulte perler, lokalhistorie og steder du garantert vil få glede av som student.",
+            where: "Torskeholmen, Storgaten 2A",
+            when: "20:00-00:00",
+            link: "https://sia.no/arrangementer/byvandring-bli-kjent-med-grimstad/",
+          },
+        ]}
+      />
+    </div>
+
+    <Discord class="mt-4" />
+  </Container>
+</PageLayout>
