@@ -5,6 +5,7 @@ import Faq from "@components/widgets/Faq.astro";
 import { Image } from "astro:assets";
 
 import FadderUkeImage from "@assets/studiestart.jpg";
+import Discord from "@components/widgets/Discord.astro";
 ---
 
 <PageLayout title="Ny student">
@@ -23,8 +24,9 @@ import FadderUkeImage from "@assets/studiestart.jpg";
       Noe du lurer på? Sjekk ut <a href="#faq" class="text-brand underline hover:opacity-75"
         >ofte stilte spørsmål</a
       >
-      eller <a href="" class="text-brand underline hover:opacity-75">kontakte oss</a> dersom det er noe
-      du ikke finner svar på der!
+      eller <a href="mailto:post@betauia.net" class="text-brand underline hover:opacity-75"
+        >kontakte oss</a
+      > dersom det er noe du ikke finner svar på der!
     </p>
 
     <h2 class="mb-4 mt-8 text-3xl font-bold">Fadderuka</h2>
@@ -45,7 +47,9 @@ import FadderUkeImage from "@assets/studiestart.jpg";
       > for hele uken.
     </p>
 
-    <Image src={FadderUkeImage} alt="Image from fadderuke" class="mt-8 rounded-lg" />
+    <Image src={FadderUkeImage} alt="Image from fadderuke" class="my-8 rounded-lg" />
+
+    <Discord />
   </Container>
   <Container>
     <h2 id="faq" class="mb-4 text-3xl font-bold">Ofte stilte spørsmål</h2>
