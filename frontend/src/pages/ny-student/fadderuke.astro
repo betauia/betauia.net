@@ -6,7 +6,7 @@ import Discord from "@components/widgets/Discord.astro";
 import Timeline from "@components/widgets/Timeline.astro";
 ---
 
-<PageLayout title="Ny Student">
+<PageLayout title="Fadderuka">
   <Container>
     <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
       Fadderuka 2025
@@ -19,13 +19,17 @@ import Timeline from "@components/widgets/Timeline.astro";
       > for en offisiell og oppdatert liste over arrangementer, eller trykk på lenkene under.
     </p>
 
+    <p class="mb-6">
+      Det er også 2 for 1 på kinobilletter og gratis inngang i Dyreparken før helgen starter!
+    </p>
+
     <p class="mb-6 font-bold">
       Vi gleder oss til studiestart og til å møte deg! Lykke til med fadderuka!
     </p>
 
     <h2 class="mb-10 mt-10 text-3xl font-bold">Tidslinje for fadderuken</h2>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Mandag 11. aug"
         items={[
@@ -64,7 +68,7 @@ import Timeline from "@components/widgets/Timeline.astro";
       />
     </div>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Tirsdag 12. aug"
         items={[
@@ -88,7 +92,7 @@ import Timeline from "@components/widgets/Timeline.astro";
       />
     </div>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Onsdag 13. aug"
         items={[
@@ -112,7 +116,7 @@ import Timeline from "@components/widgets/Timeline.astro";
       />
     </div>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Torsdag 14. aug"
         items={[
@@ -132,11 +136,19 @@ import Timeline from "@components/widgets/Timeline.astro";
             when: "19:00-23:00",
             link: "https://sia.no/arrangementer/torsdagsquiz-med-fadderstyret/",
           },
+          {
+            title: "Fest på Torvet",
+            description:
+              "Det er satt sammen et program som vil skape god stemning for nye og gamle studenter som kommer til byen. Det kan allerede røpes at Erik og Kris kommer, men det vil slippes en til artist etter hvert. Dette vil du ikke gå glipp av! Husk å kjøpe billetter!",
+            where: "Øvre Torv, Kristiansand",
+            when: "19:00-00:00",
+            link: "https://sia.no/arrangementer/torsdagsquiz-med-fadderstyret/",
+          },
         ]}
       />
     </div>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Fredag 15. aug"
         items={[
@@ -160,7 +172,7 @@ import Timeline from "@components/widgets/Timeline.astro";
       />
     </div>
 
-    <div class="mb-6">
+    <div class="mb-10">
       <Timeline
         title="Lørdag 16. aug"
         items={[
@@ -179,6 +191,14 @@ import Timeline from "@components/widgets/Timeline.astro";
             where: "Bluebox",
             when: "20:00-00:00",
             link: "https://sia.no/arrangementer/stipendkveld-m-beer-pong-turnering/",
+          },
+          {
+            title: "Rave Party",
+            description:
+              "Café Galleri totalforvandles til en skikkelig rave nattklubb! Og det vil ikke bli spart på noe! DJ scene blir bygd i høyden over bar, så vi får dansegulv i begge etasjer. Mer FET lyd, mye lys, lasere, neonlys, pyro, masse effekter! Husk å kjøpe billetter!",
+            where: "Café Galleri",
+            when: "22:00-02:00",
+            link: "https://www.facebook.com/events/1363077238249327/",
           },
         ]}
       />
