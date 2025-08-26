@@ -7,8 +7,64 @@ from flask import Blueprint
 
 calendar_bp = Blueprint("calendarBlueprint", __name__)
 
+class VeventDtStartEnd:
+    uid:str
+    dtstart:datetime.datetime
+    dtend:datetime.datetime
+    def __init__(self, uid:str, dtstart:datetime.datetime, dtend:datetime.datetime):
+        self.uid=uid
+        self.dtstart=dtstart
+        self.dtend=dtend
+    def isOver(self)->bool:
+        #Sometimes self.dtend is a datetime.date object instead of a dateime.datetime object, so I'll make now a datetime.date object for the comparasons to not crash.
+        now:datetime.date|datetime.datetime
+        if type(self.dtend) == datetime.date:
+            now = datetime.datetime.now(tz=datetime.UTC).date()
+        elif type(self.dtend) == datetime.datetime:
+            now = datetime.datetime.now(tz=datetime.UTC)
+        else:
+            raise Exception()
+        
+        if self.dtend <= now:
+            return True
+        elif self.dtend > now:
+            return False
+        else:
+            raise Exception("Somehow both self.dtend < datetime.datetime.now() and self.dtend >= datetime.datetime.now() where False.")
+    def _datetimeToStr(self, d:datetime.datetime)->str:
+        return d.strftime("%Y-%m-%dT%H:%M%z")
+    def getDtStartStr(self)->str:
+        return self._datetimeToStr(self.dtstart)
+    def getDtEndStr(self)->str:
+        return self._datetimeToStr(self.dtend)
 
-@calendar_bp.route("/api/calendar")
+
+class Vevent:
+    uid:str
+    summary:str
+    description:str
+    location:str
+    color:str
+    timeframe:VeventDtStartEnd
+    def __init__(self, uid:str, summary:str, description:str, location:str, color:str):
+        self.uid = uid
+        self.summary = summary
+        self.description = description
+        self.location = location
+        self.color = color
+    def embedTime(self, v:VeventDtStartEnd):
+        assert self.uid == v.uid, "The VeventDtStartEnd uid is not the same as the Vevent uid."
+        self.timeframe = v
+    def toDict(self)->dict[str,str]:
+        return { "uid":self.uid,
+                "summary":self.summary,
+                "description":self.description,
+                "location":self.location,
+                "color":self.color,
+                "dtstart":self.timeframe.getDtStartStr(),
+                "dtend":self.timeframe.getDtEndStr()}
+
+@calendar_bp.route("/v1/calendar")
 def get_json():
     """!
     @returns calendarOut
@@ -21,37 +77,54 @@ def get_json():
     calendar = icalendar.Calendar.from_ical(r.text)
 
     """A list of event descripions and a list of the times of events. This will be returned."""
-    calendar_out: dict[str, dict[str, dict[str, str]]] = {"events": {}, "times": {}}
+    #calendar_out = {"events": {}, "times": {}}
+    vevents:dict[str, Vevent] = {}
+    veventDtSTartEnds:list[VeventDtStartEnd] = []
 
     for event in calendar.walk("VEVENT"):
         uid = str(event.get("UID"))
-        data = {
-            "summary": str(event.get("SUMMARY")),
-            "description": str(event.get("DESCRIPTION")),
-            "location": str(event.get("LOCATION")),
-            "color": str(event.get("COLOR")),
-        }
-        calendar_out["events"][uid] = data
-        if not event.get("RRULE"):
-            dtstart = event.get("DTSTART")
-            dtend = event.get("DTEND")
-            uid = str(event.get("UID"))
-            data = {
-                "start": dtstart.dt.strftime("%Y-%m-%dT%H:%M%z"),
-                "end": dtend.dt.strftime("%Y-%m-%dT%H:%M%z"),
-            }
-            calendar_out["times"][uid] = data
+        data = Vevent(
+            uid,
+            str(event.get("SUMMARY")),
+            str(event.get("DESCRIPTION")),
+            str(event.get("LOCATION")),
+            str(event.get("COLOR")),
+        )
+        vevents[uid]=data
+
+        #Unsure if this generates duplicate events, but I think it does:
+        # if not event.get("RRULE"):
+        #     dtstart = event.get("DTSTART")
+        #     dtend = event.get("DTEND")
+        #     uid = str(event.get("UID"))
+        #     data = VeventDtStartEnd(
+        #         uid,
+        #         dtstart.dt,
+        #         dtend.dt,
+        #     )
+        #     veventDtSTartEnds.append(data)
 
     query = recurring_ical_events.of(calendar)
     for event in query.between(datetime.datetime.now(), datetime.timedelta(days=365)):
         dtstart = event.get("DTSTART")
         dtend = event.get("DTEND")
         uid = str(event.get("UID"))
-        data = {
-            "start": dtstart.dt.strftime("%Y-%m-%dT%H:%M%z"),
-            "end": dtend.dt.strftime("%Y-%m-%dT%H:%M%z"),
-        }
-        calendar_out["times"][uid] = data
+        data = VeventDtStartEnd(
+            uid,
+            dtstart.dt,
+            dtend.dt,
+        )
+        veventDtSTartEnds.append(data)
+
+    futureJson:dict[str, dict[str,str]] ={}
+    for timeframe in veventDtSTartEnds:
+        if not timeframe.isOver():
+            vevents[timeframe.uid].embedTime(timeframe)
+            futureJson[timeframe.uid] = (vevents[timeframe.uid].toDict())
+        elif timeframe.isOver():
+            vevents.pop(timeframe.uid)
+        else:
+            raise Exception
 
     # dict will automatically be converted to json by flask.
-    return calendar_out
+    return futureJson
