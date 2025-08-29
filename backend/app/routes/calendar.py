@@ -142,14 +142,8 @@ def get_json():
 
     futureJson:dict[str, dict[str,str]] ={}
     for timeframe in veventDtSTartEnds:
-        if not timeframe.isOver():
-            vevents[timeframe.uid].embedTime(timeframe)
-            futureJson[timeframe.uid] = (vevents[timeframe.uid].toDict())
-        elif timeframe.isOver():
-            logging.debug(f"Removed {vevents.get(timeframe.uid)}, because it's over allready.")
-            vevents.pop(timeframe.uid)
-        else:
-            raise Exception
+        vevents[timeframe.uid].embedTime(timeframe)
+        futureJson[timeframe.uid] = (vevents[timeframe.uid].toDict())
 
     # dict will automatically be converted to json by flask.
     return futureJson
