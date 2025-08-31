@@ -84,11 +84,6 @@ class Vevent:
 
 @calendar_bp.route("/v1/calendar")
 def get_json():
-    """!
-    @returns calendarOut
-    @todo Make it possible to get data from multiple ics files.
-    @todo Reimplement this using classes to make it work better with doxygen?
-    """
     #logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
 
     r = requests.get(
