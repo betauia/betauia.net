@@ -97,8 +97,6 @@ def get_json():
 
     calendar = icalendar.Calendar.from_ical(r)
 
-    #"""A list of event descripions and a list of the times of events. This will be returned."""
-    #calendar_out = {"events": {}, "times": {}}
     vevents:list[Vevent] = []
     veventDtSTartEnds:list[VeventDtStartEnd] = []
 
@@ -112,21 +110,6 @@ def get_json():
             str(event.get("COLOR")),
         )
         vevents.append(data)
-
-        # As it turn out `recurring_ical_events.of(calendar)` does include one off events, so we don't have to do seperate processing for them.
-        # What happens in the code block below is enough.
-        # The code below also filters away bygone events so I don't have to check VeventDtSTartEnd.isOver()
-        # if not event.get("RRULE"):
-        #     dtstart = event.get("DTSTART")
-        #     dtend = event.get("DTEND")
-        #     uid = str(event.get("UID"))
-        #     data = VeventDtStartEnd(
-        #         uid,
-        #         dtstart.dt,
-        #         dtend.dt,
-        #     )
-        #     veventDtSTartEnds.append(data)
-        #     logging.debug("Got a time period for an event {}".format(data))
 
     query = recurring_ical_events.of(calendar)
     for event in query.between(datetime.datetime.now(), datetime.timedelta(days=365)):
