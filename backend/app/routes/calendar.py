@@ -89,16 +89,17 @@ def get_json():
     @todo Make it possible to get data from multiple ics files.
     @todo Reimplement this using classes to make it work better with doxygen?
     """
-    logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
+    #logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
 
     r = requests.get(
         "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
-    )
-    calendar = icalendar.Calendar.from_ical(r.text)
+    ).text
+
+    calendar = icalendar.Calendar.from_ical(r)
 
     #"""A list of event descripions and a list of the times of events. This will be returned."""
     #calendar_out = {"events": {}, "times": {}}
-    vevents:dict[str, Vevent] = {}
+    vevents:list[Vevent] = []
     veventDtSTartEnds:list[VeventDtStartEnd] = []
 
     for event in calendar.walk("VEVENT"):
@@ -110,7 +111,7 @@ def get_json():
             str(event.get("LOCATION")),
             str(event.get("COLOR")),
         )
-        vevents[uid]=data
+        vevents.append(data)
 
         # As it turn out `recurring_ical_events.of(calendar)` does include one off events, so we don't have to do seperate processing for them.
         # What happens in the code block below is enough.
@@ -140,10 +141,13 @@ def get_json():
         veventDtSTartEnds.append(data)
         logging.debug("Got a time period for an event {}".format(data))
 
-    futureJson:dict[str, dict[str,str]] ={}
+    futureJson:list[dict[str,str]] = []
+    
     for timeframe in veventDtSTartEnds:
-        vevents[timeframe.uid].embedTime(timeframe)
-        futureJson[timeframe.uid] = (vevents[timeframe.uid].toDict())
+        for vevent in vevents:
+            if vevent.uid == timeframe.uid:
+                vevent.embedTime(timeframe)
+                futureJson.append(vevent.toDict())
 
     # dict will automatically be converted to json by flask.
     return futureJson
