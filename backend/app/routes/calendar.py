@@ -20,6 +20,7 @@ class VeventDtStartEnd:
         self.dtend=dtend
 
     def isOver(self)->bool:
+        """Not currently in use."""
         #Sometimes self.dtend is a datetime.date object instead of a dateime.datetime object, so I'll make now a datetime.date object for the comparasons to not crash.
         now:datetime.date|datetime.datetime
         if type(self.dtend) == datetime.date:
@@ -82,9 +83,17 @@ class Vevent:
     def __repr__(self)->str:
         return f"{self.uid}: {self.summary}"
 
-@calendar_bp.route("/v1/calendar")
-def get_json():
+@calendar_bp.route("/v1/calendar", defaults={"requestTimeframe": "year"})
+@calendar_bp.route("/v1/calendar/<requestTimeframe>")
+def get_json(requestTimeframe:str):
     #logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
+
+    filterTimeframe:datetime.timedelta = {
+        "year": datetime.timedelta(days=365),
+        "month": datetime.timedelta(days=30),
+        "week": datetime.timedelta(days=7)
+    }[requestTimeframe]
+    #filterTimeframe = a[requestTimeframe]
 
     r = requests.get(
         "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
@@ -105,9 +114,10 @@ def get_json():
             str(event.get("COLOR")),
         )
         vevents.append(data)
+        logging.debug("Got event {}".format(data))
 
     query = recurring_ical_events.of(calendar)
-    for event in query.between(datetime.datetime.now(), datetime.timedelta(days=365)):
+    for event in query.between(datetime.datetime.now(), filterTimeframe):
         dtstart = event.get("DTSTART")
         dtend = event.get("DTEND")
         uid = str(event.get("UID"))
