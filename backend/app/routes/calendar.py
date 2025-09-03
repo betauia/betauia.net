@@ -5,7 +5,7 @@ import sys
 import icalendar
 import recurring_ical_events
 from flask import Blueprint
-from requests_cache import CachedSession
+from requests_cache import CachedResponse, CachedSession, OriginalResponse
 
 logger: logging.Logger = logging.getLogger(__name__)
 calendar_bp = Blueprint("calendarBlueprint", __name__)
@@ -118,26 +118,26 @@ def get_json(request_timeframe: str):
 
     def get_plain_ics() -> str:
         session: CachedSession = CachedSession(expire_after=datetime.timedelta(hours=1))
-        r = session.get(
-            "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
+        calendar_request: OriginalResponse | CachedResponse = session.get(
+            url="https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
         )
         # This code is untested, but the alternative is to halt and catch fire anyway.
-        if not r.ok:
+        if not calendar_request.ok:
             logger.error(
                 "Could not get calendar from url, trying to get from cache by setting expiration to 30 days."
             )
             session.cache.reset_expiration(datetime.timedelta(days=30))
-            r = session.get(
+            calendar_request = session.get(
                 "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
             )
             session.cache.reset_expiration(datetime.timedelta(days=30))
-            if not r.ok:
+            if not calendar_request.ok:
                 logger.fatal(
                     "Could not get response from google calendar with even expanded cache."
                 )
                 sys.exit()
             logger.info("Was able to use cached response older than 1 hour.")
-        return r.text
+        return calendar_request.text
 
     calendar = icalendar.Calendar.from_ical(get_plain_ics())
 
