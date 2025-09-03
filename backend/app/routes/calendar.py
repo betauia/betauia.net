@@ -5,6 +5,7 @@ import icalendar
 import recurring_ical_events
 import requests
 from flask import Blueprint
+from requests_cache import CachedSession
 
 logger:logging.Logger = logging.getLogger(__name__)
 calendar_bp = Blueprint("calendarBlueprint", __name__)
@@ -76,7 +77,7 @@ class Vevent:
                 "summary":self.summary,
                 "description":self.description,
                 "location":self.location,
-                "color":self.color,/usr/bin/microsoft-edge-stable
+                "color":self.color,
                 "dtstart":self.timeframe.getDtStartStr(),
                 "dtend":self.timeframe.getDtEndStr()}
     
