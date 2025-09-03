@@ -122,7 +122,7 @@ def get_json(request_timeframe: str):
             "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
         )
         if not r.ok:
-            logger.warning(
+            logger.error(
                 "Could not get calendar from url, trying to get from cache by setting expiration to 30 days."
             )
             session.cache.reset_expiration(datetime.timedelta(days=30))
@@ -135,6 +135,7 @@ def get_json(request_timeframe: str):
                     "Could not get response from google calendar with even expanded cache."
                 )
                 sys.exit()
+            logger.info("Was able to use cached response older than 1 hour.")
         return r.text
 
     calendar = icalendar.Calendar.from_ical(get_plain_ics())
