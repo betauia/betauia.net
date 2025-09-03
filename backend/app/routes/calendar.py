@@ -121,6 +121,7 @@ def get_json(request_timeframe: str):
         r = session.get(
             "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
         )
+        # This code is untested, but the alternative is to halt and catch fire anyway.
         if not r.ok:
             logger.error(
                 "Could not get calendar from url, trying to get from cache by setting expiration to 30 days."
