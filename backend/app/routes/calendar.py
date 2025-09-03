@@ -97,10 +97,10 @@ class Vevent:
 @calendar_bp.route("/v1/calendar", defaults={"request_timeframe": "year"})
 @calendar_bp.route("/v1/calendar/<request_timeframe>")
 def get_json(request_timeframe: str):
-    logging.basicConfig(
-        format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",
-        level="DEBUG",
-    )
+    # logging.basicConfig(
+    #     format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",
+    #     level="DEBUG",
+    # )
 
     def get_filter_timeframe(request_timeframe: str) -> datetime.timedelta:
         if request_timeframe not in ["year", "week", "month"]:
