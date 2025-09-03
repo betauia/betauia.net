@@ -121,6 +121,10 @@ def get_json(request_timeframe: str):
         calendar_request: OriginalResponse | CachedResponse = session.get(
             url="https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
         )
+        if calendar_request.from_cache:
+            logging.debug("Got google calendar from cache.")
+        elif not calendar_request.from_cache:
+            logging.info("Refreshed cached google calendar.")
         # This code is untested, but the alternative is to halt and catch fire anyway.
         if not calendar_request.ok:
             logger.error(
