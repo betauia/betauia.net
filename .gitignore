@@ -312,3 +312,5 @@ dist
 # Exams
 frontend/src/content/exams/*
 !frontend/src/content/exams/README.md
+
+http_cache.sqlite

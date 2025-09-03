@@ -3,7 +3,6 @@ import logging
 
 import icalendar
 import recurring_ical_events
-import requests
 from flask import Blueprint
 from requests_cache import CachedSession
 
@@ -87,7 +86,7 @@ class Vevent:
 @calendar_bp.route("/v1/calendar", defaults={"requestTimeframe": "year"})
 @calendar_bp.route("/v1/calendar/<requestTimeframe>")
 def get_json(requestTimeframe:str):
-    #logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
+    logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
 
     def getFilterTimeframe(requestTimeframe:str) -> datetime.timedelta:
         if requestTimeframe not in ["year", "week", "month"]:
@@ -100,7 +99,8 @@ def get_json(requestTimeframe:str):
         }[requestTimeframe]
     filterTimeframe:datetime.timedelta = getFilterTimeframe(requestTimeframe)
 
-    r = requests.get(
+    session:CachedSession = CachedSession(expire_after=datetime.timedelta(hours=1))
+    r = session.get(
         "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
     ).text
 
@@ -119,7 +119,7 @@ def get_json(requestTimeframe:str):
             str(event.get("COLOR")),
         )
         vevents.append(data)
-        logging.debug("Got event {}".format(data))
+        logging.debug(f"Got event {data}")
 
     query = recurring_ical_events.of(calendar)
     for event in query.between(datetime.datetime.now(), filterTimeframe):
@@ -132,7 +132,7 @@ def get_json(requestTimeframe:str):
             dtend.dt,
         )
         veventDtSTartEnds.append(data)
-        logging.debug("Got a time period for an event {}".format(data))
+        logging.debug(f"Got a time period for an event {data}")
 
     futureJson:list[dict[str,str]] = []
     
