@@ -76,7 +76,7 @@ class Vevent:
                 "summary":self.summary,
                 "description":self.description,
                 "location":self.location,
-                "color":self.color,
+                "color":self.color,/usr/bin/microsoft-edge-stable
                 "dtstart":self.timeframe.getDtStartStr(),
                 "dtend":self.timeframe.getDtEndStr()}
     
@@ -88,12 +88,16 @@ class Vevent:
 def get_json(requestTimeframe:str):
     #logging.basicConfig(format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",level="DEBUG")
 
-    filterTimeframe:datetime.timedelta = {
-        "year": datetime.timedelta(days=365),
-        "month": datetime.timedelta(days=30),
-        "week": datetime.timedelta(days=7)
-    }[requestTimeframe]
-    #filterTimeframe = a[requestTimeframe]
+    def getFilterTimeframe(requestTimeframe:str) -> datetime.timedelta:
+        if requestTimeframe not in ["year", "week", "month"]:
+            logging.warning("The timeframe given in the request for calendar events is not valid. Defaulting to year.")
+            requestTimeframe="year"
+        return {
+            "year": datetime.timedelta(days=365),
+            "month": datetime.timedelta(days=30),
+            "week": datetime.timedelta(days=7)
+        }[requestTimeframe]
+    filterTimeframe:datetime.timedelta = getFilterTimeframe(requestTimeframe)
 
     r = requests.get(
         "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
@@ -131,10 +135,10 @@ def get_json(requestTimeframe:str):
 
     futureJson:list[dict[str,str]] = []
     
-    for timeframe in veventDtSTartEnds:
+    for singleEventTimeframe in veventDtSTartEnds:
         for vevent in vevents:
-            if vevent.uid == timeframe.uid:
-                vevent.embedTime(timeframe)
+            if vevent.uid == singleEventTimeframe.uid:
+                vevent.embedTime(singleEventTimeframe)
                 futureJson.append(vevent.toDict())
 
     # dict will automatically be converted to json by flask.
