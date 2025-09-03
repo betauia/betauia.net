@@ -21,14 +21,14 @@ class VeventDtStartEnd:
         self.dtstart = dtstart
         self.dtend = dtend
 
-    def isOver(self) -> bool:
+    def is_over(self) -> bool:
         """Not currently in use."""
         # Sometimes self.dtend is a datetime.date object instead of a dateime.datetime object, so I'll make now a datetime.date object for the comparasons to not crash.
         now: datetime.date | datetime.datetime
-        if type(self.dtend) == datetime.date:
+        if type(self.dtend) is datetime.date:
             logging.debug("type of self.dtend is datetime.date")
             now = datetime.datetime.now(tz=datetime.UTC).date()
-        elif type(self.dtend) == datetime.datetime:
+        elif type(self.dtend) is datetime.datetime:
             now = datetime.datetime.now(tz=datetime.UTC)
         else:
             raise Exception()
@@ -42,17 +42,17 @@ class VeventDtStartEnd:
                 "Somehow both `self.dtend < datetime.datetime.now()` and `self.dtend >= datetime.datetime.now()` where False."
             )
 
-    def _datetimeToStr(self, d: datetime.datetime) -> str:
+    def _datetime_to_str(self, d: datetime.datetime) -> str:
         return d.strftime("%Y-%m-%dT%H:%M%z")
 
-    def getDtStartStr(self) -> str:
-        return self._datetimeToStr(self.dtstart)
+    def get_dtstart_str(self) -> str:
+        return self._datetime_to_str(self.dtstart)
 
-    def getDtEndStr(self) -> str:
-        return self._datetimeToStr(self.dtend)
+    def get_dtend_str(self) -> str:
+        return self._datetime_to_str(self.dtend)
 
     def __repr__(self) -> str:
-        return f"{self.uid}: from: {self.getDtStartStr()} to: {self.getDtEndStr()}"
+        return f"{self.uid}: from: {self.get_dtstart_str()} to: {self.get_dtend_str()}"
 
 
 class Vevent:
@@ -72,13 +72,13 @@ class Vevent:
         self.location = location
         self.color = color
 
-    def embedTime(self, v: VeventDtStartEnd):
+    def embed_time(self, v: VeventDtStartEnd):
         assert self.uid == v.uid, (
             "The VeventDtStartEnd uid is not the same as the Vevent uid."
         )
         self.timeframe = v
 
-    def toDict(self) -> dict[str, str]:
+    def to_dict(self) -> dict[str, str]:
         # This fails if timeframe is NULL!
         return {
             "uid": self.uid,
@@ -86,35 +86,35 @@ class Vevent:
             "description": self.description,
             "location": self.location,
             "color": self.color,
-            "dtstart": self.timeframe.getDtStartStr(),
-            "dtend": self.timeframe.getDtEndStr(),
+            "dtstart": self.timeframe.get_dtstart_str(),
+            "dtend": self.timeframe.get_dtend_str(),
         }
 
     def __repr__(self) -> str:
         return f"{self.uid}: {self.summary}"
 
 
-@calendar_bp.route("/v1/calendar", defaults={"requestTimeframe": "year"})
-@calendar_bp.route("/v1/calendar/<requestTimeframe>")
-def get_json(requestTimeframe: str):
+@calendar_bp.route("/v1/calendar", defaults={"request_timeframe": "year"})
+@calendar_bp.route("/v1/calendar/<request_timeframe>")
+def get_json(request_timeframe: str):
     logging.basicConfig(
         format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",
         level="DEBUG",
     )
 
-    def getFilterTimeframe(requestTimeframe: str) -> datetime.timedelta:
-        if requestTimeframe not in ["year", "week", "month"]:
+    def get_filter_timeframe(request_timeframe: str) -> datetime.timedelta:
+        if request_timeframe not in ["year", "week", "month"]:
             logging.warning(
                 "The timeframe given in the request for calendar events is not valid. Defaulting to year."
             )
-            requestTimeframe = "year"
+            request_timeframe = "year"
         return {
             "year": datetime.timedelta(days=365),
             "month": datetime.timedelta(days=30),
             "week": datetime.timedelta(days=7),
-        }[requestTimeframe]
+        }[request_timeframe]
 
-    filterTimeframe: datetime.timedelta = getFilterTimeframe(requestTimeframe)
+    filter_timeframe: datetime.timedelta = get_filter_timeframe(request_timeframe)
 
     def get_plain_ics() -> str:
         session: CachedSession = CachedSession(expire_after=datetime.timedelta(hours=1))
@@ -140,7 +140,7 @@ def get_json(requestTimeframe: str):
     calendar = icalendar.Calendar.from_ical(get_plain_ics())
 
     vevents: list[Vevent] = []
-    veventDtSTartEnds: list[VeventDtStartEnd] = []
+    vevent_dtstart_ends: list[VeventDtStartEnd] = []
 
     for event in calendar.walk("VEVENT"):
         uid = str(event.get("UID"))
@@ -155,21 +155,21 @@ def get_json(requestTimeframe: str):
         logging.debug(f"Got event {data}")
 
     query = recurring_ical_events.of(calendar)
-    for event in query.between(datetime.datetime.now(), filterTimeframe):
+    for event in query.between(datetime.datetime.now(), filter_timeframe):
         dtstart = event.get("DTSTART")
         dtend = event.get("DTEND")
         uid = str(event.get("UID"))
         data = VeventDtStartEnd(uid, dtstart.dt, dtend.dt)
-        veventDtSTartEnds.append(data)
+        vevent_dtstart_ends.append(data)
         logging.debug(f"Got a time period for an event {data}")
 
-    futureJson: list[dict[str, str]] = []
+    future_json: list[dict[str, str]] = []
 
-    for singleEventTimeframe in veventDtSTartEnds:
+    for single_event_timeframe in vevent_dtstart_ends:
         for vevent in vevents:
-            if vevent.uid == singleEventTimeframe.uid:
-                vevent.embedTime(singleEventTimeframe)
-                futureJson.append(vevent.toDict())
+            if vevent.uid == single_event_timeframe.uid:
+                vevent.embed_time(single_event_timeframe)
+                future_json.append(vevent.to_dict())
 
     # dict will automatically be converted to json by flask.
-    return futureJson
+    return future_json
