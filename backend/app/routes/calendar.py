@@ -2,6 +2,9 @@ import datetime
 import logging
 import sys
 
+# Allows a member function to return an instance of its own parent class
+from typing import Self
+
 import icalendar
 import recurring_ical_events
 from flask import Blueprint
@@ -94,13 +97,35 @@ class Vevent:
         return f"{self.uid}: {self.summary}"
 
 
+class VeventList(list[Vevent]):
+    def reduce_to_first(self):
+        r = self[0]
+        self.pop(0)
+        while len(self) > 0:
+            if self[0].timeframe.dtstart < r.timeframe.dtstart:
+                r = self[0]
+            self.pop(0)
+        self.append(r)
+
+    def reduce_to_events_with_time(self) -> Self:
+        r: VeventList = VeventList()
+        r.extend([x for x in self if hasattr(x, "timeframe")])
+        logging.debug(f"Pruned list to {r}")
+        return r
+
+
 @calendar_bp.route("/v1/calendar", defaults={"request_timeframe": "year"})
 @calendar_bp.route("/v1/calendar/<request_timeframe>")
 def get_json(request_timeframe: str):
-    # logging.basicConfig(
-    #     format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",
-    #     level="DEBUG",
-    # )
+    logging.basicConfig(
+        format="%(levelname)s: %(filename)s: %(funcName)s @ %(lineno)d: %(message)s",
+        level="DEBUG",
+    )
+
+    just_get_next: bool = False
+    if request_timeframe == "next":
+        just_get_next = True
+        request_timeframe = "year"
 
     def get_filter_timeframe(request_timeframe: str) -> datetime.timedelta:
         if request_timeframe not in ["year", "week", "month"]:
@@ -145,7 +170,7 @@ def get_json(request_timeframe: str):
 
     calendar = icalendar.Calendar.from_ical(get_plain_ics())
 
-    vevents: list[Vevent] = []
+    vevents: VeventList = VeventList()
     vevent_dtstart_ends: list[VeventDtStartEnd] = []
 
     for event in calendar.walk("VEVENT"):
@@ -169,13 +194,24 @@ def get_json(request_timeframe: str):
         vevent_dtstart_ends.append(data)
         logging.debug(f"Got a time period for an event {data}")
 
-    future_json: list[dict[str, str]] = []
-
     for single_event_timeframe in vevent_dtstart_ends:
         for vevent in vevents:
             if vevent.uid == single_event_timeframe.uid:
                 vevent.embed_time(single_event_timeframe)
-                future_json.append(vevent.to_dict())
+
+    vevents: VeventList = vevents.reduce_to_events_with_time()
+    logging.debug(f"{vevents}")
+
+    if just_get_next:
+        vevents.reduce_to_first()
+
+    future_json: list[dict[str, str]] = []
+    for vevent in vevents:
+        # The try except is needed because vevents that are too far into the future or in the past will have no start and end time, but that is a requrement for the code to work.
+        try:
+            future_json.append(vevent.to_dict())
+        except AttributeError:
+            pass
 
     # dict will automatically be converted to json by flask.
     return future_json
