@@ -114,11 +114,11 @@ class VeventList(list[Vevent]):
         logging.debug(f"Pruned list to {r}")
         return r
 
-    def get_copy_by_uid(self, uid: str) -> Vevent | bool:
+    def get_copy_by_uid(self, uid: str) -> Vevent:
         for event in self:
             if event.uid == uid:
                 return deepcopy(event)
-        return False
+        raise Exception("UID not found")
 
 
 @calendar_bp.route("/v1/calendar", defaults={"request_timeframe": "year"})
