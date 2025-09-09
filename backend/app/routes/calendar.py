@@ -182,36 +182,39 @@ def get_json(request_timeframe: str):
     multiple_vevents: VeventList = VeventList()
     vevent_dtstart_ends: list[VeventDtStartEnd] = []
 
-    for event in calendar.walk("VEVENT"):
-        uid = str(event.get("UID"))
-        data = Vevent(
-            uid,
-            str(event.get("SUMMARY")),
-            str(event.get("DESCRIPTION")),
-            str(event.get("LOCATION")),
-            str(event.get("COLOR")),
-        )
-        single_vevents.append(data)
-        logging.debug(f"Got event {data}")
+    def populate_single_vevents():
+        for event in calendar.walk("VEVENT"):
+            uid = str(event.get("UID"))
+            data = Vevent(
+                uid,
+                str(event.get("SUMMARY")),
+                str(event.get("DESCRIPTION")),
+                str(event.get("LOCATION")),
+                str(event.get("COLOR")),
+            )
+            single_vevents.append(data)
+            logging.debug(f"Got event {data}")
 
-    query = recurring_ical_events.of(calendar)
-    for event in query.between(datetime.datetime.now(), filter_timeframe):
-        dtstart = event.get("DTSTART")
-        dtend = event.get("DTEND")
-        uid = str(event.get("UID"))
-        data = VeventDtStartEnd(uid, dtstart.dt, dtend.dt)
-        vevent_dtstart_ends.append(data)
-        logging.debug(f"Got a time period for an event {data}")
+    populate_single_vevents()
 
-    for single_event_timeframe in vevent_dtstart_ends:
-        a: Vevent = single_vevents.get_copy_by_uid(single_event_timeframe.uid)
-        a.embed_time(single_event_timeframe)
-        multiple_vevents.append(a)
-        # # This will remove DUPLICATE EVENTS
-        # for vevent in single_vevents:
-        #     if vevent.uid == single_event_timeframe.uid:
-        #         vevent.embed_time(single_event_timeframe)
+    def populate_vevent_dtstart_ends(query: recurring_ical_events.CalendarQuery):
+        for event in query.between(datetime.datetime.now(), filter_timeframe):
+            dtstart = event.get("DTSTART")
+            dtend = event.get("DTEND")
+            uid = str(event.get("UID"))
+            data = VeventDtStartEnd(uid, dtstart.dt, dtend.dt)
+            vevent_dtstart_ends.append(data)
+            logging.debug(f"Got a time period for an event {data}")
 
+    populate_vevent_dtstart_ends(recurring_ical_events.of(calendar))
+
+    def populate_multiple_vevents():
+        for single_event_timeframe in vevent_dtstart_ends:
+            a: Vevent = single_vevents.get_copy_by_uid(single_event_timeframe.uid)
+            a.embed_time(single_event_timeframe)
+            multiple_vevents.append(a)
+
+    populate_multiple_vevents()
     multiple_vevents: VeventList = multiple_vevents.reduce_to_events_with_time()
     logging.debug(f"{multiple_vevents}")
 
