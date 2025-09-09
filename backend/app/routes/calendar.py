@@ -1,6 +1,7 @@
 import datetime
 import logging
 import sys
+from copy import deepcopy
 
 # Allows a member function to return an instance of its own parent class
 from typing import Self
@@ -75,7 +76,7 @@ class Vevent:
         self.location = location
         self.color = color
 
-    def embed_time(self, v: VeventDtStartEnd):
+    def embed_time(self, v: VeventDtStartEnd) -> None:
         assert self.uid == v.uid, (
             "The VeventDtStartEnd uid is not the same as the Vevent uid."
         )
@@ -113,6 +114,12 @@ class VeventList(list[Vevent]):
         logging.debug(f"Pruned list to {r}")
         return r
 
+    def get_copy_by_uid(self, uid: str) -> Vevent | bool:
+        for event in self:
+            if event.uid == uid:
+                return deepcopy(event)
+        return False
+
 
 @calendar_bp.route("/v1/calendar", defaults={"request_timeframe": "year"})
 @calendar_bp.route("/v1/calendar/<request_timeframe>")
@@ -123,6 +130,7 @@ def get_json(request_timeframe: str):
     )
 
     just_get_next: bool = False
+
     if request_timeframe == "next":
         just_get_next = True
         request_timeframe = "year"
@@ -170,7 +178,8 @@ def get_json(request_timeframe: str):
 
     calendar = icalendar.Calendar.from_ical(get_plain_ics())
 
-    vevents: VeventList = VeventList()
+    single_vevents: VeventList = VeventList()
+    multiple_vevents: VeventList = VeventList()
     vevent_dtstart_ends: list[VeventDtStartEnd] = []
 
     for event in calendar.walk("VEVENT"):
@@ -182,7 +191,7 @@ def get_json(request_timeframe: str):
             str(event.get("LOCATION")),
             str(event.get("COLOR")),
         )
-        vevents.append(data)
+        single_vevents.append(data)
         logging.debug(f"Got event {data}")
 
     query = recurring_ical_events.of(calendar)
@@ -195,18 +204,22 @@ def get_json(request_timeframe: str):
         logging.debug(f"Got a time period for an event {data}")
 
     for single_event_timeframe in vevent_dtstart_ends:
-        for vevent in vevents:
-            if vevent.uid == single_event_timeframe.uid:
-                vevent.embed_time(single_event_timeframe)
+        a: Vevent = single_vevents.get_copy_by_uid(single_event_timeframe.uid)
+        a.embed_time(single_event_timeframe)
+        multiple_vevents.append(a)
+        # # This will remove DUPLICATE EVENTS
+        # for vevent in single_vevents:
+        #     if vevent.uid == single_event_timeframe.uid:
+        #         vevent.embed_time(single_event_timeframe)
 
-    vevents: VeventList = vevents.reduce_to_events_with_time()
-    logging.debug(f"{vevents}")
+    multiple_vevents: VeventList = multiple_vevents.reduce_to_events_with_time()
+    logging.debug(f"{multiple_vevents}")
 
     if just_get_next:
-        vevents.reduce_to_first()
+        multiple_vevents.reduce_to_first()
 
     future_json: list[dict[str, str]] = []
-    for vevent in vevents:
+    for vevent in multiple_vevents:
         # The try except is needed because vevents that are too far into the future or in the past will have no start and end time, but that is a requrement for the code to work.
         try:
             future_json.append(vevent.to_dict())
