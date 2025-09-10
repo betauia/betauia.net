@@ -7,6 +7,13 @@ const routes = [
   { name: "Eksamener", path: "/exams" },
   { name: "Ny student", path: "/ny-student" },
   { name: "Generalforsamling", path: "/gf" },
+  { name: "Interessegrupper",  
+    children: [
+      { name: "BetaSec", path: "/betasec" },
+      { name: "BetaDev", path: "/betadev" },
+      // { name: "BetaLAN", path: "/betalan" },
+    ]
+  },
 ];
 
 const isCurrentRoute = (path: string) => {
@@ -49,13 +56,32 @@ const isCurrentRoute = (path: string) => {
             <!-- Maps out the active route from array -->
             {
               routes.map(route => (
+                route.children ? (
+                  <details class="relative group">
+                    <summary class="px-3 py-2 text-sm cursor-pointer transition hover:text-brand">
+                      {route.name}
+                    </summary>
+                    <div class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+                      <div class="py-1">
+                        {route.children.map(subRoute => (
+                          <a
+                            href={subRoute.path}
+                            class={`block px-4 py-2 text-sm transition hover:bg-gray-100 hover:text-brand dark:hover:bg-gray-700 ${isCurrentRoute(subRoute.path) ? "font-bold opacity-75" : ""}`}
+                          >
+                            {subRoute.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                ) : (
                 <a
                   href={route.path}
                   class={`px-3 py-2 text-sm transition hover:text-brand ${isCurrentRoute(route.path) ? "font-bold opacity-75" : ""}`}
                 >
                   {route.name}
                 </a>
-              ))
+              )))
             }
           </div>
         </div>
