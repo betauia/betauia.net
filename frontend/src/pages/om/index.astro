@@ -1,0 +1,105 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/containers/Container.astro";
+import BetaLogo from "@assets/logos/Beta.svg";
+import Card from "@components/ui/Card.astro";
+import { Icon } from "astro-icon/components";
+
+import BetadevImage from "@assets/groups/betadev.jpg";
+import BetalanImage from "@assets/groups/betalan.jpg";
+import BetasecImage from "@assets/groups/betasec.jpg";
+import BedkomImage from "@assets/groups/bedkom.jpg";
+import EventkomImage from "@assets/groups/eventkom.jpg";
+import Discord from "@components/widgets/Discord.astro";
+---
+
+<PageLayout title="Home">
+  <Container>
+    <div class="flex justify-center">
+      <h1 class="sr-only">Om Beta</h1>
+      <BetaLogo class="h-28 text-brand" />
+    </div>
+    <p class="my-4 text-center text-xl font-bold text-gray-600 dark:text-gray-400">
+      Linjeforening ved UiA Grimstad
+    </p>
+    <hr class="my-8 border-b-2 border-t-0 border-gray-600 dark:border-gray-400" />
+
+    <h2 class="mb-3 text-4xl font-bold">Hvem er vi?</h2>
+    <p class="mb-6">
+      BETA er linjeforeningen for studenter på cybersikkerhet, dataingeniør, IKT og kunstig
+      intelligens ved UiA Grimstad. Foreningen drives av studentene selv, og som student på ett av
+      disse studiene er du automatisk medlem.
+    </p>
+
+    <h2 class="mb-3 text-4xl font-bold">Hva tilbyr vi?</h2>
+    <p class="mb-6">
+      Beta jobber med å styrke studentmiljøet, både faglig og sosialt, gjennom ulike arrangementer.
+      Dette bidrar til å danne et sterkt nettverk blant studentene våre og det gir mulighet til å
+      engasjere seg før, under og etter studietiden.
+    </p>
+    <p class="mb-6">
+      I linjeforeningen finnes det flere ulike interessegrupper og komitéer som alle studenter har
+      mulighet til å være en del av. Disse gruppene tilbyr ulike arrangementer og tilbud som:
+    </p>
+    <ul class="ml-6 list-[square] space-y-2 marker:text-brand">
+      <li class="pl-1">
+        <b>Sosiale arrangementer</b> som paintball, gokart, Pils & Prog, og alt annet studentene foreslår.
+      </li>
+      <li class="pl-1">
+        <b>Faglige arrangementer</b> som workshops, fagkvelder, hackathons, prosjektarbeid med mer.
+      </li>
+      <li class="pl-1">
+        <b>Interessegrupper</b> innen utvikling og sikkerhet hvor man får praktisk erfaring med temaene.
+      </li>
+      <li class="pl-1">
+        <b>Bedriftspresentasjoner</b> hvor du møter spennende bedrifter og får gratis mat og bonger.
+      </li>
+      <li class="pl-1"><b>Semesterets råeste LAN</b> med konkurranser, spill, mat og hygge.</li>
+    </ul>
+    <div class="mt-16">
+      <Discord />
+    </div>
+  </Container>
+
+  <Container>
+    <h2 class="mb-4 border-b-2 border-gray-600 pb-2 text-3xl font-semibold dark:border-gray-400">
+      Interessegrupper
+    </h2>
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:px-0">
+      <Card
+        title="Betadev"
+        description="Interessegruppen for studenter som vil lære software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
+        image={BetadevImage}
+        alt="Betadev"
+      /><Card
+        title="Betasec"
+        description="Interessegruppen for cybersikkerhet hvor det arrangeres CTF-er, workshops og prosjekter som gir praktisk erfaring."
+        image={BetasecImage}
+        alt="Betadev"
+      />
+    </div>
+    <h2
+      class="mb-4 mt-12 border-b-2 border-gray-600 pb-2 text-3xl font-semibold dark:border-gray-400"
+    >
+      Komitéer
+    </h2>
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
+      <Card
+        title="Bedkom"
+        description="Bedriftkomiteen jobber med å kontakte ulike bedrifter og arrangere blant annet bedriftspresentasjoner."
+        image={BedkomImage}
+        alt="Betadev"
+      /><Card
+        title="Eventkom"
+        description="Eventkomiteen har ansvar for å gjennomføre og koordinere sosiale og faglige arrangementer."
+        image={EventkomImage}
+        alt="Betadev"
+      /><Card
+        title="Betalan"
+        description="Betalan sin oppgave er å arrangere og planlegge UiAs feteste LAN én gang i semesteret."
+        image={BetalanImage}
+        alt="Betadev"
+      />
+    </div>
+  </Container>
+</PageLayout>

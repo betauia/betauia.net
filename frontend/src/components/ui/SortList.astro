@@ -1,0 +1,95 @@
+---
+import { Icon } from "astro-icon/components";
+import type { SortListProps } from "@lib/types/props";
+import type { Pdf } from "@lib/types/models";
+
+const { files } = Astro.props as SortListProps;
+---
+
+<div class="overflow-auto rounded border-2 border-brand text-black dark:text-white">
+  <table class="w-full table-auto" id="examTable">
+    <tr style="background-color:#0085ff">
+      <th
+        onclick="sortTable(0)"
+        style="cursor: pointer"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600">Fil</th
+      >
+      <th
+        onclick="sortTable(1)"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">Score</th
+      >
+      <th
+        onclick="sortTable(2)"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">Del</th
+      >
+      <th
+        onclick="sortTable(3)"
+        class="select-none text-center align-middle font-bold text-white hover:bg-blue-600"
+        style="cursor: pointer">År</th
+      >
+    </tr>
+    {
+      files.map((file: Pdf) => {
+        return (
+          <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:odd:bg-gray-900 dark:even:bg-gray-800 dark:hover:bg-gray-700">
+            <td class="max-w-[200px w-0 px-4 text-center align-middle">
+              <a href={file.href} download>
+                <div class="my-2 flex w-full max-w-full cursor-pointer flex-row items-center gap-2 overflow-hidden rounded border-2 border-brand bg-brand px-3 py-1 text-white transition hover:border-blue-600 hover:bg-blue-600">
+                  <Icon name="fa-solid:file-download" />
+                  <div class="flex-1 overflow-hidden">{file.nickname?.replaceAll("_", " ")}</div>
+                </div>
+              </a>
+            </td>
+            <td class="text-center">
+              <div>{file.score}%</div>
+            </td>
+            <td class="text-center">
+              <div>{file.examNumber}</div>
+            </td>
+            <td class="text-center">
+              <div>{file.year}</div>
+            </td>
+          </tr>
+        );
+      })
+    }
+  </table>
+</div>
+
+<script>
+  const sortedColumns: Record<number, string | string | null> = {
+    1: null,
+    2: null,
+    3: null,
+  };
+  // @ts-ignore
+  window.sortTable = function (columnIndex: number) {
+    const table = document.getElementById("examTable") as HTMLTableElement;
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.rows).slice(1);
+    if (rows.length == 0) {
+      alert("Table is empty");
+      return;
+    }
+    const currentDirection: string | null = sortedColumns[columnIndex];
+    const newDirection: string = currentDirection === "desc" ? "asc" : "desc";
+    sortedColumns[columnIndex] = newDirection;
+
+    let sortedRows = rows.sort((a: HTMLTableRowElement, b: HTMLTableRowElement) => {
+      const cellA: string = a.cells[columnIndex].innerText.trim();
+      const cellB: string = b.cells[columnIndex].innerText.trim();
+
+      const cellNumA: number = parseFloat(cellA);
+      const cellNumB: number = parseFloat(cellB);
+
+      if (!isNaN(cellNumA) && !isNaN(cellNumB)) {
+        return newDirection === "asc" ? cellNumA - cellNumB : cellNumB - cellNumA;
+      } else {
+        return newDirection === "asc" ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+      }
+    });
+    sortedRows.forEach(row => tbody.appendChild(row));
+  };
+</script>

@@ -1,0 +1,55 @@
+---
+import type { GetStaticPaths } from "astro";
+import Container from "@components/containers/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import SortList from "@components/ui/SortList.astro";
+import type { Pdf } from "@lib/types/models";
+
+import path from "path";
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const subjectFolders = import.meta.glob("@content/exams/*/*.pdf", { eager: true });
+
+  const folders = [
+    ...new Set(Object.keys(subjectFolders).map(file => path.basename(path.dirname(file)))),
+  ];
+
+  return folders.map(subject => ({
+    params: { subject },
+  }));
+};
+
+const { subject } = Astro.params;
+
+const pdfImports = import.meta.glob<{ default: string }>("@content/exams/*/*.pdf", {
+  eager: true,
+});
+
+const pdfFiles: Pdf[] = Object.entries(pdfImports)
+  .filter(([filePath]) => filePath.includes(`/${subject}/`))
+  .map(([filePath, mod]) => {
+    const fileName = path.basename(filePath);
+    if (!fileName.includes("-")) return null;
+
+    const [year, examNumber, score, nickname] = fileName.replace(".pdf", "").split("-");
+
+    return {
+      name: fileName,
+      href: mod.default,
+      year,
+      examNumber,
+      score,
+      nickname,
+    };
+  })
+  .filter(Boolean) as Pdf[];
+---
+
+<PageLayout title="Exams">
+  <Container>
+    <div class="text-center font-bold">
+      <h1 class="pb-6 text-2xl">Tilgjengelige eksamensoppgaver for {subject}</h1>
+    </div>
+    <SortList files={pdfFiles} />
+  </Container>
+</PageLayout>

@@ -1,57 +1,35 @@
 services:
-  prechecks:
-    build:
-      context: ./prechecks
-    volumes:
-      - ./.env:/app/.env
-      - ./.env.example:/app/.env.example
-    restart: no
-      
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile
+      target: development
     restart: on-failure
     volumes:
       - ./frontend:/app
-      - astro_node_modules:/app/node_modules
     ports:
       - 3000:3000
     environment:
       - PUBLIC_BACKEND_URL=${BACKEND_URL}
-      - ENV=${ENV}
       - CHOKIDAR_USEPOLLING=true
     depends_on:
-      - prechecks
       - backend
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    stop_signal: SIGINT  # flask requires SIGINT to stop gracefully, just sayin'
-    restart: always
+      target: development
+    stop_signal: SIGINT # flask requires SIGINT to stop gracefully
+    restart: on-failure
     environment:
-      - PYTHONUNBUFFERED=0
-      - PYTHONPATH=/src
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - DB_HOST=db
-      - FLASK_ENV=${ENV}
       - FRONTEND_URL=${FRONTEND_URL}
     ports:
       - 8000:8000
     networks:
       - backend_network
     volumes:
-      - ./backend:/src
-    depends_on:
-      - prechecks
-
-
-volumes:
-  astro_node_modules:
+      - ./backend:/app
 
 networks:
   backend_network:

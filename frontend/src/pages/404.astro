@@ -1,0 +1,25 @@
+---
+import FullContainer from "@components/containers/FullContainer.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Button from "@components/ui/Button.astro";
+import { Image } from "astro:assets";
+import Image404 from "@assets/404.svg";
+---
+
+<PageLayout title="404">
+  <FullContainer>
+    <div class="mt-16 flex flex-col items-center">
+      <h1 class="text-7xl font-medium">Ooops!</h1>
+      <!-- <p class="mt-1 text-red-700 dark:text-red-200">Error 404 - Page Not Found</p> -->
+      <p class="mt-4 text-3xl font-light">
+        Denne siden finnes visst ikke. Ta gjerne kontakt om du mener noe er feil. Ellers ha en god
+        dag videre😊
+      </p>
+      <div class="mt-6">
+        <Button href="/" text="Hjemmesiden" type="primary" />
+        <Button href="mailto:post@betauia.net" text="Ta kontakt" type="secondary" />
+      </div>
+      <Image404 class="mt-16 p-8 dark:rounded-3xl dark:bg-neutral-50" />
+    </div>
+  </FullContainer>
+</PageLayout>

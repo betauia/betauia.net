@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build: 
+      target: production
+    ports: []
+
+  backend:
+    build:
+      target: production

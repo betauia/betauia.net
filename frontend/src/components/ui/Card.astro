@@ -1,0 +1,24 @@
+---
+interface CardProps {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  alt: string;
+}
+
+const { title, description, image, alt } = Astro.props as CardProps;
+import { Image } from "astro:assets";
+---
+
+<div
+  class="overflow-hidden rounded-2xl bg-gray-100 shadow-md transition hover:shadow-xl dark:bg-gray-800"
+>
+  <div class="w-full overflow-hidden">
+    <Image src={image} alt={alt} />
+  </div>
+  <div class="p-6">
+    <h3 class="text-xl font-semibold">{title}</h3>
+    <hr class="my-3 border-b-2 border-t-0 border-brand" />
+    <p class="mt-2 text-balance text-gray-900 dark:text-gray-300">{description}</p>
+  </div>
+</div>

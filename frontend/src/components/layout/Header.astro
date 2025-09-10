@@ -1,0 +1,182 @@
+---
+import { Icon } from "astro-icon/components";
+import BetaLogo from "@assets/logos/Beta.svg";
+
+const routes = [
+  { name: "Om oss", path: "/om" },
+  { name: "Eksamener", path: "/exams" },
+  { name: "Ny student", path: "/ny-student" },
+  { name: "Generalforsamling", path: "/gf" },
+  { name: "Interessegrupper",  
+    children: [
+      { name: "BetaSec", path: "/betasec" },
+      { name: "BetaDev", path: "/betadev" },
+      // { name: "BetaLAN", path: "/betalan" },
+    ]
+  },
+];
+
+const isCurrentRoute = (path: string) => {
+  return Astro.url.pathname === path;
+};
+---
+
+<nav class="absolute left-0 top-0 w-full bg-white shadow-lg dark:bg-gray-900">
+  <div class="mx-auto px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-100 focus:ring-brand focus-visible:outline-none focus-visible:ring-2 dark:hover:bg-gray-800"
+          aria-controls="movile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+
+          <!-- Menu open: "hidden", Menu closed: "block" -->
+
+          <!-- Icon when menu is closed -->
+          <Icon name="fa-solid:bars" class="h-5 w-5 opacity-75" />
+        </button>
+      </div>
+
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
+          <a href="/">
+            <BetaLogo class="mx-2 w-24 text-brand" />
+          </a>
+        </div>
+
+        <!-- Landscape menu -->
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <!-- Maps out the active route from array -->
+            {
+              routes.map(route => (
+                route.children ? (
+                  <details class="relative group">
+                    <summary class="px-3 py-2 text-sm cursor-pointer transition hover:text-brand">
+                      {route.name}
+                    </summary>
+                    <div class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+                      <div class="py-1">
+                        {route.children.map(subRoute => (
+                          <a
+                            href={subRoute.path}
+                            class={`block px-4 py-2 text-sm transition hover:bg-gray-100 hover:text-brand dark:hover:bg-gray-700 ${isCurrentRoute(subRoute.path) ? "font-bold opacity-75" : ""}`}
+                          >
+                            {subRoute.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                ) : (
+                <a
+                  href={route.path}
+                  class={`px-3 py-2 text-sm transition hover:text-brand ${isCurrentRoute(route.path) ? "font-bold opacity-75" : ""}`}
+                >
+                  {route.name}
+                </a>
+              )))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme toggle button -->
+      <div class="absolute left-0 flex items-center sm:left-auto sm:right-0">
+        <button
+          id="theme-toggle"
+          type="button"
+          class="rounded-md p-2.5 text-sm text-gray-600 hover:bg-gray-100 focus:ring-brand focus-visible:outline-none focus-visible:ring-2 dark:text-gray-400 dark:hover:bg-gray-800"
+        >
+          <!-- Icon when dark mode is enabled -->
+          <Icon name="fa-solid:sun" id="dark-toggle-icon" class="hidden h-5 w-5" />
+
+          <!-- Icon when light mode is enabled -->
+          <Icon name="fa-solid:moon" id="light-toggle-icon" class="hidden h-4 w-4" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu, shows on small -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Maps out the active route from array -->
+        {
+          routes.map(route => (
+            <a
+              href={route.path}
+              class={`block rounded-md px-3 py-2 text-sm transition hover:text-brand ${isCurrentRoute(route.path) ? "font-bold opacity-75" : ""}`}
+            >
+              {route.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Adds toggle event for the mobile menu -->
+  <script>
+    let menuToggleBtn = document.getElementById("mobile-menu-toggle");
+    let menu = document.getElementById("mobile-menu");
+
+    if (menu && menuToggleBtn) {
+      menu.classList.add("hidden");
+
+      menuToggleBtn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
+  </script>
+
+  <!-- Toggle dark/light theme -->
+  <script>
+    let darkToggleIcon = document.getElementById("dark-toggle-icon");
+    let lightToggleIcon = document.getElementById("light-toggle-icon");
+    let themeToggleBtn = document.getElementById("theme-toggle");
+
+    if (darkToggleIcon && lightToggleIcon && themeToggleBtn) {
+      // Check if darktheme was enabled or system preferes it
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        darkToggleIcon.classList.remove("hidden");
+      } else {
+        lightToggleIcon.classList.remove("hidden");
+      }
+
+      themeToggleBtn.addEventListener("click", () => {
+        // Toggle icons inside button
+        darkToggleIcon.classList.toggle("hidden");
+        lightToggleIcon.classList.toggle("hidden");
+
+        // If set via local storage previously
+        if (localStorage.getItem("color-theme")) {
+          if (localStorage.getItem("color-theme") === "light") {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          }
+        } else {
+          if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          }
+        }
+      });
+    }
+  </script>
+</nav>
