@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/PageLayout.astro";
 import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
-import DiscordLogo from "@components/icons/social/Discord.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="BetaLAN Crew Info" description="Learn about joining the BetaLAN crew and what it entails.">
@@ -66,7 +66,7 @@ import DiscordLogo from "@components/icons/social/Discord.astro";
             <p class="text-sm sm:text-base">Reach out to us and be part of making the next BetaLAN amazing!</p>
           </div>
           <a href="https://discord.gg/spp4jZwMXh" class="flex flex-col items-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-lg transition-colors w-full sm:w-auto max-w-xs">
-            <DiscordLogo class="w-12 h-12 mb-2" />
+            <Icon name="fa-brands:discord" class="w-12 h-12 mb-2" />
             <span class="text-center text-sm sm:text-base font-medium">Join our Discord</span>
             <span class="text-center text-xs text-indigo-200 mt-1">Contact the BetaLAN Leader for more info</span>
           </a>

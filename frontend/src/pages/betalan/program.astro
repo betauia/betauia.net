@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/PageLayout.astro";
 import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
-import DiscordLogo from "@components/icons/social/Discord.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="BetaLAN Program">
@@ -130,7 +130,7 @@ import DiscordLogo from "@components/icons/social/Discord.astro";
             <p class="text-xs sm:text-sm mb-3">Connect with other participants and get real-time updates during the event</p>
             <a href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" 
               class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition-colors text-sm sm:text-base">
-              <DiscordLogo width="24" height="24" class="h-5 w-5 sm:h-6 sm:w-6" />
+              <Icon name="fa-brands:discord" class="w-12 h-12 mb-2" />
               <span>BetaLAN Discord</span>
             </a>
           </div>
