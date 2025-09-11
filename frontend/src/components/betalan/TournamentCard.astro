@@ -1,0 +1,122 @@
+---
+// Tournament card component for displaying tournament information in a card format
+
+interface Props {
+  title: string;
+  imagePath: string;
+  altText: string;
+  description: string;
+  linkPath: string;
+}
+
+const { title, imagePath, altText, description, linkPath } = Astro.props;
+---
+
+<a href={linkPath} class="tournament-card-link">
+    <div class="tournament-card">
+      <div class="tournament-img-container">
+        <img src={imagePath} alt={altText} class="tournament-img" />
+      </div>
+      <div class="tournament-content">
+        <h3 class="tournament-title">{title}</h3>
+        <p class="tournament-desc">{description}</p>
+        <span class="tournament-link">View Details</span>
+      </div>
+    </div>
+</a>
+
+<style>
+  .tournament-card {
+    background: rgba(0, 10, 0, 0.8);
+    border: 2px solid #00dd00;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 221, 0, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center center;
+  }
+
+  .tournament-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(0, 221, 0, 0.5);
+  }
+
+  .tournament-img-container {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tournament-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+  }
+
+  .tournament-card:hover .tournament-img {
+    transform: scale(1.05);
+  }
+
+  .tournament-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tournament-title {
+    color: #18ea28;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-family: "Press Start 2P", cursive;
+  }
+
+  .tournament-desc {
+    color: #ccc;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+  }
+
+  .tournament-link {
+    display: inline-block;
+    background: #007700;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.8rem;
+  }
+
+  .tournament-link:hover {
+    background: #00aa00;
+  }
+
+  @media (max-width: 768px) {
+    .tournament-img-container {
+      height: 140px;
+    }
+    
+    .tournament-title {
+      font-size: 1rem;
+    }
+    
+    .tournament-desc {
+      font-size: 0.8rem;
+    }
+    
+    .tournament-link {
+      font-size: 0.7rem;
+      padding: 6px 12px;
+    }
+  }
+</style>

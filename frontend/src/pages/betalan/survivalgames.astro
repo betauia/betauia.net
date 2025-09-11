@@ -1,0 +1,77 @@
+---
+import MainLayout from "@layouts/PageLayout.astro";
+import Tournament from "@layouts/tournament.astro";
+---
+
+<MainLayout title="Minecraft Survival Games" description="Join the Minecraft Survival Games tournament at BetaLAN! Compete in thrilling PvP battles, survive the shrinking arena, and win exciting prizes.">
+  <Tournament>
+    <h1 class="title">Minecraft Survival Games</h1>
+    <img
+      src="/betalan/tournaments/minecraft-survival-games.png"
+      alt="Minecraft Survival Games"
+      class="responsive-img"
+    />
+    <h2 class="section-title">What is the Minecraft Survival Games?</h2>
+
+    <p class="paragraph">
+    It's basically <span class="text-red-600 font-semibold drop-shadow-lg">The Hunger Games</span>, but in Minecraft! Do you love playing Minecraft?</span>
+      Maybe you're great at fighting games or even better at dodging attacks? Then this is the perfect game for you!
+    </p>
+
+    <h2 class="section-title">Join the server at:</h2>
+
+    <div class="text-center mb-4">
+      <code class="bg-gray-800 px-4 py-2 rounded text-green-400 text-2xl font-mono select-all cursor-pointer hover:bg-gray-700 transition-colors" onclick="navigator.clipboard.writeText('mc.betauia.net')">
+        mc.betauia.net
+      </code>
+    </div>
+
+    <h2 class="section-title">Prize</h2>
+
+    <img
+      src="/betalan/tournaments/minecraft-potion-bottle.png"
+      alt="Minecraft Survival Games Prize"
+      class="responsive-img"
+      style="max-width: 250px;"
+    />
+
+    <ul class="link-center">
+      <li class="list-item">
+        <strong>1st place</strong> – Minecraft Potion Bottle Lamp
+      </li>
+    </ul>
+
+    <h2 class="section-title">Rules</h2>
+
+    <p class="paragraph">The rules are as follows:</p>
+
+    <ul class="list">
+      <li class="list-item">
+        <strong>Who can play?</strong> – You play alone, no teams!
+      </li>
+      <li class="list-item">
+        <strong>Who wins?</strong> – The last player standing
+      </li>
+      <li class="list-item">
+        <strong>Remember</strong> – No cheating
+      </li>
+    </ul>
+
+    <p class="text-red-600 italic text-2xl">Cheating or not following the rules will result in disqualification and immediate removal from the competition.</p>
+
+
+    <h2 class="section-title">How it works?</h2>
+
+    <p class="paragraph">
+      Players are dropped into a world with chests scattered across the map, some in the center and others around the map. 
+      The goal is to fight other players in PvP battles, with the last remaining player (or team) being the winner. 
+      As the game progresses, the area shrinks, pushing players closer together.
+    </p>
+
+    <h2 class="section-title">When?</h2>
+
+    <p class="paragraph">📢 The competition starts on Sunday 21st at 16:00</p> 
+    
+    <p class="paragraph text-center text-sm opacity-75">Click to copy server address</p>
+  </Tournament>
+</MainLayout>

@@ -1,0 +1,419 @@
+---
+// Digital Rain Background Component
+// Renders a canvas with a digital rain effect
+---
+<script>
+interface Drop {
+  position: number;
+  speed: number;
+  character: string;
+  lastChangePosition: number;
+}
+
+interface DigitalRainConfig {
+  fontSize: number;
+  fadeAlpha: number;
+  characterGap: number;
+  speedRange: { min: number; max: number };
+  resetProbability: number;
+  animationInterval: number;
+  canvasOpacity: string;
+}
+
+class DigitalRain {
+  private canvas: HTMLCanvasElement | null = null;
+  private ctx: CanvasRenderingContext2D | null = null;
+  private drops: Drop[] = [];
+  private characters: string[] = [];
+  private columns: number = 0;
+  private animationId: ReturnType<typeof setInterval> | null = null;
+  private isRunning: boolean = false;
+  private frameCount: number = 0;
+  
+  private config: DigitalRainConfig = {
+    fontSize: 14,
+    fadeAlpha: 0.05,
+    characterGap: 0.2,
+    speedRange: { min: 0.3, max: 0.7 },
+    resetProbability: 0.98,
+    animationInterval: 55,
+    canvasOpacity: '0.9'
+  };
+
+  init(): void {
+    
+    this.createCanvas();
+    this.setupContext();
+    this.resize();
+    this.initDrops();
+    this.start();
+    
+    window.addEventListener('resize', () => this.resize());
+  }
+
+  private createCanvas(): void {
+    // Create wrapper div for CRT effect
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '0';
+    wrapper.style.left = '0';
+    wrapper.style.width = '100%';
+    wrapper.style.height = '100%';
+    wrapper.style.zIndex = '-10';
+    wrapper.style.pointerEvents = 'none';
+    wrapper.className = 'digital-rain-crt';
+
+    // Create canvas
+    this.canvas = document.createElement('canvas');
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
+    this.canvas.style.opacity = this.config.canvasOpacity;
+    this.canvas.id = 'digital-rain-canvas';
+
+    // Create CRT bezel overlay
+    const bezelOverlay = document.createElement('div');
+    bezelOverlay.style.position = 'fixed';
+    bezelOverlay.style.top = '0px';
+    bezelOverlay.style.left = '0px';
+    bezelOverlay.style.right = '0px';
+    bezelOverlay.style.bottom = '0px';
+    bezelOverlay.style.backgroundImage = 'url(/imgs/crt.png)';
+    bezelOverlay.style.backgroundSize = 'cover';
+    bezelOverlay.style.backgroundPosition = 'center';
+    bezelOverlay.style.backgroundRepeat = 'no-repeat';
+    bezelOverlay.style.pointerEvents = 'none';
+    bezelOverlay.style.zIndex = '-8';
+    bezelOverlay.style.opacity = '1';
+
+    // Create glass reflection overlay
+    const glassOverlay = document.createElement('div');
+    glassOverlay.style.position = 'fixed';
+    glassOverlay.style.top = '0';
+    glassOverlay.style.left = '0';
+    glassOverlay.style.width = '100%';
+    glassOverlay.style.height = '100%';
+    glassOverlay.style.borderRadius = '15px';
+    glassOverlay.style.background = `
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 15%,
+        transparent 85%,
+        rgba(255, 255, 255, 0.02) 100%
+      ),
+      radial-gradient(
+        ellipse 200% 80% at 50% 0%,
+        rgba(255, 255, 255, 0.06) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        ellipse 150% 30% at 25% 15%,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        ellipse 100% 20% at 75% 85%,
+        rgba(255, 255, 255, 0.02) 0%,
+        transparent 60%
+      )
+    `;
+    glassOverlay.style.pointerEvents = 'none';
+    glassOverlay.style.zIndex = '-7';
+    glassOverlay.style.opacity = '0.4';
+
+    // Add all elements to wrapper
+    wrapper.appendChild(this.canvas);
+    
+    // Add overlays to body so they have independent z-index
+    document.body.insertBefore(wrapper, document.body.firstChild);
+    document.body.insertBefore(bezelOverlay, document.body.firstChild);
+    document.body.insertBefore(glassOverlay, document.body.firstChild);
+  }
+
+  private setupContext(): void {
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+  }
+
+  resize(): void {
+    if (!this.canvas) return;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.initDrops();
+  }
+
+  initDrops(): void {
+    if (!this.canvas) return;
+    
+    // Set up the characters array - repeating BETALAN for more frequency
+    const baseChars = 'BETALANBETALANBETALAN<>?%&$#@!*';
+    this.characters = baseChars.split('');
+    
+    // Calculate columns and initialize drops
+    this.columns = Math.floor(this.canvas.width * 2 / this.config.fontSize);
+    this.drops = [];
+    
+    // Create drops with staggered starting positions for uniform cascade
+    for (let i = 0; i < this.columns; i += 1) {
+      // Spread drops more evenly - stagger them based on column index
+      const staggerOffset = (i % 20) * -10;                                     // Every 20th column gets same timing, larger spread
+      const startPosition = -(Math.random() * 100 + Math.abs(staggerOffset));   // Start well above screen
+      this.drops[i] = {
+        position: startPosition,
+        speed: Math.random() * (this.config.speedRange.max - this.config.speedRange.min) + this.config.speedRange.min,
+        character: this.characters[Math.floor(Math.random() * this.characters.length)],
+        lastChangePosition: startPosition
+      };
+    }
+  }
+
+  draw(): void {
+    if (!this.ctx || !this.canvas) return;
+    
+    this.frameCount++;
+    
+    // First, draw the CRT background vignette effect
+    const centerX = this.canvas.width / 2;
+    const centerY = this.canvas.height / 2;
+    const maxRadius = Math.max(this.canvas.width, this.canvas.height) * 0.8;
+    
+    // Create radial gradient for vignette effect that works with CRT filters
+    const gradient = this.ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius);
+    // Brighter colors to make scanlines more visible
+    gradient.addColorStop(0, 'rgba(15, 40, 15, 0.3)');
+    gradient.addColorStop(0.3, 'rgba(8, 25, 8, 0.5)');
+    gradient.addColorStop(0.7, 'rgba(3, 10, 3, 0.7)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');
+    
+    this.ctx.fillStyle = gradient;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    // Draw animated scanlines (recreating the Medium article approach)
+    const scanlineHeight = 2;  // Height of each scanline
+    const scanlineSpacing = 4; // Space between scanlines (total: 2px line + 2px gap)
+    const animationOffset = (this.frameCount * 0.1) % scanlineSpacing; // Slow animation
+    
+    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.3)'; // Dark scanlines
+    
+    // Draw horizontal scanlines across the entire canvas
+    for (let y = -animationOffset; y < this.canvas.height + scanlineSpacing; y += scanlineSpacing) {
+      this.ctx.fillRect(0, y, this.canvas.width, scanlineHeight);
+    }
+    
+    // Semi-transparent black rectangle for the trail effect - faster fade
+    this.ctx.fillStyle = `rgba(0, 0, 0, ${this.config.fadeAlpha})`;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    // Set the font for the characters
+    this.ctx.font = `${this.config.fontSize}px monospace`;
+
+    // Loop through each drop
+    for (let i = 0; i < this.drops.length; i++) {
+      const drop = this.drops[i];
+      if (!drop) continue; // Skip empty slots
+      
+      // Only draw if the drop has moved at least one font height since last character
+      const distanceSinceLastChar = drop.position - drop.lastChangePosition;
+      const shouldDrawCharacter = distanceSinceLastChar >= this.config.characterGap;
+      
+      if (shouldDrawCharacter) {
+        // Get a character - change every other frame but only for 0.1% of drops
+        let text: string;
+        const isEvenFrame = this.frameCount % 2 === 0;
+        const shouldChangeCharacter = isEvenFrame;
+        
+        if (shouldChangeCharacter) {
+          text = this.characters[Math.floor(Math.random() * this.characters.length)];
+          drop.character = text; // Store the character in the drop
+        } else {
+          // Use stored character or default
+          text = drop.character || this.characters[0]; 
+        }
+        
+        // Create parallax effect with varying opacity based on speed
+        // Slower drops are more transparent
+        const opacity = 0.3 + (drop.speed * 1.5); 
+        this.ctx.fillStyle = `rgba(0, 255, 65, ${Math.min(opacity, 1)})`;
+        
+        // Draw the character
+        this.ctx.fillText(text, i * this.config.fontSize, drop.position * this.config.fontSize);
+        
+        // Update the last character position
+        drop.lastChangePosition = drop.position;
+      }
+      
+      // Move the drop down by its individual speed
+      drop.position += drop.speed;
+      
+      // Reset drop to top when it goes off screen (with some randomness)
+      if (drop.position * this.config.fontSize > this.canvas.height && Math.random() > this.config.resetProbability) {
+        drop.position = -Math.random() * 20;    // Start above screen
+        drop.speed = Math.random() * (this.config.speedRange.max - this.config.speedRange.min) + this.config.speedRange.min; // New random speed
+        drop.character = this.characters[Math.floor(Math.random() * this.characters.length)]; // New character
+        drop.lastChangePosition = drop.position; // Reset the last change position
+      }
+    }
+  }
+
+  animate(): void {
+    if (this.isRunning) {
+      this.draw();
+    }
+  }
+
+  start(): void {
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.animationId = setInterval(() => this.animate(), this.config.animationInterval);
+    }
+  }
+
+  stop(): void {
+    this.isRunning = false;
+    if (this.animationId) {
+      clearInterval(this.animationId);
+      this.animationId = null;
+    }
+  }
+
+  destroy(): void {
+    this.stop();
+    if (this.canvas && this.canvas.parentNode) {
+      this.canvas.parentNode.removeChild(this.canvas);
+    }
+    window.removeEventListener('resize', () => this.resize());
+  }
+}
+
+// Digital Rain Manager
+class DigitalRainManager {
+  private static instance: DigitalRainManager | null = null;
+  private rainInstance: DigitalRain | null = null;
+
+  static getInstance(): DigitalRainManager {
+    if (!DigitalRainManager.instance) {
+      DigitalRainManager.instance = new DigitalRainManager();
+    }
+    return DigitalRainManager.instance;
+  }
+
+  init(): void {
+    if (this.rainInstance) {
+      return;
+    }
+    
+    // Add a delay to ensure DOM is fully rendered
+    setTimeout(() => {
+      const element = document.querySelector('.retro-crt-bg');
+      
+      if (element) {
+        this.rainInstance = new DigitalRain();
+        this.rainInstance.init();
+      } else {
+        this.rainInstance = new DigitalRain();
+        this.rainInstance.init();
+      }
+    }, 200);
+  }
+
+  destroy(): void {
+    if (this.rainInstance) {
+      this.rainInstance.destroy();
+      this.rainInstance = null;
+    }
+  }
+}
+
+// Initialize the digital rain
+const rainManager = DigitalRainManager.getInstance();
+
+// Multiple initialization attempts to catch timing issues
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => rainManager.init());
+} else {
+  rainManager.init();
+}
+
+// Also try after window load as backup
+window.addEventListener('load', () => rainManager.init());
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => rainManager.destroy());
+</script>
+
+<style>
+/* SIMPLIFIED CRT SETTINGS */
+.digital-rain-crt {
+  /* Fisheye distortion for curved glass effect */
+  transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1, 1);
+  border-radius: 15px;
+  
+  /* Fisheye effect using clip-path with radial distortion */
+  clip-path: ellipse(95% 93% at 50% 50%);
+  
+  /* Additional CRT glow effect with enhanced green hue */
+  box-shadow: 
+    inset 0 0 100px rgba(0, 255, 0, 0.75),
+    inset 0 0 200px rgba(0, 255, 0, 0.38),
+    0 0 50px rgba(0, 255, 0, 0.1),
+    0 0 100px rgba(0, 255, 0, 0.05);
+  
+  /* CRT filters for authentic look with fisheye distortion */
+  filter: 
+    brightness(1.2)
+    contrast(1.3)
+    hue-rotate(90deg)
+    blur(0.3px);
+  
+  /* Subtle animation for glass warp and CRT effects */
+  animation: crt-flicker 0.15s infinite linear alternate, crt-screen-warp 8s ease-in-out infinite;
+}
+
+/* KEYFRAME ANIMATIONS remain the same */
+@keyframes crt-flicker {
+  0% { 
+    opacity: 1;
+    filter: brightness(1.2) contrast(1.3) hue-rotate(90deg) blur(0.3px);
+  }
+  100% { 
+    opacity: 0.98;
+    filter: brightness(1.1) contrast(1.4) hue-rotate(92deg) blur(0.4px);
+  }
+}
+
+@keyframes crt-screen-warp {
+  0% {
+    transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1, 1);
+  }
+  10% {
+    transform: perspective(580px) rotateY(0.2deg) rotateX(0.1deg) scale(1.001, 0.999);
+  }
+  20% {
+    transform: perspective(620px) rotateY(-0.1deg) rotateX(0.2deg) scale(0.999, 1.001);
+  }
+  30% {
+    transform: perspective(600px) rotateY(0.3deg) rotateX(-0.1deg) scale(1, 0.998);
+  }
+  40% {
+    transform: perspective(590px) rotateY(0deg) rotateX(0.3deg) scale(1.002, 1);
+  }
+  50% {
+    transform: perspective(610px) rotateY(-0.2deg) rotateX(0deg) scale(0.998, 1.001);
+  }
+  60% {
+    transform: perspective(595px) rotateY(0.1deg) rotateX(-0.2deg) scale(1.001, 0.999);
+  }
+  70% {
+    transform: perspective(605px) rotateY(-0.1deg) rotateX(0.1deg) scale(0.999, 1.002);
+  }
+  80% {
+    transform: perspective(600px) rotateY(0.2deg) rotateX(0.2deg) scale(1, 0.998);
+  }
+  90% {
+    transform: perspective(590px) rotateY(0deg) rotateX(-0.1deg) scale(1.001, 1.001);
+  }
+  100% {
+    transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1, 1);
+  }
+}
+</style>
