@@ -1,133 +1,49 @@
 ---
 import Layout from "@layouts/PageLayout.astro";
+import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
 import LinkerButton from "@components/ui/linker-button.astro";
-import TournamentCarousel from "@components/betalan/TournamentCarousel.astro";
-
-// Tournament data
-const tournaments = [
-  {
-    title: "Agder's Best Gamer",
-    imagePath: "/betalan/tournaments/ABG2025Premier.png",
-    altText: "ABG Tournament",
-    description: "Join the premiere gaming tournament featuring intense competition and amazing prizes!",
-    linkPath: "/betalan/tournaments/ABG"
-  },
-  {
-    title: "Setup Competition",
-    imagePath: "/betalan/tournaments/setup-competition.png",
-    altText: "Setup Competition",
-    description: "Show off your gaming setup! Compete for the best-looking or most creative gaming station.",
-    linkPath: "/betalan/tournaments/setup-competition"
-  },
-  {
-    title: "Tekken 7",
-    imagePath: "/betalan/tournaments/Tekken7-Background.jpg",
-    altText: "Tekken 7 Tournament",
-    description: "Do you have what it takes to rule the Iron Fist? Show your might in our Tekken 7 tournament!",
-    linkPath: "/betalan/tournaments/tekken7"
-  },
-  {
-    title: "Rocket League",
-    imagePath: "/betalan/tournaments/rocket-league-img.jpg",
-    altText: "Rocket League Tournament",
-    description: "Rev your engines and get ready to launch, flip, and spin in our 2v2 Rocket League competition!",
-    linkPath: "/betalan/tournaments/rocket-league"
-  },
-  {
-    title: "Fall Guys",
-    imagePath: "/betalan/tournaments/Fallen-guy.jpg",
-    altText: "Fall Guys Tournament",
-    description: "Jump, dive and dodge your way through this chaotic obstacle course! Can you be the last bean standing?",
-    linkPath: "/betalan/tournaments/fallene-karer"
-  },
-  {
-    title: "League of Legends",
-    imagePath: "/betalan/tournaments/lol.jpg",
-    altText: "League of Legends Tournament",
-    description: "Compete in Summoner's Rift with your team! Show your skills in this strategic 5v5 MOBA showdown.",
-    linkPath: "/betalan/tournaments/lol"
-  },
-  {
-    title: "Minecraft SG",
-    imagePath: "/betalan/tournaments/minecraft-survival-games.png",
-    altText: "Minecraft Survival Games",
-    description: "Battle it out in this thrilling Minecraft competition! May the odds be ever in your favor.",
-    linkPath: "/betalan/tournaments/minecraft-survival-games"
-  },
-  {
-    title: "StepMania",
-    imagePath: "/betalan/tournaments/StepMania.png",
-    altText: "StepMania Tournament",
-    description: "Test your rhythm and precision in our StepMania tournament. Step to the beat!",
-    linkPath: "/betalan/tournaments/stepmania"
-  },
-  {
-    title: "Just Dance",
-    imagePath: "/betalan/tournaments/just-dance.png",
-    altText: "Just Dance Competition",
-    description: "Show off your dance moves! Whether you're a dancing pro or just in it for fun, everyone is welcome.",
-    linkPath: "/betalan/tournaments/just-dance"
-  }
-];
 ---
 
 <Layout title="BetaLAN">
-  <div id="top-logo-group">
-    <div id="top-logo">
-      <img
-        src="/imgs/BetaLAN-Indy.png"
-        alt="BetaLAN Indy"
-        class="drop-shadow-2xl"
-      />
+  <BetaLANLayout>
+    <div id="top-logo-group" class="flex justify-center mb-36 md:mb-10 drop-shadow-2xl">
+      <div id="top-logo">
+        <img
+          src="/betalan/Betalan_logo.png"
+          alt="BetaLAN Logo"
+          class="drop-shadow-2xl"
+        />
+      </div>
     </div>
-    <div id="date-logo">
-      <img
-        src="/imgs/BetaLAN-Date-Indy.png"
-        alt="BetaLAN Date"
-        class="drop-shadow-2xl"
-      />
-    </div>
-  </div>
 
-  <div
-      id="info-navigation-buttons"
-      class="container my-6 flex justify-center mx-auto">
-      <LinkerButton
-        href="https://tikkio.com/tickets/51463-betalan-v25"
-        text="Get Your Tickets Now!"
-        target="_blank"
-        color="#11FF11"
-        pulsing={true}
-      />
-  </div>
+    <!-- Tickets button, Remove comment when ready -->
+    <!-- <div
+        id="info-navigation-buttons"
+        class="container my-6 flex justify-center mx-auto">
+        <LinkerButton
+          href="https://tikkio.com/tickets/51463-betalan-v25"
+          text="Get Your Tickets Now!"
+          target="_blank"
+          color="#11FF11"
+          pulsing={true}
+        />
+    </div> -->
 
-  <div class="gamer-font">
     <div id="content" class="container text-center mb-3">
-      <h1 class="large-heading">Welcome to the Jungle!</h1>
-      <p>
-        For this semester's BetaLAN we are transforming Bluebox into a gaming
-        temple ruin within humid jungle! Expolore the ancient mysteries that lie
-        within the temple of BetaLAN <br />
-        <br />
-        For participants, we will also have dinner on Saturday🍕🍣 <br />
+      <h1 class="text-7xl text-red-500 font-bold drop-shadow-md">Welcome to BETALAN!</h1>
+      <p class="text-3xl">
+        BetaLAN is all about having fun and enjoying the gaming culture! <br />
         <br />
         We will have a variety of games to play, tournaments to compete in, and prizes
         to win! <br />
-        So grab your gear and get ready to conquer the BetaLAN Jungle! <br />
+        So grab your gear and get ready to conquer the BetaLAN! <br />
         <br />
-        <strong>When:</strong> 25-27th April at Bluebox <br />
+        <strong>When:</strong> TBA <br />
       </p>
       <div
         id="info-navigation-buttons"
-        class="container mt-8 flex flex-wrap justify-center mx-auto px-2 sm:px-0"
+        class="container mt-8 flex flex-wrap justify-center mx-auto px-2 sm:px-0 text-3xl"
       >
-      <a href="/betalan/seatmap" target="_self" class="no-underline w-full sm:w-auto">
-        <button
-          class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
-        >
-          Seat Booking
-        </button>
-      </a>
       <a href="/betalan/program" target="_self" class="no-underline w-full sm:w-auto">
         <button
           class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
@@ -137,7 +53,7 @@ const tournaments = [
       </a>
       <a href="/betalan/rules" target="_self" class="no-underline w-full sm:w-auto">
         <button
-          class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+          class="bg-green-500 text-black rounded-lg bg-opacity-70 py-2 px-4 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
         >
           Rules
         </button>
@@ -155,112 +71,39 @@ const tournaments = [
       </div>
     </div>
 
-    <!-- Sponsors Section with Tailwind Styling -->
-    <div id="sponsors-section" class="container mx-auto my-12 rounded-md bg-slate-900 bg-opacity-90 p-4 text-white max-w-[900px]">
-      <h2 class="text-center text-2xl text-green-400 mb-4 sm:mb-6 font-['Press_Start_2P']">Our Sponsors</h2>
-      <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 py-2 px-1">
-        <!-- Spillvert -->
-        <a href="https://www.spillvert.no/" target="_blank" rel="noopener" class="transform transition-transform duration-300 hover:scale-105 w-[95%] sm:w-[47%] md:w-[32%] lg:w-[31%]">
-          <div class="w-full h-32 bg-black bg-opacity-80 rounded-lg flex items-center justify-center p-3 border border-green-500 shadow-lg shadow-green-500/30 hover:shadow-green-500/50">
-            <img src="/betalan/sponsors/spillvert.png" alt="Spillvert Logo" class="max-h-full max-w-full object-contain" />
-          </div>
-        </a>
-        
-        <!-- Sabrura -->
-        <a href="https://www.sabrurasushi.no/" target="_blank" rel="noopener" class="transform transition-transform duration-300 hover:scale-105 w-[95%] sm:w-[47%] md:w-[32%] lg:w-[31%]">
-          <div class="w-full h-32 bg-black bg-opacity-80 rounded-lg flex items-center justify-center p-3 border border-green-500 shadow-lg shadow-green-500/30 hover:shadow-green-500/50">
-            <img src="/betalan/sponsors/sabrura-sticks-n-sushi.png" alt="Sabrura Sticks & Sushi Logo" class="max-h-full max-w-full object-contain" />
-          </div>
-        </a>
-        
-        <!-- VT Agder -->
-        <a href="https://vt-agder.no/" target="_blank" rel="noopener" class="transform transition-transform duration-300 hover:scale-105 w-[95%] sm:w-[47%] md:w-[32%] lg:w-[31%]">
-          <div class="w-full h-32 bg-black bg-opacity-80 rounded-lg flex items-center justify-center p-3 border border-green-500 shadow-lg shadow-green-500/30 hover:shadow-green-500/50">
-            <img src="/betalan/sponsors/VT-agder.png" alt="Velferdstinget Agder Logo" class="max-h-full max-w-full object-contain" />
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div id="Tournament-Overview" class="container mx-auto my-8 rounded-md bg-slate-900 bg-opacity-90 p-4 text-white max-w-[900px]">
-      <h2 class="text-center text-2xl text-green-400 mb-6">Tournaments</h2>
-      <p class="text-center text-white mb-6">Check out our exciting tournaments and competitions!</p>
-      
-      <TournamentCarousel tournaments={tournaments} />
-    </div>
-
+    <!-- Crew Info -->
     <div
       id="crew-info"
-      class="container text-center mt-32 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4 max-w-full lg:max-w-4xl">
-      <h2 class="text-2xl mb-4">Crew Information</h2>
-      <p class="sm:text-xs md:text-xs lg:text-sm">
+      class="container text-center mt-10 lg:mt-20 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4 max-w-full lg:max-w-4xl">
+      <h2 class="text-7xl mb-4">Crew Information</h2>
+      <p class="text-3xl">
         The best way to experience BetaLAN is becoming a part of the crew. The
         crew is responsible for planning and organizing the LAN-party, and as a
         crew member you get free admission and some extra food after rigging
         down <br />
         <br />
-        <strong>Want to know more?</strong>
+        Want to know more?
         <br />
       </p>
       <div>
         <button
-          class="bg-slate-600 hover:bg-slate-700 hover:border-slate-700 text-white font-bold py-2 px-4 rounded my-4"
+          class="bg-slate-600 hover:bg-slate-700 hover:border-slate-700 text-white text-3xl py-2 px-4 rounded my-4"
         >
           <a href="/betalan/crew-info">Crew Information</a>
         </button>
       </div>
     </div>
-  </div>
+    <br />
+  </BetaLANLayout>
 </Layout>
 
 <style>
-  body {
-    @apply bg-cover bg-center bg-fixed;
-    background-image: url("/betalan/mayan-templewall.jpeg");
-    z-index: 1;
-  }
-
-  .gamer-font {
-    font-family: "Press Start 2P", cursive;
-  }
-
-  /* Vignette */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5));
-    z-index: -1;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: -2;
-  }
-
   #top-logo-group {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: 2rem;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 2rem;
-  }
-  #date-logo {
-    margin-top: -4rem;
-    width: 70%;
   }
   #content {
     background-color: #191a1a;
@@ -297,74 +140,4 @@ const tournaments = [
     margin: 0 auto;
     max-width: 900px;
   }
-  .large-heading {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    .large-heading {
-      font-size: 1.5rem;
-    }
-
-    #content {
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    #crew-info {
-      width: 100%;
-      padding: 1rem;
-    }
-
-    #top-logo-group {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    #date-logo {
-      margin-top: -2rem;
-      width: 90%;
-    }
-    #crew-info p {
-      font-size: 0.875rem; /* 14px */
-    }
-  }
-
-  @media (max-width: 480px) {
-    .large-heading {
-      font-size: 1.2rem;
-    }
-
-    #content {
-      padding: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    #crew-info {
-      width: 100%;
-      padding: 0.5rem;
-    }
-
-    #top-logo-group {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    #date-logo {
-      margin-top: -1rem;
-      width: 100%;
-    }
-    #crew-info p {
-      font-size: 0.75rem; /* 12px */
-    }
-  }
 </style>
-
-<!-- Gamer Font 🕹️ -->
-<head>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-    rel="stylesheet"
-  />
-</head>

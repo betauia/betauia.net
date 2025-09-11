@@ -3,9 +3,9 @@ import Layout from "@layouts/PageLayout.astro";
 import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
 ---
 
-<Layout title="BetaLAN Rules">
-  <BetaLANLayout backgroundImage="/betalan/jungle-background.jpg">
-    <section class="bg-slate-800 bg-opacity-90 p-6 rounded-lg m-6 max-w-4xl mx-auto text-yellow-100 legal-font">
+<Layout title="BetaLAN Rules" description="Familiarize yourself with the essential rules and guidelines for a safe and enjoyable experience at BetaLAN.">
+  <BetaLANLayout>
+    <section class="bg-slate-800 bg-opacity-90 p-6 rounded-lg m-6 max-w-4xl mx-auto text-white legal-font">
       <h2 class="text-2xl font-bold mb-4">Event Rules</h2>
       <div class="space-y-4">
         <div>
@@ -37,6 +37,7 @@ import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
       <p class="mt-4 italic">Breaking the rules will result in penalties based on the severity of the violation, 
         and may lead to getting kicked out of the event without a refund </p>
     </section>
+    <br />
   </BetaLANLayout>
 </Layout>
 
