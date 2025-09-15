@@ -1,6 +1,7 @@
 ---
 // Digital Rain Background Component
 // Renders a canvas with a digital rain effect
+import crtImage from "@assets/imgs/crt.png";
 ---
 <script>
 interface Drop {
@@ -77,7 +78,8 @@ class DigitalRain {
     bezelOverlay.style.left = '0px';
     bezelOverlay.style.right = '0px';
     bezelOverlay.style.bottom = '0px';
-    bezelOverlay.style.backgroundImage = 'url(/imgs/crt.png)';
+    const crtImageUrl = document.getElementById('crt-image-url')?.getAttribute('data-url') || '/imgs/crt.png';
+    bezelOverlay.style.backgroundImage = `url(${crtImageUrl})`;
     bezelOverlay.style.backgroundSize = 'cover';
     bezelOverlay.style.backgroundPosition = 'center';
     bezelOverlay.style.backgroundRepeat = 'no-repeat';
@@ -340,6 +342,9 @@ window.addEventListener('load', () => rainManager.init());
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => rainManager.destroy());
 </script>
+
+<!-- Hidden element to store asset URL for client script -->
+<div id="crt-image-url" data-url={crtImage.src} style="display: none;"></div>
 
 <style>
 /* SIMPLIFIED CRT SETTINGS */
