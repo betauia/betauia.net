@@ -3,6 +3,7 @@ import MainLayout from "@layouts/PageLayout.astro";
 import Tournament from "@layouts/tournament.astro";
 import minecraftSurvivalGames from "@assets/betalan/tournaments/minecraft-survival-games.png";
 import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-bottle.png";
+import { Icon } from "astro-icon/components";
 ---
 
 <MainLayout title="Minecraft Survival Games" description="Join the Minecraft Survival Games tournament at BetaLAN! Compete in thrilling PvP battles, survive the shrinking arena, and win exciting prizes.">
@@ -20,11 +21,16 @@ import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-
       Maybe you're great at fighting games or even better at dodging attacks? Then this is the perfect game for you!
     </p>
 
+    <h2 class="section-title">How do I participate?</h2>
+    <p class="paragraph">
+      The minecraft server has a whitelist policy, so to join the tournament, you need to register your Minecraft username in advance. You can do so at this <a href="https://forms.gle/HCHSQVFEUZDAop7Y9" class="text-blue-400 hover:underline" target="_blank" aria-label="Google Forms link to register for the Minecraft Survival Games tournament">Google Forms</a>. Please signup before 15:00 Sunday 21st of September so we have time to add everyone to the server. Then you will be able to join with the minecraft server address below.
+    </p>
+
     <h2 class="section-title">Join the server at:</h2>
 
     <div class="text-center mb-4">
-      <code class="bg-gray-800 px-4 py-2 rounded text-green-400 text-2xl font-mono select-all cursor-pointer hover:bg-gray-700 transition-colors" onclick="navigator.clipboard.writeText('mc.betauia.net')">
-        mc.betauia.net
+      <code class="bg-gray-900 px-4 py-2 rounded text-green-400 text-2xl font-mono select-all cursor-pointer hover:bg-gray-700 transition-colors inline-flex items-center justify-center" onclick="navigator.clipboard.writeText('mc.betauia.net'); this.querySelector('.copy-icon').classList.add('animate-ping'); setTimeout(() => this.querySelector('.copy-icon').classList.remove('animate-ping'), 700)">
+      mc.betauia.net <Icon name="fa-solid:copy" class="inline w-6 h-6 ml-2 align-middle copy-icon transition-transform hover:scale-110" />
       </code>
     </div>
 
@@ -73,7 +79,6 @@ import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-
     <h2 class="section-title">When?</h2>
 
     <p class="paragraph">📢 The competition starts on Sunday 21st at 16:00</p> 
-    
-    <p class="paragraph text-center text-sm opacity-75">Click to copy server address</p>
   </Tournament>
+  <br />
 </MainLayout>
