@@ -1,0 +1,144 @@
+---
+import Layout from "@layouts/PageLayout.astro";
+import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+import LinkerButton from "@components/ui/linker-button.astro";
+import betaLANLogo from "@assets/betalan/Betalan_logo.png";
+---
+
+<Layout title="BetaLAN">
+  <BetaLANLayout>
+    <div id="top-logo-group" class="flex justify-center mb-36 md:mb-10 drop-shadow-2xl">
+      <div id="top-logo">
+        <img
+          src={betaLANLogo.src}
+          alt="BetaLAN Logo"
+          class="drop-shadow-2xl"
+        />
+      </div>
+    </div>
+
+    <!-- Tickets button, Remove comment when ready -->
+    <!-- <div
+        id="info-navigation-buttons"
+        class="container my-6 flex justify-center mx-auto">
+        <LinkerButton
+          href="https://tikkio.com/tickets/51463-betalan-v25"
+          text="Get Your Tickets Now!"
+          target="_blank"
+          color="#11FF11"
+          pulsing={true}
+        />
+    </div> -->
+
+    <div id="content" class="container text-center mb-3">
+      <h1 class="text-7xl text-red-500 font-bold drop-shadow-md">Welcome to BETALAN!</h1>
+      <p class="text-3xl">
+        BetaLAN is all about having fun and enjoying the gaming culture! <br />
+        <br />
+        We will have a variety of games to play, tournaments to compete in, and prizes
+        to win! <br />
+        So grab your gear and get ready to conquer the BetaLAN! <br />
+        <br />
+        <strong>When:</strong> TBA <br />
+      </p>
+      <div
+        id="info-navigation-buttons"
+        class="container mt-8 flex flex-wrap justify-center mx-auto px-2 sm:px-0 text-3xl"
+      >
+      <a href="/betalan/program" target="_self" class="no-underline w-full sm:w-auto">
+        <button
+          class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+        >
+          Program
+        </button>
+      </a>
+      <a href="/betalan/rules" target="_self" class="no-underline w-full sm:w-auto">
+        <button
+          class="bg-green-500 text-black rounded-lg bg-opacity-70 py-2 px-4 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+        >
+          Rules
+        </button>
+      </a>
+      <a href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" class="no-underline w-full sm:w-auto">
+        <button
+          class="bg-indigo-700 text-white rounded-lg bg-opacity-90 p-2 border-indigo-500 border-2 mx-0 sm:mx-2 my-2 hover:bg-indigo-600 transition duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="inline-block">
+            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+          </svg>
+          Discord
+        </button>
+      </a>
+      </div>
+    </div>
+
+    <!-- Crew Info -->
+    <div
+      id="crew-info"
+      class="container text-center mt-10 lg:mt-20 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4 max-w-full lg:max-w-4xl">
+      <h2 class="text-7xl mb-4">Crew Information</h2>
+      <p class="text-3xl">
+        The best way to experience BetaLAN is becoming a part of the crew. The
+        crew is responsible for planning and organizing the LAN-party, and as a
+        crew member you get free admission and some extra food after rigging
+        down <br />
+        <br />
+        Want to know more?
+        <br />
+      </p>
+      <div>
+        <button
+          class="bg-slate-600 hover:bg-slate-700 hover:border-slate-700 text-white text-3xl py-2 px-4 rounded my-4"
+        >
+          <a href="/betalan/crew-info">Crew Information</a>
+        </button>
+      </div>
+    </div>
+    <br />
+  </BetaLANLayout>
+</Layout>
+
+<style>
+  #top-logo-group {
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #content {
+    background-color: #191a1a;
+    background-image: linear-gradient(
+        180deg,
+        transparent 24%,
+        rgba(0, 115, 19, 0.3) 25%,
+        rgba(0, 115, 19, 0.3) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(0, 115, 19, 0.3) 75%,
+        rgba(0, 115, 19, 0.3) 76%,
+        transparent 77%,
+        transparent
+      ),
+      linear-gradient(
+        45deg,
+        transparent 24%,
+        rgba(0, 115, 19, 0.3) 25%,
+        rgba(0, 115, 19, 0.3) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(0, 115, 19, 0.3) 75%,
+        rgba(0, 115, 19, 0.3) 76%,
+        transparent 77%,
+        transparent
+      );
+    background-size: 55px 55px;
+    padding: 2rem;
+    border: 2px solid #00dd00;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00dd00;
+    color: #18ea28;
+    margin: 0 auto;
+    max-width: 900px;
+  }
+</style>

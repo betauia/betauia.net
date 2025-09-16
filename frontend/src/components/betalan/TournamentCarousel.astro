@@ -1,0 +1,263 @@
+---
+// Tournament carousel component for displaying multiple tournament cards in a sliding format
+import TournamentCard from "./TournamentCard.astro";
+
+// Each tournament entry needs these properties
+interface TournamentEntry {
+  title: string;
+  imagePath: string;
+  altText: string;
+  description: string;
+  linkPath: string;
+}
+
+interface Props {
+  tournaments: TournamentEntry[];
+}
+
+const { tournaments } = Astro.props;
+---
+
+<div class="carousel-container relative w-full max-w-[1000px] mx-auto py-8">
+  <div class="carousel-controls-left hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10">
+    <button id="prev-btn" class="prev-btn bg-green-600 hover:bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center cursor-pointer transition-all" aria-label="Previous tournament">❮</button>
+  </div>
+
+  <div class="carousel-wrapper overflow-visible mx-auto px-4">
+    <div class="overflow-hidden">
+      <div id="carousel-track" class="carousel-track flex transition-transform duration-500 py-5">
+        {
+          tournaments.map((tournament) => (
+            <div class="carousel-slide flex-none w-full md:w-1/2 lg:w-1/3 px-2">
+              <TournamentCard
+                title={tournament.title}
+                imagePath={tournament.imagePath}
+                altText={tournament.altText}
+                description={tournament.description}
+                linkPath={tournament.linkPath}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile swipe indicator with muted slate background -->
+  <div class="md:hidden flex justify-center mt-4">
+    <div class="swipe-indicator flex items-center gap-2 bg-slate-800/80 px-3 py-1 rounded-full shadow-sm">
+      <span class="arrow-slide-left text-green-400">◄</span>
+      <span class="text-green-400 text-sm font-medium">swipe</span>
+      <span class="arrow-slide-right text-green-400">►</span>
+    </div>
+  </div>
+
+  <div class="carousel-controls-right hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10">
+    <button id="next-btn" class="next-btn bg-green-600 hover:bg-green-500 text-white rounded-full w-10 h-10 flex items-center justify-center cursor-pointer transition-all" aria-label="Next tournament">❯</button>
+  </div>
+</div>
+
+<div class="carousel-indicators flex justify-center mt-6 gap-3" id="carousel-indicators">
+  <!-- Indicators will be generated dynamically by JavaScript -->
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carousel-track') as HTMLElement;
+    const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+    const indicators = document.getElementById('carousel-indicators') as HTMLElement;
+    
+    if (!track || !prevBtn || !nextBtn || !indicators) return;
+    
+    let currentSlide = 0;
+    let slidesToShow = 1;
+    let slideCount = track.querySelectorAll('.carousel-slide').length;
+    
+    // Determine visible slides based on screen size
+    const updateSlidesToShow = () => {
+      if (window.innerWidth >= 1024) {
+        slidesToShow = 3; // Large screens
+      } else if (window.innerWidth >= 768) {
+        slidesToShow = 2; // Medium screens
+      } else {
+        slidesToShow = 1; // Small screens
+      }
+      
+      // Update indicators after changing slidesToShow
+      updateIndicators();
+      
+      // Make sure current slide is valid with new slidesToShow
+      if (currentSlide > slideCount - slidesToShow) {
+        currentSlide = Math.max(0, slideCount - slidesToShow);
+        updateSlidePosition();
+      }
+    };
+    
+    // Create pagination indicators
+    const updateIndicators = () => {
+      indicators.innerHTML = '';
+      const pageCount = Math.max(1, Math.ceil(slideCount - slidesToShow + 1));
+      
+      for (let i = 0; i < pageCount; i++) {
+        const dot = document.createElement('span');
+        // Using larger and more visible circle indicators
+        dot.classList.add('dot', 'w-4', 'h-4', 'rounded-full', 'cursor-pointer', 'transition-all', 'duration-300');
+        
+        if (i === currentSlide) {
+          dot.classList.add('bg-green-600', 'shadow-md', 'scale-110');
+        } else {
+          dot.classList.add('bg-green-600/40', 'border', 'border-green-600/60');
+        }
+        
+        dot.addEventListener('click', () => goToSlide(i));
+        indicators.appendChild(dot);
+      }
+    };
+    
+    // Update slide position
+    const updateSlidePosition = () => {
+      // Calculate slide width based on container width and slides to show
+      const slideWidth = track.parentElement ? track.parentElement.offsetWidth / slidesToShow : 0;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+      
+      // Update indicators
+      const dots = indicators.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('bg-green-600', 'shadow-md', 'scale-110');
+          dot.classList.remove('bg-green-600/40');
+        } else {
+          dot.classList.remove('bg-green-600', 'shadow-md', 'scale-110');
+          dot.classList.add('bg-green-600/40');
+        }
+      });
+    };
+    
+    // Go to specific slide
+    const goToSlide = (slide: number) => {
+      const maxSlide = Math.max(0, slideCount - slidesToShow);
+      currentSlide = Math.min(Math.max(0, slide), maxSlide);
+      updateSlidePosition();
+    };
+    
+    // Next slide
+    const nextSlide = () => {
+      const maxSlide = Math.max(0, slideCount - slidesToShow);
+      currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+      updateSlidePosition();
+    };
+    
+    // Previous slide
+    const prevSlide = () => {
+      const maxSlide = Math.max(0, slideCount - slidesToShow);
+      currentSlide = currentSlide > 0 ? currentSlide - 1 : maxSlide;
+      updateSlidePosition();
+    };
+    
+    // Check if touch device
+    const isTouchDevice = () => {
+      return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    };
+    
+    // Initialize touch controls
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+    };
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      touchEndX = e.touches[0].clientX;
+    };
+    
+    const handleTouchEnd = () => {
+      const touchDiff = touchStartX - touchEndX;
+      if (Math.abs(touchDiff) > 50) { // Min swipe distance
+        if (touchDiff > 0) {
+          nextSlide(); // Swipe left for next
+        } else {
+          prevSlide(); // Swipe right for prev
+        }
+      }
+    };
+    
+    // Set up event listeners
+    track.addEventListener('touchstart', handleTouchStart, { passive: true });
+    track.addEventListener('touchmove', handleTouchMove, { passive: true });
+    track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      updateSlidesToShow();
+      updateSlidePosition();
+    });
+    
+    // Initialize carousel
+    updateSlidesToShow();
+    updateSlidePosition();
+  });
+</script>
+
+<style>
+  /* Animation for swipe arrow indicators - only horizontal movement */
+  .arrow-slide-left {
+    animation: slide-left 2s infinite;
+  }
+  
+  .arrow-slide-right {
+    animation: slide-right 2s infinite;
+  }
+  
+  @keyframes slide-left {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+  }
+  
+  @keyframes slide-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+  
+  /* Ensure carousel container has enough spacing */
+  .carousel-container {
+    padding: 0 25px;
+  }
+  
+  /* Button styles for better touch targets */
+  .prev-btn, .next-btn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+  }
+  
+  /* Make carousel overflow visible to show part of next/prev cards */
+  .carousel-wrapper {
+    position: relative;
+    margin: 0 20px;
+  }
+  
+  /* Add slide fade edges */
+  .carousel-wrapper::before,
+  .carousel-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.05), transparent);
+  }
+  
+  .carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.05), transparent);
+  }
+</style>

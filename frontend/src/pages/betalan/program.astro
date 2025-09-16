@@ -1,0 +1,33 @@
+---
+import Layout from "@layouts/PageLayout.astro";
+import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="BetaLAN Program" description="Check out the exciting lineup of events and activities planned for BetaLAN!">
+  <BetaLANLayout>
+    <section class="bg-slate-800 bg-opacity-90 mb-4 p-4 sm:p-6 rounded-lg mx-3 sm:m-6 max-w-4xl lg:mx-auto">
+      <div>
+        <h1 class="text-center text-7xl mb-6">BetaLAN Program</h1>
+        
+        <!-- Update when program hits -->
+        <div class="mb-8 sm:mb-10 align-middle text-center">
+          <h2>Program will be announced 1 week before the event starts</h2>
+        </div>
+
+        <div class="mt-6 sm:mt-8 mb-2 border-t border-white pt-4 text-center">
+          <div class="mt-2 sm:mt-4">
+            <h3 class="text-3xl font-medium mb-2">Join BetaLAN Discord</h3>
+            <p class="text-base mb-3">Connect with other participants and get real-time updates during the event</p>
+            <a href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" 
+              class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition-colors text-2xl">
+              <Icon name="fa-brands:discord" class="w-12 h-12 mb-2" />
+              <span>BetaLAN Discord</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br />
+  </BetaLANLayout>
+</Layout>

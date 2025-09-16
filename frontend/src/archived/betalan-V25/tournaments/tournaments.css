@@ -1,0 +1,94 @@
+.title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fbbf24;
+    text-align: center;
+}
+
+.subsection-title {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.8rem;
+    color: #fcd34d;
+    text-align: left;
+    font-weight: bold;
+}
+
+.paragraph {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #f3f4f6;
+}
+
+.list {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    list-style-type: disc;
+}
+
+.list-item {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    color: #e5e7eb;
+}
+
+.link {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+.link-center {
+    text-align: center;
+}
+
+.link:hover {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.responsive-img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .subsection-title {
+        font-size: 1rem;
+    }
+
+    .paragraph {
+        font-size: 0.75rem;
+    }
+
+    .list-item {
+        font-size: 0.7rem;
+    }
+
+    .responsive-img {
+        width: 100%;
+    }
+}

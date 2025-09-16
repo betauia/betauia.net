@@ -1,0 +1,55 @@
+---
+import MainLayout from "@layouts/PageLayout.astro";
+import Tournament from "@layouts/tournament.astro";
+import "../tournaments.css";
+---
+
+<MainLayout title="Fall Guys Competition">
+  <Tournament>
+    <h1 class="title">Fall Guys Competition</h1>
+    <img
+      src="/betalan/tournaments/Fallen-guy.jpg"
+      alt="Fall Guy"
+      class="responsive-img"
+    />
+    <h2 class="section-title">What is the Fall Guys Competition?</h2>
+
+    <p class="paragraph">
+      The Fall Guys Competition challenges participants to Race and anhielate your enemy.
+      To be the best, you need to be the best. So strugle to victory!
+      Rule of the jungle is: Only the strong survive!
+    </p>
+
+    <h2 class="section-title">Prize</h2>
+    <img
+      src="/betalan/tournaments/Fall-premie.png"
+      alt="Fall Guy"
+      class="responsive-img"
+      style="max-width: 250px;"
+    />
+   
+    <ul class="link-center">
+      <li class="list-item">
+        <strong>1st place</strong> - Melting Icecream Fall Guys stand
+      </li>
+    </ul>
+
+    <h2 class="section-title">Scoring</h2>
+
+    <p class="paragraph">
+      Scoring is handled by <strong> Oscar </strong>
+      <em>(insert Among Us sound effect)</em>
+    </p>
+
+    <p class="paragraph">
+        Trough a series of 3 (or more) challenges the top 3 will get points.
+        1st to the finishline gets 2 points, the other two gets 1 point.
+        The one with most points by the end will win the <strong> Prize </strong>.
+    </p>
+
+
+
+    <p class="paragraph mt-12">🗣️ Will you be the winner? Lets find out!</p>
+    <p class="paragraph mt-2">📢 Winners will be announced after the competition!</p>
+  </Tournament>
+</MainLayout>

@@ -11,7 +11,7 @@ const routes = [
     children: [
       { name: "BetaSec", path: "/betasec" },
       { name: "BetaDev", path: "/betadev" },
-      // { name: "BetaLAN", path: "/betalan" },
+      { name: "BetaLAN", path: "/betalan" },
     ]
   },
 ];
@@ -21,7 +21,7 @@ const isCurrentRoute = (path: string) => {
 };
 ---
 
-<nav class="absolute left-0 top-0 w-full bg-white shadow-lg dark:bg-gray-900">
+<nav class="absolute left-0 top-0 w-full bg-white shadow-lg dark:bg-gray-900 z-10">
   <div class="mx-auto px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -61,7 +61,7 @@ const isCurrentRoute = (path: string) => {
                     <summary class="px-3 py-2 text-sm cursor-pointer transition hover:text-brand">
                       {route.name}
                     </summary>
-                    <div class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+                    <div class="absolute left-0 z-20 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
                       <div class="py-1">
                         {route.children.map(subRoute => (
                           <a
