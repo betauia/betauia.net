@@ -1,0 +1,864 @@
+---
+layout: src/layouts/MarkdownLayout.astro
+title: Git-guide
+---
+
+## Introduksjon
+
+Git er et versjonskontrollsystem som hjelper deg med å holde styr på kode, samarbeide med andre og rulle tilbake til tidligere versjoner om noe går galt.
+
+### Hvordan bruke guiden
+
+Denne guiden passer for nybegynnere som aldri har brukt Git før, men fungerer også som en [hurtigreferanse](#cheat-sheet) for de mer erfarne.
+
+Du kan lese guiden fra start til slutt for å lære Git trinnvis, eller bruke innholdsfortegnelsen som et oppslagsverk når du trenger bestemte kommandoer.
+
+### Innhold
+
+- [**1 Kom i gang**](#kom-i-gang)
+  - [1.1 Installer Git](#installer-git)
+  - [1.2 Konfigurer Git](#konfigurer-git)
+- [**2 Starte et prosjekt**](#starte-et-prosjekt)
+  - [2.1 Opprett nytt repository](#opprett-et-nytt-repository)
+  - [2.2 Klon eksisterende repository](#klon-et-eksisterende-repository)
+- [**3 Vanlig arbeidsflyt**](#vanlig-arbeidsflyt)
+  - [3.1 Sjekk status](#sjekk-status)
+  - [3.2 Legg til endringer](#legg-til-endringer)
+  - [3.3 Commit endringer](#commit-endringer)
+  - [3.4 Push og pull](#push-og-pull)
+- [**4 Branching**](#branching)
+  - [4.1 Kombinere branches](#kombinere-branches)
+  - [4.2 Squash commits](#squash-commits)
+  - [4.3 Håndtere konflikter](#håndtere-konflikter)
+- [**5 Feilsøking og historikk**](#feilsøking-og-historikk)
+  - [5.1 Angre feil](#angre-feil)
+  - [5.2 Stash endringer](#stash-endringer)
+  - [5.3 Undersøk historikk](#undersøk-historikk)
+- [**6 Jobbe med remotes**](#jobbe-med-remotes)
+  - [6.1 Koble til remotes](#koble-til-remotes)
+  - [6.2 Hent og oppdater remotes](#hent-og-oppdater-remotes)
+- [**7 Struktur og standarder**](#struktur-og-standarder)
+  - [7.1 Git ignore](#git-ignore)
+  - [7.2 Commit meldinger](#commit-meldinger)
+  - [7.3 Branch navngivning](#branch-navngivning)
+  - [7.4 Bidra til et repository](#bidra-til-et-repository)
+  - [7.5 Repository struktur](#repository-struktur)
+  - [7.6 Tagging og versjoner](#tagging-og-versjoner)
+- [**8 Cheat sheet**](#cheat-sheet)
+
+## Kom i gang
+
+Før du kan bruke Git, må du ha det installert og konfigurert på maskinen din.
+
+Du kan sjekke om du allerede har installert eller konfigurert Git ved å kjøre disse kommandoene i terminal (eller Git Bash på Windows):
+
+```bash
+git --version               # Sjekk om installert
+git config --global --list  # Sjekk konfigurasjon (q for quit)
+```
+
+Hvis ingen kommando viser noe eller du er usikker, kan du følge de 2 neste stegene.
+
+### Installer Git
+
+#### Windows
+
+Nedlasting for Windows finner du på [Git sin nettside](https://git-scm.com/downloads/win). Dette laster ned Git Bash, en terminal som gir deg Linux-lignende kommandoer, hvor du kan bruke Git kommandoer som vanlig.
+
+#### MacOS
+
+MacOS krever at du installerer [Homebrew](https://brew.sh/) for å håndtere nye pakker. Etter du har gjort det, kan du installere Git fra terminalen med:
+
+```bash
+brew install git
+```
+
+#### Linux
+
+Linux har mange distroer med flere ulike package managere. Her er en liste på kommandoene for å installere Git på noen populære distroer:
+
+- Ubuntu/Debian
+
+```bash
+sudo apt install git
+```
+
+- Fedora
+
+```bash
+sudo dnf install git
+```
+
+- Arch/Manjaro
+
+```bash
+sudo pacman -S git
+```
+
+### Konfigurer Git
+
+Før du begynner å bruke Git, må du fortelle hvem du er og hva navnet på din første branch er. Navnet og mailen din legges inn i alle commits du lager, og gjør det enklere for andre å se hvem som har gjort hva. I tillegg bruker de fleste plattformer nå navnet main i stedet for master som standard branch.
+
+Sett opp navn og e-post (bruk gjerne UiA-mailen din) og sett default branch til main:
+
+```bash
+git config --global user.name "Arne Westside"
+git config --global user.email "arnew@uia.no"
+
+git config --global init.defaultBranch main
+```
+
+> **Tips**: Du kan bruke den samme mailen som på GitHub/GitLab/Gitea slik at commits kobles til profilen din.
+
+Du kan sjekke at det ble riktig konfigurert med:
+
+```bash
+git config --list
+```
+
+Hvis du ikke liker editoren Git åpner til vanlig, kan du endre den med en av disse eller editoren du foretrekker:
+
+```bash
+git config --global core.editor "code --wait"  # Visual Studio Code
+git config --global core.editor "nano"         # Nano (enkel å bruke i terminalen)
+git config --global core.editor "vim"          # Vim (for masochister)
+```
+
+## Starte et prosjekt
+
+Når du skal starte å bruke Git i et prosjekt, har du to valg:
+
+1. **Opprette et nytt Git repository** (from scratch)
+2. **Klon et eksisterende repository** (fra GitHub, GitLab, Gitea, etc.)
+
+<br />
+
+Du kan også velge å gjøre litt av begge ved å initialisere et nytt repository på GitHub eller liknende for å så klone et tomt prosjekt over.
+
+### Opprett et nytt repository
+
+Du kan velge å lage et Git repository i en eksisterende mappe der prosjektet ditt ligger eller lage en ny mappe.
+
+For å lage en ny mappe til prosjektet:
+
+```bash
+mkdir nytt-prosjekt-navn
+cd nytt-prosjekt-navn
+```
+
+Etter det eller om du allerede har lagd mappen og er i den, initialiser et nytt repository med:
+
+```bash
+git init
+```
+
+### Klon et eksisterende repository
+
+Om du vil jobbe med et eksisterende prosjekt fra f.eks. Github, kan du klone det over med:
+
+```bash
+# HTTPS
+git clone https://github.com/brukernavn/prosjektnavn.git
+```
+
+eller
+
+```bash
+# SSH
+git clone git@github.com:brukernavn/prosjektnavn.git
+```
+
+Dette lager en lokal kopi av hele prosjektet med all historikken intakt. Nå kan du gjøre endringer og sende dem tilbake med `git push`!
+
+**Forskjellen på å klone med HTTPS og SSH:**
+
+**HTTPS**:
+
+- Passer bra hvis du bare skal lese/kopiere et repository.
+- Enkelt å bruke uten ekstra oppsett.
+- Du må bruke brukernavn og passord/token når du pusher endringene.
+
+**SSH**:
+
+- Sikrere og mer praktisk i lengden.
+- Bruker public/private keys for autentisering i stedet for passord.
+- Må settes opp én gang med `ssh-keygen` og legges til på GitHub og andre tjenester.
+
+> **Tips**: Om du kan, bruk SSH. Om du bare skal se, bruk HTTPS.
+
+**Sette opp SSH (anbefalt for aktive utviklere):**
+
+```bash
+# Generer SSH nøkkel og spam enter
+ssh-keygen -t ed25519
+
+# Kopier public key til clipboard
+cat ~/.ssh/id_ed25519.pub
+```
+
+Gå til GitHub -> Settings -> SSH and GPG keys -> New SSH key, lim inn nøkkelen og gi den et navn.
+
+Test at det virker:
+
+```bash
+ssh -T git@github.com
+```
+
+## Vanlig arbeidsflyt
+
+En typisk måte å arbeide med Git i prosjekter ser slik ut:
+
+1. **Sjekk status** - se hva som har endret seg.
+2. **Legg til endringer** - velg hvilke endringer du vil ha med.
+3. **Commit endringer** - lagre en ny versjon med en beskrivende melding.
+4. **Push og pull** - del endringene dine og hent det andre har oppdatert.
+
+Selvfølgelig er det mer til, men mye av arbeidet vil se slik ut.
+
+### Sjekk status
+
+For å se hvilke filer som er endret eller klare for commit, skriv inn:
+
+```bash
+git status
+```
+
+Om du har gjort endringer på en fil, kommer kanskje en output som ligner på dette:
+
+```
+On branch feature/git-guide-page
+Your branch is up to date with 'origin/feature/git-guide-page'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   frontend/src/pages/guides/git.mdx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+En fil kan ha 3 ulike statuser:
+
+- **Untracked** - Git har ingen kontroll over filen.
+- **Staged** - Git har registrert endringen.
+- **Commited** - Git har lagret versjonen av filen.
+
+### Legg til endringer
+
+Før du kan commite endringene dine, må du fortelle Git hvilke endringer du vil ha med. Dette kalles "staging" og gjøres med `git add`. Tenk på det som å pakke en boks hvor du velger nøye hvilke ting som skal med før du sender den:
+
+```bash
+git add filnavn.txt  # Legg til en spesifikk fil
+git add .            # Legg til alle endringer i mappen
+git add *.txt        # Legg til alle .txt filer
+git add src/         # Legg til hele src-mappen
+```
+
+> **Advarsel**: Vær forsiktig med `git add .` - den legger til alle endrede filer. Sjekk alltid med `git status` først!
+
+Du kan fjerne filer fra staging area med:
+
+```bash
+git reset filnavn.txt  # Fjern fil fra staging
+git reset              # Fjern alle filer fra staging
+```
+
+For å se forskjellene på det du har endret kan du undersøke med:
+
+```bash
+git diff           # Se unstaged changes
+git diff --staged  # Se staged changes
+```
+
+### Commit endringer
+
+Når du har lagt til alle endringene du vil ha med, kan du lage en commit. Det er rett og slett et bilde av hele prosjektet ditt med de nye endringene sammen med en liten melding. Du kan gjøre det med `git commit`:
+
+```bash
+git commit -m "Beskrivende melding om hva du endret"
+```
+
+> **Tips**: Skriv commit-meldinger i imperativ form på engelsk, som "Add user login functionality" eller "Fix button styling bug" og commit ofte. Det er også mange standarder å bli enige om, f.eks. bruker Beta [gitmojies](https://gitmoji.dev/) for nettsiden.
+
+Du kan også kombinere add og commit for alle tracked files (forsiktig: tar med alle endringer du har brukt `git add` på før):
+
+```bash
+git commit -am "Fix typo on home page banner"
+```
+
+### Push og pull
+
+For å dele endringene dine med andre (sende dem til GitHub ol.):
+
+```bash
+git push                    # Send til default remote og branch
+git push origin main        # Send til specific remote og branch
+git push -u origin feature  # Set upstream (hvor du sender) og push
+```
+
+> **Tips**: I GitHub forks kaller man ofte originalrepoet for `upstream` (der endringene kommer fra) og sin egen kopi for `origin`.
+
+For å hente andres endringer:
+
+```bash
+git pull                        # Hent og merge fra remote
+git pull --rebase               # Hent og rebase (anbefalt)
+git fetch                       # Bare hent, ikke merge
+```
+
+> **Tips**: Bruk `git pull --rebase` for å unngå unødvendige merge commits.
+
+## Branching
+
+Branches lar deg arbeide på forskjellige features uten å påvirke hovedkoden eller andre. Det er et av de viktigste konseptene i Git.
+
+```bash
+git branch                 # Se alle branches
+git branch branch-navn     # Lag ny branch
+git switch branch-navn     # Bytt til branch
+git switch -c branch-navn  # Lag og bytt til branch
+git branch -d branch-navn  # Slett branch
+```
+
+> **Tips**: Bruk beskrivende branchnavn med prefiks som `feature/user-auth` eller `fix/navbar-placement`.
+
+### Kombinere branches
+
+For å slå sammen endringer fra en branch til en annen, bruker vi merge (og helst også rebase):
+
+**Merge** (lager en merge commit):
+
+```bash
+git switch main         # Bytt til main
+git merge feature-navn  # Merge feature inn i main
+```
+
+Når du merger uten at branch-basen er på toppen av branchen du merger inn i, vil du få en ekstra merge commit. Dette er ofte sett på som uryddig, og det anbefales å bruke rebase for å flytte branchen din til toppen før du merger.
+
+**Rebase** (flytter commits på toppen av en branch):
+
+```bash
+git switch feature-navn    # Bytt til feature branch
+git rebase main            # Rebase feature på toppen av main
+git switch main            # Bytt til main
+git merge feature-navn     # Fast-forward merge
+```
+
+### Squash commits
+
+For å holde historien ryddig kan det være nyttig å slå sammen flere commits til bare én før merge. Selv om man mister informasjon, er ikke alle interesserte i at du f.eks. gjorde en skrivefeil og fikset den på en feature.
+
+Squashing skjer gjennom `git rebase` sitt interface:
+
+```bash
+git rebase -i HEAD~3  # Interaktiv rebase av siste 3 commits
+```
+
+I editoren som åpnes, endre `pick` til `squash` (eller `s`) for commits du vil slå sammen med den forrige.
+
+> **Tips**: For en ryddig historie bør du rebase, squashe, og så merge slik at du kan lett lese deg til bake i et lineært tre.
+
+### Håndtere konflikter
+
+Når Git ikke kan automatisk merge endringer, får du en eller flere konflikter:
+
+```bash
+git status          # Se hvilke filer har konflikter
+```
+
+Når du åpner og leser filen vil alle konflikter være markert slik:
+
+```
+<<<<<< HEAD
+Din kode
+=======
+Andres kode
+>>>>>> branch-navn
+```
+
+Du velger helt selv hvordan konflikten løses, om du vil beholde din egen, branchens kode, eller begge. Etterpå må du markere at du har løst konflikten og commite mergen:
+
+```bash
+git add løst-konflikt.txt
+git commit
+```
+
+## Feilsøking og historikk
+
+Git gir deg mange måter å angre endringer og undersøke historikken på. Videre kommer et par av de mest brukte måtene og strategiene.
+
+### Angre feil
+
+Du har flere ulike måter å justere feil som skjer under veis i prosjektet:
+
+- **Angre endringer**: Juster en fil tilbake til commitens riktige versjon.
+
+```bash
+git restore filnavn.txt  # Angre endringer i fil
+git restore .            # Angre alle endringer
+```
+
+- **Angre commits**: Fjern siste commit ved å skrive om historien.
+
+```bash
+git reset --soft HEAD~1  # Angre sist commit, behold endringer
+git reset --hard HEAD~1  # Angre sist commit, slett endringer
+```
+
+> Advarsel: Dette skriver om historien, så bruk kun lokalt!
+
+- **Revert (tryggere måte)**: Angrer en commit ved å lage en "angre commit" for å unngå å skrive om historien.
+
+```bash
+git revert HEAD                 # Revert siste commit
+git revert abc123               # Revert spesifikk commit
+```
+
+### Stash endringer
+
+Stash lar deg midlertidig lagre endringer uten å commite, som er veldig nyttig om du må gjøre en liten endring på en annen branch eller commit når du egentlig ikke er helt ferdig med nåværende arbeid:
+
+```bash
+git stash       # Stash alle endringer
+git stash -u    # Stash inkludert untracked files
+git stash list  # Se alle stashes
+git stash pop   # Hent tilbake siste stash
+git stash drop  # Slett stash
+```
+
+Strukturen på stash er som en stack, hvor du setter en tallerken (endringene dine) på toppen, og du kan gjøre det så mange ganger du vil, men kan kun ta dem tilbake fra toppen. Dette gjør stash veldig enkel og effektiv å jobbe med.
+
+### Undersøk historikk
+
+For å se commit historikken kan man bruke `git log`. Denne kommandoen kan kjøres på mange ulike måter med ulike instillinger for at du skal kunne se akkurat det du vil. Her er et par nyttige versjoner:
+
+```bash
+git log                # Full historikk
+git log --oneline      # Kort oversikt
+git log --graph --all  # Visualiser alle branches
+git log --decorate     # Viser referanser
+git log -p             # Viser endringene
+git log -n 4           # Viser de 4 siste commitene
+git --no-pager log     # Unngå scary Vim keybinds :)
+```
+
+Du kan kombinere de så mye du vil slik som dette:
+
+```bash
+git --no-pager log --graph --all --oneline --decorate
+```
+
+## Jobbe med remotes
+
+Remotes er eksterne repositories som du kan synkronisere med. Vanligvis er `origin` hovedrepositoriet på GitHub og andre tjenester.
+
+### Koble til remotes
+
+Om du allerede har klonet et repository, vil du allerede ha origin som default remote. Du kan sjekke og endre på remotes med disse kommandoene:
+
+```bash
+git remote -v              # Se alle remotes
+git remote add origin url  # Legg til remote
+git remote remove origin   # Fjern remote
+git remote rename old new  # Gi nytt navn til remote
+```
+
+> **Tips**: Om du er på en fork, anbefales det å legge til original repoet under remote navnet `upstream`.
+
+Første gang du pusher en ny branch til repositoryet kan du lage branchen på remote med:
+
+```bash
+git push -u origin branch-navn  # Set upstream og push
+```
+
+### Hent og oppdater remotes
+
+**Hente endringer fra remote:**
+
+```bash
+git fetch                       # Hent alle endringer fra alle remotes
+git fetch origin                # Hent fra spesifikk remote
+git fetch upstream              # Hent fra upstream (hvis du har fork)
+```
+
+**Kombinere fetch med merge/rebase:**
+
+```bash
+git pull                        # Fetch + merge fra remote
+git pull --rebase               # Fetch + rebase (anbefalt)
+git pull upstream main          # Hent fra upstream main branch
+```
+
+> **Tips**: Bruk `git pull --rebase` for å unngå unødvendige merge commits.
+
+**Sende endringer til remote:**
+
+```bash
+git push                        # Send til default remote og branch
+git push origin main            # Send til spesifikk remote og branch
+git push -u origin feature      # Set upstream og push ny branch
+git push --force-with-lease     # Tryggere force push
+```
+
+> **Advarsel**: Aldri bruk `git push --force` på delte branches.
+
+## Struktur og standarder
+
+For å holde prosjekter ryddig og gjøre samarbeid enklere, er det viktig å følge gode standarder og konvensjoner. Her har du de viktigste praksisene for å strukturere Git-repositories, commits og holdninger på en profesjonell måte.
+
+### Git ignore
+
+`.gitignore` filen forteller Git hvilke filer og mapper som skal ignoreres og ikke legges til i versjonskontroll. Dette er spesielt viktig for å unngå å committe sensitive data, build-filer, og andre filer som ikke hører hjemme i repositoryet.
+
+Filen er ganske greie å skrive, og gjelder kun for mappen den ligger i og alle undermapper. Du skriver filnavn inn for å ikke inkludere med et par spesielle tegn:
+
+```gitignore
+# Bruk `#` for en vakker kommentar
+
+# Ikke inkluder `.env` og `node_modules` mappen
+.env
+node_modules/
+
+# Ikke inkluder noen `.txt` filer
+*.txt
+
+# Men ta med `important.txt`
+!important.txt
+```
+
+> **Tips**: GitHub har [ferdiglagde .gitignore-templates](https://github.com/github/gitignore) for forskjellige språk og frameworks som kan kopieres.
+
+Om du allerede uheldigvis har staget en fil, kan du fjerne den igjen med:
+
+```bash
+git rm --cached filnavn.txt  # Fjern fil fra Git
+git rm --cached -r mappen/   # Fjern hele mappen fra Git
+```
+
+### Commit meldinger
+
+Gode commit meldinger gjør det mye enklere å forstå hva som har skjedd i et prosjekt og hvorfor endringen ble gjort. Vanlig for studenter er å komme tilbake til kode du skrev for 2 måneder siden uten å forstå noe som helst, eller å lese andre sin kode nøye for å forstå hva de gjorde.
+
+En lur måte å skrive commit meldinger på er bruke en prefiks for hvordan type commit det er, f.eks. en fix, feature, documentation, etc. Her er hvordan folk flest strukturer meldingene sine:
+
+```
+Type: Kort beskrivelse (maks 50 tegn)
+
+Lengre forklaring om nødvendig. Forklar hva og hvorfor,
+ikke hvordan. Wrap teksten på 72 tegn.
+
+- Kan bruke bullet points
+- For å liste opp endringer
+```
+
+**Vanlige typer (konvensjonelle commits):**
+
+```bash
+git commit -m "feat: Add user authentication system"
+git commit -m "fix: Resolve navbar mobile responsive issue"
+git commit -m "docs: Update API documentation"
+git commit -m "style: Fix indentation in header component"
+git commit -m "refactor: Simplify user validation logic"
+git commit -m "test: Add unit tests for login function"
+git commit -m "chore: Update dependencies to latest versions"
+```
+
+Det er flere måter å skrive commit meldingene, og gruppen for prosjektet ditt bør være enig om en stil å bruke. For denne nettsiden har vi brukt [gitmojies](https://gitmoji.dev/) for å kun trenge en emoji for å si typen til commiten:
+
+```bash
+git commit -m "✨ Add dark mode toggle functionality"
+git commit -m "🐛 Fix button alignment on mobile devices"
+git commit -m "📝 Update contributing guidelines"
+git commit -m "♻️ Refactor API response handling"
+git commit -m "🧪 Add integration tests for payment flow"
+```
+
+> **Tips**: Skriv commit meldinger i imperativ form som om du fullførte setningen "This commit will..." og generelt bruk engelsk.
+
+### Branch navngivning
+
+Gode branchnavn gjør det enkelt å forstå hva som jobbes med og holder repositoryet organisert.
+
+**Vanlige konvensjoner:**
+
+```bash
+# Feature branches
+feature/user-authentication
+feature/add-payment-system
+feat/shopping-cart
+
+# Bug fix branches
+fix/navbar-mobile-layout
+bugfix/login-validation-error
+hotfix/security-vulnerability
+
+# Release branches
+release/v2.1.0
+release/2024-spring-update
+
+# Experiment branches (proof of concepts)
+experiment/new-ui-framework
+poc/machine-learning-integration
+```
+
+> **Tips**: Hold branchnavn korte, bruk `-` i stedet for mellomrom/`_`, og vær beskrivende men alikevel konsis.
+
+### Bidra til et repository
+
+Når du skal bidra til andres prosjekter eller jobbe i team, følg denne prosessen for å holde ting ryddig:
+
+**1. Fork og klon (for eksterne prosjekter):**
+
+```bash
+# Fork på repositoryet først, så klon din fork
+git clone git@github.com:ditt-brukernavn/repo-navn.git
+cd repo-navn
+
+# Legg til original repo som upstream
+git remote add upstream git@github.com:original-brukernavn/repo-navn.git
+```
+
+**2. Hold deg oppdatert med hoved repositoryet:**
+
+```bash
+git fetch upstream
+git switch main
+git pull upstream main
+```
+
+**3. Lag ny branch for din endring:**
+
+```bash
+git switch -c feature/vim-guide
+```
+
+**4. Gjør endringer og commit:**
+
+```bash
+git add .
+git commit -m "feat: Add list of Vim keybinds"
+```
+
+**5. Push til din fork:**
+
+```bash
+git push -u origin feature/vim-guide
+```
+
+> **Tips**: For å holde commit historikken ren og pen, kan det være greit å kjøre en pull, rebase og squashe før du sender videre.
+
+**6. Opprett Pull Request**
+
+Gå til din fork på GitHub eller den tjenesten du bruker og du vil se et forslag om å opprette en Pull Request (PR) fra din branch til hovedrepoet.
+
+> **Tips**: Les alltid CONTRIBUTING.md og README.md før du begynner å bidra til et prosjekt.
+
+### Repository struktur
+
+En god mappestruktur gjør prosjektet lettere å navigere og forstå. Vanligvis har alle prosjekter også en fast struktur for at andre lett kan bidra til nye problemer.
+
+**Viktige filer å få med**:
+
+```
+prosjektnavn/
+├── README.md
+├── .gitignore
+├── LICENSE
+├── CONTRIBUTING.md
+├── docs/
+└── ...
+```
+
+`README.md`:
+
+All introduserende info om prosjektet, type navnet, hvordan man installerer, lenker til dokumentasjon, osv.
+
+`LICENSE`:
+
+Lisensen for hvordan prosjektet kan brukes og endres.
+
+`CONTRIBUTING.md`:
+
+Hvordan man skal bidra, standarder på navngivning og alt man trenger før man skriver løs.
+
+`docs/`:
+
+Mappe med dokumentasjon for prosjektet. Skrives ofte i markdown, men er veldig forskjellig hvordan ulike prosjekter lagrer de.
+
+### Tagging og versjoner
+
+Tags brukes til å markere spesifikke versjoner av koden din, spesielt nyttig for releases og når du vil referere til en bestemt versjon senere. Det funker på en samme måte som en branch, men er konstant til en commit.
+
+**Lag en tag:**
+
+```bash
+git tag v1.0.0                                # Enkel tag
+git tag -a v1.0.0 -m "Release version 1.0.0"  # Annotert tag (anbefalt)
+```
+
+**Se tags:**
+
+```bash
+git tag          # List alle tags
+git show v1.0.0  # Vis tag info
+```
+
+**Push tags:**
+
+```bash
+git push origin v1.0.0  # Push spesifikk tag
+git push origin --tags  # Push alle tags
+```
+
+**Slett tag:**
+
+```bash
+git tag -d v1.0.0                # Slett lokal tag
+git push origin --delete v1.0.0  # Slett remote tag
+```
+
+> **Tips**: Følg [Semantic Versioning](https://semver.org/) for å gjøre versjonering forutsigbar og god. `Major.Minor.Patch`, øk major for breaking changes, minor for nye features, patch for bugfixes.
+
+## Cheat sheet
+
+### Oppsett og konfigurasjon
+
+```bash
+git config --global user.name "Arne Westside"
+git config --global user.email "arnew@uia.no"
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"  # Sett editor til VSC
+```
+
+### SSH oppsett
+
+```bash
+ssh-keygen -t ed25519      # Sett opp nøkkel
+cat ~/.ssh/id_ed25519.pub  # Skriv nøkkel
+```
+
+### Starte prosjekt
+
+```bash
+git init                                      # Nytt repository
+git clone https://github.com/bruker/repo.git  # Klon med HTTPS
+git clone git@github.com:bruker/repo.git      # Klon med SSH
+```
+
+### Vanlige kommandoer
+
+```bash
+git status         # Se status
+git add filnavn    # Stage spesifikk fil
+git add .          # Stage alle endringer
+git add *.md       # Stage alle .md filer
+git commit -m ""   # Commit med melding
+git commit -am ""  # Add og commit tracked filer
+git push           # Send til remote
+git pull           # Hent oppdateringer
+git pull --rebase  # Hent oppdateringer og rebase
+git diff           # Se unstaged endringer
+git diff --staged  # Se staged endringer
+```
+
+### Branches
+
+```bash
+git branch                 # Se alle branches
+git branch branch-navn     # Lag ny branch
+git switch -c branch-navn  # Lag og bytt til branch
+git switch branch-navn     # Bytt til branch
+git switch main            # Bytt til main
+git merge branch-navn      # Merge branch inn i nåværende branch
+git rebase main            # Rebase på main
+git branch -d branch-navn  # Slett branch (trygt, kun hvis merged)
+git branch -D branch-navn  # Force slett branch (farlig, mister endringer)
+```
+
+### Fork arbeidsflyt
+
+```bash
+# Sett opp fork
+git clone git@github.com:ditt-navn/repo.git
+git remote add upstream git@github.com:original/repo.git
+
+# Hold deg oppdatert
+git fetch upstream
+git switch main
+git pull upstream main
+
+# Lag feature branch og push
+git switch -c feature/ny-funksjon
+git push -u origin feature/ny-funksjon
+
+# Forbered for merge
+git fetch upstream
+git rebase upstream/main
+git push --force-with-lease origin feature/ny-funksjon
+```
+
+### Remotes
+
+```bash
+git remote -v               # Se alle remotes
+git remote add origin url   # Legg til remote
+git remote add upstream url # Legg til upstream
+git fetch origin            # Hent fra origin
+git fetch upstream          # Hent fra upstream
+git push -u origin branch   # Set upstream og push
+```
+
+### Feilretting
+
+```bash
+git restore filnavn.txt  # Angre endringer i fil
+git restore .            # Angre alle endringer
+git reset filnavn.txt    # Unstage fil
+git reset                # Unstage alle filer
+git reset --soft HEAD~1  # Angre commit, behold endringer
+git reset --hard HEAD~1  # Angre commit, slett endringer
+git revert HEAD          # Lag angre-commit
+git stash                # Midlertidig lagre
+git stash -u             # Stash med untracked files
+git stash list           # Se alle stashes
+git stash pop            # Hent tilbake stash
+git stash drop           # Slett stash
+```
+
+### Historikk og undersøkelse
+
+```bash
+git log                # Full historikk
+git log --oneline      # Kompakt log
+git log --graph --all  # Visualiser alle branches
+git log -n 5           # Vis 5 siste commits
+git show abc123        # Vis spesifikk commit
+git blame filnavn.txt  # Se hvem som endret hva
+git diff main..branch  # Sammenlign branches
+```
+
+### Tags og versjoner
+
+```bash
+git tag                  # List alle tags
+git tag v1.0.0           # Lag enkel tag
+git tag -a v1.0.0 -m ""  # Lag annotert tag
+git push origin v1.0.0   # Push spesifikk tag
+git push origin --tags   # Push alle tags
+git tag -d v1.0.0        # Slett lokal tag
+```
+
+### Git ignore
+
+```bash
+git rm --cached filnavn    # Fjern fil fra Git, behold lokalt
+git rm --cached -r mappe/  # Fjern mappe fra Git
+```
+
+```gitignore
+# Bruk `#` for en vakker kommentar
+.env            # Ikke inkluder fil
+node_modules/   # Ikke inkluder mappe
+*.txt           # Ikke inkluder noen `.txt` filer
+!important.txt  # Men inkluder denne filen
+```
