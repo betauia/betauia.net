@@ -1,0 +1,20 @@
+---
+import Container from "@components/containers/Container.astro";
+import Banner from "@components/widgets/Banner.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout
+  title="BetaDEV"
+  description="BetaDEV er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!"
+>
+  <Container>
+    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold">BetaDEV</h1>
+    <p>
+      Interessegruppen for nettsideutvikling og generell utvikling innen BETA. BetaDEV arrangerer
+      gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre
+      komiteer og interressegrupper.
+    </p>
+    <Banner text="BetaDEV is currently holding its Game Jam!" link="/betadev/gamejam/" />
+  </Container>
+</PageLayout>
