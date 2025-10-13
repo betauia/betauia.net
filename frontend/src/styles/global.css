@@ -61,6 +61,10 @@
     @apply list-[square] marker:text-base marker:text-brand;
   }
 
+  .md-content > ul {
+    @apply mb-4;
+  }
+
   .md-content ol {
     @apply list-decimal marker:font-bold;
   }
@@ -96,19 +100,19 @@
     @apply mb-4 border-b-2 border-gray-900 border-opacity-25 pb-2 text-4xl font-bold dark:border-white dark:border-opacity-25;
   }
   .md-content h2 {
-    @apply mb-3 mt-6 text-3xl font-semibold;
+    @apply mb-3 mt-8 text-3xl font-semibold;
   }
   .md-content h3 {
-    @apply mb-3 mt-4 text-2xl;
+    @apply mb-3 mt-8 text-2xl;
   }
   .md-content h4 {
-    @apply mb-2 mt-3 text-xl;
+    @apply mb-2 mt-8 text-xl;
   }
   .md-content h5 {
-    @apply mb-1 mt-2 text-lg;
+    @apply mb-1 mt-8 text-lg;
   }
   .md-content h6 {
-    @apply mb-1 mt-2 text-base;
+    @apply mb-1 mt-8 text-base;
   }
 
   .md-content h1,
@@ -156,11 +160,15 @@
   }
 
   .md-content :not(pre) > code {
-    @apply rounded px-1.5 py-0.5;
+    @apply rounded bg-gray-200 px-1.5 py-0.5 dark:bg-gray-800;
   }
 
   .md-content pre:has(code) {
     @apply mb-4 text-wrap rounded-lg px-6 py-4;
+  }
+
+  .md-content blockquote {
+    @apply rounded border-l-4 border-brand pl-4 italic opacity-80;
   }
 
   .md-content hr {

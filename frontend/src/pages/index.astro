@@ -3,7 +3,12 @@ import PageLayout from "@layouts/PageLayout.astro";
 import FullContainer from "@components/containers/FullContainer.astro";
 import Button from "@components/ui/Button.astro";
 import BetaLogo from "@assets/logos/Beta.svg";
-import { Icon } from "astro-icon/components";
+
+import Banner from "@components/widgets/Banner.astro";
+
+const showBanner = false;
+const bannerText = "";
+const bannerLink = "/";
 ---
 
 <PageLayout title="Home">
@@ -24,37 +29,7 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
     </div>
-    <!-- Banner nederst -->
-    <div
-      id="banner"
-      class="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-xl -translate-x-1/2 transform rounded-xl bg-brand px-6 py-4 text-white shadow-lg transition-all duration-500"
-    >
-      <div class="flex items-center justify-between">
-        <p class="flex items-center gap-2 text-sm font-semibold sm:text-base">
-          🚀 Bli med på vår Git Workshop! <Icon name="fa-solid:code-branch" class="" />
-        </p>
-        <a
-          href="/workshop/git"
-          class="rounded-lg bg-white px-4 py-2 text-sm font-bold text-brand shadow transition hover:bg-gray-100"
-        >
-          Les mer
-        </a>
-      </div>
-    </div>
 
-    <script>
-      const banner = document.getElementById("banner");
-      let lastScrollY = 0;
-
-      window.addEventListener("scroll", () => {
-        if (!banner) return;
-        if (window.scrollY > lastScrollY) {
-          banner.style.transform = "translate(-50%, 150%)";
-        } else {
-          banner.style.transform = "translate(-50%, 0)";
-        }
-        lastScrollY = window.scrollY;
-      });
-    </script>
+    {showBanner && <Banner text={bannerText} link={bannerLink} />}
   </FullContainer>
 </PageLayout>
