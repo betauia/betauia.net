@@ -23,7 +23,11 @@ import BetaLogo from "@assets/logos/Beta.svg";
           </li>
 
           <li class="flex justify-center">
-            <div class="inline-flex items-center gap-1.5 text-gray-800 dark:text-gray-100">
+            <div
+              class="inline-flex items-center cursor-pointer gap-1.5 text-gray-800 transition dark:text-gray-100 hover:opacity-75 py-0.5 rounded active:scale-90"
+              title="Click to copy Org.nr"
+              onclick="navigator.clipboard.writeText('913 777 417')"
+            >
               <Icon name="fa-solid:suitcase" />
               <span class="flex-1">Org.nr: 913 777 417</span>
             </div>
@@ -31,10 +35,12 @@ import BetaLogo from "@assets/logos/Beta.svg";
 
           <li class="flex justify-center">
             <div
-              class="inline-flex items-center gap-1.5 text-gray-800 transition dark:text-gray-100"
+              class="inline-flex items-center cursor-pointer gap-1.5 text-gray-800 transition dark:text-gray-100 hover:opacity-75 py-0.5 rounded active:scale-90"
+              title="Click to copy address"
+              onclick="navigator.clipboard.writeText('Jon Lilletuns vei 9, 4879 Grimstad')"
             >
               <Icon name="fa-solid:map-marker-alt" />
-              <span class="flex-1 break-all">Jon Lilletuns vei 9, 4879 Grimstad</span>
+              <span class="flex-1 break-all" >Jon Lilletuns vei 9, 4879 Grimstad</span>
             </div>
           </li>
         </ul>
