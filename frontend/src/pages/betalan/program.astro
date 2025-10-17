@@ -4,23 +4,88 @@ import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout title="BetaLAN Program" description="Check out the exciting lineup of events and activities planned for BetaLAN!">
+<Layout title="BetaLAN Program H25">
   <BetaLANLayout>
-    <section class="bg-slate-800 bg-opacity-90 mb-4 p-4 sm:p-6 rounded-lg mx-3 sm:m-6 max-w-4xl lg:mx-auto">
+    <section class="bg-slate-800 bg-opacity-90 mb-4 p-4 sm:p-6 rounded-lg mx-3 sm:m-6 max-w-4xl lg:mx-auto text-yellow-100">
       <div>
-        <h1 class="text-center text-7xl mb-6">BetaLAN Program</h1>
+        <h1 class="font-bold text-center text-3xl md:text-6xl mb-6">BetaLAN Program</h1>
         
-        <!-- Update when program hits -->
-        <div class="mb-8 sm:mb-10 align-middle text-center">
-          <h2>Program will be announced 1 week before the event starts</h2>
+        <div class="mb-8 sm:mb-10">
+          <h2 class="font-bold mb-3 text-yellow-300 border-b border-yellow-300 pb-1">Friday</h2>
+          <ul class="space-y-0">
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Opening Hour</span>
+              <span>17:00 - 18:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">GameJAM</span>
+              <span>18:00 - 19:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Team fortress 2</span>
+              <span>19:00 - 20:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">DOTA 2</span>
+              <span>20:00 - 21:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Wii sports</span>
+              <span>23:00 - 00:00</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mb-8 sm:mb-10">
+          <h2 class="font-bold mb-3 text-yellow-300 border-b border-yellow-300 pb-1">Saturday</h2>
+          <ul class="space-y-0">
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">League of Legends</span>
+              <span>14:00 - 15:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Minecraft</span>
+              <span>16:00 - 17:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Food for participants</span>
+              <span>17:00 - 19:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Guitar Hero</span>
+              <span>19:00 - 21:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">PEAK (Mega Session)</span>
+              <span>22:00 - 23:00</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mb-6">
+          <h2 class="font-bold mb-3 text-yellow-300 border-b border-yellow-300 pb-1">Sunday</h2>
+          <ul class="space-y-0">
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Just Dance</span>
+              <span>14:00 - 15:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Street Fighter 2</span>
+              <span>15:00 - 16:00</span>
+            </li>
+            <li class="flex flex-col sm:flex-row justify-between py-3 sm:py-2 border-b border-yellow-900/30 sm:border-none">
+              <span class="font-medium">Closing Time</span>
+              <span>17:00</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="mt-6 sm:mt-8 mb-2 border-t border-white pt-4 text-center">
+        <div class="mt-6 sm:mt-8 mb-2 border-t border-yellow-800 pt-4 text-center">
           <div class="mt-2 sm:mt-4">
-            <h3 class="text-3xl font-medium mb-2">Join BetaLAN Discord</h3>
-            <p class="text-base mb-3">Connect with other participants and get real-time updates during the event</p>
+            <h3 class="font-medium mb-2">Join BetaLAN Discord</h3>
+            <p class="mb-3">Connect with other participants and get real-time updates during the event</p>
             <a href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" 
-              class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition-colors text-2xl">
+              class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition-colors">
               <Icon name="fa-brands:discord" class="w-12 h-12 mb-2" />
               <span>BetaLAN Discord</span>
             </a>
