@@ -4,24 +4,20 @@ export function initMobileMenu() {
 
   if (!mobileMenuButton || !mobileMenu) return;
 
-  // Toggle mobile menu
   mobileMenuButton.addEventListener("click", () => {
     const isExpanded = mobileMenuButton.getAttribute("aria-expanded") === "true";
 
     mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
 
     if (isExpanded) {
-      // Close menu
       mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-      mobileMenu.offsetHeight; // Force reflow
+      mobileMenu.offsetHeight;
       mobileMenu.style.maxHeight = "0";
       mobileMenu.style.opacity = "0";
     } else {
-      // Open menu
       mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
       mobileMenu.style.opacity = "1";
 
-      // Set max-height to none after transition for dynamic content
       const handleTransitionEnd = () => {
         if (mobileMenuButton.getAttribute("aria-expanded") === "true") {
           mobileMenu.style.maxHeight = "none";
@@ -32,7 +28,6 @@ export function initMobileMenu() {
     }
   });
 
-  // Handle mobile dropdown toggles
   const mobileDropdownToggles = document.querySelectorAll(".mobile-dropdown-toggle");
 
   mobileDropdownToggles.forEach(toggle => {
@@ -49,13 +44,11 @@ export function initMobileMenu() {
       toggle.setAttribute("aria-expanded", String(!isExpanded));
 
       if (isExpanded) {
-        // Close dropdown
         dropdown.style.maxHeight = dropdown.scrollHeight + "px";
-        dropdown.offsetHeight; // Force reflow
+        dropdown.offsetHeight;
         dropdown.style.maxHeight = "0";
         chevron?.classList.remove("rotate-180");
       } else {
-        // Close other dropdowns first
         mobileDropdownToggles.forEach(otherToggle => {
           if (otherToggle !== toggle) {
             const otherId = (otherToggle as HTMLElement).dataset.target;
@@ -70,19 +63,16 @@ export function initMobileMenu() {
           }
         });
 
-        // Open dropdown
         dropdown.style.maxHeight = dropdown.scrollHeight + "px";
         chevron?.classList.add("rotate-180");
       }
 
-      // Adjust mobile menu height to accommodate dropdown
       if (mobileMenu.style.maxHeight !== "none") {
         mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
       }
     });
   });
 
-  // Close mobile menu when clicking outside
   document.addEventListener("click", e => {
     const target = e.target as HTMLElement;
     if (
@@ -94,20 +84,9 @@ export function initMobileMenu() {
     }
   });
 
-  // Close mobile menu on escape key
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && mobileMenuButton.getAttribute("aria-expanded") === "true") {
       mobileMenuButton.click();
     }
-  });
-
-  // Close mobile menu when clicking on a link
-  const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      if (mobileMenuButton.getAttribute("aria-expanded") === "true") {
-        mobileMenuButton.click();
-      }
-    });
   });
 }
