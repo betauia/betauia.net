@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { class: className } = Astro.props;
+
+const socials = {
+  facebook: "https://www.facebook.com/beta.linjeforening/",
+  instagram: "https://www.instagram.com/betauia/",
+  github: "https://github.com/betauia",
+  discord: "https://discord.gg/3xBPkDsaXy",
+};
+---
+
+<ul class={`flex gap-5 text-2xl ${className ?? ""}`}>
+  {
+    Object.entries(socials).map(([name, url]) => (
+      <li>
+        <a href={url} target="_blank" class="transition hover:opacity-80">
+          <Icon name={`fa-brands:${name}`} />
+        </a>
+      </li>
+    ))
+  }
+</ul>

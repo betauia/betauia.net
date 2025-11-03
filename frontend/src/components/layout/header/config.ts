@@ -32,7 +32,7 @@ export const navigationDropdowns: NavigationDropdown[] = [
         icon: "fa-solid:balance-scale",
         title: "Vedtekter",
         desc: "Les vedtektene og se hvordan foreningen er organisert.",
-        href: "/vedtekter",
+        href: "/Vedtekter.pdf",
       },
       {
         icon: "fa-solid:archive",

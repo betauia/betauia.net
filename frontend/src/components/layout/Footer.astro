@@ -1,11 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import BetaLogo from "@assets/logos/Beta.svg";
+import Socials from "@components/widgets/Socials.astro";
 ---
 
 <footer class="dark:bg-dark-accent bg-accent px-4 pb-6 pt-12 text-white">
   <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-3">
-    <!-- Kontakt -->
     <section>
       <h2 class="mb-4 text-center text-base font-semibold uppercase tracking-wide">Kontakt oss</h2>
       <ul class="flex flex-col items-center space-y-2 text-sm">
@@ -25,32 +25,9 @@ import BetaLogo from "@assets/logos/Beta.svg";
         </li>
       </ul>
 
-      <ul class="mt-5 flex justify-center gap-5 text-lg">
-        {
-          ["facebook", "instagram", "github", "discord"].map(name => (
-            <li>
-              <a
-                href={
-                  name === "facebook"
-                    ? "https://www.facebook.com/beta.linjeforening/"
-                    : name === "instagram"
-                      ? "https://www.instagram.com/betauia/"
-                      : name === "github"
-                        ? "https://github.com/betauia"
-                        : "https://discord.gg/3xBPkDsaXy"
-                }
-                target="_blank"
-                class="transition hover:opacity-80"
-              >
-                <Icon name={`fa-brands:${name}`} />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <Socials class="mt-6 justify-center text-lg" />
     </section>
 
-    <!-- Ressurser -->
     <section class="text-center">
       <h2 class="mb-4 text-base font-semibold uppercase tracking-wide">Ressurser</h2>
       <ul class="space-y-2 text-sm">
@@ -67,7 +44,6 @@ import BetaLogo from "@assets/logos/Beta.svg";
       </ul>
     </section>
 
-    <!-- Sponsor -->
     <section class="flex h-full flex-col justify-center text-center">
       <BetaLogo class="mx-auto h-12" />
       <p class="mt-3 text-sm font-semibold">Linjeforeningen for datastudenter</p>
