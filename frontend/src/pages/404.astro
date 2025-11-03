@@ -1,25 +1,27 @@
 ---
-import FullContainer from "@components/containers/FullContainer.astro";
-import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/layout/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/ui/Button.astro";
-import { Image } from "astro:assets";
-import Image404 from "@assets/404.svg";
+
+const messages = [
+  "Dette blir ikke fikset før vi får mer pizza! 🍕",
+  "Denne siden forsvant kanskje i siste commit.",
+  "Designeren mente det var minimalistisk.",
+  "Vi trodde noen skulle fikse det. Ingen gjorde det.",
+  "It's not a bug, it's a feature! 😎",
+  "Worked on my machine! 🤷‍♂️",
+];
+
+const randomText = messages[Math.floor(Math.random() * messages.length)];
 ---
 
-<PageLayout title="404">
-  <FullContainer>
-    <div class="mt-16 flex flex-col items-center">
-      <h1 class="text-7xl font-medium">Ooops!</h1>
-      <!-- <p class="mt-1 text-red-700 dark:text-red-200">Error 404 - Page Not Found</p> -->
-      <p class="mt-4 text-3xl font-light">
-        Denne siden finnes visst ikke. Ta gjerne kontakt om du mener noe er feil. Ellers ha en god
-        dag videre😊
-      </p>
-      <div class="mt-6">
-        <Button href="/" text="Hjemmesiden" type="primary" />
-        <Button href="mailto:post@betauia.net" text="Ta kontakt" type="secondary" />
-      </div>
-      <Image404 class="mt-16 p-8 dark:rounded-3xl dark:bg-neutral-50" />
+<BaseLayout title="404">
+  <Container class="flex min-h-svh flex-col items-center justify-center text-center">
+    <h1 class="text-4xl font-semibold">Her var det tomt...</h1>
+    <p class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted">{randomText}</p>
+    <div class="mt-6 flex gap-4">
+      <Button href="/" type="primary">Gå tilbake</Button>
+      <Button href="mailto:post@betauia.net" type="secondary">Ta kontakt</Button>
     </div>
-  </FullContainer>
-</PageLayout>
+  </Container>
+</BaseLayout>

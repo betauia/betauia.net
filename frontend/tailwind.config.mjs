@@ -4,10 +4,37 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Poppins"', "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+
       colors: {
-        brand: {
-          DEFAULT: "#0085ff",
-          red: "#c00000ff",
+        brand: "#0085FF",
+        accent: {
+          DEFAULT: "#0085FF",
+          secondary: "#14B8A6",
+        },
+
+        bg: {
+          base: "#F2F2F6",
+          raised: "#EAEAEF",
+        },
+
+        fg: {
+          base: "#242424",
+          muted: "#425269",
+        },
+
+        dark: {
+          bg: {
+            base: "#0F151F",
+            raised: "#151E2D",
+          },
+
+          fg: {
+            base: "#FDFDFD",
+            muted: "#A1B1D1",
+          },
         },
       },
     },
