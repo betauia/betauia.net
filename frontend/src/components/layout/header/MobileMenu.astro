@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "@components/ui/Button.astro";
+import { navigationDropdowns } from "@components/layout/header/config";
+---
+
+<button
+  id="mobile-menu-button"
+  class="group flex items-center justify-center p-2 md:hidden"
+  type="button"
+  aria-expanded="false"
+  aria-label="Toggle mobile menu"
+>
+  <div class="relative h-5 w-6">
+    <span
+      class="hamburger-line h-0.75 absolute left-0 top-0 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+    <span
+      class="hamburger-line h-0.75 absolute left-0 top-2 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+    <span
+      class="hamburger-line h-0.75 absolute left-0 top-4 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+  </div>
+</button>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-x-0 top-16 z-30 max-h-0 overflow-hidden bg-bg-raised opacity-0 shadow-lg transition-[max-height,opacity] duration-300 ease-out dark:bg-dark-bg-base md:hidden"
+>
+  <nav class="mx-auto max-w-6xl px-4 py-4">
+    {
+      navigationDropdowns.map(dropdown => (
+        <div class="border-b border-fg-muted py-3 last:border-b-0 dark:border-dark-bg-raised">
+          <button
+            class="mobile-dropdown-toggle flex w-full items-center justify-between text-left text-fg-base transition-colors hover:text-fg-muted dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+            data-target={dropdown.id}
+            type="button"
+            aria-expanded="false"
+          >
+            <span class="font-medium">{dropdown.label}</span>
+            <Icon name="fa-solid:chevron-down" class="h-4 w-4 transition-transform duration-200" />
+          </button>
+
+          <div
+            id={`mobile-dropdown-${dropdown.id}`}
+            class="max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out"
+          >
+            <ul class="mt-4 space-y-2 pl-2">
+              {dropdown.items.map(item => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="flex items-start gap-4 rounded-lg p-2 text-sm transition-colors hover:bg-bg-base dark:hover:bg-dark-bg-raised"
+                  >
+                    <Icon name={item.icon} class="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                    <div>
+                      <div class="font-medium text-fg-base dark:text-dark-fg-base">
+                        {item.title}
+                      </div>
+                      <div class="text-xs text-fg-muted dark:text-dark-fg-muted">{item.desc}</div>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="mt-2 pt-4">
+      <Button href="/login" type="secondary" class="w-full">Logg inn</Button>
+    </div>
+  </nav>
+</div>
+
+<style>
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-menu-button[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>

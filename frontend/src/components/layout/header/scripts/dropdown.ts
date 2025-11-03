@@ -18,12 +18,15 @@ export function closeAllDropdowns() {
 
   dropdownButtons.forEach(btn => {
     btn.setAttribute("aria-expanded", "false");
+    const chevron = btn.querySelector('[data-icon="fa-solid:chevron-down"]');
+    chevron?.classList.remove("rotate-180");
   });
 }
 
 export function toggleDropdown(button: Element, panel: HTMLElement) {
   const dropdownButtons = document.querySelectorAll(".dropdown-toggle");
   const expanded = button.getAttribute("aria-expanded") === "true";
+  const chevron = button.querySelector('[data-icon="fa-solid:chevron-down"]');
 
   document.querySelectorAll('[id^="dropdown-"]').forEach(p => {
     if (p !== panel) {
@@ -36,7 +39,11 @@ export function toggleDropdown(button: Element, panel: HTMLElement) {
   });
 
   dropdownButtons.forEach(b => {
-    if (b !== button) b.setAttribute("aria-expanded", "false");
+    if (b !== button) {
+      b.setAttribute("aria-expanded", "false");
+      const otherChevron = b.querySelector('[data-icon="fa-solid:chevron-down"]');
+      otherChevron?.classList.remove("rotate-180");
+    }
   });
 
   button.setAttribute("aria-expanded", String(!expanded));
@@ -46,9 +53,11 @@ export function toggleDropdown(button: Element, panel: HTMLElement) {
     panel.offsetHeight;
     panel.style.maxHeight = "0";
     panel.style.opacity = "0";
+    chevron?.classList.remove("rotate-180");
   } else {
     panel.style.maxHeight = panel.scrollHeight + "px";
     panel.style.opacity = "1";
+    chevron?.classList.add("rotate-180");
 
     const handleTransitionEnd = () => {
       if (button.getAttribute("aria-expanded") === "true") {
