@@ -27,7 +27,7 @@ export const navigationDropdowns: NavigationDropdown[] = [
       {
         icon: "fa-solid:users",
         title: "Hovedstyret",
-        desc: "Møt menneskene bak organisasjonen.",
+        desc: "Sjekk ut tidligere og dagens hovedstyre.",
         href: "/styret",
       },
       {

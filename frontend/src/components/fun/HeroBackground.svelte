@@ -28,10 +28,14 @@
     for (let y = 0; y < rows; y++) {
       const posY = offY + y * (ch + spacingY);
       const t = posY / h;
-      const alpha = t > fadeStart ? Math.max(1 - (t - fadeStart) / (fadeEnd - fadeStart), 0) : 1;
+      const fadeAlpha =
+        t > fadeStart ? Math.max(1 - (t - fadeStart) / (fadeEnd - fadeStart), 0) : 1;
 
-      ctx.fillStyle = `rgba(0,133,255,${alpha})`;
       for (let x = 0; x < cols; x++) {
+        const randomIntensity = 0.5 + Math.random() * 1.0;
+        const alpha = fadeAlpha * randomIntensity;
+
+        ctx.fillStyle = `rgba(0,133,255,${alpha})`;
         ctx.fillText(Math.random() > 0.5 ? "1" : "0", offX + x * (cw + spacingX), posY);
       }
     }

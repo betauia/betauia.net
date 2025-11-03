@@ -1,93 +1,92 @@
 ---
-import Layout from "@layouts/PageLayout.astro";
-import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
-import LinkerButton from "@components/ui/linker-button.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BetaLANLayout from "@layouts/BetaLANLayout.astro";
+import LinkerButton from "@components/ui/LinkerButton.astro";
 import betaLANLogo from "@assets/betalan/Betalan_logo.png";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout title="BetaLAN">
+<BaseLayout title="BetaLAN">
   <BetaLANLayout>
-    <div id="top-logo-group" class="flex justify-center mb-10 lg:mb-20 drop-shadow-2xl">
+    <div id="top-logo-group" class="mb-10 flex justify-center drop-shadow-2xl lg:mb-20">
       <div id="top-logo">
-        <img
-          src={betaLANLogo.src}
-          alt="BetaLAN Logo"
-          class="drop-shadow-2xl"
-        />
+        <img src={betaLANLogo.src} alt="BetaLAN Logo" class="drop-shadow-2xl" />
       </div>
     </div>
 
     <!-- Tickets button -->
-    <div
-        id="info-navigation-buttons"
-        class="container my-6 flex justify-center mx-auto">
-        <LinkerButton
-          href="https://tikkio.com/events/59572"
-          text="Get Your Tickets Now!"
-          target="_blank"
-          color="#11FF11"
-          pulsing={true}
-        />
+    <div id="info-navigation-buttons" class="container mx-auto my-6 flex justify-center">
+      <LinkerButton
+        href="https://tikkio.com/events/59572"
+        text="Get Your Tickets Now!"
+        target="_blank"
+        color="#11FF11"
+        pulsing={true}
+      />
     </div>
 
-    <div id="content" class="container text-center mb-3">
-      <h1 class="text-7xl text-red-500 font-bold drop-shadow-md">Welcome to BETALAN!</h1>
+    <div id="content" class="container mb-3 text-center">
+      <h1 class="text-7xl font-bold text-red-500 drop-shadow-md">Welcome to BETALAN!</h1>
       <p class="text-3xl">
         BetaLAN is all about having fun and enjoying the gaming culture! <br />
         <br />
-        We will have a variety of games to play, tournaments to compete in, and prizes
-        to win! <br />
+        We will have a variety of games to play, tournaments to compete in, and prizes to win! <br
+        />
         So grab your gear and get ready to conquer the BetaLAN! <br />
         <br />
         <strong>When:</strong> 24.-26. October <br />
       </p>
       <div
         id="info-navigation-buttons"
-        class="container mt-8 flex flex-wrap justify-center mx-auto px-2 sm:px-0 text-3xl"
+        class="container mx-auto mt-8 flex flex-wrap justify-center px-2 text-3xl sm:px-0"
       >
-      <a href="/betalan/program" target="_self" class="no-underline w-full sm:w-auto">
-        <button
-          class="bg-green-500 text-black rounded-lg bg-opacity-70 p-2 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
+        <a href="/betalan/program" target="_self" class="w-full no-underline sm:w-auto">
+          <button
+            class="mx-0 my-2 w-full rounded-lg border-2 border-green-400 bg-green-500 bg-opacity-70 p-2 text-black transition duration-300 hover:bg-green-600 hover:text-white sm:mx-2 sm:w-auto"
+          >
+            Program
+          </button>
+        </a>
+        <a href="/betalan/rules" target="_self" class="w-full no-underline sm:w-auto">
+          <button
+            class="mx-0 my-2 w-full rounded-lg border-2 border-green-400 bg-green-500 bg-opacity-70 px-4 py-2 text-black transition duration-300 hover:bg-green-600 hover:text-white sm:mx-2 sm:w-auto"
+          >
+            Rules
+          </button>
+        </a>
+        <a
+          href="https://discord.gg/ggUtjr8TSQ"
+          target="_blank"
+          rel="noopener"
+          class="w-full no-underline sm:w-auto"
         >
-          Program
-        </button>
-      </a>
-      <a href="/betalan/rules" target="_self" class="no-underline w-full sm:w-auto">
-        <button
-          class="bg-green-500 text-black rounded-lg bg-opacity-70 py-2 px-4 border-green-400 border-2 mx-0 sm:mx-2 my-2 hover:bg-green-600 hover:text-white transition duration-300 w-full sm:w-auto"
-        >
-          Rules
-        </button>
-      </a>
-      <a href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" class="no-underline w-full sm:w-auto">
-        <button
-          class="bg-indigo-700 text-white rounded-lg bg-opacity-90 p-2 border-indigo-500 border-2 mx-0 sm:mx-2 my-2 hover:bg-indigo-600 transition duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
-        >
-          <Icon name="fa-brands:discord" width="25" height="25" class="inline-block" />
-          Discord
-        </button>
-      </a>
+          <button
+            class="mx-0 my-2 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-indigo-500 bg-indigo-700 bg-opacity-90 p-2 text-white transition duration-300 hover:bg-indigo-600 sm:mx-2 sm:w-auto"
+          >
+            <Icon name="fa-brands:discord" width="25" height="25" class="inline-block" />
+            Discord
+          </button>
+        </a>
       </div>
     </div>
 
     <!-- Crew Info -->
     <div
       id="crew-info"
-      class="container text-center mt-10 lg:mt-20 flex flex-col items-center rounded-lg mx-auto bg-slate-900 bg-opacity-90 p-4 text-white my-4 max-w-full lg:max-w-4xl">
-      <h2 class="text-7xl mb-4">Crew Information</h2>
+      class="container mx-auto my-4 mt-10 flex max-w-full flex-col items-center rounded-lg bg-slate-900 bg-opacity-90 p-4 text-center text-white lg:mt-20 lg:max-w-4xl"
+    >
+      <h2 class="mb-4 text-7xl">Crew Information</h2>
       <p class="text-3xl">
-        The best way to experience BetaLAN is becoming a part of the crew. The
-        crew is responsible for planning and organizing the LAN-party, and as a
-        crew member you get free admission and some extra food after rigging
-        down <br />
+        The best way to experience BetaLAN is becoming a part of the crew. The crew is responsible
+        for planning and organizing the LAN-party, and as a crew member you get free admission and
+        some extra food after rigging down <br />
         <br />
         Want to know more?
         <br />
       </p>
       <div>
         <button
-          class="bg-slate-600 hover:bg-slate-700 hover:border-slate-700 text-white text-3xl py-2 px-4 rounded my-4"
+          class="my-4 rounded bg-slate-600 px-4 py-2 text-3xl text-white hover:border-slate-700 hover:bg-slate-700"
         >
           <a href="/betalan/crew-info">Crew Information</a>
         </button>
@@ -95,7 +94,7 @@ import { Icon } from "astro-icon/components";
     </div>
     <br />
   </BetaLANLayout>
-</Layout>
+</BaseLayout>
 
 <style>
   #top-logo-group {
@@ -107,7 +106,8 @@ import { Icon } from "astro-icon/components";
   }
   #content {
     background-color: #191a1a;
-    background-image: linear-gradient(
+    background-image:
+      linear-gradient(
         180deg,
         transparent 24%,
         rgba(0, 115, 19, 0.3) 25%,

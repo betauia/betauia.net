@@ -1,5 +1,9 @@
 ---
-import type { BannerProps } from "@lib/types/props";
+export interface BannerProps {
+  text: string;
+  link: string;
+  buttonText?: string;
+}
 
 const { text, link, buttonText = "Les mer!" } = Astro.props;
 ---

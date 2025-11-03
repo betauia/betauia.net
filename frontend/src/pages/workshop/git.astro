@@ -1,7 +1,6 @@
 ---
-import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/containers/Container.astro";
-import Faq from "@components/widgets/Faq.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
 import GitGudImage from "@assets/gitgud.png";
 
 import { Image } from "astro:assets";
@@ -9,7 +8,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 ---
 
-<PageLayout title="Git Workshop">
+<BaseLayout title="Git Workshop">
   <Container>
     <h1
       class="mb-4 flex gap-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400"
@@ -86,4 +85,4 @@ import { Icon } from "astro-icon/components";
 
     <Image src={GitGudImage} alt="Git gud meme" class="mt-12 w-full rounded-xl" />
   </Container>
-</PageLayout>
+</BaseLayout>

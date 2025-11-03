@@ -1,10 +1,10 @@
 ---
-import Container from "@components/containers/Container.astro";
+import Container from "@components/layout/Container.astro";
 import Banner from "@components/widgets/Banner.astro";
-import PageLayout from "@layouts/PageLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
-<PageLayout
+<BaseLayout
   title="BetaDEV"
   description="BetaDEV er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!"
 >
@@ -17,4 +17,4 @@ import PageLayout from "@layouts/PageLayout.astro";
     </p>
     <Banner text="BetaDEV is currently holding its Game Jam!" link="/betadev/gamejam/" />
   </Container>
-</PageLayout>
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import PageLayout from "@layouts/PageLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import BetaLogo from "@assets/logos/Beta.svg";
 import Card from "@components/ui/Card.astro";
@@ -12,7 +12,7 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
 import Discord from "@components/widgets/Discord.astro";
 ---
 
-<PageLayout title="Home">
+<BaseLayout title="Home">
   <Container>
     <div class="flex justify-center">
       <h1 class="sr-only">Om Beta</h1>
@@ -101,4 +101,4 @@ import Discord from "@components/widgets/Discord.astro";
       />
     </div>
   </Container>
-</PageLayout>
+</BaseLayout>

@@ -7,7 +7,7 @@ interface Props {
 
 const { title, description, img } = Astro.props;
 
-const socialImageURL = new URL(img.src, Astro.url)
+const socialImageURL = new URL(img.src, Astro.url);
 ---
 
 <title>{title} | BETA</title>

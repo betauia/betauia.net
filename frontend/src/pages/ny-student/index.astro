@@ -1,6 +1,6 @@
 ---
-import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/containers/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
 import Faq from "@components/widgets/Faq.astro";
 import { Image } from "astro:assets";
 
@@ -8,7 +8,7 @@ import FadderUkeImage from "@assets/studiestart.jpg";
 import Discord from "@components/widgets/Discord.astro";
 ---
 
-<PageLayout title="Ny student">
+<BaseLayout title="Ny student">
   <Container>
     <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
       Velkommen til studiestart! 🎉
@@ -94,4 +94,4 @@ import Discord from "@components/widgets/Discord.astro";
       ]}
     />
   </Container>
-</PageLayout>
+</BaseLayout>

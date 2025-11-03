@@ -1,16 +1,12 @@
 ---
-import DigitalRain from '@components/fun/digital_rain.astro';
+import DigitalRain from "@components/fun/DigitalRain.astro";
 const { backgroundImage } = Astro.props;
 const { UseGamerFont = true } = Astro.props;
 ---
 
-<div 
-  class:list={[
-    "betalan-layout", 
-    UseGamerFont && "gamer-font", 
-    !backgroundImage && "retro-crt-bg"
-  ]} 
-  style={backgroundImage ? `background-image: url('${backgroundImage}')` : ''}
+<div
+  class:list={["betalan-layout", UseGamerFont && "gamer-font", !backgroundImage && "retro-crt-bg"]}
+  style={backgroundImage ? `background-image: url('${backgroundImage}')` : ""}
 >
   <slot />
 </div>
@@ -19,7 +15,7 @@ const { UseGamerFont = true } = Astro.props;
 
 <style>
   .betalan-layout {
-    @apply bg-cover bg-center bg-fixed min-h-screen;
+    @apply min-h-screen bg-cover bg-fixed bg-center;
     width: 100%;
     /* Ensure this layout doesn't interfere with header */
     position: relative;
@@ -60,5 +56,5 @@ const { UseGamerFont = true } = Astro.props;
 
 <!-- Gamer Font 🕹️ -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 </style>
