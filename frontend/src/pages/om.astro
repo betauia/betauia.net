@@ -1,0 +1,140 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import BetaLogo from "@assets/logos/Beta.svg";
+import Button from "@components/ui/Button.astro";
+import StatCard from "@components/ui/StatCard.astro";
+import FeatureCard from "@components/ui/FeatureCard.astro";
+import ImageCard from "@components/ui/ImageCard.astro";
+
+import BetadevImage from "@assets/groups/betadev.jpg";
+import BetalanImage from "@assets/groups/betalan.jpg";
+import BetasecImage from "@assets/groups/betasec.jpg";
+import BedkomImage from "@assets/groups/bedkom.jpg";
+import EventkomImage from "@assets/groups/eventkom.jpg";
+---
+
+<BaseLayout title="Om Beta">
+  <Container>
+    <div class="mx-auto mt-6 max-w-3xl text-center">
+      <div class="mb-4 flex justify-center">
+        <BetaLogo class="h-20 text-brand" />
+      </div>
+      <h1 class="mb-3 text-4xl font-bold">
+        Linjeforening for <span class="text-brand">datastudenter</span>
+      </h1>
+      <p class="mx-auto mb-6 max-w-2xl text-lg text-fg-muted dark:text-dark-fg-muted">
+        Beta er linjeforeningen ved UiA Grimstad for cybersikkerhet, dataingeniør, IKT og kunstig
+        intelligens. Foreningen drives frivillig av studentene og målet er å gjøre studiehverdagen
+        for datastudenter enda bedre.
+      </p>
+      <div class="flex justify-center gap-3">
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Bli med på Discord</Button>
+        <Button href="/kontakt" type="secondary">Ta kontakt</Button>
+      </div>
+    </div>
+
+    <div class="mb-8 mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <StatCard stat="600+" title="Studenter" description="Medlemmer på tvers av studieprogram" />
+      <StatCard
+        stat="4"
+        title="Studieprogram"
+        description="Cybersikkerhet, dataingeniør, KI og IoT"
+      />
+      <StatCard
+        stat="5"
+        title="Komitéer & Grupper"
+        description="Engasjer deg i det som interesserer deg"
+      />
+    </div>
+  </Container>
+
+  <div class="bg-bg-raised dark:bg-dark-bg-raised">
+    <Container>
+      <h2 class="mt-6 text-3xl font-bold">Hva tilbyr vi?</h2>
+      <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard
+          icon="fa-solid:glass-cheers"
+          title="Sosiale arrangementer"
+          description="Paintball, gokart, Pils & Prog og alt annet studentene foreslår."
+        />
+        <FeatureCard
+          icon="fa-solid:laptop-code"
+          title="Faglige arrangementer"
+          description="Workshops, fagkvelder, hackathons og prosjektarbeid."
+        />
+        <FeatureCard
+          icon="fa-solid:users"
+          title="Grupper & Komiteer"
+          description="Engasjer deg, lær med andre og arranger eventer."
+        />
+        <FeatureCard
+          icon="fa-solid:building"
+          title="Bedriftspresentasjoner"
+          description="Møt spennende bedrifter med gratis mat og drikke."
+        />
+        <FeatureCard
+          icon="fa-solid:gamepad"
+          title="Semesterets råeste LAN"
+          description="Bli med på konkurranser, spill, mat og hygge."
+        />
+        <FeatureCard
+          icon="fa-solid:user-friends"
+          title="Nettverk & Vennskap"
+          description="Bygg et sterkt nettverk som varer hele studietiden og videre ut."
+        />
+      </div>
+    </Container>
+  </div>
+
+  <Container>
+    <div class="mb-12 mt-6">
+      <h2 class="mb-2 text-3xl font-bold">Interessegrupper</h2>
+      <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
+        Bli med i gruppene som matcher dine interesser.
+      </p>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <ImageCard
+          image={BetadevImage}
+          title="Betadev"
+          description="Lær software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
+          href="/betadev"
+        />
+        <ImageCard
+          image={BetasecImage}
+          title="Betasec"
+          description="Cybersikkerhet med CTF-er, workshops og prosjekter som gir praktisk erfaring."
+          href="/betasec"
+        />
+      </div>
+    </div>
+
+    <h2 class="mb-2 text-3xl font-bold">Komiteer</h2>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
+      Komiteene driver daglig drift og arrangementer.
+    </p>
+    <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <ImageCard
+        image={BedkomImage}
+        title="Bedkom"
+        description="Kontakt med bedrifter og arrangerer bedriftspresentasjoner."
+        imageHeight="h-40"
+        href="/bedkom"
+      />
+      <ImageCard
+        image={EventkomImage}
+        title="Eventkom"
+        description="Gjennomfører og koordinerer sosiale og faglige arrangementer."
+        imageHeight="h-40"
+        href="/eventkom"
+      />
+      <ImageCard
+        image={BetalanImage}
+        title="Betalan"
+        description="Arrangerer UiAs feteste LAN-party hvert eneste semesteret."
+        imageHeight="h-40"
+        href="/betalan"
+      />
+    </div>
+  </Container>
+</BaseLayout>
