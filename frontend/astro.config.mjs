@@ -26,6 +26,7 @@ export default defineConfig({
         "@pages": path.resolve("./src/pages"),
         "@lib": path.resolve("./src/lib"),
         "@content": path.resolve("./src/content"),
+        "@data": path.resolve("./src/data"),
       },
     },
   },

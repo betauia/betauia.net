@@ -4,25 +4,23 @@ import Container from "@components/layout/Container.astro";
 import Button from "@components/ui/Button.astro";
 import { Icon } from "astro-icon/components";
 import Socials from "@components/widgets/Socials.astro";
+import Card from "@components/ui/Card.astro";
 
 const contacts = [
   {
     title: "Generelle henvendelser",
     email: "post@betauia.net",
     description: "Har du generelle spørsmål om Beta eller arrangementer?",
-    icon: "fa-solid:user",
   },
   {
     title: "Bedriftskontakt",
     email: "bedrift@betauia.net",
     description: "Interessert i samarbeid, arrangementer eller bedriftspresentasjon?",
-    icon: "fa-solid:user",
   },
   {
     title: "Økonomi og refusjon",
     email: "økonomi@betauia.net",
     description: "For spørsmål om faktura, refusjon eller andre økonomirelaterte saker.",
-    icon: "fa-solid:user",
   },
 ];
 ---
@@ -38,22 +36,8 @@ const contacts = [
 
     <div class="mt-4 grid gap-6 md:grid-cols-3">
       {
-        contacts.map(({ title, email, description, icon }) => (
-          <div class="dark:border-dark-border rounded-2xl border border-fg-muted bg-bg-raised p-6 shadow-sm dark:border-dark-fg-muted dark:bg-dark-bg-raised">
-            <div class="flex items-center gap-4">
-              <Icon name={icon} class="text-accent" />
-              <h2 class="text-xl font-semibold">{title}</h2>
-            </div>
-            <div class="pl-8">
-              <p class="my-2 text-fg-muted dark:text-dark-fg-muted">{description}</p>
-              <a
-                href={`mailto:${email}`}
-                class="inline-block font-medium text-brand hover:underline"
-              >
-                {email}
-              </a>
-            </div>
-          </div>
+        contacts.map(({ title, email, description }) => (
+          <Card title={title} text={description} href={`mailto:${email}`} highlightText={email} />
         ))
       }
     </div>

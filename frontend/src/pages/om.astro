@@ -5,13 +5,13 @@ import BetaLogo from "@assets/logos/Beta.svg";
 import Button from "@components/ui/Button.astro";
 import StatCard from "@components/ui/StatCard.astro";
 import FeatureCard from "@components/ui/FeatureCard.astro";
-import ImageCard from "@components/ui/ImageCard.astro";
 
 import BetadevImage from "@assets/groups/betadev.jpg";
 import BetalanImage from "@assets/groups/betalan.jpg";
 import BetasecImage from "@assets/groups/betasec.jpg";
 import BedkomImage from "@assets/groups/bedkom.jpg";
 import EventkomImage from "@assets/groups/eventkom.jpg";
+import Card from "@components/ui/Card.astro";
 ---
 
 <BaseLayout title="Om Beta">
@@ -35,7 +35,7 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
     </div>
 
     <div class="mb-8 mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
-      <StatCard stat="600+" title="Studenter" description="Medlemmer på tvers av studieprogram" />
+      <StatCard stat="400+" title="Studenter" description="Medlemmer på tvers av studieprogram" />
       <StatCard
         stat="4"
         title="Studieprogram"
@@ -51,7 +51,7 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
 
   <div class="bg-bg-raised dark:bg-dark-bg-raised">
     <Container>
-      <h2 class="mt-6 text-3xl font-bold">Hva tilbyr vi?</h2>
+      <h2 class="my-6 text-3xl font-bold">Hva tilbyr vi?</h2>
       <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <FeatureCard
           icon="fa-solid:glass-cheers"
@@ -94,17 +94,19 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
         Bli med i gruppene som matcher dine interesser.
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <ImageCard
+        <Card
           image={BetadevImage}
           title="Betadev"
-          description="Lær software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
+          text="Lær software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
           href="/betadev"
+          highlightText="Les mer"
         />
-        <ImageCard
+        <Card
           image={BetasecImage}
           title="Betasec"
-          description="Cybersikkerhet med CTF-er, workshops og prosjekter som gir praktisk erfaring."
+          text="Cybersikkerhet med CTF-er, workshops og prosjekter som gir praktisk erfaring."
           href="/betasec"
+          highlightText="Les mer"
         />
       </div>
     </div>
@@ -114,26 +116,26 @@ import EventkomImage from "@assets/groups/eventkom.jpg";
       Komiteene driver daglig drift og arrangementer.
     </p>
     <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-      <ImageCard
+      <Card
         image={BedkomImage}
         title="Bedkom"
-        description="Kontakt med bedrifter og arrangerer bedriftspresentasjoner."
-        imageHeight="h-40"
+        text="Kontakt med bedrifter og arrangerer bedriftspresentasjoner."
         href="/bedkom"
+        highlightText="Les mer"
       />
-      <ImageCard
+      <Card
         image={EventkomImage}
         title="Eventkom"
-        description="Gjennomfører og koordinerer sosiale og faglige arrangementer."
-        imageHeight="h-40"
+        text="Gjennomfører og koordinerer sosiale og faglige arrangementer."
         href="/eventkom"
+        highlightText="Les mer"
       />
-      <ImageCard
+      <Card
         image={BetalanImage}
         title="Betalan"
-        description="Arrangerer UiAs feteste LAN-party hvert eneste semesteret."
-        imageHeight="h-40"
+        text="Arrangerer UiAs feteste LAN-party hvert eneste semesteret."
         href="/betalan"
+        highlightText="Les mer"
       />
     </div>
   </Container>
