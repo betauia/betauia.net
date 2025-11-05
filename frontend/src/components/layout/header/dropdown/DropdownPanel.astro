@@ -1,0 +1,22 @@
+---
+import DropdownItem from "@components/layout/header/dropdown/DropdownItem.astro";
+import type { DropdownItem as DropdownItemType } from "@data/navBarConfig";
+
+interface Props {
+  id: string;
+  items: DropdownItemType[];
+}
+
+const { id, items } = Astro.props;
+---
+
+<div
+  id={`dropdown-${id}`}
+  class="max-h-0 overflow-hidden bg-bg-raised opacity-0 shadow-md transition-[max-height,opacity] duration-300 ease-out dark:bg-dark-bg-base"
+>
+  <div
+    class="mx-auto grid max-w-6xl grid-cols-1 gap-4 px-4 py-6 text-fg-base dark:text-dark-fg-base sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    {items.map(item => <DropdownItem item={item} />)}
+  </div>
+</div>

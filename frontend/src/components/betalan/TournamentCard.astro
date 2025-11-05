@@ -13,16 +13,16 @@ const { title, imagePath, altText, description, linkPath } = Astro.props;
 ---
 
 <a href={linkPath} class="tournament-card-link">
-    <div class="tournament-card">
-      <div class="tournament-img-container">
-        <img src={imagePath} alt={altText} class="tournament-img" />
-      </div>
-      <div class="tournament-content">
-        <h3 class="tournament-title">{title}</h3>
-        <p class="tournament-desc">{description}</p>
-        <span class="tournament-link">View Details</span>
-      </div>
+  <div class="tournament-card">
+    <div class="tournament-img-container">
+      <img src={imagePath} alt={altText} class="tournament-img" />
     </div>
+    <div class="tournament-content">
+      <h3 class="tournament-title">{title}</h3>
+      <p class="tournament-desc">{description}</p>
+      <span class="tournament-link">View Details</span>
+    </div>
+  </div>
 </a>
 
 <style>
@@ -35,7 +35,9 @@ const { title, imagePath, altText, description, linkPath } = Astro.props;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     transform-origin: center center;
   }
 
@@ -105,15 +107,15 @@ const { title, imagePath, altText, description, linkPath } = Astro.props;
     .tournament-img-container {
       height: 140px;
     }
-    
+
     .tournament-title {
       font-size: 1rem;
     }
-    
+
     .tournament-desc {
       font-size: 0.8rem;
     }
-    
+
     .tournament-link {
       font-size: 0.7rem;
       padding: 6px 12px;

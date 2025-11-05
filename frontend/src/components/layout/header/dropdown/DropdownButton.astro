@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  id: string;
+  label: string;
+}
+
+const { id, label } = Astro.props;
+---
+
+<button
+  class="dropdown-toggle flex items-center gap-2 font-semibold text-fg-base transition-colors hover:text-fg-muted dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+  data-target={id}
+  type="button"
+  aria-expanded="false"
+>
+  <span>{label}</span>
+  <Icon name="fa-solid:chevron-down" class="h-3 w-3 transition-transform duration-200" />
+</button>

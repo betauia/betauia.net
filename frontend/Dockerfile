@@ -1,6 +1,6 @@
 FROM node:24-alpine AS development
 
-RUN 
+RUN apk add --no-cache git
 
 WORKDIR /app
 

@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import BetaIcon from "@assets/logos/BetaIcon.jpg";
+import DropdownButton from "@components/layout/header/dropdown/DropdownButton.astro";
+import { navigationDropdowns } from "@data/navBarConfig";
+---
+
+<nav class="flex items-center gap-6">
+  <a href="/" class="flex items-center gap-2">
+    <Image src={BetaIcon} alt="Beta" class="h-10 w-auto rounded-lg" />
+  </a>
+
+  <ul class="hidden items-center gap-8 md:flex">
+    {
+      navigationDropdowns.map(dropdown => (
+        <li>
+          <DropdownButton id={dropdown.id} label={dropdown.label} />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

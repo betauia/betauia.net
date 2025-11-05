@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Button from "@components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
+import Socials from "@components/widgets/Socials.astro";
+import Card from "@components/ui/Card.astro";
+
+const contacts = [
+  {
+    title: "Generelle henvendelser",
+    email: "post@betauia.net",
+    description: "Har du generelle spørsmål om Beta eller arrangementer?",
+  },
+  {
+    title: "Bedriftskontakt",
+    email: "bedrift@betauia.net",
+    description: "Interessert i samarbeid, arrangementer eller bedriftspresentasjon?",
+  },
+  {
+    title: "Økonomi og refusjon",
+    email: "økonomi@betauia.net",
+    description: "For spørsmål om faktura, refusjon eller andre økonomirelaterte saker.",
+  },
+];
+---
+
+<BaseLayout title="Kontakt oss">
+  <Container class="flex min-h-svh flex-col justify-center">
+    <h1 class="mt-4 text-4xl font-semibold">Kontakt oss</h1>
+    <p class="my-4 text-fg-muted dark:text-dark-fg-muted">
+      Enten du er student, bedrift eller bare nysgjerrig på hva vi driver med må du gjerne ta
+      kontakt! Vi svarer som regel raskt på epost, men foreningen drives av frivillige studenter så
+      det kan hende det tar litt ekstra tid i eksamensstresset.
+    </p>
+
+    <div class="mt-4 grid gap-6 md:grid-cols-3">
+      {
+        contacts.map(({ title, email, description }) => (
+          <Card title={title} text={description} href={`mailto:${email}`} highlightText={email} />
+        ))
+      }
+    </div>
+
+    <div class="mt-12">
+      <h2 class="text-2xl font-medium">Discord</h2>
+      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted">
+        For studenter er det lettest å nå oss på Discord. Der finner du hele hele Beta, alt fra
+        styret til komiteer og alle studentene. Styret er stort sett alltid aktive der, så bare å
+        pinge oss om det er noe.
+      </p>
+      <div class="mt-4">
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Bli med på Discord</Button>
+      </div>
+    </div>
+
+    <Socials class="mb-6 mt-12" />
+  </Container>
+</BaseLayout>

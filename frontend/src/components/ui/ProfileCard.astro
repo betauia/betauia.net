@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  name: string;
+  role: string;
+  linkedin?: string;
+  github?: string;
+  picture?: string | ImageMetadata;
+  class?: string;
+}
+
+const { name, role, linkedin, github, picture, class: className } = Astro.props;
+
+const isImageMetadata = picture && typeof picture === "object" && "src" in picture;
+
+const socials = [
+  { icon: "fa-brands:linkedin", link: linkedin },
+  { icon: "fa-brands:github", link: github },
+].filter(social => social.link);
+---
+
+<div
+  class:list={[
+    "group rounded-2xl border border-fg-muted bg-bg-raised p-6 shadow-sm transition-all hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised",
+    className,
+  ]}
+>
+  <div
+    class="mb-4 flex h-64 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-accent/10 to-accent-secondary/10"
+  >
+    {
+      picture ? (
+        isImageMetadata ? (
+          <Image
+            src={picture as ImageMetadata}
+            alt={name}
+            width={400}
+            height={400}
+            class="h-full w-full rounded-xl object-cover transition-transform group-hover:scale-105"
+          />
+        ) : (
+          <img
+            src={picture as string}
+            alt={name}
+            class="h-full w-full rounded-xl object-cover transition-transform group-hover:scale-105"
+          />
+        )
+      ) : (
+        <Icon name="fa-solid:user-circle" class="h-24 w-24 text-accent" />
+      )
+    }
+  </div>
+  <h3 class="mb-1 text-xl font-bold">{name}</h3>
+  <p class="mb-3 font-semibold text-accent">{role}</p>
+  {
+    socials.length > 0 && (
+      <div class="flex gap-3">
+        {socials.map(social => (
+          <a
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg bg-fg-muted/10 text-fg-muted transition-all hover:bg-accent/10 hover:text-accent dark:bg-dark-fg-muted/10 dark:text-dark-fg-muted dark:hover:bg-accent/10 dark:hover:text-accent"
+          >
+            <Icon name={social.icon} class="h-4 w-4" />
+          </a>
+        ))}
+      </div>
+    )
+  }
+</div>

@@ -1,0 +1,46 @@
+{
+  "files.autoSave": "off",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.associations": {
+    ".env*": "properties"
+  },
+  "extensions.ignoreRecommendations": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.documentSelectors": [
+    "**/*.astro",
+    "**/*.svelte",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json",
+    "**/*.md",
+    "**/*.css",
+    "**/*.html"
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    }
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.linting.ruffEnabled": true,
+  "python.linting.enabled": true,
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingTypeStubs": "none"
+  },
+  "files.exclude": {
+    "**/__pycache__": true
+  }
+}

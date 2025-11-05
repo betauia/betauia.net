@@ -1,21 +1,26 @@
 ---
 export interface Props {
-  text: string;
   href: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
   type?: "primary" | "secondary";
+  class?: string;
 }
 
-const { text, href, target = "_self", type = "primary" } = Astro.props as Props;
+const { href, target = "_self", type = "primary", class: extra = "" } = Astro.props as Props;
 
-const colors =
-  type === "primary"
-    ? "bg-brand hover:bg-blue-700 hover:border-blue-700 text-white"
-    : "text-gray-900 dark:text-white hover:text-white hover:bg-brand";
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-md font-medium border transition-all select-none";
+
+const variants = {
+  primary: "bg-accent border-accent text-dark-fg-base hover:opacity-80 shadow-sm hover:shadow-md",
+  secondary:
+    "bg-bg-raised dark:bg-dark-bg-raised border-fg-muted dark:border-dark-fg-muted text-fg-base dark:text-dark-fg-base hover:text-fg-muted dark:hover:text-dark-fg-muted hover:shadow-md",
+};
+
+const padding = "px-4 py-1.5";
+const classes = `${base} ${variants[type]} ${padding} ${extra}`;
 ---
 
-<a
-  href={href}
-  target={target}
-  class=`transition border border-brand font-bold py-2 px-4 rounded ${colors}`>{text}</a
->
+<a href={href} target={target} class={classes}>
+  <slot />
+</a>

@@ -1,149 +1,67 @@
 ---
 import { Icon } from "astro-icon/components";
 import BetaLogo from "@assets/logos/Beta.svg";
+import Socials from "@components/widgets/Socials.astro";
 ---
 
-<footer class="mt-auto bg-white dark:bg-gray-900 z-10">
-  <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
-    <!-- 1x3 grid on mobile, 3x1 on landscape -->
-    <div class="grid grid-cols-1 gap-16 sm:grid-cols-3 sm:gap-8 md:grid-cols-3 lg:col-span-3">
-      <!-- Contacts list, middle on vertical, right on horizontal -->
-      <div class="text-center">
-        <p class="text-lg font-bold text-gray-900 dark:text-white">Kontakt oss</p>
-        <ul class="mt-8 space-y-4 text-sm">
-          <li class="flex justify-center">
-            <span class="sr-only">Email</span>
-            <a
-              class="inline-flex items-center gap-1.5 text-gray-800 transition hover:opacity-75 dark:text-gray-100"
-              href="mailto:post@betauia.net"
-            >
-              <Icon name="fa-solid:address-card" />
-              <span class="flex-1">post@betauia.net</span>
-            </a>
-          </li>
+<footer class="dark:bg-dark-accent bg-accent px-4 pb-6 pt-12 text-white">
+  <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-3">
+    <section>
+      <h2 class="mb-4 text-center text-base font-semibold uppercase tracking-wide">Kontakt oss</h2>
+      <ul class="flex flex-col items-center space-y-2 text-sm">
+        <li>
+          <a
+            href="mailto:post@betauia.net"
+            class="inline-flex items-center gap-2 transition hover:opacity-80"
+          >
+            <Icon name="fa-solid:address-card" /> post@betauia.net
+          </a>
+        </li>
+        <li class="flex items-center justify-center gap-2">
+          <Icon name="fa-solid:suitcase" /> Org.nr: 913 777 417
+        </li>
+        <li class="flex items-center justify-center gap-2 break-words">
+          <Icon name="fa-solid:map-marker-alt" /> Jon Lilletuns vei 9,<br />4879 Grimstad
+        </li>
+      </ul>
 
-          <li class="flex justify-center">
-            <div
-              class="inline-flex items-center cursor-pointer gap-1.5 text-gray-800 transition dark:text-gray-100 hover:opacity-75 py-0.5 rounded active:scale-90"
-              title="Click to copy Org.nr"
-              onclick="navigator.clipboard.writeText('913 777 417')"
-            >
-              <Icon name="fa-solid:suitcase" />
-              <span class="flex-1">Org.nr: 913 777 417</span>
-            </div>
-          </li>
+      <Socials class="mt-6 justify-center text-lg" />
+    </section>
 
-          <li class="flex justify-center">
-            <div
-              class="inline-flex items-center cursor-pointer gap-1.5 text-gray-800 transition dark:text-gray-100 hover:opacity-75 py-0.5 rounded active:scale-90"
-              title="Click to copy address"
-              onclick="navigator.clipboard.writeText('Jon Lilletuns vei 9, 4879 Grimstad')"
-            >
-              <Icon name="fa-solid:map-marker-alt" />
-              <span class="flex-1 break-all" >Jon Lilletuns vei 9, 4879 Grimstad</span>
-            </div>
-          </li>
-        </ul>
+    <section class="text-center">
+      <h2 class="mb-4 text-base font-semibold uppercase tracking-wide">Ressurser</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/om" class="transition hover:opacity-80">Om Beta</a></li>
+        <li><a href="/kontakt" class="transition hover:opacity-80">Kontakt</a></li>
+        <li>
+          <a
+            href="https://github.com/betauia/betauia.net"
+            target="_blank"
+            class="transition hover:opacity-80">GitHub repo</a
+          >
+        </li>
+        <li><a href="/Vedtekter.pdf" class="transition hover:opacity-80">Vedtekter</a></li>
+      </ul>
+    </section>
 
-        <!-- Social links -->
-        <ul class="mt-4 flex justify-center gap-6 pt-4 md:gap-8">
-          <li>
-            <a
-              href="https://www.facebook.com/beta.linjeforening/"
-              target="_blank"
-              class="text-gray-900 transition hover:opacity-75 dark:text-white"
-            >
-              <span class="sr-only">Facebook</span>
-              <Icon name="fa-brands:facebook" class="text-xl" />
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://www.instagram.com/betauia/"
-              target="_blank"
-              class="text-gray-900 transition hover:opacity-75 dark:text-white"
-            >
-              <span class="sr-only">Instagram</span>
-              <Icon name="fa-brands:instagram" class="text-xl" />
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://github.com/betauia"
-              target="_blank"
-              class="text-gray-900 transition hover:opacity-75 dark:text-white"
-            >
-              <span class="sr-only">GitHub</span>
-              <Icon name="fa-brands:github" class="text-xl" />
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://discord.gg/3xBPkDsaXy"
-              target="_blank"
-              class="text-gray-900 transition hover:opacity-75 dark:text-white"
-            >
-              <span class="sr-only">Discord</span>
-              <Icon name="fa-brands:discord" class="text-xl" />
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="flex flex-col items-center text-center">
-        <p class="text-lg font-bold text-gray-900 dark:text-white">Ressurser</p>
-        <ul class="mt-8 space-y-4 text-sm">
-          <li>
-            <a
-              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
-              target="_blank"
-              href="https://github.com/betauia/betauia.net">GitHub repo</a
-            >
-          </li>
-          <li>
-            <a class="text-gray-800 transition hover:opacity-75 dark:text-gray-100" href="/om"
-              >Om BETA</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
-              href="/ny-student">Ny student</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-gray-800 transition hover:opacity-75 dark:text-gray-100"
-              href="/Vedtekter.pdf">Vedtekter</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <!-- Main sponsor -->
-      <div class="flex flex-col justify-center text-center">
-        <div class="flex justify-center">
-          <BetaLogo class="h-16 text-brand" />
-        </div>
-        <p class="mt-4 text-lg font-medium text-gray-900 dark:text-white">
-          Ønsker din bedrift logo her?
-        </p>
-        <a class="text-brand hover:opacity-75" href="mailto:bedrift@betauia.net"
-          >Send oss en mail!</a
-        >
-      </div>
-    </div>
+    <section class="flex h-full flex-col justify-center text-center">
+      <BetaLogo class="mx-auto h-12" />
+      <p class="mt-3 text-sm font-semibold">Linjeforeningen for datastudenter</p>
+      <a
+        href="https://discord.gg/3xBPkDsaXy"
+        class="mx-auto mt-2 inline-block rounded-lg border border-dark-fg-base bg-dark-fg-base px-4 py-1 text-sm font-semibold text-accent transition hover:opacity-80 dark:bg-accent dark:text-dark-fg-base"
+      >
+        Join Discord
+      </a>
+    </section>
   </div>
 
-  <div class="mt-12 border-t border-gray-200 pb-6 pt-6 dark:border-gray-700">
+  <div class="mt-10 border-t border-white/30 pt-6">
     <div
-      class="mx-auto flex max-w-screen-xl flex-col justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 lg:px-8"
+      class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-center text-sm sm:flex-row"
     >
-      <p class="text-sm text-gray-500">© 2025 BETA Engineering & Technology Association</p>
-      <p class="text-sm text-gray-500">Feil på siden? Kontakt oss!</p>
+      <p>© 2025 BETA Engineering & Technology Association</p>
+      <a href="mailto:bedrift@betauia.net" class="hover:opacity-80">Feil på siden? Kontakt oss!</a>
     </div>
   </div>
 </footer>

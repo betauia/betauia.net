@@ -1,35 +1,36 @@
 ---
-import PageLayout from "@layouts/PageLayout.astro";
-import FullContainer from "@components/containers/FullContainer.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
 import Button from "@components/ui/Button.astro";
 import BetaLogo from "@assets/logos/Beta.svg";
 
 import Banner from "@components/widgets/Banner.astro";
+import HeroBackground from "@components/fun/HeroBackground.svelte";
 
 const showBanner = false;
 const bannerText = "";
 const bannerLink = "/";
 ---
 
-<PageLayout title="Home">
-  <FullContainer>
-    <div class="flex h-full items-center justify-center">
-      <div class="px-4 text-center sm:px-6 lg:px-8">
-        <div class="flex justify-center">
-          <BetaLogo class="h-24 text-brand" />
-          <!-- <img class="h-24 w-auto" src="imgs/Beta_blue_1.png" alt="BETA logo" /> -->
-        </div>
-        <p class="mt-4 text-lg">
-          BETA er linjeforeningen for studenter innen cybersikkerhet, dataingeniør, IKT eller
-          kunstig intelligens ved UiA Grimstad.
+<BaseLayout title="Home">
+  <Container class="flex min-h-svh flex-col justify-center">
+    <div class="flex h-full items-center">
+      <div>
+        <BetaLogo class="h-24 text-brand" />
+        <h1 class="mt-4 text-4xl font-semibold">Linjeforeningen for datastudenter</h1>
+        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted">
+          Beta er linjeforeningen for studenter innen cybersikkerhet, dataingeniør, IKT eller
+          kunstig intelligens ved UiA Grimstad. Foreningen drives frivillig av studentene våre og
+          målet er å gjøre studiehverdagen for datastudenter enda bedre.
         </p>
-        <div class="mb-2 mt-6">
-          <Button text="Discord" href="https://discord.gg/3xBPkDsaXy" target="_blank" />
-          <Button text="Om oss" href="/om" type="secondary" />
+        <div class="mt-6 flex gap-2">
+          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Discord</Button>
+          <Button href="/om" type="secondary">Om Beta</Button>
         </div>
       </div>
     </div>
 
     {showBanner && <Banner text={bannerText} link={bannerLink} />}
-  </FullContainer>
-</PageLayout>
+    <HeroBackground client:load />
+  </Container>
+</BaseLayout>

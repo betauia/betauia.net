@@ -1,55 +1,110 @@
 ---
-import Layout from "@layouts/PageLayout.astro";
-import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 ---
 
-<Layout title="BetaLAN Rules" description="Familiarize yourself with the essential rules and guidelines for a safe and enjoyable experience at BetaLAN.">
+<BaseLayout
+  title="BetaLAN Rules"
+  description="Familiarize yourself with the essential rules and guidelines for a safe and enjoyable experience at BetaLAN."
+>
   <BetaLANLayout>
-    <section class="bg-slate-800 bg-opacity-90 p-6 rounded-lg m-6 max-w-4xl mx-auto text-white legal-font">
-      <h2 class="text-2xl font-bold mb-4">Event Rules</h2>
+    <section
+      class="legal-font m-6 mx-auto max-w-4xl rounded-lg bg-slate-800 bg-opacity-90 p-6 text-white"
+    >
+      <h2 class="mb-4 text-2xl font-bold">Event Rules</h2>
       <div class="space-y-4">
         <div>
           <h3 class="text-xl font-semibold">§1 The event is alcohol and drug free</h3>
-          <p>If we see you with alcohol at the event we will have to confiscate your drink and give a formal warning.</p>
-          <p>If we recognize that you are highly intoxicated we will have to ask you to leave the event and come back later.</p>
+          <p>
+            If we see you with alcohol at the event we will have to confiscate your drink and give a
+            formal warning.
+          </p>
+          <p>
+            If we recognize that you are highly intoxicated we will have to ask you to leave the
+            event and come back later.
+          </p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold">§2 The rules for using the network are the same as the school's</h3>
-          <p>The network rules follow the school's regulations and align with Norwegian laws. Illegal activities, such as using multiplayer cheat software, unauthorized distribution of copyrighted content, or accessing 18+ NSFW material (e.g., hentai or pornography), are strictly prohibited. Normal games with mature themes are allowed, but attendees are expected to exercise common sense. BetaLAN is not responsible for any files shared or downloaded during the event. Attendees should take caution when sharing, opening, or downloading files and are encouraged to follow basic cybersecurity practices. Violations will result in strict warnings and may lead to further disciplinary actions.</p>
+          <h3 class="text-xl font-semibold">
+            §2 The rules for using the network are the same as the school's
+          </h3>
+          <p>
+            The network rules follow the school's regulations and align with Norwegian laws. Illegal
+            activities, such as using multiplayer cheat software, unauthorized distribution of
+            copyrighted content, or accessing 18+ NSFW material (e.g., hentai or pornography), are
+            strictly prohibited. Normal games with mature themes are allowed, but attendees are
+            expected to exercise common sense. BetaLAN is not responsible for any files shared or
+            downloaded during the event. Attendees should take caution when sharing, opening, or
+            downloading files and are encouraged to follow basic cybersecurity practices. Violations
+            will result in strict warnings and may lead to further disciplinary actions.
+          </p>
         </div>
         <div>
           <h3 class="text-xl font-semibold">§3 It is not allowed to bring speakers</h3>
-          <p>To make sure there is not too much noise in the event area we do not allow any speakers at the event. We will be using our own speaker system to play some music and set the ambience</p>
+          <p>
+            To make sure there is not too much noise in the event area we do not allow any speakers
+            at the event. We will be using our own speaker system to play some music and set the
+            ambience
+          </p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold">§4 It is not allowed to bring your own appliances due to power limitations</h3>
-          <p>To ensure fire safety and avoid overloading the venue's power supply, attendees are not allowed to bring high-power appliances like toasters, kettles, or microwaves—trust us, your gaming setup will thank you. Only gaming gear and essential chargers are permitted. This rule is in place to keep the event safe and enjoyable for everyone, so please adhere to it.</p>
+          <h3 class="text-xl font-semibold">
+            §4 It is not allowed to bring your own appliances due to power limitations
+          </h3>
+          <p>
+            To ensure fire safety and avoid overloading the venue's power supply, attendees are not
+            allowed to bring high-power appliances like toasters, kettles, or microwaves—trust us,
+            your gaming setup will thank you. Only gaming gear and essential chargers are permitted.
+            This rule is in place to keep the event safe and enjoyable for everyone, so please
+            adhere to it.
+          </p>
         </div>
         <div>
           <h3 class="text-xl font-semibold">§5 Norwegian laws apply in this venue as well</h3>
-          <p>Norwegian laws are in full effect at this venue. Any illegal activity, online or offline, will be addressed and may be reported to authorities. Please comply to ensure a lawful and respectful event.</p>
+          <p>
+            Norwegian laws are in full effect at this venue. Any illegal activity, online or
+            offline, will be addressed and may be reported to authorities. Please comply to ensure a
+            lawful and respectful event.
+          </p>
         </div>
         <div>
           <h3 class="text-xl font-semibold">§6 Multiplayer Cheating</h3>
-          <p>Cheating in multiplayer games at this event, particularly in tournaments or competitive matches, is strictly prohibited and will result in penalties. Any actions that diminish the experience of others will lead to a strike; two strikes will result in a ban from all future BetaLAN events. In cooperative multiplayer (PvE) settings, cheat software is only acceptable if all party members are fully aware and consent to its use. Cheats in single-player offline games are permitted, as they affect only your own experience. Attendees are expected to uphold fair play and respect the integrity of the games.</p>
+          <p>
+            Cheating in multiplayer games at this event, particularly in tournaments or competitive
+            matches, is strictly prohibited and will result in penalties. Any actions that diminish
+            the experience of others will lead to a strike; two strikes will result in a ban from
+            all future BetaLAN events. In cooperative multiplayer (PvE) settings, cheat software is
+            only acceptable if all party members are fully aware and consent to its use. Cheats in
+            single-player offline games are permitted, as they affect only your own experience.
+            Attendees are expected to uphold fair play and respect the integrity of the games.
+          </p>
         </div>
         <div>
           <h3 class="text-xl font-semibold">§7 Respect the venue and its property</h3>
-          <p>Attendees are expected to treat the venue and its property with respect. Any damage caused to the venue or its equipment may result in penalties, including being asked to leave the event and potential financial liability for repairs or replacements.</p>
+          <p>
+            Attendees are expected to treat the venue and its property with respect. Any damage
+            caused to the venue or its equipment may result in penalties, including being asked to
+            leave the event and potential financial liability for repairs or replacements.
+          </p>
         </div>
       </div>
-      <p class="mt-4 italic">Breaking the rules will result in penalties based on the severity of the violation, 
-        and may lead to getting kicked out of the event without a refund </p>
+      <p class="mt-4 italic">
+        Breaking the rules will result in penalties based on the severity of the violation, and may
+        lead to getting kicked out of the event without a refund
+      </p>
     </section>
     <br />
   </BetaLANLayout>
-</Layout>
+</BaseLayout>
 
 <style>
   .legal-font {
-    font-family: 'Roboto Slab', serif; /* For a classic legal look */
+    font-family: "Roboto Slab", serif; /* For a classic legal look */
     font-size: 1rem; /* Adjust size for readability */
     line-height: 1.6; /* Improve line spacing */
   }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+  rel="stylesheet"
+/>

@@ -1,11 +1,9 @@
 ---
-import Layout from "@layouts/PageLayout.astro";
-import BetaLANLayout from "@layouts/BetaLAN-Layout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import jungleBackground from "@assets/betalan/jungle-background.jpg";
 ---
 
-<Layout title="About BetaLAN">
-  <BetaLANLayout backgroundImage={jungleBackground.src}>
-
-  </BetaLANLayout>
-</Layout>
+<BaseLayout title="About BetaLAN">
+  <BetaLANLayout backgroundImage={jungleBackground.src} />
+</BaseLayout>

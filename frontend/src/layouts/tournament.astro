@@ -1,57 +1,59 @@
 ---
-import BetaLANLayout from "./BetaLAN-Layout.astro";
+import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 const { UseGamerFont = true } = Astro.props;
 ---
 
 <BetaLANLayout UseGamerFont={UseGamerFont}>
-    <div class="bg-slate-800 bg-opacity-90 py-3 px-2 md:px-4 rounded-lg mt-4 max-w-4xl mx-auto text-yellow-100 tournament-content">
-        <slot />
-    </div>
+  <div
+    class="tournament-content mx-auto mt-4 max-w-4xl rounded-lg bg-slate-800 bg-opacity-90 px-2 py-3 text-yellow-100 md:px-4"
+  >
+    <slot />
+  </div>
 </BetaLANLayout>
 
 <style>
-    .tournament-content :global(.title) {
-        @apply text-4xl md:text-5xl font-bold text-center mb-6 text-yellow-400;
-    }
+  .tournament-content :global(.title) {
+    @apply mb-6 text-center text-4xl font-bold text-yellow-400 md:text-5xl;
+  }
 
-    .tournament-content :global(.section-title) {
-        @apply text-2xl md:text-3xl font-bold mb-4 text-yellow-300 mt-6 text-center;
-    }
+  .tournament-content :global(.section-title) {
+    @apply mb-4 mt-6 text-center text-2xl font-bold text-yellow-300 md:text-3xl;
+  }
 
-    .tournament-content :global(.paragraph) {
-        @apply text-base md:text-lg mb-4 leading-relaxed;
-    }
+  .tournament-content :global(.paragraph) {
+    @apply mb-4 text-base leading-relaxed md:text-lg;
+  }
 
-    .tournament-content :global(.list) {
-        @apply mb-4 space-y-2;
-    }
+  .tournament-content :global(.list) {
+    @apply mb-4 space-y-2;
+  }
 
-    .tournament-content :global(.list-item) {
-        @apply text-base md:text-lg;
-    }
+  .tournament-content :global(.list-item) {
+    @apply text-base md:text-lg;
+  }
 
-    .tournament-content :global(.responsive-img) {
-        @apply mx-auto mb-6 rounded-lg shadow-lg max-w-full h-auto;
-    }
+  .tournament-content :global(.responsive-img) {
+    @apply mx-auto mb-6 h-auto max-w-full rounded-lg shadow-lg;
+  }
 
-    .tournament-content :global(.link-center) {
-        @apply text-center list-none space-y-2;
-    }
+  .tournament-content :global(.link-center) {
+    @apply list-none space-y-2 text-center;
+  }
 
-    /* Adjustments when gamer font is active */
-    :global(.gamer-font) .tournament-content :global(.title) {
-        font-size: 4rem;
-        line-height: 1.1;
-    }
+  /* Adjustments when gamer font is active */
+  :global(.gamer-font) .tournament-content :global(.title) {
+    font-size: 4rem;
+    line-height: 1.1;
+  }
 
-    :global(.gamer-font) .tournament-content :global(.section-title) {
-        font-size: 2.5rem;
-        line-height: 1.2;
-    }
+  :global(.gamer-font) .tournament-content :global(.section-title) {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
 
-    :global(.gamer-font) .tournament-content :global(.paragraph),
-    :global(.gamer-font) .tournament-content :global(.list-item) {
-        font-size: 1.5rem;
-        line-height: 1.4;
-    }
+  :global(.gamer-font) .tournament-content :global(.paragraph),
+  :global(.gamer-font) .tournament-content :global(.list-item) {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
 </style>

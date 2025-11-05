@@ -1,8 +1,7 @@
 ---
-import Container from "@components/containers/Container.astro";
-import PageLayout from "@layouts/PageLayout.astro";
-import Button from "@components/ui/Button.astro";
-import UIACTF_Discord from "@components/widgets/UIACTF_discord.astro";
+import Container from "@components/layout/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import UiACTFDiscord from "@components/widgets/UiACTFDiscord.astro";
 import Card from "@components/ui/Card.astro";
 import { Image } from "astro:assets";
 import Intro from "@assets/betasec/intro_bilde.jpg";
@@ -10,7 +9,7 @@ import VÅR_25_IntroCTF from "@assets/betasec/vår_25_intro_ctf.jpg";
 import NNSCTF from "@assets/betasec/nnsctf.jpg";
 ---
 
-<PageLayout title="BetaSec">
+<BaseLayout title="BetaSec">
   <Container>
     <div class="flex flex-col items-center">
       <Image src={Intro} width="800" alt="Image from NNS CTF" class="my-8 rounded-lg" />
@@ -19,47 +18,46 @@ import NNSCTF from "@assets/betasec/nnsctf.jpg";
       Velkommen til BetaSec!
     </h1>
     <p class="my-4">
-      BetaSec er en interessegruppe under Beta spesielt rettet mot cybersikkerhet studenter, 
-      men åpen for alle som er interessert i fagområdet. Vi er en gjeng som ønsker å skape et 
-      inkluderende miljø hvor medlemmer kan utvikle ferdighetene sine gjennom ulike arrangementer 
-      som workshops, gjesteforelesninger og sosiale aktiviteter. .  
+      BetaSec er en interessegruppe under Beta spesielt rettet mot cybersikkerhet studenter, men
+      åpen for alle som er interessert i fagområdet. Vi er en gjeng som ønsker å skape et
+      inkluderende miljø hvor medlemmer kan utvikle ferdighetene sine gjennom ulike arrangementer
+      som workshops, gjesteforelesninger og sosiale aktiviteter. .
     </p>
     <p class="my-4">
-      Enten du er nybegynner eller erfaren innen cybersikkerhet, er BetaSec et flott sted å lære, 
-      dele kunnskap og bygge nettverk med likesinnede. Bli med oss for å utforske den spennende 
+      Enten du er nybegynner eller erfaren innen cybersikkerhet, er BetaSec et flott sted å lære,
+      dele kunnskap og bygge nettverk med likesinnede. Bli med oss for å utforske den spennende
       verdenen av cybersikkerhet sammen!
     </p>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
       UiACTF
     </h1>
     <p class="my-4">
-      UiACTF er et Capture The Flag (CTF) lag for UiA studenter. Vi deltar i CTF konkurranser,
-      og har som mål å lære og utvikle våre ferdigheter innen cybersikkerhet. Vi er alltid på utkikk
+      UiACTF er et Capture The Flag (CTF) lag for UiA studenter. Vi deltar i CTF konkurranser, og
+      har som mål å lære og utvikle våre ferdigheter innen cybersikkerhet. Vi er alltid på utkikk
       etter nye medlemmer, uansett ferdighetsnivå. Bli med oss for å lære, konkurrere og ha det gøy!
     </p>
     <p class="my-4">
-      Hvert semester arrangerer vi vår egen CTF-konkurranse, Intro CTF (UiACTF), som er åpen for alle 
-      studenter. Dette gir en unik mulighet til å utfordre og utvikle ferdighetene dine innen cybersikkerhet, 
-      samtidig som du kan engasjere deg videre ved å bidra til å planlegge og gjennomføre arrangementet.
+      Hvert semester arrangerer vi vår egen CTF-konkurranse, Intro CTF (UiACTF), som er åpen for
+      alle studenter. Dette gir en unik mulighet til å utfordre og utvikle ferdighetene dine innen
+      cybersikkerhet, samtidig som du kan engasjere deg videre ved å bidra til å planlegge og
+      gjennomføre arrangementet.
     </p>
     <div class="mt-16">
-      <UIACTF_Discord />
+      <UiACTFDiscord />
     </div>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
       Tidligere arrangementer
     </h1>
-        <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
+    <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
       <Card
         title="Intro CTF Vår 2025"
-        description="Våren 2025 arrangerte vi vår egen CTF-konkurranse, Intro CTF, som var åpen for alle studenter."
+        text="Våren 2025 arrangerte vi vår egen CTF-konkurranse, Intro CTF, som var åpen for alle studenter."
         image={VÅR_25_IntroCTF}
-        alt="Betadev"
       /><Card
         title="NNS CTF"
-        description="I høst 2025 deltok vi og satt opp On-site i Grimstad for Norske Nøkkelsnikkernes CTF."
+        text="I høst 2025 deltok vi og satt opp On-site i Grimstad for Norske Nøkkelsnikkernes CTF."
         image={NNSCTF}
-        alt="Betadev"
       />
     </div>
   </Container>
-</PageLayout>
+</BaseLayout>

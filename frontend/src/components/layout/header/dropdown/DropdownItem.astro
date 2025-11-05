@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import type { DropdownItem } from "@data/navBarConfig";
+
+interface Props {
+  item: DropdownItem;
+}
+
+const { item } = Astro.props;
+---
+
+<a
+  href={item.href}
+  class="block rounded-lg p-3 transition-colors hover:bg-bg-base dark:hover:bg-dark-bg-raised"
+>
+  <div class="flex items-center gap-2">
+    <div class="flex h-6 w-6 flex-none items-center justify-center rounded-md">
+      <Icon name={item.icon} class="h-4 w-4 text-accent" />
+    </div>
+    <div class="font-semibold leading-tight">{item.title}</div>
+  </div>
+
+  <p
+    class="mt-1 pl-[calc(1.5rem+0.5rem)] text-sm leading-snug text-fg-muted dark:text-dark-fg-muted"
+  >
+    {item.desc}
+  </p>
+</a>

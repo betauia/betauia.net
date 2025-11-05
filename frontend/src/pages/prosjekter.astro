@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Card from "@components/ui/Card.astro";
+
+const projects = [
+  {
+    title: "Nettside",
+    description:
+      "Denne siden bygges av Betadev på ukentlig basis og er lagd i flere moderne rammeverk som er enkle å jobbe med og lære seg.",
+    href: "https://github.com/betauia/betauia.net",
+    highlightText: "GitHub repo",
+  },
+  {
+    title: "CTFer",
+    description:
+      "Betasec arrangerer egen hacker konkurranse og steller i stand Bluebox for gratis pizza, kos og forskjellige oppgaver.",
+    href: "https://discord.gg/3xBPkDsaXy",
+    highlightText: "Kontakt Betasec",
+  },
+];
+---
+
+<BaseLayout title="Prosjekter">
+  <Container class="flex min-h-svh flex-col justify-center">
+    <h1 class="mb-4 text-4xl font-bold">Prosjekter</h1>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
+      Her finner du noen av prosjektene vi jobber med.
+    </p>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map(project => (
+          <Card
+            title={project.title}
+            text={project.description}
+            href={project.href}
+            highlightText={project.highlightText}
+            frame="none"
+          />
+        ))
+      }
+    </div>
+
+    <Card
+      class="mt-12"
+      title="Vil du bidra til et prosjekt?"
+      text="Beta er alltid åpen for bidrag fra studenter! Enten du vil lære mer om utvikling, design eller drift. Ta kontakt og bli med på et lærerikt prosjekt."
+      href="/kontakt"
+      highlightText="Kontakt oss"
+    />
+  </Container>
+</BaseLayout>
