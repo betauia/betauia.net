@@ -1,3 +1,13 @@
+[project]
+name = "betauia-backend"
+version = "0.1.0"
+description = "Backend for betauia.net"
+requires-python = ">=3.13"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [tool.ruff]
 line-length = 88
 target-version = "py313"

@@ -15,10 +15,27 @@ Welcome to Flask’s documentation. Flask is a lightweight WSGI web application 
 |   └── config.py       # Environment variables
 ├── pyproject.toml      # Formatting configs
 ├── requirements.txt    # Dependencies
+├── requirements.lock   # Lock of dependency versions
 └── server.py           # Entrypoint for serving
 ```
 
 There are also some `Dockerfile`s and other things, but the listed structure is the code that will be contributed to most often.
+
+## Dependencies
+
+To get the right versions of the different dependencies, we lock the requirements file into another file where all the versions are specified. This is done with `uv` and can be updated with new dependencies with:
+
+```bash
+uv pip compile requirements.txt -o requirements.lock
+```
+
+If you ever want to run the backend locally with a venv and `uv`, do this:
+
+```bash
+uv venv
+uv pip sync requirements.lock
+uv run server.py
+```
 
 ## Types
 
