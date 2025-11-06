@@ -1,11 +1,18 @@
 from flask import Flask
 
+from app.config import Config
+from app.db import close_db, init_db
 from app.routes.calendar import calendar_bp
 from app.routes.main import main_bp
 
 
-def create_app():
+def create_app(config_object=Config):
     app = Flask(__name__)
+
+    app.config.from_object(config_object)
+
+    init_db(app)
+    app.teardown_appcontext(close_db)
 
     app.register_blueprint(main_bp)
     app.register_blueprint(calendar_bp)

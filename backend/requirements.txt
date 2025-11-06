@@ -4,3 +4,4 @@ icalendar
 recurring_ical_events
 datetime
 requests
+psycopg2-binary
