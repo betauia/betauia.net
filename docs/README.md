@@ -27,6 +27,7 @@ The frontend docs are under `/docs/frontend/`:
 Info about tooling and how the backend works are under `/docs/backend/`:
 
 - [Flask](backend/flask.md)
+- [DB](backend/db.md)
 - [~~API~~](backend/api.md) (PLANNED)
 
 ### Project
