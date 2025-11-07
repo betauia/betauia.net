@@ -33,7 +33,7 @@ labels: "Type: Enhancement"
 
 <!--📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛
 
-Oh, hi there! 😄
+Sava så Jilt!
 
 To expedite issue processing, please search open and closed issues before submitting a new one.
 Please read our Rules of Conduct at this repository's `.github/CODE_OF_CONDUCT.md`

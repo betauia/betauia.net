@@ -15,7 +15,7 @@ labels: "Type: Question"
 
 <!--📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛📛
 
-Oh, hi there! 😄
+Halla!
 
 Before posting any questions or asking for support, first read the project's README.md file and
 (if there is any) the WIKI pages or any other additional documentation that might be listed
