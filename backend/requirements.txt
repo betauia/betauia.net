@@ -1,7 +1,8 @@
+Flask_Limiter
+datetime
 flask
 gunicorn
 icalendar
-recurring_ical_events
-datetime
-requests
 psycopg2-binary
+recurring_ical_events
+requests
