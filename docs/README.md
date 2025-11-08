@@ -28,6 +28,7 @@ Info about tooling and how the backend works are under `/docs/backend/`:
 
 - [Flask](backend/flask.md)
 - [DB](backend/db.md)
+- [Rate Limiting](backend/ratelimit.md)
 - [~~API~~](backend/api.md) (PLANNED)
 
 ### Project
