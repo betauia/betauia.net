@@ -8,6 +8,9 @@
 # JetBrains
 .idea/
 
+# Mac build files
+.DS_Store
+
 #
 # gitignore/Python.gitignore
 #
