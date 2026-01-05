@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+
+import Logo from "@assets/logos/beta/base.svg";
+---
+
+<BaseLayout title="Om Beta">
+  <Container>
+    <h1>Branding page</h1>
+
+    <a href={Logo.src} download={`logo.svg`}>Download</a>
+  </Container>
+</BaseLayout>
