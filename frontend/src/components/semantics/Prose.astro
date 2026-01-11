@@ -1,0 +1,125 @@
+---
+const { class: className = "" } = Astro.props;
+---
+
+<div
+  class={`
+    max-w-none
+    prose
+
+    /* BASE TEXT */
+    text-fg-base
+    dark:text-dark-fg-base
+
+    prose-p:text-fg-base
+    dark:prose-p:text-dark-fg-base
+    prose-p:leading-relaxed
+
+    prose-strong:text-fg-base
+    dark:prose-strong:text-dark-fg-base
+
+    prose-em:text-fg-muted
+    dark:prose-em:text-dark-fg-muted
+
+    /* DECORATION */
+    prose-hr:border-fg-muted/30
+    dark:prose-hr:border-dark-fg-muted/30
+
+    /* HEADINGS */
+    prose-headings:font-sans
+    prose-headings:tracking-tight
+    prose-headings:text-fg-base
+    dark:prose-headings:text-dark-fg-base
+    prose-headings:mt-10
+    prose-headings:mb-4
+
+    prose-h1:text-4xl md:prose-h1:text-5xl
+    prose-h1:mt-2
+    prose-h1:font-bold
+    prose-h1:text-brand
+
+    prose-h2:text-3xl md:prose-h2:text-4xl
+    prose-h2:font-semibold
+
+    prose-h3:text-2xl md:prose-h3:text-3xl
+    prose-h3:font-semibold
+
+    prose-h4:text-xl
+    prose-h5:text-lg
+    prose-h6:text-base
+    prose-h6:uppercase
+    prose-h6:tracking-wide
+    prose-h6:text-fg-muted
+    dark:prose-h6:text-dark-fg-muted
+
+    /* LINKS */
+    prose-a:relative
+    prose-a:text-brand
+    prose-a:font-medium
+    prose-a:underline
+    prose-a:underline-offset-4
+
+    /* LISTS */
+    prose-ul:list-disc
+    prose-ol:list-decimal
+    prose-li:marker:text-fg-muted
+    dark:prose-li:marker:text-dark-fg-muted
+
+    /* QUOTES */
+    prose-blockquote:border-l-brand/40
+    prose-blockquote:text-fg-muted
+    dark:prose-blockquote:text-dark-fg-muted
+    prose-blockquote:italic
+
+    /* CODE */
+    prose-code:font-mono
+    prose-code:text-brand
+    prose-code:bg-bg-raised
+    dark:prose-code:bg-dark-bg-raised
+    prose-code:px-1.5
+    prose-code:py-0.5
+    prose-code:rounded
+
+    prose-pre:bg-bg-raised
+    dark:prose-pre:bg-dark-bg-raised
+    prose-pre:text-fg-base
+    dark:prose-pre:text-dark-fg-base
+    prose-pre:rounded-lg
+    prose-pre:p-4
+
+    /* MEDIA */
+    prose-img:rounded-lg
+    prose-img:my-8
+
+    prose-figure:my-10
+    prose-figcaption:text-sm
+    prose-figcaption:text-fg-muted
+    dark:prose-figcaption:text-dark-fg-muted
+    prose-figcaption:text-center
+
+    /* TABLES */
+    prose-table:my-8
+    prose-th:text-fg-base
+    dark:prose-th:text-dark-fg-base
+    prose-td:text-fg-muted
+    dark:prose-td:text-dark-fg-muted
+
+    /* DEFINITION LISTS */
+    prose-dl:my-8
+    prose-dl:space-y-2
+
+    prose-dt:font-medium
+    prose-dt:text-fg-base
+    dark:prose-dt:text-dark-fg-base
+
+    prose-dd:ml-0
+    prose-dd:pb-4
+    prose-dd:pl-0
+    prose-dd:text-fg-muted
+    dark:prose-dd:text-dark-fg-muted
+
+    ${className}
+  `}
+>
+  <slot />
+</div>

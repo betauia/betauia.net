@@ -11,8 +11,8 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.0.8",
-    "@astrojs/tailwind": "^6.0.0",
     "@astrojs/svelte": "^7.2.0",
+    "@astrojs/tailwind": "^6.0.0",
     "@fontsource/poppins": "^5.2.7",
     "@iconify-json/fa": "^1.2.1",
     "@iconify-json/fa-brands": "^1.2.1",
@@ -25,9 +25,10 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.12",
-    "prettier-plugin-svelte": "^3.4.0"
+    "prettier-plugin-svelte": "^3.4.0",
+    "prettier-plugin-tailwindcss": "^0.6.12"
   }
 }
