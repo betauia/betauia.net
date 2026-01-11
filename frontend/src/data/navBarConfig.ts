@@ -100,6 +100,12 @@ export const navigationDropdowns: NavigationDropdown[] = [
         desc: "Sjekk ut studentprosjekter vi jobber med eller bli med.",
         href: "/prosjekter",
       },
+      {
+        icon: "fa-solid:city",
+        title: "Generalforsamling",
+        desc: "Gjør deg klar for generalforsamling eller se hva som har blitt gjort tidligere.",
+        href: "/genfors",
+      },
     ],
   },
   {

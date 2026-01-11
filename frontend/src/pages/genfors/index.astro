@@ -1,0 +1,74 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+
+import Card from "@components/ui/Card.astro";
+
+import Agenda from "@content/genfors/2026.md";
+import Prose from "@components/semantics/Prose.astro";
+---
+
+<BaseLayout title="Generalforsamling 2026">
+  <Container>
+    <Prose>
+      <h1>
+        Generalforsamling <span class="text-brand">2026</span>
+      </h1>
+
+      <p>Tirsdag, 27. januar, kl. 16:15</p>
+
+      <h2>Hva er generalforsamlingen?</h2>
+      <p>
+        Generalforsamlingen er linjeforeningens øverste beslutningsorgan og arrangeres hvert
+        vårsemester. Her behandles saker som angår studentene, nytt styre velges, og viktige
+        avgjørelser for Beta tas.
+      </p>
+
+      <p><b>Alle medlemmer har stemmerett.</b></p>
+
+      <h2>Viktig info</h2>
+      <p>
+        For at generalforsamlingen skal gå ryddig og raskt, har vi satt frist til å melde inn saker
+        minst en uke i forveien. Etter fristen sender vi ut alle forslag sammen med oppdatert
+        agenda, slik at alle studenter rekker å gjøre klar en mening om alle saker. Alt kan bli tatt
+        opp, og du kan sende inn så mange saker som mulig.
+      </p>
+      <p>
+        For at linjeforeningen skal gå rundt, trengs det at alle interesserte stiller til verv i
+        styret. Dette er gull for å bygge CV og har gitt mange tidligere studenter både jobb og
+        sommerjobb. Man lærer mye nytt, man blir kjent med mange nye mennesker og du får lov til å
+        forme studentlivet i Grimstad.
+      </p>
+
+      <p><b>Æresmedlemmer kan foreslås som egen sak.</b></p>
+    </Prose>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Card
+        title="Meld deg på"
+        href="https://forms.cloud.microsoft/e/KGAvRMfKKz"
+        highlightText="Påmeldingsskema"
+        text="Tirsdag, 27. januar, kl. 16:15 slår vi løs med info, diskusjon, og det blir selvfølgelig gratis pizza."
+      />
+      <Card
+        title="Send inn saker"
+        href="https://forms.cloud.microsoft/e/BaitkMifK9"
+        highlightText="Saksskjema"
+        text="Vi oppfordrer alle medlemmer å sende inn saker til felles diskusjon minst en uke i forveien."
+      />
+      <Card
+        title="Info om verv"
+        href="/om/verv"
+        highlightText="Se alle verv"
+        text="Sjekk ut de ulike vervene man kan ha i linjeforeningen og hva de går ut på."
+      />
+    </div>
+    <p class="mb-4 mt-6 text-center text-fg-muted dark:text-dark-fg-muted">
+      For å beregne mengde mat ønsker vi at alle melder seg på i forkant.
+    </p>
+
+    <Prose>
+      <Agenda />
+    </Prose>
+  </Container>
+</BaseLayout>
