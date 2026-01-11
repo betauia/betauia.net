@@ -15,6 +15,11 @@
     @apply pt-24;
   }
 
+  /* Prose links */
+  .prose a {
+    @apply decoration-brand/40 transition-colors hover:decoration-brand;
+  }
+
   /* --------------------------- */
   /* Layout for markdown content */
   /* --------------------------- */
