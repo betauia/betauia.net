@@ -17,8 +17,8 @@ const { name, role, linkedin, github, picture, class: className } = Astro.props;
 const isImageMetadata = picture && typeof picture === "object" && "src" in picture;
 
 const socials = [
-  { icon: "fa-brands:linkedin", link: linkedin },
-  { icon: "fa-brands:github", link: github },
+  { icon: "fa-accents:linkedin", link: linkedin },
+  { icon: "fa-accents:github", link: github },
 ].filter(social => social.link);
 ---
 

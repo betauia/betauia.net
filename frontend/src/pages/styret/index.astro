@@ -3,16 +3,18 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import Card from "@components/ui/Card.astro";
 import { availableYears, boardData } from "@data/boardMembers";
+import Prose from "@components/semantics/Prose.astro";
 
 const boardYears = availableYears.sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <BaseLayout title="Styret">
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mb-4 text-4xl font-bold">Hovedstyret gjennom årene</h1>
-    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-      Klikk på et år for å se styremedlemmene og deres roller.
-    </p>
+    <Prose class="mb-6">
+      <h1>Hovedstyret gjennom årene</h1>
+      <p>Klikk på et år for å se styremedlemmene og deres roller.</p>
+    </Prose>
+
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         boardYears.map(year => {

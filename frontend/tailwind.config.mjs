@@ -13,7 +13,7 @@ export default {
       },
 
       colors: {
-        brand: "#0085FF",
+        // brand: "#0085FF",
         accent: {
           DEFAULT: "#0085FF",
           secondary: "#14B8A6",

@@ -6,22 +6,37 @@ import Card from "@components/ui/Card.astro";
 
 import Agenda from "@content/genfors/2026.md";
 import Prose from "@components/semantics/Prose.astro";
+import CodeBlock from "@components/semantics/CodeBlock.astro";
+import MathBlock from "@components/semantics/MathBlock.astro";
 ---
 
 <BaseLayout title="Generalforsamling 2026">
   <Container>
     <Prose>
       <h1>
-        Generalforsamling <span class="text-brand">2026</span>
+        Generalforsamling <span class="text-accent">2026</span>
       </h1>
+
+      <code>print("Hello, world!")</code>
+
+      <CodeBlock
+        lang="rust"
+        code={`fn main() {
+    println!("Hello World!");
+}`}
+      />
+
+      <MathBlock tex={`\\vec{u} \\cdot \\vec{v} = \\,\\,?`} />
 
       <p>Tirsdag, 27. januar, kl. 16:15</p>
 
+      <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd>
+
       <h2>Hva er generalforsamlingen?</h2>
       <p>
-        Generalforsamlingen er linjeforeningens øverste beslutningsorgan og arrangeres hvert
-        vårsemester. Her behandles saker som angår studentene, nytt styre velges, og viktige
-        avgjørelser for Beta tas.
+        <em>Generalforsamlingen</em> er linjeforeningens øverste beslutningsorgan og arrangeres hvert
+        vårsemester. Her behandles saker som angår studentene, nytt styre velges, og viktige avgjørelser
+        for Beta tas.
       </p>
 
       <p><b>Alle medlemmer har stemmerett.</b></p>

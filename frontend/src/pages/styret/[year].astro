@@ -6,6 +6,7 @@ import ProfileCard from "@components/ui/ProfileCard.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { boardData, availableYears } from "../../data/boardMembers";
+import Prose from "@components/semantics/Prose.astro";
 
 export function getStaticPaths() {
   return availableYears.map((year: string) => ({
@@ -21,14 +22,14 @@ const groupPhoto = yearData?.groupPhoto;
 
 <BaseLayout title={`Styret ${year}`}>
   <Container>
-    <div class="mx-auto mb-8 mt-6">
-      <h1 class="mb-3 text-4xl font-bold">
+    <Prose class="mb-8">
+      <h1>
         Hovedstyret <span class="text-accent">{year}</span>
       </h1>
-      <p class="text-lg text-fg-muted dark:text-dark-fg-muted">
+      <p>
         Møt de {boardMembers.length} engasjerte studentene som ledet Beta i {year}.
       </p>
-    </div>
+    </Prose>
 
     {
       groupPhoto ? (
@@ -36,9 +37,9 @@ const groupPhoto = yearData?.groupPhoto;
           <Image src={groupPhoto} alt={`Hovedstyret ${year}`} class="h-96 w-full object-cover" />
         </div>
       ) : (
-        <div class="mb-12 flex h-96 items-center justify-center rounded-2xl bg-gradient-to-br from-brand/10 to-accent-secondary/10">
+        <div class="mb-12 flex h-96 items-center justify-center rounded-2xl bg-gradient-to-br from-accent/10 to-accent-secondary/10">
           <div class="text-center">
-            <Icon name="fa-solid:camera" class="mx-auto mb-4 h-24 w-24 text-brand" />
+            <Icon name="fa-solid:camera" class="mx-auto mb-4 h-24 w-24 text-accent" />
             <p class="text-fg-muted dark:text-dark-fg-muted">Styrebilde for {year}</p>
           </div>
         </div>
