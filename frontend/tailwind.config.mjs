@@ -26,7 +26,8 @@ export default {
 
         fg: {
           base: "#242424",
-          muted: "#425269",
+          body: "#3A3A3A",
+          muted: "#5B6A80",
         },
 
         dark: {
@@ -37,6 +38,7 @@ export default {
 
           fg: {
             base: "#FDFDFD",
+            body: "#D8E1F0",
             muted: "#A1B1D1",
           },
         },

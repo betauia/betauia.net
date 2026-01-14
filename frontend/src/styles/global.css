@@ -224,3 +224,22 @@
   /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
   white-space: nowrap;
 }
+
+/* Shiki */
+.shiki {
+  background: transparent !important;
+}
+
+/* Shiki dark mode */
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.prose .shiki > code {
+  padding: 0 !important;
+  background: transparent !important;
+}

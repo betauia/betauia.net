@@ -8,22 +8,23 @@ const { class: className = "" } = Astro.props;
     prose
 
     /* BASE TEXT */
-    text-fg-base
-    dark:text-dark-fg-base
+    text-fg-body
+    dark:text-dark-fg-body
 
-    prose-p:text-fg-base
-    dark:prose-p:text-dark-fg-base
     prose-p:leading-relaxed
-
-    prose-strong:text-fg-base
-    dark:prose-strong:text-dark-fg-base
-
-    prose-em:text-fg-muted
-    dark:prose-em:text-dark-fg-muted
 
     /* DECORATION */
     prose-hr:border-fg-muted/30
     dark:prose-hr:border-dark-fg-muted/30
+
+    prose-strong:text-fg-base
+    dark:prose-strong:text-dark-fg-base
+
+    prose-em:text-fg-body
+    dark:prose-em:text-dark-fg-body
+
+    prose-i:text-fg-body
+    dark:prose-i:text-dark-fg-body
 
     /* HEADINGS */
     prose-headings:font-sans
@@ -36,7 +37,6 @@ const { class: className = "" } = Astro.props;
     prose-h1:text-4xl md:prose-h1:text-5xl
     prose-h1:mt-2
     prose-h1:font-bold
-    prose-h1:text-brand
 
     prose-h2:text-3xl md:prose-h2:text-4xl
     prose-h2:font-semibold
@@ -54,7 +54,7 @@ const { class: className = "" } = Astro.props;
 
     /* LINKS */
     prose-a:relative
-    prose-a:text-brand
+    prose-a:text-accent
     prose-a:font-medium
     prose-a:underline
     prose-a:underline-offset-4
@@ -66,26 +66,31 @@ const { class: className = "" } = Astro.props;
     dark:prose-li:marker:text-dark-fg-muted
 
     /* QUOTES */
-    prose-blockquote:border-l-brand/40
+    prose-blockquote:border-l-accent/40
     prose-blockquote:text-fg-muted
     dark:prose-blockquote:text-dark-fg-muted
     prose-blockquote:italic
 
     /* CODE */
     prose-code:font-mono
-    prose-code:text-brand
+    prose-code:text-accent-secondary
     prose-code:bg-bg-raised
     dark:prose-code:bg-dark-bg-raised
     prose-code:px-1.5
     prose-code:py-0.5
     prose-code:rounded
+    prose-code:before:content-none
+    prose-code:after:content-none
 
     prose-pre:bg-bg-raised
     dark:prose-pre:bg-dark-bg-raised
     prose-pre:text-fg-base
     dark:prose-pre:text-dark-fg-base
     prose-pre:rounded-lg
-    prose-pre:p-4
+    prose-pre:py-0
+    prose-pre:px-4
+    prose-pre:text-sm
+    
 
     /* MEDIA */
     prose-img:rounded-lg
@@ -117,6 +122,22 @@ const { class: className = "" } = Astro.props;
     prose-dd:pl-0
     prose-dd:text-fg-muted
     dark:prose-dd:text-dark-fg-muted
+
+    /* KBD */
+    prose-kbd:font-mono
+    prose-kbd:text-fg-base
+    prose-kbd:bg-bg-raised
+    prose-kbd:px-1.5
+    prose-kbd:py-0.5
+    prose-kbd:rounded
+    prose-kbd:border
+    prose-kbd:border-fg-muted/30
+    prose-kbd:shadow-none
+    prose-kbd:align-middle 
+
+    dark:prose-kbd:text-dark-fg-base
+    dark:prose-kbd:bg-dark-bg-raised
+    dark:prose-kbd:border-dark-fg-muted/30
 
     ${className}
   `}

@@ -13,6 +13,12 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), icon(), svelte()],
   server: { port: 3000, host: "0.0.0.0" },
   markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "github-light",
+      darkTheme: "github-dark",
+      wrap: true,
+    },
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
   },
