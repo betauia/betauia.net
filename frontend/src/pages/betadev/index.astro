@@ -1,20 +1,55 @@
 ---
 import Container from "@components/layout/Container.astro";
-import Banner from "@components/widgets/Banner.astro";
+import Card from "@components/ui/Card.astro";
+import Prose from "@components/semantics/Prose.astro";
+import Button from "@components/ui/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+import Game1 from "@assets/betadev/game-1.jpg";
+import Game3 from "@assets/betadev/game-3.jpg";
+import GamejamPrize from "@assets/betadev/gamejam-trofe.jpg";
+import { Image } from "astro:assets";
 ---
 
 <BaseLayout
-  title="BetaDEV"
-  description="BetaDEV er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!"
+  title="Betadev"
+  description="Betadev er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!"
 >
   <Container>
-    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold">BetaDEV</h1>
-    <p>
-      Interessegruppen for nettsideutvikling og generell utvikling innen BETA. BetaDEV arrangerer
-      gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre
-      komiteer og interressegrupper.
-    </p>
-    <Banner text="BetaDEV is currently holding its Game Jam!" link="/betadev/gamejam/" />
+    <Prose>
+      <h1>Betadev</h1>
+      <p>
+        Interessegruppen for nettsideutvikling og generell utvikling innen BETA. Betadev arrangerer
+        gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre
+        komiteer og interressegrupper.
+      </p>
+
+      <h2 class="mt-8 text-xl font-bold">Arrangementer*</h2>
+    </Prose>
+
+    <div class="mb-4 mt-2 grid gap-4 md:grid-cols-3">
+      <Card
+        title="Gamejam"
+        href="/betadev/gamejam"
+        image={Game3}
+        text="Gamejam, et fast arrangement med gode priser, hvor vinneren blir kåret under BetaLAN!"
+      />
+      <Card
+        title="Kodekonkurranse"
+        image={GamejamPrize}
+        text="Betadev undersøker muligheten for en kodekonkurranse!"
+      />
+      <Card
+        title="Kodekvelder"
+        image={Game1}
+        text="Kodekvelder er der utviklingen skjer, hyggelig og produktivt"
+      />
+    </div>
+    <Prose>
+      <p>* som betadev tidligere har arrangert</p>
+
+      <h2>Kommunikasjon og idéer</h2>
+    </Prose>
+    <Button href=""> Betadev sin discord server </Button>
   </Container>
 </BaseLayout>
