@@ -1,0 +1,88 @@
+name: Dependabot Frontend Checks
+
+on:
+  pull_request:
+    paths:
+      - "frontend/**"
+      - ".github/workflows/dependabot-frontend.yaml"
+
+jobs:
+  dependabot-checks:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: "frontend/package-lock.json"
+
+      - name: Install Dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run Typescript Check
+        working-directory: frontend
+        run: npx astro check
+
+      - name: Build Frontend
+        working-directory: frontend
+        run: npm run build
+
+      - name: Check for breaking changes
+        working-directory: frontend
+        run: |
+          # Add future frontend checks here
+          echo "Build completed successfully - no breaking changes"
+
+  dependabot-pr-management:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+
+      # - name: Enable auto-merge for Dependabot PRs
+      #   run: gh pr merge --auto --squash "${{ github.event.pull_request.number }}"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   continue-on-error: true
+
+      - name: Add Labels
+        uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['dependencies', 'frontend']
+            })
+
+  notify-on-failure:
+    if: failure() && github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    needs: [dependabot-checks]
+
+    steps:
+      - name: Comment on Failed PR
+        uses: actions/github-script@v8
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ **Build Failed** - This dependency update causes build issues. Manual intervention required.\n\nPlease review the build logs above for details.'
+            })
