@@ -40,12 +40,12 @@ export const navigationDropdowns: NavigationDropdown[] = [
       //   desc: "Se hva som har skjedd i ulike møter og samlinger.",
       //   href: "/referat",
       // },
-      // {
-      //   icon: "fa-solid:user-graduate",
-      //   title: "Studier",
-      //   desc: "Studiene på UiA som linjeforeningen dekker.",
-      //   href: "/studier",
-      // },
+      {
+        icon: "fa-solid:paint-brush",
+        title: "Branding",
+        desc: "Sjekk ut hvordan man bruker Beta sine logoer, farger og materiale.",
+        href: "/om/branding",
+      },
       {
         icon: "fa-solid:envelope",
         title: "Kontakt oss",

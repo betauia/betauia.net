@@ -1,0 +1,184 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Prose from "@components/semantics/Prose.astro";
+import Button from "@components/ui/Button.astro";
+
+import Image from "astro/components/Image.astro";
+
+import { brandingColors, logos } from "@data/branding";
+
+const logoList = Object.values(logos);
+---
+
+<BaseLayout title="Branding">
+  <Container>
+    <Prose>
+      <h1>Branding</h1>
+
+      <h2>Bruk</h2>
+
+      <p>
+        Riktig bruk av logo, farger og ikoner bidrar til gjenkjennelighet og et profesjonelt
+        uttrykk. Derfor ber vi om at du alltid bruker de riktig ved å:
+      </p>
+
+      <ul>
+        <li>Bruke lys logo på mørke bakgrunner og mørk logo på lyse bakgrunner.</li>
+        <li>
+          Alltid bruke logoer i original form, uten endringer i proporsjoner, farger eller innhold.
+        </li>
+        <li>
+          Bruke ikon der full logo ikke egner seg, for eksempel som profilbilde, app-ikon eller i
+          sosiale medier.
+        </li>
+        <li>Unngå å plassere logo eller ikon på urolige bakgrunner som reduserer lesbarheten.</li>
+        <li>Bruke definerte profilfarger i tråd med fargepaletten under.</li>
+      </ul>
+
+      <h2>Farger</h2>
+
+      <div class="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          brandingColors.map(color => {
+            const isSame = color.light === color.dark;
+
+            return (
+              <div class="rounded-lg bg-bg-raised p-4 text-fg-base dark:bg-dark-bg-raised dark:text-dark-fg-base">
+                <div class="mb-3 flex gap-2">
+                  <div
+                    class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
+                    style={`background:${color.light}`}
+                    onclick={`navigator.clipboard.writeText('${color.light}')`}
+                    title="Klikk for å kopiere"
+                  />
+                  {!isSame && (
+                    <div
+                      class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
+                      style={`background:${color.dark}`}
+                      onclick={`navigator.clipboard.writeText('${color.dark}')`}
+                      title="Klikk for å kopiere"
+                    />
+                  )}
+                </div>
+
+                <div class="mb-1 font-semibold">{color.name}</div>
+
+                <div class="text-sm leading-snug text-fg-muted dark:text-dark-fg-muted">
+                  {color.description}
+                </div>
+
+                <div class="mt-3 font-mono text-xs text-fg-muted dark:text-dark-fg-muted">
+                  {isSame ? (
+                    <button
+                      class="hover:opacity-75"
+                      onclick={`navigator.clipboard.writeText('${color.light}')`}
+                    >
+                      {color.light}
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        class="mr-2 hover:opacity-75"
+                        onclick={`navigator.clipboard.writeText('${color.light}')`}
+                      >
+                        Light: {color.light}
+                      </button>
+                      <button
+                        class="hover:opacity-75"
+                        onclick={`navigator.clipboard.writeText('${color.dark}')`}
+                      >
+                        Dark: {color.dark}
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <h2>Logoer</h2>
+
+      <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          logoList.map(logo => (
+            <div class="rounded-xl bg-bg-raised p-4 dark:bg-dark-bg-raised">
+              <div class="mb-4 flex justify-center">
+                <Image
+                  src={logo.black}
+                  alt={`${logo.name} logo`}
+                  class="h-14 w-auto px-2 dark:hidden"
+                />
+
+                <Image
+                  src={logo.white}
+                  alt={`${logo.name} logo`}
+                  class="max hidden h-14 w-auto px-2 dark:block"
+                />
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <Button
+                  href={logo.base.src}
+                  download={`${logo.name}-logo.svg`}
+                  type="secondary"
+                  class="w-full"
+                >
+                  SVG
+                </Button>
+
+                <Button
+                  href={logo.black.src}
+                  download={`${logo.name}-black-logo.svg`}
+                  type="secondary"
+                  class="w-full"
+                >
+                  Svart
+                </Button>
+
+                <Button
+                  href={logo.white.src}
+                  download={`${logo.name}-white-logo.svg`}
+                  type="secondary"
+                  class="w-full"
+                >
+                  Hvit
+                </Button>
+
+                <Button
+                  href={logo.blue.src}
+                  download={`${logo.name}-blue-logo.svg`}
+                  type="secondary"
+                  class="w-full"
+                >
+                  Blå
+                </Button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <h2>Ikoner</h2>
+
+      <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl bg-bg-raised p-4 text-center dark:bg-dark-bg-raised">
+          <div class="mb-4 flex justify-center">
+            <Image src={logos.beta.icon} alt="Beta ikon" class="h-20 w-20 rounded-lg" />
+          </div>
+
+          <Button
+            href={logos.beta.icon.src}
+            download="beta-icon.jpg"
+            type="secondary"
+            class="w-full"
+          >
+            PNG
+          </Button>
+        </div>
+      </div>
+    </Prose>
+  </Container>
+</BaseLayout>
