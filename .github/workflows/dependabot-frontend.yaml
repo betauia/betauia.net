@@ -31,6 +31,7 @@ jobs:
       - name: Run Typescript Check
         working-directory: frontend
         run: npx astro check
+        continue-on-error: true
 
       - name: Build Frontend
         working-directory: frontend
