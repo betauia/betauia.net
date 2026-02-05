@@ -180,7 +180,7 @@ export const boardData: Record<string, BoardYear> = {
       },
       {
         position: "Betasec leder",
-        name: "Bendik Dyrli",
+        name: "Bendik Egenes Dyrli",
       },
     ],
     groupPhoto: undefined,
@@ -213,7 +213,7 @@ export const boardData: Record<string, BoardYear> = {
       },
       {
         position: "Betasec leder",
-        name: "Bendik Dyrli",
+        name: "Bendik Egenes Dyrli",
       },
     ],
     groupPhoto: undefined,
@@ -305,6 +305,158 @@ export const boardData: Record<string, BoardYear> = {
       {
         position: "Styremedlem",
         name: "Martin Bråten",
+      },
+    ],
+    groupPhoto: undefined,
+  },
+  "2017": {
+    members: [
+      {
+        position: "Leder",
+        name: "Marius Bjørni",
+      },
+      {
+        position: "Nestleder",
+        name: "Olav Markus Sjursø",
+      },
+      {
+        position: "Økonomi ansvarlig",
+        name: "Martin Bråten",
+      },
+      {
+        position: "Pr/Web ansvarlig",
+        name: "Vebjørn Nystad",
+      },
+      {
+        position: "Event ansvarlig",
+        name: "Espen Kalhagen",
+      },
+      {
+        position: "Betalan ansvarlig",
+        name: "Hans Lau Borch",
+      },
+      {
+        position: "Styremedlem",
+        name: "Vetle Ørstavik Hollund",
+      },
+      {
+        position: "Styremedlem",
+        name: "Christian Trinh",
+      },
+    ],
+    groupPhoto: undefined,
+  },
+  "2016": {
+    members: [
+      {
+        position: "Leder",
+        name: "Marius Bjørni",
+      },
+      {
+        position: "Nestleder",
+        name: "Shahab Afsharipour",
+      },
+      {
+        position: "Styremedlem",
+        name: "Mohamed Samatar",
+      },
+      {
+        position: "PR-ansvarlig",
+        name: "Tommy Johannessen",
+      },
+      {
+        position: "Arrangement ansvarlig",
+        name: "Celine Abigael Tomren",
+      },
+      {
+        position: "Betalan ansvarlig",
+        name: "Hans Lau Borch",
+      },
+      {
+        position: "Styremedlem",
+        name: "Siri Dybdahl",
+      },
+      {
+        position: "Styremedlem",
+        name: "Christer Mathisen",
+      },
+    ],
+    groupPhoto: undefined,
+  },
+  "2015": {
+    members: [
+      {
+        position: "Leder",
+        name: "Anders Refsdal Olsen",
+      },
+      {
+        position: "Nestleder",
+        name: "Knut Eivind Sandsmark",
+      },
+      {
+        position: "Økonomi/materiell ansvarlig",
+        name: "Ørjan Solli",
+      },
+      {
+        position: "Pr/web ansvarlig",
+        name: "John Føreland",
+      },
+      {
+        position: "Event ansvarlig",
+        name: "Sahand Johansen",
+      },
+      {
+        position: "Betalan ansvarlig",
+        name: "Martin Abrahamsen",
+      },
+      {
+        position: "Styremedlem",
+        name: "Jonathan Luu",
+      },
+      {
+        position: "Styremedlem",
+        name: "Mohamed Samatar",
+      },
+    ],
+    groupPhoto: undefined,
+  },
+  "2014": {
+    members: [
+      {
+        position: "Leder",
+        name: "Anders Refsdal Olsen",
+      },
+      {
+        position: "Nestleder",
+        name: "Shahab Afsharipour",
+      },
+      {
+        position: "Økonomiansvarlig",
+        name: "Huy Quy Vu",
+      },
+      {
+        position: "PR-ansvarlig",
+        name: "Tommy Johannessen",
+      },
+      {
+        position: "Grafiker",
+        name: "Kim-Leonhard Halvorsen",
+      },
+      {
+        position: "Arrangement ansvarlig",
+        name: "Nina Over",
+      },
+      {
+        position: "Betalan ansvarlig",
+        name: "Martin Abrahamsen",
+      },
+      {
+        position: "Styremedlem",
+        name: "Knut Eivind Sandsmark",
+      },
+      {
+        position: "Styremedlem",
+        name: "Malene Danielsen",
       },
     ],
     groupPhoto: undefined,
