@@ -31,16 +31,9 @@ const groupPhoto = yearData?.groupPhoto;
     </div>
 
     {
-      groupPhoto ? (
+      groupPhoto && (
         <div class="mb-12 overflow-hidden rounded-2xl">
           <Image src={groupPhoto} alt={`Hovedstyret ${year}`} class="h-96 w-full object-cover" />
-        </div>
-      ) : (
-        <div class="mb-12 flex h-96 items-center justify-center rounded-2xl bg-gradient-to-br from-brand/10 to-accent-secondary/10">
-          <div class="text-center">
-            <Icon name="fa-solid:camera" class="mx-auto mb-4 h-24 w-24 text-brand" />
-            <p class="text-fg-muted dark:text-dark-fg-muted">Styrebilde for {year}</p>
-          </div>
         </div>
       )
     }
