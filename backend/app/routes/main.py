@@ -24,8 +24,8 @@ if Config.DEBUG:
 
     @router.get("/db")
     @limiter.limit("10/minute")
-    def db_test(request: Request, conn=Depends(get_db_dependency)):
-        with conn.cursor() as cur:
-            cur.execute("SELECT 1;")
-            result = cur.fetchone()[0]
-        return {"db": result}
+    async def db_test(request: Request, conn=Depends(get_db_dependency)):
+        async with conn.cursor() as cur:
+            await cur.execute("SELECT 1;")
+            result = await cur.fetchone()
+        return {"db": result[0]}

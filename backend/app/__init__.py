@@ -29,7 +29,7 @@ async def lifespan(app: FastAPI):
 
     # Shutdown
     logger.info("Shutting down application...")
-    db.close()
+    await db.close()
     logger.info("Database connections closed")
 
 
