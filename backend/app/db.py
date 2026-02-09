@@ -1,49 +1,46 @@
-from collections.abc import Generator
-from contextlib import contextmanager
+from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
 
-import psycopg2
-import psycopg2.pool
+import psycopg
+from psycopg_pool import AsyncConnectionPool
 
 
 class DatabasePool:
     def __init__(self):
-        self._pool: psycopg2.pool.SimpleConnectionPool | None = None
+        self._pool: AsyncConnectionPool | None = None
 
     def init(self, config):
-        self._pool = psycopg2.pool.SimpleConnectionPool(
-            1,
-            10,
-            dbname=config.POSTGRES_DB,
-            user=config.POSTGRES_USER,
-            password=config.POSTGRES_PASSWORD,
-            host=config.POSTGRES_HOST,
-            port=config.POSTGRES_PORT,
+        conninfo = (
+            f"dbname={config.POSTGRES_DB} "
+            f"user={config.POSTGRES_USER} "
+            f"password={config.POSTGRES_PASSWORD} "
+            f"host={config.POSTGRES_HOST} "
+            f"port={config.POSTGRES_PORT}"
         )
+        self._pool = AsyncConnectionPool(conninfo, min_size=1, max_size=10)
 
-    @contextmanager
-    def connection(self) -> Generator[psycopg2.extensions.connection]:
+    @asynccontextmanager
+    async def connection(self) -> AsyncGenerator[psycopg.AsyncConnection]:
         if self._pool is None:
             raise RuntimeError("Database pool not initialized")
 
-        conn = self._pool.getconn()
-        try:
-            yield conn
-            conn.commit()
-        except Exception:
-            conn.rollback()
-            raise
-        finally:
-            self._pool.putconn(conn)
+        async with self._pool.connection() as conn:
+            try:
+                yield conn
+                await conn.commit()
+            except Exception:
+                await conn.rollback()
+                raise
 
-    def close(self):
+    async def close(self):
         if self._pool is not None:
-            self._pool.closeall()
+            await self._pool.close()
             self._pool = None
 
 
 db = DatabasePool()
 
 
-def get_db_dependency():
-    with db.connection() as conn:
+async def get_db_dependency():
+    async with db.connection() as conn:
         yield conn

@@ -2,6 +2,6 @@ fastapi
 uvicorn[standard]
 slowapi
 icalendar
-psycopg2-binary
+psycopg[binary,pool]
 recurring_ical_events
 requests
