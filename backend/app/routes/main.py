@@ -1,20 +1,31 @@
-from flask import Blueprint, jsonify
+from fastapi import APIRouter, Depends, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
-from app.db import get_db
+from app.config import Config
+from app.db import get_db_dependency
 
-main_bp = Blueprint("main", __name__)
-
-
-@main_bp.route("/ping")
-def ping():
-    return jsonify({"message": "pong"})
+router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
 
 
-@main_bp.route("/db")
-def db_test():
-    conn = get_db()
-    cur = conn.cursor()
-    cur.execute("SELECT 1;")
-    result = cur.fetchone()[0]
-    cur.close()
-    return {"db": result}, 200
+@router.get("/ping")
+@limiter.limit("60/minute")
+def ping(request: Request):
+    return {"message": "pong"}
+
+
+@router.get("/health")
+def health():
+    return {"status": "healthy"}
+
+
+if Config.DEBUG:
+
+    @router.get("/db")
+    @limiter.limit("10/minute")
+    def db_test(request: Request, conn=Depends(get_db_dependency)):
+        with conn.cursor() as cur:
+            cur.execute("SELECT 1;")
+            result = cur.fetchone()[0]
+        return {"db": result}
