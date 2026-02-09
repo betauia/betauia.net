@@ -7,20 +7,17 @@ RUN apk add --no-cache curl \
 
 WORKDIR /app
 
-COPY requirements.txt /app
+COPY requirements.lock /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-RUN uv pip install --system --requirement requirements.txt
+RUN uv pip install --system --requirement requirements.lock
 
 COPY . .
 
 FROM base AS development
-ENV FLASK_ENV=development
 CMD ["python3", "server.py"]
 
 FROM base AS production
-ENV FLASK_ENV=production
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "server:app"]
-
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

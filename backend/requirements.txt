@@ -1,7 +1,6 @@
-Flask_Limiter
-datetime
-flask
-gunicorn
+fastapi
+uvicorn[standard]
+slowapi
 icalendar
 psycopg2-binary
 recurring_ical_events

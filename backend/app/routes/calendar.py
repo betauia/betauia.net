@@ -3,25 +3,34 @@ import datetime
 import icalendar
 import recurring_ical_events
 import requests
-from flask import Blueprint
+from fastapi import APIRouter, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
-calendar_bp = Blueprint("calendarBlueprint", __name__)
+from app.config import Config
+
+# import logging
+
+router = APIRouter()
+limiter = Limiter(key_func=get_remote_address)
+# logger = logging.getLogger(__name__)  # Simple note for future logging...
 
 
-@calendar_bp.route("/api/calendar")
-def get_json():
-    """!
-    @returns calendarOut
-    @todo Make it possible to get data from multiple ics files.
-    @todo Reimplement this using classes to make it work better with doxygen?
+@router.get("/api/calendar")
+@limiter.limit("30/minute")
+def get_json(request: Request):
     """
-    r = requests.get(
-        "https://calendar.google.com/calendar/ical/tfovkufa1g4bflfg2oo8j4798k@group.calendar.google.com/public/basic.ics"
-    )
+    Fetch and parse calendar events from Google Calendar ICS feed
+
+    TODO:
+        Make it possible to get data from multiple ics files.
+        Reimplement this using classes to make it work better with doxygen?
+    """
+    r = requests.get(Config.CALENDAR_ICS_URL)
     calendar = icalendar.Calendar.from_ical(r.text)
 
     """A list of event descripions and a list of the times of events. This will be returned."""
-    calendar_out: dict[str, dict[str, dict[str, str]]] = {"events": {}, "times": {}}
+    calendar_out: dict[str, dict] = {"events": {}, "times": {}}
 
     for event in calendar.walk("VEVENT"):
         uid = str(event.get("UID"))
@@ -32,10 +41,10 @@ def get_json():
             "color": str(event.get("COLOR")),
         }
         calendar_out["events"][uid] = data
+
         if not event.get("RRULE"):
             dtstart = event.get("DTSTART")
             dtend = event.get("DTEND")
-            uid = str(event.get("UID"))
             data = {
                 "start": dtstart.dt.strftime("%Y-%m-%dT%H:%M%z"),
                 "end": dtend.dt.strftime("%Y-%m-%dT%H:%M%z"),
@@ -53,5 +62,5 @@ def get_json():
         }
         calendar_out["times"][uid] = data
 
-    # dict will automatically be converted to json by flask.
+    # Dict will automatically be converted to JSON.
     return calendar_out

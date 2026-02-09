@@ -1,27 +1,70 @@
-from flask import Flask, jsonify
-from flask_limiter.errors import RateLimitExceeded
+import logging
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from slowapi.errors import RateLimitExceeded
 
 from app.config import Config
-from app.db import close_db, init_db
+from app.db import db
 from app.limiter import limiter
-from app.routes.calendar import calendar_bp
-from app.routes.main import main_bp
+from app.routes.calendar import router as calendar_router
+from app.routes.main import router as main_router
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("Starting up application...")
+    db.init(Config)
+    logger.info("Database initialized")
+
+    yield
+
+    # Shutdown
+    logger.info("Shutting down application...")
+    db.close()
+    logger.info("Database connections closed")
 
 
 def create_app(config_object=Config):
-    app = Flask(__name__)
-    app.config.from_object(config_object)
+    app = FastAPI(
+        lifespan=lifespan,
+        docs_url="/docs" if config_object.DEBUG else None,
+        redoc_url="/redoc" if config_object.DEBUG else None,
+    )
 
-    limiter.init_app(app)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=config_object.ALLOWED_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_headers=["*"],
+    )
 
-    @app.errorhandler(RateLimitExceeded)
-    def ratelimit_handler(e):
-        return jsonify({"error": "Too many requests"}), 429
+    app.state.limiter = limiter
 
-    init_db(app)
-    app.teardown_appcontext(close_db)
+    @app.exception_handler(Exception)
+    async def global_exception_handler(request: Request, exc: Exception):
+        logger.error(f"Unhandled exception: {exc}", exc_info=True)
 
-    app.register_blueprint(main_bp)
-    app.register_blueprint(calendar_bp)
+        return JSONResponse(status_code=500, content={"error": "Internal server error"})
+
+    @app.exception_handler(RateLimitExceeded)
+    async def ratelimit_handler(request: Request, exc: RateLimitExceeded):
+        client_host = request.client.host if request.client else "unknown"
+        logger.warning(f"Rate limit exceeded for {client_host}")
+
+        return JSONResponse(status_code=429, content={"error": "Too many requests"})
+
+    # Routers
+    app.include_router(main_router)
+    app.include_router(calendar_router)
 
     return app
