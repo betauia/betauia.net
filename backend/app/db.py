@@ -9,7 +9,7 @@ class DatabasePool:
     def __init__(self):
         self._pool: AsyncConnectionPool | None = None
 
-    def init(self, config):
+    async def init(self, config):
         conninfo = (
             f"dbname={config.POSTGRES_DB} "
             f"user={config.POSTGRES_USER} "
@@ -17,7 +17,8 @@ class DatabasePool:
             f"host={config.POSTGRES_HOST} "
             f"port={config.POSTGRES_PORT}"
         )
-        self._pool = AsyncConnectionPool(conninfo, min_size=1, max_size=10)
+        self._pool = AsyncConnectionPool(conninfo, min_size=1, max_size=10, open=False)
+        await self._pool.open()
 
     @asynccontextmanager
     async def connection(self) -> AsyncGenerator[psycopg.AsyncConnection]:

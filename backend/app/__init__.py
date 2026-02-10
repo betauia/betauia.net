@@ -8,6 +8,7 @@ from slowapi.errors import RateLimitExceeded
 
 from app.config import Config
 from app.db import db
+from app.init_db import init_tables, seed_database
 from app.limiter import limiter
 from app.routes.calendar import router as calendar_router
 from app.routes.main import router as main_router
@@ -22,8 +23,15 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     # Startup
     logger.info("Starting up application...")
-    db.init(Config)
+    await db.init(Config)
     logger.info("Database initialized")
+
+    logger.info("Initializing database tables...")
+    await init_tables(db)
+
+    if Config.DEBUG:
+        logger.info("Seeding development data...")
+        await seed_database(db)
 
     yield
 
