@@ -16,8 +16,36 @@ def ping(request: Request):
 
 
 @router.get("/health")
-def health():
+async def health():
+    """Health check endpoint"""
     return {"status": "healthy"}
+
+
+@router.get("/players")
+@limiter.limit("60/minute")
+async def get_players(request: Request, conn=Depends(get_db_dependency)):
+    """Get all players from the database"""
+    async with conn.cursor() as cur:
+        await cur.execute(
+            """
+            SELECT id, name, level, created_at
+            FROM players
+            ORDER BY level DESC, name ASC
+            """
+        )
+        rows = await cur.fetchall()
+
+    players = [
+        {
+            "id": row[0],
+            "name": row[1],
+            "level": row[2],
+            "created_at": row[3].isoformat() if row[3] else None,
+        }
+        for row in rows
+    ]
+
+    return {"players": players, "count": len(players)}
 
 
 if Config.DEBUG:
