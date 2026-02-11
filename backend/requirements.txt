@@ -2,6 +2,7 @@ fastapi
 uvicorn[standard]
 slowapi
 icalendar
-psycopg[binary,pool]
 recurring_ical_events
 requests
+sqlalchemy[asyncio]
+asyncpg
