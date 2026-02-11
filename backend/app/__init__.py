@@ -7,9 +7,9 @@ from fastapi.responses import JSONResponse
 from slowapi.errors import RateLimitExceeded
 
 from app.config import Config
-from app.db import db
-from app.init_db import init_tables, seed_database
+from app.db import db, seeders
 from app.limiter import limiter
+from app.models import models
 from app.routes.calendar import router as calendar_router
 from app.routes.main import router as main_router
 
@@ -21,24 +21,17 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
-    logger.info("Starting up application...")
-    await db.init(Config)
-    logger.info("Database initialized")
-
-    logger.info("Initializing database tables...")
-    await init_tables(db)
+    logger.info("Starting up...")
+    await db.connect(Config)
+    await db.create_tables(models)
 
     if Config.DEBUG:
-        logger.info("Seeding development data...")
-        await seed_database(db)
+        await db.seed(seeders)
 
     yield
 
-    # Shutdown
-    logger.info("Shutting down application...")
     await db.close()
-    logger.info("Database connections closed")
+    logger.info("Shutdown complete")
 
 
 def create_app(config_object=Config):
