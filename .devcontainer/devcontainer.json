@@ -9,8 +9,11 @@
   "workspaceFolder": "/workspaces",
 
   "mounts": [
-    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,readonly"
+    "source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"
   ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/ssh-agent"
+  },
 
   "customizations": {
     "vscode": {
