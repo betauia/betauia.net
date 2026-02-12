@@ -9,7 +9,6 @@ from slowapi.errors import RateLimitExceeded
 from app.config import Config
 from app.db import db, seeders
 from app.limiter import limiter
-from app.models import models
 from app.routes.v1 import v1_router
 
 logging.basicConfig(
@@ -22,7 +21,6 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     logger.info("Starting up...")
     await db.connect(Config)
-    await db.create_tables(models)
 
     if Config.DEBUG:
         await db.seed(seeders)
@@ -66,7 +64,6 @@ def create_app(config_object=Config):
     # API Routes
     app.include_router(v1_router)
 
-    # Root endpoint to show available API versions
     @app.get("/")
     async def root():
         return {

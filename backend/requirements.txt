@@ -6,3 +6,5 @@ recurring_ical_events
 requests
 sqlalchemy[asyncio]
 asyncpg
+alembic
+psycopg2-binary

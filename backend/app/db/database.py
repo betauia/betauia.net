@@ -7,8 +7,6 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
 )
 
-from app.models.base import Base
-
 
 class Database:
     def __init__(self):
@@ -37,22 +35,10 @@ class Database:
                 await session.rollback()
                 raise
 
-    async def create_tables(self, models: list):
-        if self.engine is None:
-            raise RuntimeError("Database not connected. Call connect() first.")
-
-        # Automated with the import and all
-        for model in models:
-            _ = model  # Loaded model
-
-        async with self.engine.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-
     async def seed(self, seeders):
         async with self.session() as session:
             for seeder in seeders:
-                if await seeder.should_run(session):
-                    await seeder.run(session)
+                await seeder.run(session)
 
     async def close(self):
         if self.engine:

@@ -1,0 +1,8 @@
+{
+  "exclude": ["**/__pycache__", ".venv", "alembic/versions"],
+  "ignore": ["alembic/versions/*.py"],
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.13",
+  "typeCheckingMode": "basic"
+}
