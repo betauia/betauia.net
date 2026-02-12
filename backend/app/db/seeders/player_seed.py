@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import delete
 
 from app.db.seeders.base import Seeder
 from app.models.player import Player
@@ -7,14 +7,12 @@ from app.models.player import Player
 class PlayerSeeder(Seeder):
     name = "player_seed"
 
-    async def should_run(self, session):
-        result = await session.execute(select(Player).limit(1))
-        return result.scalar_one_or_none() is None
-
     async def run(self, session):
+        await session.execute(delete(Player))
+
         players = [
-            Player(name="Arne", level=67),
-            Player(name="Gamer1", level=12),
-            Player(name="Gamer2", level=23),
+            Player(name="Arne", level=67, total_exp=243201),
+            Player(name="Auby", level=69, total_exp=270420),
         ]
+
         session.add_all(players)
