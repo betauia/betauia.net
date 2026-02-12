@@ -4,15 +4,13 @@ import icalendar
 import recurring_ical_events
 import requests
 from fastapi import APIRouter, Request
-from slowapi import Limiter
-from slowapi.util import get_remote_address
 
 from app.config import Config
+from app.limiter import limiter
 
 # import logging
 
 router = APIRouter()
-limiter = Limiter(key_func=get_remote_address)
 # logger = logging.getLogger(__name__)  # Simple note for future logging...
 
 
