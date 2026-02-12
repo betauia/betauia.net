@@ -10,8 +10,7 @@ from app.config import Config
 from app.db import db, seeders
 from app.limiter import limiter
 from app.models import models
-from app.routes.calendar import router as calendar_router
-from app.routes.main import router as main_router
+from app.routes.v1 import v1_router
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -64,8 +63,21 @@ def create_app(config_object=Config):
 
         return JSONResponse(status_code=429, content={"error": "Too many requests"})
 
-    # Routers
-    app.include_router(main_router)
-    app.include_router(calendar_router)
+    # API Routes
+    app.include_router(v1_router)
+
+    # Root endpoint to show available API versions
+    @app.get("/")
+    async def root():
+        return {
+            "message": "Welcome to the API of betauia.net",
+            "versions": {
+                "v1": {
+                    "status": "stable",
+                    "base_url": "/v1",
+                    "docs": "/docs" if config_object.DEBUG else None,
+                }
+            },
+        }
 
     return app
