@@ -20,16 +20,14 @@ The frontend docs are under `/docs/frontend/`:
 
 - [Astro](frontend/astro.md)
 - [~~Tailwind CSS~~](frontend/tailwind.md) (PLANNED)
-- [Exams](frontend/exams.md)
 
 ### Backend
 
 Info about tooling and how the backend works are under `/docs/backend/`:
 
-- [Flask](backend/flask.md)
+- [FastAPI](backend/fastapi.md)
 - [DB](backend/db.md)
 - [Rate Limiting](backend/ratelimit.md)
-- [~~API~~](backend/api.md) (PLANNED)
 
 ### Project
 
