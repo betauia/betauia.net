@@ -1,28 +1,116 @@
 # DB
 
-The backend uses Postgresql as a database. It also uses SQL, the same as most of you have done in IKT105.
+The backend uses Postgresql as a database which is an SQL-database like the ones used in IKT-105. To ignore writing mistakes, and for quality of life, we use SQLAlchemy to handle tables as a class.
 
-## Connection
+## Models
 
-The connection can be established in a Flask blueprint like this:
+The models for the tables are created in the `/app/models/` folder and is class based with SQLAlchemy. A simple table can be made like this:
 
 ```py
-from flask import Blueprint, jsonify
+# /app/models/player.py
 
-from app.db import get_db
+from datetime import datetime
 
-main_bp = Blueprint("main", __name__)
+from sqlalchemy import DateTime, Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.models.base import Base
 
 
-@main_bp.route("/db")
-def db_test():
-    conn = get_db()
-    cur = conn.cursor()
-    cur.execute("SELECT 1;")
-    result = cur.fetchone()[0]
-    cur.close()
-    return {"db": result}, 200
+class Player(Base):
+    __tablename__ = "players"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    name: Mapped[str] = mapped_column(String(100))
+    level: Mapped[int] = mapped_column(Integer, default=1)
+    total_exp: Mapped[int] = mapped_column(Integer, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "name": self.name,
+            "level": self.level,
+            "total_exp": self.total_exp,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+        }
 ```
+
+## Seeding data in development
+
+To make it easier to test features in development, some dummy data can be seeded by implementing a function for it in the `/app/db/seeder/` folder like so:
+
+```py
+# /app/db/seeder/player_seed.py
+
+from sqlalchemy import delete
+
+from app.db.seeders.base import Seeder
+from app.models.player import Player
+
+
+class PlayerSeeder(Seeder):
+    name = "player_seed"
+
+    async def run(self, session):
+        await session.execute(delete(Player))
+
+        players = [
+            Player(name="Arne", level=67, total_exp=243201),
+            Player(name="Auby", level=69, total_exp=270420),
+        ]
+
+        session.add_all(players)
+```
+
+## Use in routes
+
+To use the database, `get_session()` needs to be called in the parameters to execute the queries. The different methods can be imported from `sqlalchemy` like this:
+
+```py
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.db import get_session
+from app.models.player import Player
+
+# ...
+
+@router.get("/players")
+@limiter.limit("60/minute")
+async def get_players(request: Request, session: AsyncSession = Depends(get_session)):
+    """Get all players"""
+    result = await session.execute(
+        select(Player).order_by(Player.level.desc(), Player.name.asc())
+    )
+    players = result.scalars().all()
+
+    return {"players": [player.to_dict() for player in players], "count": len(players)}
+```
+
+## Migrations
+
+When it is needed to alter a table, we use `alembic` to keep up with versioning changes to the tables. The `/alembic` folder should never need manual interference, but inside it, all the versionings will be stored.
+
+When you modify or create SQLAlchemy models in `app/models/`, generate a migration that will be automatically loaded at build:
+
+```bash
+# Development
+docker compose exec backend alembic revision --autogenerate -m "add user table"
+
+# Production
+docker compose -f compose.yaml -f compose.prod.yaml exec backend alembic revision --autogenerate -m "add user table"
+```
+
+> Remember to use clear names that is easy to navigate to specific changes with.
+
+This will:
+
+1. Compare your models with the database schema
+2. Generate a migration file in `alembic/versions/`
+3. Include both `upgrade()` and `downgrade()` functions
+
+**Important:** Always review the generated migration file before committing!
 
 ## Cleaning the DB
 
