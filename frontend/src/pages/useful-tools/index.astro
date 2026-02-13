@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+
+import Card from "@components/ui/Card.astro";
+
+import Prose from "@components/semantics/Prose.astro";
+---
+
+<BaseLayout title="Verktøy">
+  <Container>
+    <Prose>
+      <h1>
+        Verktøy Cheat-sheet
+      </h1>
+    </Prose>
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <!-- NEED TO ADD IMAGES TO EACH CARD THAT RELATE TO THE THING THEY ARE ABOUT -->
+      <Card
+        title="AI"
+        href="useful-tools/ai"
+        text="Husk å alltid si 'vær så snill' og 'tusen takk' til AI-en. Just in case..."
+      />
+      <Card
+        title="Dev"
+        href="/useful-tools/development"
+        text="Top 10 nettsider Arne Wiklund ikke vil at du skal vite om"
+      />
+      <Card title="Cyber" href="useful-tools/cyber" text="Ikke klikk på random lenker..." />
+      <Card
+        title="Web Verktøy"
+        href="useful-tools/webtools"
+        text="Om du leter etter noe for å slippe å bruke JS. Det finnes ikke."
+      />
+      <Card title="Misc" href="useful-tools/misc" text="Det vi ikke gidder å sortere" />
+    </div>
+  </Container>
+</BaseLayout>
