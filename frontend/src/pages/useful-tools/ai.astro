@@ -1,0 +1,154 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+
+import Card from "@components/ui/Card.astro";
+import { Image } from "astro:assets";
+
+import Prose from "@components/semantics/Prose.astro";
+
+import ChatGPTLogo from "@assets/usefultools/aipage/chatGPTlogo.png";
+import MistralLogo from "@assets/usefultools/aipage/mistrallogo.png";
+import ClaudeLogo from "@assets/usefultools/aipage/claudelogo.png";
+import CopilotLogo from "@assets/usefultools/aipage/copilotlogo.png";
+import GeminiLogo from "@assets/usefultools/aipage/geminilogo.png";
+---
+
+<BaseLayout title="AI Verktøy">
+  <Container>
+    <Prose>
+      <h1>AI Verktøy</h1>
+    </Prose>
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-4">
+      <!-- CHATGPT -->
+      <a
+        class="text-sm/6 font-semibold text-white"
+        href="https://chatgpt.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="flex h-full min-w-0 gap-x-4 rounded-lg bg-bg-base p-[20px] hover:bg-bg-raised dark:bg-dark-bg-base hover:dark:bg-dark-bg-raised"
+        >
+          <Image
+            src={ChatGPTLogo}
+            alt="ChatGPT logo"
+            class="size-12 flex-none rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
+          />
+          <div class="min-w-0 flex-grow flex-col items-center gap-2">
+            <p class="text-sm/6 font-semibold text-black dark:text-white">ChatGPT</p>
+            <Prose>
+              <p style="font-size: x-small; opacity:0.75">OpenAI sin generell LLM</p>
+            </Prose>
+          </div>
+        </div>
+      </a>
+      <!-- MISTRAL -->
+      <a
+        class="text-sm/6 font-semibold text-white"
+        href="https://chat.mistral.ai/chat"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="flex h-full min-w-0 gap-x-4 rounded-lg bg-bg-base p-[20px] hover:bg-bg-raised dark:bg-dark-bg-base hover:dark:bg-dark-bg-raised"
+        >
+          <Image
+            src={MistralLogo}
+            alt="Mistral logo"
+            class="size-12 flex-none rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
+          />
+          <div class="min-w-0 flex-grow flex-col items-center gap-2">
+            <p class="text-sm/6 font-semibold text-black dark:text-white">Mistral</p>
+            <Prose>
+              <p style="font-size: x-small; opacity:0.75">En LLM fra frankrike. Generell bruk</p>
+            </Prose>
+          </div>
+        </div>
+      </a>
+      <!-- CLAUDE -->
+      <a
+        class="text-sm/6 font-semibold text-white"
+        href="https://claude.ai/login"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="flex h-full min-w-0 gap-x-4 rounded-lg bg-bg-base p-[20px] hover:bg-bg-raised dark:bg-dark-bg-base hover:dark:bg-dark-bg-raised"
+        >
+          <Image
+            src={ClaudeLogo}
+            alt="Claude logo"
+            class="size-12 flex-none rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
+          />
+          <div class="min-w-0 flex-grow flex-col items-center gap-2">
+            <p class="text-sm/6 font-semibold text-black dark:text-white">ClaudeAI</p>
+            <Prose>
+              <p style="font-size: x-small; opacity:0.75">En chatbot bygget for koding</p>
+            </Prose>
+          </div>
+        </div>
+      </a>
+      <!-- COPILOT -->
+      <a
+        class="text-sm/6 font-semibold text-white"
+        href="https://copilot.microsoft.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="flex h-full min-w-0 gap-x-4 rounded-lg bg-bg-base p-[20px] hover:bg-bg-raised dark:bg-dark-bg-base hover:dark:bg-dark-bg-raised"
+        >
+          <Image
+            src={CopilotLogo}
+            alt="Copilot logo"
+            class="size-12 flex-none rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
+          />
+          <div class="min-w-0 flex-grow flex-col items-center gap-2">
+            <p class="text-sm/6 font-semibold text-black dark:text-white">Copilot</p>
+            <Prose>
+              <p style="font-size: x-small; opacity:0.75">Copilot sin generell LLM</p>
+            </Prose>
+          </div>
+        </div>
+      </a>
+
+      <!-- GEMINI hover:dark:bg-dark-bg-raised dark:bg-dark-bg-raised-->
+      <a
+        class="text-sm/6 font-semibold text-white"
+        href="https://gemini.google.com/app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class="flex h-full min-w-0 gap-x-4 rounded-lg bg-bg-base p-[20px] hover:bg-bg-raised dark:bg-dark-bg-base hover:dark:bg-dark-bg-raised"
+        >
+          <Image
+            src={GeminiLogo}
+            alt="Gemini logo"
+            class="size-12 flex-none rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10"
+          />
+          <div class="min-w-0 flex-grow flex-col items-center gap-2">
+            <p class="text-sm/6 font-semibold text-black dark:text-white">Gemini</p>
+            <Prose>
+              <p style="font-size: x-small; opacity:0.75">Google sin generell LLM</p>
+            </Prose>
+          </div>
+        </div>
+      </a>
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .hover-background-dark {
+    padding: 20px;
+    color: black;
+    background-color: #0f151f; /* Opaque light blue background */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+
+  .hover-background-dark:hover {
+    background-color: #151e2d; /* Semi-transparent background */
+  }
+</style>
