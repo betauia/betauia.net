@@ -8,3 +8,8 @@ sqlalchemy[asyncio]
 asyncpg
 alembic
 psycopg2-binary
+python-jose[cryptography]
+argon2-cffi
+python-multipart
+pydantic[email]
+fastapi-mail

@@ -1,0 +1,107 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import AuthCheck from "@components/AuthCheck.astro";
+---
+
+<AuthCheck />
+
+<BaseLayout title="Min Bruker">
+  <Container>
+    <div class="mb-8 flex items-center justify-between">
+      <h1 class="text-4xl font-bold text-fg-base dark:text-dark-fg-base">Min Bruker</h1>
+      <button
+        id="logout-btn"
+        class="inline-flex items-center justify-center gap-2 rounded-md border border-accent bg-accent px-4 py-1.5 font-medium text-dark-fg-base shadow-sm transition-all hover:opacity-80 hover:shadow-md"
+      >
+        Logg ut
+      </button>
+    </div>
+
+    <div class="space-y-6">
+      <div
+        class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow-sm dark:border-dark-fg-muted dark:bg-dark-bg-raised"
+      >
+        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base">Om meg</h2>
+        <dl class="space-y-4">
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Brukernavn</dt>
+            <dd id="user-username" class="mt-1 font-semibold text-fg-base dark:text-dark-fg-base">
+              -
+            </dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Email</dt>
+            <dd id="user-email" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Navn</dt>
+            <dd id="user-fullname" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Matallergier</dt>
+            <dd id="user-allergies" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div
+        class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow-sm dark:border-dark-fg-muted dark:bg-dark-bg-raised"
+      >
+        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base">Historie</h2>
+        <dl class="space-y-3">
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Opprettet</dt>
+            <dd id="user-created" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
+          </div>
+          <div>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">
+              Sist oppdatert
+            </dt>
+            <dd id="user-updated" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  import { getCurrentUser, logout } from "@lib/auth";
+
+  const logoutBtn = document.getElementById("logout-btn");
+
+  async function loadUserProfile() {
+    const user = await getCurrentUser();
+
+    const usernameEl = document.getElementById("user-username");
+    const emailEl = document.getElementById("user-email");
+    const fullnameEl = document.getElementById("user-fullname");
+    const allergiesEl = document.getElementById("user-allergies");
+    const userIdEl = document.getElementById("user-id");
+    const createdEl = document.getElementById("user-created");
+    const updatedEl = document.getElementById("user-updated");
+
+    if (usernameEl) usernameEl.textContent = user.username;
+    if (emailEl) emailEl.textContent = user.email;
+    if (fullnameEl) fullnameEl.textContent = user.full_name;
+    if (allergiesEl && user.allergies) allergiesEl.textContent = user.allergies;
+    if (userIdEl) userIdEl.textContent = `#${user.id}`;
+
+    if (createdEl) {
+      const createdDate = new Date(user.created_at);
+      createdEl.textContent = createdDate.toLocaleString();
+    }
+
+    if (updatedEl) {
+      const updatedDate = new Date(user.updated_at);
+      updatedEl.textContent = updatedDate.toLocaleString();
+    }
+  }
+
+  loadUserProfile();
+
+  logoutBtn?.addEventListener("click", () => {
+    logout();
+  });
+</script>

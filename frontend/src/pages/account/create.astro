@@ -1,0 +1,193 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+---
+
+<BaseLayout title="Registrering">
+  <Container class="flex min-h-svh items-center justify-center">
+    <div class="w-full max-w-md">
+      <div class="">
+        <h1 class="text-4xl font-bold">Fullfør registrering</h1>
+        <p class="mb-6 mt-2 text-fg-muted dark:text-dark-fg-muted">
+          Fyll inn detaljene under for å opprette brukeren din.
+        </p>
+      </div>
+
+      <div
+        class="rounded-lg border border-fg-muted bg-bg-raised p-8 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
+      >
+        <form id="complete-registration-form">
+          <input type="hidden" id="token" name="token" />
+
+          <div class="mb-2">
+            <label
+              for="username"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Brukernavn
+            </label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              required
+              minlength="3"
+              maxlength="50"
+              class="mb-1 mt-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="arnwik"
+            />
+            <p class="mt-1 text-xs text-fg-muted dark:text-dark-fg-muted">3-50 tegn</p>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="full_name"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Fullt navn
+            </label>
+            <input
+              id="full_name"
+              name="full_name"
+              type="text"
+              maxlength="100"
+              class="my-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="Arne Wiklund"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="allergies"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Matallergier (valgfri)
+            </label>
+            <input
+              id="allergies"
+              name="allergies"
+              type="text"
+              maxlength="255"
+              class="my-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="Nøtter, egg..."
+            />
+          </div>
+
+          <div class="mb-2">
+            <label
+              for="password"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Passord
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              minlength="8"
+              maxlength="128"
+              class="mb-1 mt-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="••••••••••••"
+            />
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Minimum 8 tegn</p>
+          </div>
+
+          <div class="mb-6">
+            <label
+              for="confirm_password"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Bekreft passord
+            </label>
+            <input
+              id="confirm_password"
+              name="confirm_password"
+              type="password"
+              required
+              minlength="8"
+              class="my-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="••••••••••••"
+            />
+          </div>
+
+          <div id="error-message" class="mb-6 hidden rounded-md bg-red-50 p-4 dark:bg-red-900/20">
+            <p class="text-sm text-red-800 dark:text-red-400"></p>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-600"
+          >
+            Opprett bruker
+          </button>
+        </form>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  import { completeRegistration } from "@lib/auth";
+
+  const form = document.getElementById("complete-registration-form") as HTMLFormElement;
+  const errorMessage = document.getElementById("error-message");
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const tokenInput = document.getElementById("token") as HTMLInputElement;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("token");
+
+  if (!token) {
+    showError(
+      "Ugyldig eller manglende bekreftelsestoken. Vennligst be om en ny registreringslenke."
+    );
+    if (submitBtn) submitBtn.disabled = true;
+  } else {
+    tokenInput.value = token;
+  }
+
+  function showError(message: string) {
+    if (errorMessage) {
+      errorMessage.classList.remove("hidden");
+      errorMessage.querySelector("p")!.textContent = message;
+    }
+  }
+
+  form?.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+    const confirmPassword = formData.get("confirm_password") as string;
+    const fullName = formData.get("full_name") as string;
+    const allergies = formData.get("allergies") as string;
+    const token = formData.get("token") as string;
+
+    if (password !== confirmPassword) {
+      showError("Passordene samsvarer ikke");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Oppretter bruker...";
+
+    try {
+      await completeRegistration({
+        token,
+        username,
+        password,
+        full_name: fullName,
+        allergies: allergies || undefined,
+      });
+
+      window.location.href = "/login";
+    } catch (error) {
+      showError(error instanceof Error ? error.message : "Registrering feilet");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Opprett bruker";
+    }
+  });
+</script>

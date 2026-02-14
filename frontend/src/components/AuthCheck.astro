@@ -1,0 +1,12 @@
+<script>
+  import { isLoggedIn } from "@lib/auth";
+
+  async function checkAuth() {
+    if (!isLoggedIn()) {
+      window.location.href = "/login?redirect=" + encodeURIComponent(window.location.pathname);
+      return;
+    }
+  }
+
+  checkAuth();
+</script>
