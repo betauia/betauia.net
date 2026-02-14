@@ -26,7 +26,7 @@ import { navigationDropdowns } from "@data/navBarConfig";
 
 <div
   id="mobile-menu"
-  class="fixed inset-x-0 top-16 z-30 max-h-0 overflow-hidden bg-bg-raised opacity-0 shadow-lg transition-[max-height,opacity] duration-300 ease-out dark:bg-dark-bg-base md:hidden"
+  class="fixed inset-x-0 top-16 z-30 max-h-0 overflow-hidden bg-bg-raised pb-2 opacity-0 shadow-lg transition-[max-height,opacity] duration-300 ease-out dark:bg-dark-bg-base md:hidden"
 >
   <nav class="mx-auto max-w-6xl px-4 py-4">
     {
@@ -69,9 +69,36 @@ import { navigationDropdowns } from "@data/navBarConfig";
       ))
     }
 
-    <!-- <div class="mt-2 pt-4">
-      <Button href="/login" type="secondary" class="w-full">Logg inn</Button>
-    </div> -->
+    <div class="mt-2 pt-4">
+      <!-- Show when not logged in -->
+      <div id="mobile-login-btn">
+        <a
+          href="/login"
+          class="flex w-full items-center justify-center gap-2 rounded-md border border-fg-muted bg-bg-raised px-4 py-2 font-medium text-fg-base transition-all hover:text-fg-muted hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+        >
+          <Icon name="fa-solid:user" class="h-4 w-4" />
+          <span>Logg inn</span>
+        </a>
+      </div>
+      <!-- Show when logged in -->
+      <div id="mobile-user-menu" class="hidden space-y-2">
+        <a
+          href="/account"
+          class="flex w-full items-center justify-center gap-2 rounded-md border border-fg-muted bg-bg-raised px-4 py-2 font-medium text-fg-base transition-all hover:text-fg-muted hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+        >
+          <Icon name="fa-solid:user-circle" class="h-4 w-4" />
+          <span>Min konto</span>
+        </a>
+        <button
+          id="mobile-logout-btn"
+          type="button"
+          class="flex w-full items-center justify-center gap-2 rounded-md border border-fg-muted bg-bg-raised px-4 py-2 font-medium text-fg-base transition-all hover:text-fg-muted hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+        >
+          <Icon name="fa-solid:sign-out-alt" class="h-4 w-4" />
+          <span>Logg ut</span>
+        </button>
+      </div>
+    </div>
   </nav>
 </div>
 
@@ -88,3 +115,36 @@ import { navigationDropdowns } from "@data/navBarConfig";
     transform: translateY(-8px) rotate(-45deg);
   }
 </style>
+
+<script>
+  import { isLoggedIn, logout } from "@lib/auth";
+
+  function updateMobileAuth() {
+    const loginBtn = document.getElementById("mobile-login-btn");
+    const userMenu = document.getElementById("mobile-user-menu");
+
+    if (loginBtn && userMenu) {
+      if (isLoggedIn()) {
+        loginBtn.classList.add("hidden");
+        userMenu.classList.remove("hidden");
+      } else {
+        loginBtn.classList.remove("hidden");
+        userMenu.classList.add("hidden");
+      }
+    }
+  }
+
+  // Run on initial load
+  updateMobileAuth();
+
+  // Listen for auth state changes
+  document.addEventListener("auth:changed", updateMobileAuth);
+
+  // Handle logout button click
+  const logoutBtn = document.getElementById("mobile-logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      logout();
+    });
+  }
+</script>

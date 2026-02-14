@@ -1,3 +1,3 @@
-from app.db.seeders.player_seed import PlayerSeeder
+from app.db.seeders.user_seed import UserSeeder
 
-seeders = [PlayerSeeder()]
+seeders = [UserSeeder()]

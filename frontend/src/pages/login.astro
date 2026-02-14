@@ -1,0 +1,162 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+---
+
+<BaseLayout title="Logg inn">
+  <Container>
+    <div class="mx-auto max-w-md">
+      <h1 class="mb-8 text-3xl font-bold">Logg Inn</h1>
+
+      <div
+        class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised"
+      >
+        <h2 class="mb-4 text-xl font-bold">Eksisterende bruker?</h2>
+        <form id="login-form">
+          <div class="mb-4">
+            <label for="login-email" class="mb-2 block text-sm font-medium">E-postadresse</label>
+            <input
+              id="login-email"
+              name="email"
+              type="email"
+              required
+              class="w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="deg@eksempel.no"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label for="login-password" class="mb-2 block text-sm font-medium">Passord</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              required
+              class="w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="••••••••••••"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="login-btn"
+            class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
+          >
+            Logg inn
+          </button>
+        </form>
+      </div>
+
+      <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">- eller -</p>
+
+      <div
+        class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
+      >
+        <h2 class="mb-4 text-xl font-bold">Ny bruker?</h2>
+        <form id="register-form">
+          <div class="mb-6">
+            <label for="register-email" class="mb-2 block text-sm font-medium">
+              E-postadresse
+            </label>
+            <input
+              id="register-email"
+              name="email"
+              type="email"
+              required
+              class="w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
+              placeholder="deg@eksempel.no"
+            />
+            <p class="mt-2 text-xs text-fg-muted dark:text-dark-fg-muted">
+              Vi sender deg en bekreftelseslenke
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            id="register-btn"
+            class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
+          >
+            Lag bruker
+          </button>
+        </form>
+      </div>
+
+      <!-- Messages -->
+      <div id="error-message" class="mt-6 hidden rounded-md bg-red-200 p-4 dark:bg-red-900/20">
+        <p class="text-sm text-red-800 dark:text-red-400"></p>
+      </div>
+      <div
+        id="success-message"
+        class="mt-6 hidden rounded-md bg-green-200 p-4 dark:bg-green-900/20"
+      >
+        <p class="text-sm text-green-900 dark:text-green-400"></p>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  import { login, initiateRegistration } from "@lib/auth";
+
+  const loginForm = document.getElementById("login-form") as HTMLFormElement;
+  const registerForm = document.getElementById("register-form") as HTMLFormElement;
+  const errorMessage = document.getElementById("error-message");
+  const successMessage = document.getElementById("success-message");
+
+  function showError(message: string) {
+    errorMessage?.classList.remove("hidden");
+    successMessage?.classList.add("hidden");
+    if (errorMessage) errorMessage.querySelector("p")!.textContent = message;
+  }
+
+  function showSuccess(message: string) {
+    successMessage?.classList.remove("hidden");
+    errorMessage?.classList.add("hidden");
+    if (successMessage) successMessage.querySelector("p")!.textContent = message;
+  }
+
+  // Login
+  loginForm?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const formData = new FormData(loginForm);
+    const loginBtn = document.getElementById("login-btn") as HTMLButtonElement;
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logger inn...";
+
+    try {
+      await login({
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+      });
+      window.location.href = "/account";
+    } catch (error) {
+      showError(error instanceof Error ? error.message : "Innlogging feilet");
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Logg inn";
+    }
+  });
+
+  // Register
+  registerForm?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const formData = new FormData(registerForm);
+    const registerBtn = document.getElementById("register-btn") as HTMLButtonElement;
+
+    registerBtn.disabled = true;
+    registerBtn.textContent = "Sender...";
+
+    try {
+      await initiateRegistration({
+        email: formData.get("email") as string,
+      });
+      showSuccess("Sjekk e-posten din.");
+      registerForm.reset();
+    } catch (error) {
+      showError(error instanceof Error ? error.message : "Noe gikk galt");
+    } finally {
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Send bekreftelseslenke";
+    }
+  });
+</script>

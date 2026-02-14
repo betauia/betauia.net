@@ -1,10 +1,11 @@
 ---
 export interface Props {
-  href: string;
+  href?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
   type?: "primary" | "secondary";
   download?: string;
   class?: string;
+  id?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   type = "primary",
   class: extra = "",
   download,
+  id,
 } = Astro.props as Props;
 
 const base =
@@ -28,6 +30,14 @@ const padding = "px-4 py-1.5";
 const classes = `${base} ${variants[type]} ${padding} ${extra}`;
 ---
 
-<a href={href} target={target} class={classes} download={download}>
-  <slot />
-</a>
+{
+  href ? (
+    <a href={href} target={target} class={classes} download={download} id={id}>
+      <slot />
+    </a>
+  ) : (
+    <button type="button" class={classes} id={id}>
+      <slot />
+    </button>
+  )
+}

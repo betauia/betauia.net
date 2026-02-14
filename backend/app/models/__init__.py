@@ -1,6 +1,6 @@
 from app.models.base import Base
-from app.models.player import Player
+from app.models.user import User
 
-models = [Player]
+models = [User]
 
-__all__ = ["Base", "Player", "models"]
+__all__ = ["Base", "User", "models"]
