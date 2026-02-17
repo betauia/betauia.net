@@ -1,33 +1,50 @@
 ---
 import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { parse } from "yaml";
 
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-const albums = await getCollection("albums");
+// Load and parse all album info.yaml files at build time
+const albums = Object.entries(
+  import.meta.glob("/public/gallery/*/info.yaml", {
+    eager: true,
+    as: "raw",
+  })
+).map(([path, raw]) => {
+  const id = path.split("/").slice(-2, -1)[0];
+  const data = parse(raw);
+
+  return {
+    id,
+    title: data.title,
+    description: data.description,
+    cover: `/gallery/${id}/${data.cover}`,
+  };
+});
 ---
 
-<BaseLayout title="BetaSec">
+<BaseLayout title="Galleri">
   <Container>
     <div class="p-8">
-      <h1 class="my-8 text-center text-5xl font-bold">Gallery</h1>
-      <div class="max-w-(--breakpoint-sm) container mx-auto grid grid-cols-2 gap-8">
+      <h1 class="my-8 text-center text-5xl font-bold">Galleri</h1>
+
+      <div class="max-w-(--breakpoint-sm) container mx-auto grid grid-cols-3 gap-8">
         {
-          albums.map((item: any) => (
-            <a href={`/gallery/${item.id}`} class="group mb-4 block transition-all">
-              <Image
-                src={item.data.cover}
-                alt={item.data.title}
-                width={720}
-                quality="mid"
-                class:list={[
-                  "rounded-lg transition-all",
-                  "group-hover:opacity-90 group-hover:shadow-lg",
-                ]}
+          albums.map(album => (
+            <a href={`/gallery/${album.id}`} class="group block transition-all">
+              <img
+                src={album.cover}
+                alt={album.title}
+                loading="lazy"
+                class="rounded-lg transition-all group-hover:opacity-90 group-hover:shadow-lg"
               />
-              <div class="mt-4 text-center text-neutral-700">
-                <strong class="font-normal">{item.data.title}</strong>
-                <p class="text-xs">{item.data.description}</p>
+
+              <div class="text-fg dark:text-dark-fg mt-4 text-center">
+                <strong class="font-normal">
+                  <b>{album.title}</b>
+                </strong>
+                <p class="mt-2 text-xs text-fg-muted dark:text-dark-fg-muted">
+                  {album.description}
+                </p>
               </div>
             </a>
           ))

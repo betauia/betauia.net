@@ -1,61 +1,55 @@
 ---
 import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-
-import { getAlbumImages } from "../../utils/albums";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { parse } from "yaml";
 
 export async function getStaticPaths() {
-  const albums = await getCollection("albums");
+  const albums = Object.keys(import.meta.glob("/public/gallery/*/info.yaml"));
 
-  const paths = Object.values(albums).map(album => {
-    return {
-      params: {
-        id: album.id,
-      },
-      props: {
-        album,
-      },
-    };
+  return albums.map(path => {
+    const id = path.split("/").slice(-2, -1)[0];
+    return { params: { id } };
   });
-
-  return paths;
 }
 
-const { album } = Astro.props;
-const images = await getAlbumImages(album.id);
+const { id } = Astro.params;
+
+// Load album metadata
+const infoFile = Object.entries(
+  import.meta.glob("/public/gallery/*/info.yaml", {
+    eager: true,
+    as: "raw",
+  })
+).find(([path]) => path.includes(`/gallery/${id}/`));
+
+if (!infoFile) throw new Error(`Album not found: ${id}`);
+
+const data = parse(infoFile[1]);
+
+// Load all images in album folder
+const images = Object.keys(import.meta.glob("/public/gallery/*/*.{jpg,jpeg,png,webp,gif}"))
+  .filter(path => path.includes(`/gallery/${id}/`))
+  .map(path => `/gallery/${id}/${path.split("/").pop()}`);
 ---
 
-<BaseLayout title="BetaSec">
+<BaseLayout title={data.title}>
   <Container>
-    <div class="my-16 mb-32 text-center">
-      <h1 class="mb-8 text-5xl font-bold">
-        {album.data.title}
-      </h1>
-      <div class="container mx-auto my-8 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
+    <div class="p-8">
+      <h1 class="my-8 text-center text-5xl font-bold">{data.title}</h1>
+      <p class="mb-10 text-center text-fg-muted dark:text-dark-fg-muted">{data.description}</p>
+
+      <div class="container mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
-          images.map(image => (
-            <a
-              href={image.src}
-              data-pswp-width={image.width}
-              data-pswp-height={image.height}
-              class="mb-4 block"
-            >
-              <Image
-                src={image}
-                alt={`Image from ${album.data.title} album`}
-                quality="mid"
-                class="rounded-sm border border-transparent transition-all duration-300 ease-in-out hover:border-gray-300 hover:shadow-lg"
-                loading="lazy"
-              />
-            </a>
+          images.map(src => (
+            <img
+              src={src}
+              alt={data.title}
+              loading="lazy"
+              class="rounded-lg shadow-md transition-all hover:shadow-xl"
+            />
           ))
         }
       </div>
-      <p class="my-4 text-center text-lg">
-        <a href="/gallery/" class="text-white hover:underline">Go back →</a>
-      </p>
     </div>
   </Container>
 </BaseLayout>
