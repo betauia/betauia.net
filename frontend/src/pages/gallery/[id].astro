@@ -1,0 +1,55 @@
+---
+import Container from "@components/layout/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { parse } from "yaml";
+
+export async function getStaticPaths() {
+  const albums = Object.keys(import.meta.glob("/public/gallery/*/info.yaml"));
+
+  return albums.map(path => {
+    const id = path.split("/").slice(-2, -1)[0];
+    return { params: { id } };
+  });
+}
+
+const { id } = Astro.params;
+
+// Load album metadata
+const infoFile = Object.entries(
+  import.meta.glob("/public/gallery/*/info.yaml", {
+    eager: true,
+    as: "raw",
+  })
+).find(([path]) => path.includes(`/gallery/${id}/`));
+
+if (!infoFile) throw new Error(`Album not found: ${id}`);
+
+const data = parse(infoFile[1]);
+
+// Load all images in album folder
+const images = Object.keys(import.meta.glob("/public/gallery/*/*.{jpg,jpeg,png,webp,gif}"))
+  .filter(path => path.includes(`/gallery/${id}/`))
+  .map(path => `/gallery/${id}/${path.split("/").pop()}`);
+---
+
+<BaseLayout title={data.title}>
+  <Container>
+    <div class="p-8">
+      <h1 class="my-8 text-center text-5xl font-bold">{data.title}</h1>
+      <p class="mb-10 text-center text-fg-muted dark:text-dark-fg-muted">{data.description}</p>
+
+      <div class="container mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          images.map(src => (
+            <img
+              src={src}
+              alt={data.title}
+              loading="lazy"
+              class="rounded-lg shadow-md transition-all hover:shadow-xl"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
