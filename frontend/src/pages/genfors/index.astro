@@ -8,14 +8,12 @@ import Agenda from "@content/genfors/2026.md";
 import Prose from "@components/semantics/Prose.astro";
 ---
 
-<BaseLayout title="Generalforsamling 2026">
+<BaseLayout title="Generalforsamling BETA">
   <Container>
     <Prose>
       <h1>
-        Generalforsamling <span class="text-brand">2026</span>
+        Generalforsamlingen i <span class="text-brand">BETA</span>
       </h1>
-
-      <p>Tirsdag, 27. januar, kl. 16:15</p>
 
       <h2>Hva er generalforsamlingen?</h2>
       <p>
@@ -24,7 +22,12 @@ import Prose from "@components/semantics/Prose.astro";
         avgjørelser for Beta tas.
       </p>
 
-      <p><b>Alle medlemmer har stemmerett.</b></p>
+      <p><b>Frister:</b> fra og med generalforsamlingen 2027 skal generalforsamlingen annonseres
+        to (2) uker før dato med en midlertidig agenda. Innen én (1) uke før generalforsamlingen 
+        skal fullstendig agenda med saker som skal behandles legges ut.
+      </p>
+
+      <p><i>Alle medlemmer har stemmerett!</i></p>
 
       <h2>Viktig info</h2>
       <p>
@@ -40,35 +43,34 @@ import Prose from "@components/semantics/Prose.astro";
         forme studentlivet i Grimstad.
       </p>
 
-      <p><b>Æresmedlemmer kan foreslås som egen sak.</b></p>
+      <p><i>Æresmedlemmer kan foreslås som egen sak.</i></p>
     </Prose>
-
-    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
-      <Card
-        title="Meld deg på"
-        href="https://forms.cloud.microsoft/e/KGAvRMfKKz"
-        highlightText="Påmeldingsskema"
-        text="Tirsdag, 27. januar, kl. 16:15 slår vi løs med info, diskusjon, og det blir selvfølgelig gratis pizza."
-      />
-      <Card
-        title="Send inn saker"
-        href="https://forms.cloud.microsoft/e/BaitkMifK9"
-        highlightText="Saksskjema"
-        text="Vi oppfordrer alle medlemmer å sende inn saker til felles diskusjon minst en uke i forveien."
-      />
-      <Card
-        title="Info om verv"
-        href="/om/verv"
-        highlightText="Se alle verv"
-        text="Sjekk ut de ulike vervene man kan ha i linjeforeningen og hva de går ut på."
-      />
-    </div>
-    <p class="mb-4 mt-6 text-center text-fg-muted dark:text-dark-fg-muted">
-      For å beregne mengde mat ønsker vi at alle melder seg på i forkant.
-    </p>
 
     <Prose>
-      <Agenda />
+      <h2>Viktige dokumenter</h2>
     </Prose>
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Card
+        title="Vedtekter"
+        href="/Vedtekter.pdf"
+        highlightText="Les nyeste vedteker"
+        text="Vedtektene er BETA sine lover og regler. Og inneholder alt fra styre, generalforsamlinger, helt til BETA-alumni!"
+      />
+      <Card
+        title="Referat 2026"
+        href="/genfors/2026"
+        highlightText="Les referat"
+        text="Tirsdag, 27. januar, kl. 16:15 (2026) slo vi løs med info, diskusjon, og det ble selvfølgelig gratis pizza."
+      />
+      <Card
+        title="Referat 2025"
+        href="/genfors/2025"
+        highlightText="Les referat"
+        text="Referatet fra 2025. Lyst til å lage en arkiv side, sjekk ut GitHuben til BETA eller kontakt BetaDEV!"
+      />
+    </div>
+   
+
+  
   </Container>
 </BaseLayout>
