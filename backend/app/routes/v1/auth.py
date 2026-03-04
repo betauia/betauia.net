@@ -41,18 +41,18 @@ async def initiate_registration(
     """Initiate registration by sending a verification email."""
 
     result = await db.execute(select(User).where(User.email == data.email))
-    if result.scalar_one_or_none():
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered"
-        )
+    user_exists = result.scalar_one_or_none()
 
-    token = create_registration_token(data.email)
-    verification_url = f"{Config.FRONTEND_URL}/account/create?token={token}"
-    await send_registration_email(data.email, verification_url)
+    if not user_exists:
+        token = create_registration_token(data.email)
+        verification_url = f"{Config.FRONTEND_URL}/account/create?token={token}"
+        await send_registration_email(data.email, verification_url)
 
     return JSONResponse(
         status_code=200,
-        content={"message": "Verification email sent. Please check your inbox."},
+        content={
+            "message": "If the email is not registered, a verification email has been sent. Please check your inbox."
+        },
     )
 
 
@@ -68,7 +68,8 @@ async def complete_registration(
     email = decode_registration_token(data.token)
     if not email:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid or expired token"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid or expired registration token",
         )
 
     result = await db.execute(
@@ -77,13 +78,9 @@ async def complete_registration(
     existing_user = result.scalar_one_or_none()
 
     if existing_user:
-        if existing_user.email == email:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Email already registered",
-            )
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="Username already taken"
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Registration failed: email or username might already be in use.",
         )
 
     new_user = User(
@@ -100,9 +97,10 @@ async def complete_registration(
         await db.refresh(new_user)
     except IntegrityError:
         await db.rollback()
+        # Generisk melding igjen
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="User with this email or username already exists",
+            detail="Registration failed: email or username might already be in use.",
         )
 
     return JSONResponse(
