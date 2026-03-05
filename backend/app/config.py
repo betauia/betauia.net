@@ -43,3 +43,7 @@ class Config:
     MAIL_VALIDATE_CERTS: bool = (
         os.getenv("MAIL_VALIDATE_CERTS", "true").lower() == "true"
     )
+
+    TURNSTILE_SECRET_KEY: str = os.getenv(
+        "TURNSTILE_SECRET_KEY", "1x0000000000000000000000000000000AA"
+    )

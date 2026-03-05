@@ -11,6 +11,8 @@ services:
       - 3000:3000
     environment:
       - PUBLIC_BACKEND_URL=${BACKEND_URL}
+      - PUBLIC_TURNSTILE_SITE_KEY=${TURNSTILE_SITE_KEY}
+      - PUBLIC_DEBUG=${DEBUG}
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - backend

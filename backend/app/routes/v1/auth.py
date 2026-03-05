@@ -24,6 +24,7 @@ from app.schemas.auth import (
     UserResponse,
 )
 from app.utils.email import send_registration_email
+from app.utils.turnstile import verify_turnstile_token
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -39,6 +40,13 @@ async def initiate_registration(
     db: AsyncSession = Depends(get_session),
 ):
     """Initiate registration by sending a verification email."""
+
+    valid = await verify_turnstile_token(data.captcha_token)
+    if not valid:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="CAPTCHA verification failed",
+        )
 
     result = await db.execute(select(User).where(User.email == data.email))
     user_exists = result.scalar_one_or_none()
