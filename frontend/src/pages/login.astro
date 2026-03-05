@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
+
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <BaseLayout title="Logg inn">
@@ -71,10 +73,20 @@ import Container from "@components/layout/Container.astro";
             </p>
           </div>
 
+          <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          <div
+            class="cf-turnstile pb-6"
+            data-sitekey={siteKey}
+            data-callback="onTurnstileSuccess"
+            data-expired-callback="onTurnstileExpired"
+          >
+          </div>
+          <input type="hidden" name="cf-turnstile-response" />
+
           <button
             type="submit"
             id="register-btn"
-            class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
+            class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Lag bruker
           </button>
@@ -102,6 +114,31 @@ import Container from "@components/layout/Container.astro";
   const registerForm = document.getElementById("register-form") as HTMLFormElement;
   const errorMessage = document.getElementById("error-message");
   const successMessage = document.getElementById("success-message");
+
+  declare global {
+    interface Window {
+      onTurnstileSuccess?: (token: string) => void;
+    }
+  }
+
+  const registerBtn = document.getElementById("register-btn") as HTMLButtonElement;
+  const isDev = import.meta.env.PUBLIC_IS_DEV === "true";
+
+  registerBtn.disabled = true;
+
+  (window as any).onTurnstileSuccess = (token: string) => {
+    const hiddenInput = registerForm.querySelector(
+      'input[name="cf-turnstile-response"]'
+    ) as HTMLInputElement;
+
+    if (hiddenInput) hiddenInput.value = token;
+
+    registerBtn.disabled = false;
+  };
+
+  (window as any).onTurnstileExpired = () => {
+    registerBtn.disabled = true;
+  };
 
   function showError(message: string) {
     errorMessage?.classList.remove("hidden");
@@ -143,20 +180,36 @@ import Container from "@components/layout/Container.astro";
     const formData = new FormData(registerForm);
     const registerBtn = document.getElementById("register-btn") as HTMLButtonElement;
 
+    const captchaToken = formData.get("cf-turnstile-response") as string;
+
+    if (!captchaToken) {
+      showError("Bekreft at du ikke er en robot");
+      return;
+    }
+
     registerBtn.disabled = true;
     registerBtn.textContent = "Sender...";
 
     try {
       await initiateRegistration({
         email: formData.get("email") as string,
+        captcha_token: captchaToken,
       });
       showSuccess("Sjekk e-posten din.");
       registerForm.reset();
     } catch (error) {
       showError(error instanceof Error ? error.message : "Noe gikk galt");
     } finally {
-      registerBtn.disabled = false;
-      registerBtn.textContent = "Send bekreftelseslenke";
+      registerBtn.textContent = "Lag bruker";
+
+      if (!isDev) {
+        registerBtn.disabled = true;
+        if ((window as any).turnstile) {
+          (window as any).turnstile.reset();
+        }
+      } else {
+        registerBtn.disabled = false;
+      }
     }
   });
 </script>

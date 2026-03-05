@@ -17,6 +17,7 @@ export interface LoginCredentials {
 
 export interface RegistrationInitiate {
   email: string;
+  captcha_token: string;
 }
 
 export interface RegistrationComplete {

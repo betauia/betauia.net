@@ -7,6 +7,7 @@ from pydantic import BaseModel, EmailStr, Field
 
 class RegistrationInitiate(BaseModel):
     email: EmailStr
+    captcha_token: str
 
 
 class RegistrationComplete(BaseModel):
