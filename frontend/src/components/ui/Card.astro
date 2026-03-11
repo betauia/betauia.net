@@ -6,7 +6,7 @@ import type { ImageMetadata } from "astro";
 interface Props {
   title: string;
   href?: string;
-  image?: ImageMetadata;
+  image?: ImageMetadata | string;
   frame?: string | "none";
   text?: string;
   highlightText?: string;
@@ -28,7 +28,11 @@ const iconName = !hasHref ? "" : isMailLink ? "fa-solid:envelope" : "fa-solid:ar
     {
       image && (
         <div class="w-full overflow-hidden">
-          <Image src={image} alt={title} class="h-64 w-full object-cover" />
+          {typeof image === "string" ? (
+            <img src={image} alt={title} class="h-64 w-full object-cover" />
+          ) : (
+            <Image src={image} alt={title} class="h-64 w-full object-cover" />
+          )}
         </div>
       )
     }
