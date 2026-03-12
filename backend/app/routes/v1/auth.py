@@ -58,6 +58,15 @@ async def initiate_registration(
     if not user_exists:
         token = create_registration_token(email)
         verification_url = f"{Config.FRONTEND_URL}/account/create?token={token}"
+
+        if Config.DEBUG:
+            return JSONResponse(
+                status_code=200,
+                content={
+                    "message": "DEBUG mode: bruk denne lenken for registrering.",
+                    "verification_url": verification_url,
+                },
+            )
         await send_registration_email(email, verification_url)
 
     return JSONResponse(

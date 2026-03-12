@@ -59,7 +59,7 @@ export function isLoggedIn(): boolean {
 
 export async function initiateRegistration(
   data: RegistrationInitiate
-): Promise<{ message: string }> {
+): Promise<{ message: string; verification_url?: string }> {
   const response = await fetch(`${API_URL}/v1/auth/register/initiate`, {
     method: "POST",
     headers: {

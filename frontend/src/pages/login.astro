@@ -191,10 +191,16 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     registerBtn.textContent = "Sender...";
 
     try {
-      await initiateRegistration({
+      const response = await initiateRegistration({
         email: formData.get("email") as string,
         captcha_token: captchaToken,
       });
+
+      if (response.verification_url) {
+        window.location.href = response.verification_url;
+        return;
+      }
+
       showSuccess("Sjekk e-posten din.");
       registerForm.reset();
     } catch (error) {
