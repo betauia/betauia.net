@@ -35,6 +35,7 @@ class UserResponse(BaseModel):
     username: str
     full_name: str
     allergies: str | None
+    is_admin: bool
     created_at: datetime
     updated_at: datetime
 
