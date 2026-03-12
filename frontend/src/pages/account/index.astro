@@ -42,6 +42,10 @@ import AuthCheck from "@components/AuthCheck.astro";
             <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Matallergier</dt>
             <dd id="user-allergies" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>
+          <div id="admin-field" class="hidden">
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Rolle</dt>
+            <dd class="mt-1 text-fg-base dark:text-dark-fg-base">Administrator</dd>
+          </div>
         </dl>
       </div>
 
@@ -81,6 +85,7 @@ import AuthCheck from "@components/AuthCheck.astro";
     const userIdEl = document.getElementById("user-id");
     const createdEl = document.getElementById("user-created");
     const updatedEl = document.getElementById("user-updated");
+    const adminFieldEl = document.getElementById("admin-field");
 
     if (usernameEl) usernameEl.textContent = user.username;
     if (emailEl) emailEl.textContent = user.email;
@@ -97,6 +102,8 @@ import AuthCheck from "@components/AuthCheck.astro";
       const updatedDate = new Date(user.updated_at);
       updatedEl.textContent = updatedDate.toLocaleString();
     }
+
+    if (adminFieldEl) adminFieldEl.classList.remove("hidden");
   }
 
   loadUserProfile();

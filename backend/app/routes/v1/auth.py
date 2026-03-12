@@ -1,3 +1,5 @@
+import asyncio
+
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from sqlalchemy import select
@@ -45,21 +47,23 @@ async def initiate_registration(
     if not valid:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="CAPTCHA verification failed",
+            detail="CAPTCHA verifisering feilet.",
         )
 
-    result = await db.execute(select(User).where(User.email == data.email))
-    user_exists = result.scalar_one_or_none()
+    email = data.email.lower().strip()
+
+    result = await db.execute(select(User).where(User.email == email))
+    user_exists = result.scalars().first()
 
     if not user_exists:
-        token = create_registration_token(data.email)
+        token = create_registration_token(email)
         verification_url = f"{Config.FRONTEND_URL}/account/create?token={token}"
-        await send_registration_email(data.email, verification_url)
+        await send_registration_email(email, verification_url)
 
     return JSONResponse(
         status_code=200,
         content={
-            "message": "If the email is not registered, a verification email has been sent. Please check your inbox."
+            "message": "Om mailen ikke er registrert, har det blitt sendt en mail til deg for å fullføre registreringen."
         },
     )
 
@@ -73,17 +77,24 @@ async def complete_registration(
 ):
     """Complete registration with the token from the verification email."""
 
+    min_password_length = 10
+    if len(data.password) < min_password_length:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Passordet må være minst 10 bokstaver langt.",
+        )
+
     email = decode_registration_token(data.token)
     if not email:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid or expired registration token",
+            detail="Ugjyldig eller utgått registreringstoken.",
         )
 
     result = await db.execute(
         select(User).where((User.email == email) | (User.username == data.username))
     )
-    existing_user = result.scalar_one_or_none()
+    existing_user = result.scalars().first()
 
     if existing_user:
         raise HTTPException(
@@ -108,11 +119,11 @@ async def complete_registration(
         # Generisk melding igjen
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Registration failed: email or username might already be in use.",
+            detail="Registrering feilet: email eller brukernavn kan allerede være i bruk.",
         )
 
     return JSONResponse(
-        status_code=201, content={"message": "Registration completed successfully"}
+        status_code=201, content={"message": "Registrering ble fullført."}
     )
 
 
@@ -126,13 +137,22 @@ async def login(
 ):
     """Login with email and password."""
 
-    result = await db.execute(select(User).where(User.email == credentials.email))
-    user = result.scalar_one_or_none()
+    result = await db.execute(
+        select(User).where(User.email == credentials.email.lower().strip())
+    )
+    user = result.scalars().first()
 
-    if not user or not verify_password(credentials.password, user.hashed_password):
+    dummy_hash = "$argon2id$v=19$m=65536,t=3,p=4$B1Bi0+KqwJ95jMYvHsf9iQ$riQ5CyqbOfOMVHioGAbGurDLynB3zv+5vNYwhwhfICI"
+
+    # To not leak times
+    hash_to_check = user.hashed_password if user else dummy_hash
+    password_valid = verify_password(credentials.password, hash_to_check)
+
+    if not user or not password_valid:
+        await asyncio.sleep(0.5)  # Delay for security
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
+            detail="Feil email eller passord.",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
