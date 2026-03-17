@@ -13,7 +13,7 @@ class RegistrationInitiate(BaseModel):
 class RegistrationComplete(BaseModel):
     token: str
     username: str = Field(..., min_length=3, max_length=50)
-    password: str = Field(..., min_length=8, max_length=128)
+    password: str = Field(..., min_length=10, max_length=128)
     full_name: str = Field(..., max_length=100)
     allergies: str | None = Field(None, max_length=255)
 
