@@ -52,6 +52,28 @@ async def initiate_registration(
 
     email = data.email.lower().strip()
 
+    domain_min_len = 4
+    tld_min_len = 2
+
+    is_valid = "@" in email
+    if is_valid:
+        try:
+            local_part, domain = email.rsplit("@", 1)
+            is_valid = (
+                local_part
+                and domain
+                and len(domain) >= domain_min_len
+                and "." in domain
+                and len(domain.split(".")[-1]) >= tld_min_len
+            )
+        except ValueError:
+            is_valid = False
+
+    if not is_valid:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Ugyldig e-postadresse."
+        )
+
     result = await db.execute(select(User).where(User.email == email))
     user_exists = result.scalars().first()
 
