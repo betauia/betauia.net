@@ -42,8 +42,8 @@ def create_app(config_object=Config):
         CORSMiddleware,
         allow_origins=config_object.ALLOWED_ORIGINS,
         allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allow_headers=["*"],
+        allow_methods=["GET", "POST"],
+        allow_headers=["Content-Type", "Authorization"],
     )
 
     app.state.limiter = limiter
