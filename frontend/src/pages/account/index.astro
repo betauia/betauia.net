@@ -38,10 +38,6 @@ import AuthCheck from "@components/AuthCheck.astro";
             <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Navn</dt>
             <dd id="user-fullname" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>
-          <div>
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Matallergier</dt>
-            <dd id="user-allergies" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
-          </div>
           <div id="admin-field" class="hidden">
             <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">Rolle</dt>
             <dd class="mt-1 text-fg-base dark:text-dark-fg-base">Administrator</dd>
@@ -81,7 +77,6 @@ import AuthCheck from "@components/AuthCheck.astro";
     const usernameEl = document.getElementById("user-username");
     const emailEl = document.getElementById("user-email");
     const fullnameEl = document.getElementById("user-fullname");
-    const allergiesEl = document.getElementById("user-allergies");
     const userIdEl = document.getElementById("user-id");
     const createdEl = document.getElementById("user-created");
     const updatedEl = document.getElementById("user-updated");
@@ -90,7 +85,6 @@ import AuthCheck from "@components/AuthCheck.astro";
     if (usernameEl) usernameEl.textContent = user.username;
     if (emailEl) emailEl.textContent = user.email;
     if (fullnameEl) fullnameEl.textContent = user.full_name;
-    if (allergiesEl && user.allergies) allergiesEl.textContent = user.allergies;
     if (userIdEl) userIdEl.textContent = `#${user.id}`;
 
     if (createdEl) {

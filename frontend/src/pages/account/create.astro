@@ -56,23 +56,6 @@ import Container from "@components/layout/Container.astro";
             />
           </div>
 
-          <div class="mb-4">
-            <label
-              for="allergies"
-              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
-            >
-              Matallergier (valgfri)
-            </label>
-            <input
-              id="allergies"
-              name="allergies"
-              type="text"
-              maxlength="255"
-              class="my-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
-              placeholder="Nøtter, egg..."
-            />
-          </div>
-
           <div class="mb-2">
             <label
               for="password"
@@ -163,7 +146,6 @@ import Container from "@components/layout/Container.astro";
     const password = formData.get("password") as string;
     const confirmPassword = formData.get("confirm_password") as string;
     const fullName = formData.get("full_name") as string;
-    const allergies = formData.get("allergies") as string;
     const token = formData.get("token") as string;
 
     if (password !== confirmPassword) {
@@ -180,7 +162,6 @@ import Container from "@components/layout/Container.astro";
         username,
         password,
         full_name: fullName,
-        allergies: allergies || undefined,
       });
 
       window.location.href = "/login";

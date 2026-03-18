@@ -5,7 +5,6 @@ export interface User {
   email: string;
   username: string;
   full_name: string;
-  allergies: string | null;
   is_admin: boolean;
   created_at: string;
   updated_at: string;
@@ -26,7 +25,6 @@ export interface RegistrationComplete {
   username: string;
   password: string;
   full_name: string;
-  allergies?: string;
 }
 
 export interface AuthToken {
