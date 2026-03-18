@@ -122,7 +122,6 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   }
 
   const registerBtn = document.getElementById("register-btn") as HTMLButtonElement;
-  const isDev = import.meta.env.PUBLIC_IS_DEV === "true";
 
   registerBtn.disabled = true;
 
@@ -208,13 +207,9 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     } finally {
       registerBtn.textContent = "Lag bruker";
 
-      if (!isDev) {
-        registerBtn.disabled = true;
-        if ((window as any).turnstile) {
-          (window as any).turnstile.reset();
-        }
-      } else {
-        registerBtn.disabled = false;
+      registerBtn.disabled = true;
+      if ((window as any).turnstile) {
+        (window as any).turnstile.reset();
       }
     }
   });

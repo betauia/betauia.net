@@ -138,6 +138,7 @@ async def complete_registration(
         username=data.username,
         hashed_password=hash_password(data.password),
         full_name=data.full_name,
+        is_admin=False,
     )
 
     try:
