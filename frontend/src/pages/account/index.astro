@@ -97,7 +97,7 @@ import AuthCheck from "@components/AuthCheck.astro";
       updatedEl.textContent = updatedDate.toLocaleString();
     }
 
-    if (adminFieldEl) adminFieldEl.classList.remove("hidden");
+    if (adminFieldEl && user.is_admin) adminFieldEl.classList.remove("hidden");
   }
 
   loadUserProfile();
