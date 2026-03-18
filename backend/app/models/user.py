@@ -12,7 +12,6 @@ class User(Base, TimestampMixin):
     username: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     hashed_password: Mapped[str] = mapped_column(String(255))
     full_name: Mapped[str] = mapped_column(String(100))
-    allergies: Mapped[str] = mapped_column(String(255), nullable=True)
     is_admin: Mapped[bool] = mapped_column(default=False)
 
     def to_dict(self) -> dict:
@@ -21,7 +20,6 @@ class User(Base, TimestampMixin):
             "email": self.email,
             "username": self.username,
             "full_name": self.full_name,
-            "allergies": self.allergies,
             "is_admin": self.is_admin,
             "created_at": self.created_at,
             "updated_at": self.updated_at,

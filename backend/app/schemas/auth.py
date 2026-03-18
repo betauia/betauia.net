@@ -15,7 +15,6 @@ class RegistrationComplete(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     password: str = Field(..., min_length=10, max_length=128)
     full_name: str = Field(..., max_length=100)
-    allergies: str | None = Field(None, max_length=255)
 
 
 # Login Schema
@@ -34,7 +33,6 @@ class UserResponse(BaseModel):
     email: str
     username: str
     full_name: str
-    allergies: str | None
     is_admin: bool
     created_at: datetime
     updated_at: datetime

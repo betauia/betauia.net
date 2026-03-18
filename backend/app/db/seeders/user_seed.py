@@ -17,7 +17,6 @@ class UserSeeder(Seeder):
                 username="testuser",
                 hashed_password=hash_password("admin1234"),
                 full_name="Test User",
-                allergies="Bluebox pizza",
                 is_admin=True,
             )
         ]
