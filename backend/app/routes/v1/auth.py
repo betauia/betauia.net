@@ -195,6 +195,9 @@ async def login(
 
 
 @router.get("/me", response_model=UserResponse)
-async def get_current_user_info(user: UserResponse = Depends(get_user_context)):
+@limiter.limit("60/minute")
+async def get_current_user_info(
+    request: Request, user: UserResponse = Depends(get_user_context)
+):
     """Get information about the currently authenticated user."""
     return user

@@ -316,3 +316,6 @@ dist
 # Exams
 frontend/src/content/exams/*
 !frontend/src/content/exams/README.md
+
+# Uploads
+uploads/

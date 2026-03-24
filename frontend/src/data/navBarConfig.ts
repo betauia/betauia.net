@@ -70,12 +70,12 @@ export const navigationDropdowns: NavigationDropdown[] = [
       //   desc: "Få med siste nytt om hva som sker i Beta og på UiA.",
       //   href: "/ressurser",
       // },
-      // {
-      //   icon: "fa-solid:briefcase",
-      //   title: "Stillingsannonser",
-      //   desc: "Finn sommerjobber, internship og relevante stillinger.",
-      //   href: "/stillingsannonser",
-      // },
+      {
+        icon: "fa-solid:briefcase",
+        title: "Jobbannonser",
+        desc: "Finn sommerjobber, internship og relevante stillinger.",
+        href: "/jobs",
+      },
       // {
       //   icon: "fa-solid:book-open",
       //   title: "Ressurser",

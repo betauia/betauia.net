@@ -1,0 +1,189 @@
+---
+export const prerender = false;
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+import { Icon } from "astro-icon/components";
+
+import { formatFullDeadline, formatJobType, formatStudy, formatYears } from "@lib/jobs";
+
+const { id } = Astro.params;
+
+const internalBackendUrl = "http://backend:8000";
+const apiBase = "http://localhost:8000";
+
+let job = null;
+let safeBodyHtml = "";
+
+try {
+  const res = await fetch(`${internalBackendUrl}/v1/jobs/${id}`);
+  if (res.ok) {
+    job = await res.json();
+
+    if (job?.body) {
+      const rawHtml = marked.parse(job.body);
+
+      safeBodyHtml = sanitizeHtml(rawHtml, {
+        allowedTags: [
+          "p",
+          "br",
+          "strong",
+          "em",
+          "ul",
+          "ol",
+          "li",
+          "blockquote",
+          "code",
+          "pre",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "a",
+        ],
+        allowedAttributes: {
+          a: ["href", "target", "rel"],
+        },
+        allowedSchemes: ["http", "https", "mailto"],
+        transformTags: {
+          a: sanitizeHtml.simpleTransform("a", {
+            rel: "noopener noreferrer",
+            target: "_blank",
+          }),
+        },
+      });
+    }
+  }
+} catch (err) {
+  console.error("Failed to fetch job:", err);
+}
+---
+
+<BaseLayout title={job ? job.title : "Stillingsannonse"}>
+  <Container class="py-10">
+    {
+      job ? (
+        <div class="mx-auto max-w-5xl space-y-5">
+          <a
+            href="/jobs"
+            class="inline-flex items-center gap-2 text-sm text-fg-muted transition hover:text-fg-base dark:text-dark-fg-muted dark:hover:text-dark-fg-base"
+          >
+            <Icon name="fa-solid:angle-left" /> Tilbake
+          </a>
+
+          <div class="overflow-hidden rounded-2xl border border-fg-muted/30 bg-bg-raised shadow-sm dark:border-dark-fg-muted/30 dark:bg-dark-bg-raised">
+            {job.image_url && (
+              <img
+                src={apiBase + job.image_url}
+                alt={job.title}
+                class="h-52 w-full object-cover md:h-72"
+              />
+            )}
+
+            <div class="space-y-8 p-6 md:p-8">
+              <div class="space-y-4">
+                <div class="space-y-2">
+                  <h1 class="text-3xl font-semibold tracking-tight text-fg-base dark:text-dark-fg-base">
+                    {job.title}
+                  </h1>
+                  <p class="text-lg text-fg-muted dark:text-dark-fg-muted">{job.company}</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pb-2">
+                  <span class="rounded-full bg-fg-muted/10 px-3 py-1.5 text-sm text-fg-base dark:bg-dark-fg-muted/10 dark:text-dark-fg-base">
+                    {formatJobType(job.job_type)}
+                  </span>
+
+                  <span class="rounded-full bg-fg-muted/10 px-3 py-1.5 text-sm text-fg-base dark:bg-dark-fg-muted/10 dark:text-dark-fg-base">
+                    {job.locations}
+                  </span>
+
+                  {job.studies?.map((s: string) => (
+                    <span class="rounded-full bg-fg-muted/10 px-3 py-1.5 text-sm text-fg-base dark:bg-dark-fg-muted/10 dark:text-dark-fg-base">
+                      {formatStudy(s)}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="flex flex-col gap-2 text-sm text-fg-muted dark:text-dark-fg-muted">
+                  {formatYears(job.years) && (
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold">År:</span>
+                      <span>{formatYears(job.years)}</span>
+                    </div>
+                  )}
+
+                  {job.deadline && (
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold">Frist:</span>
+                      <span>{formatFullDeadline(job.deadline)}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="border-t border-fg-muted/30 pt-6 dark:border-dark-fg-muted/30">
+                <div
+                  class="prose max-w-3xl text-[15px] leading-7 dark:prose-invert"
+                  set:html={safeBodyHtml}
+                />
+              </div>
+
+              {(job.contact_person || job.contact_email || job.contact_phone || job.link) && (
+                <div class="border-t border-fg-muted/30 pt-6 dark:border-dark-fg-muted/30">
+                  <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+                    <div class="space-y-3 text-sm">
+                      <h2 class="text-base font-bold text-fg-base dark:text-dark-fg-base">
+                        Kontakt
+                      </h2>
+
+                      <div class="space-y-2 text-fg-base dark:text-dark-fg-base">
+                        {job.contact_person && <p>{job.contact_person}</p>}
+
+                        {job.contact_email && (
+                          <a
+                            href={`mailto:${job.contact_email}`}
+                            class="block text-accent hover:underline"
+                          >
+                            {job.contact_email}
+                          </a>
+                        )}
+
+                        {job.contact_phone && (
+                          <a
+                            href={`tel:${job.contact_phone}`}
+                            class="block text-accent hover:underline"
+                          >
+                            {job.contact_phone}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    {job.link && (
+                      <div>
+                        <a
+                          href={job.link}
+                          target="_blank"
+                          class="inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-dark-fg-base transition hover:bg-accent/80"
+                        >
+                          Søk på stillingen
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div class="text-center text-fg-muted">Fant ikke stillingsannonse.</div>
+      )
+    }
+  </Container>
+</BaseLayout>

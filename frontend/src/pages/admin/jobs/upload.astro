@@ -1,0 +1,340 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+---
+
+<BaseLayout title="Ny jobbannonse">
+  <Container class="py-10">
+    <form
+      id="form"
+      class="mx-auto w-full max-w-3xl space-y-8 rounded-xl border border-fg-muted/40 bg-bg-raised p-6 shadow dark:border-dark-fg-muted/40 dark:bg-dark-bg-raised md:p-8"
+    >
+      <h1 class="text-3xl font-bold text-fg-base dark:text-dark-fg-base">Opprett jobbsannonse</h1>
+
+      <div class="space-y-4">
+        <div class="space-y-1">
+          <label for="title" class="block text-sm font-medium text-fg-base dark:text-dark-fg-base">
+            Tittel *
+          </label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            required
+            placeholder="Backendutvikler sommerjobb"
+            class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+          />
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-1">
+            <label
+              for="company"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Bedrift *
+            </label>
+            <input
+              id="company"
+              name="company"
+              type="text"
+              required
+              placeholder="Bedrift AS"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label
+              for="job_type"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Stillingstype *
+            </label>
+            <select
+              id="job_type"
+              name="job_type"
+              required
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base"
+            >
+              <option value="">Velg stillingstype</option>
+              <option value="full-time">Fulltid</option>
+              <option value="part-time">Deltid</option>
+              <option value="internship">Internship</option>
+              <option value="summer-job">Sommerjobb</option>
+              <option value="other">Annet</option>
+            </select>
+          </div>
+
+          <div class="space-y-1">
+            <label
+              for="locations"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Lokasjon(er) *
+            </label>
+            <input
+              id="locations"
+              name="locations"
+              type="text"
+              required
+              placeholder="Grimstad / Oslo / Remote"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label
+              for="deadline"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Søknadsfrist
+            </label>
+            <input
+              id="deadline"
+              name="deadline"
+              type="date"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <label for="link" class="block text-sm font-medium text-fg-base dark:text-dark-fg-base">
+            Lenke
+          </label>
+          <input
+            id="link"
+            name="link"
+            type="url"
+            placeholder="https://bedrift.no/stilling"
+            class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+          />
+        </div>
+      </div>
+
+      <div class="space-y-4 border-t border-fg-muted/20 pt-6 dark:border-dark-fg-muted/20">
+        <div class="space-y-1">
+          <h2 class="text-lg font-semibold text-fg-base dark:text-dark-fg-base">Målgruppe</h2>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-fg-base dark:text-dark-fg-base">Studieretning</p>
+          <div class="flex flex-wrap gap-3">
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="study_ai" class="h-4 w-4" />
+              AI
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="study_cyber" class="h-4 w-4" />
+              Cyber
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="study_software" class="h-4 w-4" />
+              Software
+            </label>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-medium text-fg-base dark:text-dark-fg-base">Årstrinn</p>
+          <div class="flex flex-wrap gap-3">
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="year_1" class="h-4 w-4" />
+              1. år
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="year_2" class="h-4 w-4" />
+              2. år
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="year_3" class="h-4 w-4" />
+              3. år
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="year_4" class="h-4 w-4" />
+              4. år
+            </label>
+
+            <label
+              class="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-3 py-2 text-sm text-fg-base dark:border-dark-fg-muted/40 dark:text-dark-fg-base"
+            >
+              <input type="checkbox" name="year_5" class="h-4 w-4" />
+              5. år
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4 border-t border-fg-muted/20 pt-6 dark:border-dark-fg-muted/20">
+        <div class="space-y-1">
+          <h2 class="text-lg font-semibold text-fg-base dark:text-dark-fg-base">
+            Bilde og beskrivelse
+          </h2>
+        </div>
+
+        <div class="space-y-1">
+          <label for="image" class="block text-sm font-medium text-fg-base dark:text-dark-fg-base">
+            Bilde
+          </label>
+          <input
+            id="image"
+            name="image"
+            type="file"
+            accept="image/*"
+            class="block w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-sm text-fg-base file:mr-4 file:rounded-md file:border-0 file:bg-accent file:px-3 file:py-2 file:text-dark-fg-base hover:file:bg-accent/80 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base"
+          />
+        </div>
+
+        <div class="space-y-1">
+          <label for="body" class="block text-sm font-medium text-fg-base dark:text-dark-fg-base">
+            Beskrivelse *
+          </label>
+          <textarea
+            id="body"
+            name="body"
+            required
+            rows="8"
+            placeholder="Beskriv stillingen her"
+            class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="space-y-4 border-t border-fg-muted/20 pt-6 dark:border-dark-fg-muted/20">
+        <div class="space-y-1">
+          <h2 class="text-lg font-semibold text-fg-base dark:text-dark-fg-base">
+            Kontaktinformasjon
+          </h2>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-1">
+            <label
+              for="person"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Kontaktperson
+            </label>
+            <input
+              id="person"
+              name="person"
+              type="text"
+              placeholder="Ola Nordmann"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label
+              for="phone"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              Telefon
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="text"
+              placeholder="42067123"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+            />
+          </div>
+
+          <div class="space-y-1 md:col-span-2">
+            <label
+              for="email"
+              class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
+            >
+              E-post
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="kontakt@bedrift.no"
+              class="w-full rounded-md border border-fg-muted/50 bg-bg-base px-4 py-3 text-fg-base placeholder:text-fg-muted focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20 dark:text-dark-fg-base dark:placeholder:text-dark-fg-muted"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-md bg-accent px-4 py-3 font-medium text-dark-fg-base transition hover:bg-accent/80"
+      >
+        Opprett annonse
+      </button>
+    </form>
+  </Container>
+</BaseLayout>
+
+<script>
+  import { popup } from "@lib/message";
+  import { redirectUnauthorized } from "@lib/auth";
+
+  redirectUnauthorized(true);
+
+  const form = document.getElementById("form") as HTMLFormElement | null;
+  const apiURL = import.meta.env.PUBLIC_BACKEND_URL;
+
+  if (form) {
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const token = localStorage.getItem("auth_token");
+
+      try {
+        const response = await fetch(`${apiURL}/v1/jobs/upload`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          console.error(data);
+
+          if (Array.isArray(data.detail)) {
+            const msg = data.detail.map((e: any) => `${e.loc?.join(".")}: ${e.msg}`).join("\n");
+            popup(msg);
+          } else {
+            popup(data.detail || "Forespørsel feilet.", "error");
+          }
+
+          return;
+        }
+
+        popup("Jobbannonsen ble opprettet.", "success");
+        form.reset();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (error) {
+        console.error(error);
+        popup("Det skjedde en nettverksfeil", "error");
+      }
+    });
+  }
+</script>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import JobListAdmin from "@components/jobs/JobListAdmin.svelte";
+---
+
+<BaseLayout title="Administrer jobbannonser">
+  <Container class="py-10">
+    <JobListAdmin client:load />
+  </Container>
+</BaseLayout>
+
+<script>
+  import { redirectUnauthorized } from "@lib/auth";
+
+  redirectUnauthorized(true);
+</script>
