@@ -78,6 +78,8 @@ markupsafe==3.0.3
     #   mako
 packaging==25.0
     # via limits
+pillow==12.1.1
+    # via -r requirements.txt
 psycopg2-binary==2.9.11
     # via -r requirements.txt
 pyasn1==0.6.2

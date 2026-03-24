@@ -50,7 +50,18 @@ export function removeToken(): void {
 }
 
 export function isLoggedIn(): boolean {
-  return getToken() !== null;
+  const token = getToken();
+  if (!token) return false;
+
+  const parts = token.split(".");
+  if (parts.length !== 3) return false;
+
+  try {
+    const payload = JSON.parse(atob(parts[1]));
+    return payload.exp && Date.now() < payload.exp * 1000;
+  } catch {
+    return false;
+  }
 }
 
 // Registration
@@ -68,7 +79,7 @@ export async function initiateRegistration(
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to send verification email");
+    throw new Error(error.detail || "Feilet å sende verifiseringsmail.");
   }
 
   return response.json();
@@ -87,7 +98,7 @@ export async function completeRegistration(
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to complete registration");
+    throw new Error(error.detail || "Feilet å fullføre registreringen.");
   }
 
   return response.json();
@@ -106,13 +117,12 @@ export async function login(credentials: LoginCredentials): Promise<AuthToken> {
 
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Login failed");
+    throw new Error(error.detail || "Login feilet.");
   }
 
   const token: AuthToken = await response.json();
   saveToken(token.access_token);
 
-  // Dispatch auth changed event
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("auth:changed"));
   }
@@ -123,7 +133,6 @@ export async function login(credentials: LoginCredentials): Promise<AuthToken> {
 export function logout(): void {
   removeToken();
 
-  // Dispatch auth changed event
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("auth:changed"));
     window.location.href = "/login";
@@ -134,23 +143,51 @@ export function logout(): void {
 
 export async function getCurrentUser(): Promise<User> {
   const token = getToken();
+
   if (!token) {
-    throw new Error("Not authenticated");
+    throw new Error("Ingen token funnet.");
   }
 
   const response = await fetch(`${API_URL}/v1/auth/me`, {
+    method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
   if (!response.ok) {
-    if (response.status === 401) {
-      removeToken();
+    let message = "Kunne ikke hente brukeren.";
+
+    try {
+      const error = await response.json();
+      message = error.detail || message;
+    } catch {
+      // Ignore json parse error
     }
-    const error = await response.json();
-    throw new Error(error.detail || "Failed to fetch user");
+
+    throw new Error(message);
   }
 
-  return response.json();
+  return response.json() as Promise<User>;
+}
+
+export async function redirectUnauthorized(requireAdmin = false): Promise<void> {
+  const token = getToken();
+
+  if (!token || !isLoggedIn()) {
+    removeToken();
+    window.location.href = "/login?redirect=" + encodeURIComponent(window.location.pathname);
+    return;
+  }
+
+  try {
+    const user = await getCurrentUser();
+
+    if (requireAdmin && !user.is_admin) {
+      window.location.href = "/";
+    }
+  } catch {
+    removeToken();
+    window.location.href = "/login?redirect=" + encodeURIComponent(window.location.pathname);
+  }
 }

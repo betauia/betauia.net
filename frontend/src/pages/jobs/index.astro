@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import JobList from "@components/jobs/JobList.svelte";
+---
+
+<BaseLayout title="Jobbannonser">
+  <Container class="py-10">
+    <div class="space-y-6">
+      <div class="space-y-1 pb-6">
+        <h1 class="text-3xl font-bold text-fg-base dark:text-dark-fg-base">Jobbsannonser</h1>
+      </div>
+
+      <JobList client:load />
+    </div>
+  </Container>
+</BaseLayout>

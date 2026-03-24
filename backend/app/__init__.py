@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi.errors import RateLimitExceeded
 
 from app.config import Config
@@ -42,7 +43,7 @@ def create_app(config_object=Config):
         CORSMiddleware,
         allow_origins=config_object.ALLOWED_ORIGINS,
         allow_credentials=True,
-        allow_methods=["GET", "POST"],
+        allow_methods=["GET", "POST", "DELETE"],
         allow_headers=["Content-Type", "Authorization"],
     )
 
@@ -63,6 +64,7 @@ def create_app(config_object=Config):
 
     # API Routes
     app.include_router(v1_router)
+    app.mount("/media", StaticFiles(directory="/uploads"), name="media")
 
     @app.get("/")
     async def root():

@@ -16,6 +16,8 @@ services:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - backend
+    networks:
+      - internal
 
   backend:
     build:
@@ -37,6 +39,7 @@ services:
       - db
     volumes:
       - ./backend:/app
+      - ./uploads:/uploads
 
   db:
     image: postgres:18

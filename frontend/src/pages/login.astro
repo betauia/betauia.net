@@ -109,6 +109,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 <script>
   import { login, initiateRegistration } from "@lib/auth";
+  import { popup } from "@lib/message";
 
   const loginForm = document.getElementById("login-form") as HTMLFormElement;
   const registerForm = document.getElementById("register-form") as HTMLFormElement;
@@ -139,18 +140,6 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     registerBtn.disabled = true;
   };
 
-  function showError(message: string) {
-    errorMessage?.classList.remove("hidden");
-    successMessage?.classList.add("hidden");
-    if (errorMessage) errorMessage.querySelector("p")!.textContent = message;
-  }
-
-  function showSuccess(message: string) {
-    successMessage?.classList.remove("hidden");
-    errorMessage?.classList.add("hidden");
-    if (successMessage) successMessage.querySelector("p")!.textContent = message;
-  }
-
   // Login
   loginForm?.addEventListener("submit", async e => {
     e.preventDefault();
@@ -165,9 +154,11 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         email: formData.get("email") as string,
         password: formData.get("password") as string,
       });
-      window.location.href = "/account";
+      const params = new URLSearchParams(window.location.search);
+      const redirectTo = params.get("redirect") || "/account";
+      window.location.href = redirectTo;
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Innlogging feilet");
+      popup(error instanceof Error ? error.message : "Innlogging feilet.", "error", "Prøv igjen");
       loginBtn.disabled = false;
       loginBtn.textContent = "Logg inn";
     }
@@ -182,7 +173,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     const captchaToken = formData.get("cf-turnstile-response") as string;
 
     if (!captchaToken) {
-      showError("Bekreft at du ikke er en robot");
+      popup("Bekreft at du ikke er en robot.", "error");
       return;
     }
 
@@ -200,10 +191,10 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         return;
       }
 
-      showSuccess("Sjekk e-posten din.");
+      popup("Sjekk e-posten din.", "success");
       registerForm.reset();
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Noe gikk galt");
+      popup(error instanceof Error ? error.message : "Noe gikk galt.");
     } finally {
       registerBtn.textContent = "Lag bruker";
 
