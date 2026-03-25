@@ -24,4 +24,4 @@ COPY . .
 RUN rm -rf /app/node_modules
 
 ENV NODE_ENV=production
-CMD sh -c "npm ci --no-save && npm run build"
+CMD sh -c "npm ci --no-save && npm run build && npm start"
