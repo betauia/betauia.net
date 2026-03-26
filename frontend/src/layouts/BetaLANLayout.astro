@@ -2,6 +2,8 @@
 import DigitalRain from "@components/fun/DigitalRain.astro";
 const { backgroundImage } = Astro.props;
 const { UseGamerFont = true } = Astro.props;
+
+import "@fontsource/medievalsharp/400.css";
 ---
 
 <div
@@ -28,6 +30,10 @@ const { UseGamerFont = true } = Astro.props;
     font-style: normal;
     font-size: 2rem; /* text-lg equivalent */
     line-height: 1.75rem;
+  }
+
+  .medieval-font {
+    font-family: "MedievalSharp", cursive;
   }
 
   /* Only apply overlays when there's a background image */
