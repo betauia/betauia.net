@@ -4,20 +4,26 @@ import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import LinkerButton from "@components/ui/LinkerButton.astro";
 import betaLANLogo from "@assets/betalan/Betalan_logo.png";
 import { Icon } from "astro-icon/components";
+
+import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
 ---
 
 <BaseLayout title="BetaLAN">
-  <BetaLANLayout>
-    <div id="top-logo-group" class="mb-10 flex justify-center drop-shadow-2xl lg:mb-20">
+  <BetaLANLayout backgroundImage={CastleWallImg.src}>
+    <div id="top-logo-group" class="mb-10 flex justify-center lg:mb-20">
       <div id="top-logo">
-        <img src={betaLANLogo.src} alt="BetaLAN Logo" class="drop-shadow-2xl" />
+        <img
+          src={betaLANLogo.src}
+          alt="BetaLAN Logo"
+          class="drop-shadow-[10px_15px_8px_rgba(0,0,0,0.75)]"
+        />
       </div>
     </div>
 
     <!-- Tickets button -->
-    <div id="info-navigation-buttons" class="container mx-auto my-6 flex justify-center">
+    <div id="info-navigation-buttons" class="container mx-auto my-6 mb-5 flex justify-center">
       <LinkerButton
-        href="https://tikkio.com/events/59572"
+        href="https://tikkio.com/events/63234"
         text="Get Your Tickets Now!"
         target="_blank"
         color="#11FF11"
@@ -25,7 +31,7 @@ import { Icon } from "astro-icon/components";
       />
     </div>
 
-    <div id="content" class="container mb-3 text-center">
+    <div id="content" class="container mx-auto mb-5 text-center">
       <h1 class="text-7xl font-bold text-red-500 drop-shadow-md">Welcome to BETALAN!</h1>
       <p class="text-3xl">
         BetaLAN is all about having fun and enjoying the gaming culture! <br />
@@ -34,7 +40,7 @@ import { Icon } from "astro-icon/components";
         />
         So grab your gear and get ready to conquer the BetaLAN! <br />
         <br />
-        <strong>When:</strong> 24.-26. October <br />
+        <strong>When:</strong> 24.-26. April <br />
       </p>
       <div
         id="info-navigation-buttons"
@@ -70,10 +76,44 @@ import { Icon } from "astro-icon/components";
       </div>
     </div>
 
+    <!-- Quest Scroll -->
+    <div
+      id="quest-scroll"
+      class="container mx-auto mb-5 flex max-w-full flex-col justify-center text-center lg:max-w-4xl"
+    >
+      <div class="scroll-paper w-full px-4 py-3 text-base leading-relaxed">
+        <h2 class="scroll-title mb-2 text-center text-4xl font-semibold">Quest For BetaLAN</h2>
+        <div class="scroll-content text-2xl">
+          <p>
+            BetaLAN has been taken over by a mighty blue dragon known as <b
+              >"Segfault the Bitflipper."</b
+            >
+            He is currently wreaking havoc upon the spires of <b>Castle LANcalot</b>, plunging our
+            kingdom into chaos.
+          </p>
+          <br />
+          <p>
+            The King and the Wizard have officially sanctioned a quest to regain control of the
+            kingdom. This beast has set forth a series of trials, challenges that only the bravest
+            of heroes would dare to face.
+          </p>
+          <br />
+          <p>
+            Coins has been put forth by the Crown for any who join the quest and succeed in
+            defeating the dragon’s challenges.
+          </p>
+          <br />
+          <p class="scroll-signoff text-right italic">
+            "By order of the King and the High Wizard."
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Crew Info -->
     <div
       id="crew-info"
-      class="container mx-auto my-4 mt-10 flex max-w-full flex-col items-center rounded-lg bg-slate-900 bg-opacity-90 p-4 text-center text-white lg:mt-20 lg:max-w-4xl"
+      class="container mx-auto flex max-w-full flex-col items-center rounded-lg bg-slate-900 bg-opacity-90 p-4 text-center text-white lg:max-w-4xl"
     >
       <h2 class="mb-4 text-7xl">Crew Information</h2>
       <p class="text-3xl">
@@ -137,7 +177,46 @@ import { Icon } from "astro-icon/components";
     border-radius: 10px;
     box-shadow: 0 0 10px #00dd00;
     color: #18ea28;
-    margin: 0 auto;
     max-width: 900px;
+  }
+
+  /* Quest scroll styles */
+  #quest-scroll {
+    max-width: 650px;
+  }
+
+  .scroll-paper {
+    background: linear-gradient(180deg, #f6ecd9 0%, #f1e3c6 50%, #ecd9b3 100%);
+    border: 4px double #c9a66b;
+    border-radius: 8px;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    font-family: "MedievalSharp", Georgia, serif;
+    color: #2b1700;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    line-height: 1.4;
+  }
+
+  .scroll-title {
+    text-align: center;
+    margin: 0 0 0.4rem 0;
+    font-weight: 700;
+    color: #2b2b2b;
+    letter-spacing: 0.6px;
+  }
+
+  .scroll-content p {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  .scroll-signoff {
+    margin-top: 0.75rem;
+    font-style: italic;
+    text-align: right;
+    color: #1f1f1f;
   }
 </style>
