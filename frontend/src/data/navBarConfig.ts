@@ -47,6 +47,12 @@ export const navigationDropdowns: NavigationDropdown[] = [
         href: "/om/branding",
       },
       {
+        icon: "fa-solid:image",
+        title: "Galleri",
+        desc: "Se bilder fra våre arrangementer og aktiviteter.",
+        href: "/gallery",
+      },
+      {
         icon: "fa-solid:envelope",
         title: "Kontakt oss",
         desc: "Ta kontakt med oss for samarbeid, spørsmål eller tilbakemelding.",
