@@ -24,10 +24,10 @@ import bedkomBlack from "@assets/logos/bedkom/black.png";
 import bedkomBlue from "@assets/logos/bedkom/blue.png";
 import bedkomWhite from "@assets/logos/bedkom/white.png";
 
-import eventkomBase from "@assets/logos/bedkom/base.svg";
-import eventkomBlack from "@assets/logos/bedkom/black.png";
-import eventkomBlue from "@assets/logos/bedkom/blue.png";
-import eventkomWhite from "@assets/logos/bedkom/white.png";
+import eventkomBase from "@assets/logos/eventkom/base.svg";
+import eventkomBlack from "@assets/logos/eventkom/black.png";
+import eventkomBlue from "@assets/logos/eventkom/blue.png";
+import eventkomWhite from "@assets/logos/eventkom/white.png";
 
 export const logos = {
   beta: {
