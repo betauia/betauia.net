@@ -5,8 +5,27 @@ import UiACTFDiscord from "@components/widgets/UiACTFDiscord.astro";
 import Card from "@components/ui/Card.astro";
 import { Image } from "astro:assets";
 import Intro from "@assets/betasec/intro_bilde.jpg";
-import VÅR_25_IntroCTF from "@assets/betasec/vår_25_intro_ctf.jpg";
-import NNSCTF from "@assets/betasec/nnsctf.jpg";
+import { parse } from "yaml";
+
+const albums = Object.entries(
+  import.meta.glob("/public/gallery/*/info.yaml", {
+    eager: true,
+    as: "raw",
+  })
+)
+  .map(([path, raw]) => {
+    const id = path.split("/").slice(-2, -1)[0];
+    const data = parse(raw);
+
+    return {
+      id,
+      title: data.title,
+      description: data.description,
+      cover: `/gallery/${id}/${data.cover}`,
+      tags: data.tag ?? [],
+    };
+  })
+  .filter(album => album.tags.includes("Betasec"));
 ---
 
 <BaseLayout title="BetaSec">
@@ -49,15 +68,16 @@ import NNSCTF from "@assets/betasec/nnsctf.jpg";
       Tidligere arrangementer
     </h1>
     <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
-      <Card
-        title="Intro CTF Vår 2025"
-        text="Våren 2025 arrangerte vi vår egen CTF-konkurranse, Intro CTF, som var åpen for alle studenter."
-        image={VÅR_25_IntroCTF}
-      /><Card
-        title="NNS CTF"
-        text="I høst 2025 deltok vi og satt opp On-site i Grimstad for Norske Nøkkelsnikkernes CTF."
-        image={NNSCTF}
-      />
+      {
+        albums.map(album => (
+          <Card
+            title={album.title}
+            text={album.description}
+            image={album.cover}
+            href={`/gallery/${album.id}`}
+          />
+        ))
+      }
     </div>
   </Container>
 </BaseLayout>
