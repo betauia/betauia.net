@@ -19,6 +19,12 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "github-light",
+      darkTheme: "github-dark",
+      wrap: true,
+    },
   },
   site: "https://betauia.net",
   vite: {

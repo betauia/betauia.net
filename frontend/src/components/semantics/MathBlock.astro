@@ -1,0 +1,44 @@
+---
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+interface Props {
+  tex?: string;
+  display?: boolean;
+}
+
+const { tex: texProp, display = false } = Astro.props;
+
+const raw = texProp ?? (await Astro.slots.render("default"));
+
+const tex =
+  raw
+    ?.replace(/<\/?[^>]+(>|$)/g, "")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .trim() ?? "";
+
+let html: string;
+try {
+  html = katex.renderToString(tex, {
+    displayMode: display,
+    throwOnError: false,
+  });
+} catch {
+  html = katex.renderToString(tex, {
+    displayMode: display,
+    throwOnError: false,
+    strict: false,
+  });
+}
+---
+
+<span
+  class={display
+    ? "not-prose my-6 block overflow-x-auto rounded-lg bg-bg-raised p-4 text-sm dark:bg-dark-bg-raised"
+    : "math-inline"}
+  set:html={html}
+/>

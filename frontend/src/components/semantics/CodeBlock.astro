@@ -1,0 +1,39 @@
+---
+import { codeToHtml } from "shiki";
+
+interface Props {
+  code?: string;
+  lang?: string;
+  "data-language"?: string;
+}
+
+const { code: codeProp, lang: langProp, "data-language": dataLang } = Astro.props;
+const lang = langProp ?? dataLang ?? "text";
+
+const raw = codeProp ?? (await Astro.slots.render("default"));
+
+const code =
+  raw
+    ?.replace(/<\/?[^>]+(>|$)/g, "")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .trim() ?? "";
+
+let html: string;
+try {
+  html = await codeToHtml(code, { lang, themes: { light: "github-light", dark: "github-dark" } });
+} catch {
+  html = await codeToHtml(code, {
+    lang: "text",
+    themes: { light: "github-light", dark: "github-dark" },
+  });
+}
+---
+
+<div
+  class="not-prose my-6 overflow-x-auto rounded-lg bg-bg-raised text-sm dark:bg-dark-bg-raised [&_pre]:!bg-transparent [&_pre]:p-4"
+  set:html={html}
+/>

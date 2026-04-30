@@ -3,6 +3,10 @@ layout: src/layouts/MarkdownLayout.astro
 title: Git-guide
 ---
 
+import CodeBlock from "@components/semantics/CodeBlock.astro";
+
+export const components = { pre: CodeBlock };
+
 ## Introduksjon
 
 Git er et versjonskontrollsystem som hjelper deg med å holde styr på kode, samarbeide med andre og rulle tilbake til tidligere versjoner om noe går galt.
@@ -512,7 +516,7 @@ For å holde prosjekter ryddig og gjøre samarbeid enklere, er det viktig å fø
 
 Filen er ganske greie å skrive, og gjelder kun for mappen den ligger i og alle undermapper. Du skriver filnavn inn for å ikke inkludere med et par spesielle tegn:
 
-```gitignore
+```
 # Bruk `#` for en vakker kommentar
 
 # Ikke inkluder `.env` og `node_modules` mappen
@@ -855,7 +859,7 @@ git rm --cached filnavn    # Fjern fil fra Git, behold lokalt
 git rm --cached -r mappe/  # Fjern mappe fra Git
 ```
 
-```gitignore
+```
 # Bruk `#` for en vakker kommentar
 .env            # Ikke inkluder fil
 node_modules/   # Ikke inkluder mappe

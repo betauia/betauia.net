@@ -1,15 +1,16 @@
 ---
 import PageLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
+import Prose from "@components/semantics/Prose.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
 <PageLayout title={frontmatter.title}>
   <Container>
-    <div class="md-content">
+    <Prose>
       <h1 class="my-0 mb-0">{frontmatter.title}</h1>
       <slot />
-    </div>
+    </Prose>
   </Container>
 </PageLayout>
