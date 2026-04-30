@@ -99,7 +99,7 @@ export const brandingColors = [
     name: "Muted",
     description: "Nedtonet tekstfarge for mindre viktig informasjon.",
     light: "#425269",
-    dark: "#A1B1D1",
+    dark: "#B9C5DD",
   },
   {
     name: "Aksent (primær)",

@@ -13,7 +13,7 @@ export default {
       },
 
       colors: {
-        brand: "#0085FF",
+        // brand: "#0085FF",
         accent: {
           DEFAULT: "#0085FF",
           secondary: "#14B8A6",
@@ -26,7 +26,7 @@ export default {
 
         fg: {
           base: "#242424",
-          muted: "#425269",
+          muted: "#353F4C",
         },
 
         dark: {
@@ -37,7 +37,7 @@ export default {
 
           fg: {
             base: "#FDFDFD",
-            muted: "#A1B1D1",
+            muted: "#B9C5DD",
           },
         },
       },

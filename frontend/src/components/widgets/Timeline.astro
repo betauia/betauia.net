@@ -33,10 +33,10 @@ const { title, items } = Astro.props as Props;
                 <div class="flex h-[2rem] items-center whitespace-nowrap rounded-l-lg bg-gray-600 px-2 text-sm font-bold">
                   {item.when}
                 </div>
-                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-2 pr-1 text-lg font-bold">
+                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-accent pl-2 pr-1 text-lg font-bold">
                   {item.title}
                 </h4>
-                <div class="h-0 w-0 border-b-[1rem] border-l-[1rem] border-t-[1rem] border-b-transparent border-l-brand border-t-transparent" />
+                <div class="h-0 w-0 border-b-[1rem] border-l-[1rem] border-t-[1rem] border-b-transparent border-l-accent border-t-transparent" />
               </a>
               <div class="my-2 mr-8 text-right">
                 <p class="opacity-80">{item.where}</p>
@@ -48,7 +48,7 @@ const { title, items } = Astro.props as Props;
 
         {/* Line */}
         <div class="flex flex-col items-center justify-evenly">
-          <div class="mt-2 h-4 w-4 rounded-full bg-brand" />
+          <div class="mt-2 h-4 w-4 rounded-full bg-accent" />
           <div class="mt-2 flex-1 border-2 border-gray-600" />
         </div>
 
@@ -60,8 +60,8 @@ const { title, items } = Astro.props as Props;
                 href={item.link}
                 class="flex items-center pl-4 text-white transition hover:opacity-75"
               >
-                <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-brand border-t-transparent" />
-                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-1 pr-2 text-lg font-bold">
+                <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-accent border-t-transparent" />
+                <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-accent pl-1 pr-2 text-lg font-bold">
                   {item.title}
                 </h4>
                 <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
@@ -81,8 +81,8 @@ const { title, items } = Astro.props as Props;
               href={item.link}
               class="flex items-center pl-4 text-white transition hover:opacity-75"
             >
-              <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-brand border-t-transparent" />
-              <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-brand pl-1 pr-2 text-lg font-bold">
+              <div class="h-0 w-0 border-b-[1rem] border-r-[1rem] border-t-[1rem] border-b-transparent border-r-accent border-t-transparent" />
+              <h4 class="flex h-[2rem] items-center whitespace-nowrap bg-accent pl-1 pr-2 text-lg font-bold">
                 {item.title}
               </h4>
               <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
@@ -99,6 +99,6 @@ const { title, items } = Astro.props as Props;
     ))
   }
   <div class="flex justify-start md:justify-center">
-    <Icon class="text-2xl text-brand" name="fa-solid:caret-down" />
+    <Icon class="text-2xl text-accent" name="fa-solid:caret-down" />
   </div>
 </div>
