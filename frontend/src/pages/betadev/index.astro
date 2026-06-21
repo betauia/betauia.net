@@ -9,6 +9,10 @@ import Game1 from "@assets/betadev/game-1.jpg";
 import Game3 from "@assets/betadev/game-3.jpg";
 import GamejamPrize from "@assets/betadev/gamejam-trofe.jpg";
 import { Image } from "astro:assets";
+
+import logoBlack from "../../assets/logos/betadev/black.png";
+import logoWhite from "../../assets/logos/betadev/white.png";
+import logoBlue from "../../assets/logos/betadev/blue.png";
 ---
 
 <BaseLayout
@@ -17,7 +21,10 @@ import { Image } from "astro:assets";
 >
   <Container>
     <Prose>
-      <h1>Betadev</h1>
+      <center>
+        <Image src src={logoBlue} alt="Logo" inferSize class="h-auto w-[60%] pb-4" />
+      </center>
+
       <p>
         Interessegruppen for nettsideutvikling og generell utvikling innen BETA. Betadev arrangerer
         gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre
