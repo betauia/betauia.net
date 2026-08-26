@@ -1,0 +1,94 @@
+---
+layout: src/layouts/MarkdownLayout.astro
+title: Komplekse tall
+---
+
+import CodeBlock from "@components/semantics/CodeBlock.astro";
+import MathBlock from "@components/semantics/MathBlock.astro";
+
+export const components = { pre: CodeBlock, math: MathBlock };
+
+> Formler og regler for komplekse tall i Matte 1
+
+## Generelt
+
+La $z=a+b\,i$ være et kompleks tall der $i^2=-1$:
+
+- $Re(z)=a$
+- $Im(z)=b$ (husk: ikke ta med $i$)
+
+## Regneregler
+
+For $z_1=a+bi$ og $z_2=c+di$:
+
+- **Addisjon**: $z_1+z_2 = (a+c) + (b+d)\,i$
+- **Subtraksjon**: $z_1-z_2 = (a-c) + (b-d)\,i$
+- **Multiplikasjon**: $z_1 \cdot z_2 = (ac-bd) + (ad+bc)\,i$
+- **Konjugat**: $\overline{z_1} = a-b\,i$
+- **Absolutt verdi**: $\lvert z_1 \rvert=\sqrt{a^2 + b^2}$
+
+### Divisjon
+
+For å dele komplekse tall, multipliser med den konjugerte:
+
+$$
+\frac{a+b\,i}{c+d\,i} = \frac{(a+b\,i)(c-d\,i)}{(c+d\,i)(c-d\,i)} = \frac{(a+b\,i)(c-d\,i)}{c^2+d^2}
+$$
+
+## Polarform
+
+Et kompleks tall kan skrives som:
+
+$$
+z = r(cos\theta + i\, sin\theta)
+$$
+
+der
+
+- **Modulus**: $r = \lvert z \rvert = \sqrt{a^2 + b^2}$
+
+- **Argument**: $\theta = arg(z)$
+
+<br />
+
+### Eulers formel
+
+Et kompleks tall kan også skrives med eulers tall:
+
+$$
+e^{i\,\theta}=cos\theta+i\,sin\theta
+$$
+
+En verdi på $\theta=\pi$ er lur å kunne på rams: **$e^{i\pi}=-1$**
+
+> Man kan også multiplisere inn $r$ som lengden.
+
+### Cos/sin-tabell
+
+|   Vinkel   |    Radianer     |       $\sin x$       |       $\cos x$       |
+| :--------: | :-------------: | :------------------: | :------------------: |
+| $0^\circ$  |       $0$       |         $0$          |         $1$          |
+| $30^\circ$ | $\frac{\pi}{6}$ |    $\frac{1}{2}$     | $\frac{\sqrt{3}}{2}$ |
+| $45^\circ$ | $\frac{\pi}{4}$ | $\frac{\sqrt{2}}{2}$ | $\frac{\sqrt{2}}{2}$ |
+| $60^\circ$ | $\frac{\pi}{3}$ | $\frac{\sqrt{3}}{2}$ |    $\frac{1}{2}$     |
+| $90^\circ$ | $\frac{\pi}{2}$ |         $1$          |         $0$          |
+
+## Røtter og potens
+
+### $n$-te røtter
+
+En $n$-te rot har alltid $n$ løsninger notert $w_k$ $k$ er én av de $n$-te løsningene.
+
+Alle $n$-te røtter kan bli funnet med:
+
+$$
+\sqrt[n]{z} = \sqrt[n]{r}\cdot e^{i(\frac{\theta}{n}+ k\cdot \frac{2\pi}{n})}
+$$
+
+### $n$-te potens
+
+En potens kan skrives på formen:
+
+$$
+z^n = r^n e^{i(\theta n)}
+$$
