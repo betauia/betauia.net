@@ -5,7 +5,7 @@ import Button from "@components/ui/Button.astro";
 import ProfileCard from "@components/ui/ProfileCard.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import { boardData, availableYears } from "../../data/boardMembers";
+import { boardData, availableYears } from "@data/boardMembers";
 
 export function getStaticPaths() {
   return availableYears.map((year: string) => ({

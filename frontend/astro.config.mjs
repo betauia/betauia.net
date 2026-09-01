@@ -37,7 +37,15 @@ export default defineConfig({
         "@lib": path.resolve("./src/lib"),
         "@content": path.resolve("./src/content"),
         "@data": path.resolve("./src/data"),
+        "@i18n": path.resolve("./src/i18n"),
       },
     },
+  },
+  i18n: {
+    defaultLocale: "no",
+    locales: ["en", "no"],
+    routing: {
+      prefixDefaultLocale: true
+    }
   },
 });
