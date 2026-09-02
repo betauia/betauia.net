@@ -4,6 +4,9 @@ import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import { Icon } from "astro-icon/components";
 
 import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 const program = [
   {

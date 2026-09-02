@@ -5,6 +5,9 @@ title: Komplekse tall
 
 import CodeBlock from "@components/semantics/CodeBlock.astro";
 import MathBlock from "@components/semantics/MathBlock.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 export const components = { pre: CodeBlock, math: MathBlock };
 

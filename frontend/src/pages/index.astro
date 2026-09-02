@@ -1,3 +1,6 @@
 <script>
-  window.location.replace("/no")
+  import { getPreferredLanguage, redirectToLanguage } from "@i18n/utils.ts";
+  const prefLang = getPreferredLanguage();
+
+  redirectToLanguage(prefLang)
 </script>

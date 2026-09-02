@@ -6,12 +6,14 @@ import ProfileCard from "@components/ui/ProfileCard.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { boardData, availableYears } from "@data/boardMembers";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
 
-export function getStaticPaths() {
-  return availableYears.map((year: string) => ({
+export const getStaticPaths = getStaticLanguagePaths(
+  availableYears.map((year: string) => ({
     params: { year },
-  }));
-}
+    props: { title: 'myTitle'}
+  }))
+);
 
 const { year } = Astro.params;
 const yearData = boardData[year!];

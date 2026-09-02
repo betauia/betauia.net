@@ -2,6 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import JobListAdmin from "@components/jobs/JobListAdmin.svelte";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Administrer jobbannonser">

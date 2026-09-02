@@ -2,6 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import Prose from "@components/semantics/Prose.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Om verv">

@@ -1,9 +1,18 @@
-import { ui, defaultLang } from "./ui";
+import { defaultLang, languages, type Locale, ui } from "./ui";
+import type { GetStaticPathsItem } from "astro";
 
-export function getLangFromUrl(url: URL) {
-  const [, lang] = url.pathname.split("/");
-  if (lang in ui) return lang as keyof typeof ui;
-  return defaultLang;
+/**
+ * Extract current language from the path, if the path variable does not match any configured language,
+ * the default language will be returned.
+ */
+export function extractCurrentLanguage(): Locale {
+  const pathSegments = window.location.pathname.split("/").filter(Boolean);
+  const langSegment = pathSegments[0];
+  return langSegment in languages ? (pathSegments[0] as Locale) : defaultLang;
+}
+
+export function getPreferredLanguage(): Locale {
+  return (localStorage.getItem(PREFERRED_LANG_KEY) as Locale) || defaultLang;
 }
 
 export function useTranslations(lang: keyof typeof ui) {
@@ -15,7 +24,7 @@ export function useTranslations(lang: keyof typeof ui) {
 // import en from "./en.json";
 // import no from "./no.json";
 //
-// const TRANSLATION_KEY = "translations";
+const PREFERRED_LANG_KEY = "prefLang";
 //
 // export const DEFAULT_LANGUAGE = "no";
 //
@@ -48,23 +57,23 @@ export function useTranslations(lang: keyof typeof ui) {
 // /**
 //  * Init the language service by checking for currently persisted language or initializing the persistence.
 //  */
-// export function initTranslation() {
-//   const currentSetting = localStorage.getItem(TRANSLATION_KEY) as Locale | null;
+export function initTranslation() {
+  const currentSetting = localStorage.getItem(PREFERRED_LANG_KEY) as Locale | null;
+
+  if (!currentSetting || !translationExist(currentSetting)) {
+    const browserLanguage = currentSetting || defaultLang;
+    localStorage.setItem(PREFERRED_LANG_KEY, browserLanguage);
+  }
+}
 //
-//   if (!currentSetting || !translationExist(currentSetting)) {
-//     const browserLanguage = getBrowserLocale() || DEFAULT_LANGUAGE;
-//     localStorage.setItem(TRANSLATION_KEY, browserLanguage);
-//   }
-// }
-//
-// /**
-//  * Change the currently selected language
-//  * @param language
-//  */
-// export function changeLanguage(language: Locale) {
-//   localStorage.setItem(TRANSLATION_KEY, language);
-//   window.location.reload();
-// }
+/**
+ * Change the currently perefered language
+ * @param language
+ */
+export function changePreferredLanguage(language: Locale) {
+  localStorage.setItem(PREFERRED_LANG_KEY, language);
+  window.location.reload();
+}
 //
 // /**
 //  * Returns the currently activated language.
@@ -89,7 +98,86 @@ export function useTranslations(lang: keyof typeof ui) {
 //  *
 //  * @param language
 //  */
-// function translationExist(language: string) {
-//   return language in translations;
-// }
-//
+function translationExist(language: string) {
+  return language in languages;
+}
+
+export function redirectToLanguage(lang: Locale) {
+  const pathSegments = window.location.pathname.split("/").filter(Boolean);
+
+  let targetDestination = "";
+  if (translationExist(pathSegments[0])) {
+    pathSegments[0] = lang;
+    targetDestination = pathSegments.join("/");
+  } else {
+    targetDestination = [lang, ...pathSegments].join("/");
+  }
+
+  const nextUrl = `/${targetDestination}${window.location.search}${window.location.hash}`;
+
+  if (`/${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) {
+    window.location.replace(nextUrl);
+  }
+}
+
+export function ensureLanguageInPath() {
+  const pathSegment = window.location.pathname.split("/").filter(Boolean);
+
+  if (!translationExist(pathSegment[0])) {
+    const prefLang = getPreferredLanguage();
+    redirectToLanguage(prefLang);
+  }
+}
+
+type LocalizedPath<T extends GetStaticPathsItem> = T & { params: T["params"] & { locale: Locale } };
+
+
+/**
+ * Generates static paths for all configured locales, optionally combined with existing path configurations.
+ *
+ * @param pathItems - Optional array of existing static path configurations to combine with locales
+ * @returns a function that applies each locale to the provided path items for multi-language static site generation.
+ *
+ * @example
+ * // Without parameter: only locale paths
+ * export const getStaticPaths = getStaticLanguagePaths();
+ * // [{ params: { locale: "en" } }, { params: { locale: "no" } }]
+ *
+ * @example
+ * // With parameter: locale paths combined with existing params
+ * export const getStaticPaths = getStaticLanguagePaths([
+ *   { params: { slug: "about" } },
+ *   { params: { slug: "contact" } },
+ * ]);
+ * // [
+ * //   { params: { slug: "about", locale: "en" } },
+ * //   { params: { slug: "contact", locale: "en" } },
+ * //   { params: { slug: "about", locale: "no" } },
+ * //   { params: { slug: "contact", locale: "no" } },
+ * // ]
+ */
+
+export function getStaticLanguagePaths<T extends GetStaticPathsItem>(
+  pathItems: T[]
+): () => LocalizedPath<T>[];
+
+/**
+ * Implementation without extension.
+ * @inheritDoc
+ */
+export function getStaticLanguagePaths(): () => { params: { locale: Locale } }[];
+/**
+ * Implementation with extension.
+ * @inheritDoc
+ */
+export function getStaticLanguagePaths<T extends GetStaticPathsItem>(pathItems: T[] = []) {
+  const locales = Object.keys(languages) as Locale[];
+  return function applyLocaleToPathItems() {
+    if (pathItems.length === 0) {
+      return locales.map(locale => ({ params: { locale } }));
+    }
+    return locales.flatMap(locale =>
+      pathItems.map(path => ({ ...path, params: { ...path.params, locale } }))
+    );
+  };
+}

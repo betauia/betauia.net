@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Min Bruker">

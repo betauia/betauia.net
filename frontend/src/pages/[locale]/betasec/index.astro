@@ -7,6 +7,9 @@ import { Image } from "astro:assets";
 import Intro from "@assets/betasec/intro_bilde.jpg";
 import VÅR_25_IntroCTF from "@assets/betasec/vår_25_intro_ctf.jpg";
 import NNSCTF from "@assets/betasec/nnsctf.jpg";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="BetaSec">

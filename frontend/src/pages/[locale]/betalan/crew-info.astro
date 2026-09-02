@@ -2,6 +2,9 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import { Icon } from "astro-icon/components";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout

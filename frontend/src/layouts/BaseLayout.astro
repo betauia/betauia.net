@@ -21,9 +21,12 @@ const {
 ---
 
 <!doctype html>
+<!--TODO set lang-->
 <html lang="en">
   <head>
     <script>
+      import { ensureLanguageInPath } from "@i18n/utils.ts";
+
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
@@ -31,6 +34,8 @@ const {
       ) {
         document.documentElement.classList.add("dark");
       }
+
+      ensureLanguageInPath();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

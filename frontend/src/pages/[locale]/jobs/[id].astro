@@ -11,7 +11,8 @@ import { formatFullDeadline, formatJobType, formatStudy, formatYears } from "@li
 
 const { id } = Astro.params;
 
-const internalBackendUrl = "http://backend:8000";
+// TODO reset
+const internalBackendUrl = "http://localhost:8000";
 const apiBase = import.meta.env.PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 let job = null;
@@ -69,7 +70,7 @@ try {
       job ? (
         <div class="mx-auto max-w-5xl space-y-5">
           <a
-            href="/[locale]/jobs"
+            href="/jobs"
             class="inline-flex items-center gap-2 text-sm text-fg-muted transition hover:text-fg-base dark:text-dark-fg-muted dark:hover:text-dark-fg-base"
           >
             <Icon name="fa-solid:angle-left" /> Tilbake

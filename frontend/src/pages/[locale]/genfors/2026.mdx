@@ -2,6 +2,9 @@
 layout: src/layouts/MarkdownLayout.astro
 title: Referat generalforsamling 2026
 ---
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 
 **Dato:** 27. Januar 2026<br/>

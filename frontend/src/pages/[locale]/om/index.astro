@@ -12,6 +12,9 @@ import BetasecImage from "@assets/groups/betasec.jpg";
 import BedkomImage from "@assets/groups/bedkom.jpg";
 import EventkomImage from "@assets/groups/eventkom.jpg";
 import Card from "@components/ui/Card.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Om Beta">

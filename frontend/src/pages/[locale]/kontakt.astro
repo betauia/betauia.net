@@ -5,7 +5,9 @@ import Button from "@components/ui/Button.astro";
 import { Icon } from "astro-icon/components";
 import Socials from "@components/widgets/Socials.astro";
 import Card from "@components/ui/Card.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
 
+export const getStaticPaths = getStaticLanguagePaths();
 const contacts = [
   {
     title: "Generelle henvendelser",

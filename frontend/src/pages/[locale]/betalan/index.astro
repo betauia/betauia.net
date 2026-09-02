@@ -6,6 +6,9 @@ import betaLANLogo from "@assets/betalan/Betalan_logo.png";
 import { Icon } from "astro-icon/components";
 
 import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="BetaLAN">

@@ -2,6 +2,9 @@
 layout: src/layouts/MarkdownLayout.astro
 title: GF 2025 Referat
 ---
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 **Dato**: 13.02.2025 <br />
 **Tidspunkt**: 16:30 <br />

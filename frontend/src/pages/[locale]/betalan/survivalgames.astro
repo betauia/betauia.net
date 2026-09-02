@@ -4,6 +4,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import minecraftSurvivalGames from "@assets/betalan/tournaments/minecraft-survival-games.png";
 import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-bottle.png";
 import { Icon } from "astro-icon/components";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout

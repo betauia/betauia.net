@@ -1,9 +1,11 @@
 ---
 import Toggle from "@components/ui/Toggle.astro";
 import { Icon } from "astro-icon/components";
+import LanguagePicker from "@components/ui/LanguagePicker.astro";
 ---
 
 <div class="flex items-center gap-4">
+  <LanguagePicker />
   <Toggle id="theme-toggle" />
   <!-- Until we have tested and caught bugs -->
   <!-- <div class="hidden md:block">

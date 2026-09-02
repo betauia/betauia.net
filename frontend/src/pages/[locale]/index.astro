@@ -6,11 +6,14 @@ import BetaLogo from "@assets/logos/beta/base.svg";
 
 import Banner from "@components/widgets/Banner.astro";
 import HeroBackground from "@components/fun/HeroBackground.svelte";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
 
 const showBanner = false;
 const bannerText = "";
 const bannerLink = "/";
 export const prerender = false;
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Home">

@@ -1,0 +1,47 @@
+---
+import { languages } from "@i18n/ui.ts";
+---
+
+<div class="flex items-center gap-2">
+  {
+    Object.entries(languages).map(([lang, label], index) => (
+      <>
+        <button data-lang={lang} type="button" class="cursor-pointer bg-none p-0 text-sm font-medium hover:underline">
+          {label}
+        </button>
+        {index < Object.keys(languages).length - 1 && <span class="text-fg-muted">|</span>}
+      </>
+    ))
+  }
+</div>
+
+<script>
+  import { extractCurrentLanguage, changePreferredLanguage, redirectToLanguage } from "@i18n/utils.ts";
+  import type { Locale } from "@i18n/ui.ts";
+
+  function styleActiveLanguage() {
+    document.querySelectorAll("[data-lang]").forEach((button) => {
+      const lang = button.getAttribute("data-lang");
+      if (lang === extractCurrentLanguage()) {
+        button.classList.add("font-bold", "underline");
+        button.classList.remove("font-medium");
+      } else {
+        button.classList.remove("font-bold", "underline");
+        button.classList.add("font-medium");
+      }
+    });
+  }
+
+  function applyEventHandlers() {
+    document.querySelectorAll<HTMLButtonElement>("[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = button.getAttribute("data-lang") as Locale;
+        changePreferredLanguage(lang);
+        redirectToLanguage(lang);
+      });
+    });
+  }
+
+  applyEventHandlers();
+  styleActiveLanguage();
+</script>

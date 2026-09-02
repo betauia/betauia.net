@@ -7,6 +7,9 @@ import Button from "@components/ui/Button.astro";
 import Image from "astro/components/Image.astro";
 
 import { brandingColors, logos } from "@data/branding";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 const logoList = Object.values(logos);
 ---

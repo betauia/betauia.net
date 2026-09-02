@@ -3,8 +3,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import Card from "@components/ui/Card.astro";
 import { availableYears, boardData } from "@data/boardMembers";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
 
 const boardYears = availableYears.sort((a, b) => parseInt(b) - parseInt(a));
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Styret">

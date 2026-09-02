@@ -6,6 +6,9 @@ import Card from "@components/ui/Card.astro";
 
 import Agenda from "@content/genfors/2026.md";
 import Prose from "@components/semantics/Prose.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Generalforsamling BETA">

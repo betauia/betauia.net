@@ -4,6 +4,9 @@ title: Git-guide
 ---
 
 import CodeBlock from "@components/semantics/CodeBlock.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 
 export const components = { pre: CodeBlock };
 

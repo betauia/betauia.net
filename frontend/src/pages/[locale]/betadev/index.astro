@@ -4,15 +4,19 @@ import Card from "@components/ui/Card.astro";
 import Prose from "@components/semantics/Prose.astro";
 import Button from "@components/ui/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
 
 import Game1 from "@assets/betadev/game-1.jpg";
 import Game3 from "@assets/betadev/game-3.jpg";
 import GamejamPrize from "@assets/betadev/gamejam-trofe.jpg";
 import { Image } from "astro:assets";
 
-import logoBlack from "../../assets/logos/betadev/black.png";
-import logoWhite from "../../assets/logos/betadev/white.png";
-import logoBlue from "../../assets/logos/betadev/blue.png";
+import logoBlack from "../../../assets/logos/betadev/black.png";
+import logoWhite from "../../../assets/logos/betadev/white.png";
+import logoBlue from "../../../assets/logos/betadev/blue.png";
+
+export const getStaticPaths = getStaticLanguagePaths();
+
 ---
 
 <BaseLayout

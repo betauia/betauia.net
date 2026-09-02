@@ -6,6 +6,9 @@ import GitGudImage from "@assets/gitgud.png";
 import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Git Workshop">
