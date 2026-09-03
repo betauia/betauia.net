@@ -1,4 +1,5 @@
 ---
+import A from "./A.astro";
 export interface Props {
   href?: string;
   target?: "_self" | "_blank" | "_parent" | "_top";
@@ -32,9 +33,9 @@ const classes = `${base} ${variants[type]} ${padding} ${extra}`;
 
 {
   href ? (
-    <a href={href} target={target} class={classes} download={download} id={id}>
+    <A href={href} target={target} class={classes} download={download} id={id}>
       <slot />
-    </a>
+    </A>
   ) : (
     <button type="button" class={classes} id={id}>
       <slot />

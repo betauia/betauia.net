@@ -53,84 +53,57 @@ const PREFERRED_LANG_KEY = "prefLang";
 //     return key in localizedUI ? localizedUI[key] : translations[DEFAULT_LANGUAGE][key];
 //   };
 // }
-//
-// /**
-//  * Init the language service by checking for currently persisted language or initializing the persistence.
-//  */
-export function initTranslation() {
-  const currentSetting = localStorage.getItem(PREFERRED_LANG_KEY) as Locale | null;
 
-  if (!currentSetting || !translationExist(currentSetting)) {
-    const browserLanguage = currentSetting || defaultLang;
-    localStorage.setItem(PREFERRED_LANG_KEY, browserLanguage);
-  }
-}
-//
 /**
  * Change the currently perefered language
  * @param language
  */
 export function changePreferredLanguage(language: Locale) {
   localStorage.setItem(PREFERRED_LANG_KEY, language);
-  window.location.reload();
 }
-//
-// /**
-//  * Returns the currently activated language.
-//  */
-// export function getCurrentLocale(): Locale {
-//   const currentSetting = localStorage.getItem(TRANSLATION_KEY) as Locale | null;
-//   return currentSetting || DEFAULT_LANGUAGE
-// }
-//
-// /**
-//  * Try to determine available translation for the preferred browser language. Returns null if it
-//  * is not able to match any of the translations to the browser lanugage.
-//  */
-// function getBrowserLocale(): Locale | null {
-//   const browserLanguage = navigator.language.split("-")[0].toLowerCase();
-//
-//   return translationExist(browserLanguage) ? (browserLanguage as Locale) : null;
-// }
-//
-// /**
-//  * Checks if there is an existing translation for this language.
-//  *
-//  * @param language
-//  */
-function translationExist(language: string) {
+
+/**
+ * Checks if there is an existing translation for this language.
+ *
+ * @param language
+ */
+export function translationExist(language: string) {
   return language in languages;
 }
 
 export function redirectToLanguage(lang: Locale) {
-  const pathSegments = window.location.pathname.split("/").filter(Boolean);
-
-  let targetDestination = "";
-  if (translationExist(pathSegments[0])) {
-    pathSegments[0] = lang;
-    targetDestination = pathSegments.join("/");
-  } else {
-    targetDestination = [lang, ...pathSegments].join("/");
-  }
-
-  const nextUrl = `/${targetDestination}${window.location.search}${window.location.hash}`;
+  const targetDestination = ensureLanguageInPath(lang, window.location.pathname);
+  const nextUrl = `${targetDestination}${window.location.search}${window.location.hash}`;
 
   if (`/${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) {
     window.location.replace(nextUrl);
   }
 }
 
-export function ensureLanguageInPath() {
-  const pathSegment = window.location.pathname.split("/").filter(Boolean);
+export function ensureLanguageInPath(lang: string | undefined, path: string) {
+  if (!lang || !isLocalPath(path)) {
+    return path;
+  }
 
-  if (!translationExist(pathSegment[0])) {
-    const prefLang = getPreferredLanguage();
-    redirectToLanguage(prefLang);
+  const pathSegments = path.split("/").filter(Boolean);
+  if (translationExist(pathSegments[0])) {
+    pathSegments[0] = lang;
+    return `/${pathSegments.join("/")}`;
+  } else {
+    return `/${[lang, ...pathSegments].join("/")}`;
   }
 }
 
-type LocalizedPath<T extends GetStaticPathsItem> = T & { params: T["params"] & { locale: Locale } };
+function isLocalPath(path: string) {
+  const isExternalLink = !path.startsWith("/");
 
+  const url = new URL(path, "https://placeholder.invalid");
+  const isFile = /\/[^/]+\.[^/]+$/.test(url.pathname);
+
+  return !isExternalLink && !isFile;
+}
+
+type LocalizedPath<T extends GetStaticPathsItem> = T & { params: T["params"] & { locale: Locale } };
 
 /**
  * Generates static paths for all configured locales, optionally combined with existing path configurations.

@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import { Icon } from "astro-icon/components";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 ---
@@ -119,7 +120,7 @@ export const getStaticPaths = getStaticLanguagePaths();
               Reach out to us and be part of making the next BetaLAN amazing!
             </p>
           </div>
-          <a
+          <A
             href="https://discord.gg/spp4jZwMXh"
             class="flex w-full max-w-xs flex-col items-center rounded-lg bg-indigo-600 px-6 py-4 text-white transition-colors hover:bg-indigo-700 sm:w-auto"
           >
@@ -128,7 +129,7 @@ export const getStaticPaths = getStaticLanguagePaths();
             <span class="mt-1 text-center text-xs text-indigo-200"
               >Contact the BetaLAN Leader for more info</span
             >
-          </a>
+          </A>
         </div>
       </div>
     </div>

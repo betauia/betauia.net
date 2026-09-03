@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import A from "./A.astro";
 
 interface Props {
   name: string;
@@ -59,14 +60,14 @@ const socials = [
     socials.length > 0 && (
       <div class="flex gap-3">
         {socials.map(social => (
-          <a
+          <A
             href={social.link}
             target="_blank"
             rel="noopener noreferrer"
             class="flex h-9 w-9 items-center justify-center rounded-lg bg-fg-muted/10 text-fg-muted transition-all hover:bg-accent/10 hover:text-accent dark:bg-dark-fg-muted/10 dark:text-dark-fg-muted dark:hover:bg-accent/10 dark:hover:text-accent"
           >
             <Icon name={social.icon} class="h-4 w-4" />
-          </a>
+          </A>
         ))}
       </div>
     )

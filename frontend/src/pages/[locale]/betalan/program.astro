@@ -5,6 +5,7 @@ import { Icon } from "astro-icon/components";
 
 import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
@@ -73,7 +74,7 @@ const program = [
             <p class="mb-3">
               Connect with other participants and get real-time updates during the event
             </p>
-            <a
+            <A
               href="https://discord.gg/ggUtjr8TSQ"
               target="_blank"
               rel="noopener"
@@ -81,7 +82,7 @@ const program = [
             >
               <Icon name="fa-brands:discord" class="mb-2 h-12 w-12" />
               <span>BetaLAN Discord</span>
-            </a>
+            </A>
           </div>
         </div>
       </div>

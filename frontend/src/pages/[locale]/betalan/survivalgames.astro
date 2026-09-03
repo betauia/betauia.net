@@ -5,6 +5,7 @@ import minecraftSurvivalGames from "@assets/betalan/tournaments/minecraft-surviv
 import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-bottle.png";
 import { Icon } from "astro-icon/components";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 ---
@@ -29,12 +30,12 @@ export const getStaticPaths = getStaticLanguagePaths();
   <h2 class="section-title">How do I participate?</h2>
   <p class="paragraph">
     The minecraft server has a whitelist policy, so to join the tournament, you need to register
-    your Minecraft username in advance. You can do so at this <a
+    your Minecraft username in advance. You can do so at this <A
       href="https://forms.gle/HCHSQVFEUZDAop7Y9"
       class="text-blue-400 hover:underline"
       target="_blank"
       aria-label="Google Forms link to register for the Minecraft Survival Games tournament"
-      >Google Forms</a
+      >Google Forms</A
     >. Please signup before 15:00 Sunday 21st of September so we have time to add everyone to the
     server. Then you will be able to join with the minecraft server address below.
   </p>

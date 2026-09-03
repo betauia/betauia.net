@@ -1,4 +1,5 @@
 ---
+import A from "@components/ui/A.astro";
 import { Icon } from "astro-icon/components";
 
 interface TimelineItem {
@@ -26,7 +27,7 @@ const { title, items } = Astro.props as Props;
         <div class="hidden flex-1 md:block">
           {index % 2 !== 0 && (
             <>
-              <a
+              <A
                 href={item.link}
                 class="flex items-center justify-end pr-4 text-white transition hover:opacity-75"
               >
@@ -37,7 +38,7 @@ const { title, items } = Astro.props as Props;
                   {item.title}
                 </h4>
                 <div class="h-0 w-0 border-b-[1rem] border-l-[1rem] border-t-[1rem] border-b-transparent border-l-accent border-t-transparent" />
-              </a>
+              </A>
               <div class="my-2 mr-8 text-right">
                 <p class="opacity-80">{item.where}</p>
                 <p class="mt-2">{item.description}</p>
@@ -56,7 +57,7 @@ const { title, items } = Astro.props as Props;
         <div class="flex-1">
           {index % 2 === 0 && (
             <div class="hidden md:block">
-              <a
+              <A
                 href={item.link}
                 class="flex items-center pl-4 text-white transition hover:opacity-75"
               >
@@ -67,7 +68,7 @@ const { title, items } = Astro.props as Props;
                 <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
                   {item.when}
                 </div>
-              </a>
+              </A>
               <div class="my-2 ml-8">
                 <p class="opacity-80">{item.where}</p>
                 <p class="mt-2">{item.description}</p>
@@ -77,7 +78,7 @@ const { title, items } = Astro.props as Props;
 
           {/* Small screen */}
           <div class="block md:hidden">
-            <a
+            <A
               href={item.link}
               class="flex items-center pl-4 text-white transition hover:opacity-75"
             >
@@ -88,7 +89,7 @@ const { title, items } = Astro.props as Props;
               <div class="flex h-[2rem] items-center whitespace-nowrap rounded-r-lg bg-gray-600 px-2 text-sm font-bold">
                 {item.when}
               </div>
-            </a>
+            </A>
             <div class="my-2 mb-8 ml-8">
               <p class="opacity-80">{item.where}</p>
               <p class="mt-2">{item.description}</p>

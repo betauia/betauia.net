@@ -1,4 +1,6 @@
 ---
+import A from './A.astro';
+
 export interface Props {
   text: string;
   href: string;
@@ -28,7 +30,7 @@ const pulseColor = hexToRgba(color, 0.5);
   class={`btn-container ${pulsing ? "pulsing" : ""}`}
   style={`--color-background: ${colorRgba}; --color-outline: ${colorOutline}; --color-shadow: ${colorShadow}; --pulse-color: ${pulseColor};`}
 >
-  <a class="btn-content" href={href} target={target}>
+  <A class="btn-content" href={href} target={target}>
     <span class="btn-title">{text}</span>
     <span class="icon-arrow">
       <svg
@@ -55,7 +57,7 @@ const pulseColor = hexToRgba(color, 0.5);
         </g>
       </svg>
     </span>
-  </a>
+  </A>
 </div>
 
 <style>

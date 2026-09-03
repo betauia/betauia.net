@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { DropdownItem } from "@data/navBarConfig";
+import A from "@components/ui/A.astro";
 
 interface Props {
   item: DropdownItem;
@@ -9,7 +10,7 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<a
+<A
   href={item.href}
   class="block rounded-lg p-3 transition-colors hover:bg-bg-base dark:hover:bg-dark-bg-raised"
 >
@@ -25,4 +26,4 @@ const { item } = Astro.props;
   >
     {item.desc}
   </p>
-</a>
+</A>

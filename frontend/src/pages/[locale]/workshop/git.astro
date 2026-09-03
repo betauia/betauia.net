@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 ---
@@ -29,7 +30,7 @@ export const getStaticPaths = getStaticLanguagePaths();
     </p>
 
     <div class="mb-8 mt-8">
-      <a href="https://forms.cloud.microsoft/e/z2JEkxBUxr" target="_blank">
+      <A href="https://forms.cloud.microsoft/e/z2JEkxBUxr" target="_blank">
         <div
           class="flex justify-center gap-8 rounded-2xl bg-accent px-8 py-6 text-white shadow-md transition hover:shadow-xl"
         >
@@ -49,7 +50,7 @@ export const getStaticPaths = getStaticLanguagePaths();
             </p>
           </div>
         </div>
-      </a>
+      </A>
     </div>
 
     <h2 id="faq" class="mb-4 text-3xl font-bold">Hva lærer jeg?</h2>
@@ -71,19 +72,19 @@ export const getStaticPaths = getStaticLanguagePaths();
     <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold">Hva må jeg ha med?</h2>
 
     <p class="my-4">
-      Eneste du trenger er en laptop, så husk å <a
+      Eneste du trenger er en laptop, så husk å <A
         class="text-accent underline"
-        href="https://git-scm.com/downloads">installere Git</a
+        href="https://git-scm.com/downloads">installere Git</A
       > før tirsdag og pass på at du er bittelitt kjent med terminalen. Alt vil foregå uten fancy interface
       i terminal slik at du faktisk vet ser hva som foregår.
     </p>
 
     <p class="my-8 font-bold">
-      Om det er noen spørsmål, ta kontakt med @jokko4 på <a
+      Om det er noen spørsmål, ta kontakt med @jokko4 på <A
         class="text-accent underline"
         href="https://discord.gg/3xBPkDsaXy"
         >Beta sin Discord
-      </a>! Vi snakkes!
+      </A>! Vi snakkes!
     </p>
 
     <Image src={GitGudImage} alt="Git gud meme" class="mt-12 w-full rounded-xl" />

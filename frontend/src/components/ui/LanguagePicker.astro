@@ -37,7 +37,7 @@ import { languages } from "@i18n/ui.ts";
       button.addEventListener("click", () => {
         const lang = button.getAttribute("data-lang") as Locale;
         changePreferredLanguage(lang);
-        redirectToLanguage(lang);
+        redirectToLanguage(lang)
       });
     });
   }

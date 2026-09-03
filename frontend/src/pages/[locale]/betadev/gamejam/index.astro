@@ -2,6 +2,7 @@
 import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 ---
@@ -48,9 +49,9 @@ export const getStaticPaths = getStaticLanguagePaths();
     </ul>
 
     <p class="mt-4">
-      Questions? Ask current BETADEV leader on discord <code>@myrstad_</code> or ask in BETA's <a
+      Questions? Ask current BETADEV leader on discord <code>@myrstad_</code> or ask in BETA's <A
         class="bg-accent p-1 text-white"
-        href="https://discord.gg/3xBPkDsaXy">discord server</a
+        href="https://discord.gg/3xBPkDsaXy">discord server</A
       >.
     </p>
   </Container>
