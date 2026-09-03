@@ -1,5 +1,14 @@
-import { defaultLang, languages, type Locale, ui } from "./ui";
+import {
+  defaultLang,
+  languages,
+  type Locale,
+  resolveTranslation,
+  type TranslationPath,
+  ui,
+} from "./ui";
 import type { GetStaticPathsItem } from "astro";
+
+const PREFERRED_LANG_KEY = "prefLang";
 
 /**
  * Extract current language from the path, if the path variable does not match any configured language,
@@ -11,51 +20,40 @@ export function extractCurrentLanguage(): Locale {
   return langSegment in languages ? (pathSegments[0] as Locale) : defaultLang;
 }
 
+/**
+ * Retrieve the language that was set during the last site visit. Returns default language if no preference exists
+ */
 export function getPreferredLanguage(): Locale {
   return (localStorage.getItem(PREFERRED_LANG_KEY) as Locale) || defaultLang;
 }
 
-export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: keyof (typeof ui)[typeof defaultLang]) {
-    return key in ui[lang] ? (ui[lang] as any)[key] : ui[defaultLang][key];
+/**
+ * Returns a function to access the translations in a specified language
+ *
+ * @param locale - the language to access the translations for
+ */
+export function useTranslations(locale?: string) {
+  const lang = locale && translationExist(locale) ? (locale as Locale) : defaultLang;
+
+  /**
+   * Retrieve a translation for the specified language and key
+   */
+  return function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
+    key: Key
+  ): string {
+    const translation = resolveTranslation(ui[lang], key);
+
+    if (translation) {
+      return translation;
+    }
+
+    throw new Error("Translation does not exist");
   };
 }
 
-// import en from "./en.json";
-// import no from "./no.json";
-//
-const PREFERRED_LANG_KEY = "prefLang";
-//
-// export const DEFAULT_LANGUAGE = "no";
-//
-// const translations = { en, no } as const;
-//
-// export type Locale = keyof typeof translations;
-//
-// type Translation = typeof en;
-//
-// export const languages = {
-//   en: translations["en"].language,
-//   no: translations["no"].language,
-// };
-//
-// /**
-//  * Provide access to translation files of the specific language.
-//  */
-// export function useTranslations(lang?: Locale) {
-//   const language = lang || DEFAULT_LANGUAGE;
-//   const localizedUI: Translation = translations[language];
-//
-//   /**
-//    * Return translated text for the key.
-//    */
-//   return function t(key: keyof Translation) {
-//     return key in localizedUI ? localizedUI[key] : translations[DEFAULT_LANGUAGE][key];
-//   };
-// }
-
 /**
- * Change the currently perefered language
+ * Change the pereferred language
+ *
  * @param language
  */
 export function changePreferredLanguage(language: Locale) {
@@ -65,12 +63,17 @@ export function changePreferredLanguage(language: Locale) {
 /**
  * Checks if there is an existing translation for this language.
  *
- * @param language
+ * @param lang
  */
-export function translationExist(language: string) {
-  return language in languages;
+export function translationExist(lang: string) {
+  return lang in languages;
 }
 
+/**
+ * Redirect to the same page in another language.
+ *
+ * @param lang
+ */
 export function redirectToLanguage(lang: Locale) {
   const targetDestination = ensureLanguageInPath(lang, window.location.pathname);
   const nextUrl = `${targetDestination}${window.location.search}${window.location.hash}`;
@@ -80,6 +83,12 @@ export function redirectToLanguage(lang: Locale) {
   }
 }
 
+/**
+ * Ensure the given path contains the langauge
+ *
+ * @param lang
+ * @param path
+ */
 export function ensureLanguageInPath(lang: string | undefined, path: string) {
   if (!lang || !isLocalPath(path)) {
     return path;
