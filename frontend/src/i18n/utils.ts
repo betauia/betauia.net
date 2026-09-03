@@ -61,7 +61,7 @@ export function useTranslations(locale?: string) {
       return replacements ? substitutePlaceholders(translation, replacements) : translation;
     }
 
-    throw new Error("Translation does not exist");
+    throw new Error(`Translation '${key}' does not exist`);
   }
 
   return t;
