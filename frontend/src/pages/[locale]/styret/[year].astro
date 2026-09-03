@@ -3,10 +3,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import Button from "@components/ui/Button.astro";
 import ProfileCard from "@components/ui/ProfileCard.astro";
-import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { boardData, availableYears } from "@data/boardMembers";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths(
   availableYears.map((year: string) => ({
@@ -16,32 +16,33 @@ export const getStaticPaths = getStaticLanguagePaths(
 );
 
 const { year } = Astro.params;
-const yearData = boardData[year!];
+const yearData = boardData(Astro.currentLocale)[year];
 const boardMembers = yearData?.members || [];
 const groupPhoto = yearData?.groupPhoto;
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title={`Styret ${year}`}>
+<BaseLayout title={(t("page.board.year.pageTitle", { year: year }) as string[]).join("")}>
   <Container>
     <div class="mx-auto mb-8 mt-6">
       <h1 class="mb-3 text-4xl font-bold">
-        Hovedstyret <span class="text-accent">{year}</span>
+        {t("page.board.year.heading", { year: <span class="text-accent">{year}</span> })}
       </h1>
       <p class="text-lg text-fg-muted dark:text-dark-fg-muted">
-        Møt de {boardMembers.length} engasjerte studentene som ledet Beta i {year}.
+        {t("page.board.year.intro", { count: boardMembers.length, year: year })}
       </p>
     </div>
 
     {
       groupPhoto && (
         <div class="mb-12 overflow-hidden rounded-2xl">
-          <Image src={groupPhoto} alt={`Hovedstyret ${year}`} class="h-96 w-full object-cover" />
+          <Image src={groupPhoto} alt={(t("page.board.year.groupPhotoAlt", { year: year }) as string[]).join("")} class="h-96 w-full object-cover" />
         </div>
       )
     }
 
     <div class="mb-12">
-      <h2 class="mb-6 text-3xl font-bold">Styremedlemmer</h2>
+      <h2 class="mb-6 text-3xl font-bold">{t("page.board.year.membersTitle")}</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           boardMembers.map(member => (
@@ -59,9 +60,9 @@ const groupPhoto = yearData?.groupPhoto;
 
     <div class="mb-12 text-center">
       <p class="mb-4 text-fg-muted dark:text-dark-fg-muted">
-        Vil du ta kontakt med hovedstyret eller har du spørsmål?
+        {t("page.board.year.contactIntro")}
       </p>
-      <Button href="/kontakt">Kontakt oss</Button>
+      <Button href="/kontakt">{t("page.board.year.contactButton")}</Button>
     </div>
   </Container>
 </BaseLayout>

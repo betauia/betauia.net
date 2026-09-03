@@ -4,29 +4,29 @@ import Container from "@components/layout/Container.astro";
 import Card from "@components/ui/Card.astro";
 import { availableYears, boardData } from "@data/boardMembers";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 
 const boardYears = availableYears.sort((a, b) => parseInt(b) - parseInt(a));
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Styret">
+<BaseLayout title={t("page.board.title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mb-4 text-4xl font-bold">Hovedstyret gjennom årene</h1>
-    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-      Klikk på et år for å se styremedlemmene og deres roller.
-    </p>
+    <h1 class="mb-4 text-4xl font-bold">{t("page.board.heading")}</h1>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">{t("page.board.intro")}</p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         boardYears.map(year => {
-          const yearData = boardData[year];
+          const yearData = boardData(Astro.currentLocale)[year];
           return (
             <Card
               title={year}
               image={yearData?.groupPhoto}
               frame={yearData?.groupPhoto ? "none" : "placeholder"}
               href={`/styret/${year}`}
-              highlightText="Les mer"
+              highlightText={t("page.board.readMore")}
             />
           );
         })
@@ -35,10 +35,10 @@ export const getStaticPaths = getStaticLanguagePaths();
 
     <Card
       class="mt-12"
-      title="Bli med i hovedstyret!"
-      text="Hvert år velges et nytt hovedstyre på generalforsamlingen. Er du interessert i å bidra til å drive Beta og skape arrangementer for datastudenter? Da er hovedstyret noe for deg! Hold øye med når generalforsamlingen avholdes, vanligvis i februar."
+      title={t("page.board.cta.title")}
+      text={t("page.board.cta.text")}
       href="/kontakt"
-      highlightText="Kontakt oss"
+      highlightText={t("page.board.cta.highlightText")}
     />
   </Container>
 </BaseLayout>

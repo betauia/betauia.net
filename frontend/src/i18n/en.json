@@ -114,6 +114,44 @@
         "contact": "If you have any questions, contact @jokko4 on {{discordLink}}! See you there!",
         "discord": "Beta's Discord"
       }
+    },
+    "board": {
+      "title": "Board",
+      "heading": "The main board through the years",
+      "intro": "Click on a year to see the board members and their roles.",
+      "readMore": "Read more",
+      "profile": {
+        "roles": {
+          "leader": "Leader",
+          "deputyLeader": "Deputy leader",
+          "financeManager": "Finance manager",
+          "prManager": "PR manager",
+          "businessCommitteeLeader": "Business committee leader",
+          "eventCommitteeLeader": "Event committee leader",
+          "betaLanLeader": "Betalan leader",
+          "betaDevLeader": "Betadev leader",
+          "betaSecLeader": "Betasec leader",
+          "boardMember": "Board member",
+          "financeAndMaterialManager": "Finance and materials manager",
+          "prWebManager": "PR/Web manager",
+          "eventManager": "Event manager",
+          "graphicDesigner": "Graphic designer"
+        }
+      },
+      "cta": {
+        "title": "Join the main board!",
+        "text": "A new main board is elected every year at the general assembly. Are you interested in helping run Beta and create events for computer science students? Then the main board is for you! Keep an eye out for when the general assembly is held, usually in February.",
+        "highlightText": "Contact us"
+      },
+      "year": {
+        "pageTitle": "Board {{year}}",
+        "heading": "The main board {{year}}",
+        "intro": "Meet the {{count}} dedicated students who led Beta in {{year}}.",
+        "groupPhotoAlt": "Main board {{year}}",
+        "membersTitle": "Board members",
+        "contactIntro": "Want to contact the main board or have any questions?",
+        "contactButton": "Contact us"
+      }
     }
   }
 }
