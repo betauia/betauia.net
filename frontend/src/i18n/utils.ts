@@ -35,20 +35,47 @@ export function getPreferredLanguage(): Locale {
 export function useTranslations(locale?: string) {
   const lang = locale && translationExist(locale) ? (locale as Locale) : defaultLang;
 
+  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(key: Key): string;
+  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
+    key: Key,
+    additions: Record<string, unknown>
+  ): string | unknown[];
+
   /**
-   * Retrieve a translation for the specified language and key
+   * Retrieve a translation for the specified language and key.
+   * It's possible to optionally define text replacements (like specially styled words) by providing the {@link replacements}
+   * object. The key of the object will search a variable in the text marked like {{varName}}-
+   *
+   * @example
+   * const t = useTranslations(locale);
+   * const text = t("key.with.variable", { bold: <b>boldText</br> })
+   * // Where value of key.with.variable is "This is a {{bold}} text"
    */
-  return function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
-    key: Key
-  ): string {
+  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
+    key: Key,
+    replacements?: Record<string, unknown>
+  ): string | unknown[] {
     const translation = resolveTranslation(ui[lang], key);
 
     if (translation) {
-      return translation;
+      return replacements ? substitutePlaceholders(translation, replacements) : translation;
     }
 
     throw new Error("Translation does not exist");
-  };
+  }
+
+  return t;
+}
+
+function substitutePlaceholders(text: string, replacements: Record<string, unknown>) {
+  return text.split(/({{\w+}})/g).map(part => {
+    if (!part.startsWith("{{") || !part.endsWith("}}")) {
+      return part;
+    }
+
+    const key = part.slice(2, -2);
+    return replacements[key] ?? part;
+  });
 }
 
 /**
@@ -138,7 +165,6 @@ type LocalizedPath<T extends GetStaticPathsItem> = T & { params: T["params"] & {
  * //   { params: { slug: "contact", locale: "no" } },
  * // ]
  */
-
 export function getStaticLanguagePaths<T extends GetStaticPathsItem>(
   pathItems: T[]
 ): () => LocalizedPath<T>[];
