@@ -61,6 +61,27 @@
         "text": "Beta is always open for contributions from students! Whether you want to learn more about development, design, or operations. Get in touch and join a rewarding project.",
         "highlightText": "Contact us"
       }
+    },
+    "contact": {
+      "title": "Contact us",
+      "intro": "Whether you're a student, a company, or just curious about what we do, feel free to get in touch! We usually reply quickly by email, but the organization is run by volunteer students, so it may take a little longer during exam season.",
+      "discordTitle": "Discord",
+      "discordText": "For students, Discord is the easiest way to reach us. There you'll find the whole Beta team, from the board to the committees and all the students. The board is usually active there, so feel free to ping us if you need anything.",
+      "discordButton": "Join Discord",
+      "contacts": {
+        "general": {
+          "title": "General inquiries",
+          "description": "Do you have general questions about Beta or events?"
+        },
+        "business": {
+          "title": "Business contact",
+          "description": "Interested in partnerships, events, or a company presentation?"
+        },
+        "finance": {
+          "title": "Finance and refunds",
+          "description": "For questions about invoices, refunds, or other finance-related matters."
+        }
+      }
     }
   }
 }

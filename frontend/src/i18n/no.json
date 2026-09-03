@@ -60,6 +60,27 @@
         "text": "Beta er alltid åpen for bidrag fra studenter! Enten du vil lære mer om utvikling, design eller drift. Ta kontakt og bli med på et lærerikt prosjekt.",
         "highlightText": "Kontakt oss"
       }
+    },
+    "contact": {
+      "title": "Kontakt oss",
+      "intro": "Enten du er student, bedrift eller bare nysgjerrig på hva vi driver med må du gjerne ta kontakt! Vi svarer som regel raskt på epost, men foreningen drives av frivillige studenter så det kan hende det tar litt ekstra tid i eksamensstresset.",
+      "discordTitle": "Discord",
+      "discordText": "For studenter er det lettest å nå oss på Discord. Der finner du hele hele Beta, alt fra styret til komiteer og alle studentene. Styret er stort sett alltid aktive der, så bare å pinge oss om det er noe.",
+      "discordButton": "Bli med på Discord",
+      "contacts": {
+        "general": {
+          "title": "Generelle henvendelser",
+          "description": "Har du generelle spørsmål om Beta eller arrangementer?"
+        },
+        "business": {
+          "title": "Bedriftskontakt",
+          "description": "Interessert i samarbeid, arrangementer eller bedriftspresentasjon?"
+        },
+        "finance": {
+          "title": "Økonomi og refusjon",
+          "description": "For spørsmål om faktura, refusjon eller andre økonomirelaterte saker."
+        }
+      }
     }
   }
 }

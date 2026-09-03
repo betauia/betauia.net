@@ -6,35 +6,33 @@ import { Icon } from "astro-icon/components";
 import Socials from "@components/widgets/Socials.astro";
 import Card from "@components/ui/Card.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 const contacts = [
   {
-    title: "Generelle henvendelser",
+    title: t("page.contact.contacts.general.title"),
     email: "post@betauia.net",
-    description: "Har du generelle spørsmål om Beta eller arrangementer?",
+    description: t("page.contact.contacts.general.description"),
   },
   {
-    title: "Bedriftskontakt",
+    title: t("page.contact.contacts.business.title"),
     email: "bedrift@betauia.net",
-    description: "Interessert i samarbeid, arrangementer eller bedriftspresentasjon?",
+    description: t("page.contact.contacts.business.description"),
   },
   {
-    title: "Økonomi og refusjon",
+    title: t("page.contact.contacts.finance.title"),
     email: "økonomi@betauia.net",
-    description: "For spørsmål om faktura, refusjon eller andre økonomirelaterte saker.",
+    description: t("page.contact.contacts.finance.description"),
   },
 ];
 ---
 
-<BaseLayout title="Kontakt oss">
+<BaseLayout title={t("page.contact.title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mt-4 text-4xl font-semibold">Kontakt oss</h1>
-    <p class="my-4 text-fg-muted dark:text-dark-fg-muted">
-      Enten du er student, bedrift eller bare nysgjerrig på hva vi driver med må du gjerne ta
-      kontakt! Vi svarer som regel raskt på epost, men foreningen drives av frivillige studenter så
-      det kan hende det tar litt ekstra tid i eksamensstresset.
-    </p>
+    <h1 class="mt-4 text-4xl font-semibold">{t("page.contact.title")}</h1>
+    <p class="my-4 text-fg-muted dark:text-dark-fg-muted">{t("page.contact.intro")}</p>
 
     <div class="mt-4 grid gap-6 md:grid-cols-3">
       {
@@ -45,14 +43,10 @@ const contacts = [
     </div>
 
     <div class="mt-12">
-      <h2 class="text-2xl font-medium">Discord</h2>
-      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted">
-        For studenter er det lettest å nå oss på Discord. Der finner du hele hele Beta, alt fra
-        styret til komiteer og alle studentene. Styret er stort sett alltid aktive der, så bare å
-        pinge oss om det er noe.
-      </p>
+      <h2 class="text-2xl font-medium">{t("page.contact.discordTitle")}</h2>
+      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted">{t("page.contact.discordText")}</p>
       <div class="mt-4">
-        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Bli med på Discord</Button>
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">{t("page.contact.discordButton")}</Button>
       </div>
     </div>
 
