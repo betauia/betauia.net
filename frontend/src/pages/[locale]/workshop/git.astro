@@ -7,26 +7,23 @@ import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Git Workshop">
+<BaseLayout title={t("page.workshop.git.title")}>
   <Container>
     <h1
       class="mb-4 flex gap-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400"
     >
-      Git Workshop <Icon name="fa-solid:code-branch" class="text-accent" />
+      {t("page.workshop.git.title")} <Icon name="fa-solid:code-branch" class="text-accent" />
     </h1>
     <p class="my-4">
-      <b
-        >Har du noen gang lurt på hvordan Git egentlig fungerer, eller hvordan du bruker det som en
-        proff?</b
-      > På denne workshopen vil <b>Jakob</b>, en 3. års AI-student, vise deg både basics og de crazy
-      delene av versjonskontroll. Han har lenge irritert seg på at studieplanen ikke lærer oss dette
-      skikkelig, så nå tar han saken i egne hender og deler skills som faktisk redder deg i
-      prosjekter, både på campus og i jobben senere.
+      <b>{t("page.workshop.git.introLead")}</b>
+      {t("page.workshop.git.introRest", { leadName: <b>Jakob</b> })}
     </p>
 
     <div class="mb-8 mt-8">
@@ -39,54 +36,40 @@ export const getStaticPaths = getStaticLanguagePaths();
           </div>
           <div class="">
             <h2 class="mb-2 flex items-center gap-4 border-b-2 pb-2 text-3xl font-bold">
-              Meld deg på workshoppen!<span><Icon name="fa:external-link" class="w-6" /></span>
+              {t("page.workshop.git.signupTitle")}<span><Icon name="fa:external-link" class="w-6" /></span>
             </h2>
 
-            <p class="text-lg font-bold">
-              <p class="text-lg font-bold">🗓️ Tirsdag 16. september</p><p class="text-lg font-bold">
-                ⏰ 16:15-17:30
-              </p>
-              <p class="text-lg font-bold">🗺️ C2 042</p>
-            </p>
+            <div class="text-lg font-bold">
+              <div>🗓️ {t("page.workshop.git.signupDate")}</div>
+              <div>⏰ {t("page.workshop.git.signupTime")}</div>
+              <div>🗺️ {t("page.workshop.git.signupLocation")}</div>
+            </div>
           </div>
         </div>
       </A>
     </div>
 
-    <h2 id="faq" class="mb-4 text-3xl font-bold">Hva lærer jeg?</h2>
+    <h2 id="faq" class="mb-4 text-3xl font-bold">{t("page.workshop.git.whatYouLearnTitle")}</h2>
 
-    <p class="my-4">
-      Selv om du har brukt Git siden barnehagen eller aldri har hørt om det kommer du til å få masse
-      utbytte av workshoppen. Målgruppen er rettet mot alle og det vil handle om alt fra the basics
-      til de mest spesielle konseptene som:
-    </p>
+    <p class="my-4">{t("page.workshop.git.whatYouLearnIntro")}</p>
 
     <ul class="ml-6 list-[square] space-y-2 marker:text-accent">
-      <li><b>Hva Git er og hva som egentlig skjer bak panseret</b></li>
-      <li><b>De vanligste kommandoene for daglig bruk</b></li>
-      <li><b>Undoing, fiksing og hvordan endre historien</b></li>
-      <li><b>Praktisk gjennomgang av konflikter og problemer</b></li>
-      <li><b>Gode standarder, tips og triks for store prosjekter</b></li>
+      <li><b>{t("page.workshop.git.topics.1")}</b></li>
+      <li><b>{t("page.workshop.git.topics.2")}</b></li>
+      <li><b>{t("page.workshop.git.topics.3")}</b></li>
+      <li><b>{t("page.workshop.git.topics.4")}</b></li>
+      <li><b>{t("page.workshop.git.topics.5")}</b></li>
     </ul>
 
-    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold">Hva må jeg ha med?</h2>
+    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold">{t("page.workshop.git.whatToBringTitle")}</h2>
 
     <p class="my-4">
-      Eneste du trenger er en laptop, så husk å <A
-        class="text-accent underline"
-        href="https://git-scm.com/downloads">installere Git</A
-      > før tirsdag og pass på at du er bittelitt kjent med terminalen. Alt vil foregå uten fancy interface
-      i terminal slik at du faktisk vet ser hva som foregår.
+      {t("page.workshop.git.whatToBringIntro", { installGit: <A class="text-accent underline" href="https://git-scm.com/downloads">{t("page.workshop.git.installGit")}</A>})}
     </p>
 
     <p class="my-8 font-bold">
-      Om det er noen spørsmål, ta kontakt med @jokko4 på <A
-        class="text-accent underline"
-        href="https://discord.gg/3xBPkDsaXy"
-        >Beta sin Discord
-      </A>! Vi snakkes!
+      {t("page.workshop.git.contact", { discordLink: <A class="text-accent underline" href="https://discord.gg/3xBPkDsaXy">{t("page.workshop.git.discord")}</A> })}
     </p>
-
     <Image src={GitGudImage} alt="Git gud meme" class="mt-12 w-full rounded-xl" />
   </Container>
 </BaseLayout>
