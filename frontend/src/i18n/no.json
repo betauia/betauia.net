@@ -1,6 +1,25 @@
 {
   "language": "Norsk",
   "page": {
+    "login": {
+      "pageTitle": "Logg inn",
+      "heading": "Logg Inn",
+      "existingUser": "Eksisterende bruker?",
+      "newUser": "Ny bruker?",
+      "emailLabel": "E-postadresse",
+      "passwordLabel": "Passord",
+      "loginButton": "Logg inn",
+      "loginLoading": "Logger inn...",
+      "registerButton": "Lag bruker",
+      "registerLoading": "Sender...",
+      "separator": "- eller -",
+      "confirmationNote": "Vi sender deg en bekreftelseslenke",
+      "registerError": "Bekreft at du ikke er en robot.",
+      "loginFailed": "Innlogging feilet.",
+      "registerSuccess": "Sjekk e-posten din.",
+      "registerFailed": "Noe gikk galt.",
+      "retry": "Prøv igjen"
+    },
     "404": {
       "title": "Her var det tomt...",
       "message": "Denne siden Finnes ikke!",

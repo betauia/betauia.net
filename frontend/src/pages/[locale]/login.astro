@@ -2,23 +2,27 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Logg inn">
+<BaseLayout title={t("page.login.pageTitle")}>
   <Container>
     <div class="mx-auto max-w-md">
-      <h1 class="mb-8 text-3xl font-bold">Logg Inn</h1>
+      <h1 class="mb-8 text-3xl font-bold">{t("page.login.heading")}</h1>
 
       <div
         class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold">Eksisterende bruker?</h2>
+        <h2 class="mb-4 text-xl font-bold">{t("page.login.existingUser")}</h2>
         <form id="login-form">
           <div class="mb-4">
-            <label for="login-email" class="mb-2 block text-sm font-medium">E-postadresse</label>
+            <label for="login-email" class="mb-2 block text-sm font-medium">
+              {t("page.login.emailLabel")}
+            </label>
             <input
               id="login-email"
               name="email"
@@ -30,7 +34,9 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
           </div>
 
           <div class="mb-6">
-            <label for="login-password" class="mb-2 block text-sm font-medium">Passord</label>
+            <label for="login-password" class="mb-2 block text-sm font-medium">
+              {t("page.login.passwordLabel")}
+            </label>
             <input
               id="login-password"
               name="password"
@@ -46,21 +52,23 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
             id="login-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
           >
-            Logg inn
+            {t("page.login.loginButton")}
           </button>
         </form>
       </div>
 
-      <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">- eller -</p>
+      <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">
+        {t("page.login.separator")}
+      </p>
 
       <div
         class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold">Ny bruker?</h2>
+        <h2 class="mb-4 text-xl font-bold">{t("page.login.newUser")}</h2>
         <form id="register-form">
           <div class="mb-6">
             <label for="register-email" class="mb-2 block text-sm font-medium">
-              E-postadresse
+              {t("page.login.emailLabel")}
             </label>
             <input
               id="register-email"
@@ -71,7 +79,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
               placeholder="deg@eksempel.no"
             />
             <p class="mt-2 text-xs text-fg-muted dark:text-dark-fg-muted">
-              Vi sender deg en bekreftelseslenke
+              {t("page.login.confirmationNote")}
             </p>
           </div>
 
@@ -90,7 +98,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
             id="register-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Lag bruker
+            {t("page.login.registerButton")}
           </button>
         </form>
       </div>
@@ -110,8 +118,11 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 </BaseLayout>
 
 <script>
+  import { useTranslations } from "@i18n/utils";
   import { login, initiateRegistration } from "@lib/auth";
   import { popup } from "@lib/message";
+  import { extractCurrentLanguage } from "@i18n/utils.ts";
+  const t = useTranslations(extractCurrentLanguage());
 
   const loginForm = document.getElementById("login-form") as HTMLFormElement;
   const registerForm = document.getElementById("register-form") as HTMLFormElement;
@@ -149,7 +160,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     const loginBtn = document.getElementById("login-btn") as HTMLButtonElement;
 
     loginBtn.disabled = true;
-    loginBtn.textContent = "Logger inn...";
+    loginBtn.textContent = t("page.login.loginLoading");
 
     try {
       await login({
@@ -160,9 +171,9 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
       const redirectTo = params.get("redirect") || "/account";
       window.location.href = redirectTo;
     } catch (error) {
-      popup(error instanceof Error ? error.message : "Innlogging feilet.", "error", "Prøv igjen");
+      popup(error instanceof Error ? error.message :  t("page.login.loginFailed"), "error", t("page.login.retry"));
       loginBtn.disabled = false;
-      loginBtn.textContent = "Logg inn";
+      loginBtn.textContent = t("page.login.loginButton");
     }
   });
 
@@ -175,12 +186,12 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     const captchaToken = formData.get("cf-turnstile-response") as string;
 
     if (!captchaToken) {
-      popup("Bekreft at du ikke er en robot.", "error");
+      popup(t("page.login.registerError"), "error");
       return;
     }
 
     registerBtn.disabled = true;
-    registerBtn.textContent = "Sender...";
+    registerBtn.textContent = t("page.login.registerLoading");
 
     try {
       const response = await initiateRegistration({
@@ -193,12 +204,12 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
         return;
       }
 
-      popup("Sjekk e-posten din.", "success");
+      popup(t("page.login.registerSuccess"), "success");
       registerForm.reset();
     } catch (error) {
-      popup(error instanceof Error ? error.message : "Noe gikk galt.");
+      popup(error instanceof Error ? error.message : t("page.login.registerFailed"));
     } finally {
-      registerBtn.textContent = "Lag bruker";
+      registerBtn.textContent = t("page.login.registerButton");
 
       registerBtn.disabled = true;
       if ((window as any).turnstile) {
