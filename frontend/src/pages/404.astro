@@ -2,43 +2,42 @@
 import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/ui/Button.astro";
+import { useTranslations } from "@i18n/utils.ts";
+
+const t = useTranslations(Astro.currentLocale);
+const messages = [
+  t("page.404.messages.1"),
+  t("page.404.messages.2"),
+  t("page.404.messages.3"),
+  t("page.404.messages.4"),
+  t("page.404.messages.5"),
+  t("page.404.messages.6"),
+  t("page.404.messages.7"),
+  t("page.404.messages.8"),
+  t("page.404.messages.9"),
+  t("page.404.messages.10"),
+  t("page.404.messages.11"),
+  t("page.404.messages.12"),
+];
 ---
 
 <BaseLayout title="404">
   <Container class="flex min-h-svh flex-col items-center justify-center text-center">
-    <h1 class="text-4xl font-semibold">Her var det tomt...</h1>
+    <h1 class="text-4xl font-semibold">{t("page.404.title")}</h1>
     <p class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted" id="random-error-message">
-      Denne Siden Finnes Ikke!
+      {t("page.404.message")}
     </p>
     <div class="mt-6 flex gap-4">
-      <Button href="/" type="primary">Gå tilbake</Button>
-      <Button href="mailto:post@betauia.net" type="secondary">Ta kontakt</Button>
+      <Button href="/" type="primary">{t("page.404.back")}</Button>
+      <Button href="mailto:post@betauia.net" type="secondary">{t("page.404.contact")}</Button>
     </div>
   </Container>
 </BaseLayout>
 
 <!-- Random error message -->
-<script>
-  const messages = [
-    "Dette blir ikke fikset før vi får mer pizza!",
-    "Denne siden forsvant kanskje i siste commit.",
-    "Designeren mente det var minimalistisk.",
-    "Vi trodde noen skulle fikse det. Ingen gjorde det.",
-    "It's not a bug, it's a feature!",
-    "Worked on my machine!",
-    "Har du hørt om 99.99% uptime? Ikke vi!",
-    "Sjekk AWS US-East-1 sin status.",
-    "Your majesty, they hit the second server!",
-    "Sikkert en DNS-feil.",
-    "BetaSEC har tatt ned siden pga sikkerhetsbrudd.",
-    "Det manglet et komma i koden!",
-  ];
-
-  const randomText = messages[Math.floor(Math.random() * messages.length)];
-
-  // Make sure the DOM is loaded before trying to access the element
+<script define:vars={{ messages }}>
   const errorElement = document.getElementById("random-error-message");
   if (errorElement) {
-    errorElement.innerText = randomText;
+    errorElement.innerText = messages[Math.floor(Math.random() * messages.length)];
   }
 </script>
