@@ -12,7 +12,7 @@
   import type { JobListing } from "@lib/jobs";
   import { ensureLanguageInPath } from "@i18n/utils.ts";
 
-  export let locale: string;
+  export let locale: string | undefined;
 
   let jobs: JobListing[] = [];
   let loading = true;

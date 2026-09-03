@@ -14,7 +14,7 @@ export const getStaticPaths = getStaticLanguagePaths();
         <h1 class="text-3xl font-bold text-fg-base dark:text-dark-fg-base">Jobbsannonser</h1>
       </div>
 
-      <JobList client:load locale={Astro.params.locale} />
+      <JobList client:load locale={Astro.currentLocale} />
     </div>
   </Container>
 </BaseLayout>
