@@ -5,20 +5,6 @@ import Button from "@components/ui/Button.astro";
 import { useTranslations } from "@i18n/utils.ts";
 
 const t = useTranslations(Astro.currentLocale);
-const messages = [
-  t("page.404.messages.1"),
-  t("page.404.messages.2"),
-  t("page.404.messages.3"),
-  t("page.404.messages.4"),
-  t("page.404.messages.5"),
-  t("page.404.messages.6"),
-  t("page.404.messages.7"),
-  t("page.404.messages.8"),
-  t("page.404.messages.9"),
-  t("page.404.messages.10"),
-  t("page.404.messages.11"),
-  t("page.404.messages.12"),
-];
 ---
 
 <BaseLayout title="404">
@@ -35,7 +21,25 @@ const messages = [
 </BaseLayout>
 
 <!-- Random error message -->
-<script define:vars={{ messages }}>
+<script>
+  import { extractCurrentLanguage, useTranslations } from "@i18n/utils.ts";
+
+  const t = useTranslations(extractCurrentLanguage());
+  const messages = [
+    t("page.404.messages.1"),
+    t("page.404.messages.2"),
+    t("page.404.messages.3"),
+    t("page.404.messages.4"),
+    t("page.404.messages.5"),
+    t("page.404.messages.6"),
+    t("page.404.messages.7"),
+    t("page.404.messages.8"),
+    t("page.404.messages.9"),
+    t("page.404.messages.10"),
+    t("page.404.messages.11"),
+    t("page.404.messages.12"),
+  ];
+
   const errorElement = document.getElementById("random-error-message");
   if (errorElement) {
     errorElement.innerText = messages[Math.floor(Math.random() * messages.length)];
