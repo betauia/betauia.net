@@ -7,6 +7,7 @@ import BetaLogo from "@assets/logos/beta/base.svg";
 import Banner from "@components/widgets/Banner.astro";
 import HeroBackground from "@components/fun/HeroBackground.svelte";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
 
 const showBanner = false;
 const bannerText = "";
@@ -14,22 +15,19 @@ const bannerLink = "/";
 export const prerender = false;
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title={t("page.home.title")}>
   <Container class="flex min-h-svh flex-col justify-center">
     <div class="flex h-full items-center">
       <div>
         <BetaLogo class="h-24 text-accent" />
-        <h1 class="mt-4 text-4xl font-semibold">Linjeforeningen for datastudenter</h1>
-        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted">
-          Beta er linjeforeningen for studenter innen cybersikkerhet, dataingeniør, IKT eller
-          kunstig intelligens ved UiA Grimstad. Foreningen drives frivillig av studentene våre og
-          målet er å gjøre studiehverdagen for datastudenter enda bedre.
-        </p>
+        <h1 class="mt-4 text-4xl font-semibold">{t("page.home.heading")}</h1>
+        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted">{t("page.home.intro")}</p>
         <div class="mt-6 flex gap-2">
-          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Discord</Button>
-          <Button href="/om" type="secondary">Om Beta</Button>
+          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">{t("page.home.discordButton")}</Button>
+          <Button href="/om" type="secondary">{t("page.home.aboutButton")}</Button>
         </div>
       </div>
     </div>

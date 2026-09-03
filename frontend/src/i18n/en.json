@@ -82,6 +82,13 @@
           "description": "For questions about invoices, refunds, or other finance-related matters."
         }
       }
+    },
+    "home": {
+      "title": "Home",
+      "heading": "The student organization for computer science students",
+      "intro": "Beta is the student organization for students in cybersecurity, computer engineering, ICT, or artificial intelligence at UiA Grimstad. The organization is run voluntarily by our students, and the goal is to make everyday student life even better for computer science students.",
+      "discordButton": "Discord",
+      "aboutButton": "About Beta"
     }
   }
 }
