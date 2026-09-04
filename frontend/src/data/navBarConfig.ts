@@ -107,10 +107,10 @@ export const navigationDropdowns: NavigationDropdown[] = [
         href: "/genfors",
       },
       {
-        icon: "fa-brands:git-alt",
-        title: "Git Guide",
-        desc: "Let frem hva enn spørsmål du har om Git i cheat sheeten med tips.",
-        href: "/guides/git",
+        icon: "fa-solid:book-open",
+        title: "Guides",
+        desc: "Finn nyttige guider, ressurser og tips for fag, verktøy og andre temaer.",
+        href: "/guides",
       },
       {
         icon: "fa-solid:gamepad",
