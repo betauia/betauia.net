@@ -12,79 +12,86 @@ import BetasecImage from "@assets/groups/betasec.jpg";
 import BedkomImage from "@assets/groups/bedkom.jpg";
 import EventkomImage from "@assets/groups/eventkom.jpg";
 import Card from "@components/ui/Card.astro";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Om Beta">
+<BaseLayout title={t("page.om.index.title")}>
   <Container>
     <div class="mx-auto mt-6 max-w-3xl text-center">
       <div class="mb-4 flex justify-center">
         <BetaLogo class="h-20 text-accent" />
       </div>
       <h1 class="mb-3 text-4xl font-bold">
-        Linjeforening for <span class="text-accent">datastudenter</span>
+        {
+          t("page.om.index.heading", {
+            students: <span class="text-accent">{t("page.om.index.students")}</span>,
+          })
+        }
       </h1>
       <p class="mx-auto mb-6 max-w-2xl text-lg text-fg-muted dark:text-dark-fg-muted">
-        Beta er linjeforeningen ved UiA Grimstad for cybersikkerhet, dataingeniør, IKT og kunstig
-        intelligens. Foreningen drives frivillig av studentene og målet er å gjøre studiehverdagen
-        for datastudenter enda bedre.
+        {t("page.om.index.intro")}
       </p>
       <div class="flex justify-center gap-3">
-        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Bli med på Discord</Button>
-        <Button href="/kontakt" type="secondary">Ta kontakt</Button>
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">{t("page.om.index.discordButton")}</Button>
+        <Button href="/kontakt" type="secondary">{t("page.om.index.contactButton")}</Button>
       </div>
     </div>
 
     <div class="mb-8 mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
-      <StatCard stat="400+" title="Studenter" description="Medlemmer på tvers av studieprogram" />
       <StatCard
-        stat="4"
-        title="Studieprogram"
-        description="Cybersikkerhet, dataingeniør, KI og IoT"
+        stat='400+'
+        title={t("page.om.index.stats.students.title")}
+        description={t("page.om.index.stats.students.description")}
       />
       <StatCard
-        stat="5"
-        title="Komitéer & Grupper"
-        description="Engasjer deg i det som interesserer deg"
+        stat='4'
+        title={t("page.om.index.stats.studyPrograms.title")}
+        description={t("page.om.index.stats.studyPrograms.description")}
+      />
+      <StatCard
+        stat='5'
+        title={t("page.om.index.stats.committees.title")}
+        description={t("page.om.index.stats.committees.description")}
       />
     </div>
   </Container>
 
   <div class="bg-bg-raised dark:bg-dark-bg-raised">
     <Container>
-      <h2 class="my-6 text-3xl font-bold">Hva tilbyr vi?</h2>
+      <h2 class="my-6 text-3xl font-bold">{t("page.om.index.features.title")}</h2>
       <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <FeatureCard
           icon="fa-solid:glass-cheers"
-          title="Sosiale arrangementer"
-          description="Paintball, gokart, Pils & Prog og alt annet studentene foreslår."
+          title={t("page.om.index.features.social.title")}
+          description={t("page.om.index.features.social.description")}
         />
         <FeatureCard
           icon="fa-solid:laptop-code"
-          title="Faglige arrangementer"
-          description="Workshops, fagkvelder, hackathons og prosjektarbeid."
+          title={t("page.om.index.features.academic.title")}
+          description={t("page.om.index.features.academic.description")}
         />
         <FeatureCard
           icon="fa-solid:users"
-          title="Grupper & Komiteer"
-          description="Engasjer deg, lær med andre og arranger eventer."
+          title={t("page.om.index.features.groups.title")}
+          description={t("page.om.index.features.groups.description")}
         />
         <FeatureCard
           icon="fa-solid:building"
-          title="Bedriftspresentasjoner"
-          description="Møt spennende bedrifter med gratis mat og drikke."
+          title={t("page.om.index.features.business.title")}
+          description={t("page.om.index.features.business.description")}
         />
         <FeatureCard
           icon="fa-solid:gamepad"
-          title="Semesterets råeste LAN"
-          description="Bli med på konkurranser, spill, mat og hygge."
+          title={t("page.om.index.features.lan.title")}
+          description={t("page.om.index.features.lan.description")}
         />
         <FeatureCard
           icon="fa-solid:user-friends"
-          title="Nettverk & Vennskap"
-          description="Bygg et sterkt nettverk som varer hele studietiden og videre ut."
+          title={t("page.om.index.features.network.title")}
+          description={t("page.om.index.features.network.description")}
         />
       </div>
     </Container>
@@ -92,53 +99,53 @@ export const getStaticPaths = getStaticLanguagePaths();
 
   <Container>
     <div class="mb-12 mt-6">
-      <h2 class="mb-2 text-3xl font-bold">Interessegrupper</h2>
+      <h2 class="mb-2 text-3xl font-bold">{t("page.om.index.interestGroups.title")}</h2>
       <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-        Bli med i gruppene som matcher dine interesser.
+        {t("page.om.index.interestGroups.intro")}
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card
           image={BetadevImage}
-          title="Betadev"
-          text="Lær software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
+          title={t("page.om.index.interestGroups.betadev.title")}
+          text={t("page.om.index.interestGroups.betadev.description")}
           href="/betadev"
-          highlightText="Les mer"
+          highlightText={t("page.om.index.interestGroups.readMore")}
         />
         <Card
           image={BetasecImage}
-          title="Betasec"
-          text="Cybersikkerhet med CTF-er, workshops og prosjekter som gir praktisk erfaring."
+          title={t("page.om.index.interestGroups.betasec.title")}
+          text={t("page.om.index.interestGroups.betasec.description")}
           href="/betasec"
-          highlightText="Les mer"
+          highlightText={t("page.om.index.interestGroups.readMore")}
         />
       </div>
     </div>
 
-    <h2 class="mb-2 text-3xl font-bold">Komiteer</h2>
+    <h2 class="mb-2 text-3xl font-bold">{t("page.om.index.committees.title")}</h2>
     <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-      Komiteene driver daglig drift og arrangementer.
+      {t("page.om.index.committees.intro")}
     </p>
     <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
       <Card
         image={BedkomImage}
-        title="Bedkom"
-        text="Kontakt med bedrifter og arrangerer bedriftspresentasjoner."
+        title={t("page.om.index.committees.bedkom.title")}
+        text={t("page.om.index.committees.bedkom.description")}
         href="/bedkom"
-        highlightText="Les mer"
+        highlightText={t("page.om.index.committees.readMore")}
       />
       <Card
         image={EventkomImage}
-        title="Eventkom"
-        text="Gjennomfører og koordinerer sosiale og faglige arrangementer."
+        title={t("page.om.index.committees.eventkom.title")}
+        text={t("page.om.index.committees.eventkom.description")}
         href="/eventkom"
-        highlightText="Les mer"
+        highlightText={t("page.om.index.committees.readMore")}
       />
       <Card
         image={BetalanImage}
-        title="Betalan"
-        text="Arrangerer UiAs feteste LAN-party hvert eneste semesteret."
+        title={t("page.om.index.committees.betalan.title")}
+        text={t("page.om.index.committees.betalan.description")}
         href="/betalan"
-        highlightText="Les mer"
+        highlightText={t("page.om.index.committees.readMore")}
       />
     </div>
   </Container>

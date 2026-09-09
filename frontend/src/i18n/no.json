@@ -153,6 +153,85 @@
       }
     },
     "om": {
+      "index": {
+        "title": "Om Beta",
+        "heading": "Linjeforening for {{students}}",
+        "students": "datastudenter",
+        "intro": "Beta er linjeforeningen ved UiA Grimstad for cybersikkerhet, dataingeniør, IKT og kunstig intelligens. Foreningen drives frivillig av studentene og målet er å gjøre studiehverdagen for datastudenter enda bedre.",
+        "discordButton": "Bli med på Discord",
+        "contactButton": "Ta kontakt",
+        "stats": {
+          "students": {
+            "title": "Studenter",
+            "description": "Medlemmer på tvers av studieprogram"
+          },
+          "studyPrograms": {
+            "title": "Studieprogram",
+            "description": "Cybersikkerhet, dataingeniør, KI og IoT"
+          },
+          "committees": {
+            "title": "Komitéer & Grupper",
+            "description": "Engasjer deg i det som interesserer deg"
+          }
+        },
+        "features": {
+          "title": "Hva tilbyr vi?",
+          "social": {
+            "title": "Sosiale arrangementer",
+            "description": "Paintball, gokart, Pils & Prog og alt annet studentene foreslår."
+          },
+          "academic": {
+            "title": "Faglige arrangementer",
+            "description": "Workshops, fagkvelder, hackathons og prosjektarbeid."
+          },
+          "groups": {
+            "title": "Grupper & Komiteer",
+            "description": "Engasjer deg, lær med andre og arranger eventer."
+          },
+          "business": {
+            "title": "Bedriftspresentasjoner",
+            "description": "Møt spennende bedrifter med gratis mat og drikke."
+          },
+          "lan": {
+            "title": "Semesterets råeste LAN",
+            "description": "Bli med på konkurranser, spill, mat og hygge."
+          },
+          "network": {
+            "title": "Nettverk & Vennskap",
+            "description": "Bygg et sterkt nettverk som varer hele studietiden og videre ut."
+          }
+        },
+        "interestGroups": {
+          "title": "Interessegrupper",
+          "intro": "Bli med i gruppene som matcher dine interesser.",
+          "readMore": "Les mer",
+          "betadev": {
+            "title": "Betadev",
+            "description": "Lær software utvikling gjennom prosjekter, workshops og ved å løse ekte problemer."
+          },
+          "betasec": {
+            "title": "Betasec",
+            "description": "Cybersikkerhet med CTF-er, workshops og prosjekter som gir praktisk erfaring."
+          }
+        },
+        "committees": {
+          "title": "Komiteer",
+          "intro": "Komiteene driver daglig drift og arrangementer.",
+          "readMore": "Les mer",
+          "bedkom": {
+            "title": "Bedkom",
+            "description": "Kontakt med bedrifter og arrangerer bedriftspresentasjoner."
+          },
+          "eventkom": {
+            "title": "Eventkom",
+            "description": "Gjennomfører og koordinerer sosiale og faglige arrangementer."
+          },
+          "betalan": {
+            "title": "Betalan",
+            "description": "Arrangerer UiAs feteste LAN-party hvert eneste semesteret."
+          }
+        }
+      },
       "verv": {
         "title": "Om verv",
         "heading": "Om verv",
