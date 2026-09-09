@@ -7,43 +7,36 @@ import Button from "@components/ui/Button.astro";
 import Image from "astro/components/Image.astro";
 
 import { brandingColors, logos } from "@data/branding";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
 const logoList = Object.values(logos);
+const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title="Branding">
+<BaseLayout title={t("page.om.branding.title")}>
   <Container>
     <Prose>
-      <h1>Branding</h1>
+      <h1>{t("page.om.branding.heading")}</h1>
 
-      <h2>Bruk</h2>
+      <h2>{t("page.om.branding.usage.title")}</h2>
 
-      <p>
-        Riktig bruk av logo, farger og ikoner bidrar til gjenkjennelighet og et profesjonelt
-        uttrykk. Derfor ber vi om at du alltid bruker de riktig ved å:
-      </p>
+      <p>{t("page.om.branding.usage.intro")}</p>
 
       <ul>
-        <li>Bruke lys logo på mørke bakgrunner og mørk logo på lyse bakgrunner.</li>
-        <li>
-          Alltid bruke logoer i original form, uten endringer i proporsjoner, farger eller innhold.
-        </li>
-        <li>
-          Bruke ikon der full logo ikke egner seg, for eksempel som profilbilde, app-ikon eller i
-          sosiale medier.
-        </li>
-        <li>Unngå å plassere logo eller ikon på urolige bakgrunner som reduserer lesbarheten.</li>
-        <li>Bruke definerte profilfarger i tråd med fargepaletten under.</li>
+        <li>{t("page.om.branding.usage.items.1")}</li>
+        <li>{t("page.om.branding.usage.items.2")}</li>
+        <li>{t("page.om.branding.usage.items.3")}</li>
+        <li>{t("page.om.branding.usage.items.4")}</li>
+        <li>{t("page.om.branding.usage.items.5")}</li>
       </ul>
 
-      <h2>Farger</h2>
+      <h2>{t("page.om.branding.colors.title")}</h2>
 
       <div class="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
-          brandingColors.map(color => {
+          brandingColors(Astro.currentLocale).map(color => {
             const isSame = color.light === color.dark;
 
             return (
@@ -53,14 +46,14 @@ const logoList = Object.values(logos);
                     class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
                     style={`background:${color.light}`}
                     onclick={`navigator.clipboard.writeText('${color.light}')`}
-                    title="Klikk for å kopiere"
+                    title={t("page.om.branding.colors.copyHint")}
                   />
                   {!isSame && (
                     <div
                       class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
                       style={`background:${color.dark}`}
                       onclick={`navigator.clipboard.writeText('${color.dark}')`}
-                      title="Klikk for å kopiere"
+                      title={t("page.om.branding.colors.copyHint")}
                     />
                   )}
                 </div>
@@ -102,7 +95,7 @@ const logoList = Object.values(logos);
         }
       </div>
 
-      <h2>Logoer</h2>
+      <h2>{t("page.om.branding.logos.title")}</h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -138,7 +131,7 @@ const logoList = Object.values(logos);
                   type="secondary"
                   class="w-full"
                 >
-                  Svart
+                  {t("page.om.branding.logos.black")}
                 </Button>
 
                 <Button
@@ -147,7 +140,7 @@ const logoList = Object.values(logos);
                   type="secondary"
                   class="w-full"
                 >
-                  Hvit
+                  {t("page.om.branding.logos.white")}
                 </Button>
 
                 <Button
@@ -156,7 +149,7 @@ const logoList = Object.values(logos);
                   type="secondary"
                   class="w-full"
                 >
-                  Blå
+                  {t("page.om.branding.logos.blue")}
                 </Button>
               </div>
             </div>
@@ -164,12 +157,12 @@ const logoList = Object.values(logos);
         }
       </div>
 
-      <h2>Ikoner</h2>
+      <h2>{t("page.om.branding.icons.title")}</h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div class="rounded-xl bg-bg-raised p-4 text-center dark:bg-dark-bg-raised">
           <div class="mb-4 flex justify-center">
-            <Image src={logos.beta.icon} alt="Beta ikon" class="h-20 w-20 rounded-lg" />
+            <Image src={logos.beta.icon} alt={t("page.om.branding.betaIconAlt")} class="h-20 w-20 rounded-lg" />
           </div>
 
           <Button
