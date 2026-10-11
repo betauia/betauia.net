@@ -1,19 +1,76 @@
 ---
 import DigitalRain from "@components/fun/DigitalRain.astro";
-const { backgroundImage } = Astro.props;
-const { UseGamerFont = true } = Astro.props;
-
+import reefImg from "@assets/betalan/reef-wreck.png";
+import reefKelp from "@assets/betalan/reef-kelp.svg?raw";
 import "@fontsource/medievalsharp/400.css";
+
+// Ocean pages pass a background gradient; others use the CRT fallback.
+const { backgroundCss, UseGamerFont = true } = Astro.props;
+
+// Rising bubbles; `rise` is the travel distance.
+const bubbles = Array.from({ length: 30 }, (_, i) => ({
+  left: (i * 7 + (i % 5) * 3) % 100,
+  size: 4 + ((i * 7) % 18),
+  delay: (i * 0.9) % 14,
+  duration: 10 + ((i * 5) % 12),
+  rise: 520 + ((i * 130) % 900),
+  drift: ((i % 7) - 3) * 10,
+}));
+
+// Sunlight shafts.
+const rays = [
+  { left: 12, w: 70, rot: -10, op: 0.14, dur: 13, delay: 0 },
+  { left: 28, w: 120, rot: -7, op: 0.09, dur: 17, delay: 2 },
+  { left: 46, w: 60, rot: -12, op: 0.16, dur: 11, delay: 1 },
+  { left: 62, w: 150, rot: -5, op: 0.08, dur: 19, delay: 3 },
+  { left: 78, w: 90, rot: -9, op: 0.13, dur: 15, delay: 1.5 },
+];
 ---
 
 <div
-  class:list={["betalan-layout", UseGamerFont && "gamer-font", !backgroundImage && "retro-crt-bg"]}
-  style={backgroundImage ? `background-image: url('${backgroundImage}')` : ""}
+  class:list={[
+    "betalan-layout",
+    UseGamerFont && "gamer-font",
+    backgroundCss && "has-ocean",
+    !backgroundCss && "retro-crt-bg",
+  ]}
+  style={backgroundCss ?? ""}
 >
+  {
+    backgroundCss && (
+      <div class="ocean-scene" aria-hidden="true">
+        <div class="rays">
+          {rays.map(r => (
+            <span
+              class="ray"
+              style={`left:${r.left}%;width:${r.w}px;--op:${r.op};--rot:${r.rot}deg;animation-duration:${r.dur}s;animation-delay:${r.delay}s;`}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    backgroundCss && (
+      <>
+        <img class="reef-floor" src={reefImg.src} alt="" aria-hidden="true" loading="lazy" />
+        <div class="reef-kelp" aria-hidden="true" set:html={reefKelp} />
+        <div class="bubbles" aria-hidden="true">
+          {bubbles.map(b => (
+            <span
+              class="bubble-rise"
+              style={`left:${b.left}%;width:${b.size}px;height:${b.size}px;--rise:${b.rise}px;--drift:${b.drift}px;animation-delay:${b.delay}s;animation-duration:${b.duration}s;`}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+
   <slot />
 </div>
 
-{!backgroundImage && <DigitalRain />}
+{!backgroundCss && <DigitalRain />}
 
 <style>
   .betalan-layout {
@@ -24,6 +81,11 @@ import "@fontsource/medievalsharp/400.css";
     z-index: 0;
   }
 
+  /* reef headroom */
+  .has-ocean {
+    padding-bottom: 180px;
+  }
+
   .gamer-font {
     font-family: "Jersey 10", monospace;
     font-weight: 400;
@@ -32,31 +94,121 @@ import "@fontsource/medievalsharp/400.css";
     line-height: 1.75rem;
   }
 
-  .medieval-font {
-    font-family: "MedievalSharp", cursive;
-  }
-
-  /* Only apply overlays when there's a background image */
-  .betalan-layout:has([style*="background-image"])::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5));
+  /* ambient water */
+  .ocean-scene {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
     z-index: -1;
   }
 
-  .betalan-layout:has([style*="background-image"])::after {
-    content: "";
+  .ray {
     position: absolute;
-    top: 0;
+    top: -20%;
+    height: 150%;
+    background: linear-gradient(
+      to bottom,
+      rgba(215, 245, 255, var(--op)) 0%,
+      rgba(215, 245, 255, calc(var(--op) * 0.45)) 45%,
+      transparent 90%
+    );
+    transform: rotate(var(--rot));
+    transform-origin: top center;
+    filter: blur(14px);
+    mix-blend-mode: screen;
+    animation: ray-sway ease-in-out infinite alternate;
+  }
+
+  @keyframes ray-sway {
+    from {
+      transform: rotate(var(--rot)) translateX(-22px);
+      opacity: 0.55;
+    }
+    to {
+      transform: rotate(calc(var(--rot) + 3deg)) translateX(26px);
+      opacity: 1;
+    }
+  }
+
+  /* rising bubbles */
+  .bubbles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .bubble-rise {
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 35% 30%,
+      rgba(255, 255, 255, 0.85),
+      rgba(200, 235, 255, 0.35) 55%,
+      rgba(160, 210, 245, 0.1)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    opacity: 0;
+    animation: bubble-rise linear infinite;
+  }
+
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.7);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    85% {
+      opacity: 0.45;
+    }
+    100% {
+      transform: translateY(calc(-1 * var(--rise, 600px))) translateX(var(--drift, 0px)) scale(1.1);
+      opacity: 0;
+    }
+  }
+
+  /* sea floor */
+  .reef-floor,
+  .reef-kelp {
+    position: absolute;
     left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(420px, 46vw, 680px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* reef, no kelp */
+  .reef-floor {
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  /* kelp overlay */
+  .reef-kelp :global(svg) {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: -2;
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bubble-rise,
+    .ray {
+      animation: none;
+    }
+    .bubble-rise {
+      opacity: 0.4;
+    }
+    .ray {
+      opacity: 0.8;
+    }
   }
 </style>
 
