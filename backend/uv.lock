@@ -1,8 +1,8 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 
 [[package]]
 name = "betauia-backend"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }

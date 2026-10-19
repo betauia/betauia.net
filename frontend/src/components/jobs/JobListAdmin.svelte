@@ -6,7 +6,7 @@
 
   import type { JobListing } from "@lib/jobs";
 
-  const apiBase = import.meta.env.PUBLIC_BACKEND_URL;
+  const apiBase = import.meta.env.PUBLIC_BACKEND_URL ?? "http://localhost:8000";
 
   let jobs: JobListing[] = [];
   let loading = true;

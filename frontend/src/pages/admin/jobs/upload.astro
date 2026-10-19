@@ -295,7 +295,7 @@ import Container from "@components/layout/Container.astro";
   redirectUnauthorized(true);
 
   const form = document.getElementById("form") as HTMLFormElement | null;
-  const apiURL = import.meta.env.PUBLIC_BACKEND_URL;
+  const apiURL = import.meta.env.PUBLIC_BACKEND_URL ?? "http://localhost:8000";
 
   if (form) {
     form.addEventListener("submit", async e => {
