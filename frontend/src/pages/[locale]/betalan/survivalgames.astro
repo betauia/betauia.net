@@ -4,43 +4,48 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import minecraftSurvivalGames from "@assets/betalan/tournaments/minecraft-survival-games.png";
 import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-bottle.png";
 import { Icon } from "astro-icon/components";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <BaseLayout
-  title="Minecraft Survival Games"
-  description="Join the Minecraft Survival Games tournament at BetaLAN! Compete in thrilling PvP battles, survive the shrinking arena, and win exciting prizes."
+  title={t("page.betalan.survivalgames.title")}
+  description={t("page.betalan.survivalgames.description")}
 >
   <Tournament UseGamerFont={true}>
-    <h1 class="title">Minecraft Survival Games</h1>
-    <img src={minecraftSurvivalGames.src} alt="Minecraft Survival Games" class="responsive-img" />
-    <h2 class="section-title">What is the Minecraft Survival Games?</h2>
+    <h1 class="title"><Translate key="page.betalan.survivalgames.heading" /></h1>
+    <img src={minecraftSurvivalGames.src} alt={t("page.betalan.survivalgames.imageAlt")} class="responsive-img" />
+    <h2 class="section-title"><Translate key="page.betalan.survivalgames.whatIs.title" /></h2>
 
     <p class="paragraph">
-      It's basically <span class="font-semibold text-red-600 drop-shadow-lg">The Hunger Games</span
-      >, but in Minecraft! Do you love playing Minecraft?
+      <Translate key="page.betalan.survivalgames.whatIs.intro">
+        <span slot="hungerGames" class="font-semibold text-red-600 drop-shadow-lg"
+          ><Translate key="page.betalan.survivalgames.whatIs.hungerGames" /></span
+        >
+      </Translate>
     </p>
-    Maybe you're great at fighting games or even better at dodging attacks? Then this is the perfect
-    game for you!
+    <Translate key="page.betalan.survivalgames.whatIs.outro" />
   </Tournament>
 
-  <h2 class="section-title">How do I participate?</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.participate.title" /></h2>
   <p class="paragraph">
-    The minecraft server has a whitelist policy, so to join the tournament, you need to register
-    your Minecraft username in advance. You can do so at this <A
-      href="https://forms.gle/HCHSQVFEUZDAop7Y9"
-      class="text-blue-400 hover:underline"
-      target="_blank"
-      aria-label="Google Forms link to register for the Minecraft Survival Games tournament"
-      >Google Forms</A
-    >. Please signup before 15:00 Sunday 21st of September so we have time to add everyone to the
-    server. Then you will be able to join with the minecraft server address below.
+    <Translate key="page.betalan.survivalgames.participate.text">
+      <A
+        slot="form"
+        href="https://forms.gle/HCHSQVFEUZDAop7Y9"
+        class="text-blue-400 hover:underline"
+        target="_blank"
+        aria-label={t("page.betalan.survivalgames.participate.formAriaLabel")}
+      ><Translate key="page.betalan.survivalgames.participate.formLink" /></A
+      >
+    </Translate>
   </p>
 
-  <h2 class="section-title">Join the server at:</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.server.title" /></h2>
 
   <div class="mb-4 text-center">
     <code
@@ -54,52 +59,48 @@ export const getStaticPaths = getStaticLanguagePaths();
     </code>
   </div>
 
-  <h2 class="section-title">Prize</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.prize.title" /></h2>
 
   <img
     src={minecraftPotionBottle.src}
-    alt="Minecraft Survival Games Prize"
+    alt={t("page.betalan.survivalgames.prize.imageAlt")}
     class="responsive-img"
     style="max-width: 250px;"
   />
 
   <ul class="link-center">
     <li class="list-item">
-      <strong>1st place</strong> – Minecraft Potion Bottle Lamp
+      <Translate key="page.betalan.survivalgames.prize.first" />
     </li>
   </ul>
 
-  <h2 class="section-title">Rules</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.rules.title" /></h2>
 
-  <p class="paragraph">The rules are as follows:</p>
+  <p class="paragraph"><Translate key="page.betalan.survivalgames.rules.intro" /></p>
 
   <ul class="list">
     <li class="list-item">
-      <strong>Who can play?</strong> – You play alone, no teams!
+      <Translate key="page.betalan.survivalgames.rules.who" />
     </li>
     <li class="list-item">
-      <strong>Who wins?</strong> – The last player standing
+      <Translate key="page.betalan.survivalgames.rules.wins" />
     </li>
     <li class="list-item">
-      <strong>Remember</strong> – No cheating
+      <Translate key="page.betalan.survivalgames.rules.remember" />
     </li>
   </ul>
 
   <p class="text-2xl italic text-red-600">
-    Cheating or not following the rules will result in disqualification and immediate removal from
-    the competition.
+    <Translate key="page.betalan.survivalgames.rules.warning" />
   </p>
 
-  <h2 class="section-title">How it works?</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.how.title" /></h2>
 
   <p class="paragraph">
-    Players are dropped into a world with chests scattered across the map, some in the center and
-    others around the map. The goal is to fight other players in PvP battles, with the last
-    remaining player (or team) being the winner. As the game progresses, the area shrinks, pushing
-    players closer together.
+    <Translate key="page.betalan.survivalgames.how.text" />
   </p>
 
-  <h2 class="section-title">When?</h2>
+  <h2 class="section-title"><Translate key="page.betalan.survivalgames.when.title" /></h2>
 
-  <p class="paragraph">📢 The competition starts on Sunday 21st at 16:00</p>
+  <p class="paragraph"><Translate key="page.betalan.survivalgames.when.text" /></p>
 </BaseLayout>
