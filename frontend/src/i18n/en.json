@@ -728,6 +728,33 @@
           "text": "In autumn 2025 we took part and set up on-site in Grimstad for Norske Nøkkelsnikkernes CTF."
         }
       }
+    },
+    "betadev": {
+      "index": {
+        "description": "Betadev is BETA's development team and interest group and organizes coding courses, game competitions and more!",
+        "logoAlt": "Logo",
+        "intro": "The interest group for web development and general development within BETA. Betadev organizes game jams, coding competitions and is often involved in organizing other events together with other committees and interest groups.",
+        "events": {
+          "title": "Events*",
+          "gamejam": {
+            "title": "Gamejam",
+            "text": "Gamejam, a recurring event with great prizes, where the winner gets crowned during BetaLAN!"
+          },
+          "codeCompetition": {
+            "title": "Code competition",
+            "text": "Betadev is looking into the possibility of a code competition!"
+          },
+          "codeNights": {
+            "title": "Code nights",
+            "text": "Code nights are where the development happens, cozy and productive"
+          },
+          "footnote": "* which Betadev has organized before"
+        },
+        "communication": {
+          "title": "Communication and ideas",
+          "discordButton": "Betadev's Discord server"
+        }
+      }
     }
   }
 }

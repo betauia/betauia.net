@@ -4,7 +4,8 @@ import Card from "@components/ui/Card.astro";
 import Prose from "@components/semantics/Prose.astro";
 import Button from "@components/ui/Button.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 import Game1 from "@assets/betadev/game-1.jpg";
 import Game3 from "@assets/betadev/game-3.jpg";
@@ -16,51 +17,48 @@ import logoWhite from "../../../assets/logos/betadev/white.png";
 import logoBlue from "../../../assets/logos/betadev/blue.png";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 
 ---
 
 <BaseLayout
   title="Betadev"
-  description="Betadev er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!"
+  description={t("page.betadev.index.description")}
 >
   <Container>
     <Prose>
       <center>
-        <Image src src={logoBlue} alt="Logo" inferSize class="h-auto w-[60%] pb-4" />
+        <Image src src={logoBlue} alt={t("page.betadev.index.logoAlt")} inferSize class="h-auto w-[60%] pb-4" />
       </center>
 
-      <p>
-        Interessegruppen for nettsideutvikling og generell utvikling innen BETA. Betadev arrangerer
-        gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre
-        komiteer og interressegrupper.
-      </p>
+      <p><Translate key="page.betadev.index.intro" /></p>
 
-      <h2 class="mt-8 text-xl font-bold">Arrangementer*</h2>
+      <h2 class="mt-8 text-xl font-bold"><Translate key="page.betadev.index.events.title" /></h2>
     </Prose>
 
     <div class="mb-4 mt-2 grid gap-4 md:grid-cols-3">
       <Card
-        title="Gamejam"
+        title={t("page.betadev.index.events.gamejam.title")}
         href="/betadev/gamejam"
         image={Game3}
-        text="Gamejam, et fast arrangement med gode priser, hvor vinneren blir kåret under BetaLAN!"
+        text={t("page.betadev.index.events.gamejam.text")}
       />
       <Card
-        title="Kodekonkurranse"
+        title={t("page.betadev.index.events.codeCompetition.title")}
         image={GamejamPrize}
-        text="Betadev undersøker muligheten for en kodekonkurranse!"
+        text={t("page.betadev.index.events.codeCompetition.text")}
       />
       <Card
-        title="Kodekvelder"
+        title={t("page.betadev.index.events.codeNights.title")}
         image={Game1}
-        text="Kodekvelder er der utviklingen skjer, hyggelig og produktivt"
+        text={t("page.betadev.index.events.codeNights.text")}
       />
     </div>
     <Prose>
-      <p>* som betadev tidligere har arrangert</p>
+      <p><Translate key="page.betadev.index.events.footnote" /></p>
 
-      <h2>Kommunikasjon og idéer</h2>
+      <h2><Translate key="page.betadev.index.communication.title" /></h2>
     </Prose>
-    <Button href=""> Betadev sin discord server </Button>
+    <Button href=""><Translate key="page.betadev.index.communication.discordButton" /></Button>
   </Container>
 </BaseLayout>
