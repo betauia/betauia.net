@@ -870,6 +870,46 @@
           "text": "Attendees are expected to treat the venue and its property with respect. Any damage caused to the venue or its equipment may result in penalties, including being asked to leave the event and potential financial liability for repairs or replacements."
         },
         "footer": "Breaking the rules will result in penalties based on the severity of the violation, and may lead to getting kicked out of the event without a refund"
+      },
+      "program": {
+        "title": "BetaLAN Program H25",
+        "heading": "BetaLAN Program",
+        "days": {
+          "friday": {
+            "name": "Friday",
+            "items": {
+              "opening": "Opening Hour",
+              "tbdActivity": "TBD Activity",
+              "aubyOpens": "Auby Games Opens",
+              "smash": "Super Smash Tournament",
+              "betaShow": "BetaShow"
+            }
+          },
+          "saturday": {
+            "name": "Saturday",
+            "items": {
+              "minecraft": "Minecraft",
+              "food": "Food for Participants",
+              "bestGamer": "Agder’s Best Gamer",
+              "betaShow": "BetaShow"
+            }
+          },
+          "sunday": {
+            "name": "Sunday",
+            "items": {
+              "justDance": "Just Dance",
+              "aubyFinal": "Auby Games Final Duel",
+              "aubyWinner": "Auby Announces the Winner",
+              "closingAnnouncement": "Announcement & Closing Hour",
+              "closingTime": "Closing Time (Main Hall Closes)"
+            }
+          }
+        },
+        "discord": {
+          "title": "Join BetaLAN Discord",
+          "text": "Connect with other participants and get real-time updates during the event",
+          "button": "BetaLAN Discord"
+        }
       }
     }
   }

@@ -4,51 +4,54 @@ import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import { Icon } from "astro-icon/components";
 
 import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
+const t = useTranslations(Astro.currentLocale);
+
 const program = [
   {
-    day: "Friday",
+    day: t("page.betalan.program.days.friday.name"),
     items: [
-      { title: "Opening Hour", time: "17:00 - 18:00" },
-      { title: "TBD Activity", time: "18:00 - 19:00" },
-      { title: "Auby Games Opens", time: "19:00" },
-      { title: "Super Smash Tournament", time: "19:15 - 23:00" },
-      { title: "BetaShow", time: "23:00 - 00:00" },
+      { title: t("page.betalan.program.days.friday.items.opening"), time: "17:00 - 18:00" },
+      { title: t("page.betalan.program.days.friday.items.tbdActivity"), time: "18:00 - 19:00" },
+      { title: t("page.betalan.program.days.friday.items.aubyOpens"), time: "19:00" },
+      { title: t("page.betalan.program.days.friday.items.smash"), time: "19:15 - 23:00" },
+      { title: t("page.betalan.program.days.friday.items.betaShow"), time: "23:00 - 00:00" },
     ],
   },
   {
-    day: "Saturday",
+    day: t("page.betalan.program.days.saturday.name"),
     items: [
-      { title: "Minecraft", time: "15:00 - 17:00" },
-      { title: "Food for Participants", time: "17:00 - 19:00" },
-      { title: "Agder’s Best Gamer", time: "19:00 - 23:00" },
-      { title: "BetaShow", time: "23:00 - 00:00" },
+      { title: t("page.betalan.program.days.saturday.items.minecraft"), time: "15:00 - 17:00" },
+      { title: t("page.betalan.program.days.saturday.items.food"), time: "17:00 - 19:00" },
+      { title: t("page.betalan.program.days.saturday.items.bestGamer"), time: "19:00 - 23:00" },
+      { title: t("page.betalan.program.days.saturday.items.betaShow"), time: "23:00 - 00:00" },
     ],
   },
   {
-    day: "Sunday",
+    day: t("page.betalan.program.days.sunday.name"),
     items: [
-      { title: "Just Dance", time: "14:00 - 16:00" },
-      { title: "Auby Games Final Duel", time: "16:15 - 17:00" },
-      { title: "Auby Announces the Winner", time: "17:00" },
-      { title: "Announcement & Closing Hour", time: "17:15 - 18:00" },
-      { title: "Closing Time (Main Hall Closes)", time: "18:15" },
+      { title: t("page.betalan.program.days.sunday.items.justDance"), time: "14:00 - 16:00" },
+      { title: t("page.betalan.program.days.sunday.items.aubyFinal"), time: "16:15 - 17:00" },
+      { title: t("page.betalan.program.days.sunday.items.aubyWinner"), time: "17:00" },
+      { title: t("page.betalan.program.days.sunday.items.closingAnnouncement"), time: "17:15 - 18:00" },
+      { title: t("page.betalan.program.days.sunday.items.closingTime"), time: "18:15" },
     ],
   },
 ];
 ---
 
-<BaseLayout title="BetaLAN Program H25">
+<BaseLayout title={t("page.betalan.program.title")}>
   <BetaLANLayout backgroundImage={CastleWallImg.src} UseGamerFont={false}>
     <section
       class="font-medieval mx-3 mb-4 max-w-4xl rounded-lg bg-slate-800 bg-opacity-90 p-4 text-lg text-yellow-100 sm:m-6 sm:p-6 lg:mx-auto"
     >
       <div>
-        <h1 class="mb-6 text-center text-4xl font-bold md:text-7xl">BetaLAN Program</h1>
+        <h1 class="mb-6 text-center text-4xl font-bold md:text-7xl"><Translate key="page.betalan.program.heading" /></h1>
 
         {
           program.map(day => (
@@ -70,10 +73,8 @@ const program = [
 
         <div class="mb-2 mt-6 border-t border-yellow-800 pt-4 text-center sm:mt-8">
           <div class="mt-2 sm:mt-4">
-            <h3 class="mb-2 text-lg font-medium md:text-xl">Join BetaLAN Discord</h3>
-            <p class="mb-3">
-              Connect with other participants and get real-time updates during the event
-            </p>
+            <h3 class="mb-2 text-lg font-medium md:text-xl"><Translate key="page.betalan.program.discord.title" /></h3>
+            <p class="mb-3"><Translate key="page.betalan.program.discord.text" /></p>
             <A
               href="https://discord.gg/ggUtjr8TSQ"
               target="_blank"
@@ -81,7 +82,7 @@ const program = [
               class="inline-flex items-center gap-2 rounded-md bg-indigo-700 px-3 py-1.5 text-white transition-colors hover:bg-indigo-600 sm:px-4 sm:py-2"
             >
               <Icon name="fa-brands:discord" class="mb-2 h-12 w-12" />
-              <span>BetaLAN Discord</span>
+              <span><Translate key="page.betalan.program.discord.button" /></span>
             </A>
           </div>
         </div>
