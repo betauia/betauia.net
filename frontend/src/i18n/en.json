@@ -298,7 +298,7 @@
         },
         "howToUse": {
           "title": "How to use this guide",
-          "p1": "This guide is for beginners who have never used Git, but it also works as a quick reference for more experienced users.",
+          "p1": "This guide is for beginners who have never used Git, but it also works as a [quick reference](#cheat-sheet) for more experienced users.",
           "p2": "You can read the guide start-to-finish to learn Git step by step, or use the table of contents as a lookup when you need specific commands."
         },
         "toc": {
@@ -341,7 +341,7 @@
           "windowsText": "You can find the Windows download on [Git's website](https://git-scm.com/downloads/win). This downloads Git Bash, a terminal that gives you Linux-like commands, where you can use Git commands normally.",
           "macosText": "MacOS requires you to install [Homebrew](https://brew.sh/) to manage new packages. Once you've done that, you can install Git from the terminal with:",
           "linuxText": "Linux has many distros with several different package managers. Here is a list of commands to install Git on some popular distros:",
-          "configIntro": "Before you start using Git, you need to tell it who you are and what the name of your first branch is. Your name and email are attached to all the commits you make, making it easier for others to see who did what. Also, most platforms now use `main` instead of `master` as the default branch.",
+          "configIntro": "Before you start using Git, you need to tell it who you are and what the name of your first branch is. Your name and email are attached to all the commits you make, making it easier for others to see who did what. Also, most platforms now use the name main instead of master as the default branch.",
           "configStep": "Set up your name and email (feel free to use your UiA email) and set the default branch to main:",
           "configTip": "**Tip**: You can use the same email you use on GitHub/GitLab/Gitea so that your commits are linked to your profile.",
           "configCheck": "You can check that it was configured correctly with:",
@@ -449,8 +449,8 @@
             "switchMain": "Switch to main",
             "merge": "Fast-forward merge"
           },
-          "squashIntro": "To keep the history clean, it can be useful to combine multiple commits into just one before merging. Although you lose some info, not everyone cares that you made a typo and fixed it in a feature branch.",
-          "squashDesc": "Squashing happens through `git rebase`'s interactive interface:",
+          "squashIntro": "To keep the history clean, it can be useful to combine multiple commits into just one before merging. Although you lose some info, not everyone cares that you made a typo and fixed it on a feature.",
+          "squashDesc": "Squashing is done through the interface of `git rebase`:",
           "squashInteractive": "Interactive rebase of the last 3 commits",
           "squashEdit": "In the editor that opens, change `pick` to `squash` (or `s`) for the commits you want to combine with the previous one.",
           "squashTip": "**Tip**: For a clean history, you should rebase, squash, and then merge so that you can easily read backward through a linear tree.",
@@ -458,7 +458,7 @@
           "conflictStatus": "See which files have conflicts",
           "conflictDesc": "When you open and read the file, all conflicts will be marked like this:",
           "conflictCode": "Your code\n=======\nSomeone else's code",
-          "conflictResolve": "You choose entirely how to resolve the conflict—whether to keep your own code, the branch's code, or both. Afterward, you must mark that you've resolved the conflict and commit the merge:"
+          "conflictResolve": "It's totally up to you how to resolve the conflict, whether you want to keep your own code, the branch's code, or both. Afterwards you need to mark the conflict as resolved and commit the merge:"
         },
         "troubleshooting": {
           "intro": "Git gives you many ways to undo changes and examine history. Here are a couple of the most used methods and strategies.",
@@ -479,7 +479,7 @@
             "last": "Revert last commit",
             "specific": "Revert specific commit"
           },
-          "stashIntro": "Stash lets you temporarily save changes without committing, which is super useful if you need to make a quick tweak on another branch but aren't quite finished with your current work:",
+          "stashIntro": "Stash lets you temporarily save changes without committing, which is super useful if you need to make a quick change on another branch or commit but aren't quite finished with your current work:",
           "stashComments": {
             "stash": "Stash all changes",
             "untracked": "Stash including untracked files",
@@ -488,7 +488,7 @@
             "drop": "Delete stash"
           },
           "stashDesc": "The stash structure works like a stack: you place a plate (your changes) on top, and you can do this as many times as you want, but you can only take them back off from the top. This makes stashing very simple and efficient to work with.",
-          "historyIntro": "To view the commit history, you can use `git log`. This command can be run in many different ways with various flags so you can see exactly what you want. Here are a few useful versions:",
+          "historyIntro": "To view the commit history, you can use `git log`. This command can be run in many different ways with different settings so you can see exactly what you want. Here are a few useful versions:",
           "historyComments": {
             "full": "Full history",
             "oneline": "Short overview",
@@ -539,7 +539,7 @@
           "ignoreIntro": "The `.gitignore` file tells Git which files and folders should be ignored and not added to version control. This is especially important for avoiding committing sensitive data, build files, and other stuff that doesn't belong in the repository.",
           "ignoreDesc": "The file is pretty straightforward to write, and applies to the folder it's in as well as all subfolders. You just write filenames to exclude them, along with a few special characters:",
           "ignoreTip": "**Tip**: GitHub has [ready-made .gitignore templates](https://github.com/github/gitignore) for different languages and frameworks that you can copy.",
-          "ignoreUndo": "If you accidentally staged a file you meant to ignore, you can remove it again with:",
+          "ignoreUndo": "If you've already accidentally staged a file, you can remove it again with:",
           "ignoreUndoComments": {
             "file": "Remove file from Git",
             "folder": "Remove entire folder from Git"
@@ -593,7 +593,7 @@
             "local": "Delete local tag",
             "remote": "Delete remote tag"
           },
-          "tagTip": "**Tip**: Follow [Semantic Versioning](https://semver.org/) to make versioning predictable and solid. `Major.Minor.Patch` – bump major for breaking changes, minor for new features, patch for bugfixes."
+          "tagTip": "**Tip**: Follow [Semantic Versioning](https://semver.org/) to make versioning predictable and solid. `Major.Minor.Patch`, bump major for breaking changes, minor for new features, patch for bugfixes."
         },
         "cheatSheet": {
           "setup": "Setup and configuration",

@@ -1,10 +1,24 @@
 ---
-import { marked } from "marked";
-import { useTranslations } from "@i18n/utils.ts";
+import { Marked } from "marked";
+import { ensureLanguageInPath, useTranslations } from "@i18n/utils.ts";
 
 const t = useTranslations(Astro.currentLocale);
 
 const { key, block = false } = Astro.props;
+
+const { locale } = Astro.params;
+
+const escapeAttribute = (value: string) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+
+const marked = new Marked({
+  renderer: {
+    link({ href, title, tokens }) {
+      const localizedHref = ensureLanguageInPath(locale, href);
+      const titleAttribute = title ? ` title="${escapeAttribute(title)}"` : "";
+      return `<a href="${escapeAttribute(localizedHref)}" ${titleAttribute}>${this.parser.parseInline(tokens)}</a>`;
+    },
+  },
+});
 
 const html = marked.parseInline(t(key), { async: false });
 ---
