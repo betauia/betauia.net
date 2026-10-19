@@ -754,6 +754,38 @@
           "discordButton": "Betadev sin discord server"
         }
       }
+    },
+    "account": {
+      "index": {
+        "title": "Min Bruker",
+        "heading": "Min Bruker",
+        "logout": "Logg ut",
+        "aboutMe": "Om meg",
+        "username": "Brukernavn",
+        "email": "Email",
+        "name": "Navn",
+        "role": "Rolle",
+        "administrator": "Administrator",
+        "history": "Historie",
+        "created": "Opprettet",
+        "updated": "Sist oppdatert"
+      },
+      "create": {
+        "title": "Registrering",
+        "heading": "Fullfør registrering",
+        "intro": "Fyll inn detaljene under for å opprette brukeren din.",
+        "username": "Brukernavn",
+        "usernameHint": "3-50 tegn",
+        "fullName": "Fullt navn",
+        "password": "Passord",
+        "passwordHint": "Minimum 10 tegn",
+        "confirmPassword": "Bekreft passord",
+        "submit": "Opprett bruker",
+        "submitLoading": "Oppretter bruker...",
+        "invalidToken": "Ugyldig eller manglende bekreftelsestoken. Vennligst be om en ny registreringslenke.",
+        "passwordMismatch": "Passordene samsvarer ikke",
+        "registrationFailed": "Registrering feilet"
+      }
     }
   }
 }
