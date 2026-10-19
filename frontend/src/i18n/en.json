@@ -608,6 +608,55 @@
           "tags": "Tags and versions",
           "ignore": "Git ignore"
         }
+      },
+      "ma178": {
+        "complex": {
+          "intro": "Formulas and rules for complex numbers in Math 1",
+          "general": {
+            "title": "General",
+            "intro": "Let {{complex}} be a complex number where {{iSquared}}:",
+            "imaginary": "{{im}} (remember: don't include {{i}})"
+          },
+          "rules": {
+            "title": "Calculation rules",
+            "intro": "For {{z1}} and {{z2}}:",
+            "addition": "**Addition**:",
+            "subtraction": "**Subtraction**:",
+            "multiplication": "**Multiplication**:",
+            "conjugate": "**Conjugate**:",
+            "absolute": "**Absolute value**:"
+          },
+          "division": {
+            "title": "Division",
+            "intro": "To divide complex numbers, multiply by the conjugate:"
+          },
+          "polar": {
+            "title": "Polar form",
+            "intro": "A complex number can be written as:",
+            "where": "where",
+            "modulus": "**Modulus**:",
+            "argument": "**Argument**:"
+          },
+          "euler": {
+            "title": "Euler's formula",
+            "intro": "A complex number can also be written using Euler's number:",
+            "value": "A value of {{theta}} is smart to know by heart: **{{euler}}**",
+            "note": "You can also multiply {{r}} in as the length."
+          },
+          "table": {
+            "title": "Cos/sin table",
+            "angle": "Angle",
+            "radians": "Radians"
+          },
+          "roots": {
+            "title": "Roots and powers",
+            "rootsTitle": "{{n}}th roots",
+            "rootsDesc": "An {{n}}th root always has {{n}} solutions denoted {{wk}}, where {{k}} is one of the {{n}}th solutions.",
+            "rootsFind": "All {{n}}th roots can be found with:",
+            "powerTitle": "{{n}}th power",
+            "powerDesc": "A power can be written in the form:"
+          }
+        }
       }
     }
   }

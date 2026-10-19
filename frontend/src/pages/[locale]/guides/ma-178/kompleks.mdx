@@ -6,69 +6,70 @@ title: Komplekse tall
 import CodeBlock from "@components/semantics/CodeBlock.astro";
 import MathBlock from "@components/semantics/MathBlock.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
 export const components = { pre: CodeBlock, math: MathBlock };
 
-> Formler og regler for komplekse tall i Matte 1
+> <Translate key='page.guides.ma178.complex.intro' />
 
-## Generelt
+## <Translate key='page.guides.ma178.complex.general.title' />
 
-La $z=a+b\,i$ være et kompleks tall der $i^2=-1$:
+<Translate key='page.guides.ma178.complex.general.intro' block><MathBlock slot="complex" tex="z=a+b\,i" /><MathBlock slot="iSquared" tex="i^2=-1" /></Translate>
 
 - $Re(z)=a$
-- $Im(z)=b$ (husk: ikke ta med $i$)
+- <Translate key='page.guides.ma178.complex.general.imaginary'><MathBlock slot="im" tex="Im(z)=b" /><MathBlock slot="i" tex="i" /></Translate>
 
-## Regneregler
+## <Translate key='page.guides.ma178.complex.rules.title' />
 
-For $z_1=a+bi$ og $z_2=c+di$:
+<Translate key='page.guides.ma178.complex.rules.intro' block><MathBlock slot="z1" tex="z_1=a+bi" /><MathBlock slot="z2" tex="z_2=c+di" /></Translate>
 
-- **Addisjon**: $z_1+z_2 = (a+c) + (b+d)\,i$
-- **Subtraksjon**: $z_1-z_2 = (a-c) + (b-d)\,i$
-- **Multiplikasjon**: $z_1 \cdot z_2 = (ac-bd) + (ad+bc)\,i$
-- **Konjugat**: $\overline{z_1} = a-b\,i$
-- **Absolutt verdi**: $\lvert z_1 \rvert=\sqrt{a^2 + b^2}$
+- <Translate key='page.guides.ma178.complex.rules.addition' /> $z_1+z_2 = (a+c) + (b+d)\,i$
+- <Translate key='page.guides.ma178.complex.rules.subtraction' /> $z_1-z_2 = (a-c) + (b-d)\,i$
+- <Translate key='page.guides.ma178.complex.rules.multiplication' /> $z_1 \cdot z_2 = (ac-bd) + (ad+bc)\,i$
+- <Translate key='page.guides.ma178.complex.rules.conjugate' /> $\overline{z_1} = a-b\,i$
+- <Translate key='page.guides.ma178.complex.rules.absolute' /> $\lvert z_1 \rvert=\sqrt{a^2 + b^2}$
 
-### Divisjon
+### <Translate key='page.guides.ma178.complex.division.title' />
 
-For å dele komplekse tall, multipliser med den konjugerte:
+<Translate key='page.guides.ma178.complex.division.intro' block />
 
 $$
 \frac{a+b\,i}{c+d\,i} = \frac{(a+b\,i)(c-d\,i)}{(c+d\,i)(c-d\,i)} = \frac{(a+b\,i)(c-d\,i)}{c^2+d^2}
 $$
 
-## Polarform
+## <Translate key='page.guides.ma178.complex.polar.title' />
 
-Et kompleks tall kan skrives som:
+<Translate key='page.guides.ma178.complex.polar.intro' block />
 
 $$
 z = r(cos\theta + i\, sin\theta)
 $$
 
-der
+<Translate key='page.guides.ma178.complex.polar.where' block />
 
-- **Modulus**: $r = \lvert z \rvert = \sqrt{a^2 + b^2}$
+- <Translate key='page.guides.ma178.complex.polar.modulus' /> $r = \lvert z \rvert = \sqrt{a^2 + b^2}$
 
-- **Argument**: $\theta = arg(z)$
+- <Translate key='page.guides.ma178.complex.polar.argument' /> $\theta = arg(z)$
 
 <br />
 
-### Eulers formel
+### <Translate key='page.guides.ma178.complex.euler.title' />
 
-Et kompleks tall kan også skrives med eulers tall:
+<Translate key='page.guides.ma178.complex.euler.intro' block />
 
 $$
 e^{i\,\theta}=cos\theta+i\,sin\theta
 $$
 
-En verdi på $\theta=\pi$ er lur å kunne på rams: **$e^{i\pi}=-1$**
+<Translate key='page.guides.ma178.complex.euler.value' block><MathBlock slot="theta" tex="\theta=\pi" /><MathBlock slot="euler" tex="e^{i\pi}=-1" /></Translate>
 
-> Man kan også multiplisere inn $r$ som lengden.
+> <Translate key='page.guides.ma178.complex.euler.note'><MathBlock slot="r" tex="r" /></Translate>
 
-### Cos/sin-tabell
+### <Translate key='page.guides.ma178.complex.table.title' />
 
-|   Vinkel   |    Radianer     |       $\sin x$       |       $\cos x$       |
+| <Translate key='page.guides.ma178.complex.table.angle' /> | <Translate key='page.guides.ma178.complex.table.radians' /> | $\sin x$ | $\cos x$ |
 | :--------: | :-------------: | :------------------: | :------------------: |
 | $0^\circ$  |       $0$       |         $0$          |         $1$          |
 | $30^\circ$ | $\frac{\pi}{6}$ |    $\frac{1}{2}$     | $\frac{\sqrt{3}}{2}$ |
@@ -76,21 +77,21 @@ En verdi på $\theta=\pi$ er lur å kunne på rams: **$e^{i\pi}=-1$**
 | $60^\circ$ | $\frac{\pi}{3}$ | $\frac{\sqrt{3}}{2}$ |    $\frac{1}{2}$     |
 | $90^\circ$ | $\frac{\pi}{2}$ |         $1$          |         $0$          |
 
-## Røtter og potens
+## <Translate key='page.guides.ma178.complex.roots.title' />
 
-### $n$-te røtter
+### <Translate key='page.guides.ma178.complex.roots.rootsTitle'><MathBlock slot="n" tex="n" /></Translate>
 
-En $n$-te rot har alltid $n$ løsninger notert $w_k$ $k$ er én av de $n$-te løsningene.
+<Translate key='page.guides.ma178.complex.roots.rootsDesc' block><MathBlock slot="n" tex="n" /><MathBlock slot="wk" tex="w_k" /><MathBlock slot="k" tex="k" /></Translate>
 
-Alle $n$-te røtter kan bli funnet med:
+<Translate key='page.guides.ma178.complex.roots.rootsFind' block><MathBlock slot="n" tex="n" /></Translate>
 
 $$
 \sqrt[n]{z} = \sqrt[n]{r}\cdot e^{i(\frac{\theta}{n}+ k\cdot \frac{2\pi}{n})}
 $$
 
-### $n$-te potens
+### <Translate key='page.guides.ma178.complex.roots.powerTitle'><MathBlock slot="n" tex="n" /></Translate>
 
-En potens kan skrives på formen:
+<Translate key='page.guides.ma178.complex.roots.powerDesc' block />
 
 $$
 z^n = r^n e^{i(\theta n)}
