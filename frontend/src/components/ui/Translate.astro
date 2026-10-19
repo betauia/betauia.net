@@ -8,12 +8,16 @@ interface Props {
    *  Wrap the text in a paragraph
    */
   block?: boolean;
+  /**
+   * Render block-level markdown (lists, quotes, multiple paragraphs) instead of inline markdown only
+   */
+  markdown?: boolean;
   additions?: Record<string, unknown>;
 }
 
 const t = useTranslations(Astro.currentLocale);
 
-const { key, block = false, additions } = Astro.props;
+const { key, block = false, markdown = false, additions } = Astro.props;
 
 const { locale } = Astro.params;
 
@@ -29,7 +33,8 @@ const marked = new Marked({
   },
 });
 
-const html = marked.parseInline(t(key as Parameters<typeof t>[0]) as string, { async: false });
+const text = t(key as Parameters<typeof t>[0]) as string;
+const html = markdown ? marked.parse(text, { async: false }) : marked.parseInline(text, { async: false });
 
 const placeholderPattern = /^{{(\w+)}}$/;
 const tokens = html.split(/({{\w+}})/g);
@@ -55,7 +60,7 @@ async function resolvePart(part: string) {
 
 const parts = await Promise.all(tokens.map(resolvePart));
 
-const Wrapper = block ? "p" : Fragment;
+const Wrapper = block && !markdown ? "p" : Fragment;
 ---
 
 <Wrapper
