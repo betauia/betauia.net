@@ -11,14 +11,13 @@ import { formatFullDeadline, formatJobType, formatStudy, formatYears } from "@li
 
 const { id } = Astro.params;
 
-const internalBackendUrl = "http://backend:8000";
 const apiBase = import.meta.env.PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 let job = null;
 let safeBodyHtml = "";
 
 try {
-  const res = await fetch(`${internalBackendUrl}/v1/jobs/${id}`);
+  const res = await fetch(`${apiBase}/v1/jobs/${id}`);
   if (res.ok) {
     job = await res.json();
 

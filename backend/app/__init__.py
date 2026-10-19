@@ -1,5 +1,6 @@
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,6 +12,11 @@ from app.config import Config
 from app.db import db, seeders
 from app.limiter import limiter
 from app.routes.v1 import v1_router
+
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+UPLOADS_DIR = BACKEND_DIR / "uploads"
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -64,7 +70,13 @@ def create_app(config_object=Config):
 
     # API Routes
     app.include_router(v1_router)
-    app.mount("/media", StaticFiles(directory="/uploads"), name="media")
+    # app.mount("/media", StaticFiles(directory="/uploads"), name="media")
+
+    app.mount(
+        "/media",
+        StaticFiles(directory=str(UPLOADS_DIR)),
+        name="media",
+    )
 
     @app.get("/")
     async def root():

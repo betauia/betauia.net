@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Backend for betauia.net"
 requires-python = ">=3.13"
 
+[tool.uv]
+package = false
+
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
