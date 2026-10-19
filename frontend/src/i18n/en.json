@@ -754,6 +754,35 @@
           "title": "Communication and ideas",
           "discordButton": "Betadev's Discord server"
         }
+      },
+      "gamejam": {
+        "title": "Game Jam",
+        "description": "BetaDev holdings a semiannual gamejam! If you want to create a game, learn game development or want to have some fun — join the gamejam!",
+        "heading": "Game Jam Autumn 2025",
+        "intro": "BetaDev is currently holding its semiannual gamejam! If you want to create a game, learn game development or want to have some fun — join the gamejam by creating a game and show it off at BetaLAN!",
+        "theme": {
+          "title": "Theme",
+          "text": "The theme of this semester's game is **2000s retro internet**, think the MySpace era!"
+        },
+        "prizes": {
+          "title": "Prizes",
+          "text": "There are of course prizes for the winners. The winners will be announced at BetaLAN between the 24. and 26. of October. You must showcase your game at BetaLAN to be eligible for prizes.",
+          "first": "1st place gets a prize of **1000kr** and maybe some more",
+          "second": "2nd place gets a prize of **500kr**"
+        },
+        "rules": {
+          "title": "Rules",
+          "technologies": "You may use any technologies you want",
+          "crossPlatform": "Cross-platform is a plus",
+          "web": "Being able to compile to web is a plus, so it can be shown of on BETA's",
+          "recommendations": "website Recommendations: godot, unity, gamemaker, pygame, p5.js to name a few.",
+          "teams": "You may form teams",
+          "student": "You must be a student at UiA Grimstad"
+        },
+        "questions": {
+          "text": "Questions? Ask current BETADEV leader on discord `@myrstad_` or ask in BETA's {{discord}}.",
+          "discordLink": "discord server"
+        }
       }
     },
     "account": {

@@ -1,58 +1,54 @@
 ---
 import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <BaseLayout
-  title="Game Jam"
-  description="BetaDev holdings a semiannual gamejam! If you want to create a game, learn game development or want to have some fun — join the gamejam!"
+  title={t("page.betadev.gamejam.title")}
+  description={t("page.betadev.gamejam.description")}
 >
   <Container>
-    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold">Game Jam Autumn 2025</h1>
+    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold"><Translate key="page.betadev.gamejam.heading" /></h1>
 
-    <p>
-      BetaDev is currently holding its semiannual gamejam! If you want to create a game, learn game
-      development or want to have some fun — join the gamejam by creating a game and show it off at
-      BetaLAN!
-    </p>
+    <p><Translate key="page.betadev.gamejam.intro" /></p>
 
-    <h2 class="mb-4 mt-8 text-2xl font-bold">Theme</h2>
-    <p>The theme of this semester's game is <b>2000s retro internet</b>, think the MySpace era!</p>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.theme.title" /></h2>
+    <p><Translate key="page.betadev.gamejam.theme.text" /></p>
 
-    <h2 class="mb-4 mt-8 text-2xl font-bold">Prizes</h2>
-    <p>
-      There are of course prizes for the winners. The winners will be announced at BetaLAN between
-      the 24. and 26. of October. You must showcase your game at BetaLAN to be eligible for prizes.
-    </p>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.prizes.title" /></h2>
+    <p><Translate key="page.betadev.gamejam.prizes.text" /></p>
     <ol class="mt-4">
       <li>
-        <p>1st place gets a prize of <b>1000kr</b> and maybe some more</p>
+        <p><Translate key="page.betadev.gamejam.prizes.first" /></p>
       </li>
       <li>
-        <p>2nd place gets a prize of <b>500kr</b></p>
+        <p><Translate key="page.betadev.gamejam.prizes.second" /></p>
       </li>
     </ol>
-    <h2 class="mb-4 mt-8 text-2xl font-bold">Rules</h2>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.rules.title" /></h2>
     <ul class="list-disc">
-      <li>You may use any technologies you want</li>
+      <li><Translate key="page.betadev.gamejam.rules.technologies" /></li>
       <ul class="list-disc pl-8">
-        <li>Cross-platform is a plus</li>
-        <li>Being able to compile to web is a plus, so it can be shown of on BETA's</li>
-        <li>website Recommendations: godot, unity, gamemaker, pygame, p5.js to name a few.</li>
+        <li><Translate key="page.betadev.gamejam.rules.crossPlatform" /></li>
+        <li><Translate key="page.betadev.gamejam.rules.web" /></li>
+        <li><Translate key="page.betadev.gamejam.rules.recommendations" /></li>
       </ul>
-      <li>You may form teams</li>
-      <li>You must be a student at UiA Grimstad</li>
+      <li><Translate key="page.betadev.gamejam.rules.teams" /></li>
+      <li><Translate key="page.betadev.gamejam.rules.student" /></li>
     </ul>
 
     <p class="mt-4">
-      Questions? Ask current BETADEV leader on discord <code>@myrstad_</code> or ask in BETA's <A
-        class="bg-accent p-1 text-white"
-        href="https://discord.gg/3xBPkDsaXy">discord server</A
-      >.
+      <Translate key="page.betadev.gamejam.questions.text">
+        <A slot="discord" class="bg-accent p-1 text-white" href="https://discord.gg/3xBPkDsaXy"
+          ><Translate key="page.betadev.gamejam.questions.discordLink" /></A
+        >
+      </Translate>
     </p>
   </Container>
 </BaseLayout>
