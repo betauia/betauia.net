@@ -910,6 +910,31 @@
           "text": "Connect with other participants and get real-time updates during the event",
           "button": "BetaLAN Discord"
         }
+      },
+      "index": {
+        "logoAlt": "BetaLAN Logo",
+        "tickets": "Get Your Tickets Now!",
+        "welcome": {
+          "title": "Welcome to BETALAN!",
+          "intro": "BetaLAN is all about having fun and enjoying the gaming culture! <br /><br />We will have a variety of games to play, tournaments to compete in, and prizes to win! <br />So grab your gear and get ready to conquer the BetaLAN! <br /><br />**When:** 24.-26. April <br />"
+        },
+        "buttons": {
+          "program": "Program",
+          "rules": "Rules",
+          "discord": "Discord"
+        },
+        "quest": {
+          "title": "Quest For BetaLAN",
+          "p1": "BetaLAN has been taken over by a mighty blue dragon known as **\"Segfault the Bitflipper.\"** He is currently wreaking havoc upon the spires of **Castle LANcalot**, plunging our kingdom into chaos.",
+          "p2": "The King and the Wizard have officially sanctioned a quest to regain control of the kingdom. This beast has set forth a series of trials, challenges that only the bravest of heroes would dare to face.",
+          "p3": "Coins has been put forth by the Crown for any who join the quest and succeed in defeating the dragon’s challenges.",
+          "signoff": "\"By order of the King and the High Wizard.\""
+        },
+        "crew": {
+          "title": "Crew Information",
+          "text": "The best way to experience BetaLAN is becoming a part of the crew. The crew is responsible for planning and organizing the LAN-party, and as a crew member you get free admission and some extra food after rigging down <br /><br />Want to know more?<br />",
+          "button": "Crew Information"
+        }
       }
     }
   }
