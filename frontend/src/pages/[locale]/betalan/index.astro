@@ -1,94 +1,164 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BetaLANLayout from "@layouts/BetaLANLayout.astro";
-import LinkerButton from "@components/ui/LinkerButton.astro";
-import betaLANLogo from "@assets/betalan/Betalan_logo.png";
-import { Icon } from "astro-icon/components";
-
-import CastleWallImg from "@assets/betalan/castle-wall-betalan.jpg";
 import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
+import LinkerButton from "@components/ui/LinkerButton.astro";
+import { Icon } from "astro-icon/components";
+import betaLANLogo from "@assets/betalan/Betalan_logo.png";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const t = useTranslations(Astro.currentLocale);
+
+const oceanBg =
+  "background: linear-gradient(180deg, #a6e6ff 0%, #5fc4e8 24%, #2e9ed1 48%, #1a6aa8 72%, #0a3f72 88%, #042a52 100%); background-attachment: fixed;";
+
+const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
 ---
 
 <BaseLayout title="BetaLAN">
-  <BetaLANLayout backgroundImage={CastleWallImg.src}>
-    <div id="top-logo-group" class="mb-10 flex justify-center lg:mb-20">
-      <div id="top-logo">
+  <BetaLANLayout backgroundCss={oceanBg} UseGamerFont={false}>
+    <!-- Hero -->
+    <div class="xp-window mx-auto mb-8 mt-6 w-full max-w-3xl">
+      <div class="xp-titlebar">
+        <span class="xp-titlebar-text"><Translate key="page.betalan.index.xpTitle" /></span>
+        <div class="xp-buttons">
+          <span class="xp-btn">–</span>
+          <span class="xp-btn">▢</span>
+          <span class="xp-btn xp-close">✕</span>
+        </div>
+      </div>
+
+      <div class="xp-body px-4 py-8 text-center sm:px-8">
         <img
           src={betaLANLogo.src}
           alt={t("page.betalan.index.logoAlt")}
-          class="drop-shadow-[10px_15px_8px_rgba(0,0,0,0.75)]"
+          class="mx-auto mb-6 w-full max-w-xl drop-shadow-[6px_8px_6px_rgba(0,0,0,0.45)]"
         />
+        <p class="mb-4 text-xl font-semibold text-cyan-50 sm:text-2xl">
+          <Translate key="page.betalan.index.tagline" />
+        </p>
+        <p class="mb-6 text-2xl font-bold text-orange-300 sm:text-3xl"><Translate key="page.betalan.index.date" /></p>
+
+        <div class="mb-2 flex justify-center">
+          <LinkerButton
+            href={ticketUrl}
+            text={t("page.betalan.index.tickets")}
+            target="_blank"
+            color="#ff9b11"
+            pulsing={true}
+          />
+        </div>
       </div>
     </div>
 
-    <!-- Tickets button -->
-    <div id="info-navigation-buttons" class="container mx-auto my-6 mb-5 flex justify-center">
-      <LinkerButton
-        href="https://tikkio.com/events/63234"
-        text={t("page.betalan.index.tickets")}
-        target="_blank"
-        color="#11FF11"
-        pulsing={true}
-      />
+    <!-- Nav -->
+    <div class="container mx-auto mb-10 flex flex-wrap justify-center gap-3 px-2 text-3xl sm:px-0">
+      <A href="/betalan/program" target="_self" class="no-underline">
+        <button class="nav-btn"><Translate key="page.betalan.index.buttons.program" /></button>
+      </A>
+      <A href="/betalan/rules" target="_self" class="no-underline">
+        <button class="nav-btn"><Translate key="page.betalan.index.buttons.rules" /></button>
+      </A>
+      <A href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" class="no-underline">
+        <button class="nav-btn nav-btn-discord">
+          <Icon name="fa-brands:discord" width="25" height="25" class="inline-block" />
+          <Translate key="page.betalan.index.buttons.discord" />
+        </button>
+      </A>
     </div>
 
-    <div id="content" class="container mx-auto mb-5 text-center">
-      <h1 class="text-7xl font-bold text-red-500 drop-shadow-md"><Translate key="page.betalan.index.welcome.title" /></h1>
-      <p class="text-3xl"><Translate key="page.betalan.index.welcome.intro" /></p>
-      <div
-        id="info-navigation-buttons"
-        class="container mx-auto mt-8 flex flex-wrap justify-center px-2 text-3xl sm:px-0"
-      >
-        <A href="/betalan/program" target="_self" class="w-full no-underline sm:w-auto">
-          <button
-            class="mx-0 my-2 w-full rounded-lg border-2 border-green-400 bg-green-500 bg-opacity-70 p-2 text-black transition duration-300 hover:bg-green-600 hover:text-white sm:mx-2 sm:w-auto"
-          >
-            <Translate key="page.betalan.index.buttons.program" />
-          </button>
-        </A>
-        <A href="/betalan/rules" target="_self" class="w-full no-underline sm:w-auto">
-          <button
-            class="mx-0 my-2 w-full rounded-lg border-2 border-green-400 bg-green-500 bg-opacity-70 px-4 py-2 text-black transition duration-300 hover:bg-green-600 hover:text-white sm:mx-2 sm:w-auto"
-          >
-            <Translate key="page.betalan.index.buttons.rules" />
-          </button>
-        </A>
-        <A
-          href="https://discord.gg/ggUtjr8TSQ"
-          target="_blank"
-          rel="noopener"
-          class="w-full no-underline sm:w-auto"
-        >
-          <button
-            class="mx-0 my-2 flex w-full items-center justify-center gap-2 rounded-lg border-2 border-indigo-500 bg-indigo-700 bg-opacity-90 p-2 text-white transition duration-300 hover:bg-indigo-600 sm:mx-2 sm:w-auto"
-          >
-            <Icon name="fa-brands:discord" width="25" height="25" class="inline-block" />
-            <Translate key="page.betalan.index.buttons.discord" />
-          </button>
-        </A>
-      </div>
-    </div>
-
-    <!-- Quest Scroll -->
+    <!-- Chart -->
     <div
       id="quest-scroll"
-      class="container mx-auto mb-5 flex max-w-full flex-col justify-center text-center lg:max-w-4xl"
+      class="container mx-auto mb-8 flex max-w-full flex-col justify-center text-center lg:max-w-4xl"
     >
-      <div class="scroll-paper w-full px-4 py-3 text-base leading-relaxed">
-        <h2 class="scroll-title mb-2 text-center text-4xl font-semibold"><Translate key="page.betalan.index.quest.title" /></h2>
-        <div class="scroll-content text-2xl">
-          <p><Translate key="page.betalan.index.quest.p1" /></p>
-          <br />
-          <p><Translate key="page.betalan.index.quest.p2" /></p>
-          <br />
-          <p><Translate key="page.betalan.index.quest.p3" /></p>
-          <br />
-          <p class="scroll-signoff text-right italic"><Translate key="page.betalan.index.quest.signoff" /></p>
+      <div class="scroll-paper w-full px-6 py-9 text-base leading-relaxed sm:px-10">
+        <!-- Parchment -->
+        <svg class="paper-bg" viewBox="0 0 800 620" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <filter id="torn" x="-6%" y="-6%" width="112%" height="112%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.013"
+                numOctaves="2"
+                seed="7"
+                result="n"></feTurbulence>
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="n"
+                scale="22"
+                xChannelSelector="R"
+                yChannelSelector="G"></feDisplacementMap>
+            </filter>
+            <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.9"
+                numOctaves="2"
+                seed="3"
+                result="g"></feTurbulence>
+              <feColorMatrix
+                in="g"
+                type="matrix"
+                values="0 0 0 0 0.33  0 0 0 0 0.22  0 0 0 0 0.09  0 0 0 0.7 0"></feColorMatrix>
+            </filter>
+            <radialGradient id="parch" cx="42%" cy="34%" r="82%">
+              <stop offset="0%" stop-color="#e6cf9c"></stop>
+              <stop offset="52%" stop-color="#cba869"></stop>
+              <stop offset="100%" stop-color="#a07d40"></stop>
+            </radialGradient>
+            <radialGradient id="vig" cx="48%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#000" stop-opacity="0"></stop>
+              <stop offset="70%" stop-color="#000" stop-opacity="0"></stop>
+              <stop offset="100%" stop-color="#241404" stop-opacity="0.6"></stop>
+            </radialGradient>
+          </defs>
+          <g filter="url(#torn)">
+            <rect x="24" y="24" width="752" height="572" rx="8" fill="#432a0f"></rect>
+            <rect x="30" y="30" width="740" height="560" rx="5" fill="url(#parch)"></rect>
+            <rect
+              x="30"
+              y="30"
+              width="740"
+              height="560"
+              rx="5"
+              fill="#000"
+              filter="url(#grain)"
+              opacity="0.3"></rect>
+            <rect x="30" y="30" width="740" height="560" rx="5" fill="url(#vig)"></rect>
+          </g>
+        </svg>
+
+        <!-- Route -->
+        <svg class="map-route" viewBox="0 0 400 220" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            d="M40,36 C120,80 90,150 210,146 S320,120 338,172"
+            fill="none"
+            stroke="#8a2d1f"
+            stroke-width="3"
+            stroke-dasharray="10 10"
+            stroke-linecap="round"></path>
+          <g stroke="#8a2d1f" stroke-width="5" stroke-linecap="round">
+            <line x1="326" y1="160" x2="350" y2="184"></line>
+            <line x1="350" y1="160" x2="326" y2="184"></line>
+          </g>
+        </svg>
+
+        <div class="map-inner">
+          <h2 class="scroll-title mb-2 text-center text-4xl font-semibold">
+            <Translate key="page.betalan.index.chart.title" />
+          </h2>
+          <div class="scroll-content text-2xl">
+            <p><Translate key="page.betalan.index.chart.p1" /></p>
+            <br />
+            <p><Translate key="page.betalan.index.chart.p2" /></p>
+            <br />
+            <p><Translate key="page.betalan.index.chart.p3" /></p>
+            <br />
+            <p class="scroll-signoff text-right italic"><Translate key="page.betalan.index.chart.signoff" /></p>
+          </div>
         </div>
       </div>
     </div>
@@ -96,14 +166,12 @@ const t = useTranslations(Astro.currentLocale);
     <!-- Crew Info -->
     <div
       id="crew-info"
-      class="container mx-auto flex max-w-full flex-col items-center rounded-lg bg-slate-900 bg-opacity-90 p-4 text-center text-white lg:max-w-4xl"
+      class="container mx-auto mb-8 flex max-w-full flex-col items-center rounded-lg bg-sky-950/85 p-4 text-center text-white lg:max-w-4xl"
     >
-      <h2 class="mb-4 text-7xl"><Translate key="page.betalan.index.crew.title" /></h2>
-      <p class="text-3xl"><Translate key="page.betalan.index.crew.text" /></p>
+      <h2 class="mb-4 text-5xl text-cyan-300 sm:text-7xl"><Translate key="page.betalan.index.crew.title" /></h2>
+      <p class="text-2xl sm:text-3xl"><Translate key="page.betalan.index.crew.text" /></p>
       <div>
-        <button
-          class="my-4 rounded bg-slate-600 px-4 py-2 text-3xl text-white hover:border-slate-700 hover:bg-slate-700"
-        >
+        <button class="my-4 rounded bg-cyan-700 px-4 py-2 text-3xl text-white hover:bg-cyan-600">
           <A href="/betalan/crew-info"><Translate key="page.betalan.index.crew.button" /></A>
         </button>
       </div>
@@ -113,86 +181,151 @@ const t = useTranslations(Astro.currentLocale);
 </BaseLayout>
 
 <style>
-  #top-logo-group {
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #content {
-    background-color: #191a1a;
-    background-image:
-      linear-gradient(
-        180deg,
-        transparent 24%,
-        rgba(0, 115, 19, 0.3) 25%,
-        rgba(0, 115, 19, 0.3) 26%,
-        transparent 27%,
-        transparent 74%,
-        rgba(0, 115, 19, 0.3) 75%,
-        rgba(0, 115, 19, 0.3) 76%,
-        transparent 77%,
-        transparent
-      ),
-      linear-gradient(
-        45deg,
-        transparent 24%,
-        rgba(0, 115, 19, 0.3) 25%,
-        rgba(0, 115, 19, 0.3) 26%,
-        transparent 27%,
-        transparent 74%,
-        rgba(0, 115, 19, 0.3) 75%,
-        rgba(0, 115, 19, 0.3) 76%,
-        transparent 77%,
-        transparent
-      );
-    background-size: 55px 55px;
-    padding: 2rem;
-    border: 2px solid #00dd00;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #00dd00;
-    color: #18ea28;
-    max-width: 900px;
+  /* XP window */
+  .xp-window {
+    border-radius: 8px 8px 6px 6px;
+    overflow: hidden;
+    border: 1px solid #0a3f72;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(230, 248, 255, 0.95);
   }
 
-  /* Quest scroll styles */
+  .xp-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px 4px 12px;
+    background: linear-gradient(180deg, #3a93ff 0%, #2a7be0 8%, #1f6fd6 45%, #1a66c9 100%);
+    color: #fff;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  }
+
+  .xp-titlebar-text {
+    font-size: 0.95rem;
+  }
+
+  .xp-buttons {
+    display: flex;
+    gap: 3px;
+  }
+
+  .xp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 20px;
+    border: 1px solid #ffffff99;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #5fa8ff, #2a7be0);
+    font-size: 0.7rem;
+    line-height: 1;
+  }
+
+  .xp-close {
+    background: linear-gradient(180deg, #f0795a, #d6442a);
+  }
+
+  .xp-body {
+    background:
+      radial-gradient(circle at 50% -10%, rgba(120, 200, 255, 0.35), transparent 55%),
+      linear-gradient(180deg, #0f5390 0%, #0a3f72 55%, #042a52 100%);
+  }
+
+  /* nav */
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 8px;
+    border: 2px solid #67e8f9;
+    background: rgba(8, 145, 178, 0.85);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s;
+  }
+
+  .nav-btn:hover {
+    background: rgba(14, 116, 144, 0.95);
+  }
+
+  .nav-btn-discord {
+    border-color: #818cf8;
+    background: rgba(67, 56, 202, 0.9);
+  }
+
+  .nav-btn-discord:hover {
+    background: rgba(79, 70, 229, 0.95);
+  }
+
+  /* chart */
   #quest-scroll {
-    max-width: 650px;
+    max-width: 720px;
   }
 
   .scroll-paper {
-    background: linear-gradient(180deg, #f6ecd9 0%, #f1e3c6 50%, #ecd9b3 100%);
-    border: 4px double #c9a66b;
-    border-radius: 8px;
-    box-shadow:
-      0 8px 24px rgba(0, 0, 0, 0.55),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    background: transparent;
     font-family: "MedievalSharp", Georgia, serif;
-    color: #2b1700;
-    height: auto;
-    max-height: none;
-    overflow: visible;
-    line-height: 1.4;
+    color: #3a2409;
+    line-height: 1.45;
+  }
+
+  /* parchment */
+  .paper-bg {
+    position: absolute;
+    inset: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    z-index: 0;
+    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.6));
+  }
+
+  .map-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .map-route {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 1;
   }
 
   .scroll-title {
-    text-align: center;
     margin: 0 0 0.4rem 0;
     font-weight: 700;
-    color: #2b2b2b;
+    color: #4a2d0c;
     letter-spacing: 0.6px;
+    text-shadow: 1px 1px 0 rgba(255, 245, 220, 0.5);
   }
 
   .scroll-content p {
     margin: 0 0 0.5rem 0;
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .scroll-signoff {
     margin-top: 0.75rem;
     font-style: italic;
-    text-align: right;
-    color: #1f1f1f;
+    color: #5a3a16;
   }
 </style>
+
+<!-- IntroCTF challenge.-->
+<script is:inline>
+  console.log(
+    "%c🏴‍☠️ Ahoy! The S.S. Kernel's last log washed up in the console.",
+    "color:#38bdf8;font-size:14px;font-weight:bold"
+  );
+  console.log("%cDecode the salvage to claim your treasure:", "color:#f4a33a");
+  console.log(
+    "0xF2, 0x06, 0xFE, 0x00, 0xF3, 0x05, 0x18, 0x23, 0xCE, 0x15, 0xD0, 0xFC, 0xCE, 0x2D, 0x13, 0xCF, 0xFC, 0x13, 0x27, 0xD0, 0xFC, 0x20, 0xCF, 0x2D, 0x10, 0xCF, 0x2B, 0xD0, 0x1A"
+  );
+</script>

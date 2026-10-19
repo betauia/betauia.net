@@ -1,0 +1,95 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Prose from "@components/semantics/Prose.astro";
+import A from "@components/ui/A.astro";
+import Translate from "@components/ui/Translate.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
+
+const pages = [
+  {
+    category: t("page.guides.index.programming.category"),
+    path: "prog",
+    description: t("page.guides.index.programming.description"),
+    guides: [
+      {
+        name: t("page.guides.index.programming.git.name"),
+        path: "git",
+        icon: "fa-brands:git-alt",
+        description: t("page.guides.index.programming.git.description"),
+      },
+    ],
+  },
+  {
+    category: t("page.guides.index.math1.category"),
+    path: "ma-178",
+    description: t("page.guides.index.math1.description"),
+    guides: [
+      {
+        name: t("page.guides.index.math1.complexNumbers.name"),
+        path: "kompleks",
+        icon: "fa-solid:magic",
+        description: t("page.guides.index.math1.complexNumbers.description"),
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={t("page.guides.index.title")}>
+  <Container>
+
+      <Prose>
+        <h1><Translate key="page.guides.index.heading" /></h1>
+        <p><Translate key="page.guides.index.intro" /></p>
+      </Prose>
+
+      <div class="mt-10">
+        {
+          pages.map(page => (
+              <div class="">
+                <h2 class="text-2xl font-bold text-fg-base transition-colors dark:text-dark-fg-base">
+                  {page.category}
+                </h2>
+
+                <p class="mt-4 mb-6 max-w-2xl text-base text-fg-muted dark:text-dark-fg-muted">
+                  {page.description}
+                </p>
+              </div>
+
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+                {page.guides.map(guide => (
+                  <A
+                    href={`/guides/${page.path}/${guide.path}`}
+                    class="group rounded-2xl p-5 transition-colors bg-bg-raised dark:bg-dark-bg-raised border border-dark-fg-muted dark:border-fg-muted hover:bg-bg-raised/25 hover:dark:bg-dark-bg-raised/50"
+                  >
+                    <div class="flex items-start gap-4">
+                      <div class="mt-0.5 shrink-0">
+                        <Icon
+                          name={guide.icon}
+                          class="h-6 w-6 text-accent transition-transform duration-200 "
+                        />
+                      </div>
+
+                      <div>
+                        <h3 class="text-lg font-bold text-fg-base transition-colors  dark:text-dark-fg-base">
+                          {guide.name}
+                        </h3>
+
+                        <p class="mt-1.5 text-base leading-6 text-fg-muted dark:text-dark-fg-muted">
+                          {guide.description}
+                        </p>
+                      </div>
+                    </div>
+                  </A>
+                ))}
+              </div>
+          ))
+        }
+      </div>
+  </Container>
+</BaseLayout>

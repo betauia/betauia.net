@@ -657,6 +657,27 @@
             "powerDesc": "A power can be written in the form:"
           }
         }
+      },
+      "index": {
+        "title": "Guides",
+        "heading": "Guides",
+        "intro": "A collection of guides and resources for courses, programming and tools.",
+        "programming": {
+          "category": "Programming",
+          "description": "Guides for programming, development tools and workflow.",
+          "git": {
+            "name": "Git",
+            "description": "Learn the basics of Git and version control."
+          }
+        },
+        "math1": {
+          "category": "Math 1",
+          "description": "Guides and resources for Math 1.",
+          "complexNumbers": {
+            "name": "Complex numbers",
+            "description": "Learn about complex numbers and how they are used."
+          }
+        }
       }
     },
     "genfors": {
@@ -902,36 +923,38 @@
         "footer": "Breaking the rules will result in penalties based on the severity of the violation, and may lead to getting kicked out of the event without a refund"
       },
       "program": {
-        "title": "BetaLAN Program H25",
+        "title": "BetaLAN Program H26",
         "heading": "BetaLAN Program",
         "days": {
           "friday": {
             "name": "Friday",
             "items": {
-              "opening": "Opening Hour",
-              "tbdActivity": "TBD Activity",
-              "aubyOpens": "Auby Games Opens",
-              "smash": "Super Smash Tournament",
+              "openingCtf": "Opening for CTF",
+              "introCtf": "IntroCTF with UiACTF & BetaSEC (Free entry!)",
+              "closingMainHall": "Closing Main Hall for reorganization",
+              "openingLan": "Opening for LAN event",
+              "aubyGames": "Auby Games Opens (Annoucement)",
+              "skylanders": "Skylanders",
               "betaShow": "BetaShow"
             }
           },
           "saturday": {
             "name": "Saturday",
             "items": {
-              "minecraft": "Minecraft",
-              "food": "Food for Participants",
-              "bestGamer": "Agder’s Best Gamer",
+              "theFinals": "The Finals",
+              "gameJam": "Game Jam",
+              "food": "Food",
+              "skywars": "Minecraft: Skywars",
               "betaShow": "BetaShow"
             }
           },
           "sunday": {
             "name": "Sunday",
             "items": {
-              "justDance": "Just Dance",
-              "aubyFinal": "Auby Games Final Duel",
-              "aubyWinner": "Auby Announces the Winner",
-              "closingAnnouncement": "Announcement & Closing Hour",
-              "closingTime": "Closing Time (Main Hall Closes)"
+              "finalDuel": "Final Duel — Auby Games",
+              "fortnite": "Fortnite",
+              "omegaStrikers": "Omega Strikers",
+              "closingHour": "Closing Hour"
             }
           }
         },
@@ -942,23 +965,22 @@
         }
       },
       "index": {
-        "logoAlt": "BetaLAN Logo",
+        "xpTitle": "Ocean Themed LAN!",
+        "logoAlt": "BetaLAN",
+        "tagline": "Dive into BETA's Ocean LAN party, get tickets below!",
+        "date": "23–25 October",
         "tickets": "Get Your Tickets Now!",
-        "welcome": {
-          "title": "Welcome to BETALAN!",
-          "intro": "BetaLAN is all about having fun and enjoying the gaming culture! <br /><br />We will have a variety of games to play, tournaments to compete in, and prizes to win! <br />So grab your gear and get ready to conquer the BetaLAN! <br /><br />**When:** 24.-26. April <br />"
-        },
         "buttons": {
           "program": "Program",
           "rules": "Rules",
           "discord": "Discord"
         },
-        "quest": {
-          "title": "Quest For BetaLAN",
-          "p1": "BetaLAN has been taken over by a mighty blue dragon known as **\"Segfault the Bitflipper.\"** He is currently wreaking havoc upon the spires of **Castle LANcalot**, plunging our kingdom into chaos.",
-          "p2": "The King and the Wizard have officially sanctioned a quest to regain control of the kingdom. This beast has set forth a series of trials, challenges that only the bravest of heroes would dare to face.",
-          "p3": "Coins has been put forth by the Crown for any who join the quest and succeed in defeating the dragon’s challenges.",
-          "signoff": "\"By order of the King and the High Wizard.\""
+        "chart": {
+          "title": "The Drowned Chart of BetaLAN",
+          "p1": "Hauled dripping from the wreck of the **S.S. Kernel**, this salt-stained chart marks the last bearing of BetaLAN's lost hoard, swallowed when the ship went down off the **Bluebox Reef**.",
+          "p2": "The wreck is coiled by **Deadlock, the Drowned Leviathan** — a serpent of tangled cable and barnacled steel that sleeps in the dark and wakes for any who disturb its hoard.",
+          "p3": "Chart a course through its three trials and live, and the treasure in the hold is yours to raise.",
+          "signoff": "\"Marked in salt and ink\""
         },
         "crew": {
           "title": "Crew Information",
