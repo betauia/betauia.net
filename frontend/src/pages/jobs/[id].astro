@@ -23,7 +23,7 @@ try {
     job = await res.json();
 
     if (job?.body) {
-      const rawHtml = marked.parse(job.body);
+      const rawHtml = await marked.parse(job.body);
 
       safeBodyHtml = sanitizeHtml(rawHtml, {
         allowedTags: [
