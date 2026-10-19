@@ -277,17 +277,337 @@
         "rolesTitle": "What can you stand for?",
         "rolesIntro": "At BETA we have a main board consisting of 9 members that you can and should get involved as:",
         "roleDescriptions": {
-          "leader":  "is BETA's face towards the faculty, companies, and other associations. The leader ensures that the board is gathered, makes sure the student organization is run well, and that all committees and interest groups cooperate towards the same goal.",
-          "deputyLeader":  "is the leader's substitute and is responsible for minutes from board meetings and the student organization's internal structure. The deputy leader is the leader's sparring partner.",
-          "financeManager":  "is responsible for BETA's finances. This includes keeping accounts, preparing budgets, and making sure we get paid for company presentations.",
-          "prManager":  "is responsible for BETA's profile on various social media platforms; Instagram, Facebook, Discord, and TikTok.",
-          "betaLanLeader":  "is responsible for organizing UiA's coolest student LAN every semester.",
-          "eventCommitteeLeader":  "is responsible for planning and carrying out social activities for all BETA members.",
-          "businessCommitteeLeader":  "is responsible for contact between the business community and the students.",
-          "betaDevLeader":  "is responsible for the BetaDEV interest group and the developer community on campus.",
-          "betaSecLeader":  "is responsible for the BetaSEC interest group and security-related events."
+          "leader": "is BETA's face towards the faculty, companies, and other associations. The leader ensures that the board is gathered, makes sure the student organization is run well, and that all committees and interest groups cooperate towards the same goal.",
+          "deputyLeader": "is the leader's substitute and is responsible for minutes from board meetings and the student organization's internal structure. The deputy leader is the leader's sparring partner.",
+          "financeManager": "is responsible for BETA's finances. This includes keeping accounts, preparing budgets, and making sure we get paid for company presentations.",
+          "prManager": "is responsible for BETA's profile on various social media platforms; Instagram, Facebook, Discord, and TikTok.",
+          "betaLanLeader": "is responsible for organizing UiA's coolest student LAN every semester.",
+          "eventCommitteeLeader": "is responsible for planning and carrying out social activities for all BETA members.",
+          "businessCommitteeLeader": "is responsible for contact between the business community and the students.",
+          "betaDevLeader": "is responsible for the BetaDEV interest group and the developer community on campus.",
+          "betaSecLeader": "is responsible for the BetaSEC interest group and security-related events."
         },
         "footer": "All committees also have their own deputy leader who is elected internally and does not have a vote in the main board."
+      }
+    },
+    "guides": {
+      "git": {
+        "intro": {
+          "title": "Introduction",
+          "text": "Git is a version control system that helps you keep track of code, collaborate with others, and roll back to previous versions if something goes wrong."
+        },
+        "howToUse": {
+          "title": "How to use this guide",
+          "p1": "This guide is for beginners who have never used Git, but it also works as a quick reference for more experienced users.",
+          "p2": "You can read the guide start-to-finish to learn Git step by step, or use the table of contents as a lookup when you need specific commands."
+        },
+        "toc": {
+          "title": "Table of Contents",
+          "getStarted": "Get started",
+          "installGit": "Install Git",
+          "configureGit": "Configure Git",
+          "startProject": "Start a project",
+          "createRepo": "Create new repository",
+          "cloneRepo": "Clone existing repository",
+          "workflow": "Common workflow",
+          "checkStatus": "Check status",
+          "addChanges": "Add changes",
+          "commitChanges": "Commit changes",
+          "pushPull": "Push and pull",
+          "branching": "Branching",
+          "combineBranches": "Combine branches",
+          "squashCommits": "Squash commits",
+          "handleConflicts": "Handle conflicts",
+          "troubleshooting": "Troubleshooting and history",
+          "undoErrors": "Undo mistakes",
+          "stashChanges": "Stash changes",
+          "examineHistory": "Examine history",
+          "remotes": "Working with remotes",
+          "connectRemotes": "Connect to remotes",
+          "fetchUpdate": "Fetch and update remotes",
+          "standards": "Structure and standards",
+          "gitIgnore": "Git ignore",
+          "commitMessages": "Commit messages",
+          "branchNaming": "Branch naming",
+          "contribute": "Contribute to a repository",
+          "repoStructure": "Repository structure",
+          "tagging": "Tagging and versions",
+          "cheatSheet": "Cheat sheet"
+        },
+        "getStarted": {
+          "intro1": "Before you can use Git, you need to have it installed and configured on your machine.",
+          "intro2": "You can check if you already have Git installed or configured by running these commands in your terminal (or Git Bash on Windows):",
+          "intro3": "If neither command shows anything, or you're unsure, you can follow the next 2 steps.",
+          "windowsText": "You can find the Windows download on [Git's website](https://git-scm.com/downloads/win). This downloads Git Bash, a terminal that gives you Linux-like commands, where you can use Git commands normally.",
+          "macosText": "MacOS requires you to install [Homebrew](https://brew.sh/) to manage new packages. Once you've done that, you can install Git from the terminal with:",
+          "linuxText": "Linux has many distros with several different package managers. Here is a list of commands to install Git on some popular distros:",
+          "configIntro": "Before you start using Git, you need to tell it who you are and what the name of your first branch is. Your name and email are attached to all the commits you make, making it easier for others to see who did what. Also, most platforms now use `main` instead of `master` as the default branch.",
+          "configStep": "Set up your name and email (feel free to use your UiA email) and set the default branch to main:",
+          "configTip": "**Tip**: You can use the same email you use on GitHub/GitLab/Gitea so that your commits are linked to your profile.",
+          "configCheck": "You can check that it was configured correctly with:",
+          "configEditor": "If you don't like the editor Git opens by default, you can change it to one of these or whichever editor you prefer:",
+          "editorComments": {
+            "vsc": "Visual Studio Code",
+            "nano": "Nano (easy to use in the terminal)",
+            "vim": "Vim (for masochists)"
+          }
+        },
+        "startProject": {
+          "intro1": "When you're ready to start using Git in a project, you have two options:",
+          "opt1": "**Create a new Git repository** (from scratch)",
+          "opt2": "**Clone an existing repository** (from GitHub, GitLab, Gitea, etc.)",
+          "intro2": "You can also do a bit of both by initializing a new repository on GitHub or similar, and then cloning an empty project over.",
+          "createIntro1": "You can choose to create a Git repository in an existing folder where your project lives, or create a new folder.",
+          "createIntro2": "To create a new folder for the project:",
+          "createIntro3": "After that, or if you already made the folder and are in it, initialize a new repository with:",
+          "cloneIntro": "If you want to work on an existing project from e.g. GitHub, you can clone it over with:",
+          "cloneDesc": "This creates a local copy of the entire project with all its history intact. Now you can make changes and send them back with `git push`!",
+          "cloneDiffTitle": "**The difference between cloning with HTTPS and SSH:**",
+          "httpsBullet1": "Great if you just need to read/copy a repository.",
+          "httpsBullet2": "Easy to use with no extra setup.",
+          "httpsBullet3": "You have to use a username and password/token when you push changes.",
+          "sshBullet1": "More secure and practical in the long run.",
+          "sshBullet2": "Uses public/private keys for authentication instead of passwords.",
+          "sshBullet3": "Needs to be set up once with `ssh-keygen` and added to GitHub and other services.",
+          "sshTip": "**Tip**: If you can, use SSH. If you're just looking around, use HTTPS.",
+          "sshSetup": "**Setting up SSH (recommended for active developers):**",
+          "sshGenerate": "Generate SSH key and spam enter",
+          "sshCopy": "Copy public key to clipboard",
+          "sshGitHub": "Go to GitHub -> Settings -> SSH and GPG keys -> New SSH key, paste the key and give it a name.",
+          "sshTest": "Test that it works:"
+        },
+        "workflow": {
+          "intro": "A typical workflow for Git in projects looks like this:",
+          "step1": "**Check status** - see what has changed.",
+          "step2": "**Add changes** - choose which changes you want to include.",
+          "step3": "**Commit changes** - save a new version with a descriptive message.",
+          "step4": "**Push and pull** - share your changes and fetch what others have updated.",
+          "outro": "Of course there's more to it, but a lot of your work will look like this.",
+          "statusIntro": "To see which files have been changed or are ready to be committed, type:",
+          "statusOutput": "If you've made changes to a file, you might get an output that looks like this:",
+          "statusTypes": "A file can have 3 different statuses:",
+          "statusUntracked": "**Untracked** - Git has no control over the file.",
+          "statusStaged": "**Staged** - Git has registered the change.",
+          "statusCommited": "**Committed** - Git has saved the version of the file.",
+          "addIntro": "Before you can commit your changes, you need to tell Git which changes you want to include. This is called \"staging\" and is done with `git add`. Think of it like packing a box where you carefully choose which items go in before you ship it:",
+          "addComments": {
+            "file": "Add a specific file",
+            "all": "Add all changes in the folder",
+            "txt": "Add all .txt files",
+            "src": "Add the entire src folder"
+          },
+          "addWarning": "**Warning**: Be careful with `git add .` - it adds all changed files. Always check with `git status` first!",
+          "resetIntro": "You can remove files from the staging area with:",
+          "resetComments": {
+            "file": "Remove file from staging",
+            "all": "Remove all files from staging"
+          },
+          "diffIntro": "To see the differences in what you've changed, you can investigate with:",
+          "diffComments": {
+            "unstaged": "See unstaged changes",
+            "staged": "See staged changes"
+          },
+          "commitIntro": "Once you've added all the changes you want, you can create a commit. It's basically a snapshot of your entire project with the new changes, along with a short message. You do this with `git commit`:",
+          "commitTip": "**Tip**: Write commit messages in the imperative mood in English, like \"Add user login functionality\" or \"Fix button styling bug\" and commit often. There are also many standards you can agree on; for example, Beta uses [gitmojies](https://gitmoji.dev/) for the website.",
+          "commitCombine": "You can also combine add and commit for all tracked files (careful: this includes all changes you've previously run `git add` on):",
+          "pushIntro": "To share your changes with others (send them to GitHub, etc.):",
+          "pushComments": {
+            "default": "Send to default remote and branch",
+            "specific": "Send to specific remote and branch",
+            "upstream": "Set upstream (where you send it) and push"
+          },
+          "pushTip": "**Tip**: In GitHub forks, the original repo is often called `upstream` (where changes come from) and your own copy is called `origin`.",
+          "pullIntro": "To fetch changes from others:",
+          "pullComments": {
+            "merge": "Fetch and merge from remote",
+            "rebase": "Fetch and rebase (recommended)",
+            "fetch": "Just fetch, don't merge"
+          },
+          "pullTip": "**Tip**: Use `git pull --rebase` to avoid unnecessary merge commits."
+        },
+        "branching": {
+          "intro": "Branches let you work on different features without affecting the main code or others. It is one of the most important concepts in Git.",
+          "comments": {
+            "list": "See all branches",
+            "new": "Create new branch",
+            "switch": "Switch to branch",
+            "createSwitch": "Create and switch to branch",
+            "delete": "Delete branch"
+          },
+          "tip": "**Tip**: Use descriptive branch names with a prefix like `feature/user-auth` or `fix/navbar-placement`.",
+          "combineIntro": "To merge changes from one branch to another, we use merge (and ideally rebase too):",
+          "mergeTitle": "**Merge** (creates a merge commit):",
+          "mergeComments": {
+            "switch": "Switch to main",
+            "merge": "Merge feature into main"
+          },
+          "mergeDesc": "When you merge without your branch base being at the top of the branch you are merging into, you'll get an extra merge commit. This is often seen as messy, and it's recommended to use rebase to move your branch to the top before merging.",
+          "rebaseTitle": "**Rebase** (moves commits to the top of a branch):",
+          "rebaseComments": {
+            "switchFeature": "Switch to feature branch",
+            "rebase": "Rebase feature on top of main",
+            "switchMain": "Switch to main",
+            "merge": "Fast-forward merge"
+          },
+          "squashIntro": "To keep the history clean, it can be useful to combine multiple commits into just one before merging. Although you lose some info, not everyone cares that you made a typo and fixed it in a feature branch.",
+          "squashDesc": "Squashing happens through `git rebase`'s interactive interface:",
+          "squashInteractive": "Interactive rebase of the last 3 commits",
+          "squashEdit": "In the editor that opens, change `pick` to `squash` (or `s`) for the commits you want to combine with the previous one.",
+          "squashTip": "**Tip**: For a clean history, you should rebase, squash, and then merge so that you can easily read backward through a linear tree.",
+          "conflictIntro": "When Git can't automatically merge changes, you get one or more conflicts:",
+          "conflictStatus": "See which files have conflicts",
+          "conflictDesc": "When you open and read the file, all conflicts will be marked like this:",
+          "conflictCode": "Your code\n=======\nSomeone else's code",
+          "conflictResolve": "You choose entirely how to resolve the conflict—whether to keep your own code, the branch's code, or both. Afterward, you must mark that you've resolved the conflict and commit the merge:"
+        },
+        "troubleshooting": {
+          "intro": "Git gives you many ways to undo changes and examine history. Here are a couple of the most used methods and strategies.",
+          "undoIntro": "You have several different ways to correct mistakes made during a project:",
+          "undoChanges": "**Undo changes**: Revert a file back to the commit's proper version.",
+          "undoChangesComments": {
+            "file": "Undo changes in file",
+            "all": "Undo all changes"
+          },
+          "undoCommits": "**Undo commits**: Remove the last commit by rewriting history.",
+          "undoCommitsComments": {
+            "soft": "Undo last commit, keep changes",
+            "hard": "Undo last commit, delete changes"
+          },
+          "undoWarning": "Warning: This rewrites history, so only use it locally!",
+          "revert": "**Revert (safer way)**: Undoes a commit by creating an \"undo commit\" to avoid rewriting history.",
+          "revertComments": {
+            "last": "Revert last commit",
+            "specific": "Revert specific commit"
+          },
+          "stashIntro": "Stash lets you temporarily save changes without committing, which is super useful if you need to make a quick tweak on another branch but aren't quite finished with your current work:",
+          "stashComments": {
+            "stash": "Stash all changes",
+            "untracked": "Stash including untracked files",
+            "list": "See all stashes",
+            "pop": "Bring back the last stash",
+            "drop": "Delete stash"
+          },
+          "stashDesc": "The stash structure works like a stack: you place a plate (your changes) on top, and you can do this as many times as you want, but you can only take them back off from the top. This makes stashing very simple and efficient to work with.",
+          "historyIntro": "To view the commit history, you can use `git log`. This command can be run in many different ways with various flags so you can see exactly what you want. Here are a few useful versions:",
+          "historyComments": {
+            "full": "Full history",
+            "oneline": "Short overview",
+            "graph": "Visualize all branches",
+            "decorate": "Shows references",
+            "patch": "Shows the changes",
+            "n4": "Shows the last 4 commits",
+            "nopager": "Avoid scary Vim keybinds :)"
+          },
+          "historyCombine": "You can combine them as much as you want like this:"
+        },
+        "remotes": {
+          "intro": "Remotes are external repositories that you can synchronize with. Usually, `origin` is the main repository on GitHub or other services.",
+          "connectIntro": "If you've already cloned a repository, you'll automatically have origin as your default remote. You can check and modify remotes with these commands:",
+          "connectComments": {
+            "list": "See all remotes",
+            "add": "Add remote",
+            "remove": "Remove remote",
+            "rename": "Rename remote"
+          },
+          "connectTip": "**Tip**: If you are on a fork, it's recommended to add the original repo under the remote name `upstream`.",
+          "connectPush": "The first time you push a new branch to the repository, you can create the branch on the remote with:",
+          "connectPushComment": "Set upstream and push",
+          "fetchTitle": "**Fetching changes from remote:**",
+          "fetchComments": {
+            "all": "Fetch all changes from all remotes",
+            "specific": "Fetch from specific remote",
+            "upstream": "Fetch from upstream (if you have a fork)"
+          },
+          "fetchCombine": "**Combining fetch with merge/rebase:**",
+          "fetchCombineComments": {
+            "merge": "Fetch + merge from remote",
+            "rebase": "Fetch + rebase (recommended)",
+            "upstream": "Fetch from upstream main branch"
+          },
+          "fetchTip": "**Tip**: Use `git pull --rebase` to avoid unnecessary merge commits.",
+          "pushTitle": "**Sending changes to remote:**",
+          "pushComments": {
+            "default": "Send to default remote and branch",
+            "specific": "Send to specific remote and branch",
+            "upstream": "Set upstream and push new branch",
+            "force": "Safer force push"
+          },
+          "pushWarning": "**Warning**: Never use `git push --force` on shared branches."
+        },
+        "standards": {
+          "intro": "To keep projects tidy and make collaboration easier, it's important to follow good standards and conventions. Here are the key practices for structuring Git repositories, commits, and maintaining a professional mindset.",
+          "ignoreIntro": "The `.gitignore` file tells Git which files and folders should be ignored and not added to version control. This is especially important for avoiding committing sensitive data, build files, and other stuff that doesn't belong in the repository.",
+          "ignoreDesc": "The file is pretty straightforward to write, and applies to the folder it's in as well as all subfolders. You just write filenames to exclude them, along with a few special characters:",
+          "ignoreTip": "**Tip**: GitHub has [ready-made .gitignore templates](https://github.com/github/gitignore) for different languages and frameworks that you can copy.",
+          "ignoreUndo": "If you accidentally staged a file you meant to ignore, you can remove it again with:",
+          "ignoreUndoComments": {
+            "file": "Remove file from Git",
+            "folder": "Remove entire folder from Git"
+          },
+          "commitIntro": "Good commit messages make it much easier to understand what happened in a project and why a change was made. It's super common for students to come back to code they wrote 2 months ago and understand absolutely nothing, or to have to read someone else's code very carefully to figure out what they did.",
+          "commitFormat": "A smart way to write commit messages is to use a prefix indicating the type of commit, e.g., a fix, feature, documentation, etc. Here's how most people structure their messages:",
+          "commitList": "**Common types (conventional commits):**",
+          "commitEmojis": "There are several ways to write commit messages, and your project group should agree on a style. For this website, we used [gitmojies](https://gitmoji.dev/) so we only need one emoji to communicate the commit's type:",
+          "commitTip": "**Tip**: Write commit messages in the imperative mood as if you're finishing the sentence \"This commit will...\" and generally stick to English.",
+          "branchIntro": "Good branch names make it easy to understand what is being worked on and keep the repository organized.",
+          "branchList": "**Common conventions:**",
+          "branchTip": "**Tip**: Keep branch names short, use `-` instead of spaces/`_`, and be descriptive yet concise.",
+          "contributeIntro": "When contributing to someone else's project or working in a team, follow this process to keep things clean:",
+          "contributeStep1": "**1. Fork and clone (for external projects):**",
+          "contributeStep1Comments": {
+            "fork": "Fork the repository first, then clone your fork",
+            "upstream": "Add original repo as upstream"
+          },
+          "contributeStep2": "**2. Stay updated with the main repository:**",
+          "contributeStep3": "**3. Create a new branch for your change:**",
+          "contributeStep4": "**4. Make changes and commit:**",
+          "contributeStep5": "**5. Push to your fork:**",
+          "contributeTip1": "**Tip**: To keep the commit history nice and clean, it's a good idea to run a pull, rebase, and squash before sending it off.",
+          "contributeStep6": "**6. Create a Pull Request**",
+          "contributeStep6Desc": "Go to your fork on GitHub or whatever service you're using, and you'll see a prompt to open a Pull Request (PR) from your branch to the main repo.",
+          "contributeTip2": "**Tip**: Always read CONTRIBUTING.md and README.md before you start contributing to a project.",
+          "repoIntro": "A good folder structure makes the project easier to navigate and understand. Usually, all projects also have a standard structure so others can easily contribute to new issues.",
+          "repoFiles": "**Important files to include**:",
+          "repoReadme": "`README.md`:<br /><br />All introductory info about the project, like the name, how to install it, links to documentation, etc.",
+          "repoLicense": "`LICENSE`:<br /><br />The license dictating how the project can be used and modified.",
+          "repoContributing": "`CONTRIBUTING.md`:<br /><br />How to contribute, naming standards, and everything you need before you start coding away.",
+          "repoDocs": "`docs/`:<br /><br />Folder for project documentation. Often written in markdown, but different projects handle this in vastly different ways.",
+          "tagIntro": "Tags are used to mark specific versions of your code, which is particularly useful for releases and when you want to refer back to a specific version later. It works similarly to a branch, but it's permanently tied to a commit.",
+          "tagCreate": "**Create a tag:**",
+          "tagCreateComments": {
+            "simple": "Simple tag",
+            "annotated": "Annotated tag (recommended)"
+          },
+          "tagView": "**View tags:**",
+          "tagViewComments": {
+            "list": "List all tags",
+            "show": "Show tag info"
+          },
+          "tagPush": "**Push tags:**",
+          "tagPushComments": {
+            "specific": "Push specific tag",
+            "all": "Push all tags"
+          },
+          "tagDelete": "**Delete tag:**",
+          "tagDeleteComments": {
+            "local": "Delete local tag",
+            "remote": "Delete remote tag"
+          },
+          "tagTip": "**Tip**: Follow [Semantic Versioning](https://semver.org/) to make versioning predictable and solid. `Major.Minor.Patch` – bump major for breaking changes, minor for new features, patch for bugfixes."
+        },
+        "cheatSheet": {
+          "setup": "Setup and configuration",
+          "ssh": "SSH setup",
+          "start": "Starting a project",
+          "common": "Common commands",
+          "branches": "Branches",
+          "fork": "Fork workflow",
+          "remotes": "Remotes",
+          "troubleshooting": "Troubleshooting",
+          "history": "History and inspection",
+          "tags": "Tags and versions",
+          "ignore": "Git ignore"
+        }
       }
     }
   }

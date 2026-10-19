@@ -1,0 +1,12 @@
+---
+import { marked } from "marked";
+import { useTranslations } from "@i18n/utils.ts";
+
+const t = useTranslations(Astro.currentLocale);
+
+const { key, block = false } = Astro.props;
+
+const html = marked.parseInline(t(key), { async: false });
+---
+
+{block ? <p set:html={html} /> : <Fragment set:html={html} />}
