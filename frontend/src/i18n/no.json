@@ -835,6 +835,41 @@
           "title": "When?",
           "text": "📢 The competition starts on Sunday 21st at 16:00"
         }
+      },
+      "rules": {
+        "title": "BetaLAN Rules",
+        "description": "Familiarize yourself with the essential rules and guidelines for a safe and enjoyable experience at BetaLAN.",
+        "heading": "Event Rules",
+        "rule1": {
+          "title": "§1 The event is alcohol and drug free",
+          "text1": "If we see you with alcohol at the event we will have to confiscate your drink and give a formal warning.",
+          "text2": "If we recognize that you are highly intoxicated we will have to ask you to leave the event and come back later."
+        },
+        "rule2": {
+          "title": "§2 The rules for using the network are the same as the school's",
+          "text": "The network rules follow the school's regulations and align with Norwegian laws. Illegal activities, such as using multiplayer cheat software, unauthorized distribution of copyrighted content, or accessing 18+ NSFW material (e.g., hentai or pornography), are strictly prohibited. Normal games with mature themes are allowed, but attendees are expected to exercise common sense. BetaLAN is not responsible for any files shared or downloaded during the event. Attendees should take caution when sharing, opening, or downloading files and are encouraged to follow basic cybersecurity practices. Violations will result in strict warnings and may lead to further disciplinary actions."
+        },
+        "rule3": {
+          "title": "§3 It is not allowed to bring speakers",
+          "text": "To make sure there is not too much noise in the event area we do not allow any speakers at the event. We will be using our own speaker system to play some music and set the ambience"
+        },
+        "rule4": {
+          "title": "§4 It is not allowed to bring your own appliances due to power limitations",
+          "text": "To ensure fire safety and avoid overloading the venue's power supply, attendees are not allowed to bring high-power appliances like toasters, kettles, or microwaves—trust us, your gaming setup will thank you. Only gaming gear and essential chargers are permitted. This rule is in place to keep the event safe and enjoyable for everyone, so please adhere to it."
+        },
+        "rule5": {
+          "title": "§5 Norwegian laws apply in this venue as well",
+          "text": "Norwegian laws are in full effect at this venue. Any illegal activity, online or offline, will be addressed and may be reported to authorities. Please comply to ensure a lawful and respectful event."
+        },
+        "rule6": {
+          "title": "§6 Multiplayer Cheating",
+          "text": "Cheating in multiplayer games at this event, particularly in tournaments or competitive matches, is strictly prohibited and will result in penalties. Any actions that diminish the experience of others will lead to a strike; two strikes will result in a ban from all future BetaLAN events. In cooperative multiplayer (PvE) settings, cheat software is only acceptable if all party members are fully aware and consent to its use. Cheats in single-player offline games are permitted, as they affect only your own experience. Attendees are expected to uphold fair play and respect the integrity of the games."
+        },
+        "rule7": {
+          "title": "§7 Respect the venue and its property",
+          "text": "Attendees are expected to treat the venue and its property with respect. Any damage caused to the venue or its equipment may result in penalties, including being asked to leave the event and potential financial liability for repairs or replacements."
+        },
+        "footer": "Breaking the rules will result in penalties based on the severity of the violation, and may lead to getting kicked out of the event without a refund"
       }
     }
   }
