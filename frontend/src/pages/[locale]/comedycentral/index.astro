@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 ---
 
 <BaseLayout title="Comedy Central">
   <Container>
-    Programs in an obsolete C# version in the land down under, lives in shipping container. Has cute
-    doggos. Will die of liver failure at age 30.
+    <Translate key="page.comedycentral.text" />
   </Container>
 </BaseLayout>

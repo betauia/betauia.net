@@ -787,6 +787,14 @@
         "passwordMismatch": "The passwords don't match",
         "registrationFailed": "Registration failed"
       }
+    },
+    "comedycentral": {
+      "text": "Programs in an obsolete C# version in the land down under, lives in shipping container. Has cute doggos. Will die of liver failure at age 30."
+    },
+    "betalan": {
+      "about": {
+        "title": "About BetaLAN"
+      }
     }
   }
 }
