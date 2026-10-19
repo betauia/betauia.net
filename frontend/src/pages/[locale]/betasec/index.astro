@@ -7,58 +7,42 @@ import { Image } from "astro:assets";
 import Intro from "@assets/betasec/intro_bilde.jpg";
 import VÅR_25_IntroCTF from "@assets/betasec/vår_25_intro_ctf.jpg";
 import NNSCTF from "@assets/betasec/nnsctf.jpg";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <BaseLayout title="BetaSec">
   <Container>
     <div class="flex flex-col items-center">
-      <Image src={Intro} width="800" alt="Image from NNS CTF" class="my-8 rounded-lg" />
+      <Image src={Intro} width="800" alt={t("page.betasec.imageAlt")} class="my-8 rounded-lg" />
     </div>
     <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      Velkommen til BetaSec!
+      <Translate key="page.betasec.welcome.title" />
     </h1>
-    <p class="my-4">
-      BetaSec er en interessegruppe under Beta spesielt rettet mot cybersikkerhet studenter, men
-      åpen for alle som er interessert i fagområdet. Vi er en gjeng som ønsker å skape et
-      inkluderende miljø hvor medlemmer kan utvikle ferdighetene sine gjennom ulike arrangementer
-      som workshops, gjesteforelesninger og sosiale aktiviteter. .
-    </p>
-    <p class="my-4">
-      Enten du er nybegynner eller erfaren innen cybersikkerhet, er BetaSec et flott sted å lære,
-      dele kunnskap og bygge nettverk med likesinnede. Bli med oss for å utforske den spennende
-      verdenen av cybersikkerhet sammen!
-    </p>
+    <p class="my-4"><Translate key="page.betasec.welcome.p1" /></p>
+    <p class="my-4"><Translate key="page.betasec.welcome.p2" /></p>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      UiACTF
+      <Translate key="page.betasec.uiactf.title" />
     </h1>
-    <p class="my-4">
-      UiACTF er et Capture The Flag (CTF) lag for UiA studenter. Vi deltar i CTF konkurranser, og
-      har som mål å lære og utvikle våre ferdigheter innen cybersikkerhet. Vi er alltid på utkikk
-      etter nye medlemmer, uansett ferdighetsnivå. Bli med oss for å lære, konkurrere og ha det gøy!
-    </p>
-    <p class="my-4">
-      Hvert semester arrangerer vi vår egen CTF-konkurranse, Intro CTF (UiACTF), som er åpen for
-      alle studenter. Dette gir en unik mulighet til å utfordre og utvikle ferdighetene dine innen
-      cybersikkerhet, samtidig som du kan engasjere deg videre ved å bidra til å planlegge og
-      gjennomføre arrangementet.
-    </p>
+    <p class="my-4"><Translate key="page.betasec.uiactf.p1" /></p>
+    <p class="my-4"><Translate key="page.betasec.uiactf.p2" /></p>
     <div class="mt-16">
       <UiACTFDiscord />
     </div>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      Tidligere arrangementer
+      <Translate key="page.betasec.previousEvents.title" />
     </h1>
     <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
       <Card
-        title="Intro CTF Vår 2025"
-        text="Våren 2025 arrangerte vi vår egen CTF-konkurranse, Intro CTF, som var åpen for alle studenter."
+        title={t("page.betasec.previousEvents.introCtf.title")}
+        text={t("page.betasec.previousEvents.introCtf.text")}
         image={VÅR_25_IntroCTF}
       /><Card
-        title="NNS CTF"
-        text="I høst 2025 deltok vi og satt opp On-site i Grimstad for Norske Nøkkelsnikkernes CTF."
+        title={t("page.betasec.previousEvents.nnsCtf.title")}
+        text={t("page.betasec.previousEvents.nnsCtf.text")}
         image={NNSCTF}
       />
     </div>
