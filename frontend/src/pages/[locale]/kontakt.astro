@@ -7,6 +7,7 @@ import Socials from "@components/widgets/Socials.astro";
 import Card from "@components/ui/Card.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const t = useTranslations(Astro.currentLocale);
@@ -31,8 +32,8 @@ const contacts = [
 
 <BaseLayout title={t("page.contact.title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mt-4 text-4xl font-semibold">{t("page.contact.title")}</h1>
-    <p class="my-4 text-fg-muted dark:text-dark-fg-muted">{t("page.contact.intro")}</p>
+    <h1 class="mt-4 text-4xl font-semibold"><Translate key="page.contact.title" /></h1>
+    <p class="my-4 text-fg-muted dark:text-dark-fg-muted"><Translate key="page.contact.intro" /></p>
 
     <div class="mt-4 grid gap-6 md:grid-cols-3">
       {
@@ -43,10 +44,10 @@ const contacts = [
     </div>
 
     <div class="mt-12">
-      <h2 class="text-2xl font-medium">{t("page.contact.discordTitle")}</h2>
-      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted">{t("page.contact.discordText")}</p>
+      <h2 class="text-2xl font-medium"><Translate key="page.contact.discordTitle" /></h2>
+      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted"><Translate key="page.contact.discordText" /></p>
       <div class="mt-4">
-        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">{t("page.contact.discordButton")}</Button>
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate key="page.contact.discordButton" /></Button>
       </div>
     </div>
 

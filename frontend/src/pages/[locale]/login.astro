@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
@@ -12,16 +13,16 @@ const t = useTranslations(Astro.currentLocale);
 <BaseLayout title={t("page.login.pageTitle")}>
   <Container>
     <div class="mx-auto max-w-md">
-      <h1 class="mb-8 text-3xl font-bold">{t("page.login.heading")}</h1>
+      <h1 class="mb-8 text-3xl font-bold"><Translate key="page.login.heading" /></h1>
 
       <div
         class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold">{t("page.login.existingUser")}</h2>
+        <h2 class="mb-4 text-xl font-bold"><Translate key="page.login.existingUser" /></h2>
         <form id="login-form">
           <div class="mb-4">
             <label for="login-email" class="mb-2 block text-sm font-medium">
-              {t("page.login.emailLabel")}
+              <Translate key="page.login.emailLabel" />
             </label>
             <input
               id="login-email"
@@ -35,7 +36,7 @@ const t = useTranslations(Astro.currentLocale);
 
           <div class="mb-6">
             <label for="login-password" class="mb-2 block text-sm font-medium">
-              {t("page.login.passwordLabel")}
+              <Translate key="page.login.passwordLabel" />
             </label>
             <input
               id="login-password"
@@ -52,23 +53,23 @@ const t = useTranslations(Astro.currentLocale);
             id="login-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
           >
-            {t("page.login.loginButton")}
+            <Translate key="page.login.loginButton" />
           </button>
         </form>
       </div>
 
       <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">
-        {t("page.login.separator")}
+        <Translate key="page.login.separator" />
       </p>
 
       <div
         class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold">{t("page.login.newUser")}</h2>
+        <h2 class="mb-4 text-xl font-bold"><Translate key="page.login.newUser" /></h2>
         <form id="register-form">
           <div class="mb-6">
             <label for="register-email" class="mb-2 block text-sm font-medium">
-              {t("page.login.emailLabel")}
+              <Translate key="page.login.emailLabel" />
             </label>
             <input
               id="register-email"
@@ -79,7 +80,7 @@ const t = useTranslations(Astro.currentLocale);
               placeholder="deg@eksempel.no"
             />
             <p class="mt-2 text-xs text-fg-muted dark:text-dark-fg-muted">
-              {t("page.login.confirmationNote")}
+              <Translate key="page.login.confirmationNote" />
             </p>
           </div>
 
@@ -98,7 +99,7 @@ const t = useTranslations(Astro.currentLocale);
             id="register-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {t("page.login.registerButton")}
+            <Translate key="page.login.registerButton" />
           </button>
         </form>
       </div>

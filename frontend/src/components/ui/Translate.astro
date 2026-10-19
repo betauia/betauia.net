@@ -2,9 +2,18 @@
 import { Marked } from "marked";
 import { ensureLanguageInPath, useTranslations } from "@i18n/utils.ts";
 
+interface Props {
+  key: string;
+  /**
+   *  Wrap the text in a paragraph
+   */
+  block?: boolean;
+  additions?: Record<string, unknown>;
+}
+
 const t = useTranslations(Astro.currentLocale);
 
-const { key, block = false } = Astro.props;
+const { key, block = false, additions } = Astro.props;
 
 const { locale } = Astro.params;
 
@@ -15,12 +24,42 @@ const marked = new Marked({
     link({ href, title, tokens }) {
       const localizedHref = ensureLanguageInPath(locale, href);
       const titleAttribute = title ? ` title="${escapeAttribute(title)}"` : "";
-      return `<a href="${escapeAttribute(localizedHref)}" ${titleAttribute}>${this.parser.parseInline(tokens)}</a>`;
+      return `<a href="${escapeAttribute(localizedHref)}"${titleAttribute}>${this.parser.parseInline(tokens)}</a>`;
     },
   },
 });
 
-const html = marked.parseInline(t(key), { async: false });
+const html = marked.parseInline(t(key as Parameters<typeof t>[0]) as string, { async: false });
+
+const placeholderPattern = /^{{(\w+)}}$/;
+const tokens = html.split(/({{\w+}})/g);
+
+async function resolvePart(part: string) {
+  const match = part.match(placeholderPattern);
+  if (!match) {
+    return { html: part };
+  }
+
+  const name = match[1];
+  if (additions && Object.prototype.hasOwnProperty.call(additions, name)) {
+    return { addition: additions[name] };
+  }
+
+  if (Astro.slots.has(name)) {
+    const rendered = await Astro.slots.render(name);
+    return { html: rendered };
+  }
+
+  return { html: part };
+}
+
+const parts = await Promise.all(tokens.map(resolvePart));
+
+const Wrapper = block ? "p" : Fragment;
 ---
 
-{block ? <p set:html={html} /> : <Fragment set:html={html} />}
+<Wrapper
+  >{
+    parts.map(part => ("html" in part ? <Fragment set:html={part.html} /> : part.addition))
+  }</Wrapper
+>

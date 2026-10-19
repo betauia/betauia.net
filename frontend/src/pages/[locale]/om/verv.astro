@@ -4,6 +4,7 @@ import Container from "@components/layout/Container.astro";
 import Prose from "@components/semantics/Prose.astro";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const t = useTranslations(Astro.currentLocale);
@@ -12,55 +13,55 @@ const t = useTranslations(Astro.currentLocale);
 <BaseLayout title={t("page.om.verv.title")}>
   <Container>
     <Prose>
-      <h1>{t("page.om.verv.heading")}</h1>
+      <h1><Translate key="page.om.verv.heading" /></h1>
 
-      <h2>{t("page.om.verv.fearTitle")}</h2>
-      <p>{t("page.om.verv.fearIntro1")}</p>
-      <p>{t("page.om.verv.fearIntro2")}</p>
+      <h2><Translate key="page.om.verv.fearTitle" /></h2>
+      <p><Translate key="page.om.verv.fearIntro1" /></p>
+      <p><Translate key="page.om.verv.fearIntro2" /></p>
 
-      <h2>{t("page.om.verv.rolesTitle")}</h2>
-      <p>{t("page.om.verv.rolesIntro")}</p>
+      <h2><Translate key="page.om.verv.rolesTitle" /></h2>
+      <p><Translate key="page.om.verv.rolesIntro" /></p>
 
       <ul>
         <li>
-          <strong>{t("page.board.profile.roles.leader")}</strong>:
-          {t("page.om.verv.roleDescriptions.leader")}
+          <strong><Translate key="page.board.profile.roles.leader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.leader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.deputyLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.deputyLeader")}
+          <strong><Translate key="page.board.profile.roles.deputyLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.deputyLeader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.financeManager")}</strong>:
-          {t("page.om.verv.roleDescriptions.financeManager")}
+          <strong><Translate key="page.board.profile.roles.financeManager" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.financeManager" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.prManager")}</strong>:
-          {t("page.om.verv.roleDescriptions.prManager")}
+          <strong><Translate key="page.board.profile.roles.prManager" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.prManager" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.betaLanLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.betaLanLeader")}
+          <strong><Translate key="page.board.profile.roles.betaLanLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.betaLanLeader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.eventCommitteeLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.eventCommitteeLeader")}
+          <strong><Translate key="page.board.profile.roles.eventCommitteeLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.eventCommitteeLeader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.businessCommitteeLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.businessCommitteeLeader")}
+          <strong><Translate key="page.board.profile.roles.businessCommitteeLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.businessCommitteeLeader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.betaDevLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.betaDevLeader")}
+          <strong><Translate key="page.board.profile.roles.betaDevLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.betaDevLeader" />
         </li>
         <li>
-          <strong>{t("page.board.profile.roles.betaSecLeader")}</strong>:
-          {t("page.om.verv.roleDescriptions.betaSecLeader")}
+          <strong><Translate key="page.board.profile.roles.betaSecLeader" /></strong>:
+          <Translate key="page.om.verv.roleDescriptions.betaSecLeader" />
         </li>
       </ul>
 
-      <p>{t("page.om.verv.footer")}</p>
+      <p><Translate key="page.om.verv.footer" /></p>
     </Prose>
   </Container>
 </BaseLayout>

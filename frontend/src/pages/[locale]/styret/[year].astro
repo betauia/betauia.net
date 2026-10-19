@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 import { boardData, availableYears } from "@data/boardMembers";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths(
   availableYears.map((year: string) => ({
@@ -26,10 +27,12 @@ const t = useTranslations(Astro.currentLocale);
   <Container>
     <div class="mx-auto mb-8 mt-6">
       <h1 class="mb-3 text-4xl font-bold">
-        {t("page.board.year.heading", { year: <span class="text-accent">{year}</span> })}
+        <Translate key="page.board.year.heading">
+          <span slot="year" class="text-accent">{year}</span>
+        </Translate>
       </h1>
       <p class="text-lg text-fg-muted dark:text-dark-fg-muted">
-        {t("page.board.year.intro", { count: boardMembers.length, year: year })}
+        <Translate key="page.board.year.intro" additions={{ count: boardMembers.length, year }} />
       </p>
     </div>
 
@@ -42,7 +45,7 @@ const t = useTranslations(Astro.currentLocale);
     }
 
     <div class="mb-12">
-      <h2 class="mb-6 text-3xl font-bold">{t("page.board.year.membersTitle")}</h2>
+      <h2 class="mb-6 text-3xl font-bold"><Translate key="page.board.year.membersTitle" /></h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           boardMembers.map(member => (
@@ -60,9 +63,9 @@ const t = useTranslations(Astro.currentLocale);
 
     <div class="mb-12 text-center">
       <p class="mb-4 text-fg-muted dark:text-dark-fg-muted">
-        {t("page.board.year.contactIntro")}
+        <Translate key="page.board.year.contactIntro" />
       </p>
-      <Button href="/kontakt">{t("page.board.year.contactButton")}</Button>
+      <Button href="/kontakt"><Translate key="page.board.year.contactButton" /></Button>
     </div>
   </Container>
 </BaseLayout>

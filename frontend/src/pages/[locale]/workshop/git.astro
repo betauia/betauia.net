@@ -9,6 +9,7 @@ import { Icon } from "astro-icon/components";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
 import A from "@components/ui/A.astro";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const t = useTranslations(Astro.currentLocale);
@@ -19,11 +20,13 @@ const t = useTranslations(Astro.currentLocale);
     <h1
       class="mb-4 flex gap-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400"
     >
-      {t("page.workshop.git.title")} <Icon name="fa-solid:code-branch" class="text-accent" />
+      <Translate key="page.workshop.git.title" /> <Icon name="fa-solid:code-branch" class="text-accent" />
     </h1>
     <p class="my-4">
-      <b>{t("page.workshop.git.introLead")}</b>
-      {t("page.workshop.git.introRest", { leadName: <b>Jakob</b> })}
+      <b><Translate key="page.workshop.git.introLead" /></b>
+      <Translate key="page.workshop.git.introRest">
+        <b slot="leadName">Jakob</b>
+      </Translate>
     </p>
 
     <div class="mb-8 mt-8">
@@ -36,39 +39,47 @@ const t = useTranslations(Astro.currentLocale);
           </div>
           <div class="">
             <h2 class="mb-2 flex items-center gap-4 border-b-2 pb-2 text-3xl font-bold">
-              {t("page.workshop.git.signupTitle")}<span><Icon name="fa:external-link" class="w-6" /></span>
+              <Translate key="page.workshop.git.signupTitle" /><span><Icon name="fa:external-link" class="w-6" /></span>
             </h2>
 
             <div class="text-lg font-bold">
-              <div>🗓️ {t("page.workshop.git.signupDate")}</div>
-              <div>⏰ {t("page.workshop.git.signupTime")}</div>
-              <div>🗺️ {t("page.workshop.git.signupLocation")}</div>
+              <div>🗓️ <Translate key="page.workshop.git.signupDate" /></div>
+              <div>⏰ <Translate key="page.workshop.git.signupTime" /></div>
+              <div>🗺️ <Translate key="page.workshop.git.signupLocation" /></div>
             </div>
           </div>
         </div>
       </A>
     </div>
 
-    <h2 id="faq" class="mb-4 text-3xl font-bold">{t("page.workshop.git.whatYouLearnTitle")}</h2>
+    <h2 id="faq" class="mb-4 text-3xl font-bold"><Translate key="page.workshop.git.whatYouLearnTitle" /></h2>
 
-    <p class="my-4">{t("page.workshop.git.whatYouLearnIntro")}</p>
+    <p class="my-4"><Translate key="page.workshop.git.whatYouLearnIntro" /></p>
 
     <ul class="ml-6 list-[square] space-y-2 marker:text-accent">
-      <li><b>{t("page.workshop.git.topics.1")}</b></li>
-      <li><b>{t("page.workshop.git.topics.2")}</b></li>
-      <li><b>{t("page.workshop.git.topics.3")}</b></li>
-      <li><b>{t("page.workshop.git.topics.4")}</b></li>
-      <li><b>{t("page.workshop.git.topics.5")}</b></li>
+      <li><b><Translate key="page.workshop.git.topics.1" /></b></li>
+      <li><b><Translate key="page.workshop.git.topics.2" /></b></li>
+      <li><b><Translate key="page.workshop.git.topics.3" /></b></li>
+      <li><b><Translate key="page.workshop.git.topics.4" /></b></li>
+      <li><b><Translate key="page.workshop.git.topics.5" /></b></li>
     </ul>
 
-    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold">{t("page.workshop.git.whatToBringTitle")}</h2>
+    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold"><Translate key="page.workshop.git.whatToBringTitle" /></h2>
 
     <p class="my-4">
-      {t("page.workshop.git.whatToBringIntro", { installGit: <A class="text-accent underline" href="https://git-scm.com/downloads">{t("page.workshop.git.installGit")}</A>})}
+      <Translate key="page.workshop.git.whatToBringIntro">
+        <A slot="installGit" class="text-accent underline" href="https://git-scm.com/downloads">
+          <Translate key="page.workshop.git.installGit" />
+        </A>
+      </Translate>
     </p>
 
     <p class="my-8 font-bold">
-      {t("page.workshop.git.contact", { discordLink: <A class="text-accent underline" href="https://discord.gg/3xBPkDsaXy">{t("page.workshop.git.discord")}</A> })}
+      <Translate key="page.workshop.git.contact">
+        <A slot="discordLink" class="text-accent underline" href="https://discord.gg/3xBPkDsaXy">
+          <Translate key="page.workshop.git.discord" />
+        </A>
+      </Translate>
     </p>
     <Image src={GitGudImage} alt="Git gud meme" class="mt-12 w-full rounded-xl" />
   </Container>

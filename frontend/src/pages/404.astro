@@ -3,19 +3,22 @@ import Container from "@components/layout/Container.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Button from "@components/ui/Button.astro";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 const t = useTranslations(Astro.currentLocale);
 ---
 
 <BaseLayout title="404">
   <Container class="flex min-h-svh flex-col items-center justify-center text-center">
-    <h1 class="text-4xl font-semibold">{t("page.404.title")}</h1>
+    <h1 class="text-4xl font-semibold"><Translate key="page.404.title" /></h1>
     <p class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted" id="random-error-message">
-      {t("page.404.message")}
+      <Translate key="page.404.message" />
     </p>
     <div class="mt-6 flex gap-4">
-      <Button href="/" type="primary">{t("page.404.back")}</Button>
-      <Button href="mailto:post@betauia.net" type="secondary">{t("page.404.contact")}</Button>
+      <Button href="/" type="primary"><Translate key="page.404.back" /></Button>
+      <Button href="mailto:post@betauia.net" type="secondary">
+        <Translate key="page.404.contact" />
+      </Button>
     </div>
   </Container>
 </BaseLayout>

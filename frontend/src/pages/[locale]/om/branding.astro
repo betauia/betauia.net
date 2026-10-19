@@ -8,6 +8,7 @@ import Image from "astro/components/Image.astro";
 
 import { brandingColors, logos } from "@data/branding";
 import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
@@ -18,21 +19,21 @@ const t = useTranslations(Astro.currentLocale);
 <BaseLayout title={t("page.om.branding.title")}>
   <Container>
     <Prose>
-      <h1>{t("page.om.branding.heading")}</h1>
+      <h1><Translate key="page.om.branding.heading" /></h1>
 
-      <h2>{t("page.om.branding.usage.title")}</h2>
+      <h2><Translate key="page.om.branding.usage.title" /></h2>
 
-      <p>{t("page.om.branding.usage.intro")}</p>
+      <p><Translate key="page.om.branding.usage.intro" /></p>
 
       <ul>
-        <li>{t("page.om.branding.usage.items.1")}</li>
-        <li>{t("page.om.branding.usage.items.2")}</li>
-        <li>{t("page.om.branding.usage.items.3")}</li>
-        <li>{t("page.om.branding.usage.items.4")}</li>
-        <li>{t("page.om.branding.usage.items.5")}</li>
+        <li><Translate key="page.om.branding.usage.items.1" /></li>
+        <li><Translate key="page.om.branding.usage.items.2" /></li>
+        <li><Translate key="page.om.branding.usage.items.3" /></li>
+        <li><Translate key="page.om.branding.usage.items.4" /></li>
+        <li><Translate key="page.om.branding.usage.items.5" /></li>
       </ul>
 
-      <h2>{t("page.om.branding.colors.title")}</h2>
+      <h2><Translate key="page.om.branding.colors.title" /></h2>
 
       <div class="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -95,7 +96,7 @@ const t = useTranslations(Astro.currentLocale);
         }
       </div>
 
-      <h2>{t("page.om.branding.logos.title")}</h2>
+      <h2><Translate key="page.om.branding.logos.title" /></h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -131,7 +132,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  {t("page.om.branding.logos.black")}
+                  <Translate key="page.om.branding.logos.black" />
                 </Button>
 
                 <Button
@@ -140,7 +141,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  {t("page.om.branding.logos.white")}
+                  <Translate key="page.om.branding.logos.white" />
                 </Button>
 
                 <Button
@@ -149,7 +150,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  {t("page.om.branding.logos.blue")}
+                  <Translate key="page.om.branding.logos.blue" />
                 </Button>
               </div>
             </div>
@@ -157,7 +158,7 @@ const t = useTranslations(Astro.currentLocale);
         }
       </div>
 
-      <h2>{t("page.om.branding.icons.title")}</h2>
+      <h2><Translate key="page.om.branding.icons.title" /></h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div class="rounded-xl bg-bg-raised p-4 text-center dark:bg-dark-bg-raised">

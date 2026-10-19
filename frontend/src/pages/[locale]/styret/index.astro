@@ -5,6 +5,7 @@ import Card from "@components/ui/Card.astro";
 import { availableYears, boardData } from "@data/boardMembers";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
 import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 const boardYears = availableYears.sort((a, b) => parseInt(b) - parseInt(a));
 
@@ -14,8 +15,8 @@ const t = useTranslations(Astro.currentLocale);
 
 <BaseLayout title={t("page.board.title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mb-4 text-4xl font-bold">{t("page.board.heading")}</h1>
-    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">{t("page.board.intro")}</p>
+    <h1 class="mb-4 text-4xl font-bold"><Translate key="page.board.heading" /></h1>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted"><Translate key="page.board.intro" /></p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         boardYears.map(year => {

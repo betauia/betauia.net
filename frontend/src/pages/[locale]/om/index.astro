@@ -13,6 +13,7 @@ import BedkomImage from "@assets/groups/bedkom.jpg";
 import EventkomImage from "@assets/groups/eventkom.jpg";
 import Card from "@components/ui/Card.astro";
 import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const t = useTranslations(Astro.currentLocale);
@@ -25,18 +26,16 @@ const t = useTranslations(Astro.currentLocale);
         <BetaLogo class="h-20 text-accent" />
       </div>
       <h1 class="mb-3 text-4xl font-bold">
-        {
-          t("page.om.index.heading", {
-            students: <span class="text-accent">{t("page.om.index.students")}</span>,
-          })
-        }
+        <Translate key="page.om.index.heading">
+          <span slot="students" class="text-accent"><Translate key="page.om.index.students" /></span>
+        </Translate>
       </h1>
       <p class="mx-auto mb-6 max-w-2xl text-lg text-fg-muted dark:text-dark-fg-muted">
-        {t("page.om.index.intro")}
+        <Translate key="page.om.index.intro" />
       </p>
       <div class="flex justify-center gap-3">
-        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">{t("page.om.index.discordButton")}</Button>
-        <Button href="/kontakt" type="secondary">{t("page.om.index.contactButton")}</Button>
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate key="page.om.index.discordButton" /></Button>
+        <Button href="/kontakt" type="secondary"><Translate key="page.om.index.contactButton" /></Button>
       </div>
     </div>
 
@@ -61,7 +60,7 @@ const t = useTranslations(Astro.currentLocale);
 
   <div class="bg-bg-raised dark:bg-dark-bg-raised">
     <Container>
-      <h2 class="my-6 text-3xl font-bold">{t("page.om.index.features.title")}</h2>
+      <h2 class="my-6 text-3xl font-bold"><Translate key="page.om.index.features.title" /></h2>
       <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         <FeatureCard
           icon="fa-solid:glass-cheers"
@@ -99,9 +98,9 @@ const t = useTranslations(Astro.currentLocale);
 
   <Container>
     <div class="mb-12 mt-6">
-      <h2 class="mb-2 text-3xl font-bold">{t("page.om.index.interestGroups.title")}</h2>
+      <h2 class="mb-2 text-3xl font-bold"><Translate key="page.om.index.interestGroups.title" /></h2>
       <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-        {t("page.om.index.interestGroups.intro")}
+        <Translate key="page.om.index.interestGroups.intro" />
       </p>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card
@@ -121,9 +120,9 @@ const t = useTranslations(Astro.currentLocale);
       </div>
     </div>
 
-    <h2 class="mb-2 text-3xl font-bold">{t("page.om.index.committees.title")}</h2>
+    <h2 class="mb-2 text-3xl font-bold"><Translate key="page.om.index.committees.title" /></h2>
     <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
-      {t("page.om.index.committees.intro")}
+      <Translate key="page.om.index.committees.intro" />
     </p>
     <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
       <Card
