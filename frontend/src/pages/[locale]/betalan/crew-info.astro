@@ -2,112 +2,96 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BetaLANLayout from "@layouts/BetaLANLayout.astro";
 import { Icon } from "astro-icon/components";
-import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <BaseLayout
-  title="BetaLAN Crew Info"
-  description="Learn about joining the BetaLAN crew and what it entails."
+  title={t("page.betalan.crewInfo.title")}
+  description={t("page.betalan.crewInfo.description")}
 >
   <BetaLANLayout UseGamerFont={false}>
     <div class="mx-auto my-4 max-w-4xl rounded-lg bg-slate-900/80 p-4 text-white sm:my-8 sm:p-6">
       <h1 class="mb-4 text-center text-3xl font-bold text-white sm:mb-6 sm:text-4xl">
-        Join the BetaLAN Crew!
+        <Translate key="page.betalan.crewInfo.heading" />
       </h1>
 
       <div class="space-y-4 sm:space-y-6">
         <section>
           <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
-            The Backbone of BetaLAN
+            <Translate key="page.betalan.crewInfo.backbone.title" />
           </h2>
           <p class="text-sm sm:text-base md:text-lg">
-            The crew is what keeps BetaLAN alive and running! As a crew member, you become part of
-            the team that transforms an ordinary weekend into an epic gaming experience. Behind
-            every successful LAN party stands a dedicated crew working together to create
-            unforgettable moments.
+            <Translate key="page.betalan.crewInfo.backbone.text" />
           </p>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">What You Can Do</h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.tasks.title" /></h2>
           <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
               <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">
-                Tournament Management
+                <Translate key="page.betalan.crewInfo.tasks.tournament.title" />
               </h3>
               <p class="text-xs sm:text-sm">
-                Organize and run gaming tournaments, from setting up brackets to announcing winners
-                and handing out prizes.
+                <Translate key="page.betalan.crewInfo.tasks.tournament.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
-              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">Technical Setup</h3>
+              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate key="page.betalan.crewInfo.tasks.technical.title" /></h3>
               <p class="text-xs sm:text-sm">
-                Help set up and maintain the network infrastructure that powers dozens of gaming
-                stations simultaneously.
+                <Translate key="page.betalan.crewInfo.tasks.technical.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
-              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">Social Media</h3>
+              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate key="page.betalan.crewInfo.tasks.social.title" /></h3>
               <p class="text-xs sm:text-sm">
-                Capture the excitement through photos and videos, and share the LAN experience with
-                the world.
+                <Translate key="page.betalan.crewInfo.tasks.social.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
               <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">
-                Event Coordination
+                <Translate key="page.betalan.crewInfo.tasks.coordination.title" />
               </h3>
               <p class="text-xs sm:text-sm">
-                Help with everything from registration to keeping the schedule on track and ensuring
-                attendees have a great time.
+                <Translate key="page.betalan.crewInfo.tasks.coordination.text" />
               </p>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">Why Join the Crew?</h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.why.title" /></h2>
           <ul class="list-disc space-y-1 pl-4 text-xs sm:space-y-2 sm:pl-6 sm:text-sm">
             <li>
-              <span class="font-bold text-white">Free Admission:</span> Work shifts during the event
-              and get free entry to the LAN party.
+              <Translate key="page.betalan.crewInfo.why.admission" />
             </li>
             <li>
-              <span class="font-bold text-white">Behind the Scenes:</span> Experience the LAN from a
-              unique perspective and see how it all comes together.
+              <Translate key="page.betalan.crewInfo.why.behindScenes" />
             </li>
             <li>
-              <span class="font-bold text-white">Learn New Skills:</span> Gain experience in event planning,
-              technical setup, and teamwork.
+              <Translate key="page.betalan.crewInfo.why.skills" />
             </li>
             <li>
-              <span class="font-bold text-white">Crew Culture:</span> Become part of a tight-knit community
-              that makes the LAN happen—and has a blast doing it!
+              <Translate key="page.betalan.crewInfo.why.culture" />
             </li>
             <li>
-              <span class="font-bold text-white">More Than Just Gaming:</span> Often, being crew is even
-              more fun than being a regular participant—you'll make stronger connections and have more
-              memorable experiences.
+              <Translate key="page.betalan.crewInfo.why.moreThanGaming" />
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">The Crew Experience</h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.experience.title" /></h2>
           <p class="mb-2 text-xs sm:mb-4 sm:text-sm md:text-base">
-            Ask any veteran crew member and they'll tell you—there's nothing quite like the rush of
-            being behind the scenes at BetaLAN. From the setup day excitement to the satisfaction of
-            seeing happy gamers enjoying the fruits of your work, the crew experience is unique and
-            rewarding.
+            <Translate key="page.betalan.crewInfo.experience.p1" />
           </p>
           <p class="text-xs sm:text-sm md:text-base">
-            You'll build lasting friendships, create inside jokes, share late-night pizza, and be
-            part of the special moments that make each BetaLAN unique. Many crew members return
-            event after event because the crew culture is just that amazing!
+            <Translate key="page.betalan.crewInfo.experience.p2" />
           </p>
         </section>
 
@@ -115,9 +99,9 @@ export const getStaticPaths = getStaticLanguagePaths();
           class="mt-6 flex flex-col items-center justify-between rounded-lg bg-blue-900/60 p-4 sm:mt-8 sm:p-6"
         >
           <div class="mb-4 text-center">
-            <h2 class="mb-2 text-xl font-bold text-white sm:text-2xl">Ready to join the team?</h2>
+            <h2 class="mb-2 text-xl font-bold text-white sm:text-2xl"><Translate key="page.betalan.crewInfo.join.title" /></h2>
             <p class="text-sm sm:text-base">
-              Reach out to us and be part of making the next BetaLAN amazing!
+              <Translate key="page.betalan.crewInfo.join.text" />
             </p>
           </div>
           <A
@@ -125,9 +109,9 @@ export const getStaticPaths = getStaticLanguagePaths();
             class="flex w-full max-w-xs flex-col items-center rounded-lg bg-indigo-600 px-6 py-4 text-white transition-colors hover:bg-indigo-700 sm:w-auto"
           >
             <Icon name="fa-brands:discord" class="mb-2 h-12 w-12" />
-            <span class="text-center text-sm font-medium sm:text-base">Join our Discord</span>
+            <span class="text-center text-sm font-medium sm:text-base"><Translate key="page.betalan.crewInfo.join.discord" /></span>
             <span class="mt-1 text-center text-xs text-indigo-200"
-              >Contact the BetaLAN Leader for more info</span
+              ><Translate key="page.betalan.crewInfo.join.contact" /></span
             >
           </A>
         </div>

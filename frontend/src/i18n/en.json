@@ -936,6 +936,53 @@
           "text": "The best way to experience BetaLAN is becoming a part of the crew. The crew is responsible for planning and organizing the LAN-party, and as a crew member you get free admission and some extra food after rigging down <br /><br />Want to know more?<br />",
           "button": "Crew Information"
         }
+      },
+      "crewInfo": {
+        "title": "BetaLAN Crew Info",
+        "description": "Learn about joining the BetaLAN crew and what it entails.",
+        "heading": "Join the BetaLAN Crew!",
+        "backbone": {
+          "title": "The Backbone of BetaLAN",
+          "text": "The crew is what keeps BetaLAN alive and running! As a crew member, you become part of the team that transforms an ordinary weekend into an epic gaming experience. Behind every successful LAN party stands a dedicated crew working together to create unforgettable moments."
+        },
+        "tasks": {
+          "title": "What You Can Do",
+          "tournament": {
+            "title": "Tournament Management",
+            "text": "Organize and run gaming tournaments, from setting up brackets to announcing winners and handing out prizes."
+          },
+          "technical": {
+            "title": "Technical Setup",
+            "text": "Help set up and maintain the network infrastructure that powers dozens of gaming stations simultaneously."
+          },
+          "social": {
+            "title": "Social Media",
+            "text": "Capture the excitement through photos and videos, and share the LAN experience with the world."
+          },
+          "coordination": {
+            "title": "Event Coordination",
+            "text": "Help with everything from registration to keeping the schedule on track and ensuring attendees have a great time."
+          }
+        },
+        "why": {
+          "title": "Why Join the Crew?",
+          "admission": "**Free Admission:** Work shifts during the event and get free entry to the LAN party.",
+          "behindScenes": "**Behind the Scenes:** Experience the LAN from a unique perspective and see how it all comes together.",
+          "skills": "**Learn New Skills:** Gain experience in event planning, technical setup, and teamwork.",
+          "culture": "**Crew Culture:** Become part of a tight-knit community that makes the LAN happen—and has a blast doing it!",
+          "moreThanGaming": "**More Than Just Gaming:** Often, being crew is even more fun than being a regular participant—you'll make stronger connections and have more memorable experiences."
+        },
+        "experience": {
+          "title": "The Crew Experience",
+          "p1": "Ask any veteran crew member and they'll tell you—there's nothing quite like the rush of being behind the scenes at BetaLAN. From the setup day excitement to the satisfaction of seeing happy gamers enjoying the fruits of your work, the crew experience is unique and rewarding.",
+          "p2": "You'll build lasting friendships, create inside jokes, share late-night pizza, and be part of the special moments that make each BetaLAN unique. Many crew members return event after event because the crew culture is just that amazing!"
+        },
+        "join": {
+          "title": "Ready to join the team?",
+          "text": "Reach out to us and be part of making the next BetaLAN amazing!",
+          "discord": "Join our Discord",
+          "contact": "Contact the BetaLAN Leader for more info"
+        }
       }
     }
   }
