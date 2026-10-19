@@ -3,10 +3,9 @@ interface Props {
   id?: string;
   label?: string;
   checked?: boolean;
-  color?: string;
 }
 
-const { id = "toggle", label = "", checked = false, color = "blue" } = Astro.props;
+const { id = "toggle", label = "", checked = false } = Astro.props;
 ---
 
 <label for={id} class="flex cursor-pointer select-none items-center gap-2">

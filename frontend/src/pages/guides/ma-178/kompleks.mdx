@@ -1,12 +1,12 @@
 ---
-layout: src/layouts/MarkdownLayout.astro
+layout: "@layouts/MarkdownLayout.astro"
 title: Komplekse tall
 ---
 
 import CodeBlock from "@components/semantics/CodeBlock.astro";
-import MathBlock from "@components/semantics/MathBlock.astro";
 
-export const components = { pre: CodeBlock, math: MathBlock };
+
+export const components = { pre: CodeBlock };
 
 > Formler og regler for komplekse tall i Matte 1
 
