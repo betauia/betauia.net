@@ -6,19 +6,24 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import svelte from "@astrojs/svelte";
 import node from "@astrojs/node";
+import { unified } from "@astrojs/markdown-remark";
 
 import path from "node:path";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), mdx(), icon(), svelte()],
-  server: { port: 3000, host: "0.0.0.0" },
+  server: {
+    port: 3000,
+    host: "0.0.0.0",
+  },
   adapter: node({
     mode: "standalone",
   }),
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    }),
     syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "github-light",
