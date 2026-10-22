@@ -33,6 +33,8 @@ export default defineConfig({
   },
   site: "https://betauia.net",
   vite: {
+    // Use the shared .env in the project root
+    envDir: "..",
     resolve: {
       alias: {
         "@components": path.resolve("./src/components"),
