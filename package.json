@@ -1,0 +1,17 @@
+{
+  "name": "betauia.net",
+  "private": true,
+  "scripts": {
+    "dev": "(pnpm db || echo No database, running without it) && pnpm run /^dev:/",
+    "dev:frontend": "pnpm --dir frontend install && pnpm --dir frontend dev",
+    "dev:backend": "uv --directory backend run server.py",
+    "db": "docker compose -f docker/compose.yaml up -d --wait && pnpm db:migrate",
+    "db:migrate": "uv --directory backend run alembic upgrade head",
+    "db:stop": "docker compose -f docker/compose.yaml down",
+    "db:reset": "docker compose -f docker/compose.yaml down --volumes && pnpm db",
+    "db:revision": "uv --directory backend run alembic revision --autogenerate -m",
+    "check": "pnpm --dir frontend check && uv --directory backend run ruff check && uv --directory backend run ruff format --check",
+    "format": "pnpm --dir frontend format && uv --directory backend run ruff check --fix && uv --directory backend run ruff format",
+    "prod": "docker compose -f docker/compose.prod.yaml --env-file .env up --build"
+  }
+}
