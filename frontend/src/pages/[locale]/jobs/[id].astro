@@ -12,8 +12,7 @@ import A from "@components/ui/A.astro";
 
 const { id } = Astro.params;
 
-// TODO reset
-const internalBackendUrl = "http://localhost:8000";
+const internalBackendUrl = "http://backend:8000";
 const apiBase = import.meta.env.PUBLIC_BACKEND_URL || "http://localhost:8000";
 
 let job = null;

@@ -23,9 +23,7 @@
   let selectedStudies: string[] = [];
   let selectedYears: string[] = [];
 
-  // TODO remove
-  const apiBase = "http://localhost:8000";
-  // const apiBase = import.meta.env.PUBLIC_BACKEND_URL;
+  const apiBase = import.meta.env.PUBLIC_BACKEND_URL;
 
   const studyOptions = [
     { value: "ai", label: "AI" },
