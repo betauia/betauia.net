@@ -13,6 +13,8 @@ services:
       - PUBLIC_BACKEND_URL=${BACKEND_URL}
       - PUBLIC_TURNSTILE_SITE_KEY=${TURNSTILE_SITE_KEY}
       - PUBLIC_DEBUG=${DEBUG}
+      - PUBLIC_SOME=${SOME}
+      - PUBLIC_THING=${THING}
       - CHOKIDAR_USEPOLLING=true
     depends_on:
       - backend
