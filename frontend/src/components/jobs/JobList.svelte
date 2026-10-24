@@ -55,7 +55,7 @@
 
       jobs = await response.json();
     } catch (err) {
-      error = err instanceof Error ? err.message : "Unknown error";
+      error = "Kunne ikke hente jobbannonser akkurat nå. Prøv igjen senere.";
       console.error("Failed to fetch jobs:", err);
     } finally {
       loading = false;
