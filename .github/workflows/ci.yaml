@@ -26,7 +26,7 @@ jobs:
           cache-dependency-path: "frontend/pnpm-lock.yaml"
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v10.3.0
+        uses: astral-sh/setup-uv@v10.3.1
 
       - name: Install Frontend Dependencies
         run: pnpm --dir frontend install --frozen-lockfile
