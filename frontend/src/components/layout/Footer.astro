@@ -3,12 +3,15 @@ import { Icon } from "astro-icon/components";
 import BetaLogo from "@assets/logos/beta/base.svg";
 import Socials from "@components/widgets/Socials.astro";
 import A from "@components/ui/A.astro";
+import Translate from "@components/ui/Translate.astro";
 ---
 
 <footer class="dark:bg-dark-accent bg-accent px-4 pb-6 pt-12 text-white">
   <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-3">
     <section>
-      <h2 class="mb-4 text-center text-base font-semibold uppercase tracking-wide">Kontakt oss</h2>
+      <h2 class="mb-4 text-center text-base font-semibold uppercase tracking-wide">
+        <Translate key="footer.contact.title" />
+      </h2>
       <ul class="flex flex-col items-center space-y-2 text-sm">
         <li>
           <A
@@ -19,7 +22,8 @@ import A from "@components/ui/A.astro";
           </A>
         </li>
         <li class="flex items-center justify-center gap-2">
-          <Icon name="fa-solid:suitcase" /> Org.nr: 913 777 417
+          <Icon name="fa-solid:suitcase" />
+          <Translate key="footer.contact.orgNumber" /> 913 777 417
         </li>
         <li class="flex items-center justify-center gap-2 break-words">
           <Icon name="fa-solid:map-marker-alt" /> Jon Lilletuns vei 9,<br />4879 Grimstad
@@ -30,22 +34,35 @@ import A from "@components/ui/A.astro";
     </section>
 
     <section class="text-center">
-      <h2 class="mb-4 text-base font-semibold uppercase tracking-wide">Ressurser</h2>
+      <h2 class="mb-4 text-base font-semibold uppercase tracking-wide">
+        <Translate key="footer.resources.title" />
+      </h2>
       <ul class="space-y-2 text-sm">
-        <li><A href="/om" class="transition hover:opacity-80">Om Beta</A></li>
-        <li><A href="/kontakt" class="transition hover:opacity-80">Kontakt</A></li>
-        <li><A href="/Vedtekter.pdf" class="transition hover:opacity-80">Vedtekter</A></li>
+        <li>
+          <A href="/om" class="transition hover:opacity-80"
+            ><Translate key="footer.resources.about" /></A>
+        </li>
+        <li>
+          <A href="/kontakt" class="transition hover:opacity-80"
+            ><Translate key="footer.resources.contact" /></A
+          >
+        </li>
+        <li>
+          <A href="/Vedtekter.pdf" class="transition hover:opacity-80"
+            ><Translate key="footer.resources.bylaws" /></A
+          >
+        </li>
       </ul>
     </section>
 
     <section class="flex h-full flex-col justify-center text-center">
       <BetaLogo class="mx-auto h-12" />
-      <p class="mt-3 text-sm font-semibold">Linjeforeningen for datastudenter</p>
+      <p class="mt-3 text-sm font-semibold"><Translate key="footer.tagline" /></p>
       <A
         href="https://discord.gg/3xBPkDsaXy"
         class="mx-auto mt-2 inline-block rounded-lg border border-dark-fg-base bg-dark-fg-base px-4 py-1 text-sm font-semibold text-accent transition hover:opacity-80 dark:bg-accent dark:text-dark-fg-base"
       >
-        Join Discord
+        <Translate key="footer.discordButton" />
       </A>
     </section>
   </div>
@@ -58,9 +75,11 @@ import A from "@components/ui/A.astro";
       <A
         href="https://github.com/betauia/betauia.net"
         target="_blank"
-        class="transition hover:opacity-80">GitHub repo</A
+        class="transition hover:opacity-80"><Translate key="footer.githubRepo" /></A
       >
-      <A href="mailto:betadev@betauia.net" class="hover:opacity-80">Feil på siden? Kontakt oss!</A>
+      <A href="mailto:betadev@betauia.net" class="hover:opacity-80"
+        ><Translate key="footer.reportIssue" /></A
+      >
     </div>
   </div>
 </footer>

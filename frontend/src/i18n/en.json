@@ -54,5 +54,21 @@
         "desc": "Get in touch for collaboration, questions or other opportunities."
       }
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contact us",
+      "orgNumber": "Org. no.:"
+    },
+    "resources": {
+      "title": "Resources",
+      "about": "About Beta",
+      "contact": "Contact",
+      "bylaws": "Bylaws"
+    },
+    "tagline": "The student association for computer science students",
+    "discordButton": "Join Discord",
+    "githubRepo": "GitHub repo",
+    "reportIssue": "Found a problem on the page? Contact us!"
   }
 }

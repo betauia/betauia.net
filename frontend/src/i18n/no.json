@@ -54,5 +54,21 @@
         "desc": "Ta kontakt med oss for samarbeid, spørsmål eller andre muligheter."
       }
     }
+  },
+  "footer": {
+    "contact": {
+      "title": "Kontakt oss",
+      "orgNumber": "Org.nr:"
+    },
+    "resources": {
+      "title": "Ressurser",
+      "about": "Om Beta",
+      "contact": "Kontakt",
+      "bylaws": "Vedtekter"
+    },
+    "tagline": "Linjeforeningen for datastudenter",
+    "discordButton": "Join Discord",
+    "githubRepo": "GitHub repo",
+    "reportIssue": "Feil på siden? Kontakt oss!"
   }
 }
