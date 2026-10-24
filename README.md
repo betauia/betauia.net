@@ -8,7 +8,8 @@ The Website for the student organization BETA at UiA Grimstad.
 
 These technologies are chosen for new developers to easily understand and work with the project:
 
-- **Docker** & **Docker Compose**: containerized development and deployment
+- **pnpm** & **uv**: run the frontend and backend directly on your machine
+- **Docker Compose**: runs the database in development and everything in production
 - **Astro**: static site generator for the frontend
 - **Tailwind CSS**: utility-first CSS framework
 - **FastAPI**: modern and typed Python backend

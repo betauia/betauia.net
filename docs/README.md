@@ -11,8 +11,8 @@ This folder contains detailed guides, references and information for the differe
 Differnet guides under `/docs/guides/` that includes instuctions for how to set up developer environment, actually developing, and more:
 
 - [Quick Start](guides/quickstart.md)
-- [~~Development~~](guides/development.md) (PLANNED)
-- [~~Deployment~~](guides/deployment.md) (PLANNED)
+- [Development](guides/development.md)
+- [Deployment](guides/deployment.md)
 
 ### Frontend
 
