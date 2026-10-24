@@ -26,5 +26,5 @@ jobs:
             git config --global user.name "GitHub Actions"
             git pull origin master || { echo "Git pull failed"; exit 1; }
 
-            docker compose -f compose.yaml -f compose.prod.yaml build || { echo "Docker compose build failed"; exit 1; }
-            docker compose -f compose.yaml -f compose.prod.yaml up -d || { echo "Docker compose up failed"; exit 1; }
+            docker compose -f docker/compose.prod.yaml --env-file .env build || { echo "Docker compose build failed"; exit 1; }
+            docker compose -f docker/compose.prod.yaml --env-file .env up -d --remove-orphans || { echo "Docker compose up failed"; exit 1; }

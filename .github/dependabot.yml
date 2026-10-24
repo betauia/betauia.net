@@ -1,0 +1,44 @@
+# Opens weekly pull requests to update dependencies. The CI workflow checks each one.
+# Minor and patch updates are grouped into one pull request per folder to keep it calm.
+
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "frontend"]
+    groups:
+      frontend:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: "uv"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies", "backend"]
+    groups:
+      backend:
+        update-types: ["minor", "patch"]
+
+  - package-ecosystem: "docker"
+    directory: "/docker"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies", "docker"]
+
+  - package-ecosystem: "docker-compose"
+    directory: "/docker"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies", "docker"]
+    ignore:
+      - dependency-name: "postgres"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels: ["dependencies"]
