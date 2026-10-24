@@ -21,6 +21,12 @@ If you want to contribute on something, found a bug or a new feature, please men
 
 ## Changing the code
 
+### Forks
+
+All work happens in your own fork of the repository, never directly in `betauia/betauia.net`. You push code and branches to your fork and open a Pull Request into `master` of the main repository. The [quick start guide](docs/guides/quickstart.md) shows how to set it up.
+
+Before starting something new, get the latest changes from the main repository with `git pull upstream master` on your `master` branch.
+
 ### Branch Naming
 
 Branches is needed to be named as `[tag]/[name]`. The name and tag should clearly describe the purpose of the branch. Some of the most common tags are:
@@ -47,4 +53,4 @@ If you need to change a commit message, you can do that by:
   - For example, if you want to change the name of the 4th latest commit, do `git rebase HEAD~4`.
   - This opens your default editor where you have to edit from `pick` to `reword`, save, then quit.
   - That opens a new editor where you can rewrite the commit message.
-- After saving that, overwrite the git history with `git push --force`.
+- After saving that, overwrite the git history of your branch with `git push --force`. Only do this on branches in your own fork.

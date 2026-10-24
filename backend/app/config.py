@@ -1,8 +1,16 @@
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = BACKEND_DIR.parent
+
+load_dotenv(PROJECT_ROOT / ".env")
 
 
 class Config:
-    DEBUG: bool = os.getenv("DEBUG", "true").lower() == "true"
+    DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
 
     # CORS
     FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:3000")
@@ -20,7 +28,7 @@ class Config:
     POSTGRES_DB = os.environ.get("POSTGRES_DB")
     POSTGRES_USER = os.environ.get("POSTGRES_USER")
     POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
-    POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "db")
+    POSTGRES_HOST = os.environ.get("POSTGRES_HOST", "localhost")
     POSTGRES_PORT = os.environ.get("POSTGRES_PORT", "5432")
 
     # Authentication

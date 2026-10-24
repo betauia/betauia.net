@@ -5,7 +5,8 @@ from pathlib import Path
 from fastapi import HTTPException, UploadFile
 from PIL import Image
 
-BASE_UPLOAD_DIR = Path("/uploads")
+BACKEND_DIR = Path(__file__).resolve().parents[2]
+BASE_UPLOAD_DIR = BACKEND_DIR / "uploads"
 
 ALLOWED_IMAGE_TYPES = {"image/png", "image/jpeg", "image/webp"}
 ALLOWED_TEXT_TYPES = {"text/plain"}

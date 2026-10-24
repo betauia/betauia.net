@@ -2,7 +2,7 @@
   description = "Dev environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
   };
 
   outputs = { self, nixpkgs }:
@@ -18,6 +18,7 @@
         default = pkgs.mkShell {
           packages = [
             pkgs.nodejs_24
+            pkgs.pnpm_12
             pkgs.python313
             pkgs.uv
           ];

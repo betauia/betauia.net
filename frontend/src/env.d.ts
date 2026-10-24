@@ -3,8 +3,7 @@
 interface ImportMetaEnv {
   readonly PUBLIC_BACKEND_URL: string;
   readonly PUBLIC_TURNSTILE_SITE_KEY: string;
-  readonly PUBLIC_SOME: string;
-  readonly PUBLIC_THING: string;
+  readonly PUBLIC_BETASEC_SECRET: string;
 }
 
 interface ImportMeta {

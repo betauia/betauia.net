@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - '@astrojs/check@0.9.11'
+  - '@astrojs/node@11.1.9'
+  - astro@7.4.1

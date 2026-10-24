@@ -20,7 +20,7 @@
   let selectedStudies: string[] = [];
   let selectedYears: string[] = [];
 
-  const apiBase = import.meta.env.PUBLIC_BACKEND_URL;
+  const apiBase = import.meta.env.PUBLIC_BACKEND_URL ?? "http://localhost:8000";
 
   const studyOptions = [
     { value: "ai", label: "AI" },
@@ -55,7 +55,7 @@
 
       jobs = await response.json();
     } catch (err) {
-      error = err instanceof Error ? err.message : "Unknown error";
+      error = "Kunne ikke hente jobbannonser akkurat nå. Prøv igjen senere.";
       console.error("Failed to fetch jobs:", err);
     } finally {
       loading = false;

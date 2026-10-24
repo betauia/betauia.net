@@ -17,29 +17,23 @@ FastAPI is a modern, fast, web framework for building APIs with Python based on 
 |   ├── config.py       # Environment variables
 |   └── limiter.py      # Rate limiting
 ├── alembic/            # Migration
-├── pyproject.toml      # Formatting configs
-├── requirements.txt    # Dependencies
-├── requirements.lock   # Lock of dependency versions
+├── pyproject.toml      # Dependencies and formatting configs
+├── uv.lock             # Exact versions of all dependencies (generated)
 └── server.py           # Entrypoint for serving
 ```
 
-There are also some `Dockerfile`s and other things, but the listed structure is the code that will be contributed to most often.
-
 ## Dependencies
 
-To get the right versions of the different dependencies, we lock the requirements file into another file where all the versions are specified. This is done with `uv` and can be updated with new dependencies with:
+Dependencies are managed with [`uv`](https://docs.astral.sh/uv/). `pyproject.toml` lists the packages we use directly, and `uv.lock` pins the exact version of everything. Run these from the `backend/` folder:
 
 ```bash
-uv pip compile requirements.txt -o requirements.lock
+uv add some-package       # Add a dependency
+uv remove some-package    # Remove a dependency
+uv add --dev some-tool    # Add a tool only used in development
+uv run ruff check         # Run a tool from the project environment
 ```
 
-If you ever want to run the backend locally with a venv and `uv`, do this:
-
-```bash
-uv venv
-uv pip sync requirements.lock
-uv run server.py
-```
+`uv run` always makes sure the installed packages match `uv.lock`, so you never need to install anything manually. Commit both `pyproject.toml` and `uv.lock`.
 
 ## Types
 

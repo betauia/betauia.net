@@ -36,54 +36,55 @@ const pages = [
 
 <BaseLayout title="Guider">
   <Container>
+    <Prose>
+      <h1>Guider</h1>
+      <p>En samling guider og ressurser for fag, programmering og verktøy.</p>
+    </Prose>
 
-      <Prose>
-        <h1>Guider</h1>
-        <p>En samling guider og ressurser for fag, programmering og verktøy.</p>
-      </Prose>
+    <div class="mt-10">
+      {
+        pages.map(page => (
+          <>
+            <div class="">
+              <h2 class="text-2xl font-bold text-fg-base transition-colors dark:text-dark-fg-base">
+                {page.category}
+              </h2>
 
-      <div class="mt-10">
-        {
-          pages.map(page => (
-              <div class="">
-                <h2 class="text-2xl font-bold text-fg-base transition-colors dark:text-dark-fg-base">
-                  {page.category}
-                </h2>
+              <p class="mb-6 mt-4 max-w-2xl text-base text-fg-muted dark:text-dark-fg-muted">
+                {page.description}
+              </p>
+            </div>
 
-                <p class="mt-4 mb-6 max-w-2xl text-base text-fg-muted dark:text-dark-fg-muted">
-                  {page.description}
-                </p>
-              </div>
-
-              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 mb-8">
-                {page.guides.map(guide => (
-                  <a
-                    href={`/guides/${page.path}/${guide.path}`}
-                    class="group rounded-2xl p-5 transition-colors bg-bg-raised dark:bg-dark-bg-raised border border-dark-fg-muted dark:border-fg-muted hover:bg-bg-raised/25 hover:dark:bg-dark-bg-raised/50"
-                  >
-                    <div class="flex items-start gap-4">
-                      <div class="mt-0.5 shrink-0">
-                        <Icon
-                          name={guide.icon}
-                          class="h-6 w-6 text-accent transition-transform duration-200 "
-                        />
-                      </div>
-
-                      <div>
-                        <h3 class="text-lg font-bold text-fg-base transition-colors  dark:text-dark-fg-base">
-                          {guide.name}
-                        </h3>
-
-                        <p class="mt-1.5 text-base leading-6 text-fg-muted dark:text-dark-fg-muted">
-                          {guide.description}
-                        </p>
-                      </div>
+            <div class="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {page.guides.map(guide => (
+                <a
+                  href={`/guides/${page.path}/${guide.path}`}
+                  class="group rounded-2xl border border-dark-fg-muted bg-bg-raised p-5 transition-colors hover:bg-bg-raised/25 dark:border-fg-muted dark:bg-dark-bg-raised hover:dark:bg-dark-bg-raised/50"
+                >
+                  <div class="flex items-start gap-4">
+                    <div class="mt-0.5 shrink-0">
+                      <Icon
+                        name={guide.icon}
+                        class="h-6 w-6 text-accent transition-transform duration-200"
+                      />
                     </div>
-                  </a>
-                ))}
-              </div>
-          ))
-        }
-      </div>
+
+                    <div>
+                      <h3 class="text-lg font-bold text-fg-base transition-colors dark:text-dark-fg-base">
+                        {guide.name}
+                      </h3>
+
+                      <p class="mt-1.5 text-base leading-6 text-fg-muted dark:text-dark-fg-muted">
+                        {guide.description}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </>
+        ))
+      }
+    </div>
   </Container>
 </BaseLayout>
