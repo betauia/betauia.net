@@ -5,13 +5,15 @@ on:
     workflows: [CI]
     types: [completed]
     branches: [master]
+  workflow_dispatch:
 
 jobs:
   deployment:
     if: >-
-      github.repository == 'betauia/betauia.net' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.conclusion == 'success'
+      github.repository == "betauia/betauia.net" &&
+      (github.event_name == "workflow_dispatch" ||
+       (github.event.workflow_run.event == "push" &&
+        github.event.workflow_run.conclusion == "success"))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -31,3 +33,4 @@ jobs:
 
             docker compose -f docker/compose.prod.yaml --env-file .env build || { echo "Docker compose build failed"; exit 1; }
             docker compose -f docker/compose.prod.yaml --env-file .env up -d --remove-orphans || { echo "Docker compose up failed"; exit 1; }
+
