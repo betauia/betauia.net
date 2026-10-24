@@ -1,0 +1,34 @@
+{
+  "title": "BETA General Assembly",
+  "heading": "The General Assembly of {{beta}}",
+  "whatIs": {
+    "title": "What is the general assembly?",
+    "text": "The general assembly is the student association's highest decision-making body and is held every spring semester. This is where we deal with things that matter to the students, elect a new board, and make important decisions for Beta.",
+    "deadlines": "**Deadlines:** starting with the 2027 general assembly, it has to be announced two (2) weeks before the date with a preliminary agenda. Within one (1) week before the general assembly, the full agenda with all the items to be handled has to be published.",
+    "everyoneVotes": "*All members have the right to vote!*"
+  },
+  "info": {
+    "title": "Important info",
+    "text1": "To keep the general assembly smooth and quick, we've set a deadline for submitting items at least a week in advance. After the deadline we send out all proposals together with an updated agenda, so every student has time to form an opinion on every item. Anything can be brought up, and you can submit as many items as you want.",
+    "text2": "For the student association to keep running, we need everyone interested to run for a position on the board. It's gold for building your CV and has landed many former students both jobs and summer jobs. You learn a lot of new things, get to know loads of new people, and get to shape student life in Grimstad.",
+    "honoraryMembers": "*Honorary members can be proposed as a separate item.*"
+  },
+  "documents": {
+    "title": "Important documents",
+    "bylaws": {
+      "title": "Bylaws",
+      "highlightText": "Read the latest bylaws",
+      "text": "The bylaws are BETA's laws and rules. They cover everything from the board and general assemblies all the way to BETA alumni!"
+    },
+    "minutes2026": {
+      "title": "Minutes 2026",
+      "highlightText": "Read the minutes",
+      "text": "On Tuesday, January 27th, at 16:15 (2026) we kicked things off with info, discussion, and of course free pizza."
+    },
+    "minutes2025": {
+      "title": "Minutes 2025",
+      "highlightText": "Read the minutes",
+      "text": "The minutes from 2025. Want to make an archive page? Check out BETA's GitHub or contact BetaDEV!"
+    }
+  }
+}

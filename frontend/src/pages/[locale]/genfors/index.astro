@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+
+import Card from "@components/ui/Card.astro";
+
+import Agenda from "@content/genfors/2026.md";
+import Prose from "@components/semantics/Prose.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("genfors/index", Astro.currentLocale);
+---
+
+<BaseLayout title={t("title")}>
+  <Container>
+    <Prose>
+      <h1>
+        <Translate page="genfors/index" key="heading">
+          <span slot="beta" class="text-accent">BETA</span>
+        </Translate>
+      </h1>
+
+      <h2><Translate page="genfors/index" key="whatIs.title" /></h2>
+      <p><Translate page="genfors/index" key="whatIs.text" /></p>
+
+      <p><Translate page="genfors/index" key="whatIs.deadlines" /></p>
+
+      <p><Translate page="genfors/index" key="whatIs.everyoneVotes" /></p>
+
+      <h2><Translate page="genfors/index" key="info.title" /></h2>
+      <p><Translate page="genfors/index" key="info.text1" /></p>
+      <p><Translate page="genfors/index" key="info.text2" /></p>
+
+      <p><Translate page="genfors/index" key="info.honoraryMembers" /></p>
+    </Prose>
+
+    <Prose>
+      <h2><Translate page="genfors/index" key="documents.title" /></h2>
+    </Prose>
+    <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Card
+        title={t("documents.bylaws.title")}
+        href="/Vedtekter.pdf"
+        highlightText={t("documents.bylaws.highlightText")}
+        text={t("documents.bylaws.text")}
+      />
+      <Card
+        title={t("documents.minutes2026.title")}
+        href="/genfors/2026"
+        highlightText={t("documents.minutes2026.highlightText")}
+        text={t("documents.minutes2026.text")}
+      />
+      <Card
+        title={t("documents.minutes2025.title")}
+        href="/genfors/2025"
+        highlightText={t("documents.minutes2025.highlightText")}
+        text={t("documents.minutes2025.text")}
+      />
+    </div>
+  </Container>
+</BaseLayout>

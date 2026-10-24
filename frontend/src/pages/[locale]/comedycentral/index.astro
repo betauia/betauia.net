@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+---
+
+<BaseLayout title="Comedy Central">
+  <Container>
+    <Translate page="comedycentral/index" key="text" />
+  </Container>
+</BaseLayout>

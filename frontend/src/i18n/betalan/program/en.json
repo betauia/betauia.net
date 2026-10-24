@@ -1,0 +1,42 @@
+{
+  "title": "BetaLAN Program H26",
+  "heading": "BetaLAN Program",
+  "days": {
+    "friday": {
+      "name": "Friday",
+      "items": {
+        "openingCtf": "Opening for CTF",
+        "introCtf": "IntroCTF with UiACTF & BetaSEC (Free entry!)",
+        "closingMainHall": "Closing Main Hall for reorganization",
+        "openingLan": "Opening for LAN event",
+        "aubyGames": "Auby Games Opens (Annoucement)",
+        "skylanders": "Skylanders",
+        "betaShow": "BetaShow"
+      }
+    },
+    "saturday": {
+      "name": "Saturday",
+      "items": {
+        "theFinals": "The Finals",
+        "gameJam": "Game Jam",
+        "food": "Food",
+        "skywars": "Minecraft: Skywars",
+        "betaShow": "BetaShow"
+      }
+    },
+    "sunday": {
+      "name": "Sunday",
+      "items": {
+        "finalDuel": "Final Duel — Auby Games",
+        "fortnite": "Fortnite",
+        "omegaStrikers": "Omega Strikers",
+        "closingHour": "Closing Hour"
+      }
+    }
+  },
+  "discord": {
+    "title": "Join BetaLAN Discord",
+    "text": "Connect with other participants and get real-time updates during the event",
+    "button": "BetaLAN Discord"
+  }
+}

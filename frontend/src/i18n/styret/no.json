@@ -1,0 +1,38 @@
+{
+  "title": "Styret",
+  "heading": "Hovedstyret gjennom årene",
+  "intro": "Klikk på et år for å se styremedlemmene og deres roller.",
+  "readMore": "Les mer",
+  "profile": {
+    "roles": {
+      "leader": "Leder",
+      "deputyLeader": "Nestleder",
+      "financeManager": "Økonomi-ansvarlig",
+      "prManager": "PR-ansvarlig",
+      "businessCommitteeLeader": "Bedkom-leder",
+      "eventCommitteeLeader": "Eventkom-leder",
+      "betaLanLeader": "BetaLAN-leder",
+      "betaDevLeader": "BetaDEV-leder",
+      "betaSecLeader": "BetaSEC-leder",
+      "boardMember": "Styremedlem",
+      "financeAndMaterialManager": "Økonomi/materiell ansvarlig",
+      "prWebManager": "PR/Web ansvarlig",
+      "eventManager": "Arrangements ansvarlig",
+      "graphicDesigner": "Grafiker"
+    }
+  },
+  "cta": {
+    "title": "Bli med i hovedstyret!",
+    "text": "Hvert år velges et nytt hovedstyre på generalforsamlingen. Er du interessert i å bidra til å drive Beta og skape arrangementer for datastudenter? Da er hovedstyret noe for deg! Hold øye med når generalforsamlingen avholdes, vanligvis i februar.",
+    "highlightText": "Kontakt oss"
+  },
+  "year": {
+    "pageTitle": "Styret {{year}}",
+    "heading": "Hovedstyret {{year}}",
+    "intro": "Møt de {{count}} engasjerte studentene som ledet Beta i {{year}}.",
+    "groupPhotoAlt": "Hovedstyret {{year}}",
+    "membersTitle": "Styremedlemmer",
+    "contactIntro": "Vil du ta kontakt med hovedstyret eller har du spørsmål?",
+    "contactButton": "Kontakt oss"
+  }
+}

@@ -1,0 +1,151 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import BetaLogo from "@assets/logos/beta/base.svg";
+import Button from "@components/ui/Button.astro";
+import StatCard from "@components/ui/StatCard.astro";
+import FeatureCard from "@components/ui/FeatureCard.astro";
+
+import BetadevImage from "@assets/groups/betadev.jpg";
+import BetalanImage from "@assets/groups/betalan.jpg";
+import BetasecImage from "@assets/groups/betasec.jpg";
+import BedkomImage from "@assets/groups/bedkom.jpg";
+import EventkomImage from "@assets/groups/eventkom.jpg";
+import Card from "@components/ui/Card.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("om/index", Astro.currentLocale);
+---
+
+<BaseLayout title={t("title")}>
+  <Container>
+    <div class="mx-auto mt-6 max-w-3xl text-center">
+      <div class="mb-4 flex justify-center">
+        <BetaLogo class="h-20 text-accent" />
+      </div>
+      <h1 class="mb-3 text-4xl font-bold">
+        <Translate page="om/index" key="heading">
+          <span slot="students" class="text-accent"><Translate page="om/index" key="students" /></span>
+        </Translate>
+      </h1>
+      <p class="mx-auto mb-6 max-w-2xl text-lg text-fg-muted dark:text-dark-fg-muted">
+        <Translate page="om/index" key="intro" />
+      </p>
+      <div class="flex justify-center gap-3">
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate page="om/index" key="discordButton" /></Button>
+        <Button href="/kontakt" type="secondary"><Translate page="om/index" key="contactButton" /></Button>
+      </div>
+    </div>
+
+    <div class="mb-8 mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <StatCard
+        stat='400+'
+        title={t("stats.students.title")}
+        description={t("stats.students.description")}
+      />
+      <StatCard
+        stat='4'
+        title={t("stats.studyPrograms.title")}
+        description={t("stats.studyPrograms.description")}
+      />
+      <StatCard
+        stat='5'
+        title={t("stats.committees.title")}
+        description={t("stats.committees.description")}
+      />
+    </div>
+  </Container>
+
+  <div class="bg-bg-raised dark:bg-dark-bg-raised">
+    <Container>
+      <h2 class="my-6 text-3xl font-bold"><Translate page="om/index" key="features.title" /></h2>
+      <div class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <FeatureCard
+          icon="fa-solid:glass-cheers"
+          title={t("features.social.title")}
+          description={t("features.social.description")}
+        />
+        <FeatureCard
+          icon="fa-solid:laptop-code"
+          title={t("features.academic.title")}
+          description={t("features.academic.description")}
+        />
+        <FeatureCard
+          icon="fa-solid:users"
+          title={t("features.groups.title")}
+          description={t("features.groups.description")}
+        />
+        <FeatureCard
+          icon="fa-solid:building"
+          title={t("features.business.title")}
+          description={t("features.business.description")}
+        />
+        <FeatureCard
+          icon="fa-solid:gamepad"
+          title={t("features.lan.title")}
+          description={t("features.lan.description")}
+        />
+        <FeatureCard
+          icon="fa-solid:user-friends"
+          title={t("features.network.title")}
+          description={t("features.network.description")}
+        />
+      </div>
+    </Container>
+  </div>
+
+  <Container>
+    <div class="mb-12 mt-6">
+      <h2 class="mb-2 text-3xl font-bold"><Translate page="om/index" key="interestGroups.title" /></h2>
+      <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
+        <Translate page="om/index" key="interestGroups.intro" />
+      </p>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <Card
+          image={BetadevImage}
+          title={t("interestGroups.betadev.title")}
+          text={t("interestGroups.betadev.description")}
+          href="/betadev"
+          highlightText={t("interestGroups.readMore")}
+        />
+        <Card
+          image={BetasecImage}
+          title={t("interestGroups.betasec.title")}
+          text={t("interestGroups.betasec.description")}
+          href="/betasec"
+          highlightText={t("interestGroups.readMore")}
+        />
+      </div>
+    </div>
+
+    <h2 class="mb-2 text-3xl font-bold"><Translate page="om/index" key="committees.title" /></h2>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted">
+      <Translate page="om/index" key="committees.intro" />
+    </p>
+    <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <Card
+        image={BedkomImage}
+        title={t("committees.bedkom.title")}
+        text={t("committees.bedkom.description")}
+        href="/bedkom"
+        highlightText={t("committees.readMore")}
+      />
+      <Card
+        image={EventkomImage}
+        title={t("committees.eventkom.title")}
+        text={t("committees.eventkom.description")}
+        href="/eventkom"
+        highlightText={t("committees.readMore")}
+      />
+      <Card
+        image={BetalanImage}
+        title={t("committees.betalan.title")}
+        text={t("committees.betalan.description")}
+        href="/betalan"
+        highlightText={t("committees.readMore")}
+      />
+    </div>
+  </Container>
+</BaseLayout>

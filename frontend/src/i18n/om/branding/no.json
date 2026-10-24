@@ -1,0 +1,35 @@
+{
+  "title": "Profilering",
+  "heading": "Profilering",
+  "usage": {
+    "title": "Bruk",
+    "intro": "Riktig bruk av logo, farger og ikoner bidrar til gjenkjennelighet og et profesjonelt uttrykk. Derfor ber vi om at du alltid bruker de riktig ved å:",
+    "items": {
+      "1": "Bruke lys logo på mørke bakgrunner og mørk logo på lyse bakgrunner.",
+      "2": "Alltid bruke logoer i original form, uten endringer i proporsjoner, farger eller innhold.",
+      "3": "Bruke ikon der full logo ikke egner seg, for eksempel som profilbilde, app-ikon eller i sosiale medier.",
+      "4": "Unngå å plassere logo eller ikon på urolige bakgrunner som reduserer lesbarheten.",
+      "5": "Bruke definerte profilfarger i tråd med fargepaletten under."
+    }
+  },
+  "colors": {
+    "title": "Farger",
+    "copyHint": "Klikk for å kopiere",
+    "background": "Grunnfarge for bakgrunner som rammer inn innhold, som sider, seksjoner og sidepaneler.",
+    "raised": "Bakgrunner som ligger over base, for eksempel kort, bokser og felt.",
+    "foreground": "Hovedfarge for tekst og annet viktig innhold.",
+    "muted": "Nedtonet tekstfarge for mindre viktig informasjon.",
+    "primary": "Hovedaksent brukt til knapper, lenker og viktige markeringer.",
+    "secondary": "Sekundær aksent brukt sparsomt for variasjon og detaljer."
+  },
+  "logos": {
+    "title": "Logoer",
+    "black": "Svart",
+    "white": "Hvit",
+    "blue": "Blå"
+  },
+  "icons": {
+    "title": "Ikoner"
+  },
+  "betaIconAlt": "Beta ikon"
+}

@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import A from "./A.astro";
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const hasHref = Boolean(href);
 const iconName = !hasHref ? "" : isMailLink ? "fa-solid:envelope" : "fa-solid:arrow-right";
 ---
 
-<a href={href} class:list={["group block", className]}>
+<A href={href} class:list={["group block", className]}>
   <div
     class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-fg-muted bg-bg-raised shadow-sm transition-transform hover:scale-105 hover:shadow-lg dark:border-dark-fg-muted dark:bg-dark-bg-raised"
   >
@@ -55,4 +56,4 @@ const iconName = !hasHref ? "" : isMailLink ? "fa-solid:envelope" : "fa-solid:ar
       }
     </div>
   </div>
-</a>
+</A>

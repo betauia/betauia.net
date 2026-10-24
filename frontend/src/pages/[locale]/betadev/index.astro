@@ -1,0 +1,64 @@
+---
+import Container from "@components/layout/Container.astro";
+import Card from "@components/ui/Card.astro";
+import Prose from "@components/semantics/Prose.astro";
+import Button from "@components/ui/Button.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+import Game1 from "@assets/betadev/game-1.jpg";
+import Game3 from "@assets/betadev/game-3.jpg";
+import GamejamPrize from "@assets/betadev/gamejam-trofe.jpg";
+import { Image } from "astro:assets";
+
+import logoBlack from "../../../assets/logos/betadev/black.png";
+import logoWhite from "../../../assets/logos/betadev/white.png";
+import logoBlue from "../../../assets/logos/betadev/blue.png";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("betadev/index", Astro.currentLocale);
+
+---
+
+<BaseLayout
+  title="Betadev"
+  description={t("description")}
+>
+  <Container>
+    <Prose>
+      <center>
+        <Image src src={logoBlue} alt={t("logoAlt")} inferSize class="h-auto w-[60%] pb-4" />
+      </center>
+
+      <p><Translate page="betadev/index" key="intro" /></p>
+
+      <h2 class="mt-8 text-xl font-bold"><Translate page="betadev/index" key="events.title" /></h2>
+    </Prose>
+
+    <div class="mb-4 mt-2 grid gap-4 md:grid-cols-3">
+      <Card
+        title={t("events.gamejam.title")}
+        href="/betadev/gamejam"
+        image={Game3}
+        text={t("events.gamejam.text")}
+      />
+      <Card
+        title={t("events.codeCompetition.title")}
+        image={GamejamPrize}
+        text={t("events.codeCompetition.text")}
+      />
+      <Card
+        title={t("events.codeNights.title")}
+        image={Game1}
+        text={t("events.codeNights.text")}
+      />
+    </div>
+    <Prose>
+      <p><Translate page="betadev/index" key="events.footnote" /></p>
+
+      <h2><Translate page="betadev/index" key="communication.title" /></h2>
+    </Prose>
+    <Button href=""><Translate page="betadev/index" key="communication.discordButton" /></Button>
+  </Container>
+</BaseLayout>

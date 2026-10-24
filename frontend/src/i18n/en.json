@@ -1,0 +1,74 @@
+{
+  "language": "English",
+  "nav": {
+    "omBeta": {
+      "label": "/about_beta",
+      "about": {
+        "title": "About Beta",
+        "desc": "Learn more about who we are and what we do for the students."
+      },
+      "board": {
+        "title": "Main board",
+        "desc": "Check out previous and current main boards."
+      },
+      "bylaws": {
+        "title": "Bylaws",
+        "desc": "Read the bylaws and see how the association is organized."
+      },
+      "branding": {
+        "title": "Branding",
+        "desc": "Check out how to use Beta's logos, colors and materials."
+      },
+      "contact": {
+        "title": "Contact us",
+        "desc": "Get in touch for collaboration, questions or feedback."
+      }
+    },
+    "forStudents": {
+      "label": "/for_students",
+      "jobs": {
+        "title": "Job listings",
+        "desc": "Find summer jobs, internships and relevant positions."
+      },
+      "projects": {
+        "title": "Projects",
+        "desc": "Check out student projects we work on, or join in."
+      },
+      "generalAssembly": {
+        "title": "General assembly",
+        "desc": "Get ready for the general assembly or see what has been done before."
+      },
+      "guides": {
+        "title": "Guides",
+        "desc": "Find useful guides, resources and tips for courses, tools and other topics."
+      },
+      "betaLan": {
+        "title": "BetaLAN",
+        "desc": "Join a LAN party and game away the exam stress every semester!"
+      }
+    },
+    "forCompanies": {
+      "label": "/for_companies",
+      "contact": {
+        "title": "Contact us",
+        "desc": "Get in touch for collaboration, questions or other opportunities."
+      }
+    }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contact us",
+      "orgNumber": "Org. no.:"
+    },
+    "resources": {
+      "title": "Resources",
+      "about": "About Beta",
+      "contact": "Contact",
+      "bylaws": "Bylaws"
+    },
+    "tagline": "The student association for computer science students",
+    "discordButton": "Join Discord",
+    "githubRepo": "GitHub repo",
+    "reportIssue": "Found a problem on the page? Contact us!"
+  }
+}

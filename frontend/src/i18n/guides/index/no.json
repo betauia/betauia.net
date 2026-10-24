@@ -1,0 +1,21 @@
+{
+  "title": "Guider",
+  "heading": "Guider",
+  "intro": "En samling guider og ressurser for fag, programmering og verktøy.",
+  "programming": {
+    "category": "Programmering",
+    "description": "Guider for programmering, utviklingsverktøy og arbeidsflyt.",
+    "git": {
+      "name": "Git",
+      "description": "Lær grunnleggende Git og versjonskontroll."
+    }
+  },
+  "math1": {
+    "category": "Matte 1",
+    "description": "Guider og ressurser for Matte 1.",
+    "complexNumbers": {
+      "name": "Komplekse tall",
+      "description": "Lær om komplekse tall og hvordan de brukes."
+    }
+  }
+}

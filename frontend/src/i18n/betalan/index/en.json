@@ -1,0 +1,24 @@
+{
+  "xpTitle": "Ocean Themed LAN!",
+  "logoAlt": "BetaLAN",
+  "tagline": "Dive into BETA's Ocean LAN party, get tickets below!",
+  "date": "23–25 October",
+  "tickets": "Get Your Tickets Now!",
+  "buttons": {
+    "program": "Program",
+    "rules": "Rules",
+    "discord": "Discord"
+  },
+  "chart": {
+    "title": "The Drowned Chart of BetaLAN",
+    "p1": "Hauled dripping from the wreck of the **S.S. Kernel**, this salt-stained chart marks the last bearing of BetaLAN's lost hoard, swallowed when the ship went down off the **Bluebox Reef**.",
+    "p2": "The wreck is coiled by **Deadlock, the Drowned Leviathan** — a serpent of tangled cable and barnacled steel that sleeps in the dark and wakes for any who disturb its hoard.",
+    "p3": "Chart a course through its three trials and live, and the treasure in the hold is yours to raise.",
+    "signoff": "\"Marked in salt and ink\""
+  },
+  "crew": {
+    "title": "Crew Information",
+    "text": "The best way to experience BetaLAN is becoming a part of the crew. The crew is responsible for planning and organizing the LAN-party, and as a crew member you get free admission and some extra food after rigging down <br /><br />Want to know more?<br />",
+    "button": "Crew Information"
+  }
+}

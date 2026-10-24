@@ -1,0 +1,21 @@
+{
+  "title": "Prosjekter",
+  "intro": "Her finner du noen av prosjektene vi jobber med.",
+  "cards": {
+    "website": {
+      "title": "Nettside",
+      "description": "Denne siden bygges av Betadev på ukentlig basis og er lagd i flere moderne rammeverk som er enkle å jobbe med og lære seg.",
+      "highlightText": "GitHub repo"
+    },
+    "ctfer": {
+      "title": "CTFer",
+      "description": "Betasec arrangerer egen hacker konkurranse og steller i stand Bluebox for gratis pizza, kos og forskjellige oppgaver.",
+      "highlightText": "Kontakt Betasec"
+    }
+  },
+  "cta": {
+    "title": "Vil du bidra til et prosjekt?",
+    "text": "Beta er alltid åpen for bidrag fra studenter! Enten du vil lære mer om utvikling, design eller drift. Ta kontakt og bli med på et lærerikt prosjekt.",
+    "highlightText": "Kontakt oss"
+  }
+}

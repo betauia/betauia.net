@@ -1,0 +1,106 @@
+---
+import Tournament from "@layouts/tournament.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import minecraftSurvivalGames from "@assets/betalan/tournaments/minecraft-survival-games.png";
+import minecraftPotionBottle from "@assets/betalan/tournaments/minecraft-potion-bottle.png";
+import { Icon } from "astro-icon/components";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+import A from "@components/ui/A.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("betalan/survivalgames", Astro.currentLocale);
+---
+
+<BaseLayout
+  title={t("title")}
+  description={t("description")}
+>
+  <Tournament UseGamerFont={true}>
+    <h1 class="title"><Translate page="betalan/survivalgames" key="heading" /></h1>
+    <img src={minecraftSurvivalGames.src} alt={t("imageAlt")} class="responsive-img" />
+    <h2 class="section-title"><Translate page="betalan/survivalgames" key="whatIs.title" /></h2>
+
+    <p class="paragraph">
+      <Translate page="betalan/survivalgames" key="whatIs.intro">
+        <span slot="hungerGames" class="font-semibold text-red-600 drop-shadow-lg"
+          ><Translate page="betalan/survivalgames" key="whatIs.hungerGames" /></span
+        >
+      </Translate>
+    </p>
+    <Translate page="betalan/survivalgames" key="whatIs.outro" />
+  </Tournament>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="participate.title" /></h2>
+  <p class="paragraph">
+    <Translate page="betalan/survivalgames" key="participate.text">
+      <A
+        slot="form"
+        href="https://forms.gle/HCHSQVFEUZDAop7Y9"
+        class="text-blue-400 hover:underline"
+        target="_blank"
+        aria-label={t("participate.formAriaLabel")}
+      ><Translate page="betalan/survivalgames" key="participate.formLink" /></A
+      >
+    </Translate>
+  </p>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="server.title" /></h2>
+
+  <div class="mb-4 text-center">
+    <code
+      class="inline-flex cursor-pointer select-all items-center justify-center rounded bg-gray-900 px-4 py-2 font-mono text-2xl text-green-400 transition-colors hover:bg-gray-700"
+      onclick="navigator.clipboard.writeText('mc.betauia.net'); this.querySelector('.copy-icon').classList.add('animate-ping'); setTimeout(() => this.querySelector('.copy-icon').classList.remove('animate-ping'), 700)"
+    >
+      mc.betauia.net <Icon
+        name="fa-solid:copy"
+        class="copy-icon ml-2 inline h-6 w-6 align-middle transition-transform hover:scale-110"
+      />
+    </code>
+  </div>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="prize.title" /></h2>
+
+  <img
+    src={minecraftPotionBottle.src}
+    alt={t("prize.imageAlt")}
+    class="responsive-img"
+    style="max-width: 250px;"
+  />
+
+  <ul class="link-center">
+    <li class="list-item">
+      <Translate page="betalan/survivalgames" key="prize.first" />
+    </li>
+  </ul>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="rules.title" /></h2>
+
+  <p class="paragraph"><Translate page="betalan/survivalgames" key="rules.intro" /></p>
+
+  <ul class="list">
+    <li class="list-item">
+      <Translate page="betalan/survivalgames" key="rules.who" />
+    </li>
+    <li class="list-item">
+      <Translate page="betalan/survivalgames" key="rules.wins" />
+    </li>
+    <li class="list-item">
+      <Translate page="betalan/survivalgames" key="rules.remember" />
+    </li>
+  </ul>
+
+  <p class="text-2xl italic text-red-600">
+    <Translate page="betalan/survivalgames" key="rules.warning" />
+  </p>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="how.title" /></h2>
+
+  <p class="paragraph">
+    <Translate page="betalan/survivalgames" key="how.text" />
+  </p>
+
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="when.title" /></h2>
+
+  <p class="paragraph"><Translate page="betalan/survivalgames" key="when.text" /></p>
+</BaseLayout>

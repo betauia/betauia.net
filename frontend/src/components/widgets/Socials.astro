@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import A from "@components/ui/A.astro";
 
 const { class: className } = Astro.props;
 
@@ -16,9 +17,9 @@ const socials = {
   {
     Object.entries(socials).map(([name, url]) => (
       <li>
-        <a href={url} target="_blank" class="transition hover:opacity-80">
+        <A href={url} target="_blank" class="transition hover:opacity-80">
           <Icon name={`fa-brands:${name}`} />
-        </a>
+        </A>
       </li>
     ))
   }

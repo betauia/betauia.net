@@ -1,7 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "@components/ui/Button.astro";
-import { navigationDropdowns } from "@data/navBarConfig";
+import { getNavigationDropdowns } from "@data/navBarConfig";
+import A from "@components/ui/A.astro";
+const navigationDropdowns = getNavigationDropdowns(Astro.currentLocale);
 ---
 
 <button
@@ -49,7 +51,7 @@ import { navigationDropdowns } from "@data/navBarConfig";
             <ul class="mt-4 space-y-2 pl-2">
               {dropdown.items.map(item => (
                 <li>
-                  <a
+                  <A
                     href={item.href}
                     class="flex items-start gap-4 rounded-lg p-2 text-sm transition-colors hover:bg-bg-base dark:hover:bg-dark-bg-raised"
                   >
@@ -60,7 +62,7 @@ import { navigationDropdowns } from "@data/navBarConfig";
                       </div>
                       <div class="text-xs text-fg-muted dark:text-dark-fg-muted">{item.desc}</div>
                     </div>
-                  </a>
+                  </A>
                 </li>
               ))}
             </ul>
@@ -74,23 +76,23 @@ import { navigationDropdowns } from "@data/navBarConfig";
     <!-- <div class="mt-2 pt-4"> -->
     <!-- Show when not logged in -->
     <!-- <div id="mobile-login-btn">
-        <a
+        <A
           href="/login"
           class="flex w-full items-center justify-center gap-2 rounded-md border border-fg-muted bg-bg-raised px-4 py-2 font-medium text-fg-base transition-all hover:text-fg-muted hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
         >
           <Icon name="fa-solid:user" class="h-4 w-4" />
           <span>Logg inn</span>
-        </a>
+        </A>
       </div> -->
     <!-- Show when logged in -->
     <!-- <div id="mobile-user-menu" class="hidden space-y-2">
-        <a
+        <A
           href="/account"
           class="flex w-full items-center justify-center gap-2 rounded-md border border-fg-muted bg-bg-raised px-4 py-2 font-medium text-fg-base transition-all hover:text-fg-muted hover:shadow-md dark:border-dark-fg-muted dark:bg-dark-bg-raised dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
         >
           <Icon name="fa-solid:user-circle" class="h-4 w-4" />
           <span>Min konto</span>
-        </a>
+        </A>
       </div> -->
     <!-- </div> -->
   </nav>

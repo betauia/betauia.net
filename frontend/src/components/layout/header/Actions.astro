@@ -1,19 +1,22 @@
 ---
 import Toggle from "@components/ui/Toggle.astro";
 import { Icon } from "astro-icon/components";
+import A from "@components/ui/A.astro";
+import LanguagePicker from "@components/ui/LanguagePicker.astro";
 ---
 
 <div class="flex items-center gap-4">
+  <LanguagePicker />
   <Toggle id="theme-toggle" />
   <!-- Until we have tested and caught bugs -->
   <!-- <div class="hidden md:block">
-    <a
+    <A
       href="/account"
       class="text-fg-base transition-colors hover:text-fg-muted dark:text-dark-fg-base hover:dark:text-dark-fg-muted"
       aria-label="Min bruker"
       title="Min bruker"
     >
       <Icon name="fa-solid:user-circle" class="h-6 w-6 transition" />
-    </a>
+    </A>
   </div> -->
 </div>

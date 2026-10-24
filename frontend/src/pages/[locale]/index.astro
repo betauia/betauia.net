@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Button from "@components/ui/Button.astro";
+import BetaLogo from "@assets/logos/beta/base.svg";
+
+import Banner from "@components/widgets/Banner.astro";
+import HeroBackground from "@components/fun/HeroBackground.svelte";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+const showBanner = false;
+const bannerText = "";
+const bannerLink = "/";
+export const prerender = false;
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("index", Astro.currentLocale);
+---
+
+<BaseLayout title={t("title")}>
+  <Container class="flex min-h-svh flex-col justify-center">
+    <div class="flex h-full items-center">
+      <div>
+        <BetaLogo class="h-24 text-accent" />
+        <h1 class="mt-4 text-4xl font-semibold"><Translate page="index" key="heading" /></h1>
+        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted"><Translate page="index" key="intro" /></p>
+        <div class="mt-6 flex gap-2">
+          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate page="index" key="discordButton" /></Button>
+          <Button href="/om" type="secondary"><Translate page="index" key="aboutButton" /></Button>
+        </div>
+      </div>
+    </div>
+
+    {showBanner && <Banner text={bannerText} link={bannerLink} />}
+    <HeroBackground client:load />
+  </Container>
+</BaseLayout>

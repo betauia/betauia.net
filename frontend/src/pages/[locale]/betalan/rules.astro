@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BetaLANLayout from "@layouts/BetaLANLayout.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("betalan/rules", Astro.currentLocale);
+---
+
+<BaseLayout
+  title={t("title")}
+  description={t("description")}
+>
+  <BetaLANLayout>
+    <section
+      class="legal-font m-6 mx-auto max-w-4xl rounded-lg bg-slate-800 bg-opacity-90 p-6 text-white"
+    >
+      <h2 class="mb-4 text-2xl font-bold"><Translate page="betalan/rules" key="heading" /></h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule1.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule1.text1" /></p>
+          <p><Translate page="betalan/rules" key="rule1.text2" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule2.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule2.text" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule3.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule3.text" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule4.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule4.text" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule5.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule5.text" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule6.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule6.text" /></p>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule7.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule7.text" /></p>
+        </div>
+      </div>
+      <p class="mt-4 italic"><Translate page="betalan/rules" key="footer" /></p>
+    </section>
+    <br />
+  </BetaLANLayout>
+</BaseLayout>
+
+<style>
+  .legal-font {
+    font-family: "Roboto Slab", serif; /* For a classic legal look */
+    font-size: 1rem; /* Adjust size for readability */
+    line-height: 1.6; /* Improve line spacing */
+  }
+</style>
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+  rel="stylesheet"
+/>

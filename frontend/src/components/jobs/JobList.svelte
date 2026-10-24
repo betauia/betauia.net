@@ -10,6 +10,9 @@
   } from "@lib/jobs";
 
   import type { JobListing } from "@lib/jobs";
+  import { ensureLanguageInPath } from "@i18n/utils.ts";
+
+  export let locale: string | undefined;
 
   let jobs: JobListing[] = [];
   let loading = true;
@@ -97,6 +100,7 @@
 
     return matchesSearch && matchesJobType && matchesStudies && matchesYears;
   });
+
 </script>
 
 {#if loading}
@@ -208,7 +212,7 @@
       {:else}
         {#each filteredJobs as job}
           <a
-            href={`/jobs/${job.id}`}
+            href={ensureLanguageInPath(locale,`/jobs/${job.id}`)}
             class="block overflow-hidden rounded-2xl border border-fg-muted/30 bg-bg-raised shadow-sm transition hover:border-fg-muted/50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent dark:border-dark-fg-muted/30 dark:bg-dark-bg-raised dark:hover:border-dark-fg-muted/50"
           >
             <div class="flex flex-col md:flex-row">

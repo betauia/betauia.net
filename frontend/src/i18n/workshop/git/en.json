@@ -1,0 +1,23 @@
+{
+  "title": "Git Workshop",
+  "introLead": "Have you ever wondered how Git actually works, or how to use it like a pro?",
+  "introRest": "In this workshop, {{leadName}}, a 3rd-year AI student, will show you both the basics and the crazy side of version control. He’s been frustrated for a while that the curriculum doesn't teach us this properly, so now he's taking matters into his own hands and sharing skills that will actually save you during projects—both on campus and in your future career.",
+  "signupTitle": "Sign up for the workshop!",
+  "signupDate": "Tuesday, September 16",
+  "signupTime": "16:15-17:30",
+  "signupLocation": "C2 042",
+  "whatYouLearnTitle": "What will I learn?",
+  "whatYouLearnIntro": "Whether you have used Git since kindergarten or never heard of it, you will get a lot out of the workshop. It is aimed at everyone and will cover everything from the basics to the more unusual concepts such as:",
+  "topics": {
+    "1": "What Git is and what is actually happening under the hood",
+    "2": "The most common commands for everyday use",
+    "3": "Undoing, fixing, and how to change history",
+    "4": "Practical walkthrough of conflicts and problems",
+    "5": "Good standards, tips, and tricks for large projects"
+  },
+  "whatToBringTitle": "What do I need to bring?",
+  "whatToBringIntro": "The only thing you need is a laptop, so remember to {{installGit}} before Tuesday and make sure you are at least a little familiar with the terminal. Everything will happen without a fancy interface in the terminal so that you actually know what is going on.",
+  "installGit": "install Git",
+  "contact": "If you have any questions, contact @jokko4 on {{discordLink}}! See you there!",
+  "discord": "Beta's Discord"
+}

@@ -1,0 +1,98 @@
+---
+import { Marked } from "marked";
+import {
+  ensureLanguageInPath,
+  type GlobalTranslationKey,
+  type PageTranslationKey,
+  useTranslations,
+} from "@i18n/utils.ts";
+import type { PageKey } from "@i18n/page-translations.ts";
+
+type Key =
+  | {
+      /**
+       * Translation key in the global translation files
+       */
+      key: GlobalTranslationKey;
+      page?: undefined;
+    }
+  | {
+      [P in PageKey]: {
+        /**
+         * Translation key relative to the translation files of the {@link page}
+         */
+        key: PageTranslationKey<P>;
+        /**
+         * Subfolder of /i18n containing the page specific translations
+         */
+        page: P;
+      };
+    }[PageKey];
+
+type Props = Key & {
+  /**
+   *  Wrap the text in a paragraph
+   */
+  block?: boolean;
+  /**
+   * Render block-level markdown (lists, quotes, multiple paragraphs) instead of inline markdown only
+   */
+  markdown?: boolean;
+  additions?: Record<string, unknown>;
+};
+
+const { key, page, block = false, markdown = false, additions } = Astro.props;
+
+const t = (page ? useTranslations(page, Astro.currentLocale) : useTranslations(Astro.currentLocale)) as (
+  key: string
+) => string;
+
+const { locale } = Astro.params;
+
+const escapeAttribute = (value: string) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+
+const marked = new Marked({
+  renderer: {
+    link({ href, title, tokens }) {
+      const localizedHref = ensureLanguageInPath(locale, href);
+      const titleAttribute = title ? ` title="${escapeAttribute(title)}"` : "";
+      return `<a href="${escapeAttribute(localizedHref)}"${titleAttribute}>${this.parser.parseInline(tokens)}</a>`;
+    },
+  },
+});
+
+const text = t(key);
+const html = markdown ? marked.parse(text, { async: false }) : marked.parseInline(text, { async: false });
+
+const placeholderPattern = /^{{(\w+)}}$/;
+const tokens = html.split(/({{\w+}})/g);
+
+async function resolvePart(part: string) {
+  const match = part.match(placeholderPattern);
+  if (!match) {
+    return { html: part };
+  }
+
+  const name = match[1];
+  if (additions && Object.prototype.hasOwnProperty.call(additions, name)) {
+    return { addition: additions[name] };
+  }
+
+  if (Astro.slots.has(name)) {
+    const rendered = await Astro.slots.render(name);
+    return { html: rendered };
+  }
+
+  return { html: part };
+}
+
+const parts = await Promise.all(tokens.map(resolvePart));
+
+const Wrapper = block && !markdown ? "p" : Fragment;
+---
+
+<Wrapper
+  >{
+    parts.map(part => ("html" in part ? <Fragment set:html={part.html} /> : part.addition))
+  }</Wrapper
+>

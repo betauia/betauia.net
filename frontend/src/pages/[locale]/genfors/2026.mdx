@@ -1,0 +1,15 @@
+---
+layout: src/layouts/MarkdownLayout.astro
+title: Referat generalforsamling 2026
+---
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+
+
+<Translate page='genfors/2026' key='header' markdown />
+
+<Translate page='genfors/2026' key='agenda' markdown />
+
+<Translate page='genfors/2026' key='adjourned' block />

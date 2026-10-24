@@ -1,0 +1,14 @@
+---
+layout: src/layouts/MarkdownLayout.astro
+title: GF 2025 Referat
+---
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+
+<Translate page='genfors/2025' key='header' markdown />
+
+<Translate page='genfors/2025' key='bylaws' block />
+
+<Translate page='genfors/2025' key='agenda' markdown />

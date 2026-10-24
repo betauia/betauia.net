@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/layout/Container.astro";
+import Button from "@components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
+import Socials from "@components/widgets/Socials.astro";
+import Card from "@components/ui/Card.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import { useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("kontakt", Astro.currentLocale);
+const contacts = [
+  {
+    title: t("contacts.general.title"),
+    email: "post@betauia.net",
+    description: t("contacts.general.description"),
+  },
+  {
+    title: t("contacts.business.title"),
+    email: "bedrift@betauia.net",
+    description: t("contacts.business.description"),
+  },
+  {
+    title: t("contacts.finance.title"),
+    email: "økonomi@betauia.net",
+    description: t("contacts.finance.description"),
+  },
+];
+---
+
+<BaseLayout title={t("title")}>
+  <Container class="flex min-h-svh flex-col justify-center">
+    <h1 class="mt-4 text-4xl font-semibold"><Translate page="kontakt" key="title" /></h1>
+    <p class="my-4 text-fg-muted dark:text-dark-fg-muted"><Translate page="kontakt" key="intro" /></p>
+
+    <div class="mt-4 grid gap-6 md:grid-cols-3">
+      {
+        contacts.map(({ title, email, description }) => (
+          <Card title={title} text={description} href={`mailto:${email}`} highlightText={email} />
+        ))
+      }
+    </div>
+
+    <div class="mt-12">
+      <h2 class="text-2xl font-medium"><Translate page="kontakt" key="discordTitle" /></h2>
+      <p class="mt-2 text-fg-muted dark:text-dark-fg-muted"><Translate page="kontakt" key="discordText" /></p>
+      <div class="mt-4">
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate page="kontakt" key="discordButton" /></Button>
+      </div>
+    </div>
+
+    <Socials class="mb-6 mt-12" />
+  </Container>
+</BaseLayout>

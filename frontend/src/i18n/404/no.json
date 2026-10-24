@@ -1,0 +1,20 @@
+{
+  "title": "Her var det tomt...",
+  "message": "Denne siden Finnes ikke!",
+  "back": "Gå tilbake",
+  "contact": "Ta kontakt",
+  "messages": {
+    "1": "Dette blir ikke fikset før vi får mer pizza!",
+    "2": "Denne siden forsvant kanskje i siste commit.",
+    "3": "Designeren mente det var minimalistisk.",
+    "4": "Vi trodde noen skulle fikse det. Ingen gjorde det.",
+    "5": "It's not a bug, it's a feature!",
+    "6": "Worked on my machine!",
+    "7": "Har du hørt om 99.99% uptime? Ikke vi!",
+    "8": "Sjekk AWS US-East-1 sin status.",
+    "9": "Your majesty, they hit the second server!",
+    "10": "Sikkert en DNS-feil.",
+    "11": "BetaSEC har tatt ned siden pga sikkerhetsbrudd.",
+    "12": "Det manglet et komma i koden!"
+  }
+}

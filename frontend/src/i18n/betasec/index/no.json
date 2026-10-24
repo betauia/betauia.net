@@ -1,0 +1,24 @@
+{
+  "imageAlt": "Image from NNS CTF",
+  "welcome": {
+    "title": "Velkommen til BetaSec!",
+    "p1": "BetaSec er en interessegruppe under Beta spesielt rettet mot cybersikkerhet studenter, men åpen for alle som er interessert i fagområdet. Vi er en gjeng som ønsker å skape et inkluderende miljø hvor medlemmer kan utvikle ferdighetene sine gjennom ulike arrangementer som workshops, gjesteforelesninger og sosiale aktiviteter. .",
+    "p2": "Enten du er nybegynner eller erfaren innen cybersikkerhet, er BetaSec et flott sted å lære, dele kunnskap og bygge nettverk med likesinnede. Bli med oss for å utforske den spennende verdenen av cybersikkerhet sammen!"
+  },
+  "uiactf": {
+    "title": "UiACTF",
+    "p1": "UiACTF er et Capture The Flag (CTF) lag for UiA studenter. Vi deltar i CTF konkurranser, og har som mål å lære og utvikle våre ferdigheter innen cybersikkerhet. Vi er alltid på utkikk etter nye medlemmer, uansett ferdighetsnivå. Bli med oss for å lære, konkurrere og ha det gøy!",
+    "p2": "Hvert semester arrangerer vi vår egen CTF-konkurranse, Intro CTF (UiACTF), som er åpen for alle studenter. Dette gir en unik mulighet til å utfordre og utvikle ferdighetene dine innen cybersikkerhet, samtidig som du kan engasjere deg videre ved å bidra til å planlegge og gjennomføre arrangementet."
+  },
+  "previousEvents": {
+    "title": "Tidligere arrangementer",
+    "introCtf": {
+      "title": "Intro CTF Vår 2025",
+      "text": "Våren 2025 arrangerte vi vår egen CTF-konkurranse, Intro CTF, som var åpen for alle studenter."
+    },
+    "nnsCtf": {
+      "title": "NNS CTF",
+      "text": "I høst 2025 deltok vi og satt opp On-site i Grimstad for Norske Nøkkelsnikkernes CTF."
+    }
+  }
+}

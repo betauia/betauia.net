@@ -28,6 +28,7 @@ import eventkomBase from "@assets/logos/eventkom/base.svg";
 import eventkomBlack from "@assets/logos/eventkom/black.png";
 import eventkomBlue from "@assets/logos/eventkom/blue.png";
 import eventkomWhite from "@assets/logos/eventkom/white.png";
+import { useTranslations } from "@i18n/utils.ts";
 
 export const logos = {
   beta: {
@@ -75,42 +76,45 @@ export const logos = {
   },
 } as const;
 
-export const brandingColors = [
-  {
-    name: "Background",
-    description:
-      "Grunnfarge for bakgrunner som rammer inn innhold, som sider, seksjoner og sidepaneler.",
-    light: "#F2F2F6",
-    dark: "#0F151F",
-  },
-  {
-    name: "Raised",
-    description: "Bakgrunner som ligger over base, for eksempel kort, bokser og felt.",
-    light: "#EAEAEF",
-    dark: "#151E2D",
-  },
-  {
-    name: "Foreground",
-    description: "Hovedfarge for tekst og annet viktig innhold.",
-    light: "#242424",
-    dark: "#FDFDFD",
-  },
-  {
-    name: "Muted",
-    description: "Nedtonet tekstfarge for mindre viktig informasjon.",
-    light: "#425269",
-    dark: "#B9C5DD",
-  },
-  {
-    name: "Aksent (primær)",
-    description: "Hovedaksent brukt til knapper, lenker og viktige markeringer.",
-    light: "#0085FF",
-    dark: "#0085FF",
-  },
-  {
-    name: "Aksent (sekundær)",
-    description: "Sekundær aksent brukt sparsomt for variasjon og detaljer.",
-    light: "#14B8A6",
-    dark: "#14B8A6",
-  },
-];
+export function brandingColors(lang?: string) {
+  const t = useTranslations("om/branding", lang);
+
+  return [
+    {
+      name: "Background",
+      description: t("colors.background"),
+      light: "#F2F2F6",
+      dark: "#0F151F",
+    },
+    {
+      name: "Raised",
+      description: t("colors.raised"),
+      light: "#EAEAEF",
+      dark: "#151E2D",
+    },
+    {
+      name: "Foreground",
+      description: t("colors.foreground"),
+      light: "#242424",
+      dark: "#FDFDFD",
+    },
+    {
+      name: "Muted",
+      description: t("colors.muted"),
+      light: "#425269",
+      dark: "#B9C5DD",
+    },
+    {
+      name: "Aksent (primær)",
+      description: t("colors.primary"),
+      light: "#0085FF",
+      dark: "#0085FF",
+    },
+    {
+      name: "Aksent (sekundær)",
+      description: t("colors.secondary"),
+      light: "#14B8A6",
+      dark: "#14B8A6",
+    },
+  ];
+}

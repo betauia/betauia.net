@@ -24,6 +24,8 @@ const {
 <html lang="en">
   <head>
     <script>
+      import { getPreferredLanguage, redirectToLanguage, translationExist } from "@i18n/utils.ts";
+
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
@@ -31,6 +33,18 @@ const {
       ) {
         document.documentElement.classList.add("dark");
       }
+
+
+      export function ensureLanguageInLocation() {
+        const pathSegment = window.location.pathname.split("/").filter(Boolean);
+
+        if (!translationExist(pathSegment[0])) {
+          const prefLang = getPreferredLanguage();
+          redirectToLanguage(prefLang);
+        }
+      }
+
+      ensureLanguageInLocation();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />

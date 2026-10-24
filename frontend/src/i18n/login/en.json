@@ -1,0 +1,19 @@
+{
+  "pageTitle": "Log in",
+  "heading": "Log in",
+  "existingUser": "Existing user?",
+  "newUser": "New user?",
+  "emailLabel": "Email address",
+  "passwordLabel": "Password",
+  "loginButton": "Log in",
+  "loginLoading": "Logging in...",
+  "registerButton": "Create account",
+  "registerLoading": "Sending...",
+  "separator": "- or -",
+  "confirmationNote": "We'll send you a confirmation link",
+  "registerError": "Please confirm you are not a robot.",
+  "loginFailed": "Log in failed.",
+  "registerSuccess": "Check your email.",
+  "registerFailed": "Something went wrong.",
+  "retry": "Try again"
+}

@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { ensureLanguageInPath } from "@i18n/utils.ts";
+export interface Props extends HTMLAttributes<"a"> {}
+const props = Astro.props;
+
+const { locale } = Astro.params;
+
+const parsedHref = parseHref(props.href);
+const href = parsedHref ? ensureLanguageInPath(locale, parsedHref) : undefined;
+
+function parseHref(href?: string | URL | null) {
+  if (href instanceof URL) {
+    return href.toString();
+  }
+
+  return href;
+}
+---
+
+<a {...{...props, href}}><slot /></a>

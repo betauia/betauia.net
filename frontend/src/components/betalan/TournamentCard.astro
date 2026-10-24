@@ -1,6 +1,6 @@
 ---
 // Tournament card component for displaying tournament information in a card format
-
+import A from "@components/ui/A.astro";
 interface Props {
   title: string;
   imagePath: string;
@@ -12,7 +12,7 @@ interface Props {
 const { title, imagePath, altText, description, linkPath } = Astro.props;
 ---
 
-<a href={linkPath} class="tournament-card-link">
+<A href={linkPath} class="tournament-card-link">
   <div class="tournament-card">
     <div class="tournament-img-container">
       <img src={imagePath} alt={altText} class="tournament-img" />
@@ -23,7 +23,7 @@ const { title, imagePath, altText, description, linkPath } = Astro.props;
       <span class="tournament-link">View Details</span>
     </div>
   </div>
-</a>
+</A>
 
 <style>
   .tournament-card {

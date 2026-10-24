@@ -1,0 +1,54 @@
+---
+import Container from "@components/layout/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+import A from "@components/ui/A.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+const t = useTranslations("betadev/gamejam/index", Astro.currentLocale);
+---
+
+<BaseLayout
+  title={t("title")}
+  description={t("description")}
+>
+  <Container>
+    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold"><Translate page="betadev/gamejam/index" key="heading" /></h1>
+
+    <p><Translate page="betadev/gamejam/index" key="intro" /></p>
+
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="theme.title" /></h2>
+    <p><Translate page="betadev/gamejam/index" key="theme.text" /></p>
+
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="prizes.title" /></h2>
+    <p><Translate page="betadev/gamejam/index" key="prizes.text" /></p>
+    <ol class="mt-4">
+      <li>
+        <p><Translate page="betadev/gamejam/index" key="prizes.first" /></p>
+      </li>
+      <li>
+        <p><Translate page="betadev/gamejam/index" key="prizes.second" /></p>
+      </li>
+    </ol>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="rules.title" /></h2>
+    <ul class="list-disc">
+      <li><Translate page="betadev/gamejam/index" key="rules.technologies" /></li>
+      <ul class="list-disc pl-8">
+        <li><Translate page="betadev/gamejam/index" key="rules.crossPlatform" /></li>
+        <li><Translate page="betadev/gamejam/index" key="rules.web" /></li>
+        <li><Translate page="betadev/gamejam/index" key="rules.recommendations" /></li>
+      </ul>
+      <li><Translate page="betadev/gamejam/index" key="rules.teams" /></li>
+      <li><Translate page="betadev/gamejam/index" key="rules.student" /></li>
+    </ul>
+
+    <p class="mt-4">
+      <Translate page="betadev/gamejam/index" key="questions.text">
+        <A slot="discord" class="bg-accent p-1 text-white" href="https://discord.gg/3xBPkDsaXy"
+          ><Translate page="betadev/gamejam/index" key="questions.discordLink" /></A
+        >
+      </Translate>
+    </p>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,892 @@
+---
+layout: src/layouts/MarkdownLayout.astro
+title: Git-guide
+---
+
+import CodeBlock from "@components/semantics/CodeBlock.astro";
+import { getStaticLanguagePaths } from "@i18n/utils.ts";
+import Translate from "@components/ui/Translate.astro";
+
+export const getStaticPaths = getStaticLanguagePaths();
+
+export const components = { pre: CodeBlock };
+
+## <Translate page='guides/prog/git' key='intro.title' />
+
+<Translate page='guides/prog/git' key='intro.text' block />
+
+### <Translate page='guides/prog/git' key='howToUse.title' />
+
+<Translate page='guides/prog/git' key='howToUse.p1' block />
+
+<Translate page='guides/prog/git' key='howToUse.p2' block />
+
+### <Translate page='guides/prog/git' key='toc.title' />
+
+- [**1 <Translate page='guides/prog/git' key='toc.getStarted' />**](#kom-i-gang)
+    - [1.1 <Translate page='guides/prog/git' key='toc.installGit' />](#installer-git)
+    - [1.2 <Translate page='guides/prog/git' key='toc.configureGit' />](#konfigurer-git)
+- [**2 <Translate page='guides/prog/git' key='toc.startProject' />**](#starte-et-prosjekt)
+    - [2.1 <Translate page='guides/prog/git' key='toc.createRepo' />](#opprett-et-nytt-repository)
+    - [2.2 <Translate page='guides/prog/git' key='toc.cloneRepo' />](#klon-et-eksisterende-repository)
+- [**3 <Translate page='guides/prog/git' key='toc.workflow' />**](#vanlig-arbeidsflyt)
+    - [3.1 <Translate page='guides/prog/git' key='toc.checkStatus' />](#sjekk-status)
+    - [3.2 <Translate page='guides/prog/git' key='toc.addChanges' />](#legg-til-endringer)
+    - [3.3 <Translate page='guides/prog/git' key='toc.commitChanges' />](#commit-endringer)
+    - [3.4 <Translate page='guides/prog/git' key='toc.pushPull' />](#push-og-pull)
+- [**4 <Translate page='guides/prog/git' key='toc.branching' />**](#branching)
+    - [4.1 <Translate page='guides/prog/git' key='toc.combineBranches' />](#kombinere-branches)
+    - [4.2 <Translate page='guides/prog/git' key='toc.squashCommits' />](#squash-commits)
+    - [4.3 <Translate page='guides/prog/git' key='toc.handleConflicts' />](#håndtere-konflikter)
+- [**5 <Translate page='guides/prog/git' key='toc.troubleshooting' />**](#feilsøking-og-historikk)
+    - [5.1 <Translate page='guides/prog/git' key='toc.undoErrors' />](#angre-feil)
+    - [5.2 <Translate page='guides/prog/git' key='toc.stashChanges' />](#stash-endringer)
+    - [5.3 <Translate page='guides/prog/git' key='toc.examineHistory' />](#undersøk-historikk)
+- [**6 <Translate page='guides/prog/git' key='toc.remotes' />**](#jobbe-med-remotes)
+    - [6.1 <Translate page='guides/prog/git' key='toc.connectRemotes' />](#koble-til-remotes)
+    - [6.2 <Translate page='guides/prog/git' key='toc.fetchUpdate' />](#hent-og-oppdater-remotes)
+- [**7 <Translate page='guides/prog/git' key='toc.standards' />**](#struktur-og-standarder)
+    - [7.1 <Translate page='guides/prog/git' key='toc.gitIgnore' />](#git-ignore)
+    - [7.2 <Translate page='guides/prog/git' key='toc.commitMessages' />](#commit-meldinger)
+    - [7.3 <Translate page='guides/prog/git' key='toc.branchNaming' />](#branch-navngivning)
+    - [7.4 <Translate page='guides/prog/git' key='toc.contribute' />](#bidra-til-et-repository)
+    - [7.5 <Translate page='guides/prog/git' key='toc.repoStructure' />](#repository-struktur)
+    - [7.6 <Translate page='guides/prog/git' key='toc.tagging' />](#tagging-og-versjoner)
+- [**8 <Translate page='guides/prog/git' key='toc.cheatSheet' />**](#cheat-sheet)
+
+## <Translate page='guides/prog/git' key='toc.getStarted' />
+<a name="kom-i-gang" />
+
+<Translate page='guides/prog/git' key='getStarted.intro1' block />
+
+<Translate page='guides/prog/git' key='getStarted.intro2' block />
+
+```bash
+git --version               # Sjekk om installert
+git config --global --list  # Sjekk konfigurasjon (q for quit)
+```
+
+<Translate page='guides/prog/git' key='getStarted.intro3' block />
+
+<a name="installer-git" />
+### <Translate page='guides/prog/git' key='toc.installGit' />
+
+#### Windows
+
+<Translate page='guides/prog/git' key='getStarted.windowsText' block />
+
+#### MacOS
+
+<Translate page='guides/prog/git' key='getStarted.macosText' block />
+
+```bash
+brew install git
+```
+
+#### Linux
+
+<Translate page='guides/prog/git' key='getStarted.linuxText' block />
+
+- Ubuntu/Debian
+
+```bash
+sudo apt install git
+```
+
+- Fedora
+
+```bash
+sudo dnf install git
+```
+
+- Arch/Manjaro
+
+```bash
+sudo pacman -S git
+```
+
+<a name="konfigurer-git" />
+### <Translate page='guides/prog/git' key='toc.configureGit' />
+
+<Translate page='guides/prog/git' key='getStarted.configIntro' block />
+
+<Translate page='guides/prog/git' key='getStarted.configStep' block />
+
+```bash
+git config --global user.name "Arne Westside"
+git config --global user.email "arnew@uia.no"
+
+git config --global init.defaultBranch main
+```
+
+> <Translate page='guides/prog/git' key='getStarted.configTip'/>
+
+<Translate page='guides/prog/git' key='getStarted.configCheck' block />
+
+```bash
+git config --list
+```
+
+<Translate page='guides/prog/git' key='getStarted.configEditor' block />
+
+```bash
+git config --global core.editor "code --wait"  # Visual Studio Code
+git config --global core.editor "nano"         # Nano (enkel å bruke i terminalen)
+git config --global core.editor "vim"          # Vim (for masochister)
+```
+
+## <Translate page='guides/prog/git' key='toc.startProject' />
+<a name="starte-et-prosjekt" />
+
+<Translate page='guides/prog/git' key='startProject.intro1' block />
+
+1. <Translate page='guides/prog/git' key='startProject.opt1'/>
+2. <Translate page='guides/prog/git' key='startProject.opt2'/>
+
+<br />
+
+<Translate page='guides/prog/git' key='startProject.intro2' block />
+
+<a name="opprett-et-nytt-repository" />
+### <Translate page='guides/prog/git' key='toc.createRepo' />
+
+<Translate page='guides/prog/git' key='startProject.createIntro1' block />
+
+<Translate page='guides/prog/git' key='startProject.createIntro2' block />
+
+```bash
+mkdir nytt-prosjekt-navn
+cd nytt-prosjekt-navn
+```
+
+<Translate page='guides/prog/git' key='startProject.createIntro3' block />
+
+```bash
+git init
+```
+
+<a name="klon-et-eksisterende-repository" />
+### <Translate page='guides/prog/git' key='toc.cloneRepo' />
+
+<Translate page='guides/prog/git' key='startProject.cloneIntro' block />
+
+```bash
+# HTTPS
+git clone https://github.com/brukernavn/prosjektnavn.git
+```
+
+eller
+
+```bash
+# SSH
+git clone git@github.com:brukernavn/prosjektnavn.git
+```
+
+<Translate page='guides/prog/git' key='startProject.cloneDesc' block />
+
+<Translate page='guides/prog/git' key='startProject.cloneDiffTitle' block />
+
+**HTTPS**:
+
+- <Translate page='guides/prog/git' key='startProject.httpsBullet1'/>
+- <Translate page='guides/prog/git' key='startProject.httpsBullet2'/>
+- <Translate page='guides/prog/git' key='startProject.httpsBullet3'/>
+
+**SSH**:
+
+- <Translate page='guides/prog/git' key='startProject.sshBullet1'/>
+- <Translate page='guides/prog/git' key='startProject.sshBullet2'/>
+- <Translate page='guides/prog/git' key='startProject.sshBullet3'/>
+
+> <Translate page='guides/prog/git' key='startProject.sshTip'/>
+
+<Translate page='guides/prog/git' key='startProject.sshSetup' block />
+
+```bash
+# Generer SSH nøkkel og spam enter
+ssh-keygen -t ed25519
+
+# Kopier public key til clipboard
+cat ~/.ssh/id_ed25519.pub
+```
+
+<Translate page='guides/prog/git' key='startProject.sshGitHub' block />
+
+<Translate page='guides/prog/git' key='startProject.sshTest' block />
+
+```bash
+ssh -T git@github.com
+```
+
+## <Translate page='guides/prog/git' key='toc.workflow' />
+<a name="vanlig-arbeidsflyt" />
+
+<Translate page='guides/prog/git' key='workflow.intro' block />
+
+1. <Translate page='guides/prog/git' key='workflow.step1'/>
+2. <Translate page='guides/prog/git' key='workflow.step2'/>
+3. <Translate page='guides/prog/git' key='workflow.step3'/>
+4. <Translate page='guides/prog/git' key='workflow.step4'/>
+
+<Translate page='guides/prog/git' key='workflow.outro' block />
+
+<a name="sjekk-status" />
+### <Translate page='guides/prog/git' key='toc.checkStatus' />
+
+<Translate page='guides/prog/git' key='workflow.statusIntro' block />
+
+```bash
+git status
+```
+
+<Translate page='guides/prog/git' key='workflow.statusOutput' block />
+
+```
+On branch feature/git-guide-page
+Your branch is up to date with 'origin/feature/git-guide-page'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   frontend/src/pages/guides/git.mdx
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+<Translate page='guides/prog/git' key='workflow.statusTypes' block />
+
+- <Translate page='guides/prog/git' key='workflow.statusUntracked'/>
+- <Translate page='guides/prog/git' key='workflow.statusStaged'/>
+- <Translate page='guides/prog/git' key='workflow.statusCommited'/>
+
+<a name="legg-til-endringer" />
+### <Translate page='guides/prog/git' key='toc.addChanges' />
+
+<Translate page='guides/prog/git' key='workflow.addIntro' block />
+
+```bash
+git add filnavn.txt  # Legg til en spesifikk fil
+git add .            # Legg til alle endringer i mappen
+git add *.txt        # Legg til alle .txt filer
+git add src/         # Legg til hele src-mappen
+```
+
+> <Translate page='guides/prog/git' key='workflow.addWarning'/>
+
+<Translate page='guides/prog/git' key='workflow.resetIntro' block />
+
+```bash
+git reset filnavn.txt  # Fjern fil fra staging
+git reset              # Fjern alle filer fra staging
+```
+
+<Translate page='guides/prog/git' key='workflow.diffIntro' block />
+
+```bash
+git diff           # Se unstaged changes
+git diff --staged  # Se staged changes
+```
+
+<a name="commit-endringer" />
+### <Translate page='guides/prog/git' key='toc.commitChanges' />
+
+<Translate page='guides/prog/git' key='workflow.commitIntro' block />
+
+```bash
+git commit -m "Beskrivende melding om hva du endret"
+```
+
+> <Translate page='guides/prog/git' key='workflow.commitTip'/>
+
+<Translate page='guides/prog/git' key='workflow.commitCombine' block />
+
+```bash
+git commit -am "Fix typo on home page banner"
+```
+
+<a name="push-og-pull" />
+### <Translate page='guides/prog/git' key='toc.pushPull' />
+
+<Translate page='guides/prog/git' key='workflow.pushIntro' block />
+
+```bash
+git push                    # Send til default remote og branch
+git push origin main        # Send til specific remote og branch
+git push -u origin feature  # Set upstream (hvor du sender) og push
+```
+
+> <Translate page='guides/prog/git' key='workflow.pushTip'/>
+
+<Translate page='guides/prog/git' key='workflow.pullIntro' block />
+
+```bash
+git pull                        # Hent og merge fra remote
+git pull --rebase               # Hent og rebase (anbefalt)
+git fetch                       # Bare hent, ikke merge
+```
+
+> <Translate page='guides/prog/git' key='workflow.pullTip'/>
+
+## <Translate page='guides/prog/git' key='toc.branching' />
+<a name="branching" />
+
+<Translate page='guides/prog/git' key='branching.intro' block />
+
+```bash
+git branch                 # Se alle branches
+git branch branch-navn     # Lag ny branch
+git switch branch-navn     # Bytt til branch
+git switch -c branch-navn  # Lag og bytt til branch
+git branch -d branch-navn  # Slett branch
+```
+
+> <Translate page='guides/prog/git' key='branching.tip'/>
+
+<a name="kombinere-branches" />
+### <Translate page='guides/prog/git' key='toc.combineBranches' />
+
+<Translate page='guides/prog/git' key='branching.combineIntro' block />
+
+<Translate page='guides/prog/git' key='branching.mergeTitle' block />
+
+```bash
+git switch main         # Bytt til main
+git merge feature-navn  # Merge feature inn i main
+```
+
+<Translate page='guides/prog/git' key='branching.mergeDesc' block />
+
+<Translate page='guides/prog/git' key='branching.rebaseTitle' block />
+
+```bash
+git switch feature-navn    # Bytt til feature branch
+git rebase main            # Rebase feature på toppen av main
+git switch main            # Bytt til main
+git merge feature-navn     # Fast-forward merge
+```
+
+<a name="squash-commits" />
+### <Translate page='guides/prog/git' key='toc.squashCommits' />
+
+<Translate page='guides/prog/git' key='branching.squashIntro' block />
+
+<Translate page='guides/prog/git' key='branching.squashDesc' block />
+
+```bash
+git rebase -i HEAD~3  # Interaktiv rebase av siste 3 commits
+```
+
+<Translate page='guides/prog/git' key='branching.squashEdit' block />
+
+> <Translate page='guides/prog/git' key='branching.squashTip'/>
+
+<a name="håndtere-konflikter" />
+### <Translate page='guides/prog/git' key='toc.handleConflicts' />
+
+<Translate page='guides/prog/git' key='branching.conflictIntro' block />
+
+```bash
+git status          # Se hvilke filer har konflikter
+```
+
+<Translate page='guides/prog/git' key='branching.conflictDesc' block />
+
+```
+<<<<<< HEAD
+<Translate key="page.guides.git.branching.conflictCode"/>
+>>>>>> branch-navn
+```
+
+<Translate page='guides/prog/git' key='branching.conflictResolve' block />
+
+```bash
+git add løst-konflikt.txt
+git commit
+```
+
+## <Translate page='guides/prog/git' key='toc.troubleshooting' />
+<a name="feilsøking-og-historikk" />
+
+<Translate page='guides/prog/git' key='troubleshooting.intro' block />
+
+<a name="angre-feil" />
+### <Translate page='guides/prog/git' key='toc.undoErrors' />
+
+<Translate page='guides/prog/git' key='troubleshooting.undoIntro' block />
+
+- <Translate page='guides/prog/git' key='troubleshooting.undoChanges'/>
+
+```bash
+git restore filnavn.txt  # Angre endringer i fil
+git restore .            # Angre alle endringer
+```
+
+- <Translate page='guides/prog/git' key='troubleshooting.undoCommits'/>
+
+```bash
+git reset --soft HEAD~1  # Angre sist commit, behold endringer
+git reset --hard HEAD~1  # Angre sist commit, slett endringer
+```
+
+> <Translate page='guides/prog/git' key='troubleshooting.undoWarning'/>
+
+- <Translate page='guides/prog/git' key='troubleshooting.revert'/>
+
+```bash
+git revert HEAD                 # Revert siste commit
+git revert abc123               # Revert spesifikk commit
+```
+
+<a name="stash-endringer" />
+### <Translate page='guides/prog/git' key='toc.stashChanges' />
+
+<Translate page='guides/prog/git' key='troubleshooting.stashIntro' block />
+
+```bash
+git stash       # Stash alle endringer
+git stash -u    # Stash inkludert untracked files
+git stash list  # Se alle stashes
+git stash pop   # Hent tilbake siste stash
+git stash drop  # Slett stash
+```
+
+<Translate page='guides/prog/git' key='troubleshooting.stashDesc' block />
+
+<a name="undersøk-historikk" />
+### <Translate page='guides/prog/git' key='toc.examineHistory' />
+
+<Translate page='guides/prog/git' key='troubleshooting.historyIntro' block />
+
+```bash
+git log                # Full historikk
+git log --oneline      # Kort oversikt
+git log --graph --all  # Visualiser alle branches
+git log --decorate     # Viser referanser
+git log -p             # Viser endringene
+git log -n 4           # Viser de 4 siste commitene
+git --no-pager log     # Unngå scary Vim keybinds :)
+```
+
+<Translate page='guides/prog/git' key='troubleshooting.historyCombine' block />
+
+```bash
+git --no-pager log --graph --all --oneline --decorate
+```
+
+## <Translate page='guides/prog/git' key='toc.remotes' />
+<a name="jobbe-med-remotes" />
+
+<Translate page='guides/prog/git' key='remotes.intro' block />
+
+<a name="koble-til-remotes" />
+### <Translate page='guides/prog/git' key='toc.connectRemotes' />
+
+<Translate page='guides/prog/git' key='remotes.connectIntro' block />
+
+```bash
+git remote -v              # Se alle remotes
+git remote add origin url  # Legg til remote
+git remote remove origin   # Fjern remote
+git remote rename old new  # Gi nytt navn til remote
+```
+
+> <Translate page='guides/prog/git' key='remotes.connectTip'/>
+
+<Translate page='guides/prog/git' key='remotes.connectPush' block />
+
+```bash
+git push -u origin branch-navn  # Set upstream og push
+```
+
+<a name="hent-og-oppdater-remotes" />
+### <Translate page='guides/prog/git' key='toc.fetchUpdate' />
+
+<Translate page='guides/prog/git' key='remotes.fetchTitle' block />
+
+```bash
+git fetch                       # Hent alle endringer fra alle remotes
+git fetch origin                # Hent fra spesifikk remote
+git fetch upstream              # Hent fra upstream (hvis du har fork)
+```
+
+<Translate page='guides/prog/git' key='remotes.fetchCombine' block />
+
+```bash
+git pull                        # Fetch + merge fra remote
+git pull --rebase               # Fetch + rebase (anbefalt)
+git pull upstream main          # Hent fra upstream main branch
+```
+
+> <Translate page='guides/prog/git' key='remotes.fetchTip'/>
+
+<Translate page='guides/prog/git' key='remotes.pushTitle' block />
+
+```bash
+git push                        # Send til default remote og branch
+git push origin main            # Send til spesifikk remote og branch
+git push -u origin feature      # Set upstream og push ny branch
+git push --force-with-lease     # Tryggere force push
+```
+
+> <Translate page='guides/prog/git' key='remotes.pushWarning'/>
+
+## <Translate page='guides/prog/git' key='toc.standards' />
+<a name="struktur-og-standarder" />
+
+<Translate page='guides/prog/git' key='standards.intro' block />
+
+<a name="git-ignore" />
+### <Translate page='guides/prog/git' key='toc.gitIgnore' />
+
+<Translate page='guides/prog/git' key='standards.ignoreIntro' block />
+
+<Translate page='guides/prog/git' key='standards.ignoreDesc' block />
+
+```
+# Bruk `#` for en vakker kommentar
+
+# Ikke inkluder `.env` og `node_modules` mappen
+.env
+node_modules/
+
+# Ikke inkluder noen `.txt` filer
+*.txt
+
+# Men ta med `important.txt`
+!important.txt
+```
+
+> <Translate page='guides/prog/git' key='standards.ignoreTip'/>
+
+<Translate page='guides/prog/git' key='standards.ignoreUndo' block />
+
+```bash
+git rm --cached filnavn.txt  # Fjern fil fra Git
+git rm --cached -r mappen/   # Fjern hele mappen fra Git
+```
+
+<a name="commit-meldinger" />
+### <Translate page='guides/prog/git' key='toc.commitMessages' />
+
+<Translate page='guides/prog/git' key='standards.commitIntro' block />
+
+<Translate page='guides/prog/git' key='standards.commitFormat' block />
+
+```
+Type: Kort beskrivelse (maks 50 tegn)
+
+Lengre forklaring om nødvendig. Forklar hva og hvorfor,
+ikke hvordan. Wrap teksten på 72 tegn.
+
+- Kan bruke bullet points
+- For å liste opp endringer
+```
+
+<Translate page='guides/prog/git' key='standards.commitList' block />
+
+```bash
+git commit -m "feat: Add user authentication system"
+git commit -m "fix: Resolve navbar mobile responsive issue"
+git commit -m "docs: Update API documentation"
+git commit -m "style: Fix indentation in header component"
+git commit -m "refactor: Simplify user validation logic"
+git commit -m "test: Add unit tests for login function"
+git commit -m "chore: Update dependencies to latest versions"
+```
+
+<Translate page='guides/prog/git' key='standards.commitEmojis' block />
+
+```bash
+git commit -m "✨ Add dark mode toggle functionality"
+git commit -m "🐛 Fix button alignment on mobile devices"
+git commit -m "📝 Update contributing guidelines"
+git commit -m "♻️ Refactor API response handling"
+git commit -m "🧪 Add integration tests for payment flow"
+```
+
+> <Translate page='guides/prog/git' key='standards.commitTip'/>
+
+<a name="branch-navngivning" />
+### <Translate page='guides/prog/git' key='toc.branchNaming' />
+
+<Translate page='guides/prog/git' key='standards.branchIntro' block />
+
+<Translate page='guides/prog/git' key='standards.branchList' block />
+
+```bash
+# Feature branches
+feature/user-authentication
+feature/add-payment-system
+feat/shopping-cart
+
+# Bug fix branches
+fix/navbar-mobile-layout
+bugfix/login-validation-error
+hotfix/security-vulnerability
+
+# Release branches
+release/v2.1.0
+release/2024-spring-update
+
+# Experiment branches (proof of concepts)
+experiment/new-ui-framework
+poc/machine-learning-integration
+```
+
+> <Translate page='guides/prog/git' key='standards.branchTip'/>
+
+<a name="bidra-til-et-repository" />
+### <Translate page='guides/prog/git' key='toc.contribute' />
+
+<Translate page='guides/prog/git' key='standards.contributeIntro' block />
+
+<Translate page='guides/prog/git' key='standards.contributeStep1' block />
+
+```bash
+# Fork på repositoryet først, så klon din fork
+git clone git@github.com:ditt-brukernavn/repo-navn.git
+cd repo-navn
+
+# Legg til original repo som upstream
+git remote add upstream git@github.com:original-brukernavn/repo-navn.git
+```
+
+<Translate page='guides/prog/git' key='standards.contributeStep2' block />
+
+```bash
+git fetch upstream
+git switch main
+git pull upstream main
+```
+
+<Translate page='guides/prog/git' key='standards.contributeStep3' block />
+
+```bash
+git switch -c feature/vim-guide
+```
+
+<Translate page='guides/prog/git' key='standards.contributeStep4' block />
+
+```bash
+git add .
+git commit -m "feat: Add list of Vim keybinds"
+```
+
+<Translate page='guides/prog/git' key='standards.contributeStep5' block />
+
+```bash
+git push -u origin feature/vim-guide
+```
+
+> <Translate page='guides/prog/git' key='standards.contributeTip1'/>
+
+<Translate page='guides/prog/git' key='standards.contributeStep6' block />
+
+<Translate page='guides/prog/git' key='standards.contributeStep6Desc' block />
+
+> <Translate page='guides/prog/git' key='standards.contributeTip2'/>
+
+<a name="repository-struktur" />
+### <Translate page='guides/prog/git' key='toc.repoStructure' />
+
+<Translate page='guides/prog/git' key='standards.repoIntro' block />
+
+<Translate page='guides/prog/git' key='standards.repoFiles' block />
+
+```
+prosjektnavn/
+├── README.md
+├── .gitignore
+├── LICENSE
+├── CONTRIBUTING.md
+├── docs/
+└── ...
+```
+
+<Translate page='guides/prog/git' key='standards.repoReadme' block />
+
+<Translate page='guides/prog/git' key='standards.repoLicense' block />
+
+<Translate page='guides/prog/git' key='standards.repoContributing' block />
+
+<Translate page='guides/prog/git' key='standards.repoDocs' block />
+
+<a name="tagging-og-versjoner" />
+### <Translate page='guides/prog/git' key='toc.tagging' />
+
+<Translate page='guides/prog/git' key='standards.tagIntro' block />
+
+<Translate page='guides/prog/git' key='standards.tagCreate' block />
+
+```bash
+git tag v1.0.0                                # Enkel tag
+git tag -a v1.0.0 -m "Release version 1.0.0"  # Annotert tag (anbefalt)
+```
+
+<Translate page='guides/prog/git' key='standards.tagView' block />
+
+```bash
+git tag          # List alle tags
+git show v1.0.0  # Vis tag info
+```
+
+<Translate page='guides/prog/git' key='standards.tagPush' block />
+
+```bash
+git push origin v1.0.0  # Push spesifikk tag
+git push origin --tags  # Push alle tags
+```
+
+<Translate page='guides/prog/git' key='standards.tagDelete' block />
+
+```bash
+git tag -d v1.0.0                # Slett lokal tag
+git push origin --delete v1.0.0  # Slett remote tag
+```
+
+> <Translate page='guides/prog/git' key='standards.tagTip'/>
+
+## <Translate page='guides/prog/git' key='toc.cheatSheet' />
+<a name="cheat-sheet" />
+
+### <Translate page='guides/prog/git' key='cheatSheet.setup' />
+
+```bash
+git config --global user.name "Arne Westside"
+git config --global user.email "arnew@uia.no"
+git config --global init.defaultBranch main
+git config --global core.editor "code --wait"  # Sett editor til VSC
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.ssh' />
+
+```bash
+ssh-keygen -t ed25519      # Sett opp nøkkel
+cat ~/.ssh/id_ed25519.pub  # Skriv nøkkel
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.start' />
+
+```bash
+git init                                      # Nytt repository
+git clone https://github.com/bruker/repo.git  # Klon med HTTPS
+git clone git@github.com:bruker/repo.git      # Klon med SSH
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.common' />
+
+```bash
+git status         # Se status
+git add filnavn    # Stage spesifikk fil
+git add .          # Stage alle endringer
+git add *.md       # Stage alle .md filer
+git commit -m ""   # Commit med melding
+git commit -am ""  # Add og commit tracked filer
+git push           # Send til remote
+git pull           # Hent oppdateringer
+git pull --rebase  # Hent oppdateringer og rebase
+git diff           # Se unstaged endringer
+git diff --staged  # Se staged endringer
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.branches' />
+
+```bash
+git branch                 # Se alle branches
+git branch branch-navn     # Lag ny branch
+git switch -c branch-navn  # Lag og bytt til branch
+git switch branch-navn     # Bytt til branch
+git switch main            # Bytt til main
+git merge branch-navn      # Merge branch inn i nåværende branch
+git rebase main            # Rebase på main
+git branch -d branch-navn  # Slett branch (trygt, kun hvis merged)
+git branch -D branch-navn  # Force slett branch (farlig, mister endringer)
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.fork' />
+
+```bash
+# Sett opp fork
+git clone git@github.com:ditt-navn/repo.git
+git remote add upstream git@github.com:original/repo.git
+
+# Hold deg oppdatert
+git fetch upstream
+git switch main
+git pull upstream main
+
+# Lag feature branch og push
+git switch -c feature/ny-funksjon
+git push -u origin feature/ny-funksjon
+
+# Forbered for merge
+git fetch upstream
+git rebase upstream/main
+git push --force-with-lease origin feature/ny-funksjon
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.remotes' />
+
+```bash
+git remote -v               # Se alle remotes
+git remote add origin url   # Legg til remote
+git remote add upstream url # Legg til upstream
+git fetch origin            # Hent fra origin
+git fetch upstream          # Hent fra upstream
+git push -u origin branch   # Set upstream og push
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.troubleshooting' />
+
+```bash
+git restore filnavn.txt  # Angre endringer i fil
+git restore .            # Angre alle endringer
+git reset filnavn.txt    # Unstage fil
+git reset                # Unstage alle filer
+git reset --soft HEAD~1  # Angre commit, behold endringer
+git reset --hard HEAD~1  # Angre commit, slett endringer
+git revert HEAD          # Lag angre-commit
+git stash                # Midlertidig lagre
+git stash -u             # Stash med untracked files
+git stash list           # Se alle stashes
+git stash pop            # Hent tilbake stash
+git stash drop           # Slett stash
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.history' />
+
+```bash
+git log                # Full historikk
+git log --oneline      # Kompakt log
+git log --graph --all  # Visualiser alle branches
+git log -n 5           # Vis 5 siste commits
+git show abc123        # Vis spesifikk commit
+git blame filnavn.txt  # Se hvem som endret hva
+git diff main..branch  # Sammenlign branches
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.tags' />
+
+```bash
+git tag                  # List alle tags
+git tag v1.0.0           # Lag enkel tag
+git tag -a v1.0.0 -m ""  # Lag annotert tag
+git push origin v1.0.0   # Push spesifikk tag
+git push origin --tags   # Push alle tags
+git tag -d v1.0.0        # Slett lokal tag
+```
+
+### <Translate page='guides/prog/git' key='cheatSheet.ignore' />
+
+```bash
+git rm --cached filnavn    # Fjern fil fra Git, behold lokalt
+git rm --cached -r mappe/  # Fjern mappe fra Git
+```
+
+```
+# Bruk `#` for en vakker kommentar
+.env            # Ikke inkluder fil
+node_modules/   # Ikke inkluder mappe
+*.txt           # Ikke inkluder noen `.txt` filer
+!important.txt  # Men inkluder denne filen
+```
