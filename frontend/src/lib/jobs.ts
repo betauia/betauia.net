@@ -38,7 +38,7 @@ export const formatJobType = (jobType: string): string => {
   return labels[jobType] ?? jobType;
 };
 
-export const formatYears = (years: string[] | null): string | null => {
+export const formatYears = (years?: string[] | null): string | null => {
   if (!years || years.length === 0) return null;
 
   const nums = years

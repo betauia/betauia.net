@@ -1,4 +1,3 @@
-import asyncio
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -75,30 +74,22 @@ async def create_job(
                 detail="Invalid deadline format.",
             ) from exc
 
-    study_values: list[str] = []
-
-    if form.studies.study_ai:
-        study_values.append("ai")
-    if form.studies.study_cyber:
-        study_values.append("cyber")
-    if form.studies.study_software:
-        study_values.append("software")
-
+    selected_studies = {
+        "ai": form.studies.study_ai,
+        "cyber": form.studies.study_cyber,
+        "software": form.studies.study_software,
+    }
+    study_values = [study for study, selected in selected_studies.items() if selected]
     studies = [JobListingStudy(study=s) for s in study_values]
 
-    year_values: list[str] = []
-
-    if form.years.year_1:
-        year_values.append("1")
-    if form.years.year_2:
-        year_values.append("2")
-    if form.years.year_3:
-        year_values.append("3")
-    if form.years.year_4:
-        year_values.append("4")
-    if form.years.year_5:
-        year_values.append("5")
-
+    selected_years = {
+        "1": form.years.year_1,
+        "2": form.years.year_2,
+        "3": form.years.year_3,
+        "4": form.years.year_4,
+        "5": form.years.year_5,
+    }
+    year_values = [year for year, selected in selected_years.items() if selected]
     years = [JobListingYear(year=y) for y in year_values]
 
     job = JobListing(
@@ -160,16 +151,13 @@ async def delete_job(
     db: AsyncSession = Depends(get_session),
     user: UserResponse = Depends(admin_required),
 ):
-    result = await db.execute(
-        select(JobListing).where(JobListing.id == job_id)
-    )
+    result = await db.execute(select(JobListing).where(JobListing.id == job_id))
 
     job = result.scalar_one_or_none()
 
     if job is None:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Job annonsen finnes ikke.",
+            status_code=status.HTTP_404_NOT_FOUND, detail="Job annonsen finnes ikke."
         )
 
     image_path = job.image_path

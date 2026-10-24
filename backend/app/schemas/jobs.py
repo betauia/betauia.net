@@ -2,7 +2,7 @@ from fastapi import Depends, File, Form, UploadFile
 
 
 class JobDetailsForm:
-    def __init__(  # noqa: PLR0913
+    def __init__(
         self,
         title: str = Form(...),
         body: str = Form(...),
@@ -46,7 +46,7 @@ class JobStudiesForm:
 
 
 class JobYearsForm:
-    def __init__(  # noqa: PLR0913
+    def __init__(
         self,
         year_1: bool = Form(False),
         year_2: bool = Form(False),
