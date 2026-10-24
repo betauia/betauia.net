@@ -92,15 +92,13 @@ async def get_players(request: Request, session: AsyncSession = Depends(get_sess
 
 When it is needed to alter a table, we use `alembic` to keep up with versioning changes to the tables. The `/alembic` folder should never need manual interference, but inside it, all the versionings will be stored.
 
-When you modify or create SQLAlchemy models in `app/models/`, generate a migration that will be automatically loaded at build:
+When you modify or create SQLAlchemy models in `app/models/`, make sure the database is running (`pnpm db`) and generate a migration:
 
 ```bash
-# Development
-docker compose exec backend alembic revision --autogenerate -m "add user table"
-
-# Production
-docker compose -f compose.yaml -f compose.prod.yaml exec backend alembic revision --autogenerate -m "add user table"
+pnpm db:revision "add user table"
 ```
+
+Apply it locally with `pnpm db:migrate`. In production, migrations are applied automatically every time the backend starts.
 
 > Remember to use clear names that is easy to navigate to specific changes with.
 
@@ -114,7 +112,13 @@ This will:
 
 ## Cleaning the DB
 
-Stopping the containers keeps the volumes intact. To remove and clean it you need to follow these instructions.
+Stopping the database (`pnpm db:stop`) keeps the data. To delete everything and start with a fresh, migrated database, run:
+
+```bash
+pnpm db:reset
+```
+
+To do it manually instead:
 
 1. List volumes:
 
