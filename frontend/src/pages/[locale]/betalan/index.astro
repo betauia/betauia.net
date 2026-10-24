@@ -9,7 +9,7 @@ import { Icon } from "astro-icon/components";
 import betaLANLogo from "@assets/betalan/Betalan_logo.png";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betalan/index", Astro.currentLocale);
 
 const oceanBg =
   "background: linear-gradient(180deg, #a6e6ff 0%, #5fc4e8 24%, #2e9ed1 48%, #1a6aa8 72%, #0a3f72 88%, #042a52 100%); background-attachment: fixed;";
@@ -22,7 +22,7 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
     <!-- Hero -->
     <div class="xp-window mx-auto mb-8 mt-6 w-full max-w-3xl">
       <div class="xp-titlebar">
-        <span class="xp-titlebar-text"><Translate key="page.betalan.index.xpTitle" /></span>
+        <span class="xp-titlebar-text"><Translate page="betalan/index" key="xpTitle" /></span>
         <div class="xp-buttons">
           <span class="xp-btn">–</span>
           <span class="xp-btn">▢</span>
@@ -33,18 +33,18 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
       <div class="xp-body px-4 py-8 text-center sm:px-8">
         <img
           src={betaLANLogo.src}
-          alt={t("page.betalan.index.logoAlt")}
+          alt={t("logoAlt")}
           class="mx-auto mb-6 w-full max-w-xl drop-shadow-[6px_8px_6px_rgba(0,0,0,0.45)]"
         />
         <p class="mb-4 text-xl font-semibold text-cyan-50 sm:text-2xl">
-          <Translate key="page.betalan.index.tagline" />
+          <Translate page="betalan/index" key="tagline" />
         </p>
-        <p class="mb-6 text-2xl font-bold text-orange-300 sm:text-3xl"><Translate key="page.betalan.index.date" /></p>
+        <p class="mb-6 text-2xl font-bold text-orange-300 sm:text-3xl"><Translate page="betalan/index" key="date" /></p>
 
         <div class="mb-2 flex justify-center">
           <LinkerButton
             href={ticketUrl}
-            text={t("page.betalan.index.tickets")}
+            text={t("tickets")}
             target="_blank"
             color="#ff9b11"
             pulsing={true}
@@ -56,15 +56,15 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
     <!-- Nav -->
     <div class="container mx-auto mb-10 flex flex-wrap justify-center gap-3 px-2 text-3xl sm:px-0">
       <A href="/betalan/program" target="_self" class="no-underline">
-        <button class="nav-btn"><Translate key="page.betalan.index.buttons.program" /></button>
+        <button class="nav-btn"><Translate page="betalan/index" key="buttons.program" /></button>
       </A>
       <A href="/betalan/rules" target="_self" class="no-underline">
-        <button class="nav-btn"><Translate key="page.betalan.index.buttons.rules" /></button>
+        <button class="nav-btn"><Translate page="betalan/index" key="buttons.rules" /></button>
       </A>
       <A href="https://discord.gg/ggUtjr8TSQ" target="_blank" rel="noopener" class="no-underline">
         <button class="nav-btn nav-btn-discord">
           <Icon name="fa-brands:discord" width="25" height="25" class="inline-block" />
-          <Translate key="page.betalan.index.buttons.discord" />
+          <Translate page="betalan/index" key="buttons.discord" />
         </button>
       </A>
     </div>
@@ -148,16 +148,16 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
 
         <div class="map-inner">
           <h2 class="scroll-title mb-2 text-center text-4xl font-semibold">
-            <Translate key="page.betalan.index.chart.title" />
+            <Translate page="betalan/index" key="chart.title" />
           </h2>
           <div class="scroll-content text-2xl">
-            <p><Translate key="page.betalan.index.chart.p1" /></p>
+            <p><Translate page="betalan/index" key="chart.p1" /></p>
             <br />
-            <p><Translate key="page.betalan.index.chart.p2" /></p>
+            <p><Translate page="betalan/index" key="chart.p2" /></p>
             <br />
-            <p><Translate key="page.betalan.index.chart.p3" /></p>
+            <p><Translate page="betalan/index" key="chart.p3" /></p>
             <br />
-            <p class="scroll-signoff text-right italic"><Translate key="page.betalan.index.chart.signoff" /></p>
+            <p class="scroll-signoff text-right italic"><Translate page="betalan/index" key="chart.signoff" /></p>
           </div>
         </div>
       </div>
@@ -168,11 +168,11 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
       id="crew-info"
       class="container mx-auto mb-8 flex max-w-full flex-col items-center rounded-lg bg-sky-950/85 p-4 text-center text-white lg:max-w-4xl"
     >
-      <h2 class="mb-4 text-5xl text-cyan-300 sm:text-7xl"><Translate key="page.betalan.index.crew.title" /></h2>
-      <p class="text-2xl sm:text-3xl"><Translate key="page.betalan.index.crew.text" /></p>
+      <h2 class="mb-4 text-5xl text-cyan-300 sm:text-7xl"><Translate page="betalan/index" key="crew.title" /></h2>
+      <p class="text-2xl sm:text-3xl"><Translate page="betalan/index" key="crew.text" /></p>
       <div>
         <button class="my-4 rounded bg-cyan-700 px-4 py-2 text-3xl text-white hover:bg-cyan-600">
-          <A href="/betalan/crew-info"><Translate key="page.betalan.index.crew.button" /></A>
+          <A href="/betalan/crew-info"><Translate page="betalan/index" key="crew.button" /></A>
         </button>
       </div>
     </div>

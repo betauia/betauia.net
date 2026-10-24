@@ -1,0 +1,35 @@
+{
+  "title": "Branding",
+  "heading": "Branding",
+  "usage": {
+    "title": "Usage",
+    "intro": "Using the logo, colors, and icons the right way helps keep things recognizable and professional. That’s why we ask you to always use them correctly by:",
+    "items": {
+      "1": "Using the light logo on dark backgrounds and the dark logo on light backgrounds.",
+      "2": "Always keeping logos in their original form, without changing proportions, colors, or content.",
+      "3": "Using the icon when the full logo does not fit, for example as a profile picture, app icon, or on social media.",
+      "4": "Avoiding placing the logo or icon on busy backgrounds that make it harder to read.",
+      "5": "Using the defined profile colors according to the palette below."
+    }
+  },
+  "colors": {
+    "title": "Colors",
+    "copyHint": "Click to copy",
+    "background": "Base color for backgrounds that frame content, such as pages, sections, and side panels.",
+    "raised": "Backgrounds layered above the base, for example cards, boxes, and fields.",
+    "foreground": "Main color for text and other important content.",
+    "muted": "Muted text color for less important information.",
+    "primary": "Main accent used for buttons, links, and important highlights.",
+    "secondary": "Secondary accent used sparingly for variation and details."
+  },
+  "logos": {
+    "title": "Logos",
+    "black": "Black",
+    "white": "White",
+    "blue": "Blue"
+  },
+  "icons": {
+    "title": "Icons"
+  },
+  "betaIconAlt": "Beta icon"
+}

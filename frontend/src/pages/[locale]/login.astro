@@ -7,22 +7,22 @@ import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("login", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.login.pageTitle")}>
+<BaseLayout title={t("pageTitle")}>
   <Container>
     <div class="mx-auto max-w-md">
-      <h1 class="mb-8 text-3xl font-bold"><Translate key="page.login.heading" /></h1>
+      <h1 class="mb-8 text-3xl font-bold"><Translate page="login" key="heading" /></h1>
 
       <div
         class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold"><Translate key="page.login.existingUser" /></h2>
+        <h2 class="mb-4 text-xl font-bold"><Translate page="login" key="existingUser" /></h2>
         <form id="login-form">
           <div class="mb-4">
             <label for="login-email" class="mb-2 block text-sm font-medium">
-              <Translate key="page.login.emailLabel" />
+              <Translate page="login" key="emailLabel" />
             </label>
             <input
               id="login-email"
@@ -36,7 +36,7 @@ const t = useTranslations(Astro.currentLocale);
 
           <div class="mb-6">
             <label for="login-password" class="mb-2 block text-sm font-medium">
-              <Translate key="page.login.passwordLabel" />
+              <Translate page="login" key="passwordLabel" />
             </label>
             <input
               id="login-password"
@@ -53,23 +53,23 @@ const t = useTranslations(Astro.currentLocale);
             id="login-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:opacity-50"
           >
-            <Translate key="page.login.loginButton" />
+            <Translate page="login" key="loginButton" />
           </button>
         </form>
       </div>
 
       <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">
-        <Translate key="page.login.separator" />
+        <Translate page="login" key="separator" />
       </p>
 
       <div
         class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-xl font-bold"><Translate key="page.login.newUser" /></h2>
+        <h2 class="mb-4 text-xl font-bold"><Translate page="login" key="newUser" /></h2>
         <form id="register-form">
           <div class="mb-6">
             <label for="register-email" class="mb-2 block text-sm font-medium">
-              <Translate key="page.login.emailLabel" />
+              <Translate page="login" key="emailLabel" />
             </label>
             <input
               id="register-email"
@@ -80,7 +80,7 @@ const t = useTranslations(Astro.currentLocale);
               placeholder="deg@eksempel.no"
             />
             <p class="mt-2 text-xs text-fg-muted dark:text-dark-fg-muted">
-              <Translate key="page.login.confirmationNote" />
+              <Translate page="login" key="confirmationNote" />
             </p>
           </div>
 
@@ -99,7 +99,7 @@ const t = useTranslations(Astro.currentLocale);
             id="register-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            <Translate key="page.login.registerButton" />
+            <Translate page="login" key="registerButton" />
           </button>
         </form>
       </div>
@@ -123,7 +123,7 @@ const t = useTranslations(Astro.currentLocale);
   import { login, initiateRegistration } from "@lib/auth";
   import { popup } from "@lib/message";
   import { extractCurrentLanguage } from "@i18n/utils.ts";
-  const t = useTranslations(extractCurrentLanguage());
+  const t = useTranslations("login", extractCurrentLanguage());
 
   const loginForm = document.getElementById("login-form") as HTMLFormElement;
   const registerForm = document.getElementById("register-form") as HTMLFormElement;
@@ -161,7 +161,7 @@ const t = useTranslations(Astro.currentLocale);
     const loginBtn = document.getElementById("login-btn") as HTMLButtonElement;
 
     loginBtn.disabled = true;
-    loginBtn.textContent = t("page.login.loginLoading");
+    loginBtn.textContent = t("loginLoading");
 
     try {
       await login({
@@ -172,9 +172,9 @@ const t = useTranslations(Astro.currentLocale);
       const redirectTo = params.get("redirect") || "/account";
       window.location.href = redirectTo;
     } catch (error) {
-      popup(error instanceof Error ? error.message :  t("page.login.loginFailed"), "error", t("page.login.retry"));
+      popup(error instanceof Error ? error.message :  t("loginFailed"), "error", t("retry"));
       loginBtn.disabled = false;
-      loginBtn.textContent = t("page.login.loginButton");
+      loginBtn.textContent = t("loginButton");
     }
   });
 
@@ -187,12 +187,12 @@ const t = useTranslations(Astro.currentLocale);
     const captchaToken = formData.get("cf-turnstile-response") as string;
 
     if (!captchaToken) {
-      popup(t("page.login.registerError"), "error");
+      popup(t("registerError"), "error");
       return;
     }
 
     registerBtn.disabled = true;
-    registerBtn.textContent = t("page.login.registerLoading");
+    registerBtn.textContent = t("registerLoading");
 
     try {
       const response = await initiateRegistration({
@@ -205,12 +205,12 @@ const t = useTranslations(Astro.currentLocale);
         return;
       }
 
-      popup(t("page.login.registerSuccess"), "success");
+      popup(t("registerSuccess"), "success");
       registerForm.reset();
     } catch (error) {
-      popup(error instanceof Error ? error.message : t("page.login.registerFailed"));
+      popup(error instanceof Error ? error.message : t("registerFailed"));
     } finally {
-      registerBtn.textContent = t("page.login.registerButton");
+      registerBtn.textContent = t("registerButton");
 
       registerBtn.disabled = true;
       if ((window as any).turnstile) {

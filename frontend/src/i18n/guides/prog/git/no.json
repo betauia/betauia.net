@@ -1,0 +1,318 @@
+{
+  "intro": {
+    "title": "Introduksjon",
+    "text": "Git er et versjonskontrollsystem som hjelper deg med å holde styr på kode, samarbeide med andre og rulle tilbake til tidligere versjoner om noe går galt."
+  },
+  "howToUse": {
+    "title": "Hvordan bruke guiden",
+    "p1": "Denne guiden passer for nybegynnere som aldri har brukt Git før, men fungerer også som en [hurtigreferanse](#cheat-sheet) for de mer erfarne.",
+    "p2": "Du kan lese guiden fra start til slutt for å lære Git trinnvis, eller bruke innholdsfortegnelsen som et oppslagsverk når du trenger bestemte kommandoer."
+  },
+  "toc": {
+    "title": "Innhold",
+    "getStarted": "Kom i gang",
+    "installGit": "Installer Git",
+    "configureGit": "Konfigurer Git",
+    "startProject": "Starte et prosjekt",
+    "createRepo": "Opprett nytt repository",
+    "cloneRepo": "Klon eksisterende repository",
+    "workflow": "Vanlig arbeidsflyt",
+    "checkStatus": "Sjekk status",
+    "addChanges": "Legg til endringer",
+    "commitChanges": "Commit endringer",
+    "pushPull": "Push og pull",
+    "branching": "Branching",
+    "combineBranches": "Kombinere branches",
+    "squashCommits": "Squash commits",
+    "handleConflicts": "Håndtere konflikter",
+    "troubleshooting": "Feilsøking og historikk",
+    "undoErrors": "Angre feil",
+    "stashChanges": "Stash endringer",
+    "examineHistory": "Undersøk historikk",
+    "remotes": "Jobbe med remotes",
+    "connectRemotes": "Koble til remotes",
+    "fetchUpdate": "Hent og oppdater remotes",
+    "standards": "Struktur og standarder",
+    "gitIgnore": "Git ignore",
+    "commitMessages": "Commit meldinger",
+    "branchNaming": "Branch navngivning",
+    "contribute": "Bidra til et repository",
+    "repoStructure": "Repository struktur",
+    "tagging": "Tagging og versjoner",
+    "cheatSheet": "Cheat sheet"
+  },
+  "getStarted": {
+    "intro1": "Før du kan bruke Git, må du ha det installert og konfigurert på maskinen din.",
+    "intro2": "Du kan sjekke om du allerede har installert eller konfigurert Git ved å kjøre disse kommandoene i terminal (eller Git Bash på Windows):",
+    "intro3": "Hvis ingen kommando viser noe eller du er usikker, kan du følge de 2 neste stegene.",
+    "windowsText": "Nedlasting for Windows finner du på [Git sin nettside](https://git-scm.com/downloads/win). Dette laster ned Git Bash, en terminal som gir deg Linux-lignende kommandoer, hvor du kan bruke Git kommandoer som vanlig.",
+    "macosText": "MacOS krever at du installerer [Homebrew](https://brew.sh/) for å håndtere nye pakker. Etter du har gjort det, kan du installere Git fra terminalen med:",
+    "linuxText": "Linux har mange distroer med flere ulike package managere. Her er en liste på kommandoene for å installere Git på noen populære distroer:",
+    "configIntro": "Før du begynner å bruke Git, må du fortelle hvem du er og hva navnet på din første branch er. Navnet og mailen din legges inn i alle commits du lager, og gjør det enklere for andre å se hvem som har gjort hva. I tillegg bruker de fleste plattformer nå navnet main i stedet for master som standard branch.",
+    "configStep": "Sett opp navn og e-post (bruk gjerne UiA-mailen din) og sett default branch til main:",
+    "configTip": "**Tips**: Du kan bruke den samme mailen som på GitHub/GitLab/Gitea slik at commits kobles til profilen din.",
+    "configCheck": "Du kan sjekke at det ble riktig konfigurert med:",
+    "configEditor": "Hvis du ikke liker editoren Git åpner til vanlig, kan du endre den med en av disse eller editoren du foretrekker:",
+    "editorComments": {
+      "vsc": "Visual Studio Code",
+      "nano": "Nano (enkel å bruke i terminalen)",
+      "vim": "Vim (for masochister)"
+    }
+  },
+  "startProject": {
+    "intro1": "Når du skal starte å bruke Git i et prosjekt, har du to valg:",
+    "opt1": "**Opprette et nytt Git repository** (from scratch)",
+    "opt2": "**Klon et eksisterende repository** (fra GitHub, GitLab, Gitea, etc.)",
+    "intro2": "Du kan også velge å gjøre litt av begge ved å initialisere et nytt repository på GitHub eller liknende for å så klone et tomt prosjekt over.",
+    "createIntro1": "Du kan velge å lage et Git repository i en eksisterende mappe der prosjektet ditt ligger eller lage en ny mappe.",
+    "createIntro2": "For å lage en ny mappe til prosjektet:",
+    "createIntro3": "Etter det eller om du allerede har lagd mappen og er i den, initialiser et nytt repository med:",
+    "cloneIntro": "Om du vil jobbe med et eksisterende prosjekt fra f.eks. Github, kan du klone det over med:",
+    "cloneDesc": "Dette lager en lokal kopi av hele prosjektet med all historikken intakt. Nå kan du gjøre endringer og sende dem tilbake med `git push`!",
+    "cloneDiffTitle": "**Forskjellen på å klone med HTTPS og SSH:**",
+    "httpsBullet1": "Passer bra hvis du bare skal lese/kopiere et repository.",
+    "httpsBullet2": "Enkelt å bruke uten ekstra oppsett.",
+    "httpsBullet3": "Du må bruke brukernavn og passord/token når du pusher endringene.",
+    "sshBullet1": "Sikrere og mer praktisk i lengden.",
+    "sshBullet2": "Bruker public/private keys for autentisering i stedet for passord.",
+    "sshBullet3": "Må settes opp én gang med `ssh-keygen` og legges til på GitHub og andre tjenester.",
+    "sshTip": "**Tips**: Om du kan, bruk SSH. Om du bare skal se, bruk HTTPS.",
+    "sshSetup": "**Sette opp SSH (anbefalt for aktive utviklere):**",
+    "sshGenerate": "Generer SSH nøkkel og spam enter",
+    "sshCopy": "Kopier public key til clipboard",
+    "sshGitHub": "Gå til GitHub -> Settings -> SSH and GPG keys -> New SSH key, lim inn nøkkelen og gi den et navn.",
+    "sshTest": "Test at det virker:"
+  },
+  "workflow": {
+    "intro": "En typisk måte å arbeide med Git i prosjekter ser slik ut:",
+    "step1": "**Sjekk status** - se hva som har endret seg.",
+    "step2": "**Legg til endringer** - velg hvilke endringer du vil ha med.",
+    "step3": "**Commit endringer** - lagre en ny versjon med en beskrivende melding.",
+    "step4": "**Push og pull** - del endringene dine og hent det andre har oppdatert.",
+    "outro": "Selvfølgelig er det mer til, men mye av arbeidet vil se slik ut.",
+    "statusIntro": "For å se hvilke filer som er endret eller klare for commit, skriv inn:",
+    "statusOutput": "Om du har gjort endringer på en fil, kommer kanskje en output som ligner på dette:",
+    "statusTypes": "En fil kan ha 3 ulike statuser:",
+    "statusUntracked": "**Untracked** - Git har ingen kontroll over filen.",
+    "statusStaged": "**Staged** - Git har registrert endringen.",
+    "statusCommited": "**Commited** - Git har lagret versjonen av filen.",
+    "addIntro": "Før du kan commite endringene dine, må du fortelle Git hvilke endringer du vil ha med. Dette kalles \"staging\" og gjøres med `git add`. Tenk på det som å pakke en boks hvor du velger nøye hvilke ting som skal med før du sender den:",
+    "addComments": {
+      "file": "Legg til en spesifikk fil",
+      "all": "Legg til alle endringer i mappen",
+      "txt": "Legg til alle .txt filer",
+      "src": "Legg til hele src-mappen"
+    },
+    "addWarning": "**Advarsel**: Vær forsiktig med `git add .` - den legger til alle endrede filer. Sjekk alltid med `git status` først!",
+    "resetIntro": "Du kan fjerne filer fra staging area med:",
+    "resetComments": {
+      "file": "Fjern fil fra staging",
+      "all": "Fjern alle filer fra staging"
+    },
+    "diffIntro": "For å se forskjellene på det du har endret kan du undersøke med:",
+    "diffComments": {
+      "unstaged": "Se unstaged changes",
+      "staged": "Se staged changes"
+    },
+    "commitIntro": "Når du har lagt til alle endringene du vil ha med, kan du lage en commit. Det er rett og slett et bilde av hele prosjektet ditt med de nye endringene sammen med en liten melding. Du kan gjøre det med `git commit`:",
+    "commitTip": "**Tips**: Skriv commit-meldinger i imperativ form på engelsk, som \"Add user login functionality\" eller \"Fix button styling bug\" og commit ofte. Det er også mange standarder å bli enige om, f.eks. bruker Beta [gitmojies](https://gitmoji.dev/) for nettsiden.",
+    "commitCombine": "Du kan også kombinere add og commit for alle tracked files (forsiktig: tar med alle endringer du har brukt `git add` på før):",
+    "pushIntro": "For å dele endringene dine med andre (sende dem til GitHub ol.):",
+    "pushComments": {
+      "default": "Send til default remote og branch",
+      "specific": "Send til specific remote og branch",
+      "upstream": "Set upstream (hvor du sender) og push"
+    },
+    "pushTip": "**Tips**: I GitHub forks kaller man ofte originalrepoet for `upstream` (der endringene kommer fra) og sin egen kopi for `origin`.",
+    "pullIntro": "For å hente andres endringer:",
+    "pullComments": {
+      "merge": "Hent og merge fra remote",
+      "rebase": "Hent og rebase (anbefalt)",
+      "fetch": "Bare hent, ikke merge"
+    },
+    "pullTip": "**Tips**: Bruk `git pull --rebase` for å unngå unødvendige merge commits."
+  },
+  "branching": {
+    "intro": "Branches lar deg arbeide på forskjellige features uten å påvirke hovedkoden eller andre. Det er et av de viktigste konseptene i Git.",
+    "comments": {
+      "list": "Se alle branches",
+      "new": "Lag ny branch",
+      "switch": "Bytt til branch",
+      "createSwitch": "Lag og bytt til branch",
+      "delete": "Slett branch"
+    },
+    "tip": "**Tips**: Bruk beskrivende branchnavn med prefiks som `feature/user-auth` eller `fix/navbar-placement`.",
+    "combineIntro": "For å slå sammen endringer fra en branch til en annen, bruker vi merge (og helst også rebase):",
+    "mergeTitle": "**Merge** (lager en merge commit):",
+    "mergeComments": {
+      "switch": "Bytt til main",
+      "merge": "Merge feature inn i main"
+    },
+    "mergeDesc": "Når du merger uten at branch-basen er på toppen av branchen du merger inn i, vil du få en ekstra merge commit. Dette er ofte sett på som uryddig, og det anbefales å bruke rebase for å flytte branchen din til toppen før du merger.",
+    "rebaseTitle": "**Rebase** (flytter commits på toppen av en branch):",
+    "rebaseComments": {
+      "switchFeature": "Bytt til feature branch",
+      "rebase": "Rebase feature på toppen av main",
+      "switchMain": "Bytt til main",
+      "merge": "Fast-forward merge"
+    },
+    "squashIntro": "For å holde historien ryddig kan det være nyttig å slå sammen flere commits til bare én før merge. Selv om man mister informasjon, er ikke alle interesserte i at du f.eks. gjorde en skrivefeil og fikset den på en feature.",
+    "squashDesc": "Squashing skjer gjennom `git rebase` sitt interface:",
+    "squashInteractive": "Interaktiv rebase av siste 3 commits",
+    "squashEdit": "I editoren som åpnes, endre `pick` til `squash` (eller `s`) for commits du vil slå sammen med den forrige.",
+    "squashTip": "**Tips**: For en ryddig historie bør du rebase, squashe, og så merge slik at du kan lett lese deg til bake i et lineært tre.",
+    "conflictIntro": "Når Git ikke kan automatisk merge endringer, får du en eller flere konflikter:",
+    "conflictStatus": "Se hvilke filer har konflikter",
+    "conflictDesc": "Når du åpner og leser filen vil alle konflikter være markert slik:",
+    "conflictCode": "Din kode\n=======\nAndres kode",
+    "conflictResolve": "Du velger helt selv hvordan konflikten løses, om du vil beholde din egen, branchens kode, eller begge. Etterpå må du markere at du har løst konflikten og commite mergen:"
+  },
+  "troubleshooting": {
+    "intro": "Git gir deg mange måter å angre endringer og undersøke historikken på. Videre kommer et par av de mest brukte måtene og strategiene.",
+    "undoIntro": "Du har flere ulike måter å justere feil som skjer under veis i prosjektet:",
+    "undoChanges": "**Angre endringer**: Juster en fil tilbake til commitens riktige versjon.",
+    "undoChangesComments": {
+      "file": "Angre endringer i fil",
+      "all": "Angre alle endringer"
+    },
+    "undoCommits": "**Angre commits**: Fjern siste commit ved å skrive om historien.",
+    "undoCommitsComments": {
+      "soft": "Angre sist commit, behold endringer",
+      "hard": "Angre sist commit, slett endringer"
+    },
+    "undoWarning": "Advarsel: Dette skriver om historien, så bruk kun lokalt!",
+    "revert": "**Revert (tryggere måte)**: Angrer en commit ved å lage en \"angre commit\" for å unngå å skrive om historien.",
+    "revertComments": {
+      "last": "Revert siste commit",
+      "specific": "Revert spesifikk commit"
+    },
+    "stashIntro": "Stash lar deg midlertidig lagre endringer uten å commite, som er veldig nyttig om du må gjøre en liten endring på en annen branch eller commit når du egentlig ikke er helt ferdig med nåværende arbeid:",
+    "stashComments": {
+      "stash": "Stash alle endringer",
+      "untracked": "Stash inkludert untracked files",
+      "list": "Se alle stashes",
+      "pop": "Hent tilbake siste stash",
+      "drop": "Slett stash"
+    },
+    "stashDesc": "Strukturen på stash er som en stack, hvor du setter en tallerken (endringene dine) på toppen, og du kan gjøre det så mange ganger du vil, men kan kun ta dem tilbake fra toppen. Dette gjør stash veldig enkel og effektiv å jobbe med.",
+    "historyIntro": "For å se commit historikken kan man bruke `git log`. Denne kommandoen kan kjøres på mange ulike måter med ulike instillinger for at du skal kunne se akkurat det du vil. Her er et par nyttige versjoner:",
+    "historyComments": {
+      "full": "Full historikk",
+      "oneline": "Kort oversikt",
+      "graph": "Visualiser alle branches",
+      "decorate": "Viser referanser",
+      "patch": "Viser endringene",
+      "n4": "Viser de 4 siste commitene",
+      "nopager": "Unngå scary Vim keybinds :)"
+    },
+    "historyCombine": "Du kan kombinere de så mye du vil slik som dette:"
+  },
+  "remotes": {
+    "intro": "Remotes er eksterne repositories som du kan synkronisere med. Vanligvis er `origin` hovedrepositoriet på GitHub og andre tjenester.",
+    "connectIntro": "Om du allerede har klonet et repository, vil du allerede ha origin som default remote. Du kan sjekke og endre på remotes med disse kommandoene:",
+    "connectComments": {
+      "list": "Se alle remotes",
+      "add": "Legg til remote",
+      "remove": "Fjern remote",
+      "rename": "Gi nytt navn til remote"
+    },
+    "connectTip": "**Tips**: Om du er på en fork, anbefales det å legge til original repoet under remote navnet `upstream`.",
+    "connectPush": "Første gang du pusher en ny branch til repositoryet kan du lage branchen på remote med:",
+    "connectPushComment": "Set upstream og push",
+    "fetchTitle": "**Hente endringer fra remote:**",
+    "fetchComments": {
+      "all": "Hent alle endringer fra alle remotes",
+      "specific": "Hent fra spesifikk remote",
+      "upstream": "Hent fra upstream (hvis du har fork)"
+    },
+    "fetchCombine": "**Kombinere fetch med merge/rebase:**",
+    "fetchCombineComments": {
+      "merge": "Fetch + merge fra remote",
+      "rebase": "Fetch + rebase (anbefalt)",
+      "upstream": "Hent fra upstream main branch"
+    },
+    "fetchTip": "**Tips**: Bruk `git pull --rebase` for å unngå unødvendige merge commits.",
+    "pushTitle": "**Sende endringer til remote:**",
+    "pushComments": {
+      "default": "Send til default remote og branch",
+      "specific": "Send til spesifikk remote og branch",
+      "upstream": "Set upstream og push ny branch",
+      "force": "Tryggere force push"
+    },
+    "pushWarning": "**Advarsel**: Aldri bruk `git push --force` på delte branches."
+  },
+  "standards": {
+    "intro": "For å holde prosjekter ryddig og gjøre samarbeid enklere, er det viktig å følge gode standarder og konvensjoner. Her har du de viktigste praksisene for å strukturere Git-repositories, commits og holdninger på en profesjonell måte.",
+    "ignoreIntro": "`.gitignore` filen forteller Git hvilke filer og mapper som skal ignoreres og ikke legges til i versjonskontroll. Dette er spesielt viktig for å unngå å committe sensitive data, build-filer, og andre filer som ikke hører hjemme i repositoryet.",
+    "ignoreDesc": "Filen er ganske greie å skrive, og gjelder kun for mappen den ligger i og alle undermapper. Du skriver filnavn inn for å ikke inkludere med et par spesielle tegn:",
+    "ignoreTip": "**Tips**: GitHub har [ferdiglagde .gitignore-templates](https://github.com/github/gitignore) for forskjellige språk og frameworks som kan kopieres.",
+    "ignoreUndo": "Om du allerede uheldigvis har staget en fil, kan du fjerne den igjen med:",
+    "ignoreUndoComments": {
+      "file": "Fjern fil fra Git",
+      "folder": "Fjern hele mappen fra Git"
+    },
+    "commitIntro": "Gode commit meldinger gjør det mye enklere å forstå hva som har skjedd i et prosjekt og hvorfor endringen ble gjort. Vanlig for studenter er å komme tilbake til kode du skrev for 2 måneder siden uten å forstå noe som helst, eller å lese andre sin kode nøye for å forstå hva de gjorde.",
+    "commitFormat": "En lur måte å skrive commit meldinger på er bruke en prefiks for hvordan type commit det er, f.eks. en fix, feature, documentation, etc. Her er hvordan folk flest strukturer meldingene sine:",
+    "commitList": "**Vanlige typer (konvensjonelle commits):**",
+    "commitEmojis": "Det er flere måter å skrive commit meldingene, og gruppen for prosjektet ditt bør være enig om en stil å bruke. For denne nettsiden har vi brukt [gitmojies](https://gitmoji.dev/) for å kun trenge en emoji for å si typen til commiten:",
+    "commitTip": "**Tips**: Skriv commit meldinger i imperativ form som om du fullførte setningen \"This commit will...\" og generelt bruk engelsk.",
+    "branchIntro": "Gode branchnavn gjør det enkelt å forstå hva som jobbes med og holder repositoryet organisert.",
+    "branchList": "**Vanlige konvensjoner:**",
+    "branchTip": "**Tips**: Hold branchnavn korte, bruk `-` i stedet for mellomrom/`_`, og vær beskrivende men alikevel konsis.",
+    "contributeIntro": "Når du skal bidra til andres prosjekter eller jobbe i team, følg denne prosessen for å holde ting ryddig:",
+    "contributeStep1": "**1. Fork og klon (for eksterne prosjekter):**",
+    "contributeStep1Comments": {
+      "fork": "Fork på repositoryet først, så klon din fork",
+      "upstream": "Legg til original repo som upstream"
+    },
+    "contributeStep2": "**2. Hold deg oppdatert med hoved repositoryet:**",
+    "contributeStep3": "**3. Lag ny branch for din endring:**",
+    "contributeStep4": "**4. Gjør endringer og commit:**",
+    "contributeStep5": "**5. Push til din fork:**",
+    "contributeTip1": "**Tips**: For å holde commit historikken ren og pen, kan det være greit å kjøre en pull, rebase og squashe før du sender videre.",
+    "contributeStep6": "**6. Opprett Pull Request**",
+    "contributeStep6Desc": "Gå til din fork på GitHub eller den tjenesten du bruker og du vil se et forslag om å opprette en Pull Request (PR) fra din branch til hovedrepoet.",
+    "contributeTip2": "**Tips**: Les alltid CONTRIBUTING.md og README.md før du begynner å bidra til et prosjekt.",
+    "repoIntro": "En god mappestruktur gjør prosjektet lettere å navigere og forstå. Vanligvis har alle prosjekter også en fast struktur for at andre lett kan bidra til nye problemer.",
+    "repoFiles": "**Viktige filer å få med**:",
+    "repoReadme": "`README.md`:<br /><br />All introduserende info om prosjektet, type navnet, hvordan man installerer, lenker til dokumentasjon, osv.",
+    "repoLicense": "`LICENSE`:<br /><br />Lisensen for hvordan prosjektet kan brukes og endres.",
+    "repoContributing": "`CONTRIBUTING.md`:<br /><br />Hvordan man skal bidra, standarder på navngivning og alt man trenger før man skriver løs.",
+    "repoDocs": "`docs/`:<br /><br />Mappe med dokumentasjon for prosjektet. Skrives ofte i markdown, men er veldig forskjellig hvordan ulike prosjekter lagrer de.",
+    "tagIntro": "Tags brukes til å markere spesifikke versjoner av koden din, spesielt nyttig for releases og når du vil referere til en bestemt versjon senere. Det funker på en samme måte som en branch, men er konstant til en commit.",
+    "tagCreate": "**Lag en tag:**",
+    "tagCreateComments": {
+      "simple": "Enkel tag",
+      "annotated": "Annotert tag (anbefalt)"
+    },
+    "tagView": "**Se tags:**",
+    "tagViewComments": {
+      "list": "List alle tags",
+      "show": "Vis tag info"
+    },
+    "tagPush": "**Push tags:**",
+    "tagPushComments": {
+      "specific": "Push spesifikk tag",
+      "all": "Push alle tags"
+    },
+    "tagDelete": "**Slett tag:**",
+    "tagDeleteComments": {
+      "local": "Slett lokal tag",
+      "remote": "Slett remote tag"
+    },
+    "tagTip": "**Tips**: Følg [Semantic Versioning](https://semver.org/) for å gjøre versjonering forutsigbar og god. `Major.Minor.Patch`, øk major for breaking changes, minor for nye features, patch for bugfixes."
+  },
+  "cheatSheet": {
+    "setup": "Oppsett og konfigurasjon",
+    "ssh": "SSH oppsett",
+    "start": "Starte prosjekt",
+    "common": "Vanlige kommandoer",
+    "branches": "Branches",
+    "fork": "Fork arbeidsflyt",
+    "remotes": "Remotes",
+    "troubleshooting": "Feilretting",
+    "history": "Historikk og undersøkelse",
+    "tags": "Tags og versjoner",
+    "ignore": "Git ignore"
+  }
+}

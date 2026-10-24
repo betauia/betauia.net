@@ -1,0 +1,21 @@
+{
+  "title": "About roles",
+  "heading": "About roles",
+  "fearTitle": "How scary is it to get involved?",
+  "fearIntro1": "Not at all! As a new board member, you have a 4-week period together with the old board members and you get good experience with all routines and tasks. There are no requirements for previous experience, although it can help, other than that you are engaged in the student community.",
+  "fearIntro2": "There is room for mistakes and to explore new solutions to problems that may arise. It is also incredibly educational, fun, and valuable to have on your CV. Get involved!!",
+  "rolesTitle": "What can you stand for?",
+  "rolesIntro": "At BETA we have a main board consisting of 9 members that you can and should get involved as:",
+  "roleDescriptions": {
+    "leader": "is BETA's face towards the faculty, companies, and other associations. The leader ensures that the board is gathered, makes sure the student organization is run well, and that all committees and interest groups cooperate towards the same goal.",
+    "deputyLeader": "is the leader's substitute and is responsible for minutes from board meetings and the student organization's internal structure. The deputy leader is the leader's sparring partner.",
+    "financeManager": "is responsible for BETA's finances. This includes keeping accounts, preparing budgets, and making sure we get paid for company presentations.",
+    "prManager": "is responsible for BETA's profile on various social media platforms; Instagram, Facebook, Discord, and TikTok.",
+    "betaLanLeader": "is responsible for organizing UiA's coolest student LAN every semester.",
+    "eventCommitteeLeader": "is responsible for planning and carrying out social activities for all BETA members.",
+    "businessCommitteeLeader": "is responsible for contact between the business community and the students.",
+    "betaDevLeader": "is responsible for the BetaDEV interest group and the developer community on campus.",
+    "betaSecLeader": "is responsible for the BetaSEC interest group and security-related events."
+  },
+  "footer": "All committees also have their own deputy leader who is elected internally and does not have a vote in the main board."
+}

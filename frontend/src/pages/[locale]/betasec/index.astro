@@ -11,38 +11,38 @@ import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betasec/index", Astro.currentLocale);
 ---
 
 <BaseLayout title="BetaSec">
   <Container>
     <div class="flex flex-col items-center">
-      <Image src={Intro} width="800" alt={t("page.betasec.imageAlt")} class="my-8 rounded-lg" />
+      <Image src={Intro} width="800" alt={t("imageAlt")} class="my-8 rounded-lg" />
     </div>
     <h1 class="mb-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      <Translate key="page.betasec.welcome.title" />
+      <Translate page="betasec/index" key="welcome.title" />
     </h1>
-    <p class="my-4"><Translate key="page.betasec.welcome.p1" /></p>
-    <p class="my-4"><Translate key="page.betasec.welcome.p2" /></p>
+    <p class="my-4"><Translate page="betasec/index" key="welcome.p1" /></p>
+    <p class="my-4"><Translate page="betasec/index" key="welcome.p2" /></p>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      <Translate key="page.betasec.uiactf.title" />
+      <Translate page="betasec/index" key="uiactf.title" />
     </h1>
-    <p class="my-4"><Translate key="page.betasec.uiactf.p1" /></p>
-    <p class="my-4"><Translate key="page.betasec.uiactf.p2" /></p>
+    <p class="my-4"><Translate page="betasec/index" key="uiactf.p1" /></p>
+    <p class="my-4"><Translate page="betasec/index" key="uiactf.p2" /></p>
     <div class="mt-16">
       <UiACTFDiscord />
     </div>
     <h1 class="mb-4 mt-8 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400">
-      <Translate key="page.betasec.previousEvents.title" />
+      <Translate page="betasec/index" key="previousEvents.title" />
     </h1>
     <div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-3 md:px-0">
       <Card
-        title={t("page.betasec.previousEvents.introCtf.title")}
-        text={t("page.betasec.previousEvents.introCtf.text")}
+        title={t("previousEvents.introCtf.title")}
+        text={t("previousEvents.introCtf.text")}
         image={VÅR_25_IntroCTF}
       /><Card
-        title={t("page.betasec.previousEvents.nnsCtf.title")}
-        text={t("page.betasec.previousEvents.nnsCtf.text")}
+        title={t("previousEvents.nnsCtf.title")}
+        text={t("previousEvents.nnsCtf.text")}
         image={NNSCTF}
       />
     </div>

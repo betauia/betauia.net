@@ -5,16 +5,16 @@ import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("account/create", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.account.create.title")}>
+<BaseLayout title={t("title")}>
   <Container class="flex min-h-svh items-center justify-center">
     <div class="w-full max-w-md">
       <div class="">
-        <h1 class="text-4xl font-bold"><Translate key="page.account.create.heading" /></h1>
+        <h1 class="text-4xl font-bold"><Translate page="account/create" key="heading" /></h1>
         <p class="mb-6 mt-2 text-fg-muted dark:text-dark-fg-muted">
-          <Translate key="page.account.create.intro" />
+          <Translate page="account/create" key="intro" />
         </p>
       </div>
 
@@ -29,7 +29,7 @@ const t = useTranslations(Astro.currentLocale);
               for="username"
               class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
             >
-              <Translate key="page.account.create.username" />
+              <Translate page="account/create" key="username" />
             </label>
             <input
               id="username"
@@ -41,7 +41,7 @@ const t = useTranslations(Astro.currentLocale);
               class="mb-1 mt-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
               placeholder="arnwik"
             />
-            <p class="mt-1 text-xs text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.create.usernameHint" /></p>
+            <p class="mt-1 text-xs text-fg-muted dark:text-dark-fg-muted"><Translate page="account/create" key="usernameHint" /></p>
           </div>
 
           <div class="mb-4">
@@ -49,7 +49,7 @@ const t = useTranslations(Astro.currentLocale);
               for="full_name"
               class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
             >
-              <Translate key="page.account.create.fullName" />
+              <Translate page="account/create" key="fullName" />
             </label>
             <input
               id="full_name"
@@ -66,7 +66,7 @@ const t = useTranslations(Astro.currentLocale);
               for="password"
               class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
             >
-              <Translate key="page.account.create.password" />
+              <Translate page="account/create" key="password" />
             </label>
             <input
               id="password"
@@ -78,7 +78,7 @@ const t = useTranslations(Astro.currentLocale);
               class="mb-1 mt-2 w-full rounded-md border border-fg-muted/50 px-3 py-2 dark:border-dark-fg-muted/50 dark:bg-dark-fg-muted/20"
               placeholder="••••••••••••"
             />
-            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400"><Translate key="page.account.create.passwordHint" /></p>
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400"><Translate page="account/create" key="passwordHint" /></p>
           </div>
 
           <div class="mb-6">
@@ -86,7 +86,7 @@ const t = useTranslations(Astro.currentLocale);
               for="confirm_password"
               class="block text-sm font-medium text-fg-base dark:text-dark-fg-base"
             >
-              <Translate key="page.account.create.confirmPassword" />
+              <Translate page="account/create" key="confirmPassword" />
             </label>
             <input
               id="confirm_password"
@@ -108,7 +108,7 @@ const t = useTranslations(Astro.currentLocale);
             id="submit-btn"
             class="w-full rounded-md bg-accent px-4 py-2 text-dark-fg-base transition hover:bg-accent/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-600"
           >
-            <Translate key="page.account.create.submit" />
+            <Translate page="account/create" key="submit" />
           </button>
         </form>
       </div>
@@ -120,7 +120,7 @@ const t = useTranslations(Astro.currentLocale);
   import { completeRegistration } from "@lib/auth";
   import { extractCurrentLanguage, useTranslations } from "@i18n/utils.ts";
 
-  const t = useTranslations(extractCurrentLanguage());
+  const t = useTranslations("account/create", extractCurrentLanguage());
 
   const form = document.getElementById("complete-registration-form") as HTMLFormElement;
   const errorMessage = document.getElementById("error-message");
@@ -131,7 +131,7 @@ const t = useTranslations(Astro.currentLocale);
   const token = urlParams.get("token");
 
   if (!token) {
-    showError(t("page.account.create.invalidToken"));
+    showError(t("invalidToken"));
     if (submitBtn) submitBtn.disabled = true;
   } else {
     tokenInput.value = token;
@@ -155,12 +155,12 @@ const t = useTranslations(Astro.currentLocale);
     const token = formData.get("token") as string;
 
     if (password !== confirmPassword) {
-      showError(t("page.account.create.passwordMismatch"));
+      showError(t("passwordMismatch"));
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = t("page.account.create.submitLoading");
+    submitBtn.textContent = t("submitLoading");
 
     try {
       await completeRegistration({
@@ -172,9 +172,9 @@ const t = useTranslations(Astro.currentLocale);
 
       window.location.href = "/login";
     } catch (error) {
-      showError(error instanceof Error ? error.message : t("page.account.create.registrationFailed"));
+      showError(error instanceof Error ? error.message : t("registrationFailed"));
       submitBtn.disabled = false;
-      submitBtn.textContent = t("page.account.create.submit");
+      submitBtn.textContent = t("submit");
     }
   });
 </script>

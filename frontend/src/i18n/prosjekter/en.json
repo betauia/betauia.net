@@ -1,0 +1,21 @@
+{
+  "title": "Projects",
+  "intro": "Here you'll find some of the projects we work on.",
+  "cards": {
+    "website": {
+      "title": "Website",
+      "description": "This site is built by Betadev on a weekly basis and is made with several modern frameworks that are easy to work with and learn.",
+      "highlightText": "GitHub repo"
+    },
+    "ctfer": {
+      "title": "CTFs",
+      "description": "Betasec runs its own hacking competition and puts together Bluebox for free pizza, fun, and different challenges.",
+      "highlightText": "Contact Betasec"
+    }
+  },
+  "cta": {
+    "title": "Want to contribute to a project?",
+    "text": "Beta is always open for contributions from students! Whether you want to learn more about development, design, or operations. Get in touch and join a rewarding project.",
+    "highlightText": "Contact us"
+  }
+}

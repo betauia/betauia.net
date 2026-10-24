@@ -1,0 +1,16 @@
+{
+  "title": "Registration",
+  "heading": "Complete registration",
+  "intro": "Fill in the details below to create your account.",
+  "username": "Username",
+  "usernameHint": "3-50 characters",
+  "fullName": "Full name",
+  "password": "Password",
+  "passwordHint": "Minimum 10 characters",
+  "confirmPassword": "Confirm password",
+  "submit": "Create account",
+  "submitLoading": "Creating account...",
+  "invalidToken": "Invalid or missing confirmation token. Please request a new registration link.",
+  "passwordMismatch": "The passwords don't match",
+  "registrationFailed": "Registration failed"
+}

@@ -7,61 +7,61 @@ import { useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("om/verv", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.om.verv.title")}>
+<BaseLayout title={t("title")}>
   <Container>
     <Prose>
-      <h1><Translate key="page.om.verv.heading" /></h1>
+      <h1><Translate page="om/verv" key="heading" /></h1>
 
-      <h2><Translate key="page.om.verv.fearTitle" /></h2>
-      <p><Translate key="page.om.verv.fearIntro1" /></p>
-      <p><Translate key="page.om.verv.fearIntro2" /></p>
+      <h2><Translate page="om/verv" key="fearTitle" /></h2>
+      <p><Translate page="om/verv" key="fearIntro1" /></p>
+      <p><Translate page="om/verv" key="fearIntro2" /></p>
 
-      <h2><Translate key="page.om.verv.rolesTitle" /></h2>
-      <p><Translate key="page.om.verv.rolesIntro" /></p>
+      <h2><Translate page="om/verv" key="rolesTitle" /></h2>
+      <p><Translate page="om/verv" key="rolesIntro" /></p>
 
       <ul>
         <li>
-          <strong><Translate key="page.board.profile.roles.leader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.leader" />
+          <strong><Translate page="styret" key="profile.roles.leader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.leader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.deputyLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.deputyLeader" />
+          <strong><Translate page="styret" key="profile.roles.deputyLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.deputyLeader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.financeManager" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.financeManager" />
+          <strong><Translate page="styret" key="profile.roles.financeManager" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.financeManager" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.prManager" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.prManager" />
+          <strong><Translate page="styret" key="profile.roles.prManager" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.prManager" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.betaLanLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.betaLanLeader" />
+          <strong><Translate page="styret" key="profile.roles.betaLanLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.betaLanLeader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.eventCommitteeLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.eventCommitteeLeader" />
+          <strong><Translate page="styret" key="profile.roles.eventCommitteeLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.eventCommitteeLeader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.businessCommitteeLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.businessCommitteeLeader" />
+          <strong><Translate page="styret" key="profile.roles.businessCommitteeLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.businessCommitteeLeader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.betaDevLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.betaDevLeader" />
+          <strong><Translate page="styret" key="profile.roles.betaDevLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.betaDevLeader" />
         </li>
         <li>
-          <strong><Translate key="page.board.profile.roles.betaSecLeader" /></strong>:
-          <Translate key="page.om.verv.roleDescriptions.betaSecLeader" />
+          <strong><Translate page="styret" key="profile.roles.betaSecLeader" /></strong>:
+          <Translate page="om/verv" key="roleDescriptions.betaSecLeader" />
         </li>
       </ul>
 
-      <p><Translate key="page.om.verv.footer" /></p>
+      <p><Translate page="om/verv" key="footer" /></p>
     </Prose>
   </Container>
 </BaseLayout>

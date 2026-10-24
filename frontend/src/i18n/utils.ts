@@ -4,9 +4,11 @@ import {
   type Locale,
   resolveTranslation,
   type TranslationPath,
+  type TranslationTree,
   ui,
 } from "./ui";
 import type { GetStaticPathsItem } from "astro";
+import { type PageKey, pageUi } from "@i18n/page-translations.ts";
 
 const PREFERRED_LANG_KEY = "prefLang";
 
@@ -28,19 +30,30 @@ export function getPreferredLanguage(): Locale {
 }
 
 /**
- * Returns a function to access the translations in a specified language
- *
- * @param locale - the language to access the translations for
+ * All valid translation keys of the given page, relative to the page translation files.
  */
-export function useTranslations(locale?: string) {
-  const lang = locale && translationExist(locale) ? (locale as Locale) : defaultLang;
+export type PageTranslationKey<P extends PageKey> = TranslationPath<PageTranslationTree<P>>;
+type PageTranslationTree<P extends PageKey> = (typeof pageUi)[P][typeof defaultLang];
 
-  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(key: Key): string;
-  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
-    key: Key,
-    additions: Record<string, unknown>
-  ): string | unknown[];
+/**
+ * All valid translation keys of the global translation files.
+ */
+export type GlobalTranslationKey = TranslationPath<GlobalTranslationTree>;
+type GlobalTranslationTree = (typeof ui)[typeof defaultLang];
 
+type Translator<T extends TranslationTree> = {
+  (key: TranslationPath<T>): string;
+  (key: TranslationPath<T>, additions: Record<string, unknown>): string | unknown[];
+};
+
+function isPageKey(value?: string): value is PageKey {
+  return value !== undefined && Object.keys(pageUi).includes(value);
+}
+
+function createTranslator<T extends TranslationTree>(
+  translations: Record<Locale, T>,
+  lang: Locale
+): Translator<T> {
   /**
    * Retrieve a translation for the specified language and key.
    * It's possible to optionally define text replacements (like specially styled words) by providing the {@link replacements}
@@ -51,11 +64,8 @@ export function useTranslations(locale?: string) {
    * const text = t("key.with.variable", { bold: <b>boldText</br> })
    * // Where value of key.with.variable is "This is a {{bold}} text"
    */
-  function t<Key extends TranslationPath<(typeof ui)[typeof defaultLang]>>(
-    key: Key,
-    replacements?: Record<string, unknown>
-  ): string | unknown[] {
-    const translation = resolveTranslation(ui[lang], key);
+  function t(key: TranslationPath<T>, replacements?: Record<string, unknown>): string | unknown[] {
+    const translation = resolveTranslation(translations[lang], key);
 
     if (translation) {
       return replacements ? substitutePlaceholders(translation, replacements) : translation;
@@ -64,7 +74,38 @@ export function useTranslations(locale?: string) {
     throw new Error(`Translation '${key}' does not exist`);
   }
 
-  return t;
+  return t as Translator<T>;
+}
+
+/**
+ * Returns a function to access the translations in a specified language.
+ * When a page is given, the keys are resolved relative to the translation files in /i18n/{page}/,
+ * otherwise the global translations are used.
+ *
+ * @param page - the subfolder of /i18n to access the translations from
+ * @param locale - the language to access the translations for
+ *
+ * @example
+ * const t = useTranslations("prosjekter", Astro.currentLocale);
+ * t("cards.website.title");
+ */
+export function useTranslations<P extends PageKey>(
+  page: P,
+  locale?: string
+): Translator<PageTranslationTree<P>>;
+/**
+ * Use default translation files of the given {@link locale}
+ * @param locale
+ */
+export function useTranslations(locale?: string): Translator<GlobalTranslationTree>;
+export function useTranslations(pageOrLocale?: string, maybeLocale?: string) {
+  const page = isPageKey(pageOrLocale) ? pageOrLocale : undefined;
+  const locale = page ? maybeLocale : pageOrLocale;
+  const lang = locale && translationExist(locale) ? (locale as Locale) : defaultLang;
+
+  return page
+    ? createTranslator<TranslationTree>(pageUi[page], lang)
+    : createTranslator(ui, lang);
 }
 
 function substitutePlaceholders(text: string, replacements: Record<string, unknown>) {

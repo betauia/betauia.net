@@ -7,91 +7,91 @@ import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betalan/crew-info", Astro.currentLocale);
 ---
 
 <BaseLayout
-  title={t("page.betalan.crewInfo.title")}
-  description={t("page.betalan.crewInfo.description")}
+  title={t("title")}
+  description={t("description")}
 >
   <BetaLANLayout UseGamerFont={false}>
     <div class="mx-auto my-4 max-w-4xl rounded-lg bg-slate-900/80 p-4 text-white sm:my-8 sm:p-6">
       <h1 class="mb-4 text-center text-3xl font-bold text-white sm:mb-6 sm:text-4xl">
-        <Translate key="page.betalan.crewInfo.heading" />
+        <Translate page="betalan/crew-info" key="heading" />
       </h1>
 
       <div class="space-y-4 sm:space-y-6">
         <section>
           <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl">
-            <Translate key="page.betalan.crewInfo.backbone.title" />
+            <Translate page="betalan/crew-info" key="backbone.title" />
           </h2>
           <p class="text-sm sm:text-base md:text-lg">
-            <Translate key="page.betalan.crewInfo.backbone.text" />
+            <Translate page="betalan/crew-info" key="backbone.text" />
           </p>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.tasks.title" /></h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate page="betalan/crew-info" key="tasks.title" /></h2>
           <div class="grid gap-3 sm:gap-4 md:grid-cols-2">
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
               <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">
-                <Translate key="page.betalan.crewInfo.tasks.tournament.title" />
+                <Translate page="betalan/crew-info" key="tasks.tournament.title" />
               </h3>
               <p class="text-xs sm:text-sm">
-                <Translate key="page.betalan.crewInfo.tasks.tournament.text" />
+                <Translate page="betalan/crew-info" key="tasks.tournament.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
-              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate key="page.betalan.crewInfo.tasks.technical.title" /></h3>
+              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate page="betalan/crew-info" key="tasks.technical.title" /></h3>
               <p class="text-xs sm:text-sm">
-                <Translate key="page.betalan.crewInfo.tasks.technical.text" />
+                <Translate page="betalan/crew-info" key="tasks.technical.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
-              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate key="page.betalan.crewInfo.tasks.social.title" /></h3>
+              <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl"><Translate page="betalan/crew-info" key="tasks.social.title" /></h3>
               <p class="text-xs sm:text-sm">
-                <Translate key="page.betalan.crewInfo.tasks.social.text" />
+                <Translate page="betalan/crew-info" key="tasks.social.text" />
               </p>
             </div>
             <div class="rounded-lg bg-gray-800/50 p-3 sm:p-4">
               <h3 class="mb-1 text-lg font-bold text-white sm:mb-2 sm:text-xl">
-                <Translate key="page.betalan.crewInfo.tasks.coordination.title" />
+                <Translate page="betalan/crew-info" key="tasks.coordination.title" />
               </h3>
               <p class="text-xs sm:text-sm">
-                <Translate key="page.betalan.crewInfo.tasks.coordination.text" />
+                <Translate page="betalan/crew-info" key="tasks.coordination.text" />
               </p>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.why.title" /></h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate page="betalan/crew-info" key="why.title" /></h2>
           <ul class="list-disc space-y-1 pl-4 text-xs sm:space-y-2 sm:pl-6 sm:text-sm">
             <li>
-              <Translate key="page.betalan.crewInfo.why.admission" />
+              <Translate page="betalan/crew-info" key="why.admission" />
             </li>
             <li>
-              <Translate key="page.betalan.crewInfo.why.behindScenes" />
+              <Translate page="betalan/crew-info" key="why.behindScenes" />
             </li>
             <li>
-              <Translate key="page.betalan.crewInfo.why.skills" />
+              <Translate page="betalan/crew-info" key="why.skills" />
             </li>
             <li>
-              <Translate key="page.betalan.crewInfo.why.culture" />
+              <Translate page="betalan/crew-info" key="why.culture" />
             </li>
             <li>
-              <Translate key="page.betalan.crewInfo.why.moreThanGaming" />
+              <Translate page="betalan/crew-info" key="why.moreThanGaming" />
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate key="page.betalan.crewInfo.experience.title" /></h2>
+          <h2 class="mb-2 text-xl font-bold text-white sm:mb-3 sm:text-2xl"><Translate page="betalan/crew-info" key="experience.title" /></h2>
           <p class="mb-2 text-xs sm:mb-4 sm:text-sm md:text-base">
-            <Translate key="page.betalan.crewInfo.experience.p1" />
+            <Translate page="betalan/crew-info" key="experience.p1" />
           </p>
           <p class="text-xs sm:text-sm md:text-base">
-            <Translate key="page.betalan.crewInfo.experience.p2" />
+            <Translate page="betalan/crew-info" key="experience.p2" />
           </p>
         </section>
 
@@ -99,9 +99,9 @@ const t = useTranslations(Astro.currentLocale);
           class="mt-6 flex flex-col items-center justify-between rounded-lg bg-blue-900/60 p-4 sm:mt-8 sm:p-6"
         >
           <div class="mb-4 text-center">
-            <h2 class="mb-2 text-xl font-bold text-white sm:text-2xl"><Translate key="page.betalan.crewInfo.join.title" /></h2>
+            <h2 class="mb-2 text-xl font-bold text-white sm:text-2xl"><Translate page="betalan/crew-info" key="join.title" /></h2>
             <p class="text-sm sm:text-base">
-              <Translate key="page.betalan.crewInfo.join.text" />
+              <Translate page="betalan/crew-info" key="join.text" />
             </p>
           </div>
           <A
@@ -109,9 +109,9 @@ const t = useTranslations(Astro.currentLocale);
             class="flex w-full max-w-xs flex-col items-center rounded-lg bg-indigo-600 px-6 py-4 text-white transition-colors hover:bg-indigo-700 sm:w-auto"
           >
             <Icon name="fa-brands:discord" class="mb-2 h-12 w-12" />
-            <span class="text-center text-sm font-medium sm:text-base"><Translate key="page.betalan.crewInfo.join.discord" /></span>
+            <span class="text-center text-sm font-medium sm:text-base"><Translate page="betalan/crew-info" key="join.discord" /></span>
             <span class="mt-1 text-center text-xs text-indigo-200"
-              ><Translate key="page.betalan.crewInfo.join.contact" /></span
+              ><Translate page="betalan/crew-info" key="join.contact" /></span
             >
           </A>
         </div>

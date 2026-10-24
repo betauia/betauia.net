@@ -1,0 +1,14 @@
+{
+  "title": "My Account",
+  "heading": "My Account",
+  "logout": "Log out",
+  "aboutMe": "About me",
+  "username": "Username",
+  "email": "Email",
+  "name": "Name",
+  "role": "Role",
+  "administrator": "Administrator",
+  "history": "History",
+  "created": "Created",
+  "updated": "Last updated"
+}

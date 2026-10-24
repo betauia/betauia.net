@@ -20,32 +20,32 @@ const { year } = Astro.params;
 const yearData = boardData(Astro.currentLocale)[year];
 const boardMembers = yearData?.members || [];
 const groupPhoto = yearData?.groupPhoto;
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("styret", Astro.currentLocale);
 ---
 
-<BaseLayout title={(t("page.board.year.pageTitle", { year: year }) as string[]).join("")}>
+<BaseLayout title={(t("year.pageTitle", { year: year }) as string[]).join("")}>
   <Container>
     <div class="mx-auto mb-8 mt-6">
       <h1 class="mb-3 text-4xl font-bold">
-        <Translate key="page.board.year.heading">
+        <Translate page="styret" key="year.heading">
           <span slot="year" class="text-accent">{year}</span>
         </Translate>
       </h1>
       <p class="text-lg text-fg-muted dark:text-dark-fg-muted">
-        <Translate key="page.board.year.intro" additions={{ count: boardMembers.length, year }} />
+        <Translate page="styret" key="year.intro" additions={{ count: boardMembers.length, year }} />
       </p>
     </div>
 
     {
       groupPhoto && (
         <div class="mb-12 overflow-hidden rounded-2xl">
-          <Image src={groupPhoto} alt={(t("page.board.year.groupPhotoAlt", { year: year }) as string[]).join("")} class="h-96 w-full object-cover" />
+          <Image src={groupPhoto} alt={(t("year.groupPhotoAlt", { year: year }) as string[]).join("")} class="h-96 w-full object-cover" />
         </div>
       )
     }
 
     <div class="mb-12">
-      <h2 class="mb-6 text-3xl font-bold"><Translate key="page.board.year.membersTitle" /></h2>
+      <h2 class="mb-6 text-3xl font-bold"><Translate page="styret" key="year.membersTitle" /></h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           boardMembers.map(member => (
@@ -63,9 +63,9 @@ const t = useTranslations(Astro.currentLocale);
 
     <div class="mb-12 text-center">
       <p class="mb-4 text-fg-muted dark:text-dark-fg-muted">
-        <Translate key="page.board.year.contactIntro" />
+        <Translate page="styret" key="year.contactIntro" />
       </p>
-      <Button href="/kontakt"><Translate key="page.board.year.contactButton" /></Button>
+      <Button href="/kontakt"><Translate page="styret" key="year.contactButton" /></Button>
     </div>
   </Container>
 </BaseLayout>

@@ -1,0 +1,21 @@
+{
+  "title": "Guides",
+  "heading": "Guides",
+  "intro": "A collection of guides and resources for courses, programming and tools.",
+  "programming": {
+    "category": "Programming",
+    "description": "Guides for programming, development tools and workflow.",
+    "git": {
+      "name": "Git",
+      "description": "Learn the basics of Git and version control."
+    }
+  },
+  "math1": {
+    "category": "Math 1",
+    "description": "Guides and resources for Math 1.",
+    "complexNumbers": {
+      "name": "Complex numbers",
+      "description": "Learn about complex numbers and how they are used."
+    }
+  }
+}

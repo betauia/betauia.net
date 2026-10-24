@@ -16,19 +16,19 @@ const bannerLink = "/";
 export const prerender = false;
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("index", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.home.title")}>
+<BaseLayout title={t("title")}>
   <Container class="flex min-h-svh flex-col justify-center">
     <div class="flex h-full items-center">
       <div>
         <BetaLogo class="h-24 text-accent" />
-        <h1 class="mt-4 text-4xl font-semibold"><Translate key="page.home.heading" /></h1>
-        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted"><Translate key="page.home.intro" /></p>
+        <h1 class="mt-4 text-4xl font-semibold"><Translate page="index" key="heading" /></h1>
+        <p class="mt-2 max-w-2xl text-fg-muted dark:text-dark-fg-muted"><Translate page="index" key="intro" /></p>
         <div class="mt-6 flex gap-2">
-          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate key="page.home.discordButton" /></Button>
-          <Button href="/om" type="secondary"><Translate key="page.home.aboutButton" /></Button>
+          <Button href="https://discord.gg/3xBPkDsaXy" target="_blank"><Translate page="index" key="discordButton" /></Button>
+          <Button href="/om" type="secondary"><Translate page="index" key="aboutButton" /></Button>
         </div>
       </div>
     </div>

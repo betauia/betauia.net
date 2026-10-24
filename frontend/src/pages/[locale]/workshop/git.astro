@@ -12,19 +12,19 @@ import A from "@components/ui/A.astro";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("workshop/git", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.workshop.git.title")}>
+<BaseLayout title={t("title")}>
   <Container>
     <h1
       class="mb-4 flex gap-4 border-b-2 border-gray-600 pb-4 text-4xl font-bold dark:border-gray-400"
     >
-      <Translate key="page.workshop.git.title" /> <Icon name="fa-solid:code-branch" class="text-accent" />
+      <Translate page="workshop/git" key="title" /> <Icon name="fa-solid:code-branch" class="text-accent" />
     </h1>
     <p class="my-4">
-      <b><Translate key="page.workshop.git.introLead" /></b>
-      <Translate key="page.workshop.git.introRest">
+      <b><Translate page="workshop/git" key="introLead" /></b>
+      <Translate page="workshop/git" key="introRest">
         <b slot="leadName">Jakob</b>
       </Translate>
     </p>
@@ -39,45 +39,45 @@ const t = useTranslations(Astro.currentLocale);
           </div>
           <div class="">
             <h2 class="mb-2 flex items-center gap-4 border-b-2 pb-2 text-3xl font-bold">
-              <Translate key="page.workshop.git.signupTitle" /><span><Icon name="fa:external-link" class="w-6" /></span>
+              <Translate page="workshop/git" key="signupTitle" /><span><Icon name="fa:external-link" class="w-6" /></span>
             </h2>
 
             <div class="text-lg font-bold">
-              <div>🗓️ <Translate key="page.workshop.git.signupDate" /></div>
-              <div>⏰ <Translate key="page.workshop.git.signupTime" /></div>
-              <div>🗺️ <Translate key="page.workshop.git.signupLocation" /></div>
+              <div>🗓️ <Translate page="workshop/git" key="signupDate" /></div>
+              <div>⏰ <Translate page="workshop/git" key="signupTime" /></div>
+              <div>🗺️ <Translate page="workshop/git" key="signupLocation" /></div>
             </div>
           </div>
         </div>
       </A>
     </div>
 
-    <h2 id="faq" class="mb-4 text-3xl font-bold"><Translate key="page.workshop.git.whatYouLearnTitle" /></h2>
+    <h2 id="faq" class="mb-4 text-3xl font-bold"><Translate page="workshop/git" key="whatYouLearnTitle" /></h2>
 
-    <p class="my-4"><Translate key="page.workshop.git.whatYouLearnIntro" /></p>
+    <p class="my-4"><Translate page="workshop/git" key="whatYouLearnIntro" /></p>
 
     <ul class="ml-6 list-[square] space-y-2 marker:text-accent">
-      <li><b><Translate key="page.workshop.git.topics.1" /></b></li>
-      <li><b><Translate key="page.workshop.git.topics.2" /></b></li>
-      <li><b><Translate key="page.workshop.git.topics.3" /></b></li>
-      <li><b><Translate key="page.workshop.git.topics.4" /></b></li>
-      <li><b><Translate key="page.workshop.git.topics.5" /></b></li>
+      <li><b><Translate page="workshop/git" key="topics.1" /></b></li>
+      <li><b><Translate page="workshop/git" key="topics.2" /></b></li>
+      <li><b><Translate page="workshop/git" key="topics.3" /></b></li>
+      <li><b><Translate page="workshop/git" key="topics.4" /></b></li>
+      <li><b><Translate page="workshop/git" key="topics.5" /></b></li>
     </ul>
 
-    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold"><Translate key="page.workshop.git.whatToBringTitle" /></h2>
+    <h2 id="faq" class="mb-4 mt-6 text-3xl font-bold"><Translate page="workshop/git" key="whatToBringTitle" /></h2>
 
     <p class="my-4">
-      <Translate key="page.workshop.git.whatToBringIntro">
+      <Translate page="workshop/git" key="whatToBringIntro">
         <A slot="installGit" class="text-accent underline" href="https://git-scm.com/downloads">
-          <Translate key="page.workshop.git.installGit" />
+          <Translate page="workshop/git" key="installGit" />
         </A>
       </Translate>
     </p>
 
     <p class="my-8 font-bold">
-      <Translate key="page.workshop.git.contact">
+      <Translate page="workshop/git" key="contact">
         <A slot="discordLink" class="text-accent underline" href="https://discord.gg/3xBPkDsaXy">
-          <Translate key="page.workshop.git.discord" />
+          <Translate page="workshop/git" key="discord" />
         </A>
       </Translate>
     </p>

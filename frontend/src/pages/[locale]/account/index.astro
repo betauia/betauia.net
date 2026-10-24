@@ -5,18 +5,18 @@ import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("account/index", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.account.index.title")}>
+<BaseLayout title={t("title")}>
   <Container>
     <div class="mb-8 flex items-center justify-between">
-      <h1 class="text-4xl font-bold text-fg-base dark:text-dark-fg-base"><Translate key="page.account.index.heading" /></h1>
+      <h1 class="text-4xl font-bold text-fg-base dark:text-dark-fg-base"><Translate page="account/index" key="heading" /></h1>
       <button
         id="logout-btn"
         class="inline-flex items-center justify-center gap-2 rounded-md border border-accent bg-accent px-4 py-1.5 font-medium text-dark-fg-base shadow-sm transition-all hover:opacity-80 hover:shadow-md"
       >
-        <Translate key="page.account.index.logout" />
+        <Translate page="account/index" key="logout" />
       </button>
     </div>
 
@@ -24,25 +24,25 @@ const t = useTranslations(Astro.currentLocale);
       <div
         class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow-sm dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base"><Translate key="page.account.index.aboutMe" /></h2>
+        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base"><Translate page="account/index" key="aboutMe" /></h2>
         <dl class="space-y-4">
           <div>
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.index.username" /></dt>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate page="account/index" key="username" /></dt>
             <dd id="user-username" class="mt-1 font-semibold text-fg-base dark:text-dark-fg-base">
               -
             </dd>
           </div>
           <div>
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.index.email" /></dt>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate page="account/index" key="email" /></dt>
             <dd id="user-email" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>
           <div>
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.index.name" /></dt>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate page="account/index" key="name" /></dt>
             <dd id="user-fullname" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>
           <div id="admin-field" class="hidden">
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.index.role" /></dt>
-            <dd class="mt-1 text-fg-base dark:text-dark-fg-base"><Translate key="page.account.index.administrator" /></dd>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate page="account/index" key="role" /></dt>
+            <dd class="mt-1 text-fg-base dark:text-dark-fg-base"><Translate page="account/index" key="administrator" /></dd>
           </div>
         </dl>
       </div>
@@ -50,15 +50,15 @@ const t = useTranslations(Astro.currentLocale);
       <div
         class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow-sm dark:border-dark-fg-muted dark:bg-dark-bg-raised"
       >
-        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base"><Translate key="page.account.index.history" /></h2>
+        <h2 class="mb-4 text-2xl font-semibold text-fg-base dark:text-dark-fg-base"><Translate page="account/index" key="history" /></h2>
         <dl class="space-y-3">
           <div>
-            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate key="page.account.index.created" /></dt>
+            <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted"><Translate page="account/index" key="created" /></dt>
             <dd id="user-created" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>
           <div>
             <dt class="text-sm font-medium text-fg-muted dark:text-dark-fg-muted">
-              <Translate key="page.account.index.updated" />
+              <Translate page="account/index" key="updated" />
             </dt>
             <dd id="user-updated" class="mt-1 text-fg-base dark:text-dark-fg-base">-</dd>
           </div>

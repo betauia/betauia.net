@@ -1,0 +1,25 @@
+{
+  "description": "Betadev er BETA's utviklinglag og interessegruppe og arrangerer kodekurs, spillkonkuranser og mer!",
+  "logoAlt": "Logo",
+  "intro": "Interessegruppen for nettsideutvikling og generell utvikling innen BETA. Betadev arrangerer gamejam, kode konkurranser og er ofte med på å arrangere andre events i samsvar med andre komiteer og interressegrupper.",
+  "events": {
+    "title": "Arrangementer*",
+    "gamejam": {
+      "title": "Gamejam",
+      "text": "Gamejam, et fast arrangement med gode priser, hvor vinneren blir kåret under BetaLAN!"
+    },
+    "codeCompetition": {
+      "title": "Kodekonkurranse",
+      "text": "Betadev undersøker muligheten for en kodekonkurranse!"
+    },
+    "codeNights": {
+      "title": "Kodekvelder",
+      "text": "Kodekvelder er der utviklingen skjer, hyggelig og produktivt"
+    },
+    "footnote": "* som betadev tidligere har arrangert"
+  },
+  "communication": {
+    "title": "Kommunikasjon og idéer",
+    "discordButton": "Betadev sin discord server"
+  }
+}

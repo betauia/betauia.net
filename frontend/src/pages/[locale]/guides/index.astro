@@ -8,44 +8,44 @@ import Translate from "@components/ui/Translate.astro";
 import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("guides/index", Astro.currentLocale);
 
 const pages = [
   {
-    category: t("page.guides.index.programming.category"),
+    category: t("programming.category"),
     path: "prog",
-    description: t("page.guides.index.programming.description"),
+    description: t("programming.description"),
     guides: [
       {
-        name: t("page.guides.index.programming.git.name"),
+        name: t("programming.git.name"),
         path: "git",
         icon: "fa-brands:git-alt",
-        description: t("page.guides.index.programming.git.description"),
+        description: t("programming.git.description"),
       },
     ],
   },
   {
-    category: t("page.guides.index.math1.category"),
+    category: t("math1.category"),
     path: "ma-178",
-    description: t("page.guides.index.math1.description"),
+    description: t("math1.description"),
     guides: [
       {
-        name: t("page.guides.index.math1.complexNumbers.name"),
+        name: t("math1.complexNumbers.name"),
         path: "kompleks",
         icon: "fa-solid:magic",
-        description: t("page.guides.index.math1.complexNumbers.description"),
+        description: t("math1.complexNumbers.description"),
       },
     ],
   },
 ];
 ---
 
-<BaseLayout title={t("page.guides.index.title")}>
+<BaseLayout title={t("title")}>
   <Container>
 
       <Prose>
-        <h1><Translate key="page.guides.index.heading" /></h1>
-        <p><Translate key="page.guides.index.intro" /></p>
+        <h1><Translate page="guides/index" key="heading" /></h1>
+        <p><Translate page="guides/index" key="intro" /></p>
       </Prose>
 
       <div class="mt-10">

@@ -2,34 +2,34 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/layout/Container.astro";
 import Card from "@components/ui/Card.astro";
+import Translate from "@components/ui/Translate.astro";
 import { useTranslations } from "@i18n/utils.ts";
 import { getStaticLanguagePaths } from "@i18n/utils.ts";
-import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
 
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("prosjekter", Astro.currentLocale);
 
 const projects = [
   {
-    title: t("page.projects.cards.website.title"),
-    description: t("page.projects.cards.website.description"),
+    title: t("cards.website.title"),
+    description: t("cards.website.description"),
     href: "https://github.com/betauia/betauia.net",
-    highlightText: t("page.projects.cards.website.highlightText"),
+    highlightText: t("cards.website.highlightText"),
   },
   {
-    title: t("page.projects.cards.ctfer.title"),
-    description: t("page.projects.cards.ctfer.description"),
+    title: t("cards.ctfer.title"),
+    description: t("cards.ctfer.description"),
     href: "https://discord.gg/3xBPkDsaXy",
-    highlightText: t("page.projects.cards.ctfer.highlightText"),
+    highlightText: t("cards.ctfer.highlightText"),
   },
 ];
 ---
 
-<BaseLayout title={t("page.projects.title")}>
+<BaseLayout title={t("title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mb-4 text-4xl font-bold"><Translate key="page.projects.title" /></h1>
-    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted"><Translate key="page.projects.intro" /></p>
+    <h1 class="mb-4 text-4xl font-bold"><Translate page="prosjekter" key="title" /></h1>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted"><Translate page="prosjekter" key="intro" /></p>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
@@ -47,10 +47,10 @@ const projects = [
 
     <Card
       class="mt-12"
-      title={t("page.projects.cta.title")}
-      text={t("page.projects.cta.text")}
+      title={t("cta.title")}
+      text={t("cta.text")}
       href="/kontakt"
-      highlightText={t("page.projects.cta.highlightText")}
+      highlightText={t("cta.highlightText")}
     />
   </Container>
 </BaseLayout>

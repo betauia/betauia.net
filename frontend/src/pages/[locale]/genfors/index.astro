@@ -10,53 +10,53 @@ import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("genfors/index", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.genfors.index.title")}>
+<BaseLayout title={t("title")}>
   <Container>
     <Prose>
       <h1>
-        <Translate key="page.genfors.index.heading">
+        <Translate page="genfors/index" key="heading">
           <span slot="beta" class="text-accent">BETA</span>
         </Translate>
       </h1>
 
-      <h2><Translate key="page.genfors.index.whatIs.title" /></h2>
-      <p><Translate key="page.genfors.index.whatIs.text" /></p>
+      <h2><Translate page="genfors/index" key="whatIs.title" /></h2>
+      <p><Translate page="genfors/index" key="whatIs.text" /></p>
 
-      <p><Translate key="page.genfors.index.whatIs.deadlines" /></p>
+      <p><Translate page="genfors/index" key="whatIs.deadlines" /></p>
 
-      <p><Translate key="page.genfors.index.whatIs.everyoneVotes" /></p>
+      <p><Translate page="genfors/index" key="whatIs.everyoneVotes" /></p>
 
-      <h2><Translate key="page.genfors.index.info.title" /></h2>
-      <p><Translate key="page.genfors.index.info.text1" /></p>
-      <p><Translate key="page.genfors.index.info.text2" /></p>
+      <h2><Translate page="genfors/index" key="info.title" /></h2>
+      <p><Translate page="genfors/index" key="info.text1" /></p>
+      <p><Translate page="genfors/index" key="info.text2" /></p>
 
-      <p><Translate key="page.genfors.index.info.honoraryMembers" /></p>
+      <p><Translate page="genfors/index" key="info.honoraryMembers" /></p>
     </Prose>
 
     <Prose>
-      <h2><Translate key="page.genfors.index.documents.title" /></h2>
+      <h2><Translate page="genfors/index" key="documents.title" /></h2>
     </Prose>
     <div class="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
       <Card
-        title={t("page.genfors.index.documents.bylaws.title")}
+        title={t("documents.bylaws.title")}
         href="/Vedtekter.pdf"
-        highlightText={t("page.genfors.index.documents.bylaws.highlightText")}
-        text={t("page.genfors.index.documents.bylaws.text")}
+        highlightText={t("documents.bylaws.highlightText")}
+        text={t("documents.bylaws.text")}
       />
       <Card
-        title={t("page.genfors.index.documents.minutes2026.title")}
+        title={t("documents.minutes2026.title")}
         href="/genfors/2026"
-        highlightText={t("page.genfors.index.documents.minutes2026.highlightText")}
-        text={t("page.genfors.index.documents.minutes2026.text")}
+        highlightText={t("documents.minutes2026.highlightText")}
+        text={t("documents.minutes2026.text")}
       />
       <Card
-        title={t("page.genfors.index.documents.minutes2025.title")}
+        title={t("documents.minutes2025.title")}
         href="/genfors/2025"
-        highlightText={t("page.genfors.index.documents.minutes2025.highlightText")}
-        text={t("page.genfors.index.documents.minutes2025.text")}
+        highlightText={t("documents.minutes2025.highlightText")}
+        text={t("documents.minutes2025.text")}
       />
     </div>
   </Container>

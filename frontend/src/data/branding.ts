@@ -77,42 +77,42 @@ export const logos = {
 } as const;
 
 export function brandingColors(lang?: string) {
-  const t = useTranslations(lang);
+  const t = useTranslations("om/branding", lang);
 
   return [
     {
       name: "Background",
-      description: t("page.om.branding.colors.background"),
+      description: t("colors.background"),
       light: "#F2F2F6",
       dark: "#0F151F",
     },
     {
       name: "Raised",
-      description: t("page.om.branding.colors.raised"),
+      description: t("colors.raised"),
       light: "#EAEAEF",
       dark: "#151E2D",
     },
     {
       name: "Foreground",
-      description: t("page.om.branding.colors.foreground"),
+      description: t("colors.foreground"),
       light: "#242424",
       dark: "#FDFDFD",
     },
     {
       name: "Muted",
-      description: t("page.om.branding.colors.muted"),
+      description: t("colors.muted"),
       light: "#425269",
       dark: "#B9C5DD",
     },
     {
       name: "Aksent (primær)",
-      description: t("page.om.branding.colors.primary"),
+      description: t("colors.primary"),
       light: "#0085FF",
       dark: "#0085FF",
     },
     {
       name: "Aksent (sekundær)",
-      description: t("page.om.branding.colors.secondary"),
+      description: t("colors.secondary"),
       light: "#14B8A6",
       dark: "#14B8A6",
     },

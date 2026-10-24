@@ -6,12 +6,13 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import svelte from "@astrojs/svelte";
 import node from "@astrojs/node";
+import i18nPages from "./integrations/i18n-pages.mjs";
 
 import path from "node:path";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx(), icon(), svelte()],
+  integrations: [i18nPages(), tailwind(), mdx(), icon(), svelte()],
   server: { port: 3000, host: "0.0.0.0" },
   adapter: node({
     mode: "standalone",

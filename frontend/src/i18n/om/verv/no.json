@@ -1,0 +1,21 @@
+{
+  "title": "Om verv",
+  "heading": "Om verv",
+  "fearTitle": "Hvor skummelt er det å engasjere seg?",
+  "fearIntro1": "Ikke i det hele tatt! Som nytt styremedlem har du en 4 ukers periode sammen med de gamle styremedlemmene og du får god erfaring med alle rutiner og oppgaver. Det stilles ingen krav til tidligere erfaring, selv om det kan hjelpe, annet en at du er engasjert for studentmiljøet.",
+  "fearIntro2": "Her er det rom til feil og å forske på nye løsninger til problemer som skulle oppstå. Det er også utrolig lærerikt, morro, og verdifult å ha med seg på CV-en. Engasjer deg!!",
+  "rolesTitle": "Hva kan du stille som?",
+  "rolesIntro": "I BETA har vi et hovedstyre bestående av 9 medlemmer som du kan og bør engasjere deg som:",
+  "roleDescriptions": {
+    "leader": "er BETA sitt annsikt utad mot fakultetet, bedrifter, og andre foreninger. Lederend sørger for å samle styret, passe på at linjeforeningen drives på en god måte og at alle komiteer og interessegrupper sammarbeider mot samme mål.",
+    "deputyLeader": "er lederens stedsfortreder og har ansvar for referering av styremøter og linjeforeningens internstruktur. Nestelederen er lederens sparringspartner.",
+    "financeManager": "har ansvar BETA sin økonomi. Dette inkluderer å føre regnskap, sette opp budsjett og sørge for at vi får betalt for bedriftspresentasjoner.",
+    "prManager": "har ansvar for BETA sin profil på ulike sosiale medier; Instagram, Facebook, Discord og TikTok.",
+    "betaLanLeader": "har ansvar for å arrangere UiA sitt feteste student-LAN hvert semester.",
+    "eventCommitteeLeader": "har ansvar for å planlegge og gjennomføre sosiale aktiviteter for alle BETA-medlemmene.",
+    "businessCommitteeLeader": "har ansvar for kontakten mellom næringslivet og studentene.",
+    "betaDevLeader": "har ansvar for interessegruppen BetaDEV og utviklermiljøet på campus.",
+    "betaSecLeader": "har ansvar for interessegruppen BetaSEC og sikkerhetsrelaterte arrangementer."
+  },
+  "footer": "Alle komiteene har også sin egen nestleder som velges internt og ikke har stemme i hovedstyret."
+}

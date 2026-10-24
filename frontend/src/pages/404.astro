@@ -5,19 +5,19 @@ import Button from "@components/ui/Button.astro";
 import { useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("404", Astro.currentLocale);
 ---
 
 <BaseLayout title="404">
   <Container class="flex min-h-svh flex-col items-center justify-center text-center">
-    <h1 class="text-4xl font-semibold"><Translate key="page.404.title" /></h1>
+    <h1 class="text-4xl font-semibold"><Translate page="404" key="title" /></h1>
     <p class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted" id="random-error-message">
-      <Translate key="page.404.message" />
+      <Translate page="404" key="message" />
     </p>
     <div class="mt-6 flex gap-4">
-      <Button href="/" type="primary"><Translate key="page.404.back" /></Button>
+      <Button href="/" type="primary"><Translate page="404" key="back" /></Button>
       <Button href="mailto:post@betauia.net" type="secondary">
-        <Translate key="page.404.contact" />
+        <Translate page="404" key="contact" />
       </Button>
     </div>
   </Container>
@@ -27,20 +27,20 @@ const t = useTranslations(Astro.currentLocale);
 <script>
   import { extractCurrentLanguage, useTranslations } from "@i18n/utils.ts";
 
-  const t = useTranslations(extractCurrentLanguage());
+  const t = useTranslations("404", extractCurrentLanguage());
   const messages = [
-    t("page.404.messages.1"),
-    t("page.404.messages.2"),
-    t("page.404.messages.3"),
-    t("page.404.messages.4"),
-    t("page.404.messages.5"),
-    t("page.404.messages.6"),
-    t("page.404.messages.7"),
-    t("page.404.messages.8"),
-    t("page.404.messages.9"),
-    t("page.404.messages.10"),
-    t("page.404.messages.11"),
-    t("page.404.messages.12"),
+    t("messages.1"),
+    t("messages.2"),
+    t("messages.3"),
+    t("messages.4"),
+    t("messages.5"),
+    t("messages.6"),
+    t("messages.7"),
+    t("messages.8"),
+    t("messages.9"),
+    t("messages.10"),
+    t("messages.11"),
+    t("messages.12"),
   ];
 
   const errorElement = document.getElementById("random-error-message");

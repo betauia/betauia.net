@@ -1,0 +1,23 @@
+{
+  "title": "Git Workshop",
+  "introLead": "Har du noen gang lurt på hvordan Git egentlig fungerer, eller hvordan du bruker det som en proff?",
+  "introRest": "På denne workshopen vil {{leadName}}, en 3. års AI-student, vise deg både basics og de crazy delene av versjonskontroll. Han har lenge irritert seg på at studieplanen ikke lærer oss dette skikkelig, så nå tar han saken i egne hender og deler skills som faktisk redder deg i prosjekter, både på campus og i jobben senere.",
+  "signupTitle": "Meld deg på workshoppen!",
+  "signupDate": "Tirsdag 16. september",
+  "signupTime": "16:15-17:30",
+  "signupLocation": "C2 042",
+  "whatYouLearnTitle": "Hva lærer jeg?",
+  "whatYouLearnIntro": "Selv om du har brukt Git siden barnehagen eller aldri har hørt om det kommer du til å få masse utbytte av workshoppen. Målgruppen er rettet mot alle og det vil handle om alt fra the basics til de mest spesielle konseptene som:",
+  "topics": {
+    "1": "Hva Git er og hva som egentlig skjer bak panseret",
+    "2": "De vanligste kommandoene for daglig bruk",
+    "3": "Undoing, fiksing og hvordan endre historien",
+    "4": "Praktisk gjennomgang av konflikter og problemer",
+    "5": "Gode standarder, tips og triks for store prosjekter"
+  },
+  "whatToBringTitle": "Hva må jeg ha med?",
+  "whatToBringIntro": "Eneste du trenger er en laptop, så husk å {{installGit}} før tirsdag og pass på at du er bittelitt kjent med terminalen. Alt vil foregå uten fancy interface i terminal slik at du faktisk vet ser hva som foregår.",
+  "installGit": "installere Git",
+  "contact": "Om det er noen spørsmål, ta kontakt med @jokko4 på {{discordLink}}! Vi snakkes!",
+  "discord": "Beta sin Discord"
+}

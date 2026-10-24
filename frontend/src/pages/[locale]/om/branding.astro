@@ -13,27 +13,27 @@ import Translate from "@components/ui/Translate.astro";
 export const getStaticPaths = getStaticLanguagePaths();
 
 const logoList = Object.values(logos);
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("om/branding", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.om.branding.title")}>
+<BaseLayout title={t("title")}>
   <Container>
     <Prose>
-      <h1><Translate key="page.om.branding.heading" /></h1>
+      <h1><Translate page="om/branding" key="heading" /></h1>
 
-      <h2><Translate key="page.om.branding.usage.title" /></h2>
+      <h2><Translate page="om/branding" key="usage.title" /></h2>
 
-      <p><Translate key="page.om.branding.usage.intro" /></p>
+      <p><Translate page="om/branding" key="usage.intro" /></p>
 
       <ul>
-        <li><Translate key="page.om.branding.usage.items.1" /></li>
-        <li><Translate key="page.om.branding.usage.items.2" /></li>
-        <li><Translate key="page.om.branding.usage.items.3" /></li>
-        <li><Translate key="page.om.branding.usage.items.4" /></li>
-        <li><Translate key="page.om.branding.usage.items.5" /></li>
+        <li><Translate page="om/branding" key="usage.items.1" /></li>
+        <li><Translate page="om/branding" key="usage.items.2" /></li>
+        <li><Translate page="om/branding" key="usage.items.3" /></li>
+        <li><Translate page="om/branding" key="usage.items.4" /></li>
+        <li><Translate page="om/branding" key="usage.items.5" /></li>
       </ul>
 
-      <h2><Translate key="page.om.branding.colors.title" /></h2>
+      <h2><Translate page="om/branding" key="colors.title" /></h2>
 
       <div class="not-prose mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -47,14 +47,14 @@ const t = useTranslations(Astro.currentLocale);
                     class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
                     style={`background:${color.light}`}
                     onclick={`navigator.clipboard.writeText('${color.light}')`}
-                    title={t("page.om.branding.colors.copyHint")}
+                    title={t("colors.copyHint")}
                   />
                   {!isSame && (
                     <div
                       class="h-8 w-8 cursor-pointer rounded border border-fg-muted hover:opacity-75 dark:border-dark-fg-muted"
                       style={`background:${color.dark}`}
                       onclick={`navigator.clipboard.writeText('${color.dark}')`}
-                      title={t("page.om.branding.colors.copyHint")}
+                      title={t("colors.copyHint")}
                     />
                   )}
                 </div>
@@ -96,7 +96,7 @@ const t = useTranslations(Astro.currentLocale);
         }
       </div>
 
-      <h2><Translate key="page.om.branding.logos.title" /></h2>
+      <h2><Translate page="om/branding" key="logos.title" /></h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -132,7 +132,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  <Translate key="page.om.branding.logos.black" />
+                  <Translate page="om/branding" key="logos.black" />
                 </Button>
 
                 <Button
@@ -141,7 +141,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  <Translate key="page.om.branding.logos.white" />
+                  <Translate page="om/branding" key="logos.white" />
                 </Button>
 
                 <Button
@@ -150,7 +150,7 @@ const t = useTranslations(Astro.currentLocale);
                   type="secondary"
                   class="w-full"
                 >
-                  <Translate key="page.om.branding.logos.blue" />
+                  <Translate page="om/branding" key="logos.blue" />
                 </Button>
               </div>
             </div>
@@ -158,12 +158,12 @@ const t = useTranslations(Astro.currentLocale);
         }
       </div>
 
-      <h2><Translate key="page.om.branding.icons.title" /></h2>
+      <h2><Translate page="om/branding" key="icons.title" /></h2>
 
       <div class="not-prose mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div class="rounded-xl bg-bg-raised p-4 text-center dark:bg-dark-bg-raised">
           <div class="mb-4 flex justify-center">
-            <Image src={logos.beta.icon} alt={t("page.om.branding.betaIconAlt")} class="h-20 w-20 rounded-lg" />
+            <Image src={logos.beta.icon} alt={t("betaIconAlt")} class="h-20 w-20 rounded-lg" />
           </div>
 
           <Button

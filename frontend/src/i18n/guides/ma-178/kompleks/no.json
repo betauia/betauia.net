@@ -1,0 +1,47 @@
+{
+  "intro": "Formler og regler for komplekse tall i Matte 1",
+  "general": {
+    "title": "Generelt",
+    "intro": "La {{complex}} være et kompleks tall der {{iSquared}}:",
+    "imaginary": "{{im}} (husk: ikke ta med {{i}})"
+  },
+  "rules": {
+    "title": "Regneregler",
+    "intro": "For {{z1}} og {{z2}}:",
+    "addition": "**Addisjon**:",
+    "subtraction": "**Subtraksjon**:",
+    "multiplication": "**Multiplikasjon**:",
+    "conjugate": "**Konjugat**:",
+    "absolute": "**Absolutt verdi**:"
+  },
+  "division": {
+    "title": "Divisjon",
+    "intro": "For å dele komplekse tall, multipliser med den konjugerte:"
+  },
+  "polar": {
+    "title": "Polarform",
+    "intro": "Et kompleks tall kan skrives som:",
+    "where": "der",
+    "modulus": "**Modulus**:",
+    "argument": "**Argument**:"
+  },
+  "euler": {
+    "title": "Eulers formel",
+    "intro": "Et kompleks tall kan også skrives med eulers tall:",
+    "value": "En verdi på {{theta}} er lur å kunne på rams: **{{euler}}**",
+    "note": "Man kan også multiplisere inn {{r}} som lengden."
+  },
+  "table": {
+    "title": "Cos/sin-tabell",
+    "angle": "Vinkel",
+    "radians": "Radianer"
+  },
+  "roots": {
+    "title": "Røtter og potens",
+    "rootsTitle": "{{n}}-te røtter",
+    "rootsDesc": "En {{n}}-te rot har alltid {{n}} løsninger notert {{wk}} {{k}} er én av de {{n}}-te løsningene.",
+    "rootsFind": "Alle {{n}}-te røtter kan bli funnet med:",
+    "powerTitle": "{{n}}-te potens",
+    "powerDesc": "En potens kan skrives på formen:"
+  }
+}

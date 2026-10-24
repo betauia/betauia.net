@@ -14,7 +14,7 @@ export const defaultLang = "no";
 
 export const ui = { en, no } as const;
 
-type TranslationTree = {
+export type TranslationTree = {
   [key: string]: string | TranslationTree;
 };
 

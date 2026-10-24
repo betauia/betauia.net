@@ -5,50 +5,50 @@ import { getStaticLanguagePaths, useTranslations } from "@i18n/utils.ts";
 import Translate from "@components/ui/Translate.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betalan/rules", Astro.currentLocale);
 ---
 
 <BaseLayout
-  title={t("page.betalan.rules.title")}
-  description={t("page.betalan.rules.description")}
+  title={t("title")}
+  description={t("description")}
 >
   <BetaLANLayout>
     <section
       class="legal-font m-6 mx-auto max-w-4xl rounded-lg bg-slate-800 bg-opacity-90 p-6 text-white"
     >
-      <h2 class="mb-4 text-2xl font-bold"><Translate key="page.betalan.rules.heading" /></h2>
+      <h2 class="mb-4 text-2xl font-bold"><Translate page="betalan/rules" key="heading" /></h2>
       <div class="space-y-4">
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule1.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule1.text1" /></p>
-          <p><Translate key="page.betalan.rules.rule1.text2" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule1.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule1.text1" /></p>
+          <p><Translate page="betalan/rules" key="rule1.text2" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule2.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule2.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule2.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule2.text" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule3.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule3.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule3.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule3.text" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule4.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule4.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule4.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule4.text" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule5.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule5.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule5.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule5.text" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule6.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule6.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule6.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule6.text" /></p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold"><Translate key="page.betalan.rules.rule7.title" /></h3>
-          <p><Translate key="page.betalan.rules.rule7.text" /></p>
+          <h3 class="text-xl font-semibold"><Translate page="betalan/rules" key="rule7.title" /></h3>
+          <p><Translate page="betalan/rules" key="rule7.text" /></p>
         </div>
       </div>
-      <p class="mt-4 italic"><Translate key="page.betalan.rules.footer" /></p>
+      <p class="mt-4 italic"><Translate page="betalan/rules" key="footer" /></p>
     </section>
     <br />
   </BetaLANLayout>

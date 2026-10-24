@@ -1,9 +1,35 @@
 ---
 import { Marked } from "marked";
-import { ensureLanguageInPath, useTranslations } from "@i18n/utils.ts";
+import {
+  ensureLanguageInPath,
+  type GlobalTranslationKey,
+  type PageTranslationKey,
+  useTranslations,
+} from "@i18n/utils.ts";
+import type { PageKey } from "@i18n/page-translations.ts";
 
-interface Props {
-  key: string;
+type Key =
+  | {
+      /**
+       * Translation key in the global translation files
+       */
+      key: GlobalTranslationKey;
+      page?: undefined;
+    }
+  | {
+      [P in PageKey]: {
+        /**
+         * Translation key relative to the translation files of the {@link page}
+         */
+        key: PageTranslationKey<P>;
+        /**
+         * Subfolder of /i18n containing the page specific translations
+         */
+        page: P;
+      };
+    }[PageKey];
+
+type Props = Key & {
   /**
    *  Wrap the text in a paragraph
    */
@@ -13,11 +39,13 @@ interface Props {
    */
   markdown?: boolean;
   additions?: Record<string, unknown>;
-}
+};
 
-const t = useTranslations(Astro.currentLocale);
+const { key, page, block = false, markdown = false, additions } = Astro.props;
 
-const { key, block = false, markdown = false, additions } = Astro.props;
+const t = (page ? useTranslations(page, Astro.currentLocale) : useTranslations(Astro.currentLocale)) as (
+  key: string
+) => string;
 
 const { locale } = Astro.params;
 
@@ -33,7 +61,7 @@ const marked = new Marked({
   },
 });
 
-const text = t(key as Parameters<typeof t>[0]) as string;
+const text = t(key);
 const html = markdown ? marked.parse(text, { async: false }) : marked.parseInline(text, { async: false });
 
 const placeholderPattern = /^{{(\w+)}}$/;

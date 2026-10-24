@@ -1,0 +1,79 @@
+{
+  "title": "About Beta",
+  "heading": "Student association for {{students}}",
+  "students": "computer science students",
+  "intro": "Beta is the student association at UiA Grimstad for cybersecurity, computer engineering, ICT, and artificial intelligence. The association is run voluntarily by students, and the goal is to make everyday student life even better for computer science students.",
+  "discordButton": "Join Discord",
+  "contactButton": "Contact us",
+  "stats": {
+    "students": {
+      "title": "Students",
+      "description": "Members across study programs"
+    },
+    "studyPrograms": {
+      "title": "Study programs",
+      "description": "Cybersecurity, computer engineering, AI, and IoT"
+    },
+    "committees": {
+      "title": "Committees & Groups",
+      "description": "Get involved in what interests you"
+    }
+  },
+  "features": {
+    "title": "What do we offer?",
+    "social": {
+      "title": "Social events",
+      "description": "Paintball, go-karting, Beer & Code, and anything else students suggest."
+    },
+    "academic": {
+      "title": "Academic events",
+      "description": "Workshops, tech talks, hackathons, and project work."
+    },
+    "groups": {
+      "title": "Groups & Committees",
+      "description": "Get involved, learn with others, and host events."
+    },
+    "business": {
+      "title": "Company presentations",
+      "description": "Meet exciting companies with free food and drinks."
+    },
+    "lan": {
+      "title": "The semester's sickest LAN",
+      "description": "Join in on competitions, gaming, food, and good times."
+    },
+    "network": {
+      "title": "Network & Friendships",
+      "description": "Build a strong network that lasts throughout your studies and beyond."
+    }
+  },
+  "interestGroups": {
+    "title": "Interest groups",
+    "intro": "Join the groups that match your interests.",
+    "readMore": "Read more",
+    "betadev": {
+      "title": "Betadev",
+      "description": "Learn software development through projects, workshops, and solving real problems."
+    },
+    "betasec": {
+      "title": "Betasec",
+      "description": "Cybersecurity with CTFs, workshops, and projects that provide hands-on experience."
+    }
+  },
+  "committees": {
+    "title": "Committees",
+    "intro": "The committees handle day-to-day operations and events.",
+    "readMore": "Read more",
+    "bedkom": {
+      "title": "Bedkom",
+      "description": "Connects with companies and organizes company presentations."
+    },
+    "eventkom": {
+      "title": "Eventkom",
+      "description": "Plans and coordinates social and academic events."
+    },
+    "betalan": {
+      "title": "Betalan",
+      "description": "Organizes UiA's coolest LAN party every single semester."
+    }
+  }
+}

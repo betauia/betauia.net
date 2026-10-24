@@ -1,0 +1,34 @@
+{
+  "title": "Generalforsamling BETA",
+  "heading": "Generalforsamlingen i {{beta}}",
+  "whatIs": {
+    "title": "Hva er generalforsamlingen?",
+    "text": "Generalforsamlingen er linjeforeningens øverste beslutningsorgan og arrangeres hvert vårsemester. Her behandles saker som angår studentene, nytt styre velges, og viktige avgjørelser for Beta tas.",
+    "deadlines": "**Frister:** fra og med generalforsamlingen 2027 skal generalforsamlingen annonseres to (2) uker før dato med en midlertidig agenda. Innen én (1) uke før generalforsamlingen skal fullstendig agenda med saker som skal behandles legges ut.",
+    "everyoneVotes": "*Alle medlemmer har stemmerett!*"
+  },
+  "info": {
+    "title": "Viktig info",
+    "text1": "For at generalforsamlingen skal gå ryddig og raskt, har vi satt frist til å melde inn saker minst en uke i forveien. Etter fristen sender vi ut alle forslag sammen med oppdatert agenda, slik at alle studenter rekker å gjøre klar en mening om alle saker. Alt kan bli tatt opp, og du kan sende inn så mange saker som mulig.",
+    "text2": "For at linjeforeningen skal gå rundt, trengs det at alle interesserte stiller til verv i styret. Dette er gull for å bygge CV og har gitt mange tidligere studenter både jobb og sommerjobb. Man lærer mye nytt, man blir kjent med mange nye mennesker og du får lov til å forme studentlivet i Grimstad.",
+    "honoraryMembers": "*Æresmedlemmer kan foreslås som egen sak.*"
+  },
+  "documents": {
+    "title": "Viktige dokumenter",
+    "bylaws": {
+      "title": "Vedtekter",
+      "highlightText": "Les nyeste vedteker",
+      "text": "Vedtektene er BETA sine lover og regler. Og inneholder alt fra styre, generalforsamlinger, helt til BETA-alumni!"
+    },
+    "minutes2026": {
+      "title": "Referat 2026",
+      "highlightText": "Les referat",
+      "text": "Tirsdag, 27. januar, kl. 16:15 (2026) slo vi løs med info, diskusjon, og det ble selvfølgelig gratis pizza."
+    },
+    "minutes2025": {
+      "title": "Referat 2025",
+      "highlightText": "Les referat",
+      "text": "Referatet fra 2025. Lyst til å lage en arkiv side, sjekk ut GitHuben til BETA eller kontakt BetaDEV!"
+    }
+  }
+}

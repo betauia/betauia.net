@@ -1,0 +1,20 @@
+{
+  "title": "Seems empty here...",
+  "message": "This page doesn't exist!",
+  "back": "Go back",
+  "contact": "Contact us",
+  "messages": {
+    "1": "This won't be fixed until we get more pizza!",
+    "2": "This page may have disappeared in the latest commit.",
+    "3": "The designer called it minimalist.",
+    "4": "We thought someone would fix it. Nobody did.",
+    "5": "It's not a bug, it's a feature!",
+    "6": "Worked on my machine!",
+    "7": "Have you heard of 99.99% uptime? Not us!",
+    "8": "Check AWS US-East-1 status.",
+    "9": "Your majesty, they hit the second server!",
+    "10": "Probably a DNS issue.",
+    "11": "BetaSEC took the site down because of a security breach.",
+    "12": "A comma was missing in the code!"
+  }
+}

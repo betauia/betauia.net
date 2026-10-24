@@ -9,43 +9,43 @@ import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betalan/survivalgames", Astro.currentLocale);
 ---
 
 <BaseLayout
-  title={t("page.betalan.survivalgames.title")}
-  description={t("page.betalan.survivalgames.description")}
+  title={t("title")}
+  description={t("description")}
 >
   <Tournament UseGamerFont={true}>
-    <h1 class="title"><Translate key="page.betalan.survivalgames.heading" /></h1>
-    <img src={minecraftSurvivalGames.src} alt={t("page.betalan.survivalgames.imageAlt")} class="responsive-img" />
-    <h2 class="section-title"><Translate key="page.betalan.survivalgames.whatIs.title" /></h2>
+    <h1 class="title"><Translate page="betalan/survivalgames" key="heading" /></h1>
+    <img src={minecraftSurvivalGames.src} alt={t("imageAlt")} class="responsive-img" />
+    <h2 class="section-title"><Translate page="betalan/survivalgames" key="whatIs.title" /></h2>
 
     <p class="paragraph">
-      <Translate key="page.betalan.survivalgames.whatIs.intro">
+      <Translate page="betalan/survivalgames" key="whatIs.intro">
         <span slot="hungerGames" class="font-semibold text-red-600 drop-shadow-lg"
-          ><Translate key="page.betalan.survivalgames.whatIs.hungerGames" /></span
+          ><Translate page="betalan/survivalgames" key="whatIs.hungerGames" /></span
         >
       </Translate>
     </p>
-    <Translate key="page.betalan.survivalgames.whatIs.outro" />
+    <Translate page="betalan/survivalgames" key="whatIs.outro" />
   </Tournament>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.participate.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="participate.title" /></h2>
   <p class="paragraph">
-    <Translate key="page.betalan.survivalgames.participate.text">
+    <Translate page="betalan/survivalgames" key="participate.text">
       <A
         slot="form"
         href="https://forms.gle/HCHSQVFEUZDAop7Y9"
         class="text-blue-400 hover:underline"
         target="_blank"
-        aria-label={t("page.betalan.survivalgames.participate.formAriaLabel")}
-      ><Translate key="page.betalan.survivalgames.participate.formLink" /></A
+        aria-label={t("participate.formAriaLabel")}
+      ><Translate page="betalan/survivalgames" key="participate.formLink" /></A
       >
     </Translate>
   </p>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.server.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="server.title" /></h2>
 
   <div class="mb-4 text-center">
     <code
@@ -59,48 +59,48 @@ const t = useTranslations(Astro.currentLocale);
     </code>
   </div>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.prize.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="prize.title" /></h2>
 
   <img
     src={minecraftPotionBottle.src}
-    alt={t("page.betalan.survivalgames.prize.imageAlt")}
+    alt={t("prize.imageAlt")}
     class="responsive-img"
     style="max-width: 250px;"
   />
 
   <ul class="link-center">
     <li class="list-item">
-      <Translate key="page.betalan.survivalgames.prize.first" />
+      <Translate page="betalan/survivalgames" key="prize.first" />
     </li>
   </ul>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.rules.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="rules.title" /></h2>
 
-  <p class="paragraph"><Translate key="page.betalan.survivalgames.rules.intro" /></p>
+  <p class="paragraph"><Translate page="betalan/survivalgames" key="rules.intro" /></p>
 
   <ul class="list">
     <li class="list-item">
-      <Translate key="page.betalan.survivalgames.rules.who" />
+      <Translate page="betalan/survivalgames" key="rules.who" />
     </li>
     <li class="list-item">
-      <Translate key="page.betalan.survivalgames.rules.wins" />
+      <Translate page="betalan/survivalgames" key="rules.wins" />
     </li>
     <li class="list-item">
-      <Translate key="page.betalan.survivalgames.rules.remember" />
+      <Translate page="betalan/survivalgames" key="rules.remember" />
     </li>
   </ul>
 
   <p class="text-2xl italic text-red-600">
-    <Translate key="page.betalan.survivalgames.rules.warning" />
+    <Translate page="betalan/survivalgames" key="rules.warning" />
   </p>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.how.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="how.title" /></h2>
 
   <p class="paragraph">
-    <Translate key="page.betalan.survivalgames.how.text" />
+    <Translate page="betalan/survivalgames" key="how.text" />
   </p>
 
-  <h2 class="section-title"><Translate key="page.betalan.survivalgames.when.title" /></h2>
+  <h2 class="section-title"><Translate page="betalan/survivalgames" key="when.title" /></h2>
 
-  <p class="paragraph"><Translate key="page.betalan.survivalgames.when.text" /></p>
+  <p class="paragraph"><Translate page="betalan/survivalgames" key="when.text" /></p>
 </BaseLayout>

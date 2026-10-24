@@ -17,48 +17,48 @@ import logoWhite from "../../../assets/logos/betadev/white.png";
 import logoBlue from "../../../assets/logos/betadev/blue.png";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betadev/index", Astro.currentLocale);
 
 ---
 
 <BaseLayout
   title="Betadev"
-  description={t("page.betadev.index.description")}
+  description={t("description")}
 >
   <Container>
     <Prose>
       <center>
-        <Image src src={logoBlue} alt={t("page.betadev.index.logoAlt")} inferSize class="h-auto w-[60%] pb-4" />
+        <Image src src={logoBlue} alt={t("logoAlt")} inferSize class="h-auto w-[60%] pb-4" />
       </center>
 
-      <p><Translate key="page.betadev.index.intro" /></p>
+      <p><Translate page="betadev/index" key="intro" /></p>
 
-      <h2 class="mt-8 text-xl font-bold"><Translate key="page.betadev.index.events.title" /></h2>
+      <h2 class="mt-8 text-xl font-bold"><Translate page="betadev/index" key="events.title" /></h2>
     </Prose>
 
     <div class="mb-4 mt-2 grid gap-4 md:grid-cols-3">
       <Card
-        title={t("page.betadev.index.events.gamejam.title")}
+        title={t("events.gamejam.title")}
         href="/betadev/gamejam"
         image={Game3}
-        text={t("page.betadev.index.events.gamejam.text")}
+        text={t("events.gamejam.text")}
       />
       <Card
-        title={t("page.betadev.index.events.codeCompetition.title")}
+        title={t("events.codeCompetition.title")}
         image={GamejamPrize}
-        text={t("page.betadev.index.events.codeCompetition.text")}
+        text={t("events.codeCompetition.text")}
       />
       <Card
-        title={t("page.betadev.index.events.codeNights.title")}
+        title={t("events.codeNights.title")}
         image={Game1}
-        text={t("page.betadev.index.events.codeNights.text")}
+        text={t("events.codeNights.text")}
       />
     </div>
     <Prose>
-      <p><Translate key="page.betadev.index.events.footnote" /></p>
+      <p><Translate page="betadev/index" key="events.footnote" /></p>
 
-      <h2><Translate key="page.betadev.index.communication.title" /></h2>
+      <h2><Translate page="betadev/index" key="communication.title" /></h2>
     </Prose>
-    <Button href=""><Translate key="page.betadev.index.communication.discordButton" /></Button>
+    <Button href=""><Translate page="betadev/index" key="communication.discordButton" /></Button>
   </Container>
 </BaseLayout>

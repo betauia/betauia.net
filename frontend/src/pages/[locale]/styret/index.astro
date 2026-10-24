@@ -10,13 +10,13 @@ import Translate from "@components/ui/Translate.astro";
 const boardYears = availableYears.sort((a, b) => parseInt(b) - parseInt(a));
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("styret", Astro.currentLocale);
 ---
 
-<BaseLayout title={t("page.board.title")}>
+<BaseLayout title={t("title")}>
   <Container class="flex min-h-svh flex-col justify-center">
-    <h1 class="mb-4 text-4xl font-bold"><Translate key="page.board.heading" /></h1>
-    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted"><Translate key="page.board.intro" /></p>
+    <h1 class="mb-4 text-4xl font-bold"><Translate page="styret" key="heading" /></h1>
+    <p class="mb-6 text-fg-muted dark:text-dark-fg-muted"><Translate page="styret" key="intro" /></p>
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         boardYears.map(year => {
@@ -27,7 +27,7 @@ const t = useTranslations(Astro.currentLocale);
               image={yearData?.groupPhoto}
               frame={yearData?.groupPhoto ? "none" : "placeholder"}
               href={`/styret/${year}`}
-              highlightText={t("page.board.readMore")}
+              highlightText={t("readMore")}
             />
           );
         })
@@ -36,10 +36,10 @@ const t = useTranslations(Astro.currentLocale);
 
     <Card
       class="mt-12"
-      title={t("page.board.cta.title")}
-      text={t("page.board.cta.text")}
+      title={t("cta.title")}
+      text={t("cta.text")}
       href="/kontakt"
-      highlightText={t("page.board.cta.highlightText")}
+      highlightText={t("cta.highlightText")}
     />
   </Container>
 </BaseLayout>

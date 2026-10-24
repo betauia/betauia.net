@@ -6,47 +6,47 @@ import Translate from "@components/ui/Translate.astro";
 import A from "@components/ui/A.astro";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betadev/gamejam/index", Astro.currentLocale);
 ---
 
 <BaseLayout
-  title={t("page.betadev.gamejam.title")}
-  description={t("page.betadev.gamejam.description")}
+  title={t("title")}
+  description={t("description")}
 >
   <Container>
-    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold"><Translate key="page.betadev.gamejam.heading" /></h1>
+    <h1 class="mb-4 border-b-2 pb-4 text-4xl font-bold"><Translate page="betadev/gamejam/index" key="heading" /></h1>
 
-    <p><Translate key="page.betadev.gamejam.intro" /></p>
+    <p><Translate page="betadev/gamejam/index" key="intro" /></p>
 
-    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.theme.title" /></h2>
-    <p><Translate key="page.betadev.gamejam.theme.text" /></p>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="theme.title" /></h2>
+    <p><Translate page="betadev/gamejam/index" key="theme.text" /></p>
 
-    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.prizes.title" /></h2>
-    <p><Translate key="page.betadev.gamejam.prizes.text" /></p>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="prizes.title" /></h2>
+    <p><Translate page="betadev/gamejam/index" key="prizes.text" /></p>
     <ol class="mt-4">
       <li>
-        <p><Translate key="page.betadev.gamejam.prizes.first" /></p>
+        <p><Translate page="betadev/gamejam/index" key="prizes.first" /></p>
       </li>
       <li>
-        <p><Translate key="page.betadev.gamejam.prizes.second" /></p>
+        <p><Translate page="betadev/gamejam/index" key="prizes.second" /></p>
       </li>
     </ol>
-    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate key="page.betadev.gamejam.rules.title" /></h2>
+    <h2 class="mb-4 mt-8 text-2xl font-bold"><Translate page="betadev/gamejam/index" key="rules.title" /></h2>
     <ul class="list-disc">
-      <li><Translate key="page.betadev.gamejam.rules.technologies" /></li>
+      <li><Translate page="betadev/gamejam/index" key="rules.technologies" /></li>
       <ul class="list-disc pl-8">
-        <li><Translate key="page.betadev.gamejam.rules.crossPlatform" /></li>
-        <li><Translate key="page.betadev.gamejam.rules.web" /></li>
-        <li><Translate key="page.betadev.gamejam.rules.recommendations" /></li>
+        <li><Translate page="betadev/gamejam/index" key="rules.crossPlatform" /></li>
+        <li><Translate page="betadev/gamejam/index" key="rules.web" /></li>
+        <li><Translate page="betadev/gamejam/index" key="rules.recommendations" /></li>
       </ul>
-      <li><Translate key="page.betadev.gamejam.rules.teams" /></li>
-      <li><Translate key="page.betadev.gamejam.rules.student" /></li>
+      <li><Translate page="betadev/gamejam/index" key="rules.teams" /></li>
+      <li><Translate page="betadev/gamejam/index" key="rules.student" /></li>
     </ul>
 
     <p class="mt-4">
-      <Translate key="page.betadev.gamejam.questions.text">
+      <Translate page="betadev/gamejam/index" key="questions.text">
         <A slot="discord" class="bg-accent p-1 text-white" href="https://discord.gg/3xBPkDsaXy"
-          ><Translate key="page.betadev.gamejam.questions.discordLink" /></A
+          ><Translate page="betadev/gamejam/index" key="questions.discordLink" /></A
         >
       </Translate>
     </p>

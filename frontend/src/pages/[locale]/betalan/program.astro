@@ -7,54 +7,54 @@ import A from "@components/ui/A.astro";
 import { Icon } from "astro-icon/components";
 
 export const getStaticPaths = getStaticLanguagePaths();
-const t = useTranslations(Astro.currentLocale);
+const t = useTranslations("betalan/program", Astro.currentLocale);
 
 const oceanBg =
   "background: linear-gradient(180deg, #a6e6ff 0%, #5fc4e8 24%, #2e9ed1 48%, #1a6aa8 72%, #0a3f72 88%, #042a52 100%); background-attachment: fixed;";
 
 const program = [
   {
-    day: t("page.betalan.program.days.friday.name"),
+    day: t("days.friday.name"),
     items: [
-      { title: t("page.betalan.program.days.friday.items.openingCtf"), time: "16:45" },
-      { title: t("page.betalan.program.days.friday.items.introCtf"), time: "17:00 - 20:00" },
-      { title: t("page.betalan.program.days.friday.items.closingMainHall"), time: "20:00" },
-      { title: t("page.betalan.program.days.friday.items.openingLan"), time: "21:00" },
-      { title: t("page.betalan.program.days.friday.items.aubyGames"), time: "21:15" },
-      { title: t("page.betalan.program.days.friday.items.skylanders"), time: "21:30 - 23:00" },
-      { title: t("page.betalan.program.days.friday.items.betaShow"), time: "23:00 - 00:00" },
+      { title: t("days.friday.items.openingCtf"), time: "16:45" },
+      { title: t("days.friday.items.introCtf"), time: "17:00 - 20:00" },
+      { title: t("days.friday.items.closingMainHall"), time: "20:00" },
+      { title: t("days.friday.items.openingLan"), time: "21:00" },
+      { title: t("days.friday.items.aubyGames"), time: "21:15" },
+      { title: t("days.friday.items.skylanders"), time: "21:30 - 23:00" },
+      { title: t("days.friday.items.betaShow"), time: "23:00 - 00:00" },
     ],
   },
   {
-    day: t("page.betalan.program.days.saturday.name"),
+    day: t("days.saturday.name"),
     items: [
-      { title: t("page.betalan.program.days.saturday.items.theFinals"), time: "13:00 - 15:00" },
-      { title: t("page.betalan.program.days.saturday.items.gameJam"), time: "16:00 - 17:00" },
-      { title: t("page.betalan.program.days.saturday.items.food"), time: "17:00 - 19:00" },
-      { title: t("page.betalan.program.days.saturday.items.skywars"), time: "19:00 - 21:00" },
-      { title: t("page.betalan.program.days.saturday.items.betaShow"), time: "23:00 - 00:00" },
+      { title: t("days.saturday.items.theFinals"), time: "13:00 - 15:00" },
+      { title: t("days.saturday.items.gameJam"), time: "16:00 - 17:00" },
+      { title: t("days.saturday.items.food"), time: "17:00 - 19:00" },
+      { title: t("days.saturday.items.skywars"), time: "19:00 - 21:00" },
+      { title: t("days.saturday.items.betaShow"), time: "23:00 - 00:00" },
     ],
   },
   {
-    day: t("page.betalan.program.days.sunday.name"),
+    day: t("days.sunday.name"),
     items: [
-      { title: t("page.betalan.program.days.sunday.items.finalDuel"), time: "12:00 - 13:00" },
-      { title: t("page.betalan.program.days.sunday.items.fortnite"), time: "14:00 - 16:00" },
-      { title: t("page.betalan.program.days.sunday.items.omegaStrikers"), time: "16:00 - 18:00" },
-      { title: t("page.betalan.program.days.sunday.items.closingHour"), time: "18:15" },
+      { title: t("days.sunday.items.finalDuel"), time: "12:00 - 13:00" },
+      { title: t("days.sunday.items.fortnite"), time: "14:00 - 16:00" },
+      { title: t("days.sunday.items.omegaStrikers"), time: "16:00 - 18:00" },
+      { title: t("days.sunday.items.closingHour"), time: "18:15" },
     ],
   },
 ];
 ---
 
-<BaseLayout title={t("page.betalan.program.title")}>
+<BaseLayout title={t("title")}>
   <BetaLANLayout backgroundCss={oceanBg} UseGamerFont={false}>
     <section
       class="mx-3 mb-4 max-w-4xl rounded-lg bg-sky-950/85 p-4 text-lg text-cyan-50 sm:m-6 sm:p-6 lg:mx-auto"
     >
       <div>
         <h1 class="mb-6 text-center text-4xl font-bold text-orange-400 md:text-7xl">
-          <Translate key="page.betalan.program.heading" />
+          <Translate page="betalan/program" key="heading" />
         </h1>
 
         {
@@ -77,8 +77,8 @@ const program = [
 
         <div class="mb-2 mt-6 border-t border-cyan-800 pt-4 text-center sm:mt-8">
           <div class="mt-2 sm:mt-4">
-            <h3 class="mb-2 text-lg font-medium md:text-xl"><Translate key="page.betalan.program.discord.title" /></h3>
-            <p class="mb-3"><Translate key="page.betalan.program.discord.text" /></p>
+            <h3 class="mb-2 text-lg font-medium md:text-xl"><Translate page="betalan/program" key="discord.title" /></h3>
+            <p class="mb-3"><Translate page="betalan/program" key="discord.text" /></p>
             <A
               href="https://discord.gg/ggUtjr8TSQ"
               target="_blank"
@@ -86,7 +86,7 @@ const program = [
               class="inline-flex items-center gap-2 rounded-md bg-indigo-700 px-3 py-1.5 text-white transition-colors hover:bg-indigo-600 sm:px-4 sm:py-2"
             >
               <Icon name="fa-brands:discord" class="mb-2 h-12 w-12" />
-              <span><Translate key="page.betalan.program.discord.button" /></span>
+              <span><Translate page="betalan/program" key="discord.button" /></span>
             </A>
           </div>
         </div>
