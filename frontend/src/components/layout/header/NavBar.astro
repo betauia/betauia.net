@@ -2,8 +2,10 @@
 import { Image } from "astro:assets";
 import BetaIcon from "@assets/logos/beta/icon.jpg";
 import DropdownButton from "@components/layout/header/dropdown/DropdownButton.astro";
-import { navigationDropdowns } from "@data/navBarConfig";
+import { getNavigationDropdowns } from "@data/navBarConfig";
 import A from "@components/ui/A.astro";
+
+const navigationDropdowns = getNavigationDropdowns(Astro.currentLocale);
 ---
 
 <nav class="flex items-center gap-6">

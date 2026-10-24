@@ -1,8 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "@components/ui/Button.astro";
-import { navigationDropdowns } from "@data/navBarConfig";
+import { getNavigationDropdowns } from "@data/navBarConfig";
 import A from "@components/ui/A.astro";
+const navigationDropdowns = getNavigationDropdowns(Astro.currentLocale);
 ---
 
 <button

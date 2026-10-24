@@ -1,3 +1,58 @@
 {
-  "language": "Norsk"
+  "language": "Norsk",
+  "nav": {
+    "omBeta": {
+      "label": "/om_beta",
+      "about": {
+        "title": "Om Beta",
+        "desc": "Lær mer om hvem vi er og hva vi gjør for studentene."
+      },
+      "board": {
+        "title": "Hovedstyret",
+        "desc": "Sjekk ut tidligere og nåværende hovedstyre."
+      },
+      "bylaws": {
+        "title": "Vedtekter",
+        "desc": "Les vedtektene og se hvordan foreningen er organisert."
+      },
+      "branding": {
+        "title": "Branding",
+        "desc": "Sjekk ut hvordan man bruker Beta sine logoer, farger og materiale."
+      },
+      "contact": {
+        "title": "Kontakt oss",
+        "desc": "Ta kontakt med oss for samarbeid, spørsmål eller tilbakemelding."
+      }
+    },
+    "forStudents": {
+      "label": "/for_studenter",
+      "jobs": {
+        "title": "Jobbannonser",
+        "desc": "Finn sommerjobber, internship og relevante stillinger."
+      },
+      "projects": {
+        "title": "Prosjekter",
+        "desc": "Sjekk ut studentprosjekter vi jobber med eller bli med."
+      },
+      "generalAssembly": {
+        "title": "Generalforsamling",
+        "desc": "Gjør deg klar for generalforsamling eller se hva som har blitt gjort tidligere."
+      },
+      "guides": {
+        "title": "Guides",
+        "desc": "Finn nyttige guider, ressurser og tips for fag, verktøy og andre temaer."
+      },
+      "betaLan": {
+        "title": "BetaLAN",
+        "desc": "Bli med på LAN-party og game bort eksamenssorgen hvert semmester!"
+      }
+    },
+    "forCompanies": {
+      "label": "/for_bedrifter",
+      "contact": {
+        "title": "Kontakt oss",
+        "desc": "Ta kontakt med oss for samarbeid, spørsmål eller andre muligheter."
+      }
+    }
+  }
 }
