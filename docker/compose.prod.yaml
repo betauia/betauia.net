@@ -8,6 +8,7 @@ services:
       args:
         PUBLIC_BACKEND_URL: ${PUBLIC_BACKEND_URL}
         PUBLIC_TURNSTILE_SITE_KEY: ${PUBLIC_TURNSTILE_SITE_KEY}
+        PUBLIC_BETASEC_SECRET: ${PUBLIC_BETASEC_SECRET}
     restart: unless-stopped
     ports:
       - "3000:3000"
