@@ -36,7 +36,7 @@
     "shiki": "^4.5.0",
     "svelte": "^5.57.2",
     "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/sanitize-html": "^2.16.2",
