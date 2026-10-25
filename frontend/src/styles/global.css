@@ -1,10 +1,10 @@
-@import "@fontsource/poppins/300.css"; /* Light */
-@import "@fontsource/poppins/400.css"; /* Regular */
-@import "@fontsource/poppins/500.css"; /* Medium */
-@import "@fontsource/poppins/600.css"; /* Semi-bold */
-@import "@fontsource/poppins/700.css"; /* Bold */
-@import "@fontsource/poppins/400-italic.css"; /* Regular Italic */
-@import "@fontsource/poppins/600-italic.css"; /* Semi-bold Italic */
+@import "@fontsource/poppins/300.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/400-italic.css";
+@import "@fontsource/poppins/600-italic.css";
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +15,6 @@
     @apply pt-24;
   }
 
-  /* Prose links */
   .prose a {
     @apply decoration-accent/40 transition-colors hover:decoration-accent;
   }
@@ -29,13 +28,9 @@
   height: 1px;
   width: 1px;
   overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
   clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
   clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
   clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
   white-space: nowrap;
 }
 
@@ -47,13 +42,9 @@
   height: 1px;
   width: 1px;
   overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
   clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
   clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
   clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
   white-space: nowrap;
 }
 
@@ -62,7 +53,6 @@
   background: transparent !important;
 }
 
-/* Shiki dark mode */
 html.dark .shiki,
 html.dark .shiki span {
   color: var(--shiki-dark) !important;

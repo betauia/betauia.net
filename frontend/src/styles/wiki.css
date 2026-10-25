@@ -1,0 +1,139 @@
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "katex/dist/katex.min.css";
+
+@layer site-reset {
+  button {
+    @apply cursor-pointer border-0 bg-transparent p-0 text-inherit;
+    font: inherit;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+*,
+::before,
+::after {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
+
+/* See https://starlight.astro.build/guides/css-and-tailwind/#theming */
+
+/* Dark mode */
+:root {
+  --sl-font: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --sl-nav-height: 4rem;
+  --sl-menu-button-size: 2.5rem;
+
+  --sl-color-accent-low: #0b2a4d;
+  --sl-color-accent: #0085ff;
+  --sl-color-accent-high: #9dd0ff;
+
+  --sl-color-white: #fdfdfd;
+  --sl-color-gray-1: #e2e8f3;
+  --sl-color-gray-2: #b9c5dd;
+  --sl-color-gray-3: #8a97b0;
+  --sl-color-gray-4: #566278;
+  --sl-color-gray-5: #2a3547;
+  --sl-color-gray-6: #151e2d;
+  --sl-color-black: #0f151f;
+
+  --sl-color-bg-nav: #151e2d;
+  --sl-color-bg-sidebar: #0f151f;
+  --sl-color-hairline: #1e2a3d;
+  --sl-color-hairline-shade: #1e2a3d;
+  --sl-color-text-accent: #0085ff;
+  --sl-color-text-invert: #fdfdfd;
+}
+
+/* Light mode */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #cce6ff;
+  --sl-color-accent: #0070d6;
+  --sl-color-accent-high: #003d75;
+
+  --sl-color-white: #242424;
+  --sl-color-gray-1: #353f4c;
+  --sl-color-gray-2: #4a5462;
+  --sl-color-gray-3: #6b7481;
+  --sl-color-gray-4: #9aa1ab;
+  --sl-color-gray-5: #cfd1d9;
+  --sl-color-gray-6: #eaeaef;
+  --sl-color-gray-7: #f5f5f8;
+  --sl-color-black: #f2f2f6;
+
+  --sl-color-bg-nav: #f2f2f6;
+  --sl-color-bg-sidebar: #f2f2f6;
+  --sl-color-hairline: #dcdce3;
+  --sl-color-hairline-shade: #dcdce3;
+  --sl-color-text-accent: #0070d6;
+  --sl-color-text-invert: #fdfdfd;
+}
+
+.page > header.header {
+  @apply border-b-0 shadow-md;
+}
+
+.wiki-search button[data-open-modal] {
+  @apply min-[800px]:max-w-none min-[800px]:bg-bg-raised min-[800px]:dark:bg-dark-bg-base;
+}
+
+.wiki-search button[data-open-modal] svg {
+  @apply text-base max-[799px]:text-2xl;
+}
+
+.sl-markdown-content a:not(:where(.not-content *, .sl-link-card *)) {
+  @apply font-medium underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent;
+}
+
+.sl-markdown-content :not(pre) > code {
+  @apply rounded-md px-1.5 py-0.5;
+}
+
+.sl-markdown-content :is(.shiki, .astro-code) {
+  @apply rounded-lg border border-fg-muted/20 !bg-bg-raised dark:border-dark-fg-muted/20 dark:!bg-dark-bg-raised;
+}
+
+html.dark :is(.shiki, .astro-code),
+html.dark :is(.shiki, .astro-code) span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+:where(.main-site) {
+  line-height: 1.5;
+}
+
+:where(.main-site img) {
+  display: block;
+}
+
+:where(.main-site ul) {
+  @apply m-0 list-none p-0;
+}
+
+:where(.main-site a) {
+  @apply text-inherit no-underline;
+}
+
+@media (min-width: 72rem) {
+  .right-sidebar-container {
+    width: var(--sl-sidebar-width);
+  }
+
+  [data-has-sidebar][data-has-toc] .main-pane {
+    --sl-content-margin-inline: auto;
+    width: calc(100% - var(--sl-sidebar-width));
+  }
+}

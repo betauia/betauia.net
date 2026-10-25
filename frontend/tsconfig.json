@@ -10,5 +10,8 @@
       "@lib/*": ["./src/lib/*"],
       "@data/*": ["./src/data/*"]
     }
+  },
+  "mdx": {
+    "plugins": [["remark-frontmatter", ["yaml"]], "remark-gfm", "remark-math"]
   }
 }

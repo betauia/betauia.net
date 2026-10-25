@@ -1,0 +1,36 @@
+---
+title: Wikibetia
+description: Fra Wikibetia, fordi noen må huske hva som skjedde.
+---
+
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+Velkommen til **Wikibetia**, den frie encyklopedien for datastudentene ved UiA Grimstad! Her finnes alt fra lore til møtereferater, og alt imellom. Alle kan bidra og er oppfordret å skrive så mye som mulig, slik at kunnskapen ikke forsvinner
+når folk er ferdige med studiene.
+
+<CardGrid>
+  <LinkCard
+    title="Generalforsamling"
+    href="/wiki/genfors/"
+    description="Info om generalforsamlingen, referater og saksdokumenter."
+  />
+  <LinkCard
+    title="Møtereferater"
+    href="/wiki/moter/mal/"
+    description="Referater fra styremøter og andre møter."
+  />
+  <LinkCard
+    title="Guider"
+    href="/wiki/guider/skriv-en-side/"
+    description="Hvordan man gjør ting."
+  />
+  <LinkCard
+    title="Lore"
+    href="/wiki/lore/"
+    description="Historie, tradisjoner og interne vitser."
+  />
+</CardGrid>
+
+## Bidra
+
+Alle sidene ligger i `frontend/src/content/docs/wiki/` i [GitHub-repoet](https://github.com/betauia/betauia.net). Les [Skriv en side](/wiki/guider/skriv-en-side/) for å komme i gang.

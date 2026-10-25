@@ -7,11 +7,46 @@ import rehypeKatex from "rehype-katex";
 import svelte from "@astrojs/svelte";
 import node from "@astrojs/node";
 import { unified } from "@astrojs/markdown-remark";
+import starlight from "@astrojs/starlight";
 
 import path from "node:path";
 
 export default defineConfig({
-  integrations: [tailwind(), mdx(), icon(), svelte()],
+  integrations: [
+    starlight({
+      title: "Wikibetia",
+      description: "Den frie encyklopedien for datastudenter ved UiA Grimstad.",
+      favicon: "/favicon.ico",
+      defaultLocale: "root",
+      locales: { root: { label: "Norsk", lang: "nb" } },
+      disable404Route: true,
+      expressiveCode: false,
+      editLink: { baseUrl: "https://github.com/betauia/betauia.net/edit/master/frontend/" },
+      customCss: ["./src/styles/wiki.css"],
+      components: {
+        Header: "./src/components/wiki/Header.astro",
+        PageFrame: "./src/components/wiki/PageFrame.astro",
+        ThemeProvider: "./src/components/wiki/ThemeProvider.astro",
+        MobileMenuToggle: "./src/components/wiki/MobileMenuToggle.astro",
+      },
+      sidebar: [
+        { label: "Forside", link: "/wiki/" },
+        { label: "Generalforsamling", items: [{ autogenerate: { directory: "wiki/genfors" } }] },
+        { label: "Møtereferater", items: [{ autogenerate: { directory: "wiki/moter" } }] },
+        { label: "Guider", items: [{ autogenerate: { directory: "wiki/guider" } }] },
+        { label: "Lore", items: [{ autogenerate: { directory: "wiki/lore" } }] },
+      ],
+    }),
+    tailwind({ applyBaseStyles: false }),
+    mdx(),
+    icon(),
+    svelte(),
+  ],
+  redirects: {
+    "/genfors": "/wiki/genfors/",
+    "/genfors/2025": "/wiki/genfors/2025/",
+    "/genfors/2026": "/wiki/genfors/2026/",
+  },
   server: {
     port: 3000,
     host: "0.0.0.0",
@@ -26,8 +61,7 @@ export default defineConfig({
     }),
     syntaxHighlight: "shiki",
     shikiConfig: {
-      theme: "github-light",
-      darkTheme: "github-dark",
+      themes: { light: "github-light", dark: "github-dark" },
       wrap: true,
     },
   },

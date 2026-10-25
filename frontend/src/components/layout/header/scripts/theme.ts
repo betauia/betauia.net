@@ -1,3 +1,9 @@
+// The wiki reads `data-theme` instead, so set both
+function setTheme(isDark: boolean) {
+  document.documentElement.classList.toggle("dark", isDark);
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+}
+
 export function initThemeToggle() {
   const themeToggle = document.getElementById("theme-toggle");
   if (!themeToggle) return;
@@ -6,14 +12,14 @@ export function initThemeToggle() {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDark = stored ? stored === "dark" : prefersDark;
 
-  document.documentElement.classList.toggle("dark", isDark);
+  setTheme(isDark);
   if ("checked" in themeToggle) {
     (themeToggle as HTMLInputElement).checked = isDark;
   }
 
   themeToggle.addEventListener("change", () => {
     const checked = (themeToggle as HTMLInputElement).checked ?? false;
-    document.documentElement.classList.toggle("dark", checked);
+    setTheme(checked);
     localStorage.setItem("color-theme", checked ? "dark" : "light");
   });
 }
