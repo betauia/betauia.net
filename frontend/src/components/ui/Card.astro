@@ -22,22 +22,16 @@ const iconName = !hasHref ? "" : isMailLink ? "fa-solid:envelope" : "fa-solid:ar
 ---
 
 <a href={href} class:list={["group block", className]}>
-  <div
-    class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-fg-muted bg-bg-raised shadow-sm transition-transform hover:scale-105 hover:shadow-lg dark:border-dark-fg-muted dark:bg-dark-bg-raised"
-  >
-    {
-      image && (
-        <div class="w-full overflow-hidden">
-          <Image src={image} alt={title} class="h-64 w-full object-cover" />
-        </div>
-      )
-    }
+  <div class="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-fg-muted bg-bg-raised shadow-sm transition-transform hover:scale-105 hover:shadow-lg dark:border-dark-fg-muted dark:bg-dark-bg-raised">
+    {image && (
+      <div class="w-full overflow-hidden">
+        <Image src={image} alt={title} class="h-64 w-full object-cover" />
+      </div>
+    )}
 
-    {
-      frame == "placeholder" && (
-        <div class="flex h-64 items-center justify-center bg-gradient-to-br from-accent/10 to-accent-secondary/10" />
-      )
-    }
+    {frame == "placeholder" && (
+      <div class="flex h-64 items-center justify-center bg-gradient-to-br from-accent/10 to-accent-secondary/10" />
+    )}
 
     <div class="flex flex-1 flex-col justify-between p-6">
       <div>
@@ -45,14 +39,12 @@ const iconName = !hasHref ? "" : isMailLink ? "fa-solid:envelope" : "fa-solid:ar
         {text && <p class="text-fg-muted dark:text-dark-fg-muted">{text}</p>}
       </div>
 
-      {
-        highlightText && (
-          <p class="mt-2 flex items-center gap-2 font-medium text-accent">
-            <Icon name={iconName} class="h-4 w-4" />
-            {highlightText}
-          </p>
-        )
-      }
+      {highlightText && (
+        <p class="mt-2 flex items-center gap-2 font-medium text-accent">
+          <Icon name={iconName} class="h-4 w-4" />
+          {highlightText}
+        </p>
+      )}
     </div>
   </div>
 </a>
