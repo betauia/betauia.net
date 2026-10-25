@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.13"
 resolution-markers = [
     "python_full_version >= '3.14'",
@@ -515,15 +515,15 @@ wheels = [
 
 [[package]]
 name = "icalendar"
-version = "6.3.1"
+version = "7.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "python-dateutil" },
     { name = "tzdata" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/08/13/e5899c916dcf1343ea65823eb7278d3e1a1d679f383f6409380594b5f322/icalendar-6.3.1.tar.gz", hash = "sha256:a697ce7b678072941e519f2745704fc29d78ef92a2dc53d9108ba6a04aeba466", size = 177169, upload-time = "2025-05-20T07:42:50.683Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/47/2b/1bbf82d316df18c3331d9a06228819c8a5814ceda545a3e9980e52ffce1b/icalendar-7.3.0.tar.gz", hash = "sha256:7bd001c8e648205e1bde5c6a5b77096598e8d0893dcf57755c6c597635620132", size = 525811, upload-time = "2026-08-19T15:10:21.05Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6c/25/b5fc00e85d2dfaf5c806ac8b5f1de072fa11630c5b15b4ae5bbc228abd51/icalendar-6.3.1-py3-none-any.whl", hash = "sha256:7ea1d1b212df685353f74cdc6ec9646bf42fa557d1746ea645ce8779fdfbecdd", size = 242349, upload-time = "2025-05-20T07:42:48.589Z" },
+    { url = "https://files.pythonhosted.org/packages/bb/82/50bff78b0bb0c7d7c0cb39e0ee189b92f611fff6bd7cf57f25e92d5a7551/icalendar-7.3.0-py3-none-any.whl", hash = "sha256:8355acfe17be81b368f0b1e3740817cea9b56ea889931f8f1a87c62f2d28db0b", size = 542540, upload-time = "2026-08-19T15:10:19.525Z" },
 ]
 
 [[package]]
@@ -909,7 +909,7 @@ wheels = [
 
 [[package]]
 name = "recurring-ical-events"
-version = "3.8.0"
+version = "3.8.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "icalendar" },
@@ -917,9 +917,9 @@ dependencies = [
     { name = "tzdata" },
     { name = "x-wr-timezone" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/83/90/05dfcc02ecf58bd170305c88db9e3e3933aa73a1f8abac2b326c7fdc1a98/recurring_ical_events-3.8.0.tar.gz", hash = "sha256:3e8c7c35d9bd8956a7ab91afad51477c60d972e1236d3fd1b55087a66bce7d04", size = 602665, upload-time = "2025-06-10T13:23:50.662Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/f5/898abd8fbb25766ec6cb17b244730ebf192f47963c71eeacd61aadd903a1/recurring_ical_events-3.8.2.tar.gz", hash = "sha256:e731af31d0b7dec5cd47a1defacd8549e2f36fab1c1995e8b9f042822a0acf8e", size = 604992, upload-time = "2026-04-30T19:21:46.2Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/36/25/88a4218cccae06ce6b15e41d2f263dd4a73e8e8cbe41537cd7784a17479b/recurring_ical_events-3.8.0-py3-none-any.whl", hash = "sha256:cf958eb17c92d4dca5c621e44c2b3fffd4ba700dca0db66287c5dc11438f63ba", size = 238228, upload-time = "2025-06-10T13:23:49.048Z" },
+    { url = "https://files.pythonhosted.org/packages/81/f7/d3eb4f545baf5d6daaa5881694517626fb7ad04036d94168197a4f021384/recurring_ical_events-3.8.2-py3-none-any.whl", hash = "sha256:9ad605e27b4fbeb70ee1c66205ade32550be15a57cedc579606522f1c67aef6d", size = 241358, upload-time = "2026-04-30T19:21:44.079Z" },
 ]
 
 [[package]]
@@ -1134,11 +1134,11 @@ wheels = [
 
 [[package]]
 name = "tzdata"
-version = "2025.2"
+version = "2026.5"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/95/32/1a225d6164441be760d75c2c42e2780dc0873fe382da3e98a2e1e48361e5/tzdata-2025.2.tar.gz", hash = "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9", size = 196380, upload-time = "2025-03-23T13:54:43.652Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/68/f1b440335057bfce71b6e50a9d09445aa2ecbd08359a337976627b8409e7/tzdata-2026.5.tar.gz", hash = "sha256:8cc73c0a0bfca7dbfa59235d60b2eff82231dee33f53d206db1acd9173cfc0a7", size = 200404, upload-time = "2026-10-03T09:23:14.143Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5c/23/c7abc0ca0a1526a0774eca151daeb8de62ec457e77262b66b359c3c7679e/tzdata-2025.2-py2.py3-none-any.whl", hash = "sha256:1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8", size = 347839, upload-time = "2025-03-23T13:54:41.845Z" },
+    { url = "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl", hash = "sha256:b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac", size = 347996, upload-time = "2026-10-03T09:23:12.535Z" },
 ]
 
 [[package]]
