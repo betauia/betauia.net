@@ -1,0 +1,14 @@
+---
+import Default from "@astrojs/starlight/components/PageFrame.astro";
+import Footer from "@components/layout/Footer.astro";
+---
+
+<Default>
+  <slot name="header" slot="header" />
+  <slot name="sidebar" slot="sidebar" />
+  <slot />
+</Default>
+
+<div class="main-site relative z-[6]">
+  <Footer />
+</div>

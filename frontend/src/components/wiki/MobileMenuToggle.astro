@@ -1,0 +1,38 @@
+<button
+  popovertarget="starlight__sidebar"
+  class="wiki-menu-button group fixed right-[var(--sl-nav-pad-x)] top-0 z-10 flex h-16 items-center justify-center px-2 min-[800px]:hidden print:hidden"
+  type="button"
+>
+  <div class="relative h-5 w-6">
+    <span
+      class="hamburger-line absolute left-0 top-0 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+    <span
+      class="hamburger-line absolute left-0 top-2 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+    <span
+      class="hamburger-line absolute left-0 top-4 block h-[3px] w-full rounded-full bg-fg-muted transition-all duration-200 ease-out group-hover:bg-fg-base dark:bg-dark-fg-muted dark:group-hover:bg-dark-fg-base"
+    ></span>
+  </div>
+  <span class="sr-only">Meny</span>
+</button>
+
+<style is:global>
+  .wiki-menu-button:has(~ :popover-open) .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .wiki-menu-button:has(~ :popover-open) .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .wiki-menu-button:has(~ :popover-open) .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  @media (max-width: 799px) {
+    body:has(#starlight__sidebar:popover-open) {
+      overflow: hidden;
+    }
+  }
+</style>

@@ -34,12 +34,6 @@ export const navigationDropdowns: NavigationDropdown[] = [
         desc: "Les vedtektene og se hvordan foreningen er organisert.",
         href: "/Vedtekter.pdf",
       },
-      // {
-      //   icon: "fa-solid:archive",
-      //   title: "Referat",
-      //   desc: "Se hva som har skjedd i ulike møter og samlinger.",
-      //   href: "/referat",
-      // },
       {
         icon: "fa-solid:paint-brush",
         title: "Branding",
@@ -71,17 +65,17 @@ export const navigationDropdowns: NavigationDropdown[] = [
       //   href: "/ressurser",
       // },
       {
+        icon: "fa-solid:book",
+        title: "Wikibetia",
+        desc: "Finn nyttige guider, info, referater, ressurser som en hver datastudent kunne ønsket seg.",
+        href: "/wiki",
+      },
+      {
         icon: "fa-solid:briefcase",
         title: "Jobbannonser",
         desc: "Finn sommerjobber, internship og relevante stillinger.",
         href: "/jobs",
       },
-      // {
-      //   icon: "fa-solid:book-open",
-      //   title: "Ressurser",
-      //   desc: "Lenker til kurs, oppgaver, prosjekter og eksempler.",
-      //   href: "/ressurser",
-      // },
       // {
       //   icon: "fa-solid:users",
       //   title: "Interessegrupper",
@@ -99,18 +93,6 @@ export const navigationDropdowns: NavigationDropdown[] = [
         title: "Prosjekter",
         desc: "Sjekk ut studentprosjekter vi jobber med eller bli med.",
         href: "/prosjekter",
-      },
-      {
-        icon: "fa-solid:city",
-        title: "Generalforsamling",
-        desc: "Gjør deg klar for generalforsamling eller se hva som har blitt gjort tidligere.",
-        href: "/genfors",
-      },
-      {
-        icon: "fa-solid:book-open",
-        title: "Guides",
-        desc: "Finn nyttige guider, ressurser og tips for fag, verktøy og andre temaer.",
-        href: "/guides",
       },
       {
         icon: "fa-solid:gamepad",

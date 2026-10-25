@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Search from "@astrojs/starlight/components/Search.astro";
+import Actions from "@components/layout/header/Actions.astro";
+import BetaIcon from "@assets/logos/beta/icon.jpg";
+---
+
+<div class="main-site flex h-full items-center justify-between gap-6 px-2">
+  <div class="flex items-center gap-5">
+    <a
+      href="/"
+      title="Tilbake til betauia.net"
+      class="flex text-fg-muted transition-colors hover:text-fg-base dark:text-dark-fg-muted dark:hover:text-dark-fg-base"
+    >
+      <Icon name="fa-solid:arrow-left" class="h-4 w-4" />
+      <span class="sr-only">Tilbake til betauia.net</span>
+    </a>
+    <a href="/wiki/" class="flex items-center gap-4">
+      <Image src={BetaIcon} alt="Beta" class="h-10 w-auto rounded-lg" />
+      <span
+        class="font-semibold text-fg-base transition-colors hover:text-fg-muted dark:text-dark-fg-base dark:hover:text-dark-fg-muted"
+      >
+        /wikibetia
+      </span>
+    </a>
+  </div>
+
+  <div class="flex items-center gap-6">
+    <Actions />
+    <div class="wiki-search flex items-center min-[800px]:w-72">
+      <Search />
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initThemeToggle } from "@components/layout/header/scripts/theme";
+
+  initThemeToggle();
+</script>

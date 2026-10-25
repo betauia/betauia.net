@@ -1,0 +1,74 @@
+---
+title: Skriv en side
+description: Hvordan du legger til eller endrer sider i Wikibetia.
+sidebar:
+  order: 0
+---
+
+import { FileTree, Steps } from "@astrojs/starlight/components";
+
+Wikibetia er laget med [Starlight](https://starlight.astro.build/). Hver side er en Markdown-fil (`.md` eller `.mdx`).
+
+## Hvor ligger filene?
+
+<FileTree>
+
+- frontend/src/content/docs/wiki/
+  - index.mdx forsiden, `/wiki`
+  - moter/
+    - mal.md Vanlig content
+  - guider/
+    - ls.mdx MDX side
+  - lore/
+
+</FileTree>
+
+Filnavnet blir lenken: `wiki/guider/ls.md` blir til `/wiki/guider/ls`. Nye filer dukker automatisk opp i menyen til venstre.
+
+## Lag en ny side
+
+<Steps>
+
+1. Lag en ny fil i riktig mappe, for eksempel `wiki/lore/test.md`.
+
+2. Start filen med en tittel:
+
+   ```md
+   ---
+   title: BetaLAN H26 lore
+   description: Hva skjedde på Bluebox i år?
+   ---
+
+   Her kommer innholdet...
+   ```
+
+3. Se på siden lokalt med `pnpm dev` og gå til [localhost:3000/wiki](http://localhost:3000/wiki).
+
+4. Lag en pull request på GitHub.
+
+</Steps>
+
+Filene kan også lages som `.mdx` filer. Det gir muligheten for masse fancy ekstra funksjonaliteter som LaTeX og enkle JavaScript funksjoner.
+
+## Matte med LaTeX
+
+Skriv matte mellom dollartegn, som i LaTeX. `$e^{i\pi} + 1 = 0$` blir til $e^{i\pi} + 1 = 0$.
+
+Bruk doble dollartegn for en egen linje:
+
+```md
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$
+```
+
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$
+
+## Nyttig å vite
+
+- Rekkefølgen i menyen kan endres med `sidebar: { order: 1 }` i toppen av filen.
+- Nye seksjoner i menyen legges til i `sidebar` i `frontend/astro.config.mjs`.
+- Utseendet styres av `src/styles/wiki.css` og komponentene i `src/components/wiki/`.
+- Starlight har ferdige komponenter som bokser og faner, se [Starlight sin dokumentasjon](https://starlight.astro.build/components/using-components/).

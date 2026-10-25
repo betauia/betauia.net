@@ -1,0 +1,9 @@
+<script is:inline>
+  const stored = localStorage.getItem("color-theme");
+  const isDark = stored
+    ? stored === "dark"
+    : window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  document.documentElement.classList.toggle("dark", isDark);
+  document.documentElement.dataset.theme = isDark ? "dark" : "light";
+</script>

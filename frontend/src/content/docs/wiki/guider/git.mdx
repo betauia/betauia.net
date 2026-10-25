@@ -1,11 +1,9 @@
 ---
-layout: "@layouts/MarkdownLayout.astro"
-title: Git-guide
+title: Git Guide
+description: Lær deg git
+sidebar:
+  order: 1
 ---
-
-import CodeBlock from "@components/semantics/CodeBlock.astro";
-
-export const components = { pre: CodeBlock };
 
 ## Introduksjon
 
@@ -16,39 +14,6 @@ Git er et versjonskontrollsystem som hjelper deg med å holde styr på kode, sam
 Denne guiden passer for nybegynnere som aldri har brukt Git før, men fungerer også som en [hurtigreferanse](#cheat-sheet) for de mer erfarne.
 
 Du kan lese guiden fra start til slutt for å lære Git trinnvis, eller bruke innholdsfortegnelsen som et oppslagsverk når du trenger bestemte kommandoer.
-
-### Innhold
-
-- [**1 Kom i gang**](#kom-i-gang)
-  - [1.1 Installer Git](#installer-git)
-  - [1.2 Konfigurer Git](#konfigurer-git)
-- [**2 Starte et prosjekt**](#starte-et-prosjekt)
-  - [2.1 Opprett nytt repository](#opprett-et-nytt-repository)
-  - [2.2 Klon eksisterende repository](#klon-et-eksisterende-repository)
-- [**3 Vanlig arbeidsflyt**](#vanlig-arbeidsflyt)
-  - [3.1 Sjekk status](#sjekk-status)
-  - [3.2 Legg til endringer](#legg-til-endringer)
-  - [3.3 Commit endringer](#commit-endringer)
-  - [3.4 Push og pull](#push-og-pull)
-- [**4 Branching**](#branching)
-  - [4.1 Kombinere branches](#kombinere-branches)
-  - [4.2 Squash commits](#squash-commits)
-  - [4.3 Håndtere konflikter](#håndtere-konflikter)
-- [**5 Feilsøking og historikk**](#feilsøking-og-historikk)
-  - [5.1 Angre feil](#angre-feil)
-  - [5.2 Stash endringer](#stash-endringer)
-  - [5.3 Undersøk historikk](#undersøk-historikk)
-- [**6 Jobbe med remotes**](#jobbe-med-remotes)
-  - [6.1 Koble til remotes](#koble-til-remotes)
-  - [6.2 Hent og oppdater remotes](#hent-og-oppdater-remotes)
-- [**7 Struktur og standarder**](#struktur-og-standarder)
-  - [7.1 Git ignore](#git-ignore)
-  - [7.2 Commit meldinger](#commit-meldinger)
-  - [7.3 Branch navngivning](#branch-navngivning)
-  - [7.4 Bidra til et repository](#bidra-til-et-repository)
-  - [7.5 Repository struktur](#repository-struktur)
-  - [7.6 Tagging og versjoner](#tagging-og-versjoner)
-- [**8 Cheat sheet**](#cheat-sheet)
 
 ## Kom i gang
 
