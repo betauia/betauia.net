@@ -10,13 +10,13 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x0000000000000000
     <div class="mx-auto max-w-md">
       <h1 class="mb-8 text-3xl font-bold">Logg Inn</h1>
 
-      <div
-        class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised"
-      >
+      <div class="mb-4 rounded-lg border border-fg-muted bg-bg-raised p-6 dark:border-dark-fg-muted dark:bg-dark-bg-raised">
         <h2 class="mb-4 text-xl font-bold">Eksisterende bruker?</h2>
         <form id="login-form">
           <div class="mb-4">
-            <label for="login-email" class="mb-2 block text-sm font-medium">E-postadresse</label>
+            <label for="login-email" class="mb-2 block text-sm font-medium">
+              E-postadresse
+            </label>
             <input
               id="login-email"
               name="email"
@@ -28,7 +28,9 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x0000000000000000
           </div>
 
           <div class="mb-6">
-            <label for="login-password" class="mb-2 block text-sm font-medium">Passord</label>
+            <label for="login-password" class="mb-2 block text-sm font-medium">
+              Passord
+            </label>
             <input
               id="login-password"
               name="password"
@@ -51,9 +53,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x0000000000000000
 
       <p class="mb-4 text-center text-fg-muted dark:text-dark-fg-muted">- eller -</p>
 
-      <div
-        class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised"
-      >
+      <div class="rounded-lg border border-fg-muted bg-bg-raised p-6 shadow dark:border-dark-fg-muted dark:bg-dark-bg-raised">
         <h2 class="mb-4 text-xl font-bold">Ny bruker?</h2>
         <form id="register-form">
           <div class="mb-6">
@@ -79,8 +79,7 @@ const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "1x0000000000000000
             data-sitekey={siteKey}
             data-callback="onTurnstileSuccess"
             data-expired-callback="onTurnstileExpired"
-          >
-          </div>
+          ></div>
           <input type="hidden" name="cf-turnstile-response" />
 
           <button

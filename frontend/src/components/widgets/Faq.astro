@@ -16,26 +16,24 @@ const { title, items } = Astro.props as Props;
 
 <h3 class="my-4 text-2xl font-bold">{title}</h3>
 <dl>
-  {
-    items.map(item => (
-      <div class="border-t border-gray-600 px-4 last:border-b dark:border-gray-400">
-        <dt class="my-2 text-lg font-bold">
-          <button class="flex w-full items-center justify-between">
-            <div>{item.question}</div>
-            <div>
-              <Icon
-                class="text-accent transition-transform duration-300"
-                name="fa-solid:angle-down"
-              />
-            </div>
-          </button>
-        </dt>
-        <dd class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
-          {item.answer}
-        </dd>
-      </div>
-    ))
-  }
+  {items.map(item => (
+    <div class="border-t border-gray-600 px-4 last:border-b dark:border-gray-400">
+      <dt class="my-2 text-lg font-bold">
+        <button class="flex w-full items-center justify-between">
+          <div>{item.question}</div>
+          <div>
+            <Icon
+              class="text-accent transition-transform duration-300"
+              name="fa-solid:angle-down"
+            />
+          </div>
+        </button>
+      </dt>
+      <dd class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+        {item.answer}
+      </dd>
+    </div>
+  ))}
 </dl>
 
 <script>

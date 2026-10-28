@@ -11,12 +11,10 @@ import { navigationDropdowns } from "@data/navBarConfig";
   </a>
 
   <ul class="hidden items-center gap-8 md:flex">
-    {
-      navigationDropdowns.map(dropdown => (
-        <li>
-          <DropdownButton id={dropdown.id} label={dropdown.label} />
-        </li>
-      ))
-    }
+    {navigationDropdowns.map(dropdown => (
+      <li>
+        <DropdownButton id={dropdown.id} label={dropdown.label} />
+      </li>
+    ))}
   </ul>
 </nav>

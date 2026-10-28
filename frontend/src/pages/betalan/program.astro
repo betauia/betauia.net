@@ -43,31 +43,27 @@ const program = [
 
 <BaseLayout title="BetaLAN Program H26">
   <BetaLANLayout backgroundCss={oceanBg} UseGamerFont={false}>
-    <section
-      class="mx-3 mb-4 max-w-4xl rounded-lg bg-sky-950/85 p-4 text-lg text-cyan-50 sm:m-6 sm:p-6 lg:mx-auto"
-    >
+    <section class="mx-3 mb-4 max-w-4xl rounded-lg bg-sky-950/85 p-4 text-lg text-cyan-50 sm:m-6 sm:p-6 lg:mx-auto">
       <div>
         <h1 class="mb-6 text-center text-4xl font-bold text-orange-400 md:text-7xl">
           BetaLAN Program
         </h1>
 
-        {
-          program.map(day => (
-            <div class="mb-8 sm:mb-10">
-              <h2 class="mb-3 border-b border-cyan-400 pb-1 text-2xl font-bold text-cyan-300 md:text-3xl">
-                {day.day}
-              </h2>
-              <ul class="space-y-0">
-                {day.items.map(item => (
-                  <li class="flex flex-col justify-between border-b border-cyan-900/40 py-3 text-lg sm:flex-row sm:border-none sm:py-2 md:text-xl">
-                    <span class="font-medium">{item.title}</span>
-                    {item.time ? <span>{item.time}</span> : <span>&nbsp;</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
+        {program.map(day => (
+          <div class="mb-8 sm:mb-10">
+            <h2 class="mb-3 border-b border-cyan-400 pb-1 text-2xl font-bold text-cyan-300 md:text-3xl">
+              {day.day}
+            </h2>
+            <ul class="space-y-0">
+              {day.items.map(item => (
+                <li class="flex flex-col justify-between border-b border-cyan-900/40 py-3 text-lg sm:flex-row sm:border-none sm:py-2 md:text-xl">
+                  <span class="font-medium">{item.title}</span>
+                  {item.time ? <span>{item.time}</span> : <span>&nbsp;</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
         <div class="mb-2 mt-6 border-t border-cyan-800 pt-4 text-center sm:mt-8">
           <div class="mt-2 sm:mt-4">

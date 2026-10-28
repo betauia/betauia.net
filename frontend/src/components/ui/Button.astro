@@ -30,14 +30,12 @@ const padding = "px-4 py-1.5";
 const classes = `${base} ${variants[type]} ${padding} ${extra}`;
 ---
 
-{
-  href ? (
-    <a href={href} target={target} class={classes} download={download} id={id}>
-      <slot />
-    </a>
-  ) : (
-    <button type="button" class={classes} id={id}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a href={href} target={target} class={classes} download={download} id={id}>
+    <slot />
+  </a>
+) : (
+  <button type="button" class={classes} id={id}>
+    <slot />
+  </button>
+)}

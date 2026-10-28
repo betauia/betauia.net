@@ -23,49 +23,47 @@ const { tournaments } = Astro.props;
     <button
       id="prev-btn"
       class="prev-btn flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-green-600 text-white transition-all hover:bg-green-500"
-      aria-label="Previous tournament">❮</button
+      aria-label="Previous tournament"
     >
+      ❮
+    </button>
   </div>
 
   <div class="carousel-wrapper mx-auto overflow-visible px-4">
     <div class="overflow-hidden">
       <div id="carousel-track" class="carousel-track flex py-5 transition-transform duration-500">
-        {
-          tournaments.map(tournament => (
-            <div class="carousel-slide w-full flex-none px-2 md:w-1/2 lg:w-1/3">
-              <TournamentCard
-                title={tournament.title}
-                imagePath={tournament.imagePath}
-                altText={tournament.altText}
-                description={tournament.description}
-                linkPath={tournament.linkPath}
-              />
-            </div>
-          ))
-        }
+        {tournaments.map(tournament => (
+          <div class="carousel-slide w-full flex-none px-2 md:w-1/2 lg:w-1/3">
+            <TournamentCard
+              title={tournament.title}
+              imagePath={tournament.imagePath}
+              altText={tournament.altText}
+              description={tournament.description}
+              linkPath={tournament.linkPath}
+            />
+          </div>
+        ))}
       </div>
     </div>
   </div>
 
   <!-- Mobile swipe indicator with muted slate background -->
   <div class="mt-4 flex justify-center md:hidden">
-    <div
-      class="swipe-indicator flex items-center gap-2 rounded-full bg-slate-800/80 px-3 py-1 shadow-sm"
-    >
+    <div class="swipe-indicator flex items-center gap-2 rounded-full bg-slate-800/80 px-3 py-1 shadow-sm">
       <span class="arrow-slide-left text-green-400">◄</span>
       <span class="text-sm font-medium text-green-400">swipe</span>
       <span class="arrow-slide-right text-green-400">►</span>
     </div>
   </div>
 
-  <div
-    class="carousel-controls-right absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 md:flex"
-  >
+  <div class="carousel-controls-right absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 md:flex">
     <button
       id="next-btn"
       class="next-btn flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-green-600 text-white transition-all hover:bg-green-500"
-      aria-label="Next tournament">❯</button
+      aria-label="Next tournament"
     >
+      ❯
+    </button>
   </div>
 </div>
 

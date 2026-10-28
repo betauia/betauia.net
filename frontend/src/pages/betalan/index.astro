@@ -78,13 +78,15 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
                 baseFrequency="0.013"
                 numOctaves="2"
                 seed="7"
-                result="n"></feTurbulence>
+                result="n"
+              ></feTurbulence>
               <feDisplacementMap
                 in="SourceGraphic"
                 in2="n"
                 scale="22"
                 xChannelSelector="R"
-                yChannelSelector="G"></feDisplacementMap>
+                yChannelSelector="G"
+              ></feDisplacementMap>
             </filter>
             <filter id="grain" x="0%" y="0%" width="100%" height="100%">
               <feTurbulence
@@ -92,11 +94,13 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
                 baseFrequency="0.9"
                 numOctaves="2"
                 seed="3"
-                result="g"></feTurbulence>
+                result="g"
+              ></feTurbulence>
               <feColorMatrix
                 in="g"
                 type="matrix"
-                values="0 0 0 0 0.33  0 0 0 0 0.22  0 0 0 0 0.09  0 0 0 0.7 0"></feColorMatrix>
+                values="0 0 0 0 0.33  0 0 0 0 0.22  0 0 0 0 0.09  0 0 0 0.7 0"
+              ></feColorMatrix>
             </filter>
             <radialGradient id="parch" cx="42%" cy="34%" r="82%">
               <stop offset="0%" stop-color="#e6cf9c"></stop>
@@ -120,7 +124,8 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
               rx="5"
               fill="#000"
               filter="url(#grain)"
-              opacity="0.3"></rect>
+              opacity="0.3"
+            ></rect>
             <rect x="30" y="30" width="740" height="560" rx="5" fill="url(#vig)"></rect>
           </g>
         </svg>
@@ -133,7 +138,8 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
             stroke="#8a2d1f"
             stroke-width="3"
             stroke-dasharray="10 10"
-            stroke-linecap="round"></path>
+            stroke-linecap="round"
+          ></path>
           <g stroke="#8a2d1f" stroke-width="5" stroke-linecap="round">
             <line x1="326" y1="160" x2="350" y2="184"></line>
             <line x1="350" y1="160" x2="326" y2="184"></line>
@@ -153,8 +159,9 @@ const ticketUrl = "https://tikkio.com/events/66834-betalan-h26";
             </p>
             <br />
             <p>
-              The wreck is coiled by <b>Deadlock, the Drowned Leviathan</b> — a serpent of tangled cable
-              and barnacled steel that sleeps in the dark and wakes for any who disturb its hoard.
+              The wreck is coiled by <b>Deadlock, the Drowned Leviathan</b> — a serpent of tangled
+              cable and barnacled steel that sleeps in the dark and wakes for any who disturb its
+              hoard.
             </p>
             <br />
             <p>
