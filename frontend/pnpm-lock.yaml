@@ -179,8 +179,8 @@ importers:
         specifier: 11.1.9
         version: 11.1.9(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))
       '@astrojs/starlight':
-        specifier: 0.42.6
-        version: 0.42.6(@astrojs/markdown-remark@7.3.4)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))(typescript@6.0.3)
+        specifier: 0.42.7
+        version: 0.42.7(@astrojs/markdown-remark@7.3.4)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))(typescript@6.0.3)
       '@astrojs/svelte':
         specifier: 9.1.1
         version: 9.1.1(@types/node@24.19.2)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))(esbuild@0.27.7)(jiti@1.21.7)(svelte@5.57.2)(typescript@6.0.3)(yaml@2.9.1)
@@ -212,8 +212,8 @@ importers:
         specifier: ^1.1.5
         version: 1.2.0
       katex:
-        specifier: ^0.19.0
-        version: 0.19.0
+        specifier: ^0.19.1
+        version: 0.19.1
       marked:
         specifier: ^18.1.1
         version: 18.1.1
@@ -404,8 +404,8 @@ packages:
   '@astrojs/sitemap@3.7.4':
     resolution: {integrity: sha512-LbKNC24bdUWcQf/pThB6qLlSqHojxGjZDURIzFocY8rlWnAn2t74nnhnK6S5x0NHriHoAduLEpVjRykmeGiVvA==}
 
-  '@astrojs/starlight@0.42.6':
-    resolution: {integrity: sha512-Cfs7GdgzgNRCauDxQVsFUVL1thrGHK/rQdbv/SURv/xhGBXx+j5ypOHW9ENPraQxbIzUC8KAnJV7L9mvEVRuyQ==}
+  '@astrojs/starlight@0.42.7':
+    resolution: {integrity: sha512-mlbit5iRjLx5eIcLf84Q2CwkrrsEgZrQwKKBK+vRf+ZGiSrwy1UGdT1hUfAIaHrMfcvkDpL+gw3aua7HobiKFg==}
     peerDependencies:
       '@astrojs/markdown-remark': ^7.3.0
       astro: ^7.2.10
@@ -1961,8 +1961,8 @@ packages:
     resolution: {integrity: sha512-Eeo8Ys1doU1z+x8AZsPpQu+p/QcZBI5PeOo7QGQdy2x2m0MU/hYagBbGOmXwr5KVbEfVuWv9LpnQWeehogurjg==}
     hasBin: true
 
-  katex@0.19.0:
-    resolution: {integrity: sha512-v6Tznz3zJ7u3niRCoDTsumM2+HA2XXcCu+WAacCeHD2z3p9A9Ks987o5FzfTGBN0e8A0vjEgIDvLbICrXpdw/Q==}
+  katex@0.19.1:
+    resolution: {integrity: sha512-jG8uKntjSEcm2EpQOh0XturpPuuC9r3Sq5HLHdsFdWZT27E672SF19QEi+of0/YeOy15lDgRhKvr5614uRrEfA==}
     hasBin: true
 
   kleur@4.1.5:
@@ -3442,7 +3442,7 @@ snapshots:
       sitemap: 9.0.1
       zod: 4.6.7
 
-  '@astrojs/starlight@0.42.6(@astrojs/markdown-remark@7.3.4)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))(typescript@6.0.3)':
+  '@astrojs/starlight@0.42.7(@astrojs/markdown-remark@7.3.4)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))(typescript@6.0.3)':
     dependencies:
       '@astrojs/markdown-satteri': 0.4.5
       '@astrojs/mdx': 8.1.1(@astrojs/markdown-remark@7.3.4)(@astrojs/markdown-satteri@0.4.5)(astro@7.4.2(@astrojs/markdown-remark@7.3.4)(@types/node@24.19.2)(esbuild@0.27.7)(jiti@1.21.7)(yaml@2.9.1))
@@ -5082,7 +5082,7 @@ snapshots:
     dependencies:
       commander: 8.3.0
 
-  katex@0.19.0:
+  katex@0.19.1:
     dependencies:
       commander: 15.0.0
 
