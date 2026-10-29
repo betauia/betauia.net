@@ -34,11 +34,9 @@ const contacts = [
     </p>
 
     <div class="mt-4 grid gap-6 md:grid-cols-3">
-      {
-        contacts.map(({ title, email, description }) => (
-          <Card title={title} text={description} href={`mailto:${email}`} highlightText={email} />
-        ))
-      }
+      {contacts.map(({ title, email, description }) => (
+        <Card title={title} text={description} href={`mailto:${email}`} highlightText={email} />
+      ))}
     </div>
 
     <div class="mt-12">
@@ -49,7 +47,9 @@ const contacts = [
         pinge oss om det er noe.
       </p>
       <div class="mt-4">
-        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">Bli med på Discord</Button>
+        <Button href="https://discord.gg/3xBPkDsaXy" target="_blank">
+          Bli med på Discord
+        </Button>
       </div>
     </div>
 

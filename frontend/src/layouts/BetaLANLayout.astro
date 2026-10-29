@@ -36,36 +36,32 @@ const rays = [
   ]}
   style={backgroundCss ?? ""}
 >
-  {
-    backgroundCss && (
-      <div class="ocean-scene" aria-hidden="true">
-        <div class="rays">
-          {rays.map(r => (
-            <span
-              class="ray"
-              style={`left:${r.left}%;width:${r.w}px;--op:${r.op};--rot:${r.rot}deg;animation-duration:${r.dur}s;animation-delay:${r.delay}s;`}
-            />
-          ))}
-        </div>
+  {backgroundCss && (
+    <div class="ocean-scene" aria-hidden="true">
+      <div class="rays">
+        {rays.map(r => (
+          <span
+            class="ray"
+            style={`left:${r.left}%;width:${r.w}px;--op:${r.op};--rot:${r.rot}deg;animation-duration:${r.dur}s;animation-delay:${r.delay}s;`}
+          />
+        ))}
       </div>
-    )
-  }
-  {
-    backgroundCss && (
-      <>
-        <img class="reef-floor" src={reefImg.src} alt="" aria-hidden="true" loading="lazy" />
-        <div class="reef-kelp" aria-hidden="true" set:html={reefKelp} />
-        <div class="bubbles" aria-hidden="true">
-          {bubbles.map(b => (
-            <span
-              class="bubble-rise"
-              style={`left:${b.left}%;width:${b.size}px;height:${b.size}px;--rise:${b.rise}px;--drift:${b.drift}px;animation-delay:${b.delay}s;animation-duration:${b.duration}s;`}
-            />
-          ))}
-        </div>
-      </>
-    )
-  }
+    </div>
+  )}
+  {backgroundCss && (
+    <>
+      <img class="reef-floor" src={reefImg.src} alt="" aria-hidden="true" loading="lazy" />
+      <div class="reef-kelp" aria-hidden="true" set:html={reefKelp} />
+      <div class="bubbles" aria-hidden="true">
+        {bubbles.map(b => (
+          <span
+            class="bubble-rise"
+            style={`left:${b.left}%;width:${b.size}px;height:${b.size}px;--rise:${b.rise}px;--drift:${b.drift}px;animation-delay:${b.delay}s;animation-duration:${b.duration}s;`}
+          />
+        ))}
+      </div>
+    </>
+  )}
 
   <slot />
 </div>

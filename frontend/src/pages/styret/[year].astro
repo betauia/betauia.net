@@ -29,28 +29,24 @@ const groupPhoto = yearData?.groupPhoto;
       </p>
     </div>
 
-    {
-      groupPhoto && (
-        <div class="mb-12 overflow-hidden rounded-2xl">
-          <Image src={groupPhoto} alt={`Hovedstyret ${year}`} class="h-96 w-full object-cover" />
-        </div>
-      )
-    }
+    {groupPhoto && (
+      <div class="mb-12 overflow-hidden rounded-2xl">
+        <Image src={groupPhoto} alt={`Hovedstyret ${year}`} class="h-96 w-full object-cover" />
+      </div>
+    )}
 
     <div class="mb-12">
       <h2 class="mb-6 text-3xl font-bold">Styremedlemmer</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {
-          boardMembers.map(member => (
-            <ProfileCard
-              name={member.name}
-              role={member.position}
-              linkedin={member.linkedin}
-              github={member.github}
-              picture={member.photo}
-            />
-          ))
-        }
+        {boardMembers.map(member => (
+          <ProfileCard
+            name={member.name}
+            role={member.position}
+            linkedin={member.linkedin}
+            github={member.github}
+            picture={member.photo}
+          />
+        ))}
       </div>
     </div>
 

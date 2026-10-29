@@ -29,17 +29,15 @@ const projects = [
     </p>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {
-        projects.map(project => (
-          <Card
-            title={project.title}
-            text={project.description}
-            href={project.href}
-            highlightText={project.highlightText}
-            frame="none"
-          />
-        ))
-      }
+      {projects.map(project => (
+        <Card
+          title={project.title}
+          text={project.description}
+          href={project.href}
+          highlightText={project.highlightText}
+          frame="none"
+        />
+      ))}
     </div>
 
     <Card

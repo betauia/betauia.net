@@ -13,13 +13,11 @@ const socials = {
 ---
 
 <ul class={`flex gap-5 text-2xl ${className ?? ""}`}>
-  {
-    Object.entries(socials).map(([name, url]) => (
-      <li>
-        <a href={url} target="_blank" class="transition hover:opacity-80">
-          <Icon name={`fa-brands:${name}`} />
-        </a>
-      </li>
-    ))
-  }
+  {Object.entries(socials).map(([name, url]) => (
+    <li>
+      <a href={url} target="_blank" class="transition hover:opacity-80">
+        <Icon name={`fa-brands:${name}`} />
+      </a>
+    </li>
+  ))}
 </ul>
