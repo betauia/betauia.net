@@ -1,0 +1,107 @@
+---
+import Container from "@components/layout/Container.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Button from "@components/ui/Button.astro";
+
+const teapot = [
+  "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣘⣿⣿⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⣀⣀⡀⠀⠀⠀⢀⣀⠘⠛⠛⠛⠛⠛⠛⠁⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⢠⡿⠋⠉⠛⠃⣠⣤⣈⣉⡛⠛⠛⠛⠛⠛⠛⢛⣉⣁⣤⣄⠀⠀⣾⣿⡿⠗⠀",
+  "⠀⢸⡇⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⣿⣿⠀⠀⠀",
+  "⠀⢸⣇⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢉⣉⣠⣿⣿⡀⠀⠀",
+  "⠀⠀⠙⠷⡆⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⢰⣿⣿⣿⣿⣿⡇⠀⠀",
+  "⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠸⣿⣿⣿⣿⠟⠀⠀⠀",
+  "⠀⠀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠈⠉⠁⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢄⣉⠉⠛⠛⠛⠛⠛⠋⢉⣉⡠⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⠿⠿⠿⠿⠿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+].join("\n");
+
+const coffee = [
+  "⠀⠀⠀⠀⠀⠀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⢀⢔⡽⠟⠛⠉⠙⠛⠻⣄⠀⣀⣤⣶⠶⣦⣄⠀⠀⠀⠀⠀⠀",
+  "⠀⣠⠷⠋⠀⠀⠀⠀⠀⠀⠀⠀⣿⣸⠁⠀⠀⠀⠈⠻⣿⡄⠀⠀⠀",
+  "⢸⣿⠃⠀⠀⠀⠀⠀⢸⡀⠀⣼⢸⣇⠀⠀⠀⠀⠀⠀⢸⣷⠀⠀⠀",
+  "⢸⣿⡀⠀⠀⠀⠀⠀⠀⠙⠋⠁⠀⠙⠛⠋⠀⠀⠀⠀⣼⡏⠀⠀⠀",
+  "⠀⢿⢷⣱⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣮⡿⠋⠀⠀⠀⠀",
+  "⠀⠀⠙⠽⣿⣾⣿⣤⣶⣤⣀⠀⠀⠀⡠⣪⠷⠛⠁⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⠀⠈⠉⠉⠙⣛⣿⣦⣀⣀⣿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⢀⣤⠖⠋⠉⠀⠀⠹⣷⣿⡏⠈⠉⠓⢦⡄⠀⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⣾⡁⠀⠀⠀⠀⠀⠀⠘⡏⠓⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀",
+  "⠀⠀⠀⠀⢨⣛⣦⣤⣀⣀⣀⠀⠀⢀⣀⣀⣠⡤⣾⣫⣴⠾⠿⣷⡄",
+  "⠀⠀⠀⠀⠘⣿⣿⣷⣾⣿⣿⣿⣿⣿⣿⣿⣷⢇⣿⣿⠁⠀⠀⣽⡏",
+  "⠀⠀⠀⠀⢀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣸⣿⠇⢀⣠⡾⠋⠀",
+  "⢀⣠⡶⠚⠉⠀⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠚⠉⠱⣦⣄⠀",
+  "⣾⣿⡄⠀⠀⠀⠘⢷⣭⣟⣛⣿⣿⢿⣛⣫⣵⠞⠀⠀⠀⠀⣸⡿⣷",
+  "⠙⢿⣿⣶⣤⣄⣀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⢠⣾⣿⡿⠀",
+  "⠀⠀⠈⠉⠛⠛⠿⠿⠿⠿⠿⣿⣿⣿⠿⠿⠿⠿⠛⠛⠛⠉⠀⠀⠀",
+].join("\n");
+---
+
+<BaseLayout title="Kaffe">
+  <Container class="flex min-h-svh flex-col items-center justify-center text-center">
+    <div id="coffee-loading" class="flex flex-col items-center">
+      <p class="mt-6 text-xl text-fg-muted dark:text-dark-fg-muted">Brygger kaffe...</p>
+    </div>
+
+    <div id="coffee-ok" class="hidden flex-col items-center">
+      <pre class="font-mono text-lg leading-tight text-fg-muted dark:text-dark-fg-muted">{coffee}</pre>
+      <h1 class="mt-6 text-4xl font-semibold">Kaffen er klar!</h1>
+      <p class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted">
+        Vent... Bro, jeg er impressed!
+      </p>
+    </div>
+
+    <div id="coffee-teapot" class="hidden flex-col items-center">
+      <pre class="font-mono text-lg leading-tight text-fg-muted dark:text-dark-fg-muted">{teapot}</pre>
+      <h1 class="mt-6 text-4xl font-semibold">418 I'm a teapot</h1>
+      <p id="coffee-message" class="mt-4 text-xl text-fg-muted dark:text-dark-fg-muted">
+        Du prøvde å brygge kaffe på en tekanne... Det går ikke ann, sjef!
+      </p>
+      <p class="mt-2 text-sm text-fg-muted dark:text-dark-fg-muted">
+        Se{" "}
+        <a class="underline" href="https://www.rfc-editor.org/info/rfc2324/" target="_blank">
+          RFC 2324
+        </a>{" "}
+        og{" "}
+        <a class="underline" href="https://www.rfc-editor.org/info/rfc9110/" target="_blank">
+          RFC 9110
+        </a>{" "}
+        for detaljer.
+      </p>
+    </div>
+
+    <div class="mt-6 flex gap-4">
+      <Button href="/" type="primary">
+        Gå tilbake
+      </Button>
+    </div>
+  </Container>
+</BaseLayout>
+
+<script>
+  const apiBase = import.meta.env.PUBLIC_BACKEND_URL || "http://localhost:8000";
+
+  const show = (id: string) => {
+    document.getElementById("coffee-loading")?.classList.add("hidden");
+    document.getElementById(id)?.classList.replace("hidden", "flex");
+  };
+
+  try {
+    const response = await fetch(`${apiBase}/v1/coffee`);
+
+    if (response.ok) {
+      show("coffee-ok");
+    } else {
+      const data = await response.json().catch(() => null);
+      const messageElement = document.getElementById("kaffe-message");
+      if (data?.message && messageElement) {
+        messageElement.innerText = data.message;
+      }
+      show("coffee-teapot");
+    }
+  } catch (err) {
+    console.error("Failed to brew coffee:", err);
+    show("coffee-teapot");
+  }
+</script>
