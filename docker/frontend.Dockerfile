@@ -1,4 +1,4 @@
-FROM node:24-alpine
+FROM node:26-alpine
 
 RUN npm install --global pnpm@12.9.0
 
