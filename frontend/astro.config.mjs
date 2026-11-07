@@ -27,6 +27,7 @@ export default defineConfig({
         Header: "./src/components/wiki/Header.astro",
         PageFrame: "./src/components/wiki/PageFrame.astro",
         ThemeProvider: "./src/components/wiki/ThemeProvider.astro",
+        ThemeSelect: "./src/components/wiki/ThemeSelect.astro",
         MobileMenuToggle: "./src/components/wiki/MobileMenuToggle.astro",
       },
       sidebar: [
